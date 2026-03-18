@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Autoeight | AI & Automation Agency – Done-For-You Business Automation</title>
+  <meta name="description" content="Autoeight builds custom AI and automation systems that increase revenue and reduce workload. Done-for-you workflows, outreach, and integrations for growing businesses." />
+  <meta name="keywords" content="AI automation agency, business automation, done-for-you automation, workflow automation, sales automation, AI systems, Make.com, Zapier, OpenAI" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://autoeight.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://autoeight.com/" />
+  <meta property="og:title" content="Autoeight | AI & Automation Agency" />
+  <meta property="og:description" content="Custom AI and automation systems built to increase revenue and reduce workload for growing businesses." />
+  <meta property="og:image" content="https://autoeight.com/brand_assets/og-image.png" />
+  <meta property="og:site_name" content="Autoeight" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Autoeight | AI & Automation Agency" />
+  <meta name="twitter:description" content="Custom AI and automation systems built to increase revenue and reduce workload." />
+  <meta name="twitter:image" content="https://autoeight.com/brand_assets/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Autoeight",
+    "description": "Custom AI and automation systems built to increase revenue and reduce workload for growing businesses.",
+    "url": "https://autoeight.com",
+    "logo": "https://autoeight.com/brand_assets/logo.png",
+    "serviceType": ["AI Automation", "Business Automation", "Workflow Automation", "Sales Automation", "Email Automation", "Web Design"],
+    "areaServed": "GB",
+    "sameAs": ["https://www.linkedin.com/company/autoeight"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="brand_assets/logo.png" alt="Autoeight" />
+    </a>
+    <ul class="nav-menu" id="nav-menu">
+      <li class="nav-item has-dropdown">
+        <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="services/ai-automation.html"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a></li>
+          <li><a href="services/email-automation.html"><i class="fa-solid fa-envelope"></i> Email Automation</a></li>
+          <li><a href="services/sales-automation.html"><i class="fa-solid fa-chart-line"></i> Sales Automation</a></li>
+          <li><a href="services/web-design.html"><i class="fa-solid fa-globe"></i> Web Design</a></li>
+        </ul>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="#">Results <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="results/testimonials.html"><i class="fa-solid fa-star"></i> Testimonials</a></li>
+          <li><a href="results/case-studies.html"><i class="fa-solid fa-file-lines"></i> Case Studies</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="about.html">About Us</a>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="resources/blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="resources/videos.html"><i class="fa-solid fa-play"></i> Videos</a></li>
+          <li><a href="resources/blueprints.html"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a href="backend/login.html" class="btn btn-primary nav-cta" style="font-size:0.85rem; padding:9px 20px;">Sales Portal</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="home">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-scan-line"></div>
+    <div class="hero-bg-base"></div>
+    <div class="hero-bg-noise"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="container" style="display:flex; flex-direction:column; align-items:center;">
+
+      <!-- Text block -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Custom &amp; Done-For-You Automation
+        </div>
+
+        <h1 class="hero-headline glow-text">
+          Automate your business to highly profitable scale with <em class="typewriter-cycle" data-words='["AI","automation","Autoeight"]'>AI</em>
+        </h1>
+
+        <p class="hero-sub">
+          Custom, done-for-you systems built to increase revenue and reduce workload.
+        </p>
+
+        <div class="hero-actions">
+          <a href="book.html" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-calendar-check"></i>
+            Book your free 30-min audit
+          </a>
+          <a href="#about" class="btn btn-ghost btn-lg">See how it works</a>
+        </div>
+
+        <div class="hero-trust">
+          <span class="hero-trust-item">
+            <i class="fa-solid fa-circle-check"></i> No commitment required
+          </span>
+          <span class="hero-trust-item">
+            <i class="fa-solid fa-circle-check"></i> Results in 30 days
+          </span>
+          <span class="hero-trust-item">
+            <i class="fa-solid fa-circle-check"></i> 100% custom-built
+          </span>
+        </div>
+      </div>
+
+      <!-- Dashboard mockup -->
+      <div class="hero-visual" style="width:100%; margin-top: 64px;">
+        <div class="hero-dashboard">
+          <div class="dashboard-bar">
+            <div class="dashboard-dots">
+              <span class="dot-red"></span>
+              <span class="dot-amber"></span>
+              <span class="dot-green"></span>
+            </div>
+            <div class="dashboard-url">app.autoeight.ai · Sales Pipeline</div>
+          </div>
+          <div class="dashboard-body">
+            <div class="dash-card">
+              <div class="dash-card-label">Emails sent</div>
+              <div class="dash-card-value">4,812</div>
+              <div class="dash-card-sub"><i class="fa-solid fa-arrow-trend-up"></i> +38% this week</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-label">Meetings booked</div>
+              <div class="dash-card-value">143</div>
+              <div class="dash-card-sub"><i class="fa-solid fa-arrow-trend-up"></i> +22% this week</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-label">Pipeline value</div>
+              <div class="dash-card-value">£86k</div>
+              <div class="dash-card-sub"><i class="fa-solid fa-arrow-trend-up"></i> +51% this month</div>
+            </div>
+            <div class="dash-chart">
+              <div class="dash-chart-label">Outreach volume — last 12 weeks</div>
+              <div class="chart-bars">
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+                <div class="chart-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-dashboard-glow"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── LOGO STRIP ── -->
+  <div id="logos">
+    <div class="logos-inner">
+      <span class="logos-label">Integrates with</span>
+      <div class="logos-divider"></div>
+      <div class="logos-scroll">
+        <div class="logos-track">
+          <!-- AI tools first -->
+          <span class="logo-pill"><i class="fa-solid fa-brain" style="color:#74aa9c;"></i> OpenAI</span>
+          <span class="logo-pill"><i class="fa-solid fa-robot" style="color:#10a37f;"></i> ChatGPT</span>
+          <span class="logo-pill"><i class="fa-solid fa-puzzle-piece" style="color:#a259ff;"></i> Make.com</span>
+          <span class="logo-pill"><i class="fa-brands fa-python" style="color:#3776ab;"></i> Python</span>
+          <span class="logo-pill"><i class="fa-brands fa-google" style="color:#8e75b2;"></i> Gemini</span>
+          <span class="logo-pill"><i class="fa-solid fa-wand-magic-sparkles" style="color:#c084fc;"></i> Claude</span>
+          <span class="logo-pill"><i class="fa-brands fa-js" style="color:#f7df1e;"></i> JavaScript</span>
+          <!-- other tools -->
+          <span class="logo-pill"><i class="fa-brands fa-google"></i> Google Workspace</span>
+          <span class="logo-pill"><i class="fa-brands fa-slack"></i> Slack</span>
+          <span class="logo-pill"><i class="fa-brands fa-hubspot"></i> HubSpot</span>
+          <span class="logo-pill"><i class="fa-brands fa-salesforce"></i> Salesforce</span>
+          <span class="logo-pill"><i class="fa-solid fa-bolt"></i> Zapier</span>
+          <span class="logo-pill"><i class="fa-brands fa-linkedin"></i> LinkedIn</span>
+          <span class="logo-pill"><i class="fa-solid fa-table-cells"></i> Airtable</span>
+          <span class="logo-pill"><i class="fa-solid fa-calendar-days"></i> Calendly</span>
+          <span class="logo-pill"><i class="fa-solid fa-envelope"></i> Gmail</span>
+          <span class="logo-pill"><i class="fa-brands fa-microsoft"></i> MS Teams</span>
+          <span class="logo-pill"><i class="fa-solid fa-video"></i> Zoom</span>
+          <span class="logo-pill"><i class="fa-brands fa-dropbox"></i> Dropbox</span>
+          <span class="logo-pill"><i class="fa-brands fa-shopify"></i> Shopify</span>
+          <span class="logo-pill"><i class="fa-brands fa-stripe"></i> Stripe</span>
+          <span class="logo-pill"><i class="fa-brands fa-github"></i> GitHub</span>
+          <span class="logo-pill"><i class="fa-brands fa-atlassian"></i> Jira</span>
+          <span class="logo-pill"><i class="fa-solid fa-list-check"></i> Asana</span>
+          <span class="logo-pill"><i class="fa-solid fa-book-open"></i> Notion</span>
+          <span class="logo-pill"><i class="fa-brands fa-trello"></i> Trello</span>
+          <span class="logo-pill"><i class="fa-brands fa-mailchimp"></i> Mailchimp</span>
+          <span class="logo-pill"><i class="fa-solid fa-headset"></i> Zendesk</span>
+          <span class="logo-pill"><i class="fa-solid fa-comment-dots"></i> Intercom</span>
+          <span class="logo-pill"><i class="fa-brands fa-wordpress"></i> WordPress</span>
+          <!-- duplicate for seamless loop -->
+          <span class="logo-pill"><i class="fa-solid fa-brain" style="color:#74aa9c;"></i> OpenAI</span>
+          <span class="logo-pill"><i class="fa-solid fa-robot" style="color:#10a37f;"></i> ChatGPT</span>
+          <span class="logo-pill"><i class="fa-solid fa-puzzle-piece" style="color:#a259ff;"></i> Make.com</span>
+          <span class="logo-pill"><i class="fa-brands fa-python" style="color:#3776ab;"></i> Python</span>
+          <span class="logo-pill"><i class="fa-brands fa-google" style="color:#8e75b2;"></i> Gemini</span>
+          <span class="logo-pill"><i class="fa-solid fa-wand-magic-sparkles" style="color:#c084fc;"></i> Claude</span>
+          <span class="logo-pill"><i class="fa-brands fa-js" style="color:#f7df1e;"></i> JavaScript</span>
+          <span class="logo-pill"><i class="fa-brands fa-google"></i> Google Workspace</span>
+          <span class="logo-pill"><i class="fa-brands fa-slack"></i> Slack</span>
+          <span class="logo-pill"><i class="fa-brands fa-hubspot"></i> HubSpot</span>
+          <span class="logo-pill"><i class="fa-brands fa-salesforce"></i> Salesforce</span>
+          <span class="logo-pill"><i class="fa-solid fa-bolt"></i> Zapier</span>
+          <span class="logo-pill"><i class="fa-brands fa-linkedin"></i> LinkedIn</span>
+          <span class="logo-pill"><i class="fa-solid fa-table-cells"></i> Airtable</span>
+          <span class="logo-pill"><i class="fa-solid fa-calendar-days"></i> Calendly</span>
+          <span class="logo-pill"><i class="fa-solid fa-envelope"></i> Gmail</span>
+          <span class="logo-pill"><i class="fa-brands fa-microsoft"></i> MS Teams</span>
+          <span class="logo-pill"><i class="fa-solid fa-video"></i> Zoom</span>
+          <span class="logo-pill"><i class="fa-brands fa-dropbox"></i> Dropbox</span>
+          <span class="logo-pill"><i class="fa-brands fa-shopify"></i> Shopify</span>
+          <span class="logo-pill"><i class="fa-brands fa-stripe"></i> Stripe</span>
+          <span class="logo-pill"><i class="fa-brands fa-github"></i> GitHub</span>
+          <span class="logo-pill"><i class="fa-brands fa-atlassian"></i> Jira</span>
+          <span class="logo-pill"><i class="fa-solid fa-list-check"></i> Asana</span>
+          <span class="logo-pill"><i class="fa-solid fa-book-open"></i> Notion</span>
+          <span class="logo-pill"><i class="fa-brands fa-trello"></i> Trello</span>
+          <span class="logo-pill"><i class="fa-brands fa-mailchimp"></i> Mailchimp</span>
+          <span class="logo-pill"><i class="fa-solid fa-headset"></i> Zendesk</span>
+          <span class="logo-pill"><i class="fa-solid fa-comment-dots"></i> Intercom</span>
+          <span class="logo-pill"><i class="fa-brands fa-wordpress"></i> WordPress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ── STATS BAR ── -->
+  <div style="padding: 52px 5%; background: var(--black);">
+    <div class="container">
+      <div class="stat-bar reveal">
+        <div class="stat-bar-item">
+          <div class="num"><span data-target="10" data-suffix="×">10×</span></div>
+          <div class="lbl">More output without extra headcount</div>
+        </div>
+        <div class="stat-bar-item">
+          <div class="num"><span data-target="80" data-suffix="%">80%</span></div>
+          <div class="lbl">Reduction in time on repetitive tasks</div>
+        </div>
+        <div class="stat-bar-item">
+          <div class="num"><span data-target="30">30</span></div>
+          <div class="lbl">Days to your first measurable results</div>
+        </div>
+        <div class="stat-bar-item">
+          <div class="num"><span data-target="50" data-suffix="+">50+</span></div>
+          <div class="lbl">Businesses transformed with automation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" style="position:relative; overflow:hidden;">
+    <div class="float-shape float-shape-1"></div>
+    <div class="float-shape float-shape-2"></div>
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text reveal">
+          <span class="section-label">About Autoeight</span>
+          <h2 class="section-title">AI is rewriting how business works.</h2>
+          <p class="section-sub">
+            Businesses that rely on manual processes are being left behind. We build custom AI systems that automate the work across your entire operation — so you scale smarter, not harder.
+          </p>
+          <div class="about-stats">
+            <div class="stat-card neon-card">
+              <div class="stat-number"><span data-target="10" data-suffix="×">10×</span></div>
+              <div class="stat-desc">More output without extra headcount</div>
+            </div>
+            <div class="stat-card neon-card">
+              <div class="stat-number"><span data-target="80" data-suffix="%">80%</span></div>
+              <div class="stat-desc">Reduction in time on repetitive tasks</div>
+            </div>
+            <div class="stat-card neon-card">
+              <div class="stat-number"><span data-target="30">30</span></div>
+              <div class="stat-desc">Days to your first measurable results</div>
+            </div>
+            <div class="stat-card neon-card">
+              <div class="stat-number"><span data-target="100" data-suffix="%">100%</span></div>
+              <div class="stat-desc">Custom-built and maintained for you</div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-list reveal" style="transition-delay: 0.15s;">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-plug"></i></div>
+            <div>
+              <h3>App Integration</h3>
+              <p>We connect your existing tools — CRM, email, calendar, and more — into one automated pipeline.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
+            <div>
+              <h3>AI-Powered Workflows</h3>
+              <p>Intelligent automation that handles your most time-consuming tasks — triggered by real events, built around your business.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div>
+              <h3>Measurable ROI</h3>
+              <p>Every system we build is tracked and optimised. You always know what's working and why.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+              <h3>Done-For-You Maintenance</h3>
+              <p>We monitor and maintain your systems so you never have to worry about things breaking quietly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <div class="section-divider"></div>
+  <section style="padding: 72px 5%; background: var(--black);">
+    <div class="container">
+      <div style="text-align:center; max-width:600px; margin: 0 auto 52px;" class="reveal">
+        <span class="section-label">Simple Process</span>
+        <h2 class="section-title">Up and running in two weeks</h2>
+        <p class="section-sub" style="margin: 14px auto 0;">We've refined our process across dozens of clients. It's quick, low-friction, and you'll see results faster than you'd expect.</p>
+      </div>
+      <div class="steps-grid reveal" style="transition-delay:0.1s;">
+        <div class="steps-connector" aria-hidden="true">
+          <div class="steps-connector-track">
+            <div class="steps-connector-fill"></div>
+          </div>
+          <span class="steps-connector-dot dot-start"></span>
+          <span class="steps-connector-dot dot-mid"></span>
+          <span class="steps-connector-dot dot-end"></span>
+        </div>
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Discovery Audit</h3>
+          <p>We spend 30 minutes getting to know your business, your current tools, and where automation can have the biggest impact right now.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Build &amp; Integrate</h3>
+          <p>Our team builds your custom system and connects it to everything you already use. No disruption to how your team works day-to-day.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Launch &amp; Scale</h3>
+          <p>We go live, monitor performance closely, and optimise over time. Your system gets smarter and more effective the longer it runs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="section-divider"></div>
+
+  <!-- ── CASE STUDIES (scroll-stack) ── -->
+  <section id="case-studies" class="cs-section">
+    <div class="cs-sticky">
+      <div class="cs-header">
+        <span class="section-label">Real Results</span>
+        <h2 class="section-title">What we've built for clients</h2>
+      </div>
+      <div class="cs-cards-wrap">
+
+        <!-- Card 1 -->
+        <div class="cs-card" style="background: var(--card);">
+          <div class="cs-card-tag"><i class="fa-solid fa-envelope"></i> Email Automation</div>
+          <div class="cs-card-client">B2B SaaS — NorthFlow Software</div>
+          <h3 class="cs-card-title">From 40 manual emails a day to 1,200 personalised outreaches — without hiring anyone</h3>
+          <p class="cs-card-body">NorthFlow's sales team was spending 3+ hours a day on cold outreach with inconsistent results. We built a fully automated multi-step email pipeline with AI personalisation, CRM sync, and reply detection. Within 30 days they were booking 3× more demos with zero extra headcount.</p>
+          <div class="cs-card-stats">
+            <div class="cs-stat"><span>3×</span>Demo bookings</div>
+            <div class="cs-stat"><span>92%</span>Time saved on outreach</div>
+            <div class="cs-stat"><span>30</span>Days to results</div>
+          </div>
+          <div class="cs-card-num">01 / 03</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="cs-card" style="background: #161628;">
+          <div class="cs-card-tag"><i class="fa-brands fa-linkedin"></i> LinkedIn + Email</div>
+          <div class="cs-card-client">Recruitment Agency — PeakTalent Group</div>
+          <h3 class="cs-card-title">A two-channel outreach system that filled their pipeline with 80+ qualified candidates a week</h3>
+          <p class="cs-card-body">PeakTalent were relying on manual LinkedIn messages and spreadsheet tracking, losing candidates in the process. We integrated LinkedIn outreach with automated email follow-ups and a live Airtable pipeline. Their consultants now focus entirely on interviews — the system handles everything else.</p>
+          <div class="cs-card-stats">
+            <div class="cs-stat"><span>80+</span>Qualified leads / week</div>
+            <div class="cs-stat"><span>5×</span>Pipeline growth</div>
+            <div class="cs-stat"><span>0</span>Manual data entry</div>
+          </div>
+          <div class="cs-card-num">02 / 03</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="cs-card" style="background: #160e1e;">
+          <div class="cs-card-tag"><i class="fa-solid fa-chart-line"></i> Sales Pipeline</div>
+          <div class="cs-card-client">Digital Agency — Vantage Creative</div>
+          <h3 class="cs-card-title">A fully automated sales engine that generates £40k+ in new pipeline every month on autopilot</h3>
+          <p class="cs-card-body">Vantage Creative had the talent but no consistent way to win new clients. We built an end-to-end sales system: lead sourcing, personalised outreach, automated follow-up sequences, and meeting booking — all connected to their HubSpot CRM. New business now comes in predictably every single week.</p>
+          <div class="cs-card-stats">
+            <div class="cs-stat"><span>£40k+</span>Monthly pipeline</div>
+            <div class="cs-stat"><span>12×</span>ROI in month one</div>
+            <div class="cs-stat"><span>100%</span>Hands-free</div>
+          </div>
+          <div class="cs-card-num">03 / 03</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <script>
+  (function () {
+    var section = document.getElementById('case-studies');
+    if (!section) return;
+    var cards = Array.from(section.querySelectorAll('.cs-card'));
+    var n = cards.length;
+
+    function update() {
+      var rect   = section.getBoundingClientRect();
+      var total  = section.offsetHeight - window.innerHeight;
+      var scrolled = Math.max(0, Math.min(total, -rect.top));
+      var gp     = total > 0 ? scrolled / total : 0;
+      var zone   = 1 / (n - 1);
+
+      cards.forEach(function (card, i) {
+        if (i === 0) {
+          var ep = Math.min(1, gp / zone);
+          card.style.transform = 'scale(' + (1 - ep * 0.06) + ')';
+          card.style.opacity   = String(1 - ep * 0.25);
+        } else {
+          var start = (i - 1) * zone;
+          var ep2   = Math.min(1, Math.max(0, (gp - start) / zone));
+          var ty    = (1 - ep2) * 100;
+          var sc    = 1, op = 1;
+          if (i < n - 1) {
+            var xs = i * zone;
+            var xp = Math.min(1, Math.max(0, (gp - xs) / zone));
+            sc = 1 - xp * 0.06;
+            op = 1 - xp * 0.25;
+          }
+          card.style.transform = 'translateY(' + ty + '%) scale(' + sc + ')';
+          card.style.opacity   = String(op);
+          card.style.zIndex    = String(i + 1);
+        }
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+  </script>
+
+  <!-- ── BUCKET ── -->
+  <section class="bucket-section">
+    <div class="container">
+      <div style="text-align:center; max-width:560px; margin: 0 auto 52px;" class="reveal">
+        <span class="section-label">What you gain</span>
+        <h2 class="section-title">Everything flows in,<br /><em>nothing slips through</em></h2>
+        <p class="section-sub" style="margin: 14px auto 0;">AI automation consolidates your entire workflow into one seamless engine — zero waste, zero gaps.</p>
+      </div>
+      <div class="bucket-outer reveal" style="transition-delay:0.12s;">
+        <!-- chip throw stage – centred at the rim -->
+        <div class="bucket-chip-stage" id="bucket-stage"></div>
+        <div class="bucket-wrap">
+          <!-- SVG draws the bucket: elliptical rim + tapered walls + curved base -->
+          <svg class="bucket-svg" viewBox="0 0 280 310" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bkt-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"   stop-color="#7c5cfc" stop-opacity="0.18"/>
+                <stop offset="100%" stop-color="#7c5cfc" stop-opacity="0.04"/>
+              </linearGradient>
+              <radialGradient id="bkt-rim-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%"   stop-color="#7c5cfc" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#7c5cfc" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <!-- interior fill -->
+            <path d="M 0,22 L 40,288 A 100,14 0 0 0 240,288 L 280,22 Z" fill="url(#bkt-fill)"/>
+            <!-- left wall -->
+            <line x1="1"   y1="22" x2="40"  y2="288" stroke="rgba(124,92,252,0.55)" stroke-width="2"/>
+            <!-- right wall -->
+            <line x1="279" y1="22" x2="240" y2="288" stroke="rgba(124,92,252,0.55)" stroke-width="2"/>
+            <!-- base ellipse -->
+            <ellipse cx="140" cy="288" rx="100" ry="14"
+                     stroke="rgba(124,92,252,0.55)" stroke-width="2"
+                     fill="rgba(124,92,252,0.14)"/>
+            <!-- rim glow halo -->
+            <ellipse cx="140" cy="22" rx="140" ry="22" fill="url(#bkt-rim-glow)"/>
+            <!-- rim outline -->
+            <ellipse cx="140" cy="22" rx="140" ry="22"
+                     stroke="rgba(124,92,252,0.9)" stroke-width="2.5"
+                     fill="rgba(124,92,252,0.18)"/>
+          </svg>
+          <!-- logo centred in body -->
+          <div class="bucket-logo-wrap">
+            <img src="brand_assets/logo.png" alt="Autoeight" class="bucket-logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  (function () {
+    var chips = [
+      { icon: 'fa-solid fa-rocket',          title: '10× More Outreach',    desc: 'Scale without hiring' },
+      { icon: 'fa-solid fa-moon',            title: '24/7 Operations',      desc: 'Never sleep, never stop' },
+      { icon: 'fa-solid fa-ban',             title: 'Zero Data Entry',      desc: 'Auto-sync across all systems' },
+      { icon: 'fa-solid fa-bolt',            title: 'Faster Responses',     desc: 'Instant replies to every enquiry' },
+      { icon: 'fa-solid fa-circle-check',    title: 'Higher Accuracy',      desc: 'No human errors, every time' },
+      { icon: 'fa-solid fa-chart-line',      title: 'More Revenue',         desc: 'More meetings, more pipeline' },
+      { icon: 'fa-regular fa-clock',         title: 'Hours Saved',          desc: 'Give your team their time back' },
+      { icon: 'fa-solid fa-piggy-bank',      title: 'Lower Costs',          desc: 'Do more with less' },
+    ];
+    var stage = document.getElementById('bucket-stage');
+    var idx = 0;
+
+    function showChip() {
+      var c    = chips[idx % chips.length];
+      var left = (idx % 2 === 0);
+      idx++;
+      var el = document.createElement('div');
+      el.className = 'bucket-chip';
+      el.innerHTML =
+        '<div class="bucket-chip-icon"><i class="' + c.icon + '"></i></div>' +
+        '<div class="bucket-chip-text">' +
+          '<div class="bucket-chip-title">' + c.title + '</div>' +
+          '<div class="bucket-chip-desc">'  + c.desc  + '</div>' +
+        '</div>';
+      stage.appendChild(el);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          el.classList.add(left ? 'chip-left' : 'chip-right');
+        });
+      });
+      setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 3800);
+    }
+
+    showChip();
+    setInterval(showChip, 3600);
+  })();
+  </script>
+
+  <!-- ── SYSTEM INTEGRATION: WHY IT MATTERS ── -->
+  <div class="section-divider"></div>
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="two-col reveal">
+        <div class="content-block">
+          <span class="section-label">Why Integration Matters</span>
+          <h2 class="section-title">Disconnected tools are costing your business every day</h2>
+          <p class="section-sub">The average business uses 10+ software tools — and most of them don't communicate. Data gets manually copied between systems, things fall through the cracks, and your team spends hours on tasks that should take seconds.</p>
+          <p class="section-sub" style="margin-top:14px;">We integrate your existing tools into unified workflows so data flows automatically, actions trigger the right follow-ons, and nothing gets missed.</p>
+        </div>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Eliminate manual data entry</strong> between platforms.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Trigger automated workflows</strong> when events happen in any tool.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Keep CRM records</strong> always up to date automatically.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Sync contacts, deals, and communications</strong> across all platforms.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Build single sources of truth</strong> for your data.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Connect any combination</strong> of tools your business uses.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONNECTED ECOSYSTEM ── -->
+  <section class="logo-timeline-section reveal">
+    <div class="logo-timeline-rows">
+
+      <!-- Row 1: CRM & Sales — 48s, 3 logos -->
+      <div class="logo-row">
+        <div class="logo-pill" style="--dur:48s;--delay:-48s;"><i class="fa-brands fa-hubspot" style="color:#ff7a59;"></i>HubSpot</div>
+        <div class="logo-pill" style="--dur:48s;--delay:-32s;"><i class="fa-brands fa-salesforce" style="color:#00a1e0;"></i>Salesforce</div>
+        <div class="logo-pill" style="--dur:48s;--delay:-16s;"><i class="fa-solid fa-chart-simple" style="color:#2ecc71;"></i>Pipedrive</div>
+        <div class="logo-pill" style="--dur:48s;--delay:-8s;"><i class="fa-solid fa-circle-nodes" style="color:#e74c3c;"></i>Zoho CRM</div>
+      </div>
+
+      <!-- Row 2: Communication — 43s, 4 logos -->
+      <div class="logo-row">
+        <div class="logo-pill" style="--dur:43s;--delay:-43s;"><i class="fa-brands fa-slack" style="color:#e01e5a;"></i>Slack</div>
+        <div class="logo-pill" style="--dur:43s;--delay:-32s;"><i class="fa-brands fa-microsoft" style="color:#737373;"></i>Microsoft Teams</div>
+        <div class="logo-pill" style="--dur:43s;--delay:-21s;"><i class="fa-brands fa-discord" style="color:#5865f2;"></i>Discord</div>
+        <div class="logo-pill" style="--dur:43s;--delay:-10s;"><i class="fa-brands fa-whatsapp" style="color:#25d366;"></i>WhatsApp</div>
+      </div>
+
+      <!-- Row 3: Email & Marketing — 55s, 4 logos -->
+      <div class="logo-row">
+        <div class="logo-pill" style="--dur:55s;--delay:-55s;"><i class="fa-brands fa-google" style="color:#ea4335;"></i>Gmail</div>
+        <div class="logo-pill" style="--dur:55s;--delay:-41s;"><i class="fa-brands fa-microsoft" style="color:#0078d4;"></i>Outlook</div>
+        <div class="logo-pill" style="--dur:55s;--delay:-27s;"><i class="fa-solid fa-envelope-open-text" style="color:#ffe01b;"></i>Mailchimp</div>
+        <div class="logo-pill" style="--dur:55s;--delay:-14s;"><i class="fa-solid fa-bolt-lightning" style="color:#004cff;"></i>ActiveCampaign</div>
+        <div class="logo-pill" style="--dur:55s;--delay:-5s;"><i class="fa-solid fa-paper-plane" style="color:#f46f20;"></i>Klaviyo</div>
+      </div>
+
+      <!-- Row 4: Productivity — 46s, 4 logos -->
+      <div class="logo-row">
+        <div class="logo-pill" style="--dur:46s;--delay:-46s;"><span class="logo-letter" style="background:#191919;color:#fff;border:1px solid rgba(255,255,255,0.2);">N</span>Notion</div>
+        <div class="logo-pill" style="--dur:46s;--delay:-34s;"><i class="fa-solid fa-table-cells" style="color:#fcb400;"></i>Airtable</div>
+        <div class="logo-pill" style="--dur:46s;--delay:-22s;"><i class="fa-brands fa-trello" style="color:#0052cc;"></i>Trello</div>
+        <div class="logo-pill" style="--dur:46s;--delay:-11s;"><i class="fa-brands fa-google" style="color:#4285f4;"></i>Google Workspace</div>
+        <div class="logo-pill" style="--dur:46s;--delay:-4s;"><span class="logo-letter" style="background:#f06a35;color:#fff;">A</span>Asana</div>
+      </div>
+
+      <!-- Row 5: E-commerce & Payments — 51s, 4 logos -->
+      <div class="logo-row">
+        <div class="logo-pill" style="--dur:51s;--delay:-51s;"><i class="fa-brands fa-shopify" style="color:#96bf48;"></i>Shopify</div>
+        <div class="logo-pill" style="--dur:51s;--delay:-38s;"><i class="fa-brands fa-stripe" style="color:#635bff;"></i>Stripe</div>
+        <div class="logo-pill" style="--dur:51s;--delay:-25s;"><i class="fa-brands fa-paypal" style="color:#009cde;"></i>PayPal</div>
+        <div class="logo-pill" style="--dur:51s;--delay:-13s;"><i class="fa-brands fa-wordpress" style="color:#7f54b3;"></i>WooCommerce</div>
+        <div class="logo-pill" style="--dur:51s;--delay:-5s;"><i class="fa-solid fa-store" style="color:#3eb489;"></i>Square</div>
+      </div>
+
+      <!-- Row 6: Automation platforms — 44s, 4 logos -->
+      <div class="logo-row">
+        <div class="logo-pill" style="--dur:44s;--delay:-44s;"><i class="fa-solid fa-bolt" style="color:#ff4a00;"></i>Zapier</div>
+        <div class="logo-pill" style="--dur:44s;--delay:-33s;"><i class="fa-solid fa-puzzle-piece" style="color:#6d00cc;"></i>Make</div>
+        <div class="logo-pill" style="--dur:44s;--delay:-22s;"><i class="fa-solid fa-calendar-days" style="color:#006bff;"></i>Calendly</div>
+        <div class="logo-pill" style="--dur:44s;--delay:-11s;"><span class="logo-letter" style="background:#ea4b71;color:#fff;border-radius:4px;">n</span>n8n</div>
+        <div class="logo-pill" style="--dur:44s;--delay:-4s;"><i class="fa-solid fa-gears" style="color:#9333ea;"></i>Workato</div>
+      </div>
+
+      <!-- Row 7: Dev & Data — 53s, 4 logos -->
+      <div class="logo-row">
+        <div class="logo-pill" style="--dur:53s;--delay:-53s;"><i class="fa-brands fa-linkedin" style="color:#0a66c2;"></i>LinkedIn</div>
+        <div class="logo-pill" style="--dur:53s;--delay:-40s;"><i class="fa-brands fa-github"></i>GitHub</div>
+        <div class="logo-pill" style="--dur:53s;--delay:-27s;"><i class="fa-brands fa-amazon" style="color:#ff9900;"></i>AWS</div>
+        <div class="logo-pill" style="--dur:53s;--delay:-14s;"><i class="fa-brands fa-dropbox" style="color:#0061ff;"></i>Dropbox</div>
+        <div class="logo-pill" style="--dur:53s;--delay:-5s;"><i class="fa-brands fa-x-twitter"></i>X / Twitter</div>
+      </div>
+
+    </div>
+
+    <!-- Centre overlay -->
+    <div class="logo-timeline-overlay">
+      <div class="logo-timeline-center">
+        <span class="section-label" style="justify-content:center;">Connected Ecosystem</span>
+        <h2>Your entire stack,<br /><em>speaking one language</em></h2>
+        <p>400+ integrations. Whatever you use, we connect it.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+
+        <div class="contact-info reveal">
+          <span class="section-label">Get in touch</span>
+          <h2 class="section-title">Let's connect<br />for business.</h2>
+          <p class="section-sub">We connect ideas, automate workflows, and drive growth. Tell us about your business and we'll respond within one business day.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h4>Office</h4>
+              <p>Gibbet St, Halifax, West Yorkshire</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a></p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" style="transition-delay: 0.12s;" onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Work email</label>
+            <input type="email" id="email" placeholder="john@company.com" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" placeholder="Your company" />
+          </div>
+          <div class="form-group">
+            <label for="message">How can we help?</label>
+            <textarea id="message" placeholder="Tell us about your business and what you'd like to automate..."></textarea>
+          </div>
+          <div class="form-submit">
+            <p class="form-note"><i class="fa-solid fa-lock" style="color: var(--purple-light); margin-right:5px;"></i>We'll reply within 1 business day</p>
+            <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">
+              <i class="fa-solid fa-paper-plane"></i>
+              Send message
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="brand_assets/logo.png" alt="Autoeight" />
+          <p>We connect ideas, automate workflows, and drive growth through custom AI and sales automation systems.</p>
+          <div class="socials">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="book.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address class="footer-address">
+            Gibbet St, Halifax,<br />
+            West Yorkshire<br /><br />
+            <a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025, Autoeight</p>
+        <div class="footer-legal">
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // ── Index-only: active section highlight
+    window.addEventListener('scroll', () => {
+      const sections = ['home','about','case-studies','contact'];
+      const current = sections.find(id => {
+        const el = document.getElementById(id);
+        if (!el) return false;
+        const rect = el.getBoundingClientRect();
+        return rect.top <= 80 && rect.bottom > 80;
+      });
+      document.querySelectorAll('.nav-menu a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + (current || 'home'));
+      });
+    });
+
+    // ── Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message sent!';
+      btn.style.background = '#16a34a';
+      btn.disabled = true;
+    }
+
+    // ── Hero canvas — particle network
+    (function () {
+      const canvas = document.getElementById('hero-canvas');
+      const ctx    = canvas.getContext('2d');
+      const PURPLE = '124,92,252';
+      const COUNT  = 55;
+      const MAX_DIST = 160;
+      let W, H, particles;
+
+      function resize() {
+        const hero = document.getElementById('home');
+        W = canvas.width  = hero.offsetWidth;
+        H = canvas.height = hero.offsetHeight;
+      }
+
+      function Particle() {
+        this.x  = Math.random() * W;
+        this.y  = Math.random() * H;
+        this.vx = (Math.random() - 0.5) * 0.28;
+        this.vy = (Math.random() - 0.5) * 0.28;
+        this.r  = Math.random() * 1.4 + 0.6;
+        this.alpha = Math.random() * 0.4 + 0.15;
+      }
+
+      Particle.prototype.update = function () {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > W) this.vx *= -1;
+        if (this.y < 0 || this.y > H) this.vy *= -1;
+      };
+
+      function init() {
+        resize();
+        particles = Array.from({ length: COUNT }, () => new Particle());
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+
+        // Draw connecting lines
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx   = particles[i].x - particles[j].x;
+            const dy   = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < MAX_DIST) {
+              const alpha = (1 - dist / MAX_DIST) * 0.12;
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(${PURPLE},${alpha})`;
+              ctx.lineWidth   = 0.7;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw dots
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${PURPLE},${p.alpha})`;
+          ctx.fill();
+          p.update();
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      init();
+      draw();
+      window.addEventListener('resize', () => { init(); });
+    })();
+  </script>
+
+</body>
+</html>

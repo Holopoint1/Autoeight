@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Automation – Autoeight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="../index.html" class="nav-logo"><img src="../brand_assets/logo.png" alt="Autoeight" /></a>
+    <ul class="nav-menu" id="nav-menu">
+      <li class="nav-item has-dropdown active">
+        <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="ai-automation.html"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a></li>
+          <li><a href="email-automation.html"><i class="fa-solid fa-envelope"></i> Email Automation</a></li>
+          <li><a href="sales-automation.html"><i class="fa-solid fa-chart-line"></i> Sales Automation</a></li>
+          <li><a href="web-design.html"><i class="fa-solid fa-globe"></i> Web Design</a></li>
+        </ul>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="#">Results <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="../results/testimonials.html"><i class="fa-solid fa-star"></i> Testimonials</a></li>
+          <li><a href="../results/case-studies.html"><i class="fa-solid fa-file-lines"></i> Case Studies</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="../about.html">About Us</a></li>
+      <li class="nav-item has-dropdown">
+        <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="../resources/blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="../resources/videos.html"><i class="fa-solid fa-play"></i> Videos</a></li>
+          <li><a href="../resources/blueprints.html"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a href="../book.html" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-content">
+      <span class="section-label">Services</span>
+      <h1>Email Automation<br /><em>Your inbox, handled</em></h1>
+      <p>Whether you need fully hands-off email handling or AI-assisted drafts your team reviews before sending — we build the right level of automation for your business.</p>
+      <a href="../book.html" class="btn btn-primary btn-lg">Get started <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- TWO TIERS -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
+        <span class="section-label">Two approaches</span>
+        <h2 class="section-title">Choose the level of automation that's right for you</h2>
+        <p class="section-sub" style="margin:14px auto 0;">Both options are powered by the same AI core and the same detailed customer datasheet — the difference is how much human involvement you want.</p>
+      </div>
+      <div class="tier-grid reveal" style="transition-delay:0.1s;">
+        <div class="tier-card featured">
+          <div class="tier-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="tier-badge">Full Automation</div>
+          <h3>Fully Automated Customer Service Email</h3>
+          <p>The AI reads every incoming email, understands the context, pulls the right information from your customer datasheet, crafts a reply, and sends it — completely autonomously. No human involved.</p>
+          <p>Ideal for businesses receiving high volumes of routine enquiries where speed and scale matter most.</p>
+          <ul class="check-list" style="margin-top:16px;">
+            <li><i class="fa-solid fa-circle-check"></i><span>Instant responses, 24/7</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Handles unlimited volume</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Answers grounded in your datasheet</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Smart escalation to humans when needed</span></li>
+          </ul>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-user-check"></i></div>
+          <div class="tier-badge">Human-in-the-Loop</div>
+          <h3>AI Draft, Human Review &amp; Send</h3>
+          <p>For teams where integrity and accuracy are paramount. The AI drafts a complete, context-aware response — but a human reviews it and presses send. You stay in control, the AI does the heavy lifting.</p>
+          <p>Ideal for businesses handling complex, sensitive, or high-value client communications.</p>
+          <ul class="check-list" style="margin-top:16px;">
+            <li><i class="fa-solid fa-circle-check"></i><span>Full human oversight before sending</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Dramatically faster drafting</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Consistent tone and accuracy</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Your team edits before it goes out</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- EMAIL WORKFLOW VISUALISER -->
+  <section class="page-section eflow-section">
+    <div class="page-section-inner">
+
+      <div class="reveal" style="text-align:center;max-width:660px;margin:0 auto 48px;">
+        <span class="section-label">How it works</span>
+        <h2 class="section-title">Your AI email pipeline, visualised</h2>
+        <p class="section-sub">From your company datasheet to a sent reply — see every step of the process. Toggle between modes to understand what changes when you add or remove human oversight.</p>
+      </div>
+
+      <!-- Mode tabs -->
+      <div class="eflow-tabs reveal" style="transition-delay:0.05s;">
+        <button class="eflow-tab active" onclick="switchFlow(this,'full')">
+          <i class="fa-solid fa-bolt"></i> Full Automation
+        </button>
+        <button class="eflow-tab" onclick="switchFlow(this,'loop')">
+          <i class="fa-solid fa-user-check"></i> Human-in-the-Loop
+        </button>
+      </div>
+
+      <!-- ── Full Automation Flow ── -->
+      <div class="eflow-diagram reveal" id="eflow-full" style="transition-delay:0.1s;">
+        <div class="eflow-row">
+
+          <div class="eflow-node wf-amber">
+            <div class="eflow-node-icon"><i class="fa-solid fa-file-lines"></i></div>
+            <div class="eflow-node-step">Step 1</div>
+            <div class="eflow-node-title">Company Datasheet</div>
+            <div class="eflow-node-desc">Products, pricing, policies, tone of voice — your entire business knowledge base, structured and approved.</div>
+          </div>
+
+          <div class="eflow-conn" style="--pd:0s;">
+            <div class="eflow-conn-line"><div class="eflow-conn-pulse"></div></div>
+            <div class="eflow-conn-arrow"></div>
+          </div>
+
+          <div class="eflow-node wf-purple">
+            <div class="eflow-node-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="eflow-node-step">Step 2</div>
+            <div class="eflow-node-title">AI Engine</div>
+            <div class="eflow-node-desc">Reads your datasheet in full and learns from previous email history to understand your business deeply.</div>
+          </div>
+
+          <div class="eflow-conn" style="--pd:0.45s;">
+            <div class="eflow-conn-line"><div class="eflow-conn-pulse"></div></div>
+            <div class="eflow-conn-arrow"></div>
+          </div>
+
+          <div class="eflow-node wf-blue">
+            <div class="eflow-node-icon"><i class="fa-solid fa-envelope-open"></i></div>
+            <div class="eflow-node-step">Step 3</div>
+            <div class="eflow-node-title">Customer Email</div>
+            <div class="eflow-node-desc">Incoming email arrives and is instantly read — intent, urgency, and customer history are all analysed.</div>
+          </div>
+
+          <div class="eflow-conn" style="--pd:0.9s;">
+            <div class="eflow-conn-line"><div class="eflow-conn-pulse"></div></div>
+            <div class="eflow-conn-arrow"></div>
+          </div>
+
+          <div class="eflow-node wf-indigo">
+            <div class="eflow-node-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <div class="eflow-node-step">Step 4</div>
+            <div class="eflow-node-title">Recommendations</div>
+            <div class="eflow-node-desc">A personalised, on-brand reply is generated — grounded in your datasheet and email history, never guessing.</div>
+          </div>
+
+          <div class="eflow-conn" style="--pd:1.35s;">
+            <div class="eflow-conn-line"><div class="eflow-conn-pulse"></div></div>
+            <div class="eflow-conn-arrow"></div>
+          </div>
+
+          <div class="eflow-node wf-emerald">
+            <div class="eflow-node-icon"><i class="fa-solid fa-paper-plane"></i></div>
+            <div class="eflow-node-step">Step 5</div>
+            <div class="eflow-node-title">Auto-Sent</div>
+            <div class="eflow-node-desc">Reply dispatched instantly — 24/7, at any volume, with zero human involvement required.</div>
+          </div>
+
+        </div>
+        <div class="eflow-callout">
+          <i class="fa-solid fa-bolt eflow-callout-icon"></i>
+          <div><strong>Full Automation</strong> — The AI handles everything end-to-end. Every incoming email is read, understood, and replied to automatically, day or night. Ideal for high-volume, routine enquiries where speed and scale matter most.</div>
+        </div>
+      </div>
+
+      <!-- ── Human-in-the-Loop Flow ── -->
+      <div class="eflow-diagram hidden" id="eflow-loop">
+        <div class="eflow-row">
+
+          <div class="eflow-node wf-amber">
+            <div class="eflow-node-icon"><i class="fa-solid fa-file-lines"></i></div>
+            <div class="eflow-node-step">Step 1</div>
+            <div class="eflow-node-title">Company Datasheet</div>
+            <div class="eflow-node-desc">Products, pricing, policies, tone of voice — your entire business knowledge base, structured and approved.</div>
+          </div>
+
+          <div class="eflow-conn" style="--pd:0s;">
+            <div class="eflow-conn-line"><div class="eflow-conn-pulse"></div></div>
+            <div class="eflow-conn-arrow"></div>
+          </div>
+
+          <div class="eflow-node wf-purple">
+            <div class="eflow-node-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="eflow-node-step">Step 2</div>
+            <div class="eflow-node-title">AI Engine</div>
+            <div class="eflow-node-desc">Reads your datasheet and learns from previous email history for complete business context.</div>
+          </div>
+
+          <div class="eflow-conn" style="--pd:0.4s;">
+            <div class="eflow-conn-line"><div class="eflow-conn-pulse"></div></div>
+            <div class="eflow-conn-arrow"></div>
+          </div>
+
+          <div class="eflow-node wf-blue">
+            <div class="eflow-node-icon"><i class="fa-solid fa-envelope-open"></i></div>
+            <div class="eflow-node-step">Step 3</div>
+            <div class="eflow-node-title">Customer Email</div>
+            <div class="eflow-node-desc">Incoming email arrives and is read — intent, context, and history are fully assessed.</div>
+          </div>
+
+          <div class="eflow-conn" style="--pd:0.8s;">
+            <div class="eflow-conn-line"><div class="eflow-conn-pulse"></div></div>
+            <div class="eflow-conn-arrow"></div>
+          </div>
+
+          <div class="eflow-node wf-indigo">
+            <div class="eflow-node-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <div class="eflow-node-step">Step 4</div>
+            <div class="eflow-node-title">Recommendations</div>
+            <div class="eflow-node-desc">A complete, personalised draft reply with recommendations is created — ready for a human to check.</div>
+          </div>
+
+          <div class="eflow-conn" style="--pd:1.2s;">
+            <div class="eflow-conn-line"><div class="eflow-conn-pulse"></div></div>
+            <div class="eflow-conn-arrow"></div>
+          </div>
+
+          <div class="eflow-node wf-rose">
+            <div class="eflow-node-icon"><i class="fa-solid fa-user-check"></i></div>
+            <div class="eflow-node-step">Step 5</div>
+            <div class="eflow-node-title">Human Review</div>
+            <div class="eflow-node-desc">Your team reads the draft, edits if needed — full control before anything leaves your inbox.</div>
+          </div>
+
+          <div class="eflow-conn" style="--pd:1.6s;">
+            <div class="eflow-conn-line"><div class="eflow-conn-pulse"></div></div>
+            <div class="eflow-conn-arrow"></div>
+          </div>
+
+          <div class="eflow-node wf-emerald">
+            <div class="eflow-node-icon"><i class="fa-solid fa-paper-plane"></i></div>
+            <div class="eflow-node-step">Step 6</div>
+            <div class="eflow-node-title">Approved &amp; Sent</div>
+            <div class="eflow-node-desc">Your team hits send. Fast, accurate, and completely under human control — no hallucinations reach your customers.</div>
+          </div>
+
+        </div>
+        <div class="eflow-callout eflow-callout-loop">
+          <i class="fa-solid fa-user-check eflow-callout-icon"></i>
+          <div><strong>Human-in-the-Loop</strong> — The AI does the heavy lifting, you keep full control. Every reply is verified by a human before it's sent. Ideal for complex, sensitive, or high-value client communications where accuracy is paramount.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    function switchFlow(btn, mode) {
+      document.querySelectorAll('.eflow-tab').forEach(function(t){ t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('eflow-full').classList.toggle('hidden', mode !== 'full');
+      document.getElementById('eflow-loop').classList.toggle('hidden', mode !== 'loop');
+    }
+  </script>
+
+  <div class="section-divider"></div>
+
+  <!-- INTEGRATIONS ACCORDION -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="two-col reveal">
+        <div class="content-block">
+          <span class="section-label">Integrations</span>
+          <h2 class="section-title">Every tool your team already uses, connected</h2>
+          <p class="section-sub">Our email automation plugs directly into your existing tech stack — no migration, no disruption. Each integration is configured to match exactly how your business operates.</p>
+          <p class="section-sub" style="margin-top:14px;">Click any integration below to see how it connects and what it can do for your workflow.</p>
+        </div>
+        <div class="int-accordion">
+
+          <div class="int-acc-item open">
+            <button class="int-acc-trigger">
+              <div class="int-acc-icon-wrap int-acc-blue"><i class="fa-brands fa-google"></i></div>
+              <div class="int-acc-text">
+                <span class="int-acc-title">Gmail &amp; Google Workspace</span>
+                <span class="int-acc-sub">OAuth-secured connection</span>
+              </div>
+              <i class="fa-solid fa-chevron-down int-acc-chevron"></i>
+            </button>
+            <div class="int-acc-content-wrap">
+              <div class="int-acc-content-inner">
+                <p class="int-acc-body">We connect via secure OAuth — no passwords stored. The AI reads incoming emails, applies your label and folder logic, and sends replies directly from your address. Works with shared inboxes, aliases, and Google Groups out of the box.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="int-acc-item">
+            <button class="int-acc-trigger">
+              <div class="int-acc-icon-wrap int-acc-orange"><i class="fa-brands fa-microsoft"></i></div>
+              <div class="int-acc-text">
+                <span class="int-acc-title">Outlook &amp; Microsoft 365</span>
+                <span class="int-acc-sub">Microsoft Graph API</span>
+              </div>
+              <i class="fa-solid fa-chevron-down int-acc-chevron"></i>
+            </button>
+            <div class="int-acc-content-wrap">
+              <div class="int-acc-content-inner">
+                <p class="int-acc-body">Full integration via the Microsoft Graph API. Handles shared mailboxes, distribution lists, and delegated access. Meeting requests, calendar events, and auto-replies are all within scope — no third-party add-ins required.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="int-acc-item">
+            <button class="int-acc-trigger">
+              <div class="int-acc-icon-wrap int-acc-teal"><i class="fa-brands fa-hubspot"></i></div>
+              <div class="int-acc-text">
+                <span class="int-acc-title">CRM Sync (HubSpot / Pipedrive)</span>
+                <span class="int-acc-sub">Automatic contact &amp; deal logging</span>
+              </div>
+              <i class="fa-solid fa-chevron-down int-acc-chevron"></i>
+            </button>
+            <div class="int-acc-content-wrap">
+              <div class="int-acc-content-inner">
+                <p class="int-acc-body">Every email — sent and received — is automatically logged against the right contact and deal. Deal stages update based on reply content, new contacts are created for unknown senders, and your pipeline stays clean with zero manual data entry.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="int-acc-item">
+            <button class="int-acc-trigger">
+              <div class="int-acc-icon-wrap int-acc-purple"><i class="fa-solid fa-bolt"></i></div>
+              <div class="int-acc-text">
+                <span class="int-acc-title">Workflow Triggers (Zapier / Make)</span>
+                <span class="int-acc-sub">Connect to 1,000+ apps</span>
+              </div>
+              <i class="fa-solid fa-chevron-down int-acc-chevron"></i>
+            </button>
+            <div class="int-acc-content-wrap">
+              <div class="int-acc-content-inner">
+                <p class="int-acc-body">Email events fire webhooks into Zapier or Make, triggering actions across your full stack — Slack alerts, Notion entries, invoice creation, or anything else your workflows need. Inbound emails can also trigger outbound sequences automatically.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+  <!-- DATASHEET -->
+  <section class="page-section alt">
+    <div class="page-section-inner">
+      <div class="two-col reveal">
+        <div class="content-block">
+          <span class="section-label">The Foundation</span>
+          <h2 class="section-title">Everything the AI knows about your business lives in one datasheet</h2>
+          <p class="section-sub">Before we go live, we work with you to build a detailed customer datasheet — a structured document containing everything the AI needs to represent your business accurately. Pricing, products, policies, FAQs, tone of voice, escalation rules, and more.</p>
+          <p class="section-sub" style="margin-top:14px;">The AI only responds based on what's in this datasheet. It never guesses, never improvises, and never goes off-brand. If it doesn't know the answer, it escalates correctly.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div><h3>Accuracy Guaranteed</h3><p>Responses are always grounded in your approved content — no hallucinations, no off-script answers.</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-pen-fancy"></i></div>
+            <div><h3>Your Voice, Your Tone</h3><p>We train the AI to match your brand's communication style, so every reply sounds like it came from your team.</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <div><h3>Always Up to Date</h3><p>Update the datasheet and the AI's knowledge updates instantly — no retraining needed.</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-sitemap"></i></div>
+            <div><h3>Smart Escalation</h3><p>Anything outside the datasheet scope is flagged and routed to the right human, with full context.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="page-cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-glow"></div>
+        <h2>Stop spending hours in your inbox.</h2>
+        <p>Book a free audit and we'll show you how email automation can work for your business.</p>
+        <a href="../book.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book your free audit</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../brand_assets/logo.png" alt="Autoeight" />
+          <p>We connect ideas, automate workflows, and drive growth through custom AI and sales automation systems.</p>
+          <div class="socials">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="ai-automation.html">AI &amp; Automation</a></li>
+            <li><a href="email-automation.html">Email Automation</a></li>
+            <li><a href="sales-automation.html">Sales Automation</a></li>
+            <li><a href="web-design.html">Web Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address class="footer-address">Gibbet St, Halifax,<br />West Yorkshire<br /><br /><a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a></address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025, Autoeight</p>
+        <div class="footer-legal"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>

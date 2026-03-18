@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Business Impact — Autoeight Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="backend.css" />
+  <script src="auth.js"></script>
+</head>
+<body>
+  <script>AEAuth.check();</script>
+
+  <nav class="b-nav">
+    <div class="b-nav-left">
+      <a href="dashboard.html" class="b-logo"><img src="../brand_assets/logo.png" alt="Autoeight" /><span class="b-logo-sub">Sales Portal</span></a>
+      <span class="staff-badge">Sales Portal</span>
+      <span class="b-nav-section">07 — Full Business Impact</span>
+    </div>
+    <div class="b-nav-right">
+      <a href="dashboard.html" class="b-btn"><i class="fa-solid fa-grid-2"></i> Dashboard</a>
+      <button onclick="AEAuth.logout()" class="b-btn danger"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+  </nav>
+
+  <main class="b-main">
+
+    <div class="page-header">
+      <span class="section-num">Section 07 of 07 — The Big Picture</span>
+      <h1 class="page-title">Full Business <em>Impact</em></h1>
+      <p class="page-desc">When AI automation is applied across every department, the cumulative savings are transformational. A typical 5-person business can save £80,000–£120,000 per year — not by cutting staff, but by multiplying what each person produces. Use the interactive calculator below to show any prospect their personalised total.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="visual"><i class="fa-solid fa-eye"></i> Visual</button>
+      <button class="tab-btn" data-tab="auditory"><i class="fa-solid fa-ear-listen"></i> Auditory</button>
+      <button class="tab-btn" data-tab="kinesthetic"><i class="fa-solid fa-hand"></i> Kinesthetic</button>
+    </div>
+
+    <!-- ── VISUAL TAB ── -->
+    <div id="visual" class="tab-content active">
+
+      <!-- Impact SVG: Before vs After company overview -->
+      <div class="svg-area" style="margin-bottom:24px;">
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:14px;">Company Time Allocation — Before vs After Automation</div>
+        <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;height:auto;">
+          <!-- BEFORE -->
+          <text x="0" y="16" fill="#6b6b6b" font-size="11" font-weight="700" font-family="system-ui">BEFORE AUTOMATION — 5-person team</text>
+          <!-- Bars for each role -->
+          <text x="0" y="42" fill="#ececec" font-size="10" font-family="system-ui">CS Rep</text>
+          <rect x="80" y="30" width="390" height="18" rx="4" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+          <rect x="80" y="30" width="140" height="18" rx="4" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="0"/>
+          <text x="476" y="43" fill="#ef4444" font-size="10" font-family="system-ui">70% low-value queries</text>
+          <text x="0" y="68" fill="#ececec" font-size="10" font-family="system-ui">Sales (×2)</text>
+          <rect x="80" y="56" width="390" height="18" rx="4" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+          <rect x="80" y="56" width="154" height="18" rx="4" fill="rgba(34,197,94,0.15)"/>
+          <text x="476" y="69" fill="#ef4444" font-size="10" font-family="system-ui">60% admin, not selling</text>
+          <text x="0" y="94" fill="#ececec" font-size="10" font-family="system-ui">Marketer</text>
+          <rect x="80" y="82" width="390" height="18" rx="4" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+          <rect x="80" y="82" width="97" height="18" rx="4" fill="rgba(34,197,94,0.15)"/>
+          <text x="476" y="95" fill="#ef4444" font-size="10" font-family="system-ui">75% production work</text>
+          <text x="0" y="120" fill="#ececec" font-size="10" font-family="system-ui">Admin</text>
+          <rect x="80" y="108" width="390" height="18" rx="4" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+          <rect x="80" y="108" width="66" height="18" rx="4" fill="rgba(34,197,94,0.15)"/>
+          <text x="476" y="121" fill="#ef4444" font-size="10" font-family="system-ui">83% manual data work</text>
+          <!-- Legend -->
+          <rect x="0" y="140" width="12" height="12" rx="2" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="1"/>
+          <text x="16" y="150" fill="#6b6b6b" font-size="10" font-family="system-ui">High-value work</text>
+          <rect x="110" y="140" width="12" height="12" rx="2" fill="rgba(239,68,68,0.3)" stroke="#ef4444" stroke-width="1"/>
+          <text x="126" y="150" fill="#6b6b6b" font-size="10" font-family="system-ui">Low-value / automatable work</text>
+          <!-- AFTER heading -->
+          <text x="0" y="180" fill="#6b6b6b" font-size="11" font-weight="700" font-family="system-ui">AFTER AUTOMATION → Same team. All bars shift to high-value work. £80k–£120k saved per year.</text>
+        </svg>
+      </div>
+
+      <!-- Per-role savings table -->
+      <div style="margin-bottom:10px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);">Savings Per Role — UK Benchmarks</div>
+      <div style="overflow-x:auto;margin-bottom:28px;">
+        <table class="bi-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Avg UK Salary</th>
+              <th>Daily Hours Automated</th>
+              <th>% Time Saved</th>
+              <th>Annual Saving</th>
+              <th>5-Year Saving</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fa-solid fa-headset" style="color:var(--purple-l);margin-right:7px;"></i>Customer Service</td>
+              <td>£25,000</td>
+              <td>4 hrs/day</td>
+              <td><span class="badge-green" style="padding:2px 8px;border-radius:4px;font-size:0.78rem;font-weight:700;">60–70%</span></td>
+              <td class="bi-saving">£15,000–£18,000</td>
+              <td class="bi-saving">£75k–£90k</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-chart-line" style="color:var(--purple-l);margin-right:7px;"></i>Sales Rep</td>
+              <td>£40,000</td>
+              <td>2.5 hrs/day</td>
+              <td><span class="badge-green" style="padding:2px 8px;border-radius:4px;font-size:0.78rem;font-weight:700;">50–60%</span></td>
+              <td class="bi-saving">£20,000–£30,000</td>
+              <td class="bi-saving">£100k–£150k</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-bullhorn" style="color:var(--purple-l);margin-right:7px;"></i>Marketing</td>
+              <td>£45,000</td>
+              <td>3 hrs/day</td>
+              <td><span class="badge-green" style="padding:2px 8px;border-radius:4px;font-size:0.78rem;font-weight:700;">60–75%</span></td>
+              <td class="bi-saving">£25,000–£40,000</td>
+              <td class="bi-saving">£125k–£200k</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-database" style="color:var(--purple-l);margin-right:7px;"></i>Admin / Data</td>
+              <td>£30,000</td>
+              <td>2.5 hrs/day</td>
+              <td><span class="badge-green" style="padding:2px 8px;border-radius:4px;font-size:0.78rem;font-weight:700;">60–70%</span></td>
+              <td class="bi-saving">£15,000–£20,000</td>
+              <td class="bi-saving">£75k–£100k</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-diagram-project" style="color:var(--purple-l);margin-right:7px;"></i>Manager / PM</td>
+              <td>£35,000</td>
+              <td>1.5 hrs/day</td>
+              <td><span class="badge-green" style="padding:2px 8px;border-radius:4px;font-size:0.78rem;font-weight:700;">50–60%</span></td>
+              <td class="bi-saving">£10,000–£15,000</td>
+              <td class="bi-saving">£50k–£75k</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 5-person example -->
+      <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:14px;">5-Person Team Example</div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:24px;margin-bottom:28px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-bottom:20px;">
+          <div style="text-align:center;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);">
+            <div style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">1× Customer Service</div>
+            <div style="font-size:1.1rem;font-weight:800;color:var(--white);">£25k</div>
+          </div>
+          <div style="text-align:center;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);">
+            <div style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">2× Sales Reps</div>
+            <div style="font-size:1.1rem;font-weight:800;color:var(--white);">£80k</div>
+          </div>
+          <div style="text-align:center;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);">
+            <div style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">1× Marketer</div>
+            <div style="font-size:1.1rem;font-weight:800;color:var(--white);">£45k</div>
+          </div>
+          <div style="text-align:center;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);">
+            <div style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">1× Admin</div>
+            <div style="font-size:1.1rem;font-weight:800;color:var(--white);">£30k</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+          <div>
+            <div style="font-size:0.8rem;color:var(--muted);margin-bottom:2px;">Total team salaries</div>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--white);">~£180,000 / year</div>
+          </div>
+          <i class="fa-solid fa-arrow-right" style="color:var(--muted);font-size:1.2rem;"></i>
+          <div>
+            <div style="font-size:0.8rem;color:var(--muted);margin-bottom:2px;">Estimated annual savings</div>
+            <div style="font-size:2rem;font-weight:800;color:var(--green);">£80,000–£120,000</div>
+          </div>
+          <div style="background:var(--purple-d);border:1px solid rgba(124,92,252,0.4);border-radius:var(--r);padding:14px 18px;text-align:center;">
+            <div style="font-size:0.8rem;color:var(--muted);margin-bottom:2px;">5-Year impact</div>
+            <div style="font-size:1.6rem;font-weight:800;color:var(--purple-l);">£400k–£600k</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="sbox green"><div class="sbox-val">65%</div><div class="sbox-label">Avg time reduction across all roles</div></div>
+        <div class="sbox purple"><div class="sbox-val">£120k</div><div class="sbox-label">Max annual saving for 5-person team</div></div>
+        <div class="sbox green"><div class="sbox-val">10×</div><div class="sbox-label">Sales outreach volume increase</div></div>
+        <div class="sbox amber"><div class="sbox-val">30 days</div><div class="sbox-label">Typical time to see measurable results</div></div>
+      </div>
+
+    </div>
+
+    <!-- ── AUDITORY TAB ── -->
+    <div id="auditory" class="tab-content">
+      <div class="narrative">
+        <h3>The Full Picture — How to Tell This Story</h3>
+        <p>By this point in the conversation, your prospect has seen individual sections. Now it's time to bring it all together — to show them not just what one department saves, but what the entire business transformation looks like.</p>
+
+        <blockquote>"Every section we've looked at today is one department. When you apply automation across all of them at the same time, the cumulative effect isn't additive — it's multiplicative."</blockquote>
+
+        <h3>The Compound Effect</h3>
+        <p>When customer service is automated, response times drop and satisfaction improves. When sales automation is running, pipeline volume multiplies. When scheduling is automated, meeting rates increase and no-shows disappear. When marketing is automated, more campaigns go out, more consistently. When data and admin is integrated, decisions are made on fresh information. When project management is automated, delivery improves.</p>
+
+        <p>None of these improvements happen in isolation. Each one amplifies the others. Faster customer service leads to better retention. Better-retained customers require less sales effort to maintain. More consistent marketing builds a brand that attracts inbound leads. A well-run sales pipeline closes more of those leads. Better project management delivers better results, faster.</p>
+
+        <div class="callout">
+          <p><strong>The key message:</strong> "This isn't about saving 65% of one person's time. It's about building a business that runs 65% more efficiently across every function — and that compounds every single year."</p>
+        </div>
+
+        <h3>The Number That Matters</h3>
+        <p>For a typical 5-person business — one customer service rep, two sales reps, one marketer, and one admin — the combined annual salary bill is approximately £180,000. Of that, our data shows that between 44% and 67% is being spent on work that AI and automation can handle. That's between £80,000 and £120,000 per year.</p>
+
+        <p>That money doesn't disappear when you automate. It converts. Either into reduced cost — if you choose not to replace roles as the business evolves — or into additional capacity — where the same people now produce 2 to 3 times the output without working any harder. Most businesses choose the latter. And that's where the real growth comes from.</p>
+
+        <blockquote>"We are not selling software. We are helping you build a business that can scale without the traditional costs of scaling."</blockquote>
+
+        <h3>Addressing the Investment Conversation</h3>
+        <p>The investment in automation is not a cost — it's a multiplier. When a business spends £15,000–£25,000 setting up a full automation system and saves £80,000–£120,000 per year in return, the payback period is often 2–4 months. After that, every pound of saving is net gain.</p>
+
+        <p>Over five years, a business that automates early and well could retain £400,000 to £600,000 in operational capacity that would otherwise have been lost to manual overhead. That is the difference between a business that is stuck at the same size year after year, and one that grows without the overhead growing with it.</p>
+
+        <h3>The Positioning Statement — Say This</h3>
+        <p>End the conversation with this:</p>
+
+        <blockquote>"Traditional businesses rely on human time for repetitive tasks. Automation replaces 50–70% of that workload. This does not remove staff — it multiplies output per employee. The result is lower cost per action and higher revenue per person. The question isn't whether to automate. The question is whether to do it now, or let your competitors do it first."</blockquote>
+
+        <h3>What to Emphasise at This Stage</h3>
+        <ul>
+          <li>The combined saving is a number they've never thought about before — make them sit with it.</li>
+          <li>The 5-year figure creates genuine urgency — every year without automation is another year of avoidable cost.</li>
+          <li>This is not about job cuts — it's about multiplying what the same team produces.</li>
+          <li>Early movers get the competitive advantage — in their market, someone is already doing this.</li>
+          <li>The payback period is short — often under 6 months — making this a no-risk financial decision.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── KINESTHETIC TAB ── -->
+    <div id="kinesthetic" class="tab-content">
+
+      <div style="margin-bottom:20px;">
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:4px;">Walk Through This With Your Prospect</div>
+        <div class="demo-steps">
+          <div class="demo-step">
+            <div class="demo-num">1</div>
+            <div class="demo-body">
+              <h4>Recap each section's savings together</h4>
+              <p>"Let's add up what we've found today. CS saves X. Sales saves Y. Marketing saves Z..." Build to the total live in front of them.</p>
+            </div>
+          </div>
+          <div class="demo-step">
+            <div class="demo-num">2</div>
+            <div class="demo-body">
+              <h4>Use the full company calculator below — with their actual numbers</h4>
+              <p>Enter their team configuration. The total is always more than they expect. Let the number land in silence before speaking.</p>
+            </div>
+          </div>
+          <div class="demo-step">
+            <div class="demo-num">3</div>
+            <div class="demo-body">
+              <h4>Ask: "What would your business look like if this saving was reinvested?"</h4>
+              <p>New hires for growth roles? Faster product development? More marketing spend? Their answer describes the business they want to build — and you're the path to it.</p>
+            </div>
+          </div>
+          <div class="demo-step">
+            <div class="demo-num">4</div>
+            <div class="demo-body">
+              <h4>Show the 5-year figure last</h4>
+              <p>The annual number lands well. The 5-year number is where jaws drop. Let them see it, then say: "This is the cost of not acting."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FULL COMPANY CALCULATOR -->
+      <div class="roi-calc" style="max-width:100%;">
+        <div class="roi-calc-title"><i class="fa-solid fa-building" style="color:var(--purple-l);margin-right:8px;"></i>Full Company ROI Calculator</div>
+        <div class="roi-calc-sub">Enter the prospect's actual team composition. All savings calculate in real time.</div>
+
+        <div style="overflow-x:auto;margin-bottom:24px;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.87rem;">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding:10px 12px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);background:var(--card);border-bottom:1px solid var(--border);">Role</th>
+                <th style="text-align:center;padding:10px 12px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);background:var(--card);border-bottom:1px solid var(--border);"># Staff</th>
+                <th style="text-align:center;padding:10px 12px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);background:var(--card);border-bottom:1px solid var(--border);">Salary (£)</th>
+                <th style="text-align:right;padding:10px 12px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--green);background:var(--card);border-bottom:1px solid var(--border);">Annual Saving</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--off-white);"><i class="fa-solid fa-headset" style="color:var(--purple-l);margin-right:6px;"></i>Customer Service</td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;"><input type="number" id="fc-cs-n" value="1" min="0" max="30" oninput="calcFull()" style="width:60px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;"><input type="number" id="fc-cs-s" value="25000" min="15000" max="80000" step="1000" oninput="calcFull()" style="width:90px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:right;font-weight:800;color:var(--green);" id="fc-cs-r">£16,250</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--off-white);"><i class="fa-solid fa-chart-line" style="color:var(--purple-l);margin-right:6px;"></i>Sales Reps</td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;"><input type="number" id="fc-sa-n" value="2" min="0" max="30" oninput="calcFull()" style="width:60px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;"><input type="number" id="fc-sa-s" value="40000" min="15000" max="100000" step="1000" oninput="calcFull()" style="width:90px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:right;font-weight:800;color:var(--green);" id="fc-sa-r">£49,846</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--off-white);"><i class="fa-solid fa-bullhorn" style="color:var(--purple-l);margin-right:6px;"></i>Marketing</td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;"><input type="number" id="fc-mk-n" value="1" min="0" max="20" oninput="calcFull()" style="width:60px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;"><input type="number" id="fc-mk-s" value="45000" min="15000" max="100000" step="1000" oninput="calcFull()" style="width:90px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:right;font-weight:800;color:var(--green);" id="fc-mk-r">£31,731</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--off-white);"><i class="fa-solid fa-database" style="color:var(--purple-l);margin-right:6px;"></i>Admin / Data</td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;"><input type="number" id="fc-ad-n" value="1" min="0" max="20" oninput="calcFull()" style="width:60px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:center;"><input type="number" id="fc-ad-s" value="30000" min="15000" max="80000" step="1000" oninput="calcFull()" style="width:90px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);text-align:right;font-weight:800;color:var(--green);" id="fc-ad-r">£21,154</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 12px;color:var(--off-white);"><i class="fa-solid fa-diagram-project" style="color:var(--purple-l);margin-right:6px;"></i>Managers / PM</td>
+                <td style="padding:10px 12px;text-align:center;"><input type="number" id="fc-pm-n" value="0" min="0" max="20" oninput="calcFull()" style="width:60px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;text-align:center;"><input type="number" id="fc-pm-s" value="35000" min="15000" max="100000" step="1000" oninput="calcFull()" style="width:90px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--white);font-family:var(--font);text-align:center;font-size:0.88rem;outline:none;" /></td>
+                <td style="padding:10px 12px;text-align:right;font-weight:800;color:var(--green);" id="fc-pm-r">£0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Results -->
+        <div style="background:linear-gradient(135deg,var(--purple-d),transparent);border:1px solid rgba(124,92,252,0.4);border-radius:var(--rl);padding:24px;margin-top:4px;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;">
+            <div style="text-align:center;">
+              <div style="font-size:0.75rem;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Total team cost</div>
+              <div style="font-size:1.4rem;font-weight:800;color:var(--off-white);" id="fc-total-sal">£180,000</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:0.75rem;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Annual saving</div>
+              <div style="font-size:2rem;font-weight:800;color:var(--green);" id="fc-total-save">£118,981</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:0.75rem;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">5-Year saving</div>
+              <div style="font-size:2rem;font-weight:800;color:var(--purple-l);" id="fc-total-5yr">£594,904</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:0.75rem;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">% of payroll saved</div>
+              <div style="font-size:2rem;font-weight:800;color:var(--amber);" id="fc-pct">66%</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="roi-note" style="margin-top:14px;">Savings calculated using role-specific automation rates: CS 65%, Sales 60%, Marketing 75%, Admin 83%, PM 75%. Based on hourly rate (salary ÷ 2,080 hrs × hours automated per day × 260 working days).</p>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CORE POSITIONING -->
+    <div style="margin-bottom:20px;">
+      <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--purple);">Core Positioning — The Full Message</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;">
+        <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:8px;">Never say this</div>
+        <p style="font-size:0.88rem;color:var(--off-white);line-height:1.6;">"AI will replace your staff and cut your headcount." This creates fear and kills deals. People protect their teams.</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;">
+        <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:8px;">Always say this</div>
+        <p style="font-size:0.88rem;color:var(--off-white);line-height:1.6;">"AI removes low-value work so your team does high-value work. Same people, multiplied output. You scale without hiring."</p>
+      </div>
+    </div>
+
+    <div class="tp-grid">
+      <div class="tp"><div class="tp-label">The Big Picture</div><div class="tp-text">"Everything we've looked at today is the same thing viewed from different angles: your people are spending too much time on work that machines can do — and not enough on work that only humans can."</div></div>
+      <div class="tp"><div class="tp-label">On urgency</div><div class="tp-text">"Every year without automation is another year of avoidable cost. Your competitors are already looking at this. The businesses that move first get the advantage."</div></div>
+      <div class="tp"><div class="tp-label">On ROI</div><div class="tp-text">"The payback period on a full automation build is typically 2–4 months. After that, every pound of saving is net gain — compounding for years."</div></div>
+      <div class="tp"><div class="tp-label">Final close</div><div class="tp-text">"The question isn't whether automation makes sense — the numbers prove it does. The question is: when do you want to start seeing the savings?"</div></div>
+    </div>
+
+    <div class="section-nav">
+      <a href="project-management.html"><i class="fa-solid fa-arrow-left"></i> Project Management</a>
+      <a href="dashboard.html" class="btn-next"><i class="fa-solid fa-grid-2"></i> Back to Dashboard</a>
+    </div>
+
+  </main>
+
+  <script>
+    var RATES = { cs: 4/8, sa: 2.5/8, mk: 3/8, ad: 2.5/8, pm: 1.5/8 };
+
+    function rowSave(n, salary, rate) {
+      return Math.round(n * salary * rate * (260/260));
+      // More accurate: hourly_rate × hours_saved_per_day × 260
+    }
+
+    function calcFull() {
+      var cfg = [
+        { n: 'fc-cs-n', s: 'fc-cs-s', r: 'fc-cs-r', hpd: 4 },
+        { n: 'fc-sa-n', s: 'fc-sa-s', r: 'fc-sa-r', hpd: 2.5 },
+        { n: 'fc-mk-n', s: 'fc-mk-s', r: 'fc-mk-r', hpd: 3 },
+        { n: 'fc-ad-n', s: 'fc-ad-s', r: 'fc-ad-r', hpd: 2.5 },
+        { n: 'fc-pm-n', s: 'fc-pm-s', r: 'fc-pm-r', hpd: 1.5 },
+      ];
+      var totalSal = 0, totalSave = 0;
+      cfg.forEach(function(c) {
+        var n = Math.max(0, parseInt(document.getElementById(c.n).value) || 0);
+        var salary = Math.max(15000, parseInt(document.getElementById(c.s).value) || 25000);
+        var hrRate = salary / 2080;
+        var save = Math.round(n * c.hpd * 260 * hrRate);
+        totalSal  += n * salary;
+        totalSave += save;
+        document.getElementById(c.r).textContent = '£' + save.toLocaleString();
+      });
+      var pct = totalSal > 0 ? Math.round((totalSave / totalSal) * 100) : 0;
+      document.getElementById('fc-total-sal').textContent  = '£' + totalSal.toLocaleString();
+      document.getElementById('fc-total-save').textContent = '£' + totalSave.toLocaleString();
+      document.getElementById('fc-total-5yr').textContent  = '£' + (totalSave * 5).toLocaleString();
+      document.getElementById('fc-pct').textContent        = pct + '%';
+    }
+    calcFull();
+  </script>
+</body>
+</html>

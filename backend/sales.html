@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Automation — Autoeight Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="backend.css" />
+  <script src="auth.js"></script>
+</head>
+<body>
+  <script>AEAuth.check();</script>
+
+  <nav class="b-nav">
+    <div class="b-nav-left">
+      <a href="dashboard.html" class="b-logo"><img src="../brand_assets/logo.png" alt="Autoeight" /><span class="b-logo-sub">Sales Portal</span></a>
+      <span class="staff-badge">Sales Portal</span>
+      <span class="b-nav-section">02 — Sales Automation</span>
+    </div>
+    <div class="b-nav-right">
+      <a href="dashboard.html" class="b-btn"><i class="fa-solid fa-grid-2"></i> Dashboard</a>
+      <button onclick="AEAuth.logout()" class="b-btn danger"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+  </nav>
+
+  <main class="b-main">
+
+    <div class="page-header">
+      <span class="section-num">Section 02 of 07</span>
+      <h1 class="page-title">Sales <em>Automation</em></h1>
+      <p class="page-desc">Manual outbound sales is a volume problem. Your reps can physically contact 20–30 people a day. AI-powered systems contact 200–500 — with personalised messaging, automatic follow-ups, and CRM updates — all without additional headcount.</p>
+      <div class="quick-stats">
+        <div class="qs"><div class="qs-val green">10×</div><div class="qs-label">More leads contacted per day</div></div>
+        <div class="qs"><div class="qs-val green">2.5 hrs</div><div class="qs-label">Admin time saved per rep per day</div></div>
+        <div class="qs"><div class="qs-val purple">£20k–£30k</div><div class="qs-label">Equivalent saving per sales rep/yr</div></div>
+        <div class="qs"><div class="qs-val amber">60%</div><div class="qs-label">Reduction in admin time per rep</div></div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="visual"><i class="fa-solid fa-eye"></i> Visual</button>
+      <button class="tab-btn" data-tab="auditory"><i class="fa-solid fa-ear-listen"></i> Auditory</button>
+      <button class="tab-btn" data-tab="kinesthetic"><i class="fa-solid fa-hand"></i> Kinesthetic</button>
+    </div>
+
+    <!-- ── VISUAL TAB ── -->
+    <div id="visual" class="tab-content active">
+
+      <div style="margin-bottom:10px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);">Daily Outreach Capacity — Traditional vs AI</div>
+
+      <!-- Volume SVG comparison -->
+      <div class="svg-area" style="margin-bottom:20px;">
+        <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;height:auto;">
+          <!-- Traditional funnel -->
+          <text x="0" y="18" fill="#6b6b6b" font-size="11" font-weight="700" font-family="system-ui">TRADITIONAL — Manual outreach</text>
+          <rect x="0" y="26" width="56" height="44" rx="6" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+          <text x="28" y="44" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700" font-family="system-ui">20–30</text>
+          <text x="28" y="62" text-anchor="middle" fill="#ef4444" font-size="10" font-family="system-ui">leads/day</text>
+          <text x="70" y="52" fill="#6b6b6b" font-size="11" font-family="system-ui">→ 4 hrs writing emails by hand → manual follow-up reminders → CRM updated 1–2 hrs/day</text>
+          <!-- AI funnel -->
+          <text x="0" y="118" fill="#6b6b6b" font-size="11" font-weight="700" font-family="system-ui">WITH AI — Automated personalised outreach</text>
+          <rect x="0" y="126" width="76" height="44" rx="6" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1.5"/>
+          <text x="38" y="144" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="800" font-family="system-ui">200–500</text>
+          <text x="38" y="162" text-anchor="middle" fill="#22c55e" font-size="10" font-family="system-ui">leads/day</text>
+          <text x="90" y="152" fill="#6b6b6b" font-size="11" font-family="system-ui">→ AI writes personalised emails → auto follow-up sequences → CRM auto-updates</text>
+          <!-- Multiplier badge -->
+          <rect x="600" y="60" width="90" height="50" rx="10" fill="rgba(124,92,252,0.2)" stroke="#7c5cfc" stroke-width="1.5"/>
+          <text x="645" y="81" text-anchor="middle" fill="#a07aff" font-size="20" font-weight="800" font-family="system-ui">10×</text>
+          <text x="645" y="98" text-anchor="middle" fill="#a07aff" font-size="10" font-weight="600" font-family="system-ui">more outreach</text>
+        </svg>
+      </div>
+
+      <div class="flow-grid">
+        <div class="flow-col trad">
+          <div class="flow-col-head">
+            <div class="flow-icon"><i class="fa-solid fa-person-digging"></i></div>
+            <h3>Traditional Sales</h3>
+            <span class="time-tag">4 hrs admin/day</span>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-dot">1</div>
+              <div class="step-body">
+                <div class="step-title">Find leads manually</div>
+                <div class="step-detail">Searching LinkedIn, Google, buying outdated lists</div>
+                <span class="step-badge badge-red">30–60 min/day</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-dot">2</div>
+              <div class="step-body">
+                <div class="step-title">Write each email from scratch</div>
+                <div class="step-detail">Copy-paste templates with no real personalisation</div>
+                <span class="step-badge badge-red">2–3 hrs/day</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-dot">3</div>
+              <div class="step-body">
+                <div class="step-title">Send 20–30 emails per day</div>
+                <div class="step-detail">Low volume, inconsistent quality, missed opportunities</div>
+                <span class="step-badge badge-red">Low open/reply rates</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-dot">4</div>
+              <div class="step-body">
+                <div class="step-title">Manual follow-up tracking</div>
+                <div class="step-detail">Sticky notes, spreadsheets, forgotten leads</div>
+                <span class="step-badge badge-red">Deals lost through gaps</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-dot">5</div>
+              <div class="step-body">
+                <div class="step-title">Update CRM by hand</div>
+                <div class="step-detail">1–2 hours per day of data entry that adds no value</div>
+                <span class="step-badge badge-red">Stale data, errors</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-col ai">
+          <div class="flow-col-head">
+            <div class="flow-icon"><i class="fa-solid fa-robot"></i></div>
+            <h3>AI Sales System</h3>
+            <span class="time-tag">1.5 hrs/day</span>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-dot">1</div>
+              <div class="step-body">
+                <div class="step-title">Lead database auto-built (Apollo/similar)</div>
+                <div class="step-detail">Verified contacts filtered by ICP — ready to go</div>
+                <span class="step-badge badge-green">Hundreds of qualified leads sourced daily</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-dot">2</div>
+              <div class="step-body">
+                <div class="step-title">AI personalises every email</div>
+                <div class="step-detail">References the prospect's company, role, recent news</div>
+                <span class="step-badge badge-green">Higher reply rates through relevance</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-dot">3</div>
+              <div class="step-body">
+                <div class="step-title">200–500 targeted emails sent per day</div>
+                <div class="step-detail">Automated sequences with smart timing and A/B testing</div>
+                <span class="step-badge badge-green">10× outreach volume, same team size</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-dot">4</div>
+              <div class="step-body">
+                <div class="step-title">Auto follow-up sequences triggered</div>
+                <div class="step-detail">Days 3, 7, 14 — no lead ever falls through the cracks</div>
+                <span class="step-badge badge-purple">Every prospect touched consistently</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-dot">5</div>
+              <div class="step-body">
+                <div class="step-title">CRM updates automatically</div>
+                <div class="step-detail">Opens, replies, clicks — all logged without a single click</div>
+                <span class="step-badge badge-green">Rep's time freed for actual selling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th class="cm">Metric</th><th class="ct"><i class="fa-solid fa-xmark"></i> Traditional</th><th class="ca"><i class="fa-solid fa-check"></i> With AI</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="tm">Leads contacted per day</td><td class="tt">20–30</td><td class="ta">200–500</td></tr>
+            <tr><td class="tm">Time on admin per day</td><td class="tt">4 hrs</td><td class="ta">1.5 hrs</td></tr>
+            <tr><td class="tm">Admin time saved</td><td class="tt">—</td><td class="ta">2.5 hrs/day</td></tr>
+            <tr><td class="tm">Follow-up consistency</td><td class="tt">Inconsistent / forgotten</td><td class="ta">100% automated, on schedule</td></tr>
+            <tr><td class="tm">CRM accuracy</td><td class="tt">Outdated, manual errors</td><td class="ta">Live, auto-updated</td></tr>
+            <tr><td class="tm">Personalisation</td><td class="tt">Generic templates</td><td class="ta">AI-tailored to each prospect</td></tr>
+            <tr><td class="tm">Annual saving (£40k salary)</td><td class="tt">£0</td><td class="ta">£24,000–£30,000 equivalent/yr</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="stats-row">
+        <div class="sbox green"><div class="sbox-val">10×</div><div class="sbox-label">Outreach volume increase</div></div>
+        <div class="sbox purple"><div class="sbox-val">2.5 hrs</div><div class="sbox-label">Admin saved per rep per day</div></div>
+        <div class="sbox green"><div class="sbox-val">60%</div><div class="sbox-label">Less time on low-value work</div></div>
+        <div class="sbox amber"><div class="sbox-val">£30k</div><div class="sbox-label">Max saving per sales rep per year</div></div>
+      </div>
+
+    </div>
+
+    <!-- ── AUDITORY TAB ── -->
+    <div id="auditory" class="tab-content">
+      <div class="narrative">
+        <h3>The Story to Tell Your Prospect</h3>
+        <p>Ask any sales manager what their biggest frustration is and they'll tell you the same thing: their reps aren't selling enough. But when you break down a typical sales rep's day, the problem isn't effort — it's time allocation. On average, a sales rep spends only 35% of their working day actually selling. The rest? Admin. CRM updates. Writing emails. Chasing leads. Scheduling meetings.</p>
+
+        <blockquote>"You're paying a sales salary to do admin. That's the problem. AI fixes the admin."</blockquote>
+
+        <h3>The Volume Problem</h3>
+        <p>The most reliable predictor of sales success is volume. More conversations lead to more conversions. It's almost mathematical. A rep who contacts 30 prospects a day will always outperform one who contacts 15 — assuming equal close rates.</p>
+
+        <p>But physically, a human can only contact so many people. Writing a personalised email takes time. Researching a prospect takes time. Logging the interaction in the CRM takes time. By the time they've done all of that, the day is over and they've sent 25 emails.</p>
+
+        <p>An AI-powered outreach system operates on a completely different scale. With the right setup, your team can send 200 to 500 highly personalised, relevant emails per day — each one tailored to the specific recipient's role, company, and context. That's not spam. That's targeted, intelligent outreach at a scale no human could maintain.</p>
+
+        <div class="callout">
+          <p><strong>Analogy to use:</strong> "Imagine hiring 10 sales reps — but none of them need a salary, a desk, or a holiday. That's roughly what AI outreach does to your pipeline capacity. Your existing reps then handle the conversations, not the prospecting."</p>
+        </div>
+
+        <h3>The Follow-Up Problem</h3>
+        <p>Research consistently shows that 80% of sales happen after 5 or more follow-ups. Yet most sales reps give up after one or two attempts. Why? Because manually tracking and scheduling follow-ups across 200 prospects is overwhelming.</p>
+
+        <p>AI automation sequences solve this completely. The moment a prospect is added to the system, they enter a follow-up sequence — day 3, day 7, day 14 — each with a different angle, a different subject line, a different reason to engage. Nothing is forgotten. Nobody falls through the cracks. Ever.</p>
+
+        <h3>The Financial Picture</h3>
+        <p>A sales rep on £40,000 a year is costing you roughly £19 an hour. If they're spending 2.5 hours per day on admin that AI can handle, that's approximately £50 a day — over £12,000 a year — of selling time being spent on data entry and email writing.</p>
+
+        <p>But the bigger number isn't the cost saving. It's the revenue uplift. When your rep's pipeline goes from 30 prospects a day to 300, even if the close rate stays the same, you've just 10× your pipeline. That's not a 10% improvement. That's business transformation.</p>
+
+        <blockquote>"We don't just save you money on admin. We give your sales team a superpower they've never had before — the ability to be everywhere at once."</blockquote>
+
+        <h3>What to Emphasise</h3>
+        <ul>
+          <li>Volume: 10× more outreach with the same team — no new hires needed.</li>
+          <li>Personalisation: AI research means every email is relevant, not generic — higher reply rates.</li>
+          <li>Consistency: Automated follow-ups mean no prospect is ever forgotten or left cold.</li>
+          <li>Data quality: CRM stays clean and current automatically — no stale data or missed entries.</li>
+          <li>Rep performance: When admin is gone, reps spend their day on what they're actually good at — closing.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── KINESTHETIC TAB ── -->
+    <div id="kinesthetic" class="tab-content">
+
+      <div class="demo-steps">
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:4px;">Walk Through This With Your Prospect</div>
+        <div class="demo-step">
+          <div class="demo-num">1</div>
+          <div class="demo-body">
+            <h4>Ask: "How many cold emails does your team send per day right now?"</h4>
+            <p>Most sales-led businesses say 20–50. Get a firm number — it becomes the baseline for the ROI calculation.</p>
+          </div>
+        </div>
+        <div class="demo-step">
+          <div class="demo-num">2</div>
+          <div class="demo-body">
+            <h4>Ask: "How much of your rep's day goes on non-selling tasks?"</h4>
+            <p>The answer is almost always 50–65%. Frame this as: "So your £40k rep is doing a £10/hr job for most of their day."</p>
+          </div>
+          <div class="demo-save"><div class="demo-save-val">50–65%</div><div class="demo-save-label">non-selling time</div></div>
+        </div>
+        <div class="demo-step">
+          <div class="demo-num">3</div>
+          <div class="demo-body">
+            <h4>Show the volume contrast: 30 emails vs 300 emails per day</h4>
+            <p>Ask: "If your team were sending 10× more targeted, personalised outreach — what would your pipeline look like in 90 days?" Let them imagine it.</p>
+          </div>
+          <div class="demo-save"><div class="demo-save-val">10×</div><div class="demo-save-label">pipeline volume</div></div>
+        </div>
+        <div class="demo-step">
+          <div class="demo-num">4</div>
+          <div class="demo-body">
+            <h4>Calculate their specific savings using the tool below</h4>
+            <p>Input their actual rep count and salary. Show the annual admin cost saving — then add the revenue potential from 10× outreach.</p>
+          </div>
+        </div>
+        <div class="demo-step">
+          <div class="demo-num">5</div>
+          <div class="demo-body">
+            <h4>Close with: "Your reps become closers, not typists."</h4>
+            <p>This lands every time. No sales person wants to spend their day doing admin. Give them the vision of what their job looks like with AI handling the groundwork.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="roi-calc">
+        <div class="roi-calc-title"><i class="fa-solid fa-calculator" style="color:var(--purple-l);margin-right:8px;"></i>Live ROI Calculator — Sales Automation</div>
+        <div class="roi-calc-sub">Enter the prospect's sales team details to calculate personalised savings and output gains.</div>
+        <div class="roi-inputs">
+          <div>
+            <label class="roi-label" for="s-staff">Number of sales reps</label>
+            <input type="number" id="s-staff" class="roi-input" value="2" min="1" max="50" oninput="calcSales()" />
+          </div>
+          <div>
+            <label class="roi-label" for="s-salary">Average annual salary (£)</label>
+            <input type="number" id="s-salary" class="roi-input" value="40000" min="20000" max="100000" step="1000" oninput="calcSales()" />
+          </div>
+        </div>
+        <div class="roi-results">
+          <div class="roi-res"><div class="roi-res-val" id="s-hrs">5 hrs</div><div class="roi-res-label">Admin hours saved per day (team)</div></div>
+          <div class="roi-res hi"><div class="roi-res-val" id="s-annual">£24,923</div><div class="roi-res-label">Annual salary cost saved</div></div>
+          <div class="roi-res big"><div class="roi-res-val" id="s-5yr">£124,615</div><div class="roi-res-label">5-year saving</div></div>
+          <div class="roi-res"><div class="roi-res-val" id="s-pipeline">600–1,000</div><div class="roi-res-label">Leads/day with AI (2 reps)</div></div>
+        </div>
+        <p class="roi-note">Based on 2.5 hours admin saved per rep per day (60% reduction). Pipeline figure based on 300–500 AI outreach emails per rep per day.</p>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <div style="margin-bottom:12px;"><span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--purple);">Talking Points — Use These Phrases</span></div>
+    <div class="tp-grid">
+      <div class="tp"><div class="tp-label">On volume</div><div class="tp-text">"Right now your team can touch 30 prospects a day. With our system, that becomes 300 — same team, same hours, 10× the pipeline."</div></div>
+      <div class="tp"><div class="tp-label">On personalisation</div><div class="tp-text">"These aren't spam emails. The AI researches each prospect — their company, their role, recent news — and writes a message that's relevant. That's why reply rates go up."</div></div>
+      <div class="tp"><div class="tp-label">On follow-up</div><div class="tp-text">"80% of sales happen after 5 touch-points. Most reps stop at 2 because manual follow-up is exhausting. Automation does all 5, every time, for every prospect."</div></div>
+      <div class="tp"><div class="tp-label">On CRM</div><div class="tp-text">"Your reps currently spend 1–2 hours a day updating their CRM. That's £100+ of selling time per day, per rep, going into a spreadsheet. We eliminate that completely."</div></div>
+      <div class="tp"><div class="tp-label">On close rate</div><div class="tp-text">"We don't change your close rate — we just give you 10× more opportunities to close. Even if nothing else improves, you've multiplied your revenue potential."</div></div>
+      <div class="tp"><div class="tp-label">Closing</div><div class="tp-text">"Your sales reps become closers. The AI does the prospecting, the personalising, the chasing. Your team just shows up to close."</div></div>
+    </div>
+
+    <div style="margin-bottom:12px;"><span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--amber);">Objection Handlers</span></div>
+    <div class="objections">
+      <div class="objection">
+        <div class="objection-header">
+          <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "Won't mass outreach damage our brand?"</span>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="objection-answer">
+          <p>This confuses automation with spam. Our system doesn't send generic blasts — it sends highly relevant, personalised messages to people who are genuinely good fits for your product. When an email is relevant and well-written, people don't think "this is automated" — they think "this company actually understands my situation."</p>
+        </div>
+      </div>
+      <div class="objection">
+        <div class="objection-header">
+          <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "Our sales process is too complex for automation"</span>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="objection-answer">
+          <p>Automation doesn't replace the complex parts — it handles the simple, repetitive parts that lead up to them. Finding leads, writing first-touch emails, sending follow-ups, logging in the CRM — none of that requires complexity. It requires consistency. AI provides that, so your reps can focus their expertise on the conversations that actually need it.</p>
+        </div>
+      </div>
+      <div class="objection">
+        <div class="objection-header">
+          <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "We already have a CRM — why do we need this?"</span>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="objection-answer">
+          <p>A CRM is a place to store data. AI automation is a system that generates, acts on, and updates that data — automatically. Most CRMs are only as good as the data in them, and most data is entered manually, infrequently, and inaccurately. We make your CRM actually work.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-nav">
+      <a href="customer-service.html"><i class="fa-solid fa-arrow-left"></i> Customer Service</a>
+      <a href="scheduling.html" class="btn-next">Next: Scheduling <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+  </main>
+
+  <script>
+    function calcSales() {
+      var staff  = Math.max(1, parseInt(document.getElementById('s-staff').value) || 2);
+      var salary = Math.max(15000, parseInt(document.getElementById('s-salary').value) || 40000);
+      var hourlyRate = salary / 2080;
+      var hrsSavedDay = 2.5 * staff;
+      var annual = Math.round(hrsSavedDay * 260 * hourlyRate);
+      var fiveYr = annual * 5;
+      var minLeads = staff * 300;
+      var maxLeads = staff * 500;
+      document.getElementById('s-hrs').textContent      = hrsSavedDay + ' hrs';
+      document.getElementById('s-annual').textContent   = '£' + annual.toLocaleString();
+      document.getElementById('s-5yr').textContent      = '£' + fiveYr.toLocaleString();
+      document.getElementById('s-pipeline').textContent = minLeads + '–' + maxLeads;
+    }
+    calcSales();
+  </script>
+</body>
+</html>

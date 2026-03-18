@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Design Blueprint – Autoeight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="../index.html" class="nav-logo"><img src="../brand_assets/logo.png" alt="Autoeight" /></a>
+    <ul class="nav-menu" id="nav-menu">
+      <li class="nav-item has-dropdown">
+        <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="../services/ai-automation.html"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a></li>
+          <li><a href="../services/email-automation.html"><i class="fa-solid fa-envelope"></i> Email Automation</a></li>
+          <li><a href="../services/sales-automation.html"><i class="fa-solid fa-chart-line"></i> Sales Automation</a></li>
+          <li><a href="../services/web-design.html"><i class="fa-solid fa-globe"></i> Web Design</a></li>
+        </ul>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="#">Results <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="../results/testimonials.html"><i class="fa-solid fa-star"></i> Testimonials</a></li>
+          <li><a href="../results/case-studies.html"><i class="fa-solid fa-file-lines"></i> Case Studies</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="../about.html">About Us</a></li>
+      <li class="nav-item has-dropdown active">
+        <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="videos.html"><i class="fa-solid fa-play"></i> Videos</a></li>
+          <li><a href="blueprints.html"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a href="../book.html" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-content">
+      <span class="section-label"><i class="fa-solid fa-map"></i> Automation Blueprint</span>
+      <h1>Web Design —<br /><em>a site that works while you sleep</em></h1>
+      <p>See how a conversion-optimised, fully integrated website turns passive visitors into tracked leads — automatically, around the clock.</p>
+    </div>
+  </div>
+
+  <!-- THE PROBLEM -->
+  <section class="bp-section">
+    <div class="bp-inner">
+      <p class="bp-eyebrow">The Problem</p>
+      <h2>Your website is a brochure. <em>It should be a salesperson.</em></h2>
+      <p class="bp-lead">Most business websites look decent but do nothing. Visitors land, read a bit, and leave. The enquiry form sits untouched. And even when someone does fill it in, the response is slow, manual, and inconsistent. That's money walking out the door every day.</p>
+
+      <div class="bp-flow-pair reveal">
+        <div class="bp-flow-col">
+          <div class="bp-flow-col-label red">❌ Typical Business Website</div>
+          <div class="bp-flow red">
+            <svg viewBox="0 0 820 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="75" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Visitor</text>
+              <text x="75" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">Arrives</text>
+              <line x1="142" y1="75" x2="155" y2="75" stroke="#ef4444" stroke-width="1.5"/>
+              <polygon points="155,70 164,75 155,80" fill="#ef4444"/>
+              <rect x="166" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="231" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Reads Static</text>
+              <text x="231" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">Brochure Site</text>
+              <line x1="298" y1="75" x2="311" y2="75" stroke="#ef4444" stroke-width="1.5"/>
+              <polygon points="311,70 320,75 311,80" fill="#ef4444"/>
+              <rect x="322" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="387" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Maybe Fills</text>
+              <text x="387" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">the Form</text>
+              <line x1="454" y1="75" x2="467" y2="75" stroke="#ef4444" stroke-width="1.5"/>
+              <polygon points="467,70 476,75 467,80" fill="#ef4444"/>
+              <rect x="478" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="543" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Waits 24hrs</text>
+              <text x="543" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">for a Reply</text>
+              <line x1="610" y1="75" x2="623" y2="75" stroke="#ef4444" stroke-width="1.5"/>
+              <polygon points="623,70 632,75 623,80" fill="#ef4444"/>
+              <rect x="634" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="699" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Gives Up &amp;</text>
+              <text x="699" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">Moves On</text>
+              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(239,68,68,0.7)">⏱ Slow response = lost lead. Most visitors never enquire at all.</text>
+            </svg>
+          </div>
+        </div>
+        <div class="bp-flow-col">
+          <div class="bp-flow-col-label green">✅ Autoeight Website</div>
+          <div class="bp-flow green">
+            <svg viewBox="0 0 820 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="45" width="130" height="60" rx="8" fill="rgba(124,92,252,0.12)" stroke="rgba(124,92,252,0.45)" stroke-width="1.5"/>
+              <text x="75" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">Visitor</text>
+              <text x="75" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#c4b5fd">Arrives</text>
+              <line x1="142" y1="75" x2="155" y2="75" stroke="#7c5cfc" stroke-width="1.5"/>
+              <polygon points="155,70 164,75 155,80" fill="#7c5cfc"/>
+              <rect x="166" y="45" width="130" height="60" rx="8" fill="rgba(124,92,252,0.12)" stroke="rgba(124,92,252,0.45)" stroke-width="1.5"/>
+              <text x="231" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">Conversion-</text>
+              <text x="231" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#c4b5fd">First Design</text>
+              <line x1="298" y1="75" x2="311" y2="75" stroke="#7c5cfc" stroke-width="1.5"/>
+              <polygon points="311,70 320,75 311,80" fill="#7c5cfc"/>
+              <rect x="322" y="45" width="130" height="60" rx="8" fill="rgba(124,92,252,0.12)" stroke="rgba(124,92,252,0.45)" stroke-width="1.5"/>
+              <text x="387" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">Form Filled</text>
+              <text x="387" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#c4b5fd">&amp; Tracked</text>
+              <line x1="454" y1="75" x2="467" y2="75" stroke="#7c5cfc" stroke-width="1.5"/>
+              <polygon points="467,70 476,75 467,80" fill="#7c5cfc"/>
+              <rect x="478" y="45" width="130" height="60" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.4)" stroke-width="1.5"/>
+              <text x="543" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#86efac">CRM Entry +</text>
+              <text x="543" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#86efac">Instant Reply</text>
+              <line x1="610" y1="75" x2="623" y2="75" stroke="#22c55e" stroke-width="1.5"/>
+              <polygon points="623,70 632,75 623,80" fill="#22c55e"/>
+              <rect x="634" y="45" width="130" height="60" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.4)" stroke-width="1.5"/>
+              <text x="699" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#86efac">Sales Sequence</text>
+              <text x="699" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#86efac">Triggered</text>
+              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(34,197,94,0.8)">⚡ Instant response. Every lead captured. Sales machine running 24/7.</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="bp-section alt">
+    <div class="bp-inner">
+      <p class="bp-eyebrow">The Numbers</p>
+      <h2>What a <em>properly built site</em> delivers</h2>
+      <p class="bp-lead">These outcomes are based on our client results. A conversion-first site connected to automation consistently outperforms a standard brochure site within 60 days.</p>
+      <div class="bp-stats-grid reveal">
+        <div class="bp-stat">
+          <div class="bp-stat-num green">3×</div>
+          <div class="bp-stat-label">more enquiries from the same traffic — conversion-optimised layout and copy</div>
+        </div>
+        <div class="bp-stat">
+          <div class="bp-stat-num">&lt;2s</div>
+          <div class="bp-stat-label">page load time — fast sites rank higher and convert more visitors</div>
+        </div>
+        <div class="bp-stat">
+          <div class="bp-stat-num amber">24/7</div>
+          <div class="bp-stat-label">lead intake — every enquiry captured and followed up, even at 2am</div>
+        </div>
+        <div class="bp-stat">
+          <div class="bp-stat-num">100%</div>
+          <div class="bp-stat-label">integrated — site connects directly to your CRM, email, and automation stack</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATION FLOW -->
+  <section class="bp-section">
+    <div class="bp-inner">
+      <p class="bp-eyebrow">The Full Picture</p>
+      <h2>Your site is the <em>front door of your automation stack</em></h2>
+      <p class="bp-lead">We don't just build a site — we build the connection between your site and everything behind it.</p>
+
+      <div class="bp-flow-pair reveal" style="margin-top:40px;">
+        <div class="bp-flow-col">
+          <div class="bp-flow-col-label red">❌ Disconnected Site</div>
+          <div class="bp-flow red">
+            <svg viewBox="0 0 820 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="75" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Enquiry</text>
+              <text x="75" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">Submitted</text>
+              <line x1="142" y1="75" x2="155" y2="75" stroke="#ef4444" stroke-width="1.5"/>
+              <polygon points="155,70 164,75 155,80" fill="#ef4444"/>
+              <rect x="166" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="231" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Email to</text>
+              <text x="231" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">Staff Inbox</text>
+              <line x1="298" y1="75" x2="311" y2="75" stroke="#ef4444" stroke-width="1.5"/>
+              <polygon points="311,70 320,75 311,80" fill="#ef4444"/>
+              <rect x="322" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="387" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Staff Copies</text>
+              <text x="387" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">to Spreadsheet</text>
+              <line x1="454" y1="75" x2="467" y2="75" stroke="#ef4444" stroke-width="1.5"/>
+              <polygon points="467,70 476,75 467,80" fill="#ef4444"/>
+              <rect x="478" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="543" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Manually</text>
+              <text x="543" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">Replies</text>
+              <line x1="610" y1="75" x2="623" y2="75" stroke="#ef4444" stroke-width="1.5"/>
+              <polygon points="623,70 632,75 623,80" fill="#ef4444"/>
+              <rect x="634" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+              <text x="699" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">No Tracking</text>
+              <text x="699" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">or Follow-up</text>
+              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(239,68,68,0.7)">⏱ Manual effort. No visibility. Leads fall through the gaps.</text>
+            </svg>
+          </div>
+        </div>
+        <div class="bp-flow-col">
+          <div class="bp-flow-col-label green">✅ Integrated Autoeight Site</div>
+          <div class="bp-flow green">
+            <svg viewBox="0 0 820 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="45" width="130" height="60" rx="8" fill="rgba(124,92,252,0.12)" stroke="rgba(124,92,252,0.45)" stroke-width="1.5"/>
+              <text x="75" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">Enquiry</text>
+              <text x="75" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#c4b5fd">Submitted</text>
+              <line x1="142" y1="75" x2="155" y2="75" stroke="#7c5cfc" stroke-width="1.5"/>
+              <polygon points="155,70 164,75 155,80" fill="#7c5cfc"/>
+              <rect x="166" y="45" width="130" height="60" rx="8" fill="rgba(124,92,252,0.12)" stroke="rgba(124,92,252,0.45)" stroke-width="1.5"/>
+              <text x="231" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">CRM Entry</text>
+              <text x="231" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#c4b5fd">Auto-Created</text>
+              <line x1="298" y1="75" x2="311" y2="75" stroke="#7c5cfc" stroke-width="1.5"/>
+              <polygon points="311,70 320,75 311,80" fill="#7c5cfc"/>
+              <rect x="322" y="45" width="130" height="60" rx="8" fill="rgba(124,92,252,0.12)" stroke="rgba(124,92,252,0.45)" stroke-width="1.5"/>
+              <text x="387" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">Instant Reply</text>
+              <text x="387" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#c4b5fd">Sent to Lead</text>
+              <line x1="454" y1="75" x2="467" y2="75" stroke="#7c5cfc" stroke-width="1.5"/>
+              <polygon points="467,70 476,75 467,80" fill="#7c5cfc"/>
+              <rect x="478" y="45" width="130" height="60" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.4)" stroke-width="1.5"/>
+              <text x="543" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#86efac">Nurture Seq.</text>
+              <text x="543" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#86efac">Triggered</text>
+              <line x1="610" y1="75" x2="623" y2="75" stroke="#22c55e" stroke-width="1.5"/>
+              <polygon points="623,70 632,75 623,80" fill="#22c55e"/>
+              <rect x="634" y="45" width="130" height="60" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.4)" stroke-width="1.5"/>
+              <text x="699" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#86efac">Meeting</text>
+              <text x="699" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#86efac">Booked</text>
+              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(34,197,94,0.8)">⚡ Zero staff time. Full tracking. Every lead nurtured to a decision.</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="bp-section alt">
+    <div class="bp-inner">
+      <p class="bp-eyebrow">How It Works</p>
+      <h2>From brief to live in <em>two weeks</em></h2>
+      <p class="bp-lead">We design, build, and connect everything — so your site is generating leads from day one.</p>
+      <div class="bp-steps reveal">
+        <div class="bp-step">
+          <div class="bp-step-num">1</div>
+          <div class="bp-step-body">
+            <h4>Strategy &amp; Structure</h4>
+            <p>We start with your goals — who visits your site, what they need to see, and what action you want them to take. We design the conversion path before we write a single line of code. Most sites need 5–8 key pages.</p>
+          </div>
+        </div>
+        <div class="bp-step">
+          <div class="bp-step-num">2</div>
+          <div class="bp-step-body">
+            <h4>Design &amp; Build</h4>
+            <p>Mobile-first, fast-loading, and built for conversions — not just aesthetics. We write conversion-focused copy, design every section around driving enquiries, and optimise for Core Web Vitals so you rank well on Google.</p>
+          </div>
+        </div>
+        <div class="bp-step">
+          <div class="bp-step-num">3</div>
+          <div class="bp-step-body">
+            <h4>Automation Integration</h4>
+            <p>Every form, button, and CTA connects to your backend systems. Lead submissions flow into your CRM automatically. Instant confirmation emails go out. Sales sequences fire. Calendly bookings sync. Everything talks.</p>
+          </div>
+        </div>
+        <div class="bp-step">
+          <div class="bp-step-num">4</div>
+          <div class="bp-step-body">
+            <h4>Launch &amp; Ongoing Optimisation</h4>
+            <p>We go live and track everything — heatmaps, conversion rates, enquiry volume, and page performance. We make refinements in the first 30 days to maximise conversions based on real visitor behaviour data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS -->
+  <section class="bp-section">
+    <div class="bp-inner">
+      <p class="bp-eyebrow">Connected to Everything</p>
+      <h2>Your site, <em>plugged into your whole stack</em></h2>
+      <p class="bp-lead">We build sites that connect natively to the tools driving your sales and marketing.</p>
+      <div class="bp-integrations reveal">
+        <span class="bp-pill"><i class="fa-brands fa-hubspot"></i> HubSpot</span>
+        <span class="bp-pill"><i class="fa-solid fa-envelope"></i> Mailchimp</span>
+        <span class="bp-pill"><i class="fa-brands fa-google"></i> Google Analytics</span>
+        <span class="bp-pill"><i class="fa-solid fa-calendar"></i> Calendly</span>
+        <span class="bp-pill"><i class="fa-solid fa-bolt"></i> Make.com</span>
+        <span class="bp-pill"><i class="fa-solid fa-bolt"></i> Zapier</span>
+        <span class="bp-pill"><i class="fa-brands fa-stripe"></i> Stripe</span>
+        <span class="bp-pill"><i class="fa-solid fa-cloud"></i> Salesforce</span>
+        <span class="bp-pill"><i class="fa-brands fa-wordpress"></i> WordPress</span>
+        <span class="bp-pill"><i class="fa-solid fa-robot"></i> OpenAI</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-glow"></div>
+        <h2>Your website should be your best salesperson.</h2>
+        <p>Book a free strategy session. We'll audit your current site, map the conversion opportunities, and show you exactly what a connected, automated site would generate for your business.</p>
+        <a href="../book.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book your free audit</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../brand_assets/logo.png" alt="Autoeight" />
+          <p>We connect ideas, automate workflows, and drive growth through custom AI and sales automation systems.</p>
+          <div class="socials">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="../services/ai-automation.html">AI &amp; Automation</a></li>
+            <li><a href="../services/email-automation.html">Email Automation</a></li>
+            <li><a href="../services/sales-automation.html">Sales Automation</a></li>
+            <li><a href="../services/web-design.html">Web Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address class="footer-address">Gibbet St, Halifax,<br />West Yorkshire<br /><br /><a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a></address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025, Autoeight</p>
+        <div class="footer-legal"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>
