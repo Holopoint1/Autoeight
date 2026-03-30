@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sales Automation – Autoeight</title>
+  <title>Sales Automation | Autoeight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -13,7 +13,7 @@
 <body>
 
   <nav id="nav">
-    <a href="../index.html" class="nav-logo"><img src="../brand_assets/logo.png" alt="Autoeight" /></a>
+    <a href="../index.html" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
       <li class="nav-item has-dropdown active">
         <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
@@ -46,32 +46,31 @@
   </nav>
 
   <!-- HERO -->
-  <section class="sales-hero">
-    <div class="sales-hero-img"></div>
-    <div class="sales-hero-grade"></div>
-    <div class="sales-hero-grid">
-      <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  <div class="page-hero" style="position:relative;">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <canvas id="sales-hero-canvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;">
+      <i class="fa-solid fa-chart-line" style="position:absolute;top:18%;left:10%;font-size:1.5rem;color:rgba(109,77,230,0.12);animation:float-rotate 18s linear infinite;"></i>
+      <i class="fa-solid fa-paper-plane" style="position:absolute;top:30%;right:12%;font-size:1.3rem;color:rgba(109,77,230,0.10);animation:float-rotate 22s linear infinite reverse;"></i>
+      <i class="fa-solid fa-handshake" style="position:absolute;top:65%;left:12%;font-size:1.2rem;color:rgba(109,77,230,0.09);animation:float-rotate 16s linear infinite;"></i>
+      <i class="fa-solid fa-bullseye" style="position:absolute;top:25%;left:72%;font-size:1.4rem;color:rgba(109,77,230,0.10);animation:float-rotate 20s linear infinite reverse;"></i>
+      <i class="fa-solid fa-calendar-check" style="position:absolute;top:70%;right:15%;font-size:1.1rem;color:rgba(109,77,230,0.08);animation:float-rotate 24s linear infinite;"></i>
     </div>
-    <div class="sales-hero-content">
+    <div class="page-hero-content" style="position:relative;z-index:2;">
       <span class="section-label">Services</span>
       <h1>Sales Automation<br /><em>Your pipeline on autopilot</em></h1>
-      <p>We build end-to-end sales outreach pipelines that find the right prospects, craft personalised messages, follow up intelligently, and book meetings — all without your team lifting a finger.</p>
-      <a href="../book.html" class="sales-hero-btn">
-        <span class="sales-hero-btn-label">Get Started</span>
-        <span class="sales-hero-btn-icon">
-          <svg class="icon-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          <svg class="icon-in"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </span>
-      </a>
+      <p>We build end-to-end sales outreach systems that find the right prospects, write personalised messages, follow up at the right time, and book meetings. Your team just focuses on closing.</p>
+      <a href="../book.html" class="btn btn-primary btn-lg">Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
     </div>
-  </section>
+  </div>
 
   <!-- HOW IT WORKS -->
   <section class="page-section">
     <div class="page-section-inner">
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
         <span class="section-label">How It Works</span>
-        <h2 class="section-title">A fully automated sales machine, built for you</h2>
+        <h2 class="section-title">How we build your sales pipeline</h2>
         <p class="section-sub" style="margin:14px auto 0;">From prospect discovery to booked meeting, every step of the outreach process is handled by intelligent automation. Your team focuses entirely on closing.</p>
       </div>
 
@@ -80,115 +79,42 @@
           <div class="tier-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
           <div class="tier-badge">Step 1</div>
           <h3>Prospect Discovery</h3>
-          <p>AI identifies and qualifies leads matching your ideal customer profile from multiple data sources, continuously feeding your pipeline with fresh prospects.</p>
+          <p>We set up systems that find and qualify leads matching your ideal customer profile. Fresh prospects get added to your pipeline every day without anyone doing manual research.</p>
         </div>
         <div class="tier-card featured">
           <div class="tier-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
           <div class="tier-badge">Step 2</div>
           <h3>Personalised Messaging</h3>
-          <p>Every message is personalised using prospect data — company name, role, recent news, pain points — so it feels handwritten, even at scale.</p>
+          <p>Every message gets written using real details about the prospect. Their company, role, recent news, what they care about. It reads like it was written just for them, even though the system handles hundreds a day.</p>
         </div>
         <div class="tier-card">
           <div class="tier-icon"><i class="fa-solid fa-paper-plane"></i></div>
           <div class="tier-badge">Step 3</div>
           <h3>Multi-Channel Outreach</h3>
-          <p>Sequences run across email and LinkedIn simultaneously, maximising touchpoints and increasing the chance of a response.</p>
+          <p>Sequences run across email and LinkedIn at the same time, hitting more touchpoints and giving you a much better chance of getting a reply.</p>
         </div>
         <div class="tier-card">
           <div class="tier-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
           <div class="tier-badge">Step 4</div>
           <h3>Intelligent Follow-Ups</h3>
-          <p>Automated follow-up sequences triggered by behaviour — opens, clicks, no response — with the right message at the right time.</p>
+          <p>The system sends follow-ups based on what the prospect actually does. Opened your email? Clicked a link? No response at all? Each one gets a different message at the right time.</p>
         </div>
         <div class="tier-card">
           <div class="tier-icon"><i class="fa-solid fa-calendar-check"></i></div>
           <div class="tier-badge">Step 5</div>
           <h3>Meeting Booking</h3>
-          <p>Interested prospects are guided to book directly in your calendar. No back and forth — just confirmed meetings in your diary.</p>
+          <p>When someone's interested, they get sent straight to your calendar to pick a time. No back and forth emails. Just confirmed meetings in your diary.</p>
         </div>
         <div class="tier-card">
           <div class="tier-icon"><i class="fa-solid fa-chart-pie"></i></div>
           <div class="tier-badge">Step 6</div>
           <h3>Reporting &amp; Optimisation</h3>
-          <p>Full visibility on open rates, reply rates, meetings booked, and pipeline value. We continuously optimise to improve performance.</p>
+          <p>You get full visibility on open rates, reply rates, meetings booked, and pipeline value. We keep optimising the whole thing to improve results over time.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- RADAR -->
-  <section class="page-section" style="background:var(--black);padding-bottom:0;">
-    <div class="page-section-inner">
-      <div class="radar-section-wrap reveal">
-        <div class="radar-icon-rows">
-          <div class="radar-icon-row">
-            <div class="radar-icon-box" style="animation-delay:0.1s">
-              <div class="radar-icon-inner"><i class="fa-brands fa-hubspot"></i></div>
-              <span class="radar-icon-label">HubSpot</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.2s">
-              <div class="radar-icon-inner"><i class="fa-brands fa-salesforce"></i></div>
-              <span class="radar-icon-label">Salesforce</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.3s">
-              <div class="radar-icon-inner"><i class="fa-brands fa-linkedin"></i></div>
-              <span class="radar-icon-label">LinkedIn</span>
-            </div>
-          </div>
-          <div class="radar-icon-row">
-            <div class="radar-icon-box" style="animation-delay:0.15s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-calendar-check"></i></div>
-              <span class="radar-icon-label">Calendly</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.25s">
-              <div class="radar-icon-inner"><i class="fa-brands fa-slack"></i></div>
-              <span class="radar-icon-label">Slack</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.35s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-envelope"></i></div>
-              <span class="radar-icon-label">Email</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.45s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-chart-pie"></i></div>
-              <span class="radar-icon-label">Pipedrive</span>
-            </div>
-          </div>
-          <div class="radar-icon-row">
-            <div class="radar-icon-box" style="animation-delay:0.2s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-magnifying-glass"></i></div>
-              <span class="radar-icon-label">Prospecting</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.3s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-              <span class="radar-icon-label">AI Copy</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.4s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-rotate"></i></div>
-              <span class="radar-icon-label">Follow-Ups</span>
-            </div>
-          </div>
-        </div>
-        <div class="radar-visual">
-          <div class="radar-sweep-arm"><div class="radar-sweep-line"></div></div>
-          <div class="radar-sweep-glow"></div>
-          <div class="radar-ring" style="width:5rem;height:5rem;border-color:rgba(124,92,252,0.55)"></div>
-          <div class="radar-ring" style="width:10rem;height:10rem;border-color:rgba(124,92,252,0.45)"></div>
-          <div class="radar-ring" style="width:15rem;height:15rem;border-color:rgba(124,92,252,0.35)"></div>
-          <div class="radar-ring" style="width:20rem;height:20rem;border-color:rgba(124,92,252,0.28)"></div>
-          <div class="radar-ring" style="width:25rem;height:25rem;border-color:rgba(124,92,252,0.20)"></div>
-          <div class="radar-ring" style="width:30rem;height:30rem;border-color:rgba(124,92,252,0.14)"></div>
-          <div class="radar-ring" style="width:35rem;height:35rem;border-color:rgba(124,92,252,0.08)"></div>
-          <div class="radar-ring" style="width:40rem;height:40rem;border-color:rgba(124,92,252,0.05)"></div>
-          <div class="radar-center-dot"></div>
-        </div>
-        <div class="radar-bottom-line"></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
   <!-- RESULTS -->
   <section class="page-section alt">
     <div class="page-section-inner">
@@ -200,11 +126,11 @@
         </div>
         <ul class="check-list">
           <li><i class="fa-solid fa-circle-check"></i><span><strong>10× more outreach</strong> without any increase in headcount.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Personalisation at scale</strong> — every message sounds one-to-one.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Personalisation at scale</strong> where every message sounds one-to-one.</span></li>
           <li><i class="fa-solid fa-circle-check"></i><span><strong>Multi-channel sequences</strong> across email and LinkedIn.</span></li>
           <li><i class="fa-solid fa-circle-check"></i><span><strong>Zero time</strong> spent by your team on cold outreach or follow-ups.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Full CRM sync</strong> — every interaction logged automatically.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Continuous optimisation</strong> — we keep improving your results month over month.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Full CRM sync</strong> with every interaction logged automatically.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Continuous optimisation</strong> so we keep improving your results month over month.</span></li>
         </ul>
       </div>
     </div>
@@ -217,8 +143,8 @@
 
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 60px;">
         <span class="section-label">The Pipeline</span>
-        <h2 class="section-title">From cold contact to booked meeting — fully automated</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Thousands of prospects enter the top. AI works every stage — qualifying, messaging, following up, and routing — until confirmed meetings land in your calendar, with zero manual effort.</p>
+        <h2 class="section-title">From cold contact to booked meeting, fully automated</h2>
+        <p class="section-sub" style="margin:14px auto 0;">Thousands of prospects enter the top. AI works every stage, qualifying, messaging, following up, and routing until confirmed meetings land in your calendar. Zero manual effort required.</p>
       </div>
 
       <div class="funnel-chart-wrap reveal" style="transition-delay:0.1s;">
@@ -248,7 +174,7 @@
             <span class="funnel-step-num">02</span>
             <div>
               <strong>Contacted via Email &amp; LinkedIn</strong>
-              <span>Personalised, multi-channel messages sent automatically — timed for maximum response rate</span>
+              <span>Personalised, multi-channel messages sent automatically and timed for maximum response rate</span>
             </div>
           </div>
           <div class="funnel-bar-track">
@@ -286,7 +212,7 @@
             <span class="funnel-step-num">04</span>
             <div>
               <strong>Qualified Replies</strong>
-              <span>AI scores every reply and routes warm leads instantly — your team only sees the ones worth their time</span>
+              <span>AI scores every reply and routes warm leads instantly so your team only sees the ones worth their time</span>
             </div>
           </div>
           <div class="funnel-bar-track">
@@ -305,7 +231,7 @@
             <span class="funnel-step-num">05</span>
             <div>
               <strong>Meetings Booked</strong>
-              <span>Prospects book directly into your calendar — no back-and-forth, just confirmed meetings</span>
+              <span>Prospects book directly into your calendar. No back and forth, just confirmed meetings</span>
             </div>
           </div>
           <div class="funnel-bar-track">
@@ -360,7 +286,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../brand_assets/logo.png" alt="Autoeight" />
+          <img src="../brand_assets/1.png" alt="Autoeight" />
           <p>We connect ideas, automate workflows, and drive growth through custom AI and sales automation systems.</p>
           <div class="socials">
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -391,5 +317,54 @@
   </footer>
 
   <script src="../main.js"></script>
+  <script>
+  (function(){
+    var canvas = document.getElementById('sales-hero-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var PURPLE = '109,77,230';
+    var COUNT = 40;
+    var MAX_DIST = 140;
+    var W, H, particles;
+    function resize(){
+      var hero = canvas.parentElement;
+      W = canvas.width = hero.offsetWidth;
+      H = canvas.height = hero.offsetHeight;
+    }
+    function Particle(){
+      this.x = Math.random()*W; this.y = Math.random()*H;
+      this.vx = (Math.random()-0.5)*0.3; this.vy = (Math.random()-0.5)*0.3;
+      this.r = Math.random()*1.2+0.5; this.alpha = Math.random()*0.35+0.15;
+    }
+    Particle.prototype.update = function(){
+      this.x+=this.vx; this.y+=this.vy;
+      if(this.x<0||this.x>W) this.vx*=-1;
+      if(this.y<0||this.y>H) this.vy*=-1;
+    };
+    function init(){ resize(); particles=Array.from({length:COUNT},()=>new Particle()); }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<particles.length;i++){
+        for(var j=i+1;j<particles.length;j++){
+          var dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+          var dist=Math.sqrt(dx*dx+dy*dy);
+          if(dist<MAX_DIST){
+            var alpha=(1-dist/MAX_DIST)*0.15;
+            ctx.beginPath(); ctx.strokeStyle='rgba('+PURPLE+','+alpha+')';
+            ctx.lineWidth=0.6;
+            ctx.moveTo(particles[i].x,particles[i].y);
+            ctx.lineTo(particles[j].x,particles[j].y); ctx.stroke();
+          }
+        }
+      }
+      particles.forEach(function(p){
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba('+PURPLE+','+p.alpha+')'; ctx.fill(); p.update();
+      });
+      requestAnimationFrame(draw);
+    }
+    init(); draw(); window.addEventListener('resize',init);
+  })();
+  </script>
 </body>
 </html>

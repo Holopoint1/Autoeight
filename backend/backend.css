@@ -4,18 +4,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black:       #080808;
-  --dark:        #0e0e0e;
-  --surface:     #141414;
-  --card:        #1a1a1a;
-  --border:      #242424;
-  --white:       #ffffff;
-  --off-white:   #ececec;
-  --muted:       #6b6b6b;
-  --subtle:      #3a3a3a;
-  --purple:      #7c5cfc;
-  --purple-l:    #a07aff;
-  --purple-d:    rgba(124,92,252,0.18);
+  --black:       #ffffff;
+  --dark:        #f7f7f8;
+  --surface:     #f0f0f2;
+  --card:        #ffffff;
+  --border:      #e0e0e4;
+  --white:       #111111;
+  --off-white:   #222222;
+  --muted:       #71717a;
+  --subtle:      #a1a1aa;
+  --purple:      #6d4de6;
+  --purple-l:    #7c5cfc;
+  --purple-d:    rgba(109,77,230,0.10);
   --green:       #22c55e;
   --green-d:     rgba(34,197,94,0.12);
   --red:         #ef4444;
@@ -43,7 +43,7 @@ h1,h2,h3,h4 { font-weight: 700; line-height: 1.25; }
 .b-nav { background: var(--dark); border-bottom: 1px solid var(--border); padding: 0 5%; height: 120px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
 .b-nav-left { display: flex; align-items: center; gap: 14px; }
 .b-logo { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-decoration: none; color: var(--white); font-weight: 700; font-size: 1rem; }
-.b-logo img { height: 104px; }
+.b-logo img { height: 50px; }
 .b-logo:hover { text-decoration: none; }
 .b-logo-sub { font-size: 0.68rem; color: var(--purple-l); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; margin-top: -2px; }
 .staff-badge { background: var(--purple-d); color: var(--purple-l); font-size: 0.67rem; font-weight: 700; padding: 3px 9px; border-radius: 20px; border: 1px solid rgba(124,92,252,0.4); text-transform: uppercase; letter-spacing: 0.07em; }

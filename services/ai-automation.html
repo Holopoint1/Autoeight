@@ -13,7 +13,7 @@
 <body>
 
   <nav id="nav">
-    <a href="../index.html" class="nav-logo"><img src="../brand_assets/logo.png" alt="Autoeight" /></a>
+    <a href="../index.html" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
       <li class="nav-item has-dropdown active">
         <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
@@ -46,47 +46,288 @@
   </nav>
 
   <!-- HERO -->
-  <div class="page-hero">
+  <div class="page-hero" style="position:relative;">
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
-    <div class="page-hero-content">
-      <span class="section-label">Services</span>
-      <h1>AI &amp; Automation<br /><em>What's actually possible</em></h1>
-      <p>AI isn't a future technology — it's available right now, and it's transforming how businesses operate. From intelligent workflows to fully autonomous pipelines, we show you what's possible and build it for you.</p>
-      <a href="../book.html" class="btn btn-primary btn-lg">Get a free audit <i class="fa-solid fa-arrow-right"></i></a>
+    <!-- Floating AI icons -->
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;">
+      <i class="fa-solid fa-robot" style="position:absolute;top:18%;left:8%;font-size:1.6rem;color:rgba(109,77,230,0.12);animation:float-rotate 18s linear infinite;"></i>
+      <i class="fa-solid fa-gears" style="position:absolute;top:30%;right:10%;font-size:1.4rem;color:rgba(109,77,230,0.10);animation:float-rotate 22s linear infinite reverse;"></i>
+      <i class="fa-solid fa-brain" style="position:absolute;top:60%;left:15%;font-size:1.3rem;color:rgba(109,77,230,0.09);animation:float-rotate 15s linear infinite;"></i>
+      <i class="fa-solid fa-bolt" style="position:absolute;top:25%;left:70%;font-size:1.5rem;color:rgba(109,77,230,0.11);animation:float-rotate 20s linear infinite reverse;"></i>
+      <i class="fa-solid fa-microchip" style="position:absolute;top:70%;right:12%;font-size:1.2rem;color:rgba(109,77,230,0.08);animation:float-rotate 25s linear infinite;"></i>
+      <i class="fa-solid fa-code" style="position:absolute;top:45%;left:5%;font-size:1.1rem;color:rgba(109,77,230,0.10);animation:float-rotate 17s linear infinite reverse;"></i>
+      <i class="fa-solid fa-database" style="position:absolute;top:15%;right:25%;font-size:1.3rem;color:rgba(109,77,230,0.09);animation:float-rotate 21s linear infinite;"></i>
+      <i class="fa-solid fa-wand-magic-sparkles" style="position:absolute;top:75%;left:60%;font-size:1.4rem;color:rgba(109,77,230,0.10);animation:float-rotate 19s linear infinite reverse;"></i>
+    </div>
+    <div class="page-hero-content" style="position:relative;z-index:2;">
+      <span class="section-label">AI &amp; Automation Agency</span>
+      <h1>We build AI systems that<br /><em>replace manual work</em></h1>
+      <p>We get inside your business, find the tasks that are eating up your team's time, and replace them with AI and automation. Fully custom. Fully done for you.</p>
+      <a href="../book.html" class="btn btn-primary btn-lg">Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 
-  <!-- WHAT IS IT -->
+  <style>
+    .ai-float-icon { position:absolute; color:rgba(109,77,230,0.06); pointer-events:none; }
+    @keyframes pulse-float { 0%,100% { transform:translateY(0) scale(1); opacity:0.06; } 50% { transform:translateY(-12px) scale(1.08); opacity:0.10; } }
+    .pulse-float { animation: pulse-float 4s ease-in-out infinite; }
+  </style>
+
+  <!-- ── HERO STAT ── -->
+  <section class="page-section" style="padding:48px 5%;">
+    <div class="page-section-inner">
+      <div class="stat-bar reveal">
+        <div class="stat-bar-item">
+          <div class="num"><span data-target="2" data-suffix=",400+">0</span></div>
+          <div class="lbl">Hours of manual work saved for our clients so far</div>
+        </div>
+        <div class="stat-bar-item">
+          <div class="num"><span data-target="3" data-suffix="x">0</span></div>
+          <div class="lbl">Average output increase per team member</div>
+        </div>
+        <div class="stat-bar-item">
+          <div class="num"><span data-target="30" data-suffix="+">0</span></div>
+          <div class="lbl">Automations live and running for clients right now</div>
+        </div>
+        <div class="stat-bar-item">
+          <div class="num"><span data-target="24" data-suffix="/7">0</span></div>
+          <div class="lbl">Your systems run around the clock, no breaks</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── HOW IT WORKS (4 steps) ── -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">How our AI and automation agency works</h2>
+        <p class="section-sub" style="margin:14px auto 0;">We get under the hood of your business and find the most manual, repetitive and expensive bottlenecks. Then we replace them with AI and automated processes. We only use AI where there's a genuine use case.</p>
+      </div>
+      <div class="steps-grid reveal">
+        <div class="steps-connector">
+          <div class="steps-connector-track"><div class="steps-connector-fill"></div></div>
+          <div class="steps-connector-dot dot-1"></div>
+          <div class="steps-connector-dot dot-2"></div>
+          <div class="steps-connector-dot dot-3"></div>
+          <div class="steps-connector-dot dot-4"></div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>We map out your processes</h3>
+          <p>We create a visual map of all your systems, manual tasks and apps so we can see exactly where time is being wasted.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>We find where to add AI and automate</h3>
+          <p>We audit your workflows and pinpoint the opportunities with the highest return. Not everything needs AI, so we focus on what actually moves the needle.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>We build and test everything</h3>
+          <p>We use a mix of custom code, AI tools, Zapier, Make.com and whatever else fits your stack. Nothing goes live until it's been properly tested.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>We manage and improve it over time</h3>
+          <p>Every client we work with grows, which means there's always new things to automate. We stick around and keep building.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── USE CASES ── -->
+  <section class="page-section alt">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:660px;margin:0 auto 56px;">
+        <span class="section-label">Use Cases</span>
+        <h2 class="section-title">The ways AI and automation can work for you</h2>
+        <p class="section-sub" style="margin:14px auto 0;">Our clients make their teams dramatically more efficient by taking tedious, repetitive work off their plate. We work across every industry.</p>
+      </div>
+      <div class="tier-grid reveal" style="transition-delay:0.1s;">
+        <div class="tier-card tier-expandable" onclick="this.classList.toggle('expanded')">
+          <div class="tier-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <div class="tier-badge">Sales &amp; Marketing</div>
+          <h3>Automate your entire sales funnel</h3>
+          <p>From content creation and lead generation through to outbound, CRM updates, follow-ups, contracts and payments. The whole pipeline can run without manual input.</p>
+          <div class="tier-expand-content">
+            <ul class="tier-detail-list">
+              <li><i class="fa-solid fa-check"></i> Automated lead sourcing from LinkedIn, Apollo, and web scraping</li>
+              <li><i class="fa-solid fa-check"></i> Personalised outreach sequences across email and social</li>
+              <li><i class="fa-solid fa-check"></i> CRM updates, lead scoring, and pipeline management on autopilot</li>
+              <li><i class="fa-solid fa-check"></i> Contract generation and payment collection triggered automatically</li>
+            </ul>
+          </div>
+          <span class="tier-toggle"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="tier-card tier-expandable" onclick="this.classList.toggle('expanded')">
+          <div class="tier-icon"><i class="fa-solid fa-eye"></i></div>
+          <div class="tier-badge">Recognition &amp; Analysis</div>
+          <h3>Let AI read, watch and listen for you</h3>
+          <p>We build systems that can analyse documents, images, audio and video. They pull out the information you need and take action based on what they find.</p>
+          <div class="tier-expand-content">
+            <ul class="tier-detail-list">
+              <li><i class="fa-solid fa-check"></i> Parse invoices, contracts, and forms automatically</li>
+              <li><i class="fa-solid fa-check"></i> Analyse images and video for product, identity, or quality checks</li>
+              <li><i class="fa-solid fa-check"></i> Transcribe calls and meetings, then summarise key actions</li>
+              <li><i class="fa-solid fa-check"></i> Trigger workflows based on sentiment, keywords, or content</li>
+            </ul>
+          </div>
+          <span class="tier-toggle"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="tier-card tier-expandable" onclick="this.classList.toggle('expanded')">
+          <div class="tier-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="tier-badge">Predictive Analytics</div>
+          <h3>Make better decisions with your data</h3>
+          <p>Use your existing data to forecast demand, manage inventory, assess risk, and plan ahead. No more gut feelings or spreadsheet guesswork.</p>
+          <div class="tier-expand-content">
+            <ul class="tier-detail-list">
+              <li><i class="fa-solid fa-check"></i> Demand and inventory forecasting based on historical data</li>
+              <li><i class="fa-solid fa-check"></i> Risk scoring for leads, customers, or financial decisions</li>
+              <li><i class="fa-solid fa-check"></i> Automated reporting with trends and recommendations</li>
+              <li><i class="fa-solid fa-check"></i> Live dashboards that surface what matters most</li>
+            </ul>
+          </div>
+          <span class="tier-toggle"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="tier-card tier-expandable" onclick="this.classList.toggle('expanded')">
+          <div class="tier-icon"><i class="fa-solid fa-comments"></i></div>
+          <div class="tier-badge">Conversational AI</div>
+          <h3>AI that talks to your customers for you</h3>
+          <p>From chat bots and automatic email replies to full AI sales assistants. We build conversational systems that handle enquiries, qualify leads, and book meetings.</p>
+          <div class="tier-expand-content">
+            <ul class="tier-detail-list">
+              <li><i class="fa-solid fa-check"></i> Custom chat bots trained on your business and FAQs</li>
+              <li><i class="fa-solid fa-check"></i> Automated email replies that sound like a real person</li>
+              <li><i class="fa-solid fa-check"></i> AI assistants that qualify leads and book calls</li>
+              <li><i class="fa-solid fa-check"></i> Works 24/7 across your website, email, and social channels</li>
+            </ul>
+          </div>
+          <span class="tier-toggle"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="tier-card tier-expandable" onclick="this.classList.toggle('expanded')">
+          <div class="tier-icon"><i class="fa-solid fa-list-check"></i></div>
+          <div class="tier-badge">Project Management</div>
+          <h3>Connect every step from handoff to completion</h3>
+          <p>We automate the boring bits of project management. Task creation, status updates, handoffs between teams, onboarding flows, invoicing, and admin.</p>
+          <div class="tier-expand-content">
+            <ul class="tier-detail-list">
+              <li><i class="fa-solid fa-check"></i> Automated task creation and assignment when deals close</li>
+              <li><i class="fa-solid fa-check"></i> Status updates and notifications without manual chasing</li>
+              <li><i class="fa-solid fa-check"></i> Client onboarding flows that run themselves</li>
+              <li><i class="fa-solid fa-check"></i> Invoicing and accounting updates triggered automatically</li>
+            </ul>
+          </div>
+          <span class="tier-toggle"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="tier-card tier-expandable" onclick="this.classList.toggle('expanded')">
+          <div class="tier-icon"><i class="fa-solid fa-clock"></i></div>
+          <div class="tier-badge">Staff Efficiency</div>
+          <h3>Give your team hours back every day</h3>
+          <p>We find the tasks your employees repeat daily and automate them. Copy-pasting between tools, updating spreadsheets, sending the same emails. All of it can go.</p>
+          <div class="tier-expand-content">
+            <ul class="tier-detail-list">
+              <li><i class="fa-solid fa-check"></i> Identify the biggest time sinks across your team</li>
+              <li><i class="fa-solid fa-check"></i> Automate data entry, file management, and reporting</li>
+              <li><i class="fa-solid fa-check"></i> Replace repetitive email and messaging tasks</li>
+              <li><i class="fa-solid fa-check"></i> Free your team to focus on work that actually needs a human</li>
+            </ul>
+          </div>
+          <span class="tier-toggle"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="tier-card tier-expandable" onclick="this.classList.toggle('expanded')">
+          <div class="tier-icon"><i class="fa-solid fa-database"></i></div>
+          <div class="tier-badge">Data &amp; Reporting</div>
+          <h3>Break down your data silos</h3>
+          <p>Your data probably lives in ten different places right now. We connect those sources, clean the data, and give you one clear picture you can actually use.</p>
+          <div class="tier-expand-content">
+            <ul class="tier-detail-list">
+              <li><i class="fa-solid fa-check"></i> Automate data collection from scattered sources</li>
+              <li><i class="fa-solid fa-check"></i> Clean, deduplicate, and enrich records automatically</li>
+              <li><i class="fa-solid fa-check"></i> Build real-time dashboards and scheduled reports</li>
+              <li><i class="fa-solid fa-check"></i> Sync data between all your tools without manual exports</li>
+            </ul>
+          </div>
+          <span class="tier-toggle"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="tier-card tier-expandable" onclick="this.classList.toggle('expanded')">
+          <div class="tier-icon"><i class="fa-solid fa-headset"></i></div>
+          <div class="tier-badge">Customer Service</div>
+          <h3>Handle support without growing your team</h3>
+          <p>Most customer service questions are similar. The same queries come in day after day. We automate the responses so your team only deals with the ones that genuinely need a person.</p>
+          <div class="tier-expand-content">
+            <ul class="tier-detail-list">
+              <li><i class="fa-solid fa-check"></i> Instant replies to common questions across all channels</li>
+              <li><i class="fa-solid fa-check"></i> Smart routing so complex issues reach the right person</li>
+              <li><i class="fa-solid fa-check"></i> Ticket creation, tagging, and priority assignment on autopilot</li>
+              <li><i class="fa-solid fa-check"></i> Works across email, chat, social media, and phone</li>
+            </ul>
+          </div>
+          <span class="tier-toggle"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div class="tier-card tier-expandable" onclick="this.classList.toggle('expanded')">
+          <div class="tier-icon"><i class="fa-solid fa-plug"></i></div>
+          <div class="tier-badge">App Integrations</div>
+          <h3>Connect the tools you already use</h3>
+          <p>Most of your apps can talk to each other, but right now they probably don't. We wire them together so data flows instantly between them with no copying, no exporting, no friction.</p>
+          <div class="tier-expand-content">
+            <ul class="tier-detail-list">
+              <li><i class="fa-solid fa-check"></i> Connect your CRM, email, accounting, and project tools</li>
+              <li><i class="fa-solid fa-check"></i> Instant data handoffs between systems when events happen</li>
+              <li><i class="fa-solid fa-check"></i> Custom API integrations for tools that don't have native connections</li>
+              <li><i class="fa-solid fa-check"></i> One source of truth instead of scattered data everywhere</li>
+            </ul>
+          </div>
+          <span class="tier-toggle"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── WHY AI NEEDS AUTOMATION ── -->
   <section class="page-section">
     <div class="page-section-inner">
       <div class="two-col reveal">
         <div class="content-block">
-          <span class="section-label">The Opportunity</span>
-          <h2 class="section-title">What AI &amp; automation actually means for your business</h2>
-          <p class="section-sub">Most businesses are still running on manual processes that eat hours every day — sending emails, updating spreadsheets, chasing leads, logging calls. AI and automation replace those repetitive tasks with intelligent systems that run 24/7 without error or fatigue.</p>
-          <p class="section-sub" style="margin-top:16px;">The result? Your team stops doing admin and starts doing the work that actually grows revenue.</p>
+          <span class="section-label">The Bigger Picture</span>
+          <h2 class="section-title">Why AI on its own isn't enough</h2>
+          <p class="section-sub">AI is powerful, but it still needs someone to press the buttons. ChatGPT needs prompts. Image recognition needs files uploaded. Data analysis needs someone to pull the data. That's where automation comes in. We connect AI into your workflows so it runs without anyone touching it.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px;">
           <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-infinity"></i></div>
+            <div class="feature-icon"><i class="fa-solid fa-keyboard"></i></div>
             <div>
-              <h3>Always On</h3>
-              <p>Automated systems work around the clock — nights, weekends, holidays. No downtime, no delays.</p>
+              <h3>AI still needs manual commands</h3>
+              <p>ChatGPT needs prompts. AI tools need inputs. Without automation wrapping around them, someone still has to do the work of feeding and managing them.</p>
             </div>
           </div>
           <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-sliders"></i></div>
+            <div class="feature-icon"><i class="fa-solid fa-user-slash"></i></div>
             <div>
-              <h3>Consistent &amp; Accurate</h3>
-              <p>Unlike humans, automation doesn't have off days. Every task is executed the same way, every time.</p>
+              <h3>People create bottlenecks</h3>
+              <p>When a process depends on someone remembering to do something, things get delayed. Automation removes the human bottleneck and makes every step instant.</p>
             </div>
           </div>
           <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-gauge-high"></i></div>
+            <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
             <div>
-              <h3>Scales Instantly</h3>
-              <p>Handle 10× the volume without 10× the headcount. Automation scales to meet demand automatically.</p>
+              <h3>AI isn't the answer to everything</h3>
+              <p>Every business has work that needs real skill and creativity. We only use AI where it makes practical sense, and we automate the rest with straightforward logic.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-link"></i></div>
+            <div>
+              <h3>Automation stitches it all together</h3>
+              <p>The real power is connecting AI tools, your apps, and your team into one seamless process. That's what we build.</p>
             </div>
           </div>
         </div>
@@ -96,156 +337,44 @@
 
   <div class="section-divider"></div>
 
-  <!-- RADAR -->
-  <section class="page-section" style="background:var(--black);padding-bottom:0;">
-    <div class="page-section-inner">
-      <div class="radar-section-wrap reveal">
-        <div class="radar-icon-rows">
-          <div class="radar-icon-row">
-            <div class="radar-icon-box" style="animation-delay:0.1s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-robot"></i></div>
-              <span class="radar-icon-label">AI Agents</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.2s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-brain"></i></div>
-              <span class="radar-icon-label">LLMs</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.3s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-cloud"></i></div>
-              <span class="radar-icon-label">Cloud</span>
-            </div>
-          </div>
-          <div class="radar-icon-row">
-            <div class="radar-icon-box" style="animation-delay:0.15s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-database"></i></div>
-              <span class="radar-icon-label">Databases</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.25s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-gears"></i></div>
-              <span class="radar-icon-label">Workflows</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.35s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-bolt"></i></div>
-              <span class="radar-icon-label">Triggers</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.45s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-chart-line"></i></div>
-              <span class="radar-icon-label">Analytics</span>
-            </div>
-          </div>
-          <div class="radar-icon-row">
-            <div class="radar-icon-box" style="animation-delay:0.2s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-code"></i></div>
-              <span class="radar-icon-label">APIs</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.3s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-microchip"></i></div>
-              <span class="radar-icon-label">Processing</span>
-            </div>
-            <div class="radar-icon-box" style="animation-delay:0.4s">
-              <div class="radar-icon-inner"><i class="fa-solid fa-file-code"></i></div>
-              <span class="radar-icon-label">Scripts</span>
-            </div>
-          </div>
-        </div>
-        <div class="radar-visual">
-          <div class="radar-sweep-arm"><div class="radar-sweep-line"></div></div>
-          <div class="radar-sweep-glow"></div>
-          <div class="radar-ring" style="width:5rem;height:5rem;border-color:rgba(124,92,252,0.55)"></div>
-          <div class="radar-ring" style="width:10rem;height:10rem;border-color:rgba(124,92,252,0.45)"></div>
-          <div class="radar-ring" style="width:15rem;height:15rem;border-color:rgba(124,92,252,0.35)"></div>
-          <div class="radar-ring" style="width:20rem;height:20rem;border-color:rgba(124,92,252,0.28)"></div>
-          <div class="radar-ring" style="width:25rem;height:25rem;border-color:rgba(124,92,252,0.20)"></div>
-          <div class="radar-ring" style="width:30rem;height:30rem;border-color:rgba(124,92,252,0.14)"></div>
-          <div class="radar-ring" style="width:35rem;height:35rem;border-color:rgba(124,92,252,0.08)"></div>
-          <div class="radar-ring" style="width:40rem;height:40rem;border-color:rgba(124,92,252,0.05)"></div>
-          <div class="radar-center-dot"></div>
-        </div>
-        <div class="radar-bottom-line"></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-  <!-- POSSIBILITIES -->
+  <!-- ── WHAT YOU GET ── -->
   <section class="page-section alt">
     <div class="page-section-inner">
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
-        <span class="section-label">What We Build</span>
-        <h2 class="section-title">Automation possibilities across your business</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Every workflow that's repetitive, rules-based, or data-driven is a candidate for automation. Here's where we typically start.</p>
+        <span class="section-label">What You Get</span>
+        <h2 class="section-title">It's like hiring an AI and automation director, for a fraction of the cost</h2>
       </div>
-      <div class="tier-grid reveal" style="transition-delay:0.1s;">
-        <div class="tier-card">
-          <div class="tier-icon"><i class="fa-solid fa-bullseye"></i></div>
-          <div class="tier-badge">Lead Generation</div>
-          <h3>Prospect Discovery &amp; Scoring</h3>
-          <p>AI searches, filters, and scores leads based on your ideal customer profile — delivering a ready-to-contact list daily without any manual research.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-icon"><i class="fa-solid fa-paper-plane"></i></div>
-          <div class="tier-badge">Outreach</div>
-          <h3>Automated Personalised Outreach</h3>
-          <p>Multi-channel campaigns with AI-written, personalised messages at scale. Each prospect gets a message that feels written just for them.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-icon"><i class="fa-solid fa-rotate"></i></div>
-          <div class="tier-badge">Follow-Up</div>
-          <h3>Smart Follow-Up Sequences</h3>
-          <p>Automated follow-ups triggered by prospect behaviour — opens, clicks, replies — with intelligent timing and messaging to maximise response rates.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-icon"><i class="fa-solid fa-database"></i></div>
-          <div class="tier-badge">Data</div>
-          <h3>Data Enrichment &amp; CRM Sync</h3>
-          <p>Automatically enrich prospect records with company data, social profiles, and intent signals — then sync everything to your CRM in real time.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-icon"><i class="fa-solid fa-headset"></i></div>
-          <div class="tier-badge">Support</div>
-          <h3>Customer Service Automation</h3>
-          <p>AI-powered responses to common enquiries, routed intelligently so complex issues always reach a human while routine ones are handled instantly.</p>
-        </div>
-        <div class="tier-card">
-          <div class="tier-icon"><i class="fa-solid fa-chart-bar"></i></div>
-          <div class="tier-badge">Reporting</div>
-          <h3>Automated Reporting &amp; Analytics</h3>
-          <p>Real-time dashboards and scheduled reports delivered to your inbox. Know what's working without having to dig for data.</p>
+      <div class="about-stats reveal" style="max-width:900px;margin:0 auto;">
+        <div class="stat-card" style="grid-column:1/-1;display:flex;gap:40px;align-items:center;padding:32px;">
+          <div style="flex:1;">
+            <div class="feature-icon" style="margin-bottom:14px;"><i class="fa-solid fa-plug"></i></div>
+            <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:6px;">Stitch your tools together</h3>
+            <p style="font-size:0.88rem;color:var(--muted);line-height:1.6;">We connect to thousands of apps through Zapier, Make.com, APIs, and custom code. Whatever you're using, we can probably integrate it.</p>
+          </div>
+          <div style="flex:1;">
+            <div class="feature-icon" style="margin-bottom:14px;"><i class="fa-solid fa-robot"></i></div>
+            <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:6px;">Automate the repetitive stuff</h3>
+            <p style="font-size:0.88rem;color:var(--muted);line-height:1.6;">You're burning money having salaried staff do simple, repetitive tasks. We take those tasks off their plate and save them hours every day.</p>
+          </div>
+          <div style="flex:1;">
+            <div class="feature-icon" style="margin-bottom:14px;"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:6px;">Cut out human error</h3>
+            <p style="font-size:0.88rem;color:var(--muted);line-height:1.6;">Bottlenecks, inconsistency, and delays happen when people are involved. Automations fire instantly and do the same thing perfectly every time.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
-  <!-- HOW WE WORK -->
-  <section class="page-section">
-    <div class="page-section-inner">
-      <div class="two-col reveal">
-        <div class="content-block">
-          <span class="section-label">Our Process</span>
-          <h2 class="section-title">How we design and deploy your automation</h2>
-          <p class="section-sub">We don't drop a generic tool in your lap and leave. Every system we build starts with understanding your business deeply — then we design, build, test, and maintain it for you.</p>
-        </div>
-        <ul class="check-list">
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Discovery audit</strong> — we map your current processes and identify the highest-impact automation opportunities.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Custom build</strong> — we design and build workflows specific to your tools, team, and goals.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Integration</strong> — we connect your existing apps so everything flows together without manual transfers.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Testing &amp; launch</strong> — we run thorough tests before anything goes live.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Ongoing maintenance</strong> — we monitor and optimise your systems continuously.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Reporting</strong> — you get clear visibility on performance and ROI at all times.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
-  <div class="section-divider"></div>
-  <!-- AI TOOLS WE USE -->
+  <!-- ── AI TOOLS WE USE ── -->
   <section class="page-section">
     <div class="page-section-inner">
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
         <span class="section-label">Our Stack</span>
-        <h2 class="section-title">The AI tools we use</h2>
-        <p class="section-sub" style="margin:14px auto 0;">We don't stick to one tool. We combine the best platforms available to build the most powerful solution for your business.</p>
+        <h2 class="section-title">AI and automation tools we're experts in</h2>
+        <p class="section-sub" style="margin:14px auto 0;">We've built complete processes using every one of these tools. There are plenty more we have experience with or can integrate.</p>
       </div>
       <div class="tools-grid reveal" style="transition-delay:0.1s;">
         <div class="tool-card">
@@ -253,56 +382,56 @@
             <img src="https://cdn.simpleicons.org/openai" alt="ChatGPT" />
           </div>
           <h3 class="tool-name">ChatGPT</h3>
-          <p>ChatGPT is an artificial intelligence chatbot developed by OpenAI.</p>
+          <p>The AI chatbot from OpenAI. We use it for content generation, data analysis, customer interactions, and dozens of other use cases.</p>
         </div>
         <div class="tool-card">
           <div class="tool-icon">
             <img src="https://cdn.simpleicons.org/openai" alt="OpenAI" />
           </div>
-          <h3 class="tool-name">OpenAI</h3>
-          <p>OpenAI is the company that invented ChatGPT and other popular AI models. We're constantly testing their newest innovations.</p>
+          <h3 class="tool-name">OpenAI API</h3>
+          <p>The engine behind ChatGPT. We plug it directly into your workflows for classification, summarisation, writing, and decision making at scale.</p>
         </div>
         <div class="tool-card">
           <div class="tool-icon">
             <img src="https://cdn.simpleicons.org/googlegemini" alt="Gemini" />
           </div>
           <h3 class="tool-name">Gemini</h3>
-          <p>Gemini is Google's official AI project and a key competitor to ChatGPT.</p>
+          <p>Google's AI platform. Strong with multimodal tasks like understanding images, documents, and long-form content alongside text.</p>
         </div>
         <div class="tool-card">
           <div class="tool-icon">
             <img src="https://cdn.simpleicons.org/zapier" alt="Zapier" />
           </div>
           <h3 class="tool-name">Zapier</h3>
-          <p>Zapier is a platform that connects your tools into automated workflows.</p>
+          <p>Connects thousands of apps into automated workflows. The backbone for most straightforward automation builds.</p>
         </div>
         <div class="tool-card">
           <div class="tool-icon">
             <img src="https://cdn.simpleicons.org/make" alt="Make" />
           </div>
           <h3 class="tool-name">Make</h3>
-          <p>Make.com is a Zapier competitor with a more visual interface that handles larger, more complex workflows.</p>
+          <p>A more visual automation builder that handles larger, more complex workflows with branching logic and data transformation.</p>
         </div>
         <div class="tool-card">
           <div class="tool-icon">
             <img src="https://cdn.simpleicons.org/python" alt="Python" />
             <img src="https://cdn.simpleicons.org/javascript" alt="JavaScript" />
           </div>
-          <h3 class="tool-name">Custom Scripting</h3>
-          <p>We also use Python and JavaScript to write custom scripts so we can automate more complex workflows.</p>
+          <h3 class="tool-name">Custom Code</h3>
+          <p>When off-the-shelf tools can't do it, we write custom Python and JavaScript to handle more complex logic and integrations.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- ── CTA ── -->
   <div class="page-cta">
     <div class="container">
       <div class="cta-box reveal">
         <div class="cta-glow"></div>
-        <h2>Ready to see what's possible?</h2>
-        <p>Book a free 30-minute audit and we'll map out your automation opportunities.</p>
-        <a href="../book.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book your free audit</a>
+        <h2>Let's find the use cases for AI in your business</h2>
+        <p>Book a free consultation and we'll show you exactly where AI and automation can save you time and money.</p>
+        <a href="../book.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Free Consultation</a>
       </div>
     </div>
   </div>
@@ -311,7 +440,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../brand_assets/logo.png" alt="Autoeight" />
+          <img src="../brand_assets/1.png" alt="Autoeight" />
           <p>We connect ideas, automate workflows, and drive growth through custom AI and sales automation systems.</p>
           <div class="socials">
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -342,69 +471,5 @@
   </footer>
 
   <script src="../main.js"></script>
-  <script>
-  // ── Radar sweep icon lighting
-  (function() {
-    var sweepArm   = document.querySelector('.radar-sweep-arm');
-    var sweepGlow  = document.querySelector('.radar-sweep-glow');
-    var radarVisual = document.querySelector('.radar-visual');
-    var icons      = document.querySelectorAll('.radar-icon-box');
-    if (!sweepArm || !radarVisual || !icons.length) return;
-
-    // Hand off from CSS animation to JS-driven rotation
-    sweepArm.style.animation  = 'none';
-    if (sweepGlow) sweepGlow.style.animation = 'none';
-
-    var PERIOD_MS  = 10000;  // 10 s per revolution
-    var START_DEG  = 20;     // match original CSS start angle
-    var TRAIL_DEG  = 22;     // degrees the icon stays lit after being hit
-
-    var iconAngles = null;
-    var startTime  = null;
-
-    function computeIconAngles() {
-      var rc = radarVisual.getBoundingClientRect();
-      var cx = rc.left + rc.width  / 2;
-      var cy = rc.top  + rc.height / 2;
-      return Array.from(icons).map(function(icon) {
-        var r  = icon.getBoundingClientRect();
-        var dx = (r.left + r.width  / 2) - cx;
-        var dy = (r.top  + r.height / 2) - cy;
-        // CSS rotation angle when arm tip points at (dx, dy):
-        // arm at R deg points in screen direction (180-R) deg
-        // so R = (180 - atan2(dy,dx)*180/π + 360) % 360
-        var dir = Math.atan2(dy, dx) * 180 / Math.PI;
-        return ((180 - dir) % 360 + 360) % 360;
-      });
-    }
-
-    window.addEventListener('resize', function() { iconAngles = null; });
-
-    function frame(ts) {
-      if (!startTime) startTime = ts;
-      if (!iconAngles) iconAngles = computeIconAngles();
-
-      var elapsed     = ts - startTime;
-      var angle       = START_DEG + (elapsed / PERIOD_MS) * 360;
-      var normalAngle = ((angle % 360) + 360) % 360;
-
-      sweepArm.style.transform = 'rotate(' + angle + 'deg)';
-      if (sweepGlow) sweepGlow.style.transform = 'rotate(' + angle + 'deg)';
-
-      icons.forEach(function(icon, i) {
-        var diff = ((normalAngle - iconAngles[i]) + 360) % 360;
-        if (diff < TRAIL_DEG) {
-          icon.classList.add('lit');
-        } else {
-          icon.classList.remove('lit');
-        }
-      });
-
-      requestAnimationFrame(frame);
-    }
-
-    requestAnimationFrame(frame);
-  })();
-  </script>
 </body>
 </html>

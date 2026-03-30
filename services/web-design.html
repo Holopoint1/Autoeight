@@ -13,7 +13,7 @@
 <body>
 
   <nav id="nav">
-    <a href="../index.html" class="nav-logo"><img src="../brand_assets/logo.png" alt="Autoeight" /></a>
+    <a href="../index.html" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
       <li class="nav-item has-dropdown active">
         <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
@@ -46,29 +46,23 @@
   </nav>
 
   <!-- HERO -->
-  <div class="page-hero">
+  <div class="page-hero" style="position:relative;">
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
-    <div class="page-hero-content">
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;">
+      <i class="fa-solid fa-globe" style="position:absolute;top:20%;left:8%;font-size:1.5rem;color:rgba(109,77,230,0.12);animation:float-rotate 18s linear infinite;"></i>
+      <i class="fa-solid fa-pen-nib" style="position:absolute;top:32%;right:10%;font-size:1.3rem;color:rgba(109,77,230,0.10);animation:float-rotate 22s linear infinite reverse;"></i>
+      <i class="fa-solid fa-code" style="position:absolute;top:62%;left:12%;font-size:1.2rem;color:rgba(109,77,230,0.09);animation:float-rotate 16s linear infinite;"></i>
+      <i class="fa-solid fa-palette" style="position:absolute;top:28%;left:70%;font-size:1.4rem;color:rgba(109,77,230,0.10);animation:float-rotate 20s linear infinite reverse;"></i>
+      <i class="fa-solid fa-mobile-screen" style="position:absolute;top:68%;right:14%;font-size:1.1rem;color:rgba(109,77,230,0.08);animation:float-rotate 24s linear infinite;"></i>
+    </div>
+    <div class="page-hero-content" style="position:relative;z-index:2;">
       <span class="section-label">Services</span>
       <h1>AI Web Design<br /><em>Built to convert</em></h1>
-      <p>We design and build websites powered by AI — faster delivery, smarter systems, and automation built in from day one. Not a template. Not a drag-and-drop builder. A proper site, done properly.</p>
+      <p>We design and build websites powered by AI. Faster delivery, smarter systems, and automation built in from day one. Not a template. Not a page builder. A proper website, built properly.</p>
       <a href="../book.html" class="btn btn-primary btn-lg">Get started <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
-
-  <!-- ENTROPY: ORDER VS CHAOS -->
-  <section class="page-section" style="padding:0;overflow:hidden;">
-    <div class="entropy-section-wrap">
-      <canvas id="entropy-canvas"></canvas>
-      <div class="entropy-overlay">
-        <div class="entropy-center-box">
-          <span class="section-label">What We Do</span>
-          <h2>We take your data<br />and make something<br /><em>beautiful</em></h2>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- MARQUEE: WHAT WE BUILD WITH -->
   <section class="page-section alt">
@@ -89,8 +83,8 @@
         <div class="content-block">
           <span class="section-label">Why It's Different</span>
           <h2 class="section-title">Not just a website. A growth system.</h2>
-          <p class="section-sub">Most agencies hand you a website and disappear. We build yours with automation baked in — from lead capture to follow-up sequences to live reporting. Every element is intentional and every action is tracked.</p>
-          <p class="section-sub" style="margin-top:14px;">AI accelerates every stage of the process: design, copywriting, SEO, testing, and ongoing updates. You get a higher-quality result in less time, with less back-and-forth.</p>
+          <p class="section-sub">Most agencies hand you a website and disappear. We build yours with automation baked in, from lead capture and follow-up sequences to live reporting. Every element is intentional and every action is tracked.</p>
+          <p class="section-sub" style="margin-top:14px;">AI speeds up every part of the process. Design, copy, SEO, testing, updates. You get a better result in less time.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px;">
           <div class="feature-card">
@@ -104,7 +98,7 @@
             <div class="feature-icon"><i class="fa-solid fa-gears"></i></div>
             <div>
               <h3>Automation Included</h3>
-              <p>Every site comes with built-in workflows — lead capture, CRM sync, email sequences, and notifications.</p>
+              <p>Every site comes with built-in workflows including lead capture, CRM sync, email sequences, and notifications.</p>
             </div>
           </div>
           <div class="feature-card">
@@ -127,7 +121,7 @@
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 48px;">
         <span class="section-label">How We Build</span>
         <h2 class="section-title">Your project as a live workflow</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Every project follows a clear, automated process — from brief to launch. Drag the nodes around to explore each stage.</p>
+        <p class="section-sub" style="margin:14px auto 0;">Every project follows a clear, automated process from brief to launch. Drag the nodes around to explore each stage.</p>
       </div>
       <div class="workflow-builder-wrap reveal" style="transition-delay:0.1s;">
         <div class="workflow-header">
@@ -173,37 +167,37 @@
           <div class="tier-icon"><i class="fa-solid fa-pen-nib"></i></div>
           <div class="tier-badge">Design</div>
           <h3>Custom AI-Assisted Design</h3>
-          <p>We use AI to explore design directions faster, then craft the final result by hand. You get genuinely custom work — not templates with your logo dropped in.</p>
+          <p>We use AI to explore design options faster, then build the final version by hand. You get genuinely custom work, not templates with your logo dropped in.</p>
         </div>
         <div class="tier-card featured">
           <div class="tier-icon"><i class="fa-solid fa-robot"></i></div>
           <div class="tier-badge">Automation</div>
           <h3>Built-In Workflow Automation</h3>
-          <p>Every form, every enquiry, every purchase — captured, routed, and actioned automatically. Lead nurture sequences, CRM entries, and team notifications happen without anyone lifting a finger.</p>
+          <p>Every form submission, every enquiry, every purchase gets captured, routed, and followed up automatically. Lead nurture sequences, CRM updates, and team notifications all happen on their own.</p>
         </div>
         <div class="tier-card">
           <div class="tier-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
           <div class="tier-badge">SEO</div>
           <h3>SEO-Ready Architecture</h3>
-          <p>Fast-loading pages, semantic structure, proper metadata, and an AI-assisted content strategy that gives you a head start in search from launch day.</p>
+          <p>Fast-loading pages, semantic structure, proper metadata, and an AI-assisted content strategy so you're not starting from zero in search.</p>
         </div>
         <div class="tier-card">
           <div class="tier-icon"><i class="fa-solid fa-gauge-high"></i></div>
           <div class="tier-badge">Performance</div>
           <h3>Speed &amp; Core Web Vitals</h3>
-          <p>Every site is optimised for performance — compressed assets, edge delivery, and clean code that scores well on Lighthouse and loads fast everywhere.</p>
+          <p>Every site is optimised for performance. Compressed assets, edge delivery, and clean code that scores well on Lighthouse and loads fast everywhere.</p>
         </div>
         <div class="tier-card">
           <div class="tier-icon"><i class="fa-solid fa-chart-bar"></i></div>
           <div class="tier-badge">Analytics</div>
           <h3>Live Reporting Dashboard</h3>
-          <p>You get a dashboard showing traffic, conversions, form submissions, and revenue attribution — all in one place, updated in real time.</p>
+          <p>You get a dashboard showing traffic, conversions, form submissions, and revenue attribution, all in one place and updated in real time.</p>
         </div>
         <div class="tier-card">
           <div class="tier-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
           <div class="tier-badge">Ongoing</div>
           <h3>AI-Powered Updates</h3>
-          <p>As your business evolves, so does your site. We handle content updates, A/B tests, and performance improvements on an ongoing basis — no waiting on developers.</p>
+          <p>As your business evolves, so does your site. We handle content updates, A/B tests, and performance improvements on an ongoing basis. No waiting on developers.</p>
         </div>
       </div>
     </div>
@@ -216,21 +210,34 @@
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
         <span class="section-label">AI Capabilities</span>
         <h2 class="section-title">What the AI actually handles</h2>
-        <p class="section-sub" style="margin:14px auto 0;">These aren't gimmicks. AI accelerates the parts of web design that traditionally eat the most time — so we spend that time on the things that actually matter.</p>
+        <p class="section-sub" style="margin:14px auto 0;">These aren't gimmicks. AI accelerates the parts of web design that traditionally eat the most time, so we can spend that time on the things that actually matter.</p>
       </div>
       <div class="two-col reveal" style="transition-delay:0.1s;">
         <ul class="check-list">
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Copywriting</strong> — AI drafts page copy based on your brand voice and target audience, which we refine and sign off.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Image generation &amp; selection</strong> — AI sources and generates visuals that match your brand aesthetic.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>SEO keyword research</strong> — AI identifies the highest-value terms for your market and structures content around them.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Layout exploration</strong> — rapid AI prototyping lets us test multiple directions before committing to any one design.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Copywriting</strong> AI drafts page copy based on your brand voice and target audience, which we then refine and sign off.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Image generation and selection</strong> AI sources and generates visuals that match your brand aesthetic.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>SEO keyword research</strong> AI identifies the highest-value terms for your market and structures content around them.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Layout exploration</strong> Rapid AI prototyping lets us test multiple directions before committing to any one design.</span></li>
         </ul>
         <ul class="check-list">
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Conversion analysis</strong> — AI reviews user behaviour and recommends improvements to increase conversion rate.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>A/B testing</strong> — automated multivariate tests run in the background and report winners without any manual setup.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Chatbot &amp; live chat</strong> — AI-powered support that answers visitor questions using your business data 24/7.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Content updates</strong> — brief the AI, review the output, publish. Ongoing content without ongoing agency bills.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Conversion analysis</strong> AI reviews user behaviour and recommends improvements to increase conversion rate.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>A/B testing</strong> Automated multivariate tests run in the background and report winners without any manual setup.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Chatbot and live chat</strong> AI-powered support that answers visitor questions using your business data 24/7.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Content updates</strong> Brief the AI, review the output, publish. Ongoing content without ongoing agency bills.</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTROPY: ORDER VS CHAOS -->
+  <section class="page-section" style="padding:0;overflow:hidden;">
+    <div class="entropy-section-wrap">
+      <canvas id="entropy-canvas"></canvas>
+      <div class="entropy-overlay">
+        <div class="entropy-center-box">
+          <span class="section-label">What We Do</span>
+          <h2>We take your data<br />and make something<br /><em>beautiful</em></h2>
+        </div>
       </div>
     </div>
   </section>
@@ -251,7 +258,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../brand_assets/logo.png" alt="Autoeight" />
+          <img src="../brand_assets/1.png" alt="Autoeight" />
           <p>We connect ideas, automate workflows, and drive growth through custom AI and sales automation systems.</p>
           <div class="socials">
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -365,7 +372,7 @@
           p.y += dy * 0.05 * (1 - p.influence) + cy * p.influence;
           p.influence *= 0.99;
         } else {
-          // chaotic random walk — constrained to a band beside the centre line
+          // chaotic random walk, constrained to a band beside the centre line
           p.vx += (Math.random() - 0.5) * 0.5;
           p.vy += (Math.random() - 0.5) * 0.5;
           p.vx *= 0.95;
@@ -388,7 +395,7 @@
           const d = Math.hypot(p.x - n.x, p.y - n.y);
           if (d < LINE_DIST) {
             const alpha = 0.22 * (1 - d / LINE_DIST);
-            ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+            ctx.strokeStyle = `rgba(109,77,230,${alpha})`;
             ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(n.x, n.y); ctx.stroke();
           }
         }
@@ -397,7 +404,7 @@
       // particles
       for (const p of particles) {
         const alpha = p.ordered ? 0.8 - p.influence * 0.5 : 0.8;
-        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.fillStyle = `rgba(109,77,230,${alpha})`;
         ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2); ctx.fill();
       }
 
@@ -491,7 +498,7 @@
         const x1 = f.x + NW, y1 = f.y + NH / 2;
         const x2 = t.x,      y2 = t.y + NH / 2;
         const cx = (x2 - x1) * 0.5;
-        html += `<path d="M${x1},${y1} C${x1+cx},${y1} ${x2-cx},${y2} ${x2},${y2}" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" stroke-dasharray="7,5" stroke-linecap="round"/>`;
+        html += `<path d="M${x1},${y1} C${x1+cx},${y1} ${x2-cx},${y2} ${x2},${y2}" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1.5" stroke-dasharray="7,5" stroke-linecap="round"/>`;
       });
       svg.innerHTML = html;
     }

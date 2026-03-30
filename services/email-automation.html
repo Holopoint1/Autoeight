@@ -13,7 +13,7 @@
 <body>
 
   <nav id="nav">
-    <a href="../index.html" class="nav-logo"><img src="../brand_assets/logo.png" alt="Autoeight" /></a>
+    <a href="../index.html" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
       <li class="nav-item has-dropdown active">
         <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
@@ -46,16 +46,25 @@
   </nav>
 
   <!-- HERO -->
-  <div class="page-hero">
+  <div class="page-hero" style="position:relative;">
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
-    <div class="page-hero-content">
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;">
+      <i class="fa-solid fa-envelope" style="position:absolute;top:20%;left:10%;font-size:1.5rem;color:rgba(109,77,230,0.12);animation:float-rotate 18s linear infinite;"></i>
+      <i class="fa-solid fa-paper-plane" style="position:absolute;top:35%;right:12%;font-size:1.3rem;color:rgba(109,77,230,0.10);animation:float-rotate 22s linear infinite reverse;"></i>
+      <i class="fa-solid fa-inbox" style="position:absolute;top:65%;left:8%;font-size:1.2rem;color:rgba(109,77,230,0.09);animation:float-rotate 16s linear infinite;"></i>
+      <i class="fa-solid fa-reply" style="position:absolute;top:25%;left:72%;font-size:1.4rem;color:rgba(109,77,230,0.10);animation:float-rotate 20s linear infinite reverse;"></i>
+      <i class="fa-solid fa-at" style="position:absolute;top:70%;right:15%;font-size:1.1rem;color:rgba(109,77,230,0.08);animation:float-rotate 24s linear infinite;"></i>
+    </div>
+    <div class="page-hero-content" style="position:relative;z-index:2;">
       <span class="section-label">Services</span>
       <h1>Email Automation<br /><em>Your inbox, handled</em></h1>
-      <p>Whether you need fully hands-off email handling or AI-assisted drafts your team reviews before sending — we build the right level of automation for your business.</p>
+      <p>Whether you need fully hands-off email handling or AI assisted drafts your team reviews before sending, we build the right level of automation for your business.</p>
       <a href="../book.html" class="btn btn-primary btn-lg">Get started <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
+
+  <div class="section-divider"></div>
 
   <!-- TWO TIERS -->
   <section class="page-section">
@@ -406,7 +415,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="../brand_assets/logo.png" alt="Autoeight" />
+          <img src="../brand_assets/1.png" alt="Autoeight" />
           <p>We connect ideas, automate workflows, and drive growth through custom AI and sales automation systems.</p>
           <div class="socials">
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>

@@ -31,7 +31,7 @@
     "name": "Autoeight",
     "description": "Custom AI and automation systems built to increase revenue and reduce workload for growing businesses.",
     "url": "https://autoeight.com",
-    "logo": "https://autoeight.com/brand_assets/logo.png",
+    "logo": "https://autoeight.com/brand_assets/1.png",
     "serviceType": ["AI Automation", "Business Automation", "Workflow Automation", "Sales Automation", "Email Automation", "Web Design"],
     "areaServed": "GB",
     "sameAs": ["https://www.linkedin.com/company/autoeight"]
@@ -49,7 +49,7 @@
   <!-- ── NAV ── -->
   <nav id="nav">
     <a href="index.html" class="nav-logo">
-      <img src="brand_assets/logo.png" alt="Autoeight" />
+      <img src="brand_assets/1.png" alt="Autoeight" />
     </a>
     <ul class="nav-menu" id="nav-menu">
       <li class="nav-item has-dropdown">
@@ -400,7 +400,7 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="cs-card" style="background: #161628;">
+        <div class="cs-card" style="background: #f0eef5;">
           <div class="cs-card-tag"><i class="fa-brands fa-linkedin"></i> LinkedIn + Email</div>
           <div class="cs-card-client">Recruitment Agency — PeakTalent Group</div>
           <h3 class="cs-card-title">A two-channel outreach system that filled their pipeline with 80+ qualified candidates a week</h3>
@@ -414,7 +414,7 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="cs-card" style="background: #160e1e;">
+        <div class="cs-card" style="background: #f3eef8;">
           <div class="cs-card-tag"><i class="fa-solid fa-chart-line"></i> Sales Pipeline</div>
           <div class="cs-card-client">Digital Agency — Vantage Creative</div>
           <h3 class="cs-card-title">A fully automated sales engine that generates £40k+ in new pipeline every month on autopilot</h3>
@@ -472,95 +472,6 @@
   })();
   </script>
 
-  <!-- ── BUCKET ── -->
-  <section class="bucket-section">
-    <div class="container">
-      <div style="text-align:center; max-width:560px; margin: 0 auto 52px;" class="reveal">
-        <span class="section-label">What you gain</span>
-        <h2 class="section-title">Everything flows in,<br /><em>nothing slips through</em></h2>
-        <p class="section-sub" style="margin: 14px auto 0;">AI automation consolidates your entire workflow into one seamless engine — zero waste, zero gaps.</p>
-      </div>
-      <div class="bucket-outer reveal" style="transition-delay:0.12s;">
-        <!-- chip throw stage – centred at the rim -->
-        <div class="bucket-chip-stage" id="bucket-stage"></div>
-        <div class="bucket-wrap">
-          <!-- SVG draws the bucket: elliptical rim + tapered walls + curved base -->
-          <svg class="bucket-svg" viewBox="0 0 280 310" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="bkt-fill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%"   stop-color="#7c5cfc" stop-opacity="0.18"/>
-                <stop offset="100%" stop-color="#7c5cfc" stop-opacity="0.04"/>
-              </linearGradient>
-              <radialGradient id="bkt-rim-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%"   stop-color="#7c5cfc" stop-opacity="0.35"/>
-                <stop offset="100%" stop-color="#7c5cfc" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <!-- interior fill -->
-            <path d="M 0,22 L 40,288 A 100,14 0 0 0 240,288 L 280,22 Z" fill="url(#bkt-fill)"/>
-            <!-- left wall -->
-            <line x1="1"   y1="22" x2="40"  y2="288" stroke="rgba(124,92,252,0.55)" stroke-width="2"/>
-            <!-- right wall -->
-            <line x1="279" y1="22" x2="240" y2="288" stroke="rgba(124,92,252,0.55)" stroke-width="2"/>
-            <!-- base ellipse -->
-            <ellipse cx="140" cy="288" rx="100" ry="14"
-                     stroke="rgba(124,92,252,0.55)" stroke-width="2"
-                     fill="rgba(124,92,252,0.14)"/>
-            <!-- rim glow halo -->
-            <ellipse cx="140" cy="22" rx="140" ry="22" fill="url(#bkt-rim-glow)"/>
-            <!-- rim outline -->
-            <ellipse cx="140" cy="22" rx="140" ry="22"
-                     stroke="rgba(124,92,252,0.9)" stroke-width="2.5"
-                     fill="rgba(124,92,252,0.18)"/>
-          </svg>
-          <!-- logo centred in body -->
-          <div class="bucket-logo-wrap">
-            <img src="brand_assets/logo.png" alt="Autoeight" class="bucket-logo" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <script>
-  (function () {
-    var chips = [
-      { icon: 'fa-regular fa-clock',         title: 'Hours Wasted',            desc: 'Staff stuck on repetitive tasks' },
-      { icon: 'fa-solid fa-keyboard',        title: 'Manual Data Entry',       desc: 'Copy-pasting between systems' },
-      { icon: 'fa-solid fa-user-slash',      title: 'Missed Follow-Ups',      desc: 'Leads slipping through the cracks' },
-      { icon: 'fa-solid fa-moon',            title: 'No After-Hours Cover',   desc: 'Enquiries left unanswered overnight' },
-      { icon: 'fa-solid fa-triangle-exclamation', title: 'Human Errors',      desc: 'Costly mistakes from manual work' },
-      { icon: 'fa-solid fa-money-bill-wave', title: 'Wasted Budget',          desc: 'Paying people to do robot work' },
-      { icon: 'fa-solid fa-hourglass-half',  title: 'Slow Response Times',    desc: 'Customers waiting hours for replies' },
-      { icon: 'fa-solid fa-shuffle',         title: 'Disconnected Tools',     desc: 'Nothing talks to anything else' },
-    ];
-    var stage = document.getElementById('bucket-stage');
-    var idx = 0;
-
-    function showChip() {
-      var c    = chips[idx % chips.length];
-      var left = (idx % 2 === 0);
-      idx++;
-      var el = document.createElement('div');
-      el.className = 'bucket-chip';
-      el.innerHTML =
-        '<div class="bucket-chip-icon"><i class="' + c.icon + '"></i></div>' +
-        '<div class="bucket-chip-text">' +
-          '<div class="bucket-chip-title">' + c.title + '</div>' +
-          '<div class="bucket-chip-desc">'  + c.desc  + '</div>' +
-        '</div>';
-      stage.appendChild(el);
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          el.classList.add(left ? 'chip-left' : 'chip-right');
-        });
-      });
-      setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 3800);
-    }
-
-    showChip();
-    setInterval(showChip, 3600);
-  })();
-  </script>
 
   <!-- ── SYSTEM INTEGRATION: WHY IT MATTERS ── -->
   <div class="section-divider"></div>
@@ -741,7 +652,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="brand_assets/logo.png" alt="Autoeight" />
+          <img src="brand_assets/1.png" alt="Autoeight" />
           <p>We connect ideas, automate workflows, and drive growth through custom AI and sales automation systems.</p>
           <div class="socials">
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -814,7 +725,7 @@
     (function () {
       const canvas = document.getElementById('hero-canvas');
       const ctx    = canvas.getContext('2d');
-      const PURPLE = '124,92,252';
+      const PURPLE = '109,77,230';
       const COUNT  = 55;
       const MAX_DIST = 160;
       let W, H, particles;
@@ -856,7 +767,7 @@
             const dy   = particles[i].y - particles[j].y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < MAX_DIST) {
-              const alpha = (1 - dist / MAX_DIST) * 0.12;
+              const alpha = (1 - dist / MAX_DIST) * 0.18;
               ctx.beginPath();
               ctx.strokeStyle = `rgba(${PURPLE},${alpha})`;
               ctx.lineWidth   = 0.7;
