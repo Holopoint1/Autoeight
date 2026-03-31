@@ -1,18 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="See how Autoeight handles email automation with smarter draft replies, inbox workflows, shared mailbox support, and customer service systems that save time." />
-  <title>Email Automation – Autoeight</title>
+  <title>Email Automation â€“ Autoeight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css?v=20260331m" />
 </head>
 <body>
 
+  <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
   <nav id="nav">
     <a href="../index.html" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
@@ -43,7 +44,7 @@
       </li>
     </ul>
     <a href="../book.html" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0" onclick="var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} return false;" onkeydown="if(event.key===''Enter'' || event.key==='' ''){var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} event.preventDefault();}"><span></span><span></span><span></span></label>
   </nav>
 
   <!-- HERO -->
@@ -137,7 +138,7 @@
         </button>
       </div>
 
-      <!-- ── Full Automation Flow ── -->
+      <!-- â”€â”€ Full Automation Flow â”€â”€ -->
       <div class="eflow-diagram reveal" id="eflow-full" style="transition-delay:0.1s;">
         <div class="eflow-row">
 
@@ -667,6 +668,25 @@
     </div>
   </footer>
 
-  <script src="../main.js"></script>
+  <script src="../main.js?v=20260331m"></script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

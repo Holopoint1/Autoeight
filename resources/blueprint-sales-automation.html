@@ -1,18 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Explore the Autoeight sales automation blueprint covering lead capture, outreach, scoring, CRM sync, reporting, and meeting booking flows." />
-  <title>Sales Automation Blueprint – Autoeight</title>
+  <title>Sales Automation Blueprint â€“ Autoeight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css?v=20260331m" />
 </head>
 <body>
 
+  <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
   <nav id="nav">
     <a href="../index.html" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
@@ -43,7 +44,7 @@
       </li>
     </ul>
     <a href="../book.html" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0" onclick="var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} return false;" onkeydown="if(event.key===''Enter'' || event.key==='' ''){var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} event.preventDefault();}"><span></span><span></span><span></span></label>
   </nav>
 
   <!-- HERO -->
@@ -52,8 +53,8 @@
     <div class="page-hero-grid"></div>
     <div class="page-hero-content">
       <span class="section-label"><i class="fa-solid fa-map"></i> Automation Blueprint</span>
-      <h1>Sales Automation —<br /><em>more prospects, less admin</em></h1>
-      <p>See exactly how automating your sales process gives every rep 2.5 hours back per day — while reaching 10× more prospects.</p>
+      <h1>Sales Automation â€”<br /><em>more prospects, less admin</em></h1>
+      <p>See exactly how automating your sales process gives every rep 2.5 hours back per day â€” while reaching 10Ã— more prospects.</p>
     </div>
   </div>
 
@@ -66,7 +67,7 @@
 
       <div class="bp-flow-pair reveal">
         <div class="bp-flow-col">
-          <div class="bp-flow-col-label red">❌ Manual Sales Process</div>
+          <div class="bp-flow-col-label red">âŒ Manual Sales Process</div>
           <div class="bp-flow red">
             <svg viewBox="0 0 820 150" width="100%" xmlns="http://www.w3.org/2000/svg">
               <rect x="10" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
@@ -92,12 +93,12 @@
               <rect x="634" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
               <text x="699" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Update CRM</text>
               <text x="699" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">Manually</text>
-              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(239,68,68,0.7)">⏱ 2.5 hours of admin per rep, per day. Only ~10 prospects reached.</text>
+              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(239,68,68,0.7)">â± 2.5 hours of admin per rep, per day. Only ~10 prospects reached.</text>
             </svg>
           </div>
         </div>
         <div class="bp-flow-col">
-          <div class="bp-flow-col-label green">✅ Automated Sales Pipeline</div>
+          <div class="bp-flow-col-label green">âœ… Automated Sales Pipeline</div>
           <div class="bp-flow green">
             <svg viewBox="0 0 820 150" width="100%" xmlns="http://www.w3.org/2000/svg">
               <rect x="10" y="45" width="130" height="60" rx="8" fill="rgba(124,92,252,0.12)" stroke="rgba(124,92,252,0.45)" stroke-width="1.5"/>
@@ -123,7 +124,7 @@
               <rect x="634" y="45" width="130" height="60" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.4)" stroke-width="1.5"/>
               <text x="699" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#86efac">Meeting</text>
               <text x="699" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#86efac">Booked</text>
-              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(34,197,94,0.8)">⚡ 100+ prospects per day. CRM updated automatically. Zero admin.</text>
+              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(34,197,94,0.8)">âš¡ 100+ prospects per day. CRM updated automatically. Zero admin.</text>
             </svg>
           </div>
         </div>
@@ -143,7 +144,7 @@
           <div class="bp-stat-label">saved per sales rep per day in admin and manual outreach</div>
         </div>
         <div class="bp-stat">
-          <div class="bp-stat-num green">10×</div>
+          <div class="bp-stat-num green">10Ã—</div>
           <div class="bp-stat-label">more prospects reached per day without adding headcount</div>
         </div>
         <div class="bp-stat">
@@ -151,7 +152,7 @@
           <div class="bp-stat-label">reduction in manual data entry across CRM and pipeline</div>
         </div>
         <div class="bp-stat">
-          <div class="bp-stat-num">£25k+</div>
+          <div class="bp-stat-num">Â£25k+</div>
           <div class="bp-stat-label">value saved per sales rep per year at UK average salary</div>
         </div>
       </div>
@@ -162,12 +163,12 @@
   <section class="bp-section">
     <div class="bp-inner">
       <p class="bp-eyebrow">Inside the Pipeline</p>
-      <h2>From reply to meeting — <em>automated</em></h2>
+      <h2>From reply to meeting â€” <em>automated</em></h2>
       <p class="bp-lead">When a prospect replies, here's what happens next without your team lifting a finger.</p>
 
       <div class="bp-flow-pair reveal" style="margin-top:40px;">
         <div class="bp-flow-col">
-          <div class="bp-flow-col-label red">❌ Manual Reply Handling</div>
+          <div class="bp-flow-col-label red">âŒ Manual Reply Handling</div>
           <div class="bp-flow red">
             <svg viewBox="0 0 820 150" width="100%" xmlns="http://www.w3.org/2000/svg">
               <rect x="10" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
@@ -193,12 +194,12 @@
               <rect x="634" y="45" width="130" height="60" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
               <text x="699" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Hopes They</text>
               <text x="699" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#fca5a5">Book</text>
-              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(239,68,68,0.7)">⏱ Slow responses lose warm prospects. Every minute matters.</text>
+              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(239,68,68,0.7)">â± Slow responses lose warm prospects. Every minute matters.</text>
             </svg>
           </div>
         </div>
         <div class="bp-flow-col">
-          <div class="bp-flow-col-label green">✅ Automated Response</div>
+          <div class="bp-flow-col-label green">âœ… Automated Response</div>
           <div class="bp-flow green">
             <svg viewBox="0 0 820 150" width="100%" xmlns="http://www.w3.org/2000/svg">
               <rect x="10" y="45" width="130" height="60" rx="8" fill="rgba(124,92,252,0.12)" stroke="rgba(124,92,252,0.45)" stroke-width="1.5"/>
@@ -224,7 +225,7 @@
               <rect x="634" y="45" width="130" height="60" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.4)" stroke-width="1.5"/>
               <text x="699" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#86efac">Meeting</text>
               <text x="699" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#86efac">Booked</text>
-              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(34,197,94,0.8)">⚡ Instant response. CRM updated. Rep only steps in to close.</text>
+              <text x="410" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(34,197,94,0.8)">âš¡ Instant response. CRM updated. Rep only steps in to close.</text>
             </svg>
           </div>
         </div>
@@ -243,28 +244,28 @@
           <div class="bp-step-num">1</div>
           <div class="bp-step-body">
             <h4>Pipeline Audit</h4>
-            <p>We map your current sales workflow from lead to close — identifying every manual touchpoint where a rep's time is being spent on something a machine could do. Usually 8–12 steps can be automated immediately.</p>
+            <p>We map your current sales workflow from lead to close â€” identifying every manual touchpoint where a rep's time is being spent on something a machine could do. Usually 8â€“12 steps can be automated immediately.</p>
           </div>
         </div>
         <div class="bp-step">
           <div class="bp-step-num">2</div>
           <div class="bp-step-body">
             <h4>Automation Build</h4>
-            <p>We build the lead research, personalised outreach, and multi-step follow-up sequences. AI researches each prospect and generates personalised opening lines — so your emails feel human even at scale.</p>
+            <p>We build the lead research, personalised outreach, and multi-step follow-up sequences. AI researches each prospect and generates personalised opening lines â€” so your emails feel human even at scale.</p>
           </div>
         </div>
         <div class="bp-step">
           <div class="bp-step-num">3</div>
           <div class="bp-step-body">
             <h4>CRM Integration</h4>
-            <p>Every interaction is logged automatically. Replies, opens, clicks, and bookings all flow straight into your CRM — so your pipeline data is always accurate without your reps touching it.</p>
+            <p>Every interaction is logged automatically. Replies, opens, clicks, and bookings all flow straight into your CRM â€” so your pipeline data is always accurate without your reps touching it.</p>
           </div>
         </div>
         <div class="bp-step">
           <div class="bp-step-num">4</div>
           <div class="bp-step-body">
             <h4>Launch</h4>
-            <p>Your team focuses entirely on conversations and closes. We monitor the automation dashboards, handle edge cases, and refine messaging based on reply rates. Typically improves by 20–40% in the first month.</p>
+            <p>Your team focuses entirely on conversations and closes. We monitor the automation dashboards, handle edge cases, and refine messaging based on reply rates. Typically improves by 20â€“40% in the first month.</p>
           </div>
         </div>
       </div>
@@ -296,7 +297,7 @@
       <div class="cta-box reveal">
         <div class="cta-glow"></div>
         <h2>Ready to give your sales team 2.5 hours back every day?</h2>
-        <p>Book a free audit and we'll map your current sales process, identify what can be automated, and show you the exact ROI — before you commit to anything.</p>
+        <p>Book a free audit and we'll map your current sales process, identify what can be automated, and show you the exact ROI â€” before you commit to anything.</p>
         <a href="../book.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book your free audit</a>
       </div>
     </div>
@@ -336,6 +337,25 @@
     </div>
   </footer>
 
-  <script src="../main.js"></script>
+  <script src="../main.js?v=20260331m"></script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

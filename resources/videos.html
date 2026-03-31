@@ -1,18 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Watch Autoeight videos covering automation, sales workflows, systems thinking, and ways to build more efficient businesses." />
-  <title>Videos – Autoeight</title>
+  <title>Videos â€“ Autoeight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css?v=20260331m" />
 </head>
 <body>
 
+  <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
   <nav id="nav">
     <a href="../index.html" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
@@ -43,7 +44,7 @@
       </li>
     </ul>
     <a href="../book.html" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0" onclick="var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} return false;" onkeydown="if(event.key===''Enter'' || event.key==='' ''){var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} event.preventDefault();}"><span></span><span></span><span></span></label>
   </nav>
 
   <div class="page-hero">
@@ -66,7 +67,7 @@
           </div>
           <div class="video-body">
             <h3>How We Build a Full Sales Automation System in Under 2 Weeks</h3>
-            <p>A complete walkthrough of our process — from audit to live outreach system.</p>
+            <p>A complete walkthrough of our process â€” from audit to live outreach system.</p>
             <div class="video-duration"><i class="fa-regular fa-clock"></i> 18 min</div>
           </div>
         </div>
@@ -99,7 +100,7 @@
           </div>
           <div class="video-body">
             <h3>What Is a Customer Datasheet and Why Does Every AI System Need One?</h3>
-            <p>The foundation of accurate AI responses — we explain what goes in, how it works, and how to build yours.</p>
+            <p>The foundation of accurate AI responses â€” we explain what goes in, how it works, and how to build yours.</p>
             <div class="video-duration"><i class="fa-regular fa-clock"></i> 9 min</div>
           </div>
         </div>
@@ -121,7 +122,7 @@
           </div>
           <div class="video-body">
             <h3>5 Automation Workflows Every Business Should Set Up First</h3>
-            <p>Our recommended starting point for businesses new to automation — with a live build of each workflow.</p>
+            <p>Our recommended starting point for businesses new to automation â€” with a live build of each workflow.</p>
             <div class="video-duration"><i class="fa-regular fa-clock"></i> 27 min</div>
           </div>
         </div>
@@ -175,6 +176,25 @@
     </div>
   </footer>
 
-  <script src="../main.js"></script>
+  <script src="../main.js?v=20260331m"></script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

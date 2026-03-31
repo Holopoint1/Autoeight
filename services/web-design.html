@@ -1,18 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Autoeight designs and builds websites with automation, secure logins, reporting dashboards, integrations, SEO foundations, and admin backends built in." />
-  <title>Web Design &amp; Automation – Autoeight</title>
+  <title>Web Design &amp; Automation â€“ Autoeight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css?v=20260331m" />
 </head>
 <body>
 
+  <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
   <nav id="nav">
     <a href="../index.html" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
@@ -43,7 +44,7 @@
       </li>
     </ul>
     <a href="../book.html" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0" onclick="var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} return false;" onkeydown="if(event.key===''Enter'' || event.key==='' ''){var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} event.preventDefault();}"><span></span><span></span><span></span></label>
   </nav>
 
   <!-- HERO -->
@@ -290,7 +291,7 @@
               <span class="dot-amber"></span>
               <span class="dot-green"></span>
             </div>
-            <div class="dashboard-url">admin.autoeight.ai · Secure Backend Login</div>
+            <div class="dashboard-url">admin.autoeight.ai Â· Secure Backend Login</div>
           </div>
           <div class="dashboard-body">
             <div class="dash-card">
@@ -300,7 +301,7 @@
             </div>
             <div class="dash-card">
               <div class="dash-card-label">Revenue this month</div>
-              <div class="dash-card-value">£24.6k</div>
+              <div class="dash-card-value">Â£24.6k</div>
               <div class="dash-card-sub"><i class="fa-solid fa-chart-line"></i> live backend reporting</div>
             </div>
             <div class="dash-card">
@@ -369,10 +370,10 @@
     </div>
   </footer>
 
-  <script src="../main.js"></script>
+  <script src="../main.js?v=20260331m"></script>
   <script>
 
-  // ── Entropy canvas (order vs chaos) ────
+  // â”€â”€ Entropy canvas (order vs chaos) â”€â”€â”€â”€
   (function() {
     const canvas = document.getElementById('entropy-canvas');
     if (!canvas) return;
@@ -391,8 +392,8 @@
       ctx.scale(dpr, dpr);
 
       // Use square cells based on H so particle density looks the same at all widths.
-      // On a 1440×380 canvas this gives ~21px cells (19 tall × 68 wide).
-      // On a 375×380 mobile canvas this gives ~21px cells (18 tall × 18 wide).
+      // On a 1440Ã—380 canvas this gives ~21px cells (19 tall Ã— 68 wide).
+      // On a 375Ã—380 mobile canvas this gives ~21px cells (18 tall Ã— 18 wide).
       const spacing = H / 18;
       GRID_Y        = 18;
       GRID_X        = Math.round(W / spacing);
@@ -505,7 +506,7 @@
     animate();
   })();
 
-  // ── Marquee cycling text ──────────────────────────────────
+  // â”€â”€ Marquee cycling text â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   (function() {
     const el = document.getElementById('marquee-text');
     if (!el) return;
@@ -523,7 +524,7 @@
     }, 2400);
   })();
 
-  // ── Workflow builder ──────────────────────────────────────
+  // â”€â”€ Workflow builder â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   (function() {
     const canvasArea  = document.getElementById('workflow-canvas-area');
     const canvasInner = document.getElementById('workflow-canvas-inner');
@@ -651,5 +652,24 @@
   })();
 
   </script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

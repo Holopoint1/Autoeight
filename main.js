@@ -1,4 +1,4 @@
-// ── Nav scroll shadow
+// Nav scroll shadow
 const nav = document.getElementById('nav');
 if (nav) {
   window.addEventListener('scroll', () => {
@@ -6,42 +6,7 @@ if (nav) {
   });
 }
 
-// ── Mobile hamburger
-const hamburger = document.getElementById('hamburger');
-const navMenu   = document.getElementById('nav-menu');
-if (hamburger && navMenu) {
-  const closeMobileNav = () => {
-    navMenu.classList.remove('open');
-    hamburger.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('mobile-menu-open');
-  };
-
-  hamburger.addEventListener('click', () => {
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    const willOpen = !hamburger.classList.contains('active');
-
-    hamburger.classList.toggle('active', willOpen);
-    hamburger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-
-    navMenu.classList.toggle('open', willOpen);
-    document.body.classList.toggle('mobile-menu-open', isMobile && willOpen);
-  });
-
-  Array.from(navMenu.getElementsByTagName('a')).forEach(a => {
-    a.addEventListener('click', () => {
-      closeMobileNav();
-    });
-  });
-
-  window.addEventListener('resize', () => {
-    if (!window.matchMedia('(max-width: 768px)').matches) {
-      closeMobileNav();
-    }
-  });
-}
-
-// ── Scroll reveal
+// Scroll reveal
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -52,7 +17,7 @@ const revealObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ── Animated counters
+// Animated counters
 function animateCounter(el) {
   const target = parseFloat(el.dataset.target);
   const suffix = el.dataset.suffix || '';
@@ -63,7 +28,6 @@ function animateCounter(el) {
   function update(now) {
     const elapsed = now - start;
     const progress = Math.min(elapsed / duration, 1);
-    // Ease out cubic
     const eased = 1 - Math.pow(1 - progress, 3);
     const value = target * eased;
     el.textContent = prefix + (Number.isInteger(target) ? Math.round(value) : value.toFixed(1)) + suffix;
@@ -83,7 +47,7 @@ const counterObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
 
-// ── Pipeline funnel bar animations
+// Pipeline funnel bar animations
 const funnelWrap = document.querySelector('.funnel-chart-wrap');
 if (funnelWrap) {
   const funnelObserver = new IntersectionObserver(entries => {
@@ -99,24 +63,24 @@ if (funnelWrap) {
   funnelObserver.observe(funnelWrap);
 }
 
-// ── Integrations accordion (multi-open)
+// Integrations accordion (multi-open)
 document.querySelectorAll('.int-acc-trigger').forEach(btn => {
   btn.addEventListener('click', () => {
     btn.closest('.int-acc-item').classList.toggle('open');
   });
 });
 
-// ── FAQ accordion
+// FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
-    const item   = btn.closest('.faq-item');
+    const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   });
 });
 
-// ── Contact form
+// Contact form
 const submitBtn = document.getElementById('submit-btn');
 if (submitBtn) {
   submitBtn.closest('form').addEventListener('submit', e => {
@@ -127,11 +91,11 @@ if (submitBtn) {
   });
 }
 
-// ── Mouse parallax on hero orbs
+// Mouse parallax on hero orbs
 const heroOrbs = document.querySelectorAll('.hero-orb');
 if (heroOrbs.length) {
   document.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth  - 0.5) * 24;
+    const x = (e.clientX / window.innerWidth - 0.5) * 24;
     const y = (e.clientY / window.innerHeight - 0.5) * 18;
     heroOrbs.forEach((orb, i) => {
       const depth = (i + 1) * 0.4;
@@ -140,12 +104,12 @@ if (heroOrbs.length) {
   });
 }
 
-// ── Card 3D tilt on mouse move
+// Card 3D tilt on mouse move
 document.querySelectorAll('.tier-card, .case-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width  - 0.5;
-    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
     card.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
   });
   card.addEventListener('mouseleave', () => {
@@ -153,7 +117,7 @@ document.querySelectorAll('.tier-card, .case-card').forEach(card => {
   });
 });
 
-// ── Typewriter effect on hero headline spans marked .typewriter-word
+// Typewriter effect on hero headline spans marked .typewriter-word
 const typewriterEl = document.querySelector('.typewriter-cycle');
 if (typewriterEl) {
   const words = JSON.parse(typewriterEl.dataset.words || '[]');
@@ -184,4 +148,3 @@ if (typewriterEl) {
 
   if (words.length) typeStep();
 }
-

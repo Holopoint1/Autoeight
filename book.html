@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Book a free consultation with Autoeight to discuss automation, sales systems, website builds, integrations, and growth opportunities for your business." />
-  <title>Book a Free Consultation – Autoeight</title>
+  <title>Book a Free Consultation â€“ Autoeight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20260331m" />
   <style>
     .booking-layout {
       display: grid;
@@ -106,7 +106,7 @@
     .calendly-inline-widget {
       min-height: 680px !important;
     }
-    /* Fallback form — shown when Calendly URL is not yet set */
+    /* Fallback form â€” shown when Calendly URL is not yet set */
     .booking-fallback {
       padding: 48px 40px;
       text-align: center;
@@ -160,6 +160,7 @@
 </head>
 <body>
 
+  <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
   <nav id="nav">
     <a href="index.html" class="nav-logo"><img src="brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
@@ -190,7 +191,7 @@
       </li>
     </ul>
     <a href="book.html" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0" onclick="var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} return false;" onkeydown="if(event.key===''Enter'' || event.key==='' ''){var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} event.preventDefault();}"><span></span><span></span><span></span></label>
   </nav>
 
   <div class="page-hero" style="min-height:320px;">
@@ -199,7 +200,7 @@
     <div class="page-hero-content">
       <span class="section-label">Free Consultation</span>
       <h1>Book a call with<br /><em>our team</em></h1>
-      <p>Pick a time that works for you. We'll walk through your business, map your automation opportunities, and show you exactly what we'd build — no obligations.</p>
+      <p>Pick a time that works for you. We'll walk through your business, map your automation opportunities, and show you exactly what we'd build â€” no obligations.</p>
     </div>
   </div>
 
@@ -230,14 +231,14 @@
           <i class="fa-solid fa-chart-line"></i>
           <div>
             <strong>Honest ROI estimate</strong>
-            We'll give you a realistic view of what to expect — timeline, effort, and projected return.
+            We'll give you a realistic view of what to expect â€” timeline, effort, and projected return.
           </div>
         </li>
         <li>
           <i class="fa-solid fa-circle-question"></i>
           <div>
             <strong>Your questions answered</strong>
-            Bring anything — we'll talk through integrations, costs, timelines, or anything else on your mind.
+            Bring anything â€” we'll talk through integrations, costs, timelines, or anything else on your mind.
           </div>
         </li>
       </ul>
@@ -248,7 +249,7 @@
       </div>
       <div class="booking-detail-row">
         <i class="fa-solid fa-video"></i>
-        <span>Google Meet or phone — your choice</span>
+        <span>Google Meet or phone â€” your choice</span>
       </div>
       <div class="booking-detail-row">
         <i class="fa-solid fa-sterling-sign"></i>
@@ -264,12 +265,12 @@
     <div class="calendly-wrap reveal" style="transition-delay:0.15s;">
 
       <!--
-        ══════════════════════════════════════════════════════
-        CALENDLY SETUP — replace the data-url below with your
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        CALENDLY SETUP â€” replace the data-url below with your
         own Calendly link, e.g.:
           https://calendly.com/YOUR-USERNAME/free-consultation
         Then delete the fallback block beneath the widget div.
-        ══════════════════════════════════════════════════════
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
       -->
       <div
         class="calendly-inline-widget"
@@ -279,7 +280,7 @@
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
       <!--
-        FALLBACK — shown if Calendly hasn't loaded / URL not yet set.
+        FALLBACK â€” shown if Calendly hasn't loaded / URL not yet set.
         Remove this block once your Calendly URL is in place.
       -->
       <noscript>
@@ -328,6 +329,25 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="main.js?v=20260331m"></script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

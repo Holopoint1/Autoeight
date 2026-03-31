@@ -1,18 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Browse the Autoeight blog for practical advice on automation, sales systems, AI workflows, CRM tools, and business growth." />
-  <title>Blog – Autoeight</title>
+  <title>Blog â€“ Autoeight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css?v=20260331m" />
 </head>
 <body>
 
+  <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
   <nav id="nav">
     <a href="../index.html" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
@@ -43,7 +44,7 @@
       </li>
     </ul>
     <a href="../book.html" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0" onclick="var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} return false;" onkeydown="if(event.key===''Enter'' || event.key==='' ''){var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} event.preventDefault();}"><span></span><span></span><span></span></label>
   </nav>
 
   <div class="page-hero">
@@ -61,62 +62,62 @@
       <div class="blog-grid reveal">
 
         <a class="blog-card" href="blog-sales-teams-hard-way.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#1a0f2e,#2d1a4a);">🤖</div>
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#1a0f2e,#2d1a4a);">ðŸ¤–</div>
           <div class="blog-body">
             <span class="blog-tag">AI &amp; Automation</span>
             <h3>Why 90% of Sales Teams Are Still Doing It the Hard Way</h3>
-            <p>Manual prospecting, manual follow-ups, manual data entry. Here's why most teams haven't automated yet — and what it's costing them.</p>
-            <div class="blog-meta">March 2025 · 6 min read</div>
+            <p>Manual prospecting, manual follow-ups, manual data entry. Here's why most teams haven't automated yet â€” and what it's costing them.</p>
+            <div class="blog-meta">March 2025 Â· 6 min read</div>
           </div>
         </a>
 
         <a class="blog-card" href="blog-full-automation-vs-human-in-the-loop.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#0f1e2e,#1a3d5a);">📧</div>
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#0f1e2e,#1a3d5a);">ðŸ“§</div>
           <div class="blog-body">
             <span class="blog-tag">Email Automation</span>
             <h3>Full Automation vs Human-in-the-Loop: Which Email Approach Is Right for You?</h3>
             <p>We break down both approaches, who each is suited for, and what to consider before choosing.</p>
-            <div class="blog-meta">February 2025 · 5 min read</div>
+            <div class="blog-meta">February 2025 Â· 5 min read</div>
           </div>
         </a>
 
         <a class="blog-card" href="blog-measure-roi-sales-automation.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#1a1e0f,#2e3a1a);">📊</div>
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#1a1e0f,#2e3a1a);">ðŸ“Š</div>
           <div class="blog-body">
             <span class="blog-tag">ROI</span>
             <h3>How to Measure the ROI of Sales Automation (With Real Numbers)</h3>
             <p>Before and after metrics, what to track, and how to build a simple ROI model for your automation investment.</p>
-            <div class="blog-meta">January 2025 · 8 min read</div>
+            <div class="blog-meta">January 2025 Â· 8 min read</div>
           </div>
         </a>
 
         <a class="blog-card" href="blog-hubspot-vs-salesforce.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#2e0f1a,#4a1a2d);">🔌</div>
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#2e0f1a,#4a1a2d);">ðŸ”Œ</div>
           <div class="blog-body">
             <span class="blog-tag">Integrations</span>
             <h3>HubSpot vs Salesforce: Which CRM Works Best With Automated Outreach?</h3>
-            <p>A practical comparison from the integration trenches — what works, what doesn't, and how to get the most from both.</p>
-            <div class="blog-meta">January 2025 · 7 min read</div>
+            <p>A practical comparison from the integration trenches â€” what works, what doesn't, and how to get the most from both.</p>
+            <div class="blog-meta">January 2025 Â· 7 min read</div>
           </div>
         </a>
 
         <a class="blog-card" href="blog-personalisation-at-scale.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#0f2e2e,#1a4a3d);">💬</div>
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#0f2e2e,#1a4a3d);">ðŸ’¬</div>
           <div class="blog-body">
             <span class="blog-tag">Sales Automation</span>
             <h3>Personalisation at Scale: How AI Writes Cold Emails That Don't Feel Cold</h3>
-            <p>The techniques we use to make automated outreach feel genuinely human — and the data showing why it works.</p>
-            <div class="blog-meta">December 2024 · 6 min read</div>
+            <p>The techniques we use to make automated outreach feel genuinely human â€” and the data showing why it works.</p>
+            <div class="blog-meta">December 2024 Â· 6 min read</div>
           </div>
         </a>
 
         <a class="blog-card" href="blog-5-automations-every-business.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#1e1a0f,#3a2e1a);">⚡</div>
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#1e1a0f,#3a2e1a);">âš¡</div>
           <div class="blog-body">
             <span class="blog-tag">Getting Started</span>
             <h3>The 5 Automations Every Business Should Have in Place by Month 3</h3>
             <p>If you're just getting started with automation, these are the five highest-impact workflows to build first.</p>
-            <div class="blog-meta">November 2024 · 5 min read</div>
+            <div class="blog-meta">November 2024 Â· 5 min read</div>
           </div>
         </a>
 
@@ -170,6 +171,25 @@
     </div>
   </footer>
 
-  <script src="../main.js"></script>
+  <script src="../main.js?v=20260331m"></script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
