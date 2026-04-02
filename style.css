@@ -5353,7 +5353,7 @@ footer {
 
 .cs-section {
   position: relative;
-  height: 240vh;
+  height: 200vh;
 }
 
 .cs-sticky {
@@ -5377,8 +5377,8 @@ footer {
 .cs-cards-wrap {
   position: relative;
   width: 100%;
-  max-width: 780px;
-  height: 380px;
+  max-width: 900px;
+  height: 460px;
 }
 
 .cs-card {
@@ -5386,10 +5386,10 @@ footer {
   inset: 0;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
-  padding: 40px 44px;
+  padding: 48px 52px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   will-change: transform, opacity;
   transform-origin: top center;
   overflow: hidden;
@@ -5421,7 +5421,7 @@ footer {
 }
 
 .cs-card-title {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
   font-weight: 700;
   line-height: 1.35;
   color: var(--white);
@@ -5429,8 +5429,8 @@ footer {
 }
 
 .cs-card-body {
-  font-size: 0.85rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: rgba(0,0,0,0.50);
   flex: 1;
 }
@@ -5451,7 +5451,7 @@ footer {
 }
 
 .cs-stat span {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--purple-light);
   letter-spacing: -0.03em;
@@ -5469,8 +5469,9 @@ footer {
 }
 
 @media (max-width: 700px) {
-  .cs-cards-wrap { height: 460px; }
-  .cs-card { padding: 28px 24px; }
+  .cs-section { height: 220vh; }
+  .cs-cards-wrap { height: 520px; }
+  .cs-card { padding: 32px 28px; }
   .cs-card-stats { gap: 16px; flex-wrap: wrap; }
 }
 

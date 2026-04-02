@@ -440,6 +440,11 @@
     if (!section) return;
     var cards = Array.from(section.querySelectorAll('.cs-card'));
     var n = cards.length;
+    var ticking = false;
+
+    function ease(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
 
     function update() {
       var rect   = section.getBoundingClientRect();
@@ -450,28 +455,34 @@
 
       cards.forEach(function (card, i) {
         if (i === 0) {
-          var ep = Math.min(1, gp / zone);
-          card.style.transform = 'scale(' + (1 - ep * 0.06) + ')';
-          card.style.opacity   = String(1 - ep * 0.25);
+          var ep = ease(Math.min(1, gp / zone));
+          card.style.transform = 'scale(' + (1 - ep * 0.05) + ')';
+          card.style.opacity   = String(1 - ep * 0.3);
         } else {
           var start = (i - 1) * zone;
-          var ep2   = Math.min(1, Math.max(0, (gp - start) / zone));
-          var ty    = (1 - ep2) * 100;
+          var ep2   = ease(Math.min(1, Math.max(0, (gp - start) / zone)));
+          var ty    = (1 - ep2) * 80;
           var sc    = 1, op = 1;
           if (i < n - 1) {
             var xs = i * zone;
-            var xp = Math.min(1, Math.max(0, (gp - xs) / zone));
-            sc = 1 - xp * 0.06;
-            op = 1 - xp * 0.25;
+            var xp = ease(Math.min(1, Math.max(0, (gp - xs) / zone)));
+            sc = 1 - xp * 0.05;
+            op = 1 - xp * 0.3;
           }
           card.style.transform = 'translateY(' + ty + '%) scale(' + sc + ')';
           card.style.opacity   = String(op);
           card.style.zIndex    = String(i + 1);
         }
       });
+      ticking = false;
     }
 
-    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
     update();
   })();
   </script>
