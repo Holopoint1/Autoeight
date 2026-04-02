@@ -5353,7 +5353,8 @@ footer {
 
 .cs-section {
   position: relative;
-  height: 260vh;
+  /* height set dynamically by JS based on card count */
+  height: 300vh;
 }
 
 .cs-sticky {
@@ -5370,15 +5371,15 @@ footer {
 
 .cs-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   flex-shrink: 0;
 }
 
 .cs-cards-wrap {
   position: relative;
   width: 100%;
-  max-width: 900px;
-  height: 460px;
+  max-width: 860px;
+  height: clamp(400px, 55vh, 500px);
 }
 
 .cs-card {
@@ -5386,13 +5387,14 @@ footer {
   inset: 0;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
-  padding: 48px 52px;
+  padding: 36px 42px 48px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   will-change: transform, opacity;
   transform-origin: top center;
   overflow: hidden;
+  transition: none;
 }
 
 .cs-card::before {
@@ -5421,7 +5423,7 @@ footer {
 }
 
 .cs-card-title {
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   font-weight: 700;
   line-height: 1.35;
   color: var(--white);
@@ -5429,17 +5431,19 @@ footer {
 }
 
 .cs-card-body {
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-size: 0.85rem;
+  line-height: 1.65;
   color: rgba(0,0,0,0.50);
   flex: 1;
+  overflow: hidden;
 }
 
 .cs-card-stats {
   display: flex;
   gap: 28px;
-  padding-top: 6px;
+  padding-top: 8px;
   border-top: 1px solid var(--border);
+  margin-top: auto;
 }
 
 .cs-stat {
@@ -5451,7 +5455,7 @@ footer {
 }
 
 .cs-stat span {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--purple-light);
   letter-spacing: -0.03em;
@@ -5459,8 +5463,8 @@ footer {
 
 .cs-card-num {
   position: absolute;
-  bottom: 20px;
-  right: 24px;
+  bottom: 16px;
+  right: 20px;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -5468,11 +5472,31 @@ footer {
   text-transform: uppercase;
 }
 
-@media (max-width: 700px) {
-  .cs-section { height: 220vh; }
-  .cs-cards-wrap { height: 520px; }
-  .cs-card { padding: 32px 28px; }
-  .cs-card-stats { gap: 16px; flex-wrap: wrap; }
+/* Tablet */
+@media (max-width: 900px) {
+  .cs-cards-wrap { max-width: 95%; height: clamp(420px, 60vh, 520px); }
+  .cs-card { padding: 32px 32px 44px; }
+  .cs-card-title { font-size: clamp(0.95rem, 2.5vw, 1.15rem); }
+  .cs-card-body { font-size: 0.82rem; }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .cs-section { height: 350vh; }
+  .cs-cards-wrap { height: clamp(440px, 70vh, 560px); }
+  .cs-card { padding: 24px 22px 40px; gap: 10px; }
+  .cs-card-title { font-size: 0.95rem; }
+  .cs-card-body { font-size: 0.8rem; line-height: 1.55; }
+  .cs-card-stats { gap: 14px; flex-wrap: wrap; }
+  .cs-stat span { font-size: 1.2rem; }
+  .cs-header { margin-bottom: 20px; }
+}
+
+/* Small phone */
+@media (max-width: 400px) {
+  .cs-section { height: 380vh; }
+  .cs-cards-wrap { height: clamp(460px, 75vh, 580px); }
+  .cs-card { padding: 20px 18px 36px; }
 }
 
 /* â”€â”€ AUTOMATION BLUEPRINTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */

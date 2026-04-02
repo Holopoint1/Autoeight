@@ -458,36 +458,71 @@
     var n = cards.length;
     var ticking = false;
 
+    /* Set section height dynamically: each card gets ~75vh of scroll room */
+    var scrollPerCard = 75;
+    var sectionH = 100 + (n * scrollPerCard);
+    section.style.height = sectionH + 'vh';
+
     function ease(t) {
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      /* smooth ease-in-out cubic */
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
+    /* Set initial state: all cards behind first are off-screen */
+    cards.forEach(function (card, i) {
+      if (i === 0) {
+        card.style.zIndex = String(n);
+      } else {
+        card.style.transform = 'translateY(100%) scale(1)';
+        card.style.opacity = '0';
+        card.style.zIndex = String(n + i);
+      }
+    });
+
     function update() {
-      var rect   = section.getBoundingClientRect();
-      var total  = section.offsetHeight - window.innerHeight;
+      var rect = section.getBoundingClientRect();
+      var total = section.offsetHeight - window.innerHeight;
+      if (total <= 0) { ticking = false; return; }
       var scrolled = Math.max(0, Math.min(total, -rect.top));
-      var gp     = total > 0 ? scrolled / total : 0;
-      var zone   = 1 / (n - 1);
+      var progress = scrolled / total;
+
+      /* Each card transition gets an equal share of the scroll */
+      var transitions = n - 1;
+      var zone = 1 / transitions;
+      /* Add a small gap between transitions so cards don't overlap */
+      var gap = zone * 0.08;
 
       cards.forEach(function (card, i) {
         if (i === 0) {
-          var ep = ease(Math.min(1, gp / zone));
-          card.style.transform = 'scale(' + (1 - ep * 0.05) + ')';
-          card.style.opacity   = String(1 - ep * 0.3);
+          /* First card: shrinks and fades as card 2 arrives */
+          var fadeStart = 0;
+          var fadeEnd = zone - gap;
+          var ep = ease(Math.min(1, Math.max(0, (progress - fadeStart) / (fadeEnd - fadeStart))));
+          card.style.transform = 'scale(' + (1 - ep * 0.06) + ')';
+          card.style.opacity = String(1 - ep * 0.5);
+          card.style.zIndex = String(n - i);
         } else {
-          var start = (i - 1) * zone;
-          var ep2   = ease(Math.min(1, Math.max(0, (gp - start) / zone)));
-          var ty    = (1 - ep2) * 80;
-          var sc    = 1, op = 1;
+          /* When does this card slide in? */
+          var enterStart = (i - 1) * zone + gap;
+          var enterEnd = i * zone - gap;
+          var enterP = ease(Math.min(1, Math.max(0, (progress - enterStart) / (enterEnd - enterStart))));
+
+          /* Slide in from bottom */
+          var ty = (1 - enterP) * 100;
+
+          /* When does this card shrink/fade for the NEXT card? */
+          var sc = 1, op = 1;
           if (i < n - 1) {
-            var xs = i * zone;
-            var xp = ease(Math.min(1, Math.max(0, (gp - xs) / zone)));
-            sc = 1 - xp * 0.05;
-            op = 1 - xp * 0.3;
+            var exitStart = i * zone + gap;
+            var exitEnd = (i + 1) * zone - gap;
+            var exitP = ease(Math.min(1, Math.max(0, (progress - exitStart) / (exitEnd - exitStart))));
+            sc = 1 - exitP * 0.06;
+            op = 1 - exitP * 0.5;
           }
+
           card.style.transform = 'translateY(' + ty + '%) scale(' + sc + ')';
-          card.style.opacity   = String(op);
-          card.style.zIndex    = String(i + 1);
+          card.style.opacity = String(Math.max(enterP, 0) * op);
+          card.style.zIndex = String(n + i);
         }
       });
       ticking = false;
