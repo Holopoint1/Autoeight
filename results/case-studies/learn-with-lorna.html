@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="How Autoeight built Learn With Lorna a full-stack tutoring platform with student portals, parent dashboards, admin tools, and a serverless backend on Cloudflare." />
+  <title>Case Study: Learn With Lorna – Autoeight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../style.css?v=20260402" />
+</head>
+<body>
+
+  <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
+  <nav id="nav">
+    <a href="../../index.html" class="nav-logo"><img src="../../brand_assets/1.png" alt="Autoeight" /></a>
+    <ul class="nav-menu" id="nav-menu">
+      <li class="nav-item has-dropdown">
+        <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="../../services/ai-automation.html"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a></li>
+          <li><a href="../../services/email-automation.html"><i class="fa-solid fa-envelope"></i> Email Automation</a></li>
+          <li><a href="../../services/sales-automation.html"><i class="fa-solid fa-chart-line"></i> Sales Automation</a></li>
+          <li><a href="../../services/web-design.html"><i class="fa-solid fa-globe"></i> Web Design</a></li>
+        </ul>
+      </li>
+      <li class="nav-item has-dropdown active">
+        <a href="#">Results <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="../testimonials.html"><i class="fa-solid fa-star"></i> Testimonials</a></li>
+          <li><a href="../case-studies.html"><i class="fa-solid fa-file-lines"></i> Case Studies</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="../../about.html">About Us</a></li>
+      <li class="nav-item has-dropdown">
+        <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
+        <ul class="dropdown">
+          <li><a href="../../resources/blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="../../resources/videos.html"><i class="fa-solid fa-play"></i> Videos</a></li>
+          <li><a href="../../resources/blueprints.html"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
+        </ul>
+      </li>
+    </ul>
+    <a href="../../book.html" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
+    <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0" onclick="var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} return false;" onkeydown="if(event.key==='Enter' || event.key===' '){var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} event.preventDefault();}"><span></span><span></span><span></span></label>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-content">
+      <span class="section-label">Case Study</span>
+      <h1>Learn With Lorna</h1>
+      <p>A full-stack tutoring platform with student portals, parent dashboards, assignment management, and a serverless backend — built to replace an off-the-shelf LMS.</p>
+    </div>
+  </div>
+
+  <section class="page-section">
+    <div class="page-section-inner" style="max-width: 820px;">
+
+      <div class="case-card reveal" style="margin-bottom: 32px;">
+        <span class="case-tag">Web Design</span>
+        <span class="case-tag" style="margin-left: 8px;">System Integration</span>
+        <span class="case-tag" style="margin-left: 8px;">Custom Portal</span>
+        <h3 style="margin-top: 16px;">From scattered spreadsheets and manual emails to a complete learning management system with role-based dashboards for students, parents, and tutor</h3>
+        <div class="case-metrics" style="margin-top: 24px;">
+          <div class="case-metric"><div class="val">3</div><div class="lbl">Dashboard roles</div></div>
+          <div class="case-metric"><div class="val">9</div><div class="lbl">Database tables</div></div>
+          <div class="case-metric"><div class="val">100%</div><div class="lbl">Custom built</div></div>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;">The Challenge</h2>
+        <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px;">Lorna is a qualified GCSE Geography and Maths teacher and AQA Approved Examiner based in Halifax, West Yorkshire. She was running her online tutoring business through a patchwork of tools — a basic Wix website for enquiries, spreadsheets for tracking student progress, email for distributing assignments, and WhatsApp for parent updates.</p>
+        <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.75;">She needed a single platform where students could access their work, parents could monitor progress, and she could manage everything from one admin dashboard — without paying monthly fees for a bloated LMS she'd never fully use.</p>
+      </div>
+
+      <div class="reveal" style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;">What We Built</h2>
+        <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 20px;">We built a complete tutoring platform from scratch — a professional marketing site to attract new students, and a full backend system to manage the business.</p>
+
+        <div class="case-grid" style="margin-bottom: 24px;">
+          <div class="case-card">
+            <span class="case-tag">Marketing Site</span>
+            <h3>Conversion-Focused Landing Pages</h3>
+            <p>A warm, approachable website with typewriter hero animations, 3D card tilt effects, magnetic button interactions, and scroll-reveal animations. Testimonials, a portal preview section, and a dual-channel contact form that sends to both email and the database simultaneously.</p>
+          </div>
+          <div class="case-card">
+            <span class="case-tag">Student Portal</span>
+            <h3>Student Dashboard</h3>
+            <p>Students log in to view assigned work, submit responses, track their grades, and see feedback from Lorna. Assignments are filtered by status — pending, submitted, and reviewed — with downloadable file attachments.</p>
+          </div>
+          <div class="case-card">
+            <span class="case-tag">Parent Portal</span>
+            <h3>Parent Dashboard</h3>
+            <p>Parents get visibility into their children's progress — subject breakdowns, grade cards, recent activity, and assignment status. Linked accounts let parents with multiple children switch between profiles.</p>
+          </div>
+          <div class="case-card">
+            <span class="case-tag">Admin Panel</span>
+            <h3>Tutor Dashboard</h3>
+            <p>Lorna manages everything from one place — create and assign work, upload files with drag-and-drop, review submissions, grade with feedback, manage users, and handle incoming enquiries. Full CRUD on every entity.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;">Key Features</h2>
+        <ul style="font-size: 0.92rem; color: var(--muted); line-height: 2; padding-left: 20px;">
+          <li>JWT authentication with Google OAuth and email/password login</li>
+          <li>Role-based access — student, parent, and owner roles with database-level filtering</li>
+          <li>Assignment lifecycle: create, assign, submit, review, grade with feedback</li>
+          <li>Drag-and-drop file uploads with download support</li>
+          <li>Dual-channel enquiry form — email via FormSubmit + saved to D1 database</li>
+          <li>Honeypot spam protection on all public forms</li>
+          <li>Typewriter effect, 3D perspective card tilts, and magnetic button hover interactions</li>
+          <li>Geographic SEO targeting 22+ Yorkshire service areas</li>
+          <li>SEND inclusive messaging throughout the site</li>
+        </ul>
+      </div>
+
+      <div class="reveal" style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;">Tech Stack</h2>
+        <div class="case-metrics">
+          <div class="case-metric"><div class="val" style="font-size: 1rem;">Cloudflare</div><div class="lbl">Pages + Workers + D1</div></div>
+          <div class="case-metric"><div class="val" style="font-size: 1rem;">SQLite</div><div class="lbl">9-table database</div></div>
+          <div class="case-metric"><div class="val" style="font-size: 1rem;">JWT</div><div class="lbl">Auth + sessions</div></div>
+          <div class="case-metric"><div class="val" style="font-size: 1rem;">REST API</div><div class="lbl">Serverless endpoints</div></div>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;">The Result</h2>
+        <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 20px;">Lorna now runs her entire tutoring business from a single custom platform. Students access their work and submit assignments directly. Parents check in on progress without needing to ask. And Lorna manages everything — assignments, grading, enquiries, and users — from one admin dashboard. No monthly LMS fees, no scattered tools, no manual data entry.</p>
+        <div class="case-metrics">
+          <div class="case-metric"><div class="val">3</div><div class="lbl">Role-based dashboards</div></div>
+          <div class="case-metric"><div class="val">9</div><div class="lbl">Database tables</div></div>
+          <div class="case-metric"><div class="val">0</div><div class="lbl">Monthly platform fees</div></div>
+          <div class="case-metric"><div class="val">22+</div><div class="lbl">SEO service areas</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="page-cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-glow"></div>
+        <h2>Need a platform that replaces your scattered tools?</h2>
+        <p>Book a free 30-minute audit and we'll map out exactly what you need.</p>
+        <a href="../../book.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book your free audit</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../../brand_assets/1.png" alt="Autoeight" />
+          <p>We connect ideas, automate workflows, and drive growth through custom AI and sales automation systems.</p>
+          <div class="socials">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="../../services/ai-automation.html">AI &amp; Automation</a></li>
+            <li><a href="../../services/email-automation.html">Email Automation</a></li>
+            <li><a href="../../services/sales-automation.html">Sales Automation</a></li>
+            <li><a href="../../services/web-design.html">Web Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address class="footer-address">Gibbet St, Halifax,<br />West Yorkshire<br /><br /><a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a></address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Copyright 2025, Autoeight</p>
+        <div class="footer-legal"><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../main.js?v=20260402"></script>
+
+</body>
+</html>
