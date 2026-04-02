@@ -447,6 +447,12 @@
     var current = 0;
     var n = cards.length;
 
+    /* Hide all cards, show first */
+    cards.forEach(function (card, i) {
+      card.style.display = i === 0 ? 'flex' : 'none';
+      if (i === 0) card.classList.add('active');
+    });
+
     /* Build dots */
     cards.forEach(function (_, i) {
       var dot = document.createElement('button');
@@ -458,21 +464,41 @@
     var dots = Array.from(dotsWrap.querySelectorAll('.cs-dot'));
 
     function goTo(idx) {
-      current = ((idx % n) + n) % n;
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+      if (idx === current) return;
+      var next = ((idx % n) + n) % n;
+
+      /* Fade out current */
+      cards[current].classList.remove('active');
+
+      setTimeout(function () {
+        cards[current].style.display = 'none';
+        current = next;
+        cards[current].style.display = 'flex';
+        /* Trigger reflow for transition */
+        void cards[current].offsetWidth;
+        cards[current].classList.add('active');
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+      }, 350);
     }
 
     leftBtn.addEventListener('click', function () { goTo(current - 1); });
     rightBtn.addEventListener('click', function () { goTo(current + 1); });
 
-    /* Touch swipe support */
+    /* Touch swipe */
     var startX = 0, moveX = 0, dragging = false;
     track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
     track.addEventListener('touchmove', function (e) { if (dragging) moveX = e.touches[0].clientX - startX; }, { passive: true });
     track.addEventListener('touchend', function () {
-      if (Math.abs(moveX) > 50) { goTo(current + (moveX < 0 ? 1 : -1)); }
+      if (Math.abs(moveX) > 50) goTo(current + (moveX < 0 ? 1 : -1));
       moveX = 0; dragging = false;
+    });
+
+    /* Auto-advance every 8 seconds */
+    var autoTimer = setInterval(function () { goTo(current + 1); }, 8000);
+    /* Pause on hover */
+    track.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
+    track.addEventListener('mouseleave', function () {
+      autoTimer = setInterval(function () { goTo(current + 1); }, 8000);
     });
   })();
   </script>

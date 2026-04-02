@@ -5353,43 +5353,49 @@ footer {
 
 /* ── CASE STUDIES CAROUSEL ── */
 .cs-section {
-  padding: 80px 0 60px;
+  padding: 100px 0 80px;
+  overflow: hidden;
 }
 
 .cs-header {
   text-align: center;
-  margin-bottom: 40px;
-  padding: 0 5%;
+  margin-bottom: 48px;
+  padding: 0 24px;
 }
 
 .cs-carousel-wrap {
   position: relative;
-  max-width: 900px;
+  max-width: 820px;
   margin: 0 auto;
-  overflow: hidden;
-  padding: 0 5%;
+  padding: 0 60px;
 }
 
 .cs-track {
   display: flex;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
 }
 
 .cs-card {
   flex: 0 0 100%;
-  min-width: 0;
+  min-width: 100%;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
   background: var(--card);
-  padding: 40px 48px;
+  padding: 48px 52px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.2s;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.cs-card.active {
+  opacity: 1;
 }
 
 .cs-card::before {
@@ -5398,10 +5404,6 @@ footer {
   inset: 0;
   background: linear-gradient(135deg, rgba(124,92,252,0.07) 0%, transparent 60%);
   pointer-events: none;
-}
-
-.cs-card:hover {
-  border-color: rgba(124,92,252,0.5);
 }
 
 .cs-card-tag {
@@ -5416,44 +5418,46 @@ footer {
 }
 
 .cs-card-client {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--muted);
   font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .cs-card-title {
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.4;
   color: var(--white);
   letter-spacing: -0.02em;
 }
 
 .cs-card-body {
-  font-size: 0.88rem;
-  line-height: 1.7;
+  font-size: 0.92rem;
+  line-height: 1.75;
   color: rgba(0,0,0,0.50);
   flex: 1;
+  margin-top: 4px;
 }
 
 .cs-card-stats {
   display: flex;
-  gap: 28px;
-  padding-top: 12px;
+  gap: 32px;
+  padding-top: 16px;
   border-top: 1px solid var(--border);
-  margin-top: auto;
+  margin-top: 12px;
 }
 
 .cs-stat {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  font-size: 0.72rem;
+  gap: 3px;
+  font-size: 0.75rem;
   color: var(--muted);
 }
 
 .cs-stat span {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
   color: var(--purple-light);
   letter-spacing: -0.03em;
@@ -5465,15 +5469,15 @@ footer {
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 1px solid var(--border);
   background: var(--card);
   color: var(--white);
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5481,6 +5485,7 @@ footer {
 .cs-arrow:hover {
   background: var(--purple-dim, rgba(124,92,252,0.15));
   border-color: rgba(124,92,252,0.5);
+  transform: translateY(-50%) scale(1.08);
 }
 .cs-arrow-left { left: 0; }
 .cs-arrow-right { right: 0; }
@@ -5489,8 +5494,8 @@ footer {
 .cs-dots {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 36px;
 }
 .cs-dot {
   width: 10px;
@@ -5499,31 +5504,44 @@ footer {
   border: none;
   background: var(--border);
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.3s, transform 0.3s;
   padding: 0;
+}
+.cs-dot:hover {
+  background: rgba(124,92,252,0.4);
 }
 .cs-dot.active {
   background: var(--purple-light);
-  transform: scale(1.25);
+  transform: scale(1.3);
 }
 
 /* Tablet */
 @media (max-width: 900px) {
-  .cs-carousel-wrap { max-width: 95%; }
-  .cs-card { padding: 32px 36px; }
+  .cs-carousel-wrap { max-width: 90%; padding: 0 50px; }
+  .cs-card { padding: 36px 40px; }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
-  .cs-section { padding: 50px 0 40px; }
-  .cs-card { padding: 28px 24px; gap: 10px; }
-  .cs-card-title { font-size: 1rem; }
-  .cs-card-body { font-size: 0.82rem; line-height: 1.6; }
-  .cs-card-stats { gap: 16px; flex-wrap: wrap; }
-  .cs-stat span { font-size: 1.2rem; }
-  .cs-arrow { width: 36px; height: 36px; font-size: 0.75rem; }
-  .cs-dots { margin-top: 20px; }
-  .cs-header { margin-bottom: 28px; }
+  .cs-section { padding: 60px 0 50px; }
+  .cs-carousel-wrap { padding: 0 40px; }
+  .cs-card { padding: 28px 24px; gap: 12px; }
+  .cs-card-title { font-size: 1.05rem; }
+  .cs-card-body { font-size: 0.85rem; line-height: 1.65; }
+  .cs-card-stats { gap: 20px; flex-wrap: wrap; }
+  .cs-stat span { font-size: 1.3rem; }
+  .cs-arrow { width: 36px; height: 36px; font-size: 0.8rem; }
+  .cs-arrow-left { left: 2px; }
+  .cs-arrow-right { right: 2px; }
+  .cs-dots { margin-top: 24px; }
+  .cs-header { margin-bottom: 32px; }
+}
+
+/* Small phone */
+@media (max-width: 400px) {
+  .cs-carousel-wrap { padding: 0 32px; }
+  .cs-card { padding: 24px 20px; }
+  .cs-arrow { width: 30px; height: 30px; font-size: 0.7rem; }
 }
 
 /* â”€â”€ AUTOMATION BLUEPRINTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
