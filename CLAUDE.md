@@ -1,5 +1,20 @@
 # Agent Instructions
 
+## Skills
+Marketing and development skills are in `.claude/skills/`. Read `product-context.md` first — all skills reference it for tone, audience, and business context.
+
+Available skills:
+- **seo-audit** — Technical and on-page SEO audits
+- **copywriting** — Website copy, headlines, CTAs
+- **case-study-writer** — Write client case studies with KPIs
+- **email-sequence** — Design automated email flows
+- **page-cro** — Conversion rate optimisation analysis
+- **cold-email** — B2B outreach emails and sequences
+- **content-strategy** — Blog topics, editorial calendars
+- **brand-voice** — Enforce Autoeight's tone across all content
+- **schema-markup** — JSON-LD structured data implementation
+- **sales-enablement** — Pitch decks, proposals, objection handling
+
 You're working inside the **WAT framework** (Workflows, Agents, Tools). This architecture separates concerns so that probabilistic AI handles reasoning while deterministic code handles execution. That separation is what makes this system reliable.
 
 ## The WAT Architecture
