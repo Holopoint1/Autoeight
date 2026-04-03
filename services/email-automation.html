@@ -242,6 +242,143 @@
   }
   </script>
 
+  <!-- LIVE CHAT DEMO -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
+        <span class="section-label">Live chat demo</span>
+        <h2 class="section-title">AI handles it. Customer sorted in under a minute.</h2>
+        <p class="section-sub" style="margin:14px auto 0;">Watch the AI process a real customer request, take the action, and reply. No human needed.</p>
+      </div>
+
+      <div class="reveal" style="max-width:440px; margin:0 auto;">
+        <div style="background:#1a1a2e; border:1px solid rgba(124,92,252,0.2); border-radius:16px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+
+          <!-- Chat header -->
+          <div style="background:#12121f; padding:14px 18px; display:flex; align-items:center; gap:10px; border-bottom:1px solid rgba(255,255,255,0.06);">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(124,92,252,0.2);display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-robot" style="color:#c4b5fd;font-size:0.8rem;"></i></div>
+            <div style="flex:1;">
+              <div style="font-size:0.82rem; font-weight:600; color:#e0e0e0;">AI Support</div>
+              <div style="font-size:0.65rem; color:#86efac;"><i class="fa-solid fa-circle" style="font-size:0.4rem;vertical-align:middle;margin-right:4px;"></i>Online</div>
+            </div>
+            <div style="font-size:0.65rem; color:rgba(255,255,255,0.25);">Live</div>
+          </div>
+
+          <!-- Chat messages -->
+          <div id="chatArea" style="padding:18px; min-height:320px; display:flex; flex-direction:column; gap:12px;">
+
+            <!-- Customer message -->
+            <div style="align-self:flex-end; max-width:80%; background:rgba(124,92,252,0.15); border:1px solid rgba(124,92,252,0.2); border-radius:12px 12px 4px 12px; padding:12px 14px;">
+              <div style="font-size:0.82rem; color:rgba(255,255,255,0.8); line-height:1.5;">I'd like to cancel my order #12345678. I ordered the wrong size by mistake.</div>
+              <div style="font-size:0.6rem; color:rgba(255,255,255,0.25); margin-top:6px; text-align:right;">Anna, 10:31 AM</div>
+            </div>
+
+            <!-- AI thinking (shown first, then replaced) -->
+            <div id="chatThinking" style="align-self:flex-start; max-width:85%; display:none;">
+              <div style="background:rgba(124,92,252,0.08); border:1px solid rgba(124,92,252,0.12); border-radius:12px; padding:12px 14px; margin-bottom:8px;">
+                <div style="font-size:0.68rem; font-weight:700; color:#c4b5fd; margin-bottom:8px;"><i class="fa-solid fa-brain"></i> Processing...</div>
+                <div id="thinkingSteps" style="font-size:0.75rem; color:rgba(255,255,255,0.45); line-height:1.7;"></div>
+              </div>
+            </div>
+
+            <!-- Action taken -->
+            <div id="chatAction" style="align-self:center; display:none; width:100%;">
+              <div style="background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.12); border-radius:10px; padding:14px 16px; display:flex; align-items:center; gap:12px;">
+                <div style="width:36px;height:36px;border-radius:8px;background:rgba(34,197,94,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-check" style="color:#22c55e;font-size:0.85rem;"></i></div>
+                <div style="flex:1;">
+                  <div style="font-size:0.72rem; font-weight:700; color:#86efac;">Order #12345678 cancelled</div>
+                  <div style="font-size:0.7rem; color:rgba(255,255,255,0.4); margin-top:2px;">Refund of &pound;89.00 initiated &bull; 3-5 business days</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AI reply -->
+            <div id="chatReply" style="align-self:flex-start; max-width:85%; display:none;">
+              <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px 12px 12px 4px; padding:12px 14px;">
+                <div style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.6;">Hi Anna,<br/><br/>I've cancelled order #12345678 for you. Your refund of &pound;89.00 will be processed within 3-5 business days.<br/><br/>If you'd like to reorder in the correct size, just let me know and I'll sort it out for you.</div>
+                <div style="font-size:0.6rem; color:rgba(255,255,255,0.25); margin-top:8px;">AI Support, 10:32 AM &bull; Replied in 47s</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom bar -->
+          <div style="border-top:1px solid rgba(255,255,255,0.06); padding:12px 18px; display:flex; align-items:center; gap:10px;">
+            <div style="flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px 14px; font-size:0.78rem; color:rgba(255,255,255,0.25);">Type a message...</div>
+            <div style="width:34px;height:34px;border-radius:8px;background:rgba(124,92,252,0.2);display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-paper-plane" style="color:#c4b5fd;font-size:0.75rem;"></i></div>
+          </div>
+
+        </div>
+
+        <!-- Replay button -->
+        <div style="text-align:center; margin-top:16px;">
+          <button onclick="runChat()" style="background:none; border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.4); padding:8px 16px; border-radius:8px; font-size:0.75rem; cursor:pointer; font-family:inherit;">
+            <i class="fa-solid fa-rotate-left"></i> Replay demo
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  function runChat() {
+    var thinking = document.getElementById('chatThinking');
+    var steps = document.getElementById('thinkingSteps');
+    var action = document.getElementById('chatAction');
+    var reply = document.getElementById('chatReply');
+
+    // Reset
+    thinking.style.display = 'none';
+    action.style.display = 'none';
+    reply.style.display = 'none';
+    steps.innerHTML = '';
+
+    var thinkSteps = [
+      '<i class="fa-solid fa-check" style="color:#22c55e;font-size:0.6rem;"></i> Intent: order cancellation',
+      '<i class="fa-solid fa-check" style="color:#22c55e;font-size:0.6rem;"></i> Order #12345678 found in Shopify',
+      '<i class="fa-solid fa-check" style="color:#22c55e;font-size:0.6rem;"></i> Status: unfulfilled, eligible for cancel',
+      '<i class="fa-solid fa-check" style="color:#22c55e;font-size:0.6rem;"></i> Cancelling order...',
+      '<i class="fa-solid fa-check" style="color:#22c55e;font-size:0.6rem;"></i> Refund of &pound;89.00 queued'
+    ];
+
+    // Show thinking
+    setTimeout(function() { thinking.style.display = 'block'; }, 800);
+
+    // Add steps one by one
+    thinkSteps.forEach(function(step, i) {
+      setTimeout(function() {
+        steps.innerHTML += step + '<br/>';
+      }, 1200 + (i * 600));
+    });
+
+    // Show action card
+    setTimeout(function() {
+      action.style.display = 'block';
+      action.style.opacity = '0';
+      requestAnimationFrame(function() {
+        action.style.transition = 'opacity 0.4s ease';
+        action.style.opacity = '1';
+      });
+    }, 4400);
+
+    // Show reply
+    setTimeout(function() {
+      reply.style.display = 'block';
+      reply.style.opacity = '0';
+      requestAnimationFrame(function() {
+        reply.style.transition = 'opacity 0.4s ease';
+        reply.style.opacity = '1';
+      });
+    }, 5200);
+  }
+
+  // Auto-run on scroll into view
+  var chatObserver = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { runChat(); chatObserver.disconnect(); }
+  }, { threshold: 0.3 });
+  chatObserver.observe(document.getElementById('chatArea'));
+  </script>
+
   <div class="section-divider"></div>
 
   <!-- CHANNELS COVERED -->
