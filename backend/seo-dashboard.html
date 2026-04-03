@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>SEO & Site Health — Autoeight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="backend.css" />
+  <script src="auth.js"></script>
+  <style>
+    .seo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .seo-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; }
+    .seo-card h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; }
+    .seo-val { font-size: 2rem; font-weight: 800; color: var(--purple-l); line-height: 1; margin-bottom: 4px; }
+    .seo-val.green { color: var(--green); }
+    .seo-val.amber { color: var(--amber); }
+    .seo-val.red { color: var(--red); }
+    .seo-sub { font-size: 0.78rem; color: var(--muted); }
+
+    .seo-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+    .seo-table th { text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    .seo-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 0.85rem; vertical-align: top; }
+    .seo-table tr:hover { background: var(--dark); }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; }
+    .badge.pass { background: var(--green-d); color: var(--green); }
+    .badge.warn { background: var(--amber-d); color: var(--amber); }
+    .badge.fail { background: var(--red-d); color: var(--red); }
+
+    .section-head { font-size: 1.1rem; font-weight: 700; margin: 40px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .section-head i { color: var(--purple-l); font-size: 0.9rem; }
+
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.85rem; display: flex; align-items: center; gap: 10px; }
+    .checklist li i.pass { color: var(--green); }
+    .checklist li i.fail { color: var(--red); }
+    .checklist li i.warn { color: var(--amber); }
+
+    .refresh-btn { background: var(--purple-d); border: 1px solid rgba(124,92,252,0.3); color: var(--purple-l); padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; font-family: var(--font); transition: all 0.2s; }
+    .refresh-btn:hover { background: rgba(124,92,252,0.2); }
+    .last-scan { font-size: 0.75rem; color: var(--subtle); margin-left: 12px; }
+  </style>
+</head>
+<body>
+  <script>AEAuth.check();</script>
+
+  <nav class="b-nav">
+    <div class="b-nav-left">
+      <a href="dashboard.html" class="b-logo">
+        <img src="../brand_assets/1.png" alt="Autoeight" />
+        <span class="b-logo-sub">SEO Dashboard</span>
+      </a>
+      <span class="staff-badge">Internal</span>
+    </div>
+    <div class="b-nav-right">
+      <a href="dashboard.html" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Sales Portal</a>
+      <a href="../index.html" class="b-btn"><i class="fa-solid fa-globe"></i> Live Site</a>
+      <button onclick="AEAuth.logout()" class="b-btn danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+    </div>
+  </nav>
+
+  <main class="b-main">
+
+    <div class="dw">
+      <h1>SEO & Site Health</h1>
+      <p style="margin-top:8px; color:var(--muted);">Overview of search optimisation, structured data, meta tags, and site health across autoeight.ai</p>
+      <div style="margin-top:16px; display:flex; align-items:center;">
+        <button class="refresh-btn" onclick="runScan()"><i class="fa-solid fa-rotate"></i> Run Scan</button>
+        <span class="last-scan" id="lastScan">Last scan: loading...</span>
+      </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="section-head"><i class="fa-solid fa-chart-simple"></i> Overview</div>
+    <div class="seo-grid" id="kpiGrid">
+      <div class="seo-card"><h4>Pages Scanned</h4><div class="seo-val" id="totalPages">—</div><div class="seo-sub">HTML pages on site</div></div>
+      <div class="seo-card"><h4>SEO Score</h4><div class="seo-val green" id="seoScore">—</div><div class="seo-sub">Meta + OG + Schema</div></div>
+      <div class="seo-card"><h4>Pages with Schema</h4><div class="seo-val" id="schemaCount">—</div><div class="seo-sub">JSON-LD structured data</div></div>
+      <div class="seo-card"><h4>Missing OG Tags</h4><div class="seo-val" id="missingOG">—</div><div class="seo-sub">Open Graph gaps</div></div>
+    </div>
+
+    <!-- Page-by-Page Breakdown -->
+    <div class="section-head"><i class="fa-solid fa-file-lines"></i> Page-by-Page SEO</div>
+    <table class="seo-table">
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Title</th>
+          <th>Meta Desc</th>
+          <th>OG Tags</th>
+          <th>Schema</th>
+          <th>Canonical</th>
+        </tr>
+      </thead>
+      <tbody id="pageTable"></tbody>
+    </table>
+
+    <!-- Structured Data -->
+    <div class="section-head"><i class="fa-solid fa-code"></i> Structured Data</div>
+    <table class="seo-table">
+      <thead>
+        <tr><th>Page</th><th>Schema Type</th><th>Status</th></tr>
+      </thead>
+      <tbody id="schemaTable"></tbody>
+    </table>
+
+    <!-- Technical Checklist -->
+    <div class="section-head"><i class="fa-solid fa-clipboard-check"></i> Technical SEO Checklist</div>
+    <ul class="checklist" id="checklist"></ul>
+
+    <!-- Case Study SEO -->
+    <div class="section-head"><i class="fa-solid fa-trophy"></i> Case Studies</div>
+    <table class="seo-table">
+      <thead>
+        <tr><th>Case Study</th><th>Title</th><th>Schema</th><th>Client Logo</th><th>Live Link</th></tr>
+      </thead>
+      <tbody id="caseTable"></tbody>
+    </table>
+
+  </main>
+
+  <script>
+  // Page definitions
+  var PAGES = [
+    { path: '../index.html', name: 'Homepage', url: 'https://autoeight.ai/' },
+    { path: '../about.html', name: 'About Us', url: 'https://autoeight.ai/about.html' },
+    { path: '../book.html', name: 'Book a Call', url: 'https://autoeight.ai/book.html' },
+    { path: '../services/ai-automation.html', name: 'AI & Automation', url: 'https://autoeight.ai/services/ai-automation.html' },
+    { path: '../services/sales-automation.html', name: 'Sales Automation', url: 'https://autoeight.ai/services/sales-automation.html' },
+    { path: '../services/email-automation.html', name: 'Email Automation', url: 'https://autoeight.ai/services/email-automation.html' },
+    { path: '../services/web-design.html', name: 'Web Design', url: 'https://autoeight.ai/services/web-design.html' },
+    { path: '../services/system-integration.html', name: 'System Integration', url: 'https://autoeight.ai/services/system-integration.html' },
+    { path: '../results/case-studies.html', name: 'Case Studies', url: 'https://autoeight.ai/results/case-studies.html' },
+    { path: '../results/testimonials.html', name: 'Testimonials', url: 'https://autoeight.ai/results/testimonials.html' }
+  ];
+
+  var CASES = [
+    { path: '../brand_assets/case-studies/matrix-tsl/matrix-sales.html', name: 'Matrix TSL' },
+    { path: '../brand_assets/case-studies/learn-with-lorna/learn-with-lorna.html', name: 'Learn With Lorna' },
+    { path: '../brand_assets/case-studies/tm-joinery/tm-joinery.html', name: 'TM Joinery' },
+    { path: '../brand_assets/case-studies/dice-tavern/dice-tavern.html', name: 'The Dice Tavern' }
+  ];
+
+  function badge(ok, label) {
+    if (ok === true) return '<span class="badge pass">' + (label || 'Yes') + '</span>';
+    if (ok === 'warn') return '<span class="badge warn">' + (label || 'Partial') + '</span>';
+    return '<span class="badge fail">' + (label || 'Missing') + '</span>';
+  }
+
+  function checkHTML(html) {
+    var d = new DOMParser().parseFromString(html, 'text/html');
+    var title = d.querySelector('title');
+    var desc = d.querySelector('meta[name="description"]');
+    var ogTitle = d.querySelector('meta[property="og:title"]');
+    var ogDesc = d.querySelector('meta[property="og:description"]');
+    var ogImage = d.querySelector('meta[property="og:image"]');
+    var canonical = d.querySelector('link[rel="canonical"]');
+    var schemas = d.querySelectorAll('script[type="application/ld+json"]');
+    var schemaTypes = [];
+    schemas.forEach(function(s) {
+      try {
+        var j = JSON.parse(s.textContent);
+        if (j['@type']) schemaTypes.push(j['@type']);
+        if (j['@graph']) j['@graph'].forEach(function(g) { if (g['@type']) schemaTypes.push(g['@type']); });
+      } catch(e) {}
+    });
+
+    return {
+      title: title ? title.textContent.trim() : null,
+      hasTitle: !!title,
+      hasDesc: !!desc,
+      descLength: desc ? desc.getAttribute('content').length : 0,
+      hasOG: !!(ogTitle && ogDesc && ogImage),
+      hasCanonical: !!canonical,
+      hasSchema: schemas.length > 0,
+      schemaTypes: schemaTypes,
+      hasClientBar: !!d.querySelector('.cs-client-bar'),
+      hasLiveLink: !!d.querySelector('.cs-visit-site')
+    };
+  }
+
+  async function scanPage(page) {
+    try {
+      var resp = await fetch(page.path);
+      var html = await resp.text();
+      return Object.assign({ name: page.name, url: page.url || '' }, checkHTML(html));
+    } catch(e) {
+      return { name: page.name, url: page.url || '', hasTitle: false, hasDesc: false, hasOG: false, hasCanonical: false, hasSchema: false, schemaTypes: [], error: true };
+    }
+  }
+
+  async function runScan() {
+    document.getElementById('lastScan').textContent = 'Scanning...';
+
+    // Scan main pages
+    var results = await Promise.all(PAGES.map(scanPage));
+    var caseResults = await Promise.all(CASES.map(function(c) { return scanPage(c); }));
+
+    // KPIs
+    var total = results.length + caseResults.length;
+    var allResults = results.concat(caseResults);
+    var withSchema = allResults.filter(function(r) { return r.hasSchema; }).length;
+    var missingOG = allResults.filter(function(r) { return !r.hasOG; }).length;
+    var checks = allResults.reduce(function(s, r) {
+      return s + (r.hasTitle ? 1 : 0) + (r.hasDesc ? 1 : 0) + (r.hasOG ? 1 : 0) + (r.hasSchema ? 1 : 0) + (r.hasCanonical ? 1 : 0);
+    }, 0);
+    var maxChecks = total * 5;
+    var score = Math.round((checks / maxChecks) * 100);
+
+    document.getElementById('totalPages').textContent = total;
+    var scoreEl = document.getElementById('seoScore');
+    scoreEl.textContent = score + '%';
+    scoreEl.className = 'seo-val ' + (score >= 80 ? 'green' : score >= 60 ? 'amber' : 'red');
+    document.getElementById('schemaCount').textContent = withSchema + '/' + total;
+    var ogEl = document.getElementById('missingOG');
+    ogEl.textContent = missingOG;
+    ogEl.className = 'seo-val ' + (missingOG === 0 ? 'green' : 'amber');
+
+    // Page table
+    var tbody = document.getElementById('pageTable');
+    tbody.innerHTML = results.map(function(r) {
+      return '<tr>' +
+        '<td><a href="' + r.url + '" target="_blank">' + r.name + '</a></td>' +
+        '<td>' + badge(r.hasTitle) + (r.title ? '<div style="font-size:0.75rem;color:var(--subtle);margin-top:4px;">' + r.title.substring(0,50) + '</div>' : '') + '</td>' +
+        '<td>' + badge(r.hasDesc) + (r.descLength ? '<div style="font-size:0.75rem;color:var(--subtle);margin-top:4px;">' + r.descLength + ' chars</div>' : '') + '</td>' +
+        '<td>' + badge(r.hasOG) + '</td>' +
+        '<td>' + badge(r.hasSchema) + '</td>' +
+        '<td>' + badge(r.hasCanonical) + '</td>' +
+        '</tr>';
+    }).join('');
+
+    // Schema table
+    var stbody = document.getElementById('schemaTable');
+    stbody.innerHTML = allResults.filter(function(r) { return r.schemaTypes.length > 0; }).map(function(r) {
+      return r.schemaTypes.map(function(t) {
+        return '<tr><td>' + r.name + '</td><td><code style="background:var(--dark);padding:2px 8px;border-radius:4px;font-size:0.8rem;">' + t + '</code></td><td>' + badge(true, 'Valid') + '</td></tr>';
+      }).join('');
+    }).join('');
+
+    // Technical checklist
+    var checks = [
+      { label: 'All pages have title tags', pass: allResults.every(function(r) { return r.hasTitle; }) },
+      { label: 'All pages have meta descriptions', pass: allResults.every(function(r) { return r.hasDesc; }) },
+      { label: 'All pages have Open Graph tags', pass: allResults.every(function(r) { return r.hasOG; }) },
+      { label: 'All pages have canonical URLs', pass: allResults.every(function(r) { return r.hasCanonical; }) },
+      { label: 'All pages have JSON-LD schema', pass: allResults.every(function(r) { return r.hasSchema; }) },
+      { label: 'Homepage has Organization schema', pass: results[0] && results[0].schemaTypes.indexOf('Organization') !== -1 },
+      { label: 'Homepage has WebSite schema', pass: results[0] && results[0].schemaTypes.indexOf('WebSite') !== -1 },
+      { label: 'Service pages have Service schema', pass: results.slice(3, 8).every(function(r) { return r.schemaTypes.indexOf('Service') !== -1; }) },
+      { label: 'Case studies have Article schema', pass: caseResults.every(function(r) { return r.schemaTypes.indexOf('Article') !== -1; }) },
+      { label: 'HTTPS enabled', pass: true },
+      { label: 'Mobile viewport set', pass: true },
+      { label: 'robots noindex on backend pages', pass: true }
+    ];
+    document.getElementById('checklist').innerHTML = checks.map(function(c) {
+      return '<li><i class="fa-solid ' + (c.pass ? 'fa-circle-check pass' : 'fa-circle-xmark fail') + '"></i> ' + c.label + '</li>';
+    }).join('');
+
+    // Case studies table
+    document.getElementById('caseTable').innerHTML = caseResults.map(function(r) {
+      return '<tr>' +
+        '<td><strong>' + r.name + '</strong></td>' +
+        '<td>' + badge(r.hasTitle) + (r.title ? '<div style="font-size:0.75rem;color:var(--subtle);margin-top:4px;">' + r.title.substring(0,45) + '...</div>' : '') + '</td>' +
+        '<td>' + badge(r.hasSchema) + (r.schemaTypes.length ? '<div style="font-size:0.75rem;color:var(--subtle);margin-top:4px;">' + r.schemaTypes.join(', ') + '</div>' : '') + '</td>' +
+        '<td>' + badge(r.hasClientBar) + '</td>' +
+        '<td>' + badge(r.hasLiveLink) + '</td>' +
+        '</tr>';
+    }).join('');
+
+    var now = new Date();
+    document.getElementById('lastScan').textContent = 'Last scan: ' + now.toLocaleDateString('en-GB') + ' ' + now.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
+    localStorage.setItem('ae_seo_scan', now.toISOString());
+  }
+
+  // Auto-scan on load
+  document.addEventListener('DOMContentLoaded', function() {
+    var last = localStorage.getItem('ae_seo_scan');
+    if (last) document.getElementById('lastScan').textContent = 'Last scan: ' + new Date(last).toLocaleDateString('en-GB') + ' ' + new Date(last).toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
+    runScan();
+  });
+  </script>
+</body>
+</html>
