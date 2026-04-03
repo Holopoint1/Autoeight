@@ -3370,60 +3370,34 @@ footer {
   line-height: 1.65;
 }
 
-/* Step number ring pulse â€” synced to connector-progress (6s cycle) */
+/* Step number ring — circular stroke draws around the number */
 .step-number::after {
   content: '';
   position: absolute;
-  inset: -5px;
+  inset: -1px;
   border-radius: 50%;
-  border: 2px solid var(--purple-light);
-  opacity: 0;
+  border: 2.5px solid var(--purple-light);
   pointer-events: none;
+  opacity: 0;
 }
 
-/* Step 1 ring fires when line starts (~5%) */
-@keyframes step-ring-1 {
-  0%   { opacity: 0; animation-timing-function: steps(1, end); }
-  5%   { opacity: 1; }
-  22%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-/* Step 2 ring fires when line reaches 33% (~25%) */
-@keyframes step-ring-2 {
-  0%   { opacity: 0; animation-timing-function: steps(1, end); }
-  25%  { opacity: 1; }
-  45%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-/* Step 3 ring fires when line reaches 66% (~55%) */
-@keyframes step-ring-3 {
-  0%   { opacity: 0; animation-timing-function: steps(1, end); }
-  55%  { opacity: 1; }
-  72%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-/* Step 4 ring fires when line reaches end (~82%) */
-@keyframes step-ring-4 {
-  0%   { opacity: 0; animation-timing-function: steps(1, end); }
-  82%  { opacity: 1; }
-  96%  { opacity: 0; }
-  100% { opacity: 0; }
+/* The ring uses a conic-gradient mask to reveal clockwise */
+@keyframes ring-reveal {
+  0%   { opacity: 1; mask: conic-gradient(#000 0deg, transparent 0deg); -webkit-mask: conic-gradient(#000 0deg, transparent 0deg); }
+  100% { opacity: 1; mask: conic-gradient(#000 360deg, transparent 360deg); -webkit-mask: conic-gradient(#000 360deg, transparent 360deg); }
 }
 
 .steps-grid .step-card:nth-child(2) .step-number::after {
-  animation: step-ring-1 6s ease-in-out infinite;
+  animation: ring-reveal 1s ease-out 0.5s forwards;
 }
 .steps-grid .step-card:nth-child(3) .step-number::after {
-  animation: step-ring-2 6s ease-in-out infinite;
+  animation: ring-reveal 1s ease-out 2s forwards;
 }
 .steps-grid .step-card:nth-child(4) .step-number::after {
-  animation: step-ring-3 6s ease-in-out infinite;
+  animation: ring-reveal 1s ease-out 3.5s forwards;
 }
 .steps-grid .step-card:nth-child(5) .step-number::after {
-  animation: step-ring-4 6s ease-in-out infinite;
+  animation: ring-reveal 1s ease-out 5s forwards;
 }
 
 /* Highlight pill */
@@ -3712,12 +3686,10 @@ footer {
   .step-number {
     margin: 0 0 16px;
   }
-  .steps-grid .step-card:nth-child(2) .step-number::after,
-  .steps-grid .step-card:nth-child(3) .step-number::after,
-  .steps-grid .step-card:nth-child(4) .step-number::after,
-  .steps-grid .step-card:nth-child(5) .step-number::after {
-    animation-duration: 5.6s;
-  }
+  .steps-grid .step-card:nth-child(2) .step-number::after { animation-delay: 0.3s; }
+  .steps-grid .step-card:nth-child(3) .step-number::after { animation-delay: 1.2s; }
+  .steps-grid .step-card:nth-child(4) .step-number::after { animation-delay: 2.1s; }
+  .steps-grid .step-card:nth-child(5) .step-number::after { animation-delay: 3s; }
 }
 
 /* â”€â”€ RADAR EFFECT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
