@@ -4,43 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>SEO & Site Health — Autoeight</title>
+  <title>SEO &amp; Site Health - Autoeight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="backend.css" />
   <script src="auth.js"></script>
   <style>
-    .seo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px; }
-    .seo-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; }
-    .seo-card h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; }
-    .seo-val { font-size: 2rem; font-weight: 800; color: var(--purple-l); line-height: 1; margin-bottom: 4px; }
+    .seo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 36px; }
+    .seo-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 20px 22px; }
+    .seo-card h4 { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
+    .seo-val { font-size: 1.8rem; font-weight: 800; color: var(--purple-l); line-height: 1.1; margin-bottom: 3px; }
     .seo-val.green { color: var(--green); }
     .seo-val.amber { color: var(--amber); }
     .seo-val.red { color: var(--red); }
-    .seo-sub { font-size: 0.78rem; color: var(--muted); }
+    .seo-sub { font-size: 0.72rem; color: var(--subtle); }
 
-    .seo-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
-    .seo-table th { text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 10px 14px; border-bottom: 1px solid var(--border); }
-    .seo-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 0.85rem; vertical-align: top; }
+    .seo-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 0.82rem; }
+    .seo-table th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .seo-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
     .seo-table tr:hover { background: var(--dark); }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; }
+    .seo-table a { color: var(--purple-l); }
+    .td-title { font-size: 0.72rem; color: var(--subtle); margin-top: 3px; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
     .badge.pass { background: var(--green-d); color: var(--green); }
     .badge.warn { background: var(--amber-d); color: var(--amber); }
     .badge.fail { background: var(--red-d); color: var(--red); }
+    .badge i { font-size: 0.6rem; }
 
-    .section-head { font-size: 1.1rem; font-weight: 700; margin: 40px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
-    .section-head i { color: var(--purple-l); font-size: 0.9rem; }
+    .sh { font-size: 1rem; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    .sh i { color: var(--purple-l); font-size: 0.85rem; }
 
-    .checklist { list-style: none; padding: 0; }
-    .checklist li { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.85rem; display: flex; align-items: center; gap: 10px; }
-    .checklist li i.pass { color: var(--green); }
-    .checklist li i.fail { color: var(--red); }
-    .checklist li i.warn { color: var(--amber); }
+    .checklist { list-style: none; padding: 0; margin-bottom: 32px; }
+    .checklist li { padding: 9px 12px; border-bottom: 1px solid var(--border); font-size: 0.82rem; display: flex; align-items: center; gap: 8px; }
 
-    .refresh-btn { background: var(--purple-d); border: 1px solid rgba(124,92,252,0.3); color: var(--purple-l); padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; font-family: var(--font); transition: all 0.2s; }
-    .refresh-btn:hover { background: rgba(124,92,252,0.2); }
-    .last-scan { font-size: 0.75rem; color: var(--subtle); margin-left: 12px; }
+    .scan-bar { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+    .scan-btn { background: var(--purple-d); border: 1px solid rgba(124,92,252,0.3); color: var(--purple-l); padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; font-family: var(--font); transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .scan-btn:hover { background: rgba(124,92,252,0.2); }
+    .scan-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .scan-btn .spinner { display: none; animation: spin 1s linear infinite; }
+    .scan-btn.loading .spinner { display: inline-block; }
+    .scan-btn.loading .scan-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .scan-time { font-size: 0.72rem; color: var(--subtle); }
+
+    .progress-bar { width: 100%; height: 4px; background: var(--border); border-radius: 2px; margin-top: 12px; overflow: hidden; display: none; }
+    .progress-bar.active { display: block; }
+    .progress-fill { height: 100%; background: var(--purple-l); border-radius: 2px; transition: width 0.3s; width: 0%; }
+
+    .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; margin-bottom: 16px; }
+    .info-card h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
+    .info-card p { font-size: 0.82rem; color: var(--off-white); line-height: 1.6; }
+
+    .page-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .page-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; }
+    .page-item-name { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .page-item-name a { color: var(--off-white); }
+    .page-checks { display: flex; flex-wrap: wrap; gap: 6px; }
   </style>
 </head>
 <body>
@@ -55,7 +76,8 @@
       <span class="staff-badge">Internal</span>
     </div>
     <div class="b-nav-right">
-      <a href="dashboard.html" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Sales Portal</a>
+      <a href="dashboard.html" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Portal</a>
+      <a href="skills.html" class="b-btn"><i class="fa-solid fa-book"></i> Skills</a>
       <a href="../index.html" class="b-btn"><i class="fa-solid fa-globe"></i> Live Site</a>
       <button onclick="AEAuth.logout()" class="b-btn danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
     </div>
@@ -64,65 +86,60 @@
   <main class="b-main">
 
     <div class="dw">
-      <h1>SEO & Site Health</h1>
-      <p style="margin-top:8px; color:var(--muted);">Overview of search optimisation, structured data, meta tags, and site health across autoeight.ai</p>
-      <div style="margin-top:16px; display:flex; align-items:center;">
-        <button class="refresh-btn" onclick="runScan()"><i class="fa-solid fa-rotate"></i> Run Scan</button>
-        <span class="last-scan" id="lastScan">Last scan: loading...</span>
+      <h1>SEO &amp; Site Health</h1>
+      <p style="margin-top:6px; color:var(--muted); font-size:0.88rem;">This scans every page on autoeight.ai and checks the SEO basics: meta tags, Open Graph, structured data, and canonical URLs. Hit scan to check the current state.</p>
+      <div class="scan-bar">
+        <button class="scan-btn" id="scanBtn" onclick="runScan()">
+          <i class="fa-solid fa-rotate spinner"></i>
+          <span class="scan-text"><i class="fa-solid fa-play"></i> Run Scan</span>
+        </button>
+        <span class="scan-time" id="scanTime"></span>
       </div>
+      <div class="progress-bar" id="progress"><div class="progress-fill" id="progressFill"></div></div>
     </div>
 
     <!-- KPI Cards -->
-    <div class="section-head"><i class="fa-solid fa-chart-simple"></i> Overview</div>
-    <div class="seo-grid" id="kpiGrid">
-      <div class="seo-card"><h4>Pages Scanned</h4><div class="seo-val" id="totalPages">—</div><div class="seo-sub">HTML pages on site</div></div>
-      <div class="seo-card"><h4>SEO Score</h4><div class="seo-val green" id="seoScore">—</div><div class="seo-sub">Meta + OG + Schema</div></div>
-      <div class="seo-card"><h4>Pages with Schema</h4><div class="seo-val" id="schemaCount">—</div><div class="seo-sub">JSON-LD structured data</div></div>
-      <div class="seo-card"><h4>Missing OG Tags</h4><div class="seo-val" id="missingOG">—</div><div class="seo-sub">Open Graph gaps</div></div>
+    <div class="sh"><i class="fa-solid fa-gauge-high"></i> At a Glance</div>
+    <div class="seo-grid">
+      <div class="seo-card"><h4>Pages</h4><div class="seo-val" id="kTotal">-</div><div class="seo-sub">scanned</div></div>
+      <div class="seo-card"><h4>SEO Score</h4><div class="seo-val" id="kScore">-</div><div class="seo-sub">out of 100</div></div>
+      <div class="seo-card"><h4>With Schema</h4><div class="seo-val" id="kSchema">-</div><div class="seo-sub">have JSON-LD</div></div>
+      <div class="seo-card"><h4>With OG Tags</h4><div class="seo-val" id="kOG">-</div><div class="seo-sub">Open Graph set</div></div>
+      <div class="seo-card"><h4>Issues</h4><div class="seo-val" id="kIssues">-</div><div class="seo-sub">things to fix</div></div>
     </div>
 
-    <!-- Page-by-Page Breakdown -->
-    <div class="section-head"><i class="fa-solid fa-file-lines"></i> Page-by-Page SEO</div>
-    <table class="seo-table">
-      <thead>
-        <tr>
-          <th>Page</th>
-          <th>Title</th>
-          <th>Meta Desc</th>
-          <th>OG Tags</th>
-          <th>Schema</th>
-          <th>Canonical</th>
-        </tr>
-      </thead>
-      <tbody id="pageTable"></tbody>
-    </table>
+    <!-- What's good / what needs work -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:32px;" id="summaryCards">
+      <div class="info-card" id="goodCard"><h4><i class="fa-solid fa-circle-check" style="color:var(--green);"></i> What's working</h4><p id="goodText">Run a scan to check...</p></div>
+      <div class="info-card" id="fixCard"><h4><i class="fa-solid fa-triangle-exclamation" style="color:var(--amber);"></i> What needs attention</h4><p id="fixText">Run a scan to check...</p></div>
+    </div>
+
+    <!-- Page Cards -->
+    <div class="sh"><i class="fa-solid fa-file-lines"></i> Every Page</div>
+    <div class="page-list" id="pageList"></div>
 
     <!-- Structured Data -->
-    <div class="section-head"><i class="fa-solid fa-code"></i> Structured Data</div>
+    <div class="sh"><i class="fa-solid fa-code"></i> Structured Data Found</div>
     <table class="seo-table">
-      <thead>
-        <tr><th>Page</th><th>Schema Type</th><th>Status</th></tr>
-      </thead>
-      <tbody id="schemaTable"></tbody>
+      <thead><tr><th>Page</th><th>Schema Type</th><th>Status</th></tr></thead>
+      <tbody id="schemaTable"><tr><td colspan="3" style="color:var(--subtle);">Run a scan...</td></tr></tbody>
     </table>
 
-    <!-- Technical Checklist -->
-    <div class="section-head"><i class="fa-solid fa-clipboard-check"></i> Technical SEO Checklist</div>
-    <ul class="checklist" id="checklist"></ul>
+    <!-- Checklist -->
+    <div class="sh"><i class="fa-solid fa-clipboard-check"></i> Technical Checklist</div>
+    <ul class="checklist" id="checklist"><li style="color:var(--subtle);">Run a scan...</li></ul>
 
-    <!-- Case Study SEO -->
-    <div class="section-head"><i class="fa-solid fa-trophy"></i> Case Studies</div>
+    <!-- Case Studies -->
+    <div class="sh"><i class="fa-solid fa-trophy"></i> Case Studies</div>
     <table class="seo-table">
-      <thead>
-        <tr><th>Case Study</th><th>Title</th><th>Schema</th><th>Client Logo</th><th>Live Link</th></tr>
-      </thead>
-      <tbody id="caseTable"></tbody>
+      <thead><tr><th>Client</th><th>Title</th><th>Schema</th><th>Logo</th><th>Live Link</th></tr></thead>
+      <tbody id="caseTable"><tr><td colspan="5" style="color:var(--subtle);">Run a scan...</td></tr></tbody>
     </table>
 
   </main>
 
   <script>
-  // Page definitions
+  var BASE = '';
   var PAGES = [
     { path: '../index.html', name: 'Homepage', url: 'https://autoeight.ai/' },
     { path: '../about.html', name: 'About Us', url: 'https://autoeight.ai/about.html' },
@@ -135,7 +152,6 @@
     { path: '../results/case-studies.html', name: 'Case Studies', url: 'https://autoeight.ai/results/case-studies.html' },
     { path: '../results/testimonials.html', name: 'Testimonials', url: 'https://autoeight.ai/results/testimonials.html' }
   ];
-
   var CASES = [
     { path: '../brand_assets/case-studies/matrix-tsl/matrix-sales.html', name: 'Matrix TSL' },
     { path: '../brand_assets/case-studies/learn-with-lorna/learn-with-lorna.html', name: 'Learn With Lorna' },
@@ -143,143 +159,191 @@
     { path: '../brand_assets/case-studies/dice-tavern/dice-tavern.html', name: 'The Dice Tavern' }
   ];
 
-  function badge(ok, label) {
-    if (ok === true) return '<span class="badge pass">' + (label || 'Yes') + '</span>';
-    if (ok === 'warn') return '<span class="badge warn">' + (label || 'Partial') + '</span>';
-    return '<span class="badge fail">' + (label || 'Missing') + '</span>';
+  function b(ok, label) {
+    if (ok === true) return '<span class="badge pass"><i class="fa-solid fa-check"></i> ' + (label || 'Yes') + '</span>';
+    if (ok === 'warn') return '<span class="badge warn"><i class="fa-solid fa-minus"></i> ' + (label || 'Partial') + '</span>';
+    return '<span class="badge fail"><i class="fa-solid fa-xmark"></i> ' + (label || 'Missing') + '</span>';
   }
 
-  function checkHTML(html) {
+  function analyse(html) {
     var d = new DOMParser().parseFromString(html, 'text/html');
     var title = d.querySelector('title');
     var desc = d.querySelector('meta[name="description"]');
-    var ogTitle = d.querySelector('meta[property="og:title"]');
-    var ogDesc = d.querySelector('meta[property="og:description"]');
-    var ogImage = d.querySelector('meta[property="og:image"]');
-    var canonical = d.querySelector('link[rel="canonical"]');
+    var ogT = d.querySelector('meta[property="og:title"]');
+    var ogD = d.querySelector('meta[property="og:description"]');
+    var ogI = d.querySelector('meta[property="og:image"]');
+    var twC = d.querySelector('meta[name="twitter:card"]');
+    var can = d.querySelector('link[rel="canonical"]');
+    var h1 = d.querySelector('h1');
+    var imgs = d.querySelectorAll('img');
+    var imgsNoAlt = 0;
+    imgs.forEach(function(i) { if (!i.getAttribute('alt')) imgsNoAlt++; });
     var schemas = d.querySelectorAll('script[type="application/ld+json"]');
-    var schemaTypes = [];
+    var types = [];
     schemas.forEach(function(s) {
-      try {
-        var j = JSON.parse(s.textContent);
-        if (j['@type']) schemaTypes.push(j['@type']);
-        if (j['@graph']) j['@graph'].forEach(function(g) { if (g['@type']) schemaTypes.push(g['@type']); });
-      } catch(e) {}
+      try { var j = JSON.parse(s.textContent); if (j['@type']) types.push(j['@type']); if (j['@graph']) j['@graph'].forEach(function(g) { if (g['@type']) types.push(g['@type']); }); } catch(e) {}
     });
-
     return {
       title: title ? title.textContent.trim() : null,
+      titleLen: title ? title.textContent.trim().length : 0,
       hasTitle: !!title,
       hasDesc: !!desc,
-      descLength: desc ? desc.getAttribute('content').length : 0,
-      hasOG: !!(ogTitle && ogDesc && ogImage),
-      hasCanonical: !!canonical,
+      descLen: desc ? (desc.getAttribute('content') || '').length : 0,
+      hasOG: !!(ogT && ogD && ogI),
+      hasTwitter: !!twC,
+      hasCanonical: !!can,
+      hasH1: !!h1,
       hasSchema: schemas.length > 0,
-      schemaTypes: schemaTypes,
+      schemaTypes: types,
+      imgCount: imgs.length,
+      imgsNoAlt: imgsNoAlt,
       hasClientBar: !!d.querySelector('.cs-client-bar'),
       hasLiveLink: !!d.querySelector('.cs-visit-site')
     };
   }
 
-  async function scanPage(page) {
+  async function fetchPage(p) {
     try {
-      var resp = await fetch(page.path);
-      var html = await resp.text();
-      return Object.assign({ name: page.name, url: page.url || '' }, checkHTML(html));
+      var r = await fetch(p.path);
+      if (!r.ok) throw new Error(r.status);
+      return Object.assign({ name: p.name, url: p.url || '' }, analyse(await r.text()));
     } catch(e) {
-      return { name: page.name, url: page.url || '', hasTitle: false, hasDesc: false, hasOG: false, hasCanonical: false, hasSchema: false, schemaTypes: [], error: true };
+      return { name: p.name, url: p.url || '', hasTitle:false, hasDesc:false, hasOG:false, hasTwitter:false, hasCanonical:false, hasH1:false, hasSchema:false, schemaTypes:[], imgCount:0, imgsNoAlt:0, error:true };
     }
   }
 
   async function runScan() {
-    document.getElementById('lastScan').textContent = 'Scanning...';
+    var btn = document.getElementById('scanBtn');
+    var bar = document.getElementById('progress');
+    var fill = document.getElementById('progressFill');
+    btn.classList.add('loading');
+    btn.disabled = true;
+    bar.classList.add('active');
+    fill.style.width = '10%';
 
-    // Scan main pages
-    var results = await Promise.all(PAGES.map(scanPage));
-    var caseResults = await Promise.all(CASES.map(function(c) { return scanPage(c); }));
+    var all = PAGES.concat(CASES);
+    var results = [];
+    for (var i = 0; i < all.length; i++) {
+      results.push(await fetchPage(all[i]));
+      fill.style.width = Math.round(((i + 1) / all.length) * 100) + '%';
+    }
+
+    var main = results.slice(0, PAGES.length);
+    var cases = results.slice(PAGES.length);
+    var total = results.length;
+
+    // Score
+    var points = 0, max = 0;
+    results.forEach(function(r) {
+      if (r.error) return;
+      max += 6;
+      if (r.hasTitle) points++;
+      if (r.hasDesc) points++;
+      if (r.hasOG) points++;
+      if (r.hasTwitter) points++;
+      if (r.hasCanonical) points++;
+      if (r.hasSchema) points++;
+    });
+    var score = max > 0 ? Math.round((points / max) * 100) : 0;
+    var withSchema = results.filter(function(r) { return r.hasSchema; }).length;
+    var withOG = results.filter(function(r) { return r.hasOG; }).length;
+    var issues = (total * 6) - points;
 
     // KPIs
-    var total = results.length + caseResults.length;
-    var allResults = results.concat(caseResults);
-    var withSchema = allResults.filter(function(r) { return r.hasSchema; }).length;
-    var missingOG = allResults.filter(function(r) { return !r.hasOG; }).length;
-    var checks = allResults.reduce(function(s, r) {
-      return s + (r.hasTitle ? 1 : 0) + (r.hasDesc ? 1 : 0) + (r.hasOG ? 1 : 0) + (r.hasSchema ? 1 : 0) + (r.hasCanonical ? 1 : 0);
-    }, 0);
-    var maxChecks = total * 5;
-    var score = Math.round((checks / maxChecks) * 100);
+    document.getElementById('kTotal').textContent = total;
+    var sEl = document.getElementById('kScore');
+    sEl.textContent = score + '%';
+    sEl.className = 'seo-val ' + (score >= 85 ? 'green' : score >= 65 ? 'amber' : 'red');
+    document.getElementById('kSchema').textContent = withSchema + '/' + total;
+    document.getElementById('kOG').textContent = withOG + '/' + total;
+    var iEl = document.getElementById('kIssues');
+    iEl.textContent = issues;
+    iEl.className = 'seo-val ' + (issues === 0 ? 'green' : issues <= 5 ? 'amber' : 'red');
 
-    document.getElementById('totalPages').textContent = total;
-    var scoreEl = document.getElementById('seoScore');
-    scoreEl.textContent = score + '%';
-    scoreEl.className = 'seo-val ' + (score >= 80 ? 'green' : score >= 60 ? 'amber' : 'red');
-    document.getElementById('schemaCount').textContent = withSchema + '/' + total;
-    var ogEl = document.getElementById('missingOG');
-    ogEl.textContent = missingOG;
-    ogEl.className = 'seo-val ' + (missingOG === 0 ? 'green' : 'amber');
+    // Good / Fix summary
+    var good = [], fix = [];
+    if (results.every(function(r) { return r.hasTitle; })) good.push('Every page has a title tag');
+    else fix.push('Some pages are missing title tags');
+    if (results.every(function(r) { return r.hasDesc; })) good.push('Every page has a meta description');
+    else fix.push('Some pages are missing meta descriptions');
+    if (results.every(function(r) { return r.hasOG; })) good.push('Open Graph tags on all pages');
+    else fix.push(results.filter(function(r){return !r.hasOG;}).length + ' page(s) missing Open Graph tags');
+    if (results.every(function(r) { return r.hasSchema; })) good.push('JSON-LD structured data on every page');
+    else fix.push(results.filter(function(r){return !r.hasSchema;}).length + ' page(s) missing structured data');
+    if (results.every(function(r) { return r.hasCanonical; })) good.push('Canonical URLs set everywhere');
+    else fix.push(results.filter(function(r){return !r.hasCanonical;}).length + ' page(s) missing canonical URL');
+    if (cases.every(function(r) { return r.hasClientBar; })) good.push('All case studies have client logos');
+    var noAlt = results.reduce(function(s,r) { return s + r.imgsNoAlt; }, 0);
+    if (noAlt > 0) fix.push(noAlt + ' image(s) missing alt text');
+    else good.push('All images have alt text');
 
-    // Page table
-    var tbody = document.getElementById('pageTable');
-    tbody.innerHTML = results.map(function(r) {
-      return '<tr>' +
-        '<td><a href="' + r.url + '" target="_blank">' + r.name + '</a></td>' +
-        '<td>' + badge(r.hasTitle) + (r.title ? '<div style="font-size:0.75rem;color:var(--subtle);margin-top:4px;">' + r.title.substring(0,50) + '</div>' : '') + '</td>' +
-        '<td>' + badge(r.hasDesc) + (r.descLength ? '<div style="font-size:0.75rem;color:var(--subtle);margin-top:4px;">' + r.descLength + ' chars</div>' : '') + '</td>' +
-        '<td>' + badge(r.hasOG) + '</td>' +
-        '<td>' + badge(r.hasSchema) + '</td>' +
-        '<td>' + badge(r.hasCanonical) + '</td>' +
-        '</tr>';
+    document.getElementById('goodText').innerHTML = good.length ? good.map(function(g) { return '<i class="fa-solid fa-check" style="color:var(--green);font-size:0.7rem;"></i> ' + g; }).join('<br/>') : 'Nothing to report yet';
+    document.getElementById('fixText').innerHTML = fix.length ? fix.map(function(f) { return '<i class="fa-solid fa-triangle-exclamation" style="color:var(--amber);font-size:0.7rem;"></i> ' + f; }).join('<br/>') : 'All looking good!';
+
+    // Page cards
+    document.getElementById('pageList').innerHTML = results.map(function(r) {
+      return '<div class="page-item">' +
+        '<div class="page-item-name"><a href="' + (r.url || '#') + '" target="_blank">' + r.name + '</a>' + (r.error ? ' <span class="badge fail">Error</span>' : '') + '</div>' +
+        '<div class="page-checks">' +
+          b(r.hasTitle, 'Title') +
+          b(r.hasDesc, 'Description') +
+          b(r.hasOG, 'OG Tags') +
+          b(r.hasTwitter, 'Twitter') +
+          b(r.hasCanonical, 'Canonical') +
+          b(r.hasSchema, 'Schema') +
+        '</div>' +
+        (r.title ? '<div class="td-title">' + r.title + '</div>' : '') +
+      '</div>';
     }).join('');
 
     // Schema table
-    var stbody = document.getElementById('schemaTable');
-    stbody.innerHTML = allResults.filter(function(r) { return r.schemaTypes.length > 0; }).map(function(r) {
-      return r.schemaTypes.map(function(t) {
-        return '<tr><td>' + r.name + '</td><td><code style="background:var(--dark);padding:2px 8px;border-radius:4px;font-size:0.8rem;">' + t + '</code></td><td>' + badge(true, 'Valid') + '</td></tr>';
-      }).join('');
-    }).join('');
+    var schemaRows = [];
+    results.forEach(function(r) {
+      r.schemaTypes.forEach(function(t) {
+        schemaRows.push('<tr><td>' + r.name + '</td><td><code style="background:var(--dark);padding:2px 8px;border-radius:4px;font-size:0.78rem;">' + t + '</code></td><td>' + b(true, 'Found') + '</td></tr>');
+      });
+    });
+    document.getElementById('schemaTable').innerHTML = schemaRows.length ? schemaRows.join('') : '<tr><td colspan="3" style="color:var(--subtle);">No structured data found</td></tr>';
 
-    // Technical checklist
+    // Checklist
     var checks = [
-      { label: 'All pages have title tags', pass: allResults.every(function(r) { return r.hasTitle; }) },
-      { label: 'All pages have meta descriptions', pass: allResults.every(function(r) { return r.hasDesc; }) },
-      { label: 'All pages have Open Graph tags', pass: allResults.every(function(r) { return r.hasOG; }) },
-      { label: 'All pages have canonical URLs', pass: allResults.every(function(r) { return r.hasCanonical; }) },
-      { label: 'All pages have JSON-LD schema', pass: allResults.every(function(r) { return r.hasSchema; }) },
-      { label: 'Homepage has Organization schema', pass: results[0] && results[0].schemaTypes.indexOf('Organization') !== -1 },
-      { label: 'Homepage has WebSite schema', pass: results[0] && results[0].schemaTypes.indexOf('WebSite') !== -1 },
-      { label: 'Service pages have Service schema', pass: results.slice(3, 8).every(function(r) { return r.schemaTypes.indexOf('Service') !== -1; }) },
-      { label: 'Case studies have Article schema', pass: caseResults.every(function(r) { return r.schemaTypes.indexOf('Article') !== -1; }) },
-      { label: 'HTTPS enabled', pass: true },
-      { label: 'Mobile viewport set', pass: true },
-      { label: 'robots noindex on backend pages', pass: true }
+      { l: 'All pages have title tags', p: results.every(function(r){return r.hasTitle;}) },
+      { l: 'All pages have meta descriptions', p: results.every(function(r){return r.hasDesc;}) },
+      { l: 'All pages have Open Graph tags', p: results.every(function(r){return r.hasOG;}) },
+      { l: 'All pages have Twitter Card tags', p: results.every(function(r){return r.hasTwitter;}) },
+      { l: 'All pages have canonical URLs', p: results.every(function(r){return r.hasCanonical;}) },
+      { l: 'All pages have JSON-LD schema', p: results.every(function(r){return r.hasSchema;}) },
+      { l: 'All pages have an H1 tag', p: results.every(function(r){return r.hasH1;}) },
+      { l: 'Homepage has Organization schema', p: main[0] && main[0].schemaTypes.indexOf('Organization') !== -1 },
+      { l: 'Homepage has WebSite schema', p: main[0] && main[0].schemaTypes.indexOf('WebSite') !== -1 },
+      { l: 'Service pages have Service schema', p: main.slice(3,8).every(function(r){return r.schemaTypes.indexOf('Service')!==-1;}) },
+      { l: 'Case studies have Article schema', p: cases.every(function(r){return r.schemaTypes.indexOf('Article')!==-1;}) },
+      { l: 'All images have alt text', p: noAlt === 0 },
+      { l: 'HTTPS enabled', p: true },
+      { l: 'Mobile viewport set', p: true },
     ];
     document.getElementById('checklist').innerHTML = checks.map(function(c) {
-      return '<li><i class="fa-solid ' + (c.pass ? 'fa-circle-check pass' : 'fa-circle-xmark fail') + '"></i> ' + c.label + '</li>';
+      return '<li><i class="fa-solid ' + (c.p ? 'fa-circle-check' : 'fa-circle-xmark') + '" style="color:' + (c.p ? 'var(--green)' : 'var(--red)') + ';"></i> ' + c.l + '</li>';
     }).join('');
 
-    // Case studies table
-    document.getElementById('caseTable').innerHTML = caseResults.map(function(r) {
-      return '<tr>' +
-        '<td><strong>' + r.name + '</strong></td>' +
-        '<td>' + badge(r.hasTitle) + (r.title ? '<div style="font-size:0.75rem;color:var(--subtle);margin-top:4px;">' + r.title.substring(0,45) + '...</div>' : '') + '</td>' +
-        '<td>' + badge(r.hasSchema) + (r.schemaTypes.length ? '<div style="font-size:0.75rem;color:var(--subtle);margin-top:4px;">' + r.schemaTypes.join(', ') + '</div>' : '') + '</td>' +
-        '<td>' + badge(r.hasClientBar) + '</td>' +
-        '<td>' + badge(r.hasLiveLink) + '</td>' +
-        '</tr>';
+    // Case studies
+    document.getElementById('caseTable').innerHTML = cases.map(function(r) {
+      return '<tr><td><strong>' + r.name + '</strong></td>' +
+        '<td>' + b(r.hasTitle) + (r.title ? '<div class="td-title">' + r.title + '</div>' : '') + '</td>' +
+        '<td>' + b(r.hasSchema) + (r.schemaTypes.length ? '<div style="font-size:0.7rem;color:var(--subtle);margin-top:2px;">' + r.schemaTypes.join(', ') + '</div>' : '') + '</td>' +
+        '<td>' + b(r.hasClientBar) + '</td>' +
+        '<td>' + b(r.hasLiveLink) + '</td></tr>';
     }).join('');
 
+    // Done
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    setTimeout(function() { bar.classList.remove('active'); }, 600);
     var now = new Date();
-    document.getElementById('lastScan').textContent = 'Last scan: ' + now.toLocaleDateString('en-GB') + ' ' + now.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
-    localStorage.setItem('ae_seo_scan', now.toISOString());
+    document.getElementById('scanTime').textContent = 'Scanned ' + now.toLocaleDateString('en-GB') + ' at ' + now.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'});
   }
 
-  // Auto-scan on load
-  document.addEventListener('DOMContentLoaded', function() {
-    var last = localStorage.getItem('ae_seo_scan');
-    if (last) document.getElementById('lastScan').textContent = 'Last scan: ' + new Date(last).toLocaleDateString('en-GB') + ' ' + new Date(last).toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
-    runScan();
-  });
+  document.addEventListener('DOMContentLoaded', runScan);
   </script>
 </body>
 </html>
