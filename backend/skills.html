@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>AI Skills Reference - Autoeight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="backend.css" />
+  <script src="auth.js"></script>
+  <style>
+    .skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; cursor: pointer; transition: border-color 0.2s; }
+    .skill-card:hover { border-color: rgba(124,92,252,0.5); }
+    .skill-card.open { border-color: var(--purple-l); }
+    .skill-head { display: flex; align-items: center; gap: 12px; }
+    .skill-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .skill-icon.purple { background: var(--purple-d); color: var(--purple-l); }
+    .skill-icon.green { background: var(--green-d); color: var(--green); }
+    .skill-icon.amber { background: var(--amber-d); color: var(--amber); }
+    .skill-name { font-size: 0.95rem; font-weight: 700; }
+    .skill-cat { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-top: 2px; }
+    .skill-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-top: 12px; }
+    .skill-detail { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .skill-card.open .skill-detail { display: block; }
+    .skill-detail h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--purple-l); margin: 16px 0 8px; }
+    .skill-detail h4:first-child { margin-top: 0; }
+    .skill-detail ul { padding-left: 18px; font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+    .skill-detail p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .skill-trigger { display: inline-block; background: var(--dark); border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-family: monospace; color: var(--off-white); margin: 2px; }
+    .toggle-arrow { margin-left: auto; color: var(--subtle); font-size: 0.75rem; transition: transform 0.2s; }
+    .skill-card.open .toggle-arrow { transform: rotate(180deg); }
+
+    .section-head { font-size: 1.1rem; font-weight: 700; margin: 40px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .section-head i { color: var(--purple-l); font-size: 0.9rem; }
+
+    .voice-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; margin-bottom: 40px; }
+    .voice-box h3 { font-size: 0.95rem; margin-bottom: 12px; }
+    .voice-do { color: var(--green); }
+    .voice-dont { color: var(--red); }
+    .example-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+    .example-bad, .example-good { padding: 14px; border-radius: 8px; font-size: 0.82rem; line-height: 1.6; }
+    .example-bad { background: var(--red-d); border: 1px solid rgba(239,68,68,0.2); }
+    .example-good { background: var(--green-d); border: 1px solid rgba(34,197,94,0.2); }
+    .example-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <script>AEAuth.check();</script>
+
+  <nav class="b-nav">
+    <div class="b-nav-left">
+      <a href="dashboard.html" class="b-logo">
+        <img src="../brand_assets/1.png" alt="Autoeight" />
+        <span class="b-logo-sub">AI Skills</span>
+      </a>
+      <span class="staff-badge">Internal</span>
+    </div>
+    <div class="b-nav-right">
+      <a href="dashboard.html" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Portal</a>
+      <a href="seo-dashboard.html" class="b-btn"><i class="fa-solid fa-chart-simple"></i> SEO</a>
+      <button onclick="AEAuth.logout()" class="b-btn danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+    </div>
+  </nav>
+
+  <main class="b-main">
+
+    <div class="dw">
+      <h1>AI Skills Reference</h1>
+      <p style="margin-top:8px; color:var(--muted);">These are the Claude Code skills set up for the Autoeight project. Each one is a set of instructions that tells the AI exactly how to handle a specific type of task. Click any skill to see what it does and when to use it.</p>
+    </div>
+
+    <!-- Brand Voice -->
+    <div class="section-head"><i class="fa-solid fa-volume-high"></i> Brand Voice</div>
+    <div class="voice-box">
+      <h3>How Autoeight sounds</h3>
+      <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:16px;">Direct. Conversational. Confident but not arrogant. Like someone who's good at what they do and doesn't need to dress it up. We use contractions, mix short and long sentences, and avoid corporate jargon.</p>
+
+      <p style="font-size:0.82rem; margin-bottom:8px;"><strong>Banned words:</strong></p>
+      <p style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+        <span class="skill-trigger">comprehensive</span>
+        <span class="skill-trigger">streamlined</span>
+        <span class="skill-trigger">robust</span>
+        <span class="skill-trigger">holistic</span>
+        <span class="skill-trigger">empower</span>
+        <span class="skill-trigger">bespoke</span>
+        <span class="skill-trigger">cutting-edge</span>
+        <span class="skill-trigger">seamlessly</span>
+        <span class="skill-trigger">leverage</span>
+        <span class="skill-trigger">utilize</span>
+        <span class="skill-trigger">facilitate</span>
+        <span class="skill-trigger">innovative</span>
+        <span class="skill-trigger">synergy</span>
+      </p>
+
+      <div class="example-row">
+        <div class="example-bad">
+          <div class="example-label voice-dont">Don't write like this</div>
+          "We leverage cutting-edge AI technology to deliver comprehensive, end-to-end automation solutions that empower businesses to streamline their operations."
+        </div>
+        <div class="example-good">
+          <div class="example-label voice-do">Write like this</div>
+          "We build AI systems that save your team hours every day. No fluff, just tools that actually work."
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="section-head"><i class="fa-solid fa-wand-magic-sparkles"></i> Marketing &amp; Content Skills</div>
+    <div class="skill-grid">
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon purple"><i class="fa-solid fa-pen-nib"></i></div>
+          <div><div class="skill-name">Copywriting</div><div class="skill-cat">Content</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Write or rewrite website copy. Headlines, CTAs, service pages, landing pages.</div>
+        <div class="skill-detail">
+          <h4>When to use</h4>
+          <p>Whenever you need to write new page copy, rewrite something that sounds off, or create a headline or CTA.</p>
+          <h4>Trigger phrases</h4>
+          <p><span class="skill-trigger">rewrite this copy</span> <span class="skill-trigger">make this sound better</span> <span class="skill-trigger">write a landing page</span> <span class="skill-trigger">homepage copy</span> <span class="skill-trigger">headline</span> <span class="skill-trigger">CTA</span></p>
+          <h4>Key rules</h4>
+          <ul>
+            <li>Lead with the benefit, not the feature</li>
+            <li>One idea per paragraph, 2-3 sentences max</li>
+            <li>Use specific numbers over vague claims</li>
+            <li>One clear CTA per section</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon purple"><i class="fa-solid fa-envelope"></i></div>
+          <div><div class="skill-name">Cold Email</div><div class="skill-cat">Sales</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Write B2B outreach emails that sound human and get replies.</div>
+        <div class="skill-detail">
+          <h4>When to use</h4>
+          <p>When you need to write cold outreach to prospects, follow-up sequences, or sales emails.</p>
+          <h4>Key rules</h4>
+          <ul>
+            <li>Under 100 words per email</li>
+            <li>Reference something specific about the prospect</li>
+            <li>Never start with "I hope this finds you well"</li>
+            <li>One question CTA, low commitment</li>
+            <li>4-email sequence: intro, proof point, shorter follow-up, break-up</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon purple"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <div><div class="skill-name">Email Sequences</div><div class="skill-cat">Automation</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Design automated email flows. Welcome series, post-purchase, nurture, re-engagement.</div>
+        <div class="skill-detail">
+          <h4>Sequence types</h4>
+          <ul>
+            <li><strong>Welcome:</strong> 4 emails over 8 days. Thanks, quick win, social proof, soft CTA.</li>
+            <li><strong>Post-purchase:</strong> Confirmation, dispatch, check-in (day 5), review request (day 14).</li>
+            <li><strong>Cold outreach:</strong> Personalised intro, proof (day 3), different angle (day 7), break-up (day 14).</li>
+            <li><strong>Re-engagement:</strong> "Been a while" offer, social proof (day 4), final chance with deadline (day 10).</li>
+          </ul>
+          <h4>Key rules</h4>
+          <ul>
+            <li>Subject lines under 50 chars, no clickbait</li>
+            <li>First line must be useful, not "I hope this finds you well"</li>
+            <li>One CTA per email maximum</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon purple"><i class="fa-solid fa-newspaper"></i></div>
+          <div><div class="skill-name">Content Strategy</div><div class="skill-cat">Marketing</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Plan blog content, topic clusters, and editorial calendars.</div>
+        <div class="skill-detail">
+          <h4>Topic clusters</h4>
+          <ul>
+            <li>AI &amp; Automation</li>
+            <li>Sales Automation</li>
+            <li>Email Automation</li>
+            <li>Web Design &amp; Portals</li>
+            <li>System Integration</li>
+          </ul>
+          <h4>Content types</h4>
+          <ul>
+            <li>How-to guides, comparison posts, case study breakdowns, myth-busting, listicles</li>
+            <li>Each post targets one primary keyword</li>
+            <li>Internal link to relevant service page + case study</li>
+            <li>CTA in every post</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon purple"><i class="fa-solid fa-trophy"></i></div>
+          <div><div class="skill-name">Case Study Writer</div><div class="skill-cat">Content</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Write client case studies with the right structure, KPIs, and tone.</div>
+        <div class="skill-detail">
+          <h4>Structure</h4>
+          <ul>
+            <li>Summary card with 3 key metrics</li>
+            <li>The Problem (who they are, what was broken)</li>
+            <li>What We Did (4 feature cards, outcome-focused)</li>
+            <li>The Result (story of the change + 4 metrics)</li>
+          </ul>
+          <h4>Key rules</h4>
+          <ul>
+            <li>No personal names in the body. Use "the team", "the business".</li>
+            <li>Focus on KPIs: time saved, cost reduced, leads generated</li>
+            <li>No tech stack or feature list sections</li>
+            <li>Each case study gets its own folder in brand_assets/case-studies/</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon purple"><i class="fa-solid fa-handshake"></i></div>
+          <div><div class="skill-name">Sales Enablement</div><div class="skill-cat">Sales</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Create pitch decks, one-pagers, proposals, and objection handling docs.</div>
+        <div class="skill-detail">
+          <h4>Materials</h4>
+          <ul>
+            <li><strong>One-pager:</strong> Who we are, the problem, what we do, proof, CTA. One page max.</li>
+            <li><strong>Proposal:</strong> Their problem, our approach, timeline, investment, next steps.</li>
+            <li><strong>Objection handling:</strong> Too expensive, can do in-house, tried before, too small.</li>
+          </ul>
+          <h4>Key rules</h4>
+          <ul>
+            <li>Always lead with their pain, not our capabilities</li>
+            <li>Use case study numbers as proof</li>
+            <li>Write for the decision-maker, not the technical person</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SEO & Technical Skills -->
+    <div class="section-head"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO &amp; Technical Skills</div>
+    <div class="skill-grid">
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon green"><i class="fa-solid fa-stethoscope"></i></div>
+          <div><div class="skill-name">SEO Audit</div><div class="skill-cat">SEO</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Run technical and on-page SEO audits. Check meta tags, schema, OG tags, headings, and more.</div>
+        <div class="skill-detail">
+          <h4>What it checks</h4>
+          <ul>
+            <li>Title tag, meta description, H1, heading hierarchy</li>
+            <li>Canonical URL, mobile viewport, HTTPS</li>
+            <li>JSON-LD structured data</li>
+            <li>Open Graph and Twitter Card tags</li>
+            <li>Image alt text, internal linking, URL structure</li>
+            <li>Local SEO: NAP, geo-coordinates, service areas</li>
+          </ul>
+          <h4>Output</h4>
+          <p>Score out of 10, critical issues, quick wins, nice-to-haves, and what's already working.</p>
+        </div>
+      </div>
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon green"><i class="fa-solid fa-code"></i></div>
+          <div><div class="skill-name">Schema Markup</div><div class="skill-cat">SEO</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Add JSON-LD structured data so Google understands each page and can show rich results.</div>
+        <div class="skill-detail">
+          <h4>Schema types by page</h4>
+          <ul>
+            <li><strong>Homepage:</strong> Organization + WebSite</li>
+            <li><strong>Service pages:</strong> Service schema</li>
+            <li><strong>Blog posts:</strong> Article + BreadcrumbList</li>
+            <li><strong>Case studies:</strong> Article schema</li>
+            <li><strong>About:</strong> Organization schema</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon amber"><i class="fa-solid fa-bullseye"></i></div>
+          <div><div class="skill-name">Page CRO</div><div class="skill-cat">Conversion</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Analyse any page for conversion rate optimisation. Find what's stopping visitors from taking action.</div>
+        <div class="skill-detail">
+          <h4>What it checks</h4>
+          <ul>
+            <li>Above the fold: Is the value clear in 5 seconds?</li>
+            <li>Trust &amp; social proof near CTAs</li>
+            <li>CTA clarity: specific text, visible, not competing with others</li>
+            <li>Friction points: too many form fields, slow load, dead-end sections</li>
+            <li>Content flow: Problem &rarr; Solution &rarr; Proof &rarr; CTA</li>
+          </ul>
+          <h4>Output</h4>
+          <p>Score out of 10, top 3 changes, section-by-section walkthrough, quick wins.</p>
+        </div>
+      </div>
+
+      <div class="skill-card" onclick="this.classList.toggle('open')">
+        <div class="skill-head">
+          <div class="skill-icon amber"><i class="fa-solid fa-volume-high"></i></div>
+          <div><div class="skill-name">Brand Voice</div><div class="skill-cat">Quality</div></div>
+          <i class="fa-solid fa-chevron-down toggle-arrow"></i>
+        </div>
+        <div class="skill-desc">Check any content against Autoeight's voice. Flags AI-sounding copy and rewrites it to sound human.</div>
+        <div class="skill-detail">
+          <h4>Rules</h4>
+          <ul>
+            <li>Use contractions (we're, don't, it's)</li>
+            <li>Mix short and long sentences</li>
+            <li>Lead with outcomes not features</li>
+            <li>No em dashes everywhere</li>
+            <li>No perfect parallel structures</li>
+            <li>No banned words (see list above)</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
