@@ -104,16 +104,15 @@
 
   <div class="hero-section-split"></div>
 
-  <!-- INTERACTIVE EMAIL DEMO -->
+  <!-- EMAIL DEMO — single view, no tabs -->
   <section class="page-section" style="padding-bottom:0;">
     <div class="page-section-inner">
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
         <span class="section-label">See it in action</span>
-        <h2 class="section-title">Customer email comes in. AI reply goes out.</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Flick between the two tabs to see what the customer sent and what the AI drafted back using your company data.</p>
+        <h2 class="section-title">Customer emails in. AI writes the reply.</h2>
+        <p class="section-sub" style="margin:14px auto 0;">A real enquiry comes in. The AI reads it, checks your company data, and drafts a reply. Your team can send it as-is or tweak it first.</p>
       </div>
 
-      <!-- Email client mockup -->
       <div class="reveal" style="max-width:800px; margin:0 auto;">
         <div style="background:#1a1a2e; border:1px solid rgba(124,92,252,0.2); border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
 
@@ -122,125 +121,78 @@
             <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;"></span>
             <span style="width:12px;height:12px;border-radius:50%;background:#ffbd2e;"></span>
             <span style="width:12px;height:12px;border-radius:50%;background:#28c840;"></span>
-            <span style="flex:1;text-align:center;font-size:0.72rem;color:rgba(255,255,255,0.35);">Outlook &mdash; Inbox</span>
+            <span style="flex:1;text-align:center;font-size:0.72rem;color:rgba(255,255,255,0.35);">Outlook — Inbox</span>
           </div>
 
-          <!-- Tabs -->
-          <div style="display:flex; border-bottom:1px solid rgba(255,255,255,0.06);">
-            <button id="tabIncoming" onclick="showTab('incoming')" style="flex:1; padding:12px; background:rgba(124,92,252,0.1); border:none; border-bottom:2px solid #7c5cfc; color:#c4b5fd; font-size:0.8rem; font-weight:700; font-family:inherit; cursor:pointer; transition:all 0.2s;">
-              <i class="fa-solid fa-envelope"></i> Incoming Email
-            </button>
-            <button id="tabReply" onclick="showTab('reply')" style="flex:1; padding:12px; background:transparent; border:none; border-bottom:2px solid transparent; color:rgba(255,255,255,0.35); font-size:0.8rem; font-weight:700; font-family:inherit; cursor:pointer; transition:all 0.2s;">
-              <i class="fa-solid fa-robot"></i> AI Draft Reply
-            </button>
-          </div>
+          <div style="padding:24px 28px;">
 
-          <!-- Content area -->
-          <div style="display:grid; grid-template-columns:200px 1fr; min-height:400px;">
+            <!-- Subject line -->
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
+              <div style="font-size:1rem; font-weight:700; color:#e0e0e0;">Pricing for 20-person team?</div>
+              <div style="font-size:0.65rem; color:rgba(255,255,255,0.2);">10:42 AM</div>
+            </div>
 
-            <!-- Sidebar -->
-            <div style="background:#12121f; border-right:1px solid rgba(255,255,255,0.06); padding:14px 0;">
-              <div style="padding:0 12px 10px; font-size:0.65rem; font-weight:700; color:rgba(255,255,255,0.25); text-transform:uppercase; letter-spacing:0.08em;">Inbox</div>
-              <div style="background:rgba(124,92,252,0.12); border-left:3px solid #7c5cfc; padding:10px 12px;">
-                <div style="font-size:0.72rem; font-weight:600; color:#e0e0e0; margin-bottom:2px;">Sarah Mitchell</div>
-                <div style="font-size:0.65rem; color:rgba(255,255,255,0.45);">Pricing for 20-person team?</div>
+            <!-- Customer email -->
+            <div style="border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:18px; margin-bottom:16px;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                <div style="width:32px;height:32px;border-radius:50%;background:rgba(124,92,252,0.15);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#c4b5fd;">SM</div>
+                <div>
+                  <div style="font-size:0.8rem; font-weight:600; color:#e0e0e0;">Sarah Mitchell</div>
+                  <div style="font-size:0.65rem; color:rgba(255,255,255,0.35);">sarah@brightpath.co.uk</div>
+                </div>
               </div>
-              <div style="padding:9px 12px; border-bottom:1px solid rgba(255,255,255,0.04);">
-                <div style="font-size:0.68rem; color:rgba(255,255,255,0.35);">James Wright</div>
-                <div style="font-size:0.62rem; color:rgba(255,255,255,0.18);">Re: Onboarding call</div>
-              </div>
-              <div style="padding:9px 12px; border-bottom:1px solid rgba(255,255,255,0.04);">
-                <div style="font-size:0.68rem; color:rgba(255,255,255,0.35);">Lucy Chen</div>
-                <div style="font-size:0.62rem; color:rgba(255,255,255,0.18);">Invoice query</div>
-              </div>
-              <div style="padding:9px 12px;">
-                <div style="font-size:0.68rem; color:rgba(255,255,255,0.35);">Tom Bradley</div>
-                <div style="font-size:0.62rem; color:rgba(255,255,255,0.18);">Demo request</div>
+              <div style="font-size:0.82rem; color:rgba(255,255,255,0.55); line-height:1.7;">
+                Hi there,<br/><br/>
+                We're a marketing agency with about 20 staff and we're looking at automating some of our client reporting and email follow-ups. Could you give us a rough idea of pricing and what's included?<br/><br/>
+                We currently use HubSpot and Mailchimp if that helps.<br/><br/>
+                Thanks,<br/>Sarah
               </div>
             </div>
 
-            <!-- Main panel -->
-            <div style="padding:22px 26px; position:relative; overflow:hidden;">
-
-              <!-- Incoming email -->
-              <div id="panelIncoming" style="transition:opacity 0.3s ease, transform 0.3s ease;">
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
-                  <div>
-                    <div style="font-size:0.92rem; font-weight:700; color:#e0e0e0;">Pricing for 20-person team?</div>
-                    <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:3px;">Sarah Mitchell &lt;sarah@brightpath.co.uk&gt;</div>
-                  </div>
-                  <div style="font-size:0.65rem; color:rgba(255,255,255,0.2);">10:42 AM</div>
-                </div>
-                <div style="font-size:0.82rem; color:rgba(255,255,255,0.6); line-height:1.75; padding:14px 0; border-top:1px solid rgba(255,255,255,0.06);">
-                  Hi there,<br/><br/>
-                  We're a marketing agency with about 20 staff and we're looking at automating some of our client reporting and email follow-ups. Could you give us a rough idea of pricing and what's included?<br/><br/>
-                  We currently use HubSpot and Mailchimp if that helps.<br/><br/>
-                  Thanks,<br/>
-                  Sarah
-                </div>
+            <!-- Divider with AI badge -->
+            <div style="display:flex; align-items:center; gap:10px; margin:20px 0;">
+              <div style="flex:1; height:1px; background:rgba(255,255,255,0.06);"></div>
+              <div style="display:flex; align-items:center; gap:6px; background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.15); border-radius:20px; padding:5px 14px;">
+                <i class="fa-solid fa-robot" style="color:#86efac; font-size:0.65rem;"></i>
+                <span style="font-size:0.68rem; font-weight:700; color:#86efac;">AI draft ready — 2.1s</span>
+                <span style="font-size:0.65rem; color:rgba(255,255,255,0.3); margin-left:4px;">94% confidence</span>
               </div>
-
-              <!-- AI reply -->
-              <div id="panelReply" style="display:none; transition:opacity 0.3s ease, transform 0.3s ease;">
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
-                  <div style="font-size:0.72rem; font-weight:700; color:#86efac; text-transform:uppercase; letter-spacing:0.06em;">
-                    <i class="fa-solid fa-check-circle"></i> AI draft ready &mdash; 2.1s
-                  </div>
-                  <div style="display:flex; align-items:center; gap:8px;">
-                    <div style="font-size:0.68rem; color:rgba(255,255,255,0.3);">Confidence</div>
-                    <div style="width:60px; height:5px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden;"><div style="width:94%; height:100%; background:#22c55e; border-radius:3px;"></div></div>
-                    <span style="font-size:0.7rem; font-weight:700; color:#86efac;">94%</span>
-                  </div>
-                </div>
-                <div style="font-size:0.68rem; color:rgba(255,255,255,0.25); margin-bottom:14px;">Matched: pricing data, HubSpot integration, Mailchimp integration, team size recommendation</div>
-                <div style="background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.1); border-radius:8px; padding:18px;">
-                  <div style="font-size:0.7rem; color:rgba(255,255,255,0.3); margin-bottom:3px;">To: sarah@brightpath.co.uk</div>
-                  <div style="font-size:0.7rem; color:rgba(255,255,255,0.3); margin-bottom:12px;">Subject: Re: Pricing for 20-person team?</div>
-                  <div style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.75;">
-                    Hi Sarah,<br/><br/>
-                    Thanks for getting in touch. For a team of 20 with HubSpot and Mailchimp already in the stack, we'd typically look at two things:<br/><br/>
-                    <strong style="color:#e0e0e0;">Client reporting automation</strong> &mdash; we pull data from HubSpot and build reports that go out to your clients automatically. No more Friday afternoons spent compiling them. Starts at around &pound;2,500.<br/><br/>
-                    <strong style="color:#e0e0e0;">Email follow-up sequences</strong> &mdash; automated sequences in Mailchimp triggered by client activity or deal stage. Keeps leads warm without your team having to remember who to chase. Starts at around &pound;1,500.<br/><br/>
-                    Happy to jump on a quick call this week. Would Thursday or Friday work?<br/><br/>
-                    Best,<br/>
-                    The Autoeight Team
-                  </div>
-                </div>
-                <div style="display:flex; gap:8px; margin-top:14px;">
-                  <div style="background:#22c55e; color:#fff; padding:8px 16px; border-radius:6px; font-size:0.75rem; font-weight:600; display:inline-flex; align-items:center; gap:5px;">
-                    <i class="fa-solid fa-paper-plane"></i> Send
-                  </div>
-                  <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.45); padding:8px 16px; border-radius:6px; font-size:0.75rem; font-weight:600; display:inline-flex; align-items:center; gap:5px;">
-                    <i class="fa-solid fa-pen"></i> Edit first
-                  </div>
-                </div>
-              </div>
-
+              <div style="flex:1; height:1px; background:rgba(255,255,255,0.06);"></div>
             </div>
+
+            <!-- AI reply -->
+            <div style="border:1px solid rgba(34,197,94,0.12); border-radius:10px; padding:18px; background:rgba(34,197,94,0.03);">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                <div style="width:32px;height:32px;border-radius:50%;background:rgba(34,197,94,0.12);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#86efac;"><i class="fa-solid fa-robot"></i></div>
+                <div>
+                  <div style="font-size:0.8rem; font-weight:600; color:#e0e0e0;">AI Draft Reply</div>
+                  <div style="font-size:0.65rem; color:rgba(255,255,255,0.3);">Matched: pricing, HubSpot, Mailchimp, team size</div>
+                </div>
+              </div>
+              <div style="font-size:0.82rem; color:rgba(255,255,255,0.65); line-height:1.75;">
+                Hi Sarah,<br/><br/>
+                Thanks for getting in touch. For a team of 20 with HubSpot and Mailchimp already in the stack, we'd typically look at two things:<br/><br/>
+                <strong style="color:#e0e0e0;">Client reporting automation</strong> — we pull data from HubSpot and build reports that go out to your clients automatically. No more Friday afternoons spent compiling them. Starts at around &pound;2,500.<br/><br/>
+                <strong style="color:#e0e0e0;">Email follow-up sequences</strong> — automated sequences in Mailchimp triggered by client activity or deal stage. Keeps leads warm without your team having to remember who to chase. Starts at around &pound;1,500.<br/><br/>
+                Happy to jump on a quick call this week. Would Thursday or Friday work?<br/><br/>
+                Best,<br/>The Autoeight Team
+              </div>
+              <div style="display:flex; gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(34,197,94,0.1);">
+                <div style="background:#22c55e; color:#fff; padding:8px 18px; border-radius:6px; font-size:0.75rem; font-weight:600; display:inline-flex; align-items:center; gap:5px;">
+                  <i class="fa-solid fa-paper-plane"></i> Send
+                </div>
+                <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.45); padding:8px 18px; border-radius:6px; font-size:0.75rem; font-weight:600; display:inline-flex; align-items:center; gap:5px;">
+                  <i class="fa-solid fa-pen"></i> Edit first
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
     </div>
   </section>
-
-  <script>
-  function showTab(tab) {
-    var inc = document.getElementById('panelIncoming');
-    var rep = document.getElementById('panelReply');
-    var tabInc = document.getElementById('tabIncoming');
-    var tabRep = document.getElementById('tabReply');
-    if (tab === 'incoming') {
-      inc.style.display = 'block'; rep.style.display = 'none';
-      tabInc.style.background = 'rgba(124,92,252,0.1)'; tabInc.style.borderBottomColor = '#7c5cfc'; tabInc.style.color = '#c4b5fd';
-      tabRep.style.background = 'transparent'; tabRep.style.borderBottomColor = 'transparent'; tabRep.style.color = 'rgba(255,255,255,0.35)';
-    } else {
-      inc.style.display = 'none'; rep.style.display = 'block';
-      tabRep.style.background = 'rgba(34,197,94,0.08)'; tabRep.style.borderBottomColor = '#22c55e'; tabRep.style.color = '#86efac';
-      tabInc.style.background = 'transparent'; tabInc.style.borderBottomColor = 'transparent'; tabInc.style.color = 'rgba(255,255,255,0.35)';
-    }
-  }
-  </script>
 
   <!-- LIVE CHAT DEMO -->
   <section class="page-section">
