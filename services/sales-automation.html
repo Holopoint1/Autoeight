@@ -455,74 +455,152 @@
         <p class="section-sub" style="margin:14px auto 0;">One of the biggest wins with sales automation is visibility. Instead of guessing what reps have done, which sequences are landing, or where deals are getting stuck, you can see the whole pipeline live in one place.</p>
       </div>
 
-      <div class="sales-dashboard-grid reveal" style="transition-delay:0.08s;">
-        <div class="hero-dashboard sales-dashboard-card">
-          <div class="dashboard-bar">
-            <div class="dashboard-dots">
-              <span class="dot-red"></span>
-              <span class="dot-amber"></span>
-              <span class="dot-green"></span>
+      <!-- Dashboard mockup -->
+      <div class="reveal" style="transition-delay:0.08s;">
+        <div class="sd-dashboard">
+
+          <!-- Top bar -->
+          <div class="sd-topbar">
+            <div class="sd-brand">
+              <div class="sd-dots">
+                <span style="background:#ff5f57;"></span>
+                <span style="background:#febc2e;"></span>
+                <span style="background:#28c840;"></span>
+              </div>
+              <span class="sd-brand-text">app.autoeight.ai &middot; Sales Command Centre</span>
             </div>
-            <div class="dashboard-url">app.autoeight.ai · Sales Overview</div>
+            <div class="sd-live"><span class="sd-live-dot"></span> Live &middot; updated now</div>
           </div>
-          <div class="dashboard-body">
-            <div class="dash-card">
-              <div class="dash-card-label">New leads this week</div>
-              <div class="dash-card-value">428</div>
-              <div class="dash-card-sub"><i class="fa-solid fa-arrow-trend-up"></i> +21% from last week</div>
+
+          <!-- Header -->
+          <div class="sd-header">
+            <h3>Sales Dashboard</h3>
+            <p>Financial year 2025/26 &middot; 4 months remaining to hit targets</p>
+          </div>
+
+          <!-- KPI Tiles -->
+          <div class="sd-kpis">
+            <div class="sd-kpi">
+              <div class="sd-kpi-icon" style="background:rgba(124,92,252,0.12);color:#7c5cfc;"><i class="fa-solid fa-sterling-sign"></i></div>
+              <div class="sd-kpi-label">Direct Orders YTD</div>
+              <div class="sd-kpi-value">&pound;421K</div>
+              <div class="sd-kpi-sub">of &pound;1.65M target</div>
             </div>
-            <div class="dash-card">
-              <div class="dash-card-label">Positive replies</div>
-              <div class="dash-card-value">37</div>
-              <div class="dash-card-sub"><i class="fa-solid fa-arrow-trend-up"></i> Strongest from LinkedIn</div>
+            <div class="sd-kpi">
+              <div class="sd-kpi-icon" style="background:rgba(34,197,94,0.12);color:#22c55e;"><i class="fa-solid fa-file-lines"></i></div>
+              <div class="sd-kpi-label">Quote Pipeline</div>
+              <div class="sd-kpi-value">&pound;3.15M</div>
+              <div class="sd-kpi-sub">of &pound;8M annual</div>
             </div>
-            <div class="dash-card">
-              <div class="dash-card-label">Meetings booked</div>
-              <div class="dash-card-value">14</div>
-              <div class="dash-card-sub"><i class="fa-solid fa-calendar-check"></i> 6 already confirmed</div>
+            <div class="sd-kpi">
+              <div class="sd-kpi-icon" style="background:rgba(59,130,246,0.12);color:#3b82f6;"><i class="fa-solid fa-handshake"></i></div>
+              <div class="sd-kpi-label">Meetings YTD</div>
+              <div class="sd-kpi-value">54</div>
+              <div class="sd-kpi-sub">Alf 31 &middot; Martin 18 &middot; Sarah 5</div>
             </div>
-            <div class="dash-chart">
-              <div class="dash-chart-label">Pipeline activity over 12 weeks</div>
-              <div class="chart-bars">
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
-                <div class="chart-bar"></div>
+            <div class="sd-kpi">
+              <div class="sd-kpi-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fa-solid fa-building"></i></div>
+              <div class="sd-kpi-label">Clients Reached</div>
+              <div class="sd-kpi-value">48</div>
+              <div class="sd-kpi-sub">of 390 targets</div>
+            </div>
+          </div>
+
+          <!-- Progress to target -->
+          <div class="sd-progress-card">
+            <div class="sd-progress-head">
+              <div>
+                <div class="sd-progress-title">Progress to Annual Target</div>
+                <div class="sd-progress-sub">&pound;421K achieved &middot; &pound;1.23M still needed &middot; &pound;307K/month required</div>
+              </div>
+              <div class="sd-progress-percent">25.5%</div>
+            </div>
+            <div class="sd-progress-bar">
+              <div class="sd-progress-fill" style="width:25.5%"></div>
+            </div>
+          </div>
+
+          <!-- Chart + Breakdown row -->
+          <div class="sd-chart-row">
+            <div class="sd-chart-card">
+              <div class="sd-chart-head">
+                <div>
+                  <div class="sd-chart-title">Monthly Performance</div>
+                  <div class="sd-chart-sub">Direct orders vs target &middot; Aug 2025 &ndash; Mar 2026</div>
+                </div>
+                <div class="sd-chart-legend">
+                  <span><i style="background:#7c5cfc;"></i> Actual</span>
+                  <span><i style="background:rgba(124,92,252,0.25);"></i> Target</span>
+                </div>
+              </div>
+              <div class="sd-bars">
+                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:42%;"></div><span>Aug</span></div>
+                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:38%;"></div><span>Sep</span></div>
+                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:55%;"></div><span>Oct</span></div>
+                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:48%;"></div><span>Nov</span></div>
+                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:52%;"></div><span>Dec</span></div>
+                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:45%;"></div><span>Jan</span></div>
+                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:92%;"></div><span>Feb</span></div>
+                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:88%;"></div><span>Mar</span></div>
+              </div>
+            </div>
+
+            <div class="sd-insights">
+              <div class="sd-insight-title">Sales Insights</div>
+              <div class="sd-insight">
+                <div class="sd-insight-tag" style="background:rgba(239,68,68,0.12);color:#ef4444;">Revenue Gap</div>
+                <div class="sd-insight-text"><strong>5.8x acceleration needed</strong> &mdash; monthly average of &pound;53K must hit &pound;307K. Feb proved it's possible.</div>
+              </div>
+              <div class="sd-insight">
+                <div class="sd-insight-tag" style="background:rgba(245,158,11,0.12);color:#f59e0b;">Conversion</div>
+                <div class="sd-insight-text"><strong>13.4% quote-to-order rate</strong> &mdash; below industry standard of 20%. Improving this alone unlocks &pound;629K.</div>
+              </div>
+              <div class="sd-insight">
+                <div class="sd-insight-tag" style="background:rgba(34,197,94,0.12);color:#22c55e;">Opportunity</div>
+                <div class="sd-insight-text"><strong>147 untapped accounts</strong> &mdash; warm leads from existing data. The single biggest revenue opportunity.</div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="sales-report-card">
-          <div class="sales-report-head">
-            <span class="sales-report-badge">Live Reporting</span>
-            <h3>What you can actually see</h3>
+          <!-- Bottom: Runway -->
+          <div class="sd-runway">
+            <div class="sd-runway-head">
+              <div class="sd-runway-title">Monthly Runway to Year End</div>
+              <div class="sd-runway-sub">What's needed each month to hit &pound;1.65M target</div>
+            </div>
+            <div class="sd-runway-months">
+              <div class="sd-month"><div class="sd-month-name">Apr</div><div class="sd-month-value">&pound;307K</div><div class="sd-month-cum">&pound;307K cumulative</div></div>
+              <div class="sd-month"><div class="sd-month-name">May</div><div class="sd-month-value">&pound;307K</div><div class="sd-month-cum">&pound;614K cumulative</div></div>
+              <div class="sd-month"><div class="sd-month-name">Jun</div><div class="sd-month-value">&pound;307K</div><div class="sd-month-cum">&pound;921K cumulative</div></div>
+              <div class="sd-month target"><div class="sd-month-name">Jul</div><div class="sd-month-value">&pound;307K</div><div class="sd-month-cum">&pound;1.23M = Target</div></div>
+            </div>
           </div>
-          <div class="sales-report-list">
-            <div class="sales-report-item">
-              <strong>Channel performance</strong>
-              <span>See whether email, LinkedIn, forms, or referrals are producing the best meetings.</span>
-            </div>
-            <div class="sales-report-item">
-              <strong>Rep handoff quality</strong>
-              <span>Know exactly which leads were handed to the team, how quickly they were contacted, and what happened next.</span>
-            </div>
-            <div class="sales-report-item">
-              <strong>Campaign visibility</strong>
-              <span>Track opens, replies, booked calls, pipeline value, and where prospects are dropping off.</span>
-            </div>
-            <div class="sales-report-item">
-              <strong>Revenue clarity</strong>
-              <span>Connect outreach activity to deals created, deals won, and the real value coming into the pipeline.</span>
-            </div>
+
+        </div>
+      </div>
+
+      <!-- What you can see -->
+      <div class="reveal" style="transition-delay:0.12s; margin-top:40px;">
+        <div style="text-align:center; max-width:640px; margin:0 auto 24px;">
+          <span class="section-label">Live Reporting</span>
+          <h3 style="font-size:clamp(1.2rem, 3vw, 1.5rem); font-weight:700; margin-top:12px;">What you can actually see</h3>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; max-width:900px; margin:0 auto;">
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px 22px;">
+            <strong style="display:block; color:var(--white); font-size:0.95rem; margin-bottom:6px;">Channel performance</strong>
+            <span style="display:block; color:var(--muted); font-size:0.85rem; line-height:1.6;">See whether email, LinkedIn, forms, or referrals are producing the best meetings.</span>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px 22px;">
+            <strong style="display:block; color:var(--white); font-size:0.95rem; margin-bottom:6px;">Rep handoff quality</strong>
+            <span style="display:block; color:var(--muted); font-size:0.85rem; line-height:1.6;">Know which leads were handed to the team, how quickly contacted, and what happened next.</span>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px 22px;">
+            <strong style="display:block; color:var(--white); font-size:0.95rem; margin-bottom:6px;">Campaign visibility</strong>
+            <span style="display:block; color:var(--muted); font-size:0.85rem; line-height:1.6;">Track opens, replies, booked calls, pipeline value, and where prospects drop off.</span>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px 22px;">
+            <strong style="display:block; color:var(--white); font-size:0.95rem; margin-bottom:6px;">Revenue clarity</strong>
+            <span style="display:block; color:var(--muted); font-size:0.85rem; line-height:1.6;">Connect outreach activity to deals created, deals won, and pipeline value.</span>
           </div>
         </div>
       </div>
