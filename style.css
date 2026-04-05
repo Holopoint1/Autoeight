@@ -213,7 +213,7 @@ nav,
 
 nav {
   position: fixed;
-  top: 20px;
+  top: 10px;
   left: 20px;
   right: 20px;
   z-index: 200;
