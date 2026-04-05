@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -16,6 +16,7 @@
   <meta property="og:description" content="Custom AI and automation systems built to increase revenue and reduce workload for growing businesses." />
   <meta property="og:image" content="https://autoeight.ai/brand_assets/1.png" />
   <meta property="og:site_name" content="Autoeight" />
+  <meta property="og:locale" content="en_GB" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -61,17 +62,45 @@
   }
   </script>
 
-  <!-- Structured Data: ProfessionalService -->
+  <!-- Structured Data: LocalBusiness / ProfessionalService -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["ProfessionalService", "LocalBusiness"],
     "name": "Autoeight",
     "description": "Custom AI and automation systems built to increase revenue and reduce workload for growing businesses.",
     "url": "https://autoeight.ai",
     "logo": "https://autoeight.ai/brand_assets/1.png",
+    "image": "https://autoeight.ai/brand_assets/1.png",
     "serviceType": ["AI Automation", "Business Automation", "Workflow Automation", "Sales Automation", "Email Automation", "Web Design"],
-    "areaServed": "GB",
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Kingdom"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Halifax",
+      "addressRegion": "West Yorkshire",
+      "addressCountry": "GB"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 53.7251,
+      "longitude": -1.8628
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:30"
+    }],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "4",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
     "sameAs": ["https://www.linkedin.com/company/autoeight"]
   }
   </script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +14,7 @@
   <meta property="og:description" content="How Autoeight built The Dice Tavern a full e-commerce platform with Stripe payments, email automation, smart product recommendations, and a complete admin dashboard." />
   <meta property="og:image" content="https://autoeight.ai/brand_assets/1.png" />
   <meta property="og:site_name" content="Autoeight" />
+  <meta property="og:locale" content="en_GB" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -49,6 +50,41 @@
     "datePublished": "2026-04-02"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoeight.ai/" },
+      { "@type": "ListItem", "position": 2, "name": "Results", "item": "https://autoeight.ai/results/case-studies.html" },
+      { "@type": "ListItem", "position": 3, "name": "The Dice Tavern", "item": "https://autoeight.ai/brand_assets/case-studies/dice-tavern/dice-tavern.html" }
+    ]
+  }
+  </script>
+  <style>
+    /* Mobile responsive fixes for inline-styled grids */
+    @media (max-width: 768px) {
+      /* Stack 2-column and 4-column inline grids on mobile */
+      [style*="grid-template-columns:1fr 1fr"],
+      [style*="grid-template-columns: 1fr 1fr"],
+      [style*="grid-template-columns:repeat(2, 1fr)"],
+      [style*="grid-template-columns:repeat(2,1fr)"] {
+        grid-template-columns: 1fr !important;
+      }
+      /* 4-column email timeline -> 2 columns on mobile */
+      [style*="grid-template-columns:repeat(4, 1fr)"],
+      [style*="grid-template-columns:repeat(4,1fr)"] {
+        grid-template-columns: 1fr 1fr !important;
+      }
+    }
+    @media (max-width: 480px) {
+      /* Stack 4-column grid fully on very small screens */
+      [style*="grid-template-columns:repeat(4, 1fr)"],
+      [style*="grid-template-columns:repeat(4,1fr)"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
 </head>
 <body>
 

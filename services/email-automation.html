@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +14,7 @@
   <meta property="og:description" content="Automate your customer service across email, live chat, tickets, and social. AI replies, chatbots, and smart ticket handling that save your team hours every day." />
   <meta property="og:image" content="https://autoeight.ai/brand_assets/1.png" />
   <meta property="og:site_name" content="Autoeight" />
+  <meta property="og:locale" content="en_GB" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -35,7 +36,14 @@
     "provider": {
       "@type": "Organization",
       "name": "Autoeight",
-      "url": "https://autoeight.ai"
+      "url": "https://autoeight.ai",
+      "logo": "https://autoeight.ai/brand_assets/1.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Halifax",
+        "addressRegion": "West Yorkshire",
+        "addressCountry": "GB"
+      }
     },
     "areaServed": {
       "@type": "Country",
@@ -44,6 +52,25 @@
     "serviceType": "AI Support"
   }
   </script>
+  <style>
+    /* Mobile responsive fixes for inline-styled grids */
+    @media (max-width: 768px) {
+      /* Stack 2-column and 3-column inline grids on mobile */
+      [style*="grid-template-columns:1fr 1fr"],
+      [style*="grid-template-columns: 1fr 1fr"],
+      [style*="grid-template-columns:repeat(2, 1fr)"],
+      [style*="grid-template-columns:repeat(2,1fr)"],
+      [style*="grid-template-columns:repeat(3, 1fr)"],
+      [style*="grid-template-columns:repeat(3,1fr)"] {
+        grid-template-columns: 1fr !important;
+      }
+      /* Allow flex rows to wrap and stack on very small screens */
+      .page-section [style*="display:flex"][style*="gap:14px"],
+      .page-section [style*="display:flex"][style*="gap:16px"] {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
 </head>
 <body>
 
