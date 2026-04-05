@@ -239,10 +239,17 @@ nav.scrolled {
 
 .nav-logo img {
   height: 46px;
-  width: auto;
+  width: auto !important;
+  max-width: none;
+  max-height: 46px;
+  object-fit: contain;
   display: block;
   margin-top: 0;
   margin-left: 0;
+  flex-shrink: 0;
+}
+.nav-logo {
+  flex-shrink: 0;
 }
 
 /* â”€â”€ NAV MENU & DROPDOWNS â”€â”€ */
@@ -2814,7 +2821,7 @@ footer {
     align-items: center;
     min-width: 0;
   }
-  .nav-logo img { height: 36px; margin-top: 0; }
+  .nav-logo img { height: 36px; width: auto !important; max-height: 36px; margin-top: 0; }
   .nav-menu { display: none; }
   .mobile-nav-sheet {
     position: fixed;
