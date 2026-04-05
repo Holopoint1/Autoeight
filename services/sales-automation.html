@@ -455,128 +455,112 @@
         <p class="section-sub" style="margin:14px auto 0;">One of the biggest wins with sales automation is visibility. Instead of guessing what reps have done, which sequences are landing, or where deals are getting stuck, you can see the whole pipeline live in one place.</p>
       </div>
 
-      <!-- Dashboard mockup -->
-      <div style="display:block;opacity:1;visibility:visible;width:100%;">
-        <div class="sd-dashboard" style="background:#0f1020;color:#fff;min-height:600px;">
+      <!-- Dashboard mockup (all inline styles for bulletproof rendering) -->
+      <div style="background:#0f1020;color:#fff;border-radius:16px;padding:20px;border:1px solid rgba(124,92,252,0.3);box-sizing:border-box;width:100%;">
 
-          <!-- Top bar -->
-          <div class="sd-topbar">
-            <div class="sd-brand">
-              <div class="sd-dots">
-                <span style="background:#ff5f57;"></span>
-                <span style="background:#febc2e;"></span>
-                <span style="background:#28c840;"></span>
-              </div>
-              <span class="sd-brand-text">app.autoeight.ai &middot; Sales Command Centre</span>
-            </div>
-            <div class="sd-live"><span class="sd-live-dot"></span> Live &middot; updated now</div>
-          </div>
-
-          <!-- Header -->
-          <div class="sd-header">
-            <h3>Sales Dashboard</h3>
-            <p>Financial year 2025/26 &middot; 4 months remaining to hit targets</p>
-          </div>
-
-          <!-- KPI Tiles -->
-          <div class="sd-kpis">
-            <div class="sd-kpi">
-              <div class="sd-kpi-icon" style="background:rgba(124,92,252,0.12);color:#7c5cfc;"><i class="fa-solid fa-sterling-sign"></i></div>
-              <div class="sd-kpi-label">Direct Orders YTD</div>
-              <div class="sd-kpi-value">&pound;421K</div>
-              <div class="sd-kpi-sub">of &pound;1.65M target</div>
-            </div>
-            <div class="sd-kpi">
-              <div class="sd-kpi-icon" style="background:rgba(34,197,94,0.12);color:#22c55e;"><i class="fa-solid fa-file-lines"></i></div>
-              <div class="sd-kpi-label">Quote Pipeline</div>
-              <div class="sd-kpi-value">&pound;3.15M</div>
-              <div class="sd-kpi-sub">of &pound;8M annual</div>
-            </div>
-            <div class="sd-kpi">
-              <div class="sd-kpi-icon" style="background:rgba(59,130,246,0.12);color:#3b82f6;"><i class="fa-solid fa-handshake"></i></div>
-              <div class="sd-kpi-label">Meetings YTD</div>
-              <div class="sd-kpi-value">54</div>
-              <div class="sd-kpi-sub">Alf 31 &middot; Martin 18 &middot; Sarah 5</div>
-            </div>
-            <div class="sd-kpi">
-              <div class="sd-kpi-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fa-solid fa-building"></i></div>
-              <div class="sd-kpi-label">Clients Reached</div>
-              <div class="sd-kpi-value">48</div>
-              <div class="sd-kpi-sub">of 390 targets</div>
-            </div>
-          </div>
-
-          <!-- Progress to target -->
-          <div class="sd-progress-card">
-            <div class="sd-progress-head">
-              <div>
-                <div class="sd-progress-title">Progress to Annual Target</div>
-                <div class="sd-progress-sub">&pound;421K achieved &middot; &pound;1.23M still needed &middot; &pound;307K/month required</div>
-              </div>
-              <div class="sd-progress-percent">25.5%</div>
-            </div>
-            <div class="sd-progress-bar">
-              <div class="sd-progress-fill" style="width:25.5%"></div>
-            </div>
-          </div>
-
-          <!-- Chart + Breakdown row -->
-          <div class="sd-chart-row">
-            <div class="sd-chart-card">
-              <div class="sd-chart-head">
-                <div>
-                  <div class="sd-chart-title">Monthly Performance</div>
-                  <div class="sd-chart-sub">Direct orders vs target &middot; Aug 2025 &ndash; Mar 2026</div>
-                </div>
-                <div class="sd-chart-legend">
-                  <span><i style="background:#7c5cfc;"></i> Actual</span>
-                  <span><i style="background:rgba(124,92,252,0.25);"></i> Target</span>
-                </div>
-              </div>
-              <div class="sd-bars">
-                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:42%;"></div><span>Aug</span></div>
-                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:38%;"></div><span>Sep</span></div>
-                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:55%;"></div><span>Oct</span></div>
-                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:48%;"></div><span>Nov</span></div>
-                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:52%;"></div><span>Dec</span></div>
-                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:45%;"></div><span>Jan</span></div>
-                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:92%;"></div><span>Feb</span></div>
-                <div class="sd-bar"><div class="sd-bar-target" style="height:60%;"></div><div class="sd-bar-actual" style="height:88%;"></div><span>Mar</span></div>
-              </div>
-            </div>
-
-            <div class="sd-insights">
-              <div class="sd-insight-title">Sales Insights</div>
-              <div class="sd-insight">
-                <div class="sd-insight-tag" style="background:rgba(239,68,68,0.12);color:#ef4444;">Revenue Gap</div>
-                <div class="sd-insight-text"><strong>5.8x acceleration needed</strong> &mdash; monthly average of &pound;53K must hit &pound;307K. Feb proved it's possible.</div>
-              </div>
-              <div class="sd-insight">
-                <div class="sd-insight-tag" style="background:rgba(245,158,11,0.12);color:#f59e0b;">Conversion</div>
-                <div class="sd-insight-text"><strong>13.4% quote-to-order rate</strong> &mdash; below industry standard of 20%. Improving this alone unlocks &pound;629K.</div>
-              </div>
-              <div class="sd-insight">
-                <div class="sd-insight-tag" style="background:rgba(34,197,94,0.12);color:#22c55e;">Opportunity</div>
-                <div class="sd-insight-text"><strong>147 untapped accounts</strong> &mdash; warm leads from existing data. The single biggest revenue opportunity.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bottom: Runway -->
-          <div class="sd-runway">
-            <div class="sd-runway-head">
-              <div class="sd-runway-title">Monthly Runway to Year End</div>
-              <div class="sd-runway-sub">What's needed each month to hit &pound;1.65M target</div>
-            </div>
-            <div class="sd-runway-months">
-              <div class="sd-month"><div class="sd-month-name">Apr</div><div class="sd-month-value">&pound;307K</div><div class="sd-month-cum">&pound;307K cumulative</div></div>
-              <div class="sd-month"><div class="sd-month-name">May</div><div class="sd-month-value">&pound;307K</div><div class="sd-month-cum">&pound;614K cumulative</div></div>
-              <div class="sd-month"><div class="sd-month-name">Jun</div><div class="sd-month-value">&pound;307K</div><div class="sd-month-cum">&pound;921K cumulative</div></div>
-              <div class="sd-month target"><div class="sd-month-name">Jul</div><div class="sd-month-value">&pound;307K</div><div class="sd-month-cum">&pound;1.23M = Target</div></div>
-            </div>
-          </div>
-
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:18px;flex-wrap:wrap;">
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);font-weight:600;">app.autoeight.ai &middot; Sales Hub</div>
+          <div style="font-size:0.68rem;color:#86efac;font-weight:700;">&#9679; Live</div>
         </div>
+
+        <h3 style="color:#fff;font-size:1.15rem;margin:0 0 4px;font-weight:800;">Sales Dashboard</h3>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.75rem;margin:0 0 20px;">Financial year 2025/26 &middot; 4 months remaining</p>
+
+        <!-- 4 KPI tiles -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+          <div style="background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:10px;padding:14px;">
+            <div style="color:#c4b5fd;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Orders YTD</div>
+            <div style="color:#fff;font-size:1.35rem;font-weight:800;line-height:1;">&pound;421K</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:0.68rem;margin-top:4px;">of &pound;1.65M target</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.15);border-radius:10px;padding:14px;">
+            <div style="color:#86efac;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Quote Pipeline</div>
+            <div style="color:#fff;font-size:1.35rem;font-weight:800;line-height:1;">&pound;3.15M</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:0.68rem;margin-top:4px;">of &pound;8M annual</div>
+          </div>
+          <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:10px;padding:14px;">
+            <div style="color:#93c5fd;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Meetings</div>
+            <div style="color:#fff;font-size:1.35rem;font-weight:800;line-height:1;">54</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:0.68rem;margin-top:4px;">YTD booked</div>
+          </div>
+          <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);border-radius:10px;padding:14px;">
+            <div style="color:#fbbf24;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Clients</div>
+            <div style="color:#fff;font-size:1.35rem;font-weight:800;line-height:1;">48</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:0.68rem;margin-top:4px;">of 390 targets</div>
+          </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div style="background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:10px;padding:14px;margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px;">
+            <div>
+              <div style="color:#fff;font-size:0.82rem;font-weight:700;">Progress to Annual Target</div>
+              <div style="color:rgba(255,255,255,0.5);font-size:0.7rem;margin-top:2px;">&pound;1.23M still needed &middot; &pound;307K/month</div>
+            </div>
+            <div style="color:#c4b5fd;font-size:1.5rem;font-weight:800;">25.5%</div>
+          </div>
+          <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:4px;overflow:hidden;">
+            <div style="width:25.5%;height:100%;background:linear-gradient(90deg,#7c5cfc,#c4b5fd);border-radius:4px;"></div>
+          </div>
+        </div>
+
+        <!-- Bar chart with CSS grid - mobile friendly -->
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;margin-bottom:16px;">
+          <div style="color:#fff;font-size:0.82rem;font-weight:700;margin-bottom:4px;">Monthly Performance</div>
+          <div style="color:rgba(255,255,255,0.45);font-size:0.68rem;margin-bottom:14px;">Direct orders vs target</div>
+          <div style="display:flex;align-items:flex-end;gap:6px;height:100px;">
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;">
+              <div style="width:100%;height:70%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.58rem;">Aug</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;">
+              <div style="width:100%;height:63%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.58rem;">Sep</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;">
+              <div style="width:100%;height:92%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.58rem;">Oct</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;">
+              <div style="width:100%;height:80%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.58rem;">Nov</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;">
+              <div style="width:100%;height:87%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.58rem;">Dec</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;">
+              <div style="width:100%;height:75%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.58rem;">Jan</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;">
+              <div style="width:100%;height:100%;background:#22c55e;border-radius:3px 3px 0 0;"></div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.58rem;">Feb</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;">
+              <div style="width:100%;height:96%;background:#22c55e;border-radius:3px 3px 0 0;"></div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.58rem;">Mar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insights -->
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;">
+          <div style="color:#fff;font-size:0.82rem;font-weight:700;margin-bottom:12px;">Key Insights</div>
+          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <div style="display:inline-block;background:rgba(239,68,68,0.12);color:#f87171;font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;margin-bottom:6px;">Revenue Gap</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.75rem;line-height:1.5;"><strong style="color:#fff;">5.8x acceleration needed.</strong> Monthly average of &pound;53K must hit &pound;307K. Feb proved it's possible.</div>
+          </div>
+          <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <div style="display:inline-block;background:rgba(245,158,11,0.12);color:#fbbf24;font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;margin-bottom:6px;">Conversion</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.75rem;line-height:1.5;"><strong style="color:#fff;">13.4% quote-to-order rate.</strong> Below the industry 20% benchmark. Fixing this alone unlocks &pound;629K.</div>
+          </div>
+          <div style="padding:10px 0;">
+            <div style="display:inline-block;background:rgba(34,197,94,0.12);color:#86efac;font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;margin-bottom:6px;">Opportunity</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.75rem;line-height:1.5;"><strong style="color:#fff;">147 untapped accounts.</strong> Warm leads sitting in existing data. The single biggest revenue lever.</div>
+          </div>
+        </div>
+
       </div>
 
       <!-- What you can see -->
