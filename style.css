@@ -3083,12 +3083,18 @@ footer {
     border-color: rgba(0,0,0,0.10);
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
   }
-  #mobile-nav-toggle:checked ~ nav .hamburger span {
-    width: 18px;
+  #mobile-nav-toggle:checked ~ nav .hamburger {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.4);
   }
-  #mobile-nav-toggle:checked ~ nav .hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  #mobile-nav-toggle:checked ~ nav .hamburger span {
+    width: 26px;
+    height: 3px;
+    background: #ef4444;
+  }
+  #mobile-nav-toggle:checked ~ nav .hamburger span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
   #mobile-nav-toggle:checked ~ nav .hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  #mobile-nav-toggle:checked ~ nav .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  #mobile-nav-toggle:checked ~ nav .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
   #mobile-nav-toggle:checked ~ nav .chevron { display: none; }
 
   /* â”€â”€ HERO â”€â”€ */

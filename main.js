@@ -6,6 +6,47 @@ if (nav) {
   });
 }
 
+// Mobile menu — back button closes menu instead of navigating away
+(function () {
+  var toggle = document.getElementById('mobile-nav-toggle');
+  if (!toggle) return;
+  var menuOpen = false;
+
+  toggle.addEventListener('change', function () {
+    if (toggle.checked && !menuOpen) {
+      // Menu just opened — push a history state
+      menuOpen = true;
+      history.pushState({ menu: 'open' }, '');
+    } else if (!toggle.checked && menuOpen) {
+      // Menu closed via the button — pop our state
+      menuOpen = false;
+      if (history.state && history.state.menu === 'open') {
+        history.back();
+      }
+    }
+  });
+
+  window.addEventListener('popstate', function () {
+    if (menuOpen && toggle.checked) {
+      toggle.checked = false;
+      menuOpen = false;
+    }
+  });
+
+  // Close menu when a nav link is clicked
+  document.querySelectorAll('#nav-menu a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (toggle.checked) {
+        toggle.checked = false;
+        if (menuOpen) {
+          menuOpen = false;
+          if (history.state && history.state.menu === 'open') history.back();
+        }
+      }
+    });
+  });
+})();
+
 // Scroll reveal
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
