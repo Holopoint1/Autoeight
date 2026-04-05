@@ -3275,7 +3275,7 @@ footer {
 
 .steps-connector {
   position: absolute;
-  top: 27px;
+  top: 23px;
   left: calc(100% / 8);
   right: calc(100% / 8);
   height: 10px;
