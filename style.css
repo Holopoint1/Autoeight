@@ -5964,13 +5964,18 @@ footer {
 
 /* ── REAL SALES DASHBOARD MOCKUP ── */
 .sd-dashboard {
-  background: #0f1020;
+  background: #0f1020 !important;
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(124,92,252,0.2);
+  border: 1px solid rgba(124,92,252,0.3);
   box-shadow: 0 20px 60px rgba(0,0,0,0.15);
   max-width: 100%;
+  width: 100%;
   box-sizing: border-box;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #fff;
 }
 .sd-dashboard * { box-sizing: border-box; min-width: 0; }
 .sd-topbar {
