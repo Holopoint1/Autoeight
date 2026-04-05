@@ -138,11 +138,18 @@
     .calendly-inline-widget {
       min-height: 900px !important;
       height: 900px !important;
-      width: 100%;
+      width: 100% !important;
+    }
+    .calendly-inline-widget iframe {
+      width: 100% !important;
+      height: 900px !important;
+      min-height: 900px !important;
+      border: 0 !important;
     }
     @media (max-width: 768px) {
       .calendly-wrap { min-height: 1100px; }
-      .calendly-inline-widget { min-height: 1100px !important; height: 1100px !important; }
+      .calendly-inline-widget,
+      .calendly-inline-widget iframe { min-height: 1100px !important; height: 1100px !important; }
     }
     /* Fallback form — shown when Calendly URL is not yet set */
     .booking-fallback {
@@ -244,7 +251,7 @@
     <div class="booking-info reveal">
       <span class="section-label">What to expect</span>
       <h2>Your free<br /><em>30-minute audit</em></h2>
-      <p>This isn't a sales call. We'll ask the right questions, listen carefully, and tell you honestly what automation can do for your business right now.</p>
+      <p>We'll ask the right questions, listen carefully, and tell you honestly what automation can do for your business right now.</p>
 
       <ul class="booking-perks">
         <li>
