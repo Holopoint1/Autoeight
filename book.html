@@ -133,10 +133,16 @@
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
       overflow: hidden;
-      min-height: 680px;
+      min-height: 900px;
     }
     .calendly-inline-widget {
-      min-height: 680px !important;
+      min-height: 900px !important;
+      height: 900px !important;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .calendly-wrap { min-height: 1100px; }
+      .calendly-inline-widget { min-height: 1100px !important; height: 1100px !important; }
     }
     /* Fallback form — shown when Calendly URL is not yet set */
     .booking-fallback {
@@ -307,7 +313,7 @@
       <div
         class="calendly-inline-widget"
         data-url="https://calendly.com/alfie-autoeight/30min?hide_gdpr_banner=1&background_color=0d0d0d&text_color=ffffff&primary_color=7c5cfc"
-        style="min-width:320px;height:680px;">
+        style="min-width:320px;height:900px;">
       </div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
