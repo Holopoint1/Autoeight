@@ -134,23 +134,58 @@
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
       overflow: hidden;
-      min-height: 900px;
+      min-height: 500px;
+      position: relative;
+    }
+    /* Loading indicator */
+    .calendly-loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1;
+      transition: opacity 0.4s ease;
+    }
+    .calendly-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .calendly-loader-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(124,92,252,0.2);
+      border-top-color: var(--purple-light);
+      border-radius: 50%;
+      animation: cal-spin 0.8s linear infinite;
+    }
+    .calendly-loader span {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    @keyframes cal-spin {
+      to { transform: rotate(360deg); }
     }
     .calendly-inline-widget {
-      min-height: 900px !important;
-      height: 900px !important;
+      min-height: 500px !important;
+      height: 700px !important;
       width: 100% !important;
     }
     .calendly-inline-widget iframe {
       width: 100% !important;
-      height: 900px !important;
-      min-height: 900px !important;
+      height: 100% !important;
+      min-height: 500px !important;
       border: 0 !important;
     }
     @media (max-width: 768px) {
-      .calendly-wrap { min-height: 1100px; }
+      .calendly-wrap { min-height: 500px; }
       .calendly-inline-widget,
-      .calendly-inline-widget iframe { min-height: 1100px !important; height: 1100px !important; }
+      .calendly-inline-widget iframe { min-height: 500px !important; height: 600px !important; }
     }
     /* Fallback form — shown when Calendly URL is not yet set */
     .booking-fallback {
@@ -318,12 +353,24 @@
         Then delete the fallback block beneath the widget div.
         ══════════════════════════════════════════════════════
       -->
+      <div class="calendly-loader" id="calendly-loader">
+        <div class="calendly-loader-spinner"></div>
+        <span>Loading calendar&hellip;</span>
+      </div>
       <div
         class="calendly-inline-widget"
         data-url="https://calendly.com/alfie-autoeight/30min?hide_gdpr_banner=1&background_color=0d0d0d&text_color=ffffff&primary_color=7c5cfc"
-        style="min-width:320px;height:900px;">
+        style="min-width:320px;height:700px;">
       </div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <script>
+        window.addEventListener('message',function(e){
+          if(e.data.event&&e.data.event.indexOf('calendly')===0){
+            var l=document.getElementById('calendly-loader');
+            if(l) l.classList.add('hidden');
+          }
+        });
+      </script>
 
       <!--
         FALLBACK — shown if Calendly hasn't loaded / URL not yet set.
