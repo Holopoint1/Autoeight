@@ -2596,12 +2596,12 @@ footer {
 }
 
 .blog-thumb {
-  height: 180px;
+  height: 80px;
   background: linear-gradient(135deg, #f0f0f2, #e8e8ec);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   border-bottom: 1px solid var(--border);
 }
 
