@@ -6126,3 +6126,11 @@ footer {
   .sd-runway-months { grid-template-columns: 1fr 1fr; }
   .sd-kpi-icon { width: 28px; height: 28px; }
 }
+
+/* ── HERO MOBILE — fade background effects ── */
+@media (max-width: 768px) {
+  #hero-canvas { opacity: 0.35; }
+  .hero-grid { opacity: 0.4; }
+  .hero-orb { opacity: 0.5; }
+  .hero-bg-noise { opacity: 0.02; }
+}
