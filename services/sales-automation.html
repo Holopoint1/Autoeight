@@ -87,7 +87,7 @@
       <li class="nav-item has-dropdown">
         <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
         <ul class="dropdown">
-          <li><a href="../resources/blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="../resources/blog.html"><i class="fa-solid fa-newspaper"></i> News</a></li>
           <li><a href="../resources/videos.html"><i class="fa-solid fa-play"></i> Videos</a></li>
           <li><a href="../resources/blueprints.html"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
         </ul>
@@ -278,106 +278,187 @@
         <p class="section-sub" style="margin:14px auto 0;">One of the biggest wins with sales automation is visibility. Instead of guessing what reps have done, which sequences are landing, or where deals are getting stuck, you can see the whole pipeline live in one place.</p>
       </div>
 
-      <!-- Dashboard mockup — pure HTML, no SVG, no external CSS -->
-      <div style="background:#0f1020;color:#fff;border-radius:16px;padding:20px;border:1px solid rgba(124,92,252,0.3);width:100%;box-sizing:border-box;max-width:800px;margin:0 auto;">
+      <!-- Interactive Sales Dashboard with tabs -->
+      <div style="background:#0f1020;color:#fff;border-radius:16px;border:1px solid rgba(124,92,252,0.3);width:100%;box-sizing:border-box;max-width:800px;margin:0 auto;overflow:hidden;">
 
         <!-- Top bar -->
-        <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+        <div style="padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:8px;">
           <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;">app.autoeight.ai &middot; Sales Hub</span>
-          <span style="font-size:0.68rem;color:#86efac;font-weight:700;">&#9679; Live</span>
+          <span style="font-size:0.65rem;color:#86efac;font-weight:700;">&#9679; Live &middot; synced with CRM</span>
         </div>
 
-        <div style="font-size:1.15rem;font-weight:800;margin-bottom:4px;">Sales Dashboard</div>
-        <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:18px;">Financial year 2025/26 &middot; 4 months remaining</div>
-
-        <!-- KPIs -->
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
-          <div style="flex:1 1 calc(50% - 5px);min-width:130px;background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:10px;padding:14px;">
-            <div style="color:#c4b5fd;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;">Orders YTD</div>
-            <div style="font-size:1.3rem;font-weight:800;line-height:1;">&pound;421K</div>
-            <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-top:3px;">of &pound;1.65M target</div>
-          </div>
-          <div style="flex:1 1 calc(50% - 5px);min-width:130px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.15);border-radius:10px;padding:14px;">
-            <div style="color:#86efac;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;">Quote Pipeline</div>
-            <div style="font-size:1.3rem;font-weight:800;line-height:1;">&pound;3.15M</div>
-            <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-top:3px;">of &pound;8M annual</div>
-          </div>
-          <div style="flex:1 1 calc(50% - 5px);min-width:130px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:10px;padding:14px;">
-            <div style="color:#93c5fd;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;">Meetings</div>
-            <div style="font-size:1.3rem;font-weight:800;line-height:1;">54</div>
-            <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-top:3px;">YTD booked</div>
-          </div>
-          <div style="flex:1 1 calc(50% - 5px);min-width:130px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);border-radius:10px;padding:14px;">
-            <div style="color:#fbbf24;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;">Clients</div>
-            <div style="font-size:1.3rem;font-weight:800;line-height:1;">48</div>
-            <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-top:3px;">of 390 targets</div>
-          </div>
+        <!-- Tabs -->
+        <div style="display:flex;border-bottom:1px solid rgba(255,255,255,0.06);overflow-x:auto;-webkit-overflow-scrolling:touch;">
+          <button onclick="showDashTab('overview',this)" style="flex:1;min-width:0;padding:12px 8px;background:rgba(124,92,252,0.1);border:none;border-bottom:2px solid #7c5cfc;color:#c4b5fd;font-size:0.72rem;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap;" class="dt-active"><i class="fa-solid fa-chart-pie" style="margin-right:4px;"></i>Overview</button>
+          <button onclick="showDashTab('leads',this)" style="flex:1;min-width:0;padding:12px 8px;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.4);font-size:0.72rem;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap;"><i class="fa-solid fa-users" style="margin-right:4px;"></i>Leads</button>
+          <button onclick="showDashTab('outreach',this)" style="flex:1;min-width:0;padding:12px 8px;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.4);font-size:0.72rem;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap;"><i class="fa-solid fa-envelope" style="margin-right:4px;"></i>Outreach</button>
+          <button onclick="showDashTab('insights',this)" style="flex:1;min-width:0;padding:12px 8px;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.4);font-size:0.72rem;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap;"><i class="fa-solid fa-lightbulb" style="margin-right:4px;"></i>Insights</button>
         </div>
 
-        <!-- Progress -->
-        <div style="background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:10px;padding:14px;margin-bottom:14px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap;">
-            <div>
-              <div style="font-size:0.82rem;font-weight:700;">Progress to Target</div>
-              <div style="color:rgba(255,255,255,0.5);font-size:0.68rem;margin-top:2px;">&pound;1.23M needed &middot; &pound;307K/month</div>
+        <div style="padding:18px;">
+
+          <!-- TAB: Overview -->
+          <div id="dt-overview">
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+              <div style="flex:1 1 calc(50% - 5px);min-width:130px;background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:10px;padding:14px;">
+                <div style="color:#c4b5fd;font-size:0.62rem;font-weight:700;text-transform:uppercase;margin-bottom:5px;">Orders YTD</div>
+                <div style="font-size:1.3rem;font-weight:800;">&pound;421K</div>
+                <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-top:3px;">of &pound;1.65M target</div>
+              </div>
+              <div style="flex:1 1 calc(50% - 5px);min-width:130px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.15);border-radius:10px;padding:14px;">
+                <div style="color:#86efac;font-size:0.62rem;font-weight:700;text-transform:uppercase;margin-bottom:5px;">Pipeline</div>
+                <div style="font-size:1.3rem;font-weight:800;">&pound;3.15M</div>
+                <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-top:3px;">of &pound;8M annual</div>
+              </div>
+              <div style="flex:1 1 calc(50% - 5px);min-width:130px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:10px;padding:14px;">
+                <div style="color:#93c5fd;font-size:0.62rem;font-weight:700;text-transform:uppercase;margin-bottom:5px;">Meetings</div>
+                <div style="font-size:1.3rem;font-weight:800;">54</div>
+                <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-top:3px;">YTD booked</div>
+              </div>
+              <div style="flex:1 1 calc(50% - 5px);min-width:130px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);border-radius:10px;padding:14px;">
+                <div style="color:#fbbf24;font-size:0.62rem;font-weight:700;text-transform:uppercase;margin-bottom:5px;">Clients</div>
+                <div style="font-size:1.3rem;font-weight:800;">48</div>
+                <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-top:3px;">of 390 targets</div>
+              </div>
             </div>
-            <div style="color:#c4b5fd;font-size:1.4rem;font-weight:800;">25.5%</div>
+            <!-- Progress -->
+            <div style="background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:10px;padding:14px;margin-bottom:14px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap;">
+                <div><div style="font-size:0.82rem;font-weight:700;">Progress to Target</div><div style="color:rgba(255,255,255,0.5);font-size:0.68rem;margin-top:2px;">&pound;307K/month needed</div></div>
+                <div style="color:#c4b5fd;font-size:1.4rem;font-weight:800;">25.5%</div>
+              </div>
+              <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:4px;overflow:hidden;"><div style="width:25.5%;height:100%;background:linear-gradient(90deg,#7c5cfc,#c4b5fd);border-radius:4px;"></div></div>
+            </div>
+            <!-- Chart -->
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;">
+              <div style="font-size:0.82rem;font-weight:700;margin-bottom:3px;">Monthly Performance</div>
+              <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-bottom:12px;">Direct orders vs target</div>
+              <div style="display:flex;align-items:flex-end;gap:4px;height:80px;">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:65%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.5rem;">Aug</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:58%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.5rem;">Sep</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:85%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.5rem;">Oct</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:72%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.5rem;">Nov</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:78%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.5rem;">Dec</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:68%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.5rem;">Jan</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:100%;background:#22c55e;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.5rem;">Feb</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:95%;background:#22c55e;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.5rem;">Mar</span></div>
+              </div>
+            </div>
           </div>
-          <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:4px;overflow:hidden;"><div style="width:25.5%;height:100%;background:linear-gradient(90deg,#7c5cfc,#c4b5fd);border-radius:4px;"></div></div>
+
+          <!-- TAB: Leads -->
+          <div id="dt-leads" style="display:none;">
+            <div style="font-size:0.88rem;font-weight:700;margin-bottom:14px;">Lead Queue <span style="color:rgba(255,255,255,0.4);font-weight:500;font-size:0.75rem;">&middot; 448 found</span></div>
+            <div style="border:1px solid rgba(255,255,255,0.06);border-radius:10px;overflow:hidden;">
+              <div style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);">
+                <span style="color:rgba(255,255,255,0.5);font-size:0.65rem;font-weight:700;text-transform:uppercase;">Lead</span>
+                <span style="color:rgba(255,255,255,0.5);font-size:0.65rem;font-weight:700;text-transform:uppercase;">Status</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.04);">
+                <div><div style="font-size:0.82rem;font-weight:600;">Northlane Logistics</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Ops Director &middot; 120 staff &middot; website scrape</div></div>
+                <span style="background:rgba(239,68,68,0.15);color:#f87171;font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:4px;">Hot</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.04);">
+                <div><div style="font-size:0.82rem;font-weight:600;">Peak Talent Group</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Founder &middot; LinkedIn &middot; visited pricing 2x</div></div>
+                <span style="background:rgba(245,158,11,0.15);color:#fbbf24;font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:4px;">Warm</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.04);">
+                <div><div style="font-size:0.82rem;font-weight:600;">Vantage Creative</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Sales Mgr &middot; CRM reactivation &middot; opened seq 3</div></div>
+                <span style="background:rgba(245,158,11,0.15);color:#fbbf24;font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:4px;">Warm</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;">
+                <div><div style="font-size:0.82rem;font-weight:600;">Apex Engineering</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);">MD &middot; referral &middot; booked demo</div></div>
+                <span style="background:rgba(34,197,94,0.15);color:#86efac;font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:4px;">Booked</span>
+              </div>
+            </div>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+              <div style="flex:1;text-align:center;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                <div style="font-size:1.1rem;font-weight:800;color:#c4b5fd;">448</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.4);">Prospecting</div>
+              </div>
+              <div style="flex:1;text-align:center;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                <div style="font-size:1.1rem;font-weight:800;color:#86efac;">446</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.4);">Enriched</div>
+              </div>
+              <div style="flex:1;text-align:center;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                <div style="font-size:1.1rem;font-weight:800;color:#93c5fd;">393</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.4);">Engaging</div>
+              </div>
+              <div style="flex:1;text-align:center;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;">
+                <div style="font-size:1.1rem;font-weight:800;color:#fbbf24;">22</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.4);">Replying</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: Outreach -->
+          <div id="dt-outreach" style="display:none;">
+            <div style="font-size:0.88rem;font-weight:700;margin-bottom:14px;">Outreach Activity</div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+              <div style="flex:1 1 calc(50% - 5px);min-width:120px;background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:10px;padding:14px;text-align:center;">
+                <div style="font-size:1.5rem;font-weight:800;color:#c4b5fd;">1,247</div><div style="font-size:0.62rem;color:rgba(255,255,255,0.45);margin-top:3px;">Emails sent this month</div>
+              </div>
+              <div style="flex:1 1 calc(50% - 5px);min-width:120px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:10px;padding:14px;text-align:center;">
+                <div style="font-size:1.5rem;font-weight:800;color:#93c5fd;">312</div><div style="font-size:0.62rem;color:rgba(255,255,255,0.45);margin-top:3px;">LinkedIn messages</div>
+              </div>
+            </div>
+            <!-- Sample email -->
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:14px;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:0.72rem;font-weight:600;">Draft to: Sarah Mitchell</span><span style="font-size:0.6rem;color:#86efac;">Ready to send</span></div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);line-height:1.5;font-style:italic;">"Hi Sarah, I noticed your team is hiring more account managers and thought this might be relevant. We help businesses automate lead handling so the sales team can focus on closing..."</div>
+              <div style="display:flex;gap:6px;margin-top:10px;">
+                <span style="background:rgba(124,92,252,0.12);color:#c4b5fd;font-size:0.55rem;padding:3px 7px;border-radius:3px;">AI personalised</span>
+                <span style="background:rgba(124,92,252,0.12);color:#c4b5fd;font-size:0.55rem;padding:3px 7px;border-radius:3px;">Based on LinkedIn data</span>
+                <span style="background:rgba(124,92,252,0.12);color:#c4b5fd;font-size:0.55rem;padding:3px 7px;border-radius:3px;">Follow-up #2</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: Insights -->
+          <div id="dt-insights" style="display:none;">
+            <div style="font-size:0.88rem;font-weight:700;margin-bottom:14px;">AI-Generated Insights</div>
+            <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <span style="display:inline-block;background:rgba(239,68,68,0.15);color:#f87171;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Revenue Gap</span>
+              <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">5.8x acceleration needed.</strong> Monthly average of &pound;53K must hit &pound;307K.</div>
+            </div>
+            <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <span style="display:inline-block;background:rgba(245,158,11,0.15);color:#fbbf24;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Conversion</span>
+              <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">13.4% quote-to-order rate.</strong> Fixing this to 20% unlocks &pound;629K.</div>
+            </div>
+            <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <span style="display:inline-block;background:rgba(124,92,252,0.15);color:#c4b5fd;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Hot Products</span>
+              <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">3 products driving 62% of pipeline.</strong> Electronics kits, renewable energy trainers, and CNC units.</div>
+            </div>
+            <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <span style="display:inline-block;background:rgba(59,130,246,0.15);color:#93c5fd;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Best Channel</span>
+              <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">LinkedIn producing 3x more meetings than email.</strong> Recommends shifting 40% of budget.</div>
+            </div>
+            <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <span style="display:inline-block;background:rgba(34,197,94,0.15);color:#86efac;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Market Gap</span>
+              <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">147 accounts untouched.</strong> Warm CRM leads nobody has contacted yet.</div>
+            </div>
+            <div style="padding:8px 0;">
+              <span style="display:inline-block;background:rgba(236,72,153,0.15);color:#f9a8d4;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Seasonal</span>
+              <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">March-May historically best months.</strong> Last 3 years show Q3 delivers 40% more revenue.</div>
+            </div>
+          </div>
+
         </div>
-
-        <!-- Chart -->
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;margin-bottom:14px;">
-          <div style="font-size:0.82rem;font-weight:700;margin-bottom:3px;">Monthly Performance</div>
-          <div style="color:rgba(255,255,255,0.45);font-size:0.65rem;margin-bottom:12px;">Direct orders vs target</div>
-          <div style="display:flex;align-items:flex-end;gap:4px;height:90px;">
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:65%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.55rem;">Aug</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:58%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.55rem;">Sep</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:85%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.55rem;">Oct</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:72%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.55rem;">Nov</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:78%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.55rem;">Dec</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:68%;background:#7c5cfc;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.55rem;">Jan</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:100%;background:#22c55e;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.55rem;">Feb</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;height:95%;background:#22c55e;border-radius:3px 3px 0 0;"></div><span style="color:rgba(255,255,255,0.4);font-size:0.55rem;">Mar</span></div>
-          </div>
-        </div>
-
-        <!-- Key Insights -->
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;">
-          <div style="font-size:0.82rem;font-weight:700;margin-bottom:10px;">Key Insights</div>
-
-          <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-            <span style="display:inline-block;background:rgba(239,68,68,0.15);color:#f87171;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Revenue Gap</span>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">5.8x acceleration needed.</strong> Monthly average of &pound;53K must hit &pound;307K.</div>
-          </div>
-
-          <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-            <span style="display:inline-block;background:rgba(245,158,11,0.15);color:#fbbf24;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Conversion</span>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">13.4% quote-to-order rate.</strong> Below the 20% benchmark. Fixing this unlocks &pound;629K.</div>
-          </div>
-
-          <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-            <span style="display:inline-block;background:rgba(34,197,94,0.15);color:#86efac;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Untapped Market</span>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">147 accounts never contacted.</strong> Warm leads sitting in the CRM that nobody has reached out to yet.</div>
-          </div>
-
-          <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-            <span style="display:inline-block;background:rgba(124,92,252,0.15);color:#c4b5fd;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Hot Products</span>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">3 products driving 62% of pipeline.</strong> AI detected that electronics kits, renewable energy trainers, and CNC units are your strongest sellers this quarter.</div>
-          </div>
-
-          <div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-            <span style="display:inline-block;background:rgba(59,130,246,0.15);color:#93c5fd;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Campaign ROI</span>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">LinkedIn outreach producing 3x more meetings than email.</strong> AI compared all channels and recommends shifting 40% of email budget to LinkedIn sequences.</div>
-          </div>
-
-          <div style="padding:8px 0;">
-            <span style="display:inline-block;background:rgba(236,72,153,0.15);color:#f9a8d4;font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;margin-bottom:5px;">Seasonal Pattern</span>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.72rem;line-height:1.5;"><strong style="color:#fff;">March-May historically your best months.</strong> Data from the last 3 years shows Q3 delivers 40% more revenue. Plan your biggest campaigns now.</div>
-          </div>
-        </div>
-
       </div>
+
+      <script>
+      function showDashTab(tab, btn) {
+        ['overview','leads','outreach','insights'].forEach(function(t) {
+          var el = document.getElementById('dt-' + t);
+          if (el) el.style.display = t === tab ? 'block' : 'none';
+        });
+        var parent = btn.parentElement;
+        Array.from(parent.children).forEach(function(b) {
+          b.style.background = 'transparent';
+          b.style.borderBottomColor = 'transparent';
+          b.style.color = 'rgba(255,255,255,0.4)';
+        });
+        btn.style.background = 'rgba(124,92,252,0.1)';
+        btn.style.borderBottomColor = '#7c5cfc';
+        btn.style.color = '#c4b5fd';
+      }
+      </script>
 
       <!-- What you can see -->
       <div style="margin-top:40px;">
