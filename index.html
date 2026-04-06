@@ -574,22 +574,58 @@
     leftBtn.addEventListener('click', function () { goTo(current - 1); });
     rightBtn.addEventListener('click', function () { goTo(current + 1); });
 
-    /* Touch swipe */
-    var startX = 0, moveX = 0, dragging = false;
-    track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
-    track.addEventListener('touchmove', function (e) { if (dragging) moveX = e.touches[0].clientX - startX; }, { passive: true });
-    track.addEventListener('touchend', function () {
-      if (Math.abs(moveX) > 50) goTo(current + (moveX < 0 ? 1 : -1));
-      moveX = 0; dragging = false;
-    });
+    /* Drag/swipe — touch AND mouse */
+    var startX = 0, moveX = 0, isDragging = false;
+    var activeCard = function () { return cards[current]; };
+
+    function onDragStart(x) {
+      isDragging = true;
+      startX = x;
+      moveX = 0;
+      clearInterval(autoTimer);
+      var card = activeCard();
+      if (card) card.style.transition = 'none';
+      track.style.cursor = 'grabbing';
+    }
+    function onDragMove(x) {
+      if (!isDragging) return;
+      moveX = x - startX;
+      var card = activeCard();
+      if (card) {
+        card.style.transform = 'translateX(' + moveX + 'px)';
+        card.style.opacity = String(1 - Math.min(Math.abs(moveX) / 300, 0.4));
+      }
+    }
+    function onDragEnd() {
+      if (!isDragging) return;
+      isDragging = false;
+      track.style.cursor = 'grab';
+      var card = activeCard();
+      if (card) {
+        card.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+        card.style.transform = '';
+        card.style.opacity = '';
+      }
+      if (Math.abs(moveX) > 40) {
+        goTo(current + (moveX < 0 ? 1 : -1));
+      }
+      moveX = 0;
+      autoTimer = setInterval(function () { goTo(current + 1); }, 8000);
+    }
+
+    /* Touch events */
+    track.addEventListener('touchstart', function (e) { onDragStart(e.touches[0].clientX); }, { passive: true });
+    track.addEventListener('touchmove', function (e) { onDragMove(e.touches[0].clientX); }, { passive: true });
+    track.addEventListener('touchend', onDragEnd);
+
+    /* Mouse events */
+    track.style.cursor = 'grab';
+    track.addEventListener('mousedown', function (e) { e.preventDefault(); onDragStart(e.clientX); });
+    document.addEventListener('mousemove', function (e) { onDragMove(e.clientX); });
+    document.addEventListener('mouseup', onDragEnd);
 
     /* Auto-advance every 8 seconds */
     var autoTimer = setInterval(function () { goTo(current + 1); }, 8000);
-    /* Pause on hover */
-    track.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
-    track.addEventListener('mouseleave', function () {
-      autoTimer = setInterval(function () { goTo(current + 1); }, 8000);
-    });
   })();
   </script>
 
