@@ -5193,7 +5193,7 @@ footer {
   position: absolute;
   left: 0; right: 0; top: 50%;
   height: 1px;
-  background: repeating-linear-gradient(90deg, rgba(0,0,0,0.07) 0, rgba(0,0,0,0.07) 2px, transparent 2px, transparent 12px);
+  background: repeating-linear-gradient(90deg, rgba(0,0,0,0.15) 0, rgba(0,0,0,0.15) 3px, transparent 3px, transparent 12px);
   pointer-events: none;
 }
 /* row separator */
@@ -5202,7 +5202,7 @@ footer {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 1px;
-  background: repeating-linear-gradient(90deg, rgba(0,0,0,0.03) 0, rgba(0,0,0,0.03) 2px, transparent 2px, transparent 12px);
+  background: repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0, rgba(0,0,0,0.08) 3px, transparent 3px, transparent 12px);
 }
 .logo-row:last-child::after { display: none; }
 
