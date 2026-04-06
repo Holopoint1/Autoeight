@@ -891,8 +891,8 @@
         this.y  = Math.random() * H;
         this.vx = (Math.random() - 0.5) * 0.28;
         this.vy = (Math.random() - 0.5) * 0.28;
-        this.r  = Math.random() * 1.4 + 0.6;
-        this.alpha = Math.random() * 0.4 + 0.15;
+        this.r  = Math.random() * 1.8 + 0.8;
+        this.alpha = Math.random() * 0.5 + 0.25;
       }
 
       Particle.prototype.update = function () {
@@ -917,10 +917,10 @@
             const dy   = particles[i].y - particles[j].y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < MAX_DIST) {
-              const alpha = (1 - dist / MAX_DIST) * 0.18;
+              const alpha = (1 - dist / MAX_DIST) * 0.35;
               ctx.beginPath();
               ctx.strokeStyle = `rgba(${PURPLE},${alpha})`;
-              ctx.lineWidth   = 0.7;
+              ctx.lineWidth   = 1;
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
               ctx.stroke();
