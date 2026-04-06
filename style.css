@@ -2100,18 +2100,26 @@ footer {
   cursor: pointer;
   position: relative;
   padding-bottom: 48px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tier-expandable.expanded {
+  border-color: rgba(124,92,252,0.4);
+  box-shadow: 0 0 0 1px rgba(109,77,230,0.15), 0 12px 40px rgba(0,0,0,0.06);
 }
 
 .tier-expand-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease, opacity 0.3s ease;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, margin-top 0.35s ease;
   opacity: 0;
+  margin-top: 0;
 }
 
 .tier-expandable.expanded .tier-expand-content {
-  max-height: 300px;
+  max-height: 500px;
   opacity: 1;
+  margin-top: 14px;
 }
 
 .tier-detail-list {

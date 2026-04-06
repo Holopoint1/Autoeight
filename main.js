@@ -189,3 +189,22 @@ if (typewriterEl) {
 
   if (words.length) typeStep();
 }
+
+// Accordion behaviour for tier-expandable cards
+document.querySelectorAll('.tier-expandable').forEach(function(card) {
+  card.removeAttribute('onclick');
+  card.addEventListener('click', function() {
+    var wasExpanded = card.classList.contains('expanded');
+    // Close all siblings in the same grid
+    var parent = card.closest('.tier-grid');
+    if (parent) {
+      parent.querySelectorAll('.tier-expandable.expanded').forEach(function(c) {
+        c.classList.remove('expanded');
+      });
+    }
+    // Toggle this one (open if it was closed)
+    if (!wasExpanded) {
+      card.classList.add('expanded');
+    }
+  });
+});

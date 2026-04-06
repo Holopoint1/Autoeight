@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Automate your customer service across email, live chat, tickets, and social. AI replies, chatbots, and smart ticket handling that save your team hours every day." />
-  <title>AI Support – Autoeight</title>
+  <meta name="description" content="Two ways we automate your customer service: AI live chat that answers customers instantly on your website, and AI email that drafts or sends replies across Gmail, Outlook, and shared inboxes." />
+  <title>AI Support – Live Chat &amp; Email Automation | Autoeight</title>
   <link rel="canonical" href="https://autoeight.ai/services/email-automation.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://autoeight.ai/services/email-automation.html" />
-  <meta property="og:title" content="AI Support – Autoeight" />
-  <meta property="og:description" content="Automate your customer service across email, live chat, tickets, and social. AI replies, chatbots, and smart ticket handling that save your team hours every day." />
+  <meta property="og:title" content="AI Support – Live Chat &amp; Email Automation | Autoeight" />
+  <meta property="og:description" content="Two ways we automate your customer service: AI live chat that answers customers instantly on your website, and AI email that drafts or sends replies across Gmail, Outlook, and shared inboxes." />
   <meta property="og:image" content="https://autoeight.ai/brand_assets/1.png" />
   <meta property="og:site_name" content="Autoeight" />
   <meta property="og:locale" content="en_GB" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AI Support – Autoeight" />
-  <meta name="twitter:description" content="Automate your customer service across email, live chat, tickets, and social. AI replies, chatbots, and smart ticket handling that save your team hours every day." />
+  <meta name="twitter:title" content="AI Support – Live Chat &amp; Email Automation | Autoeight" />
+  <meta name="twitter:description" content="Two ways we automate your customer service: AI live chat that answers customers instantly on your website, and AI email that drafts or sends replies across Gmail, Outlook, and shared inboxes." />
   <meta name="twitter:image" content="https://autoeight.ai/brand_assets/1.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,8 +31,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AI Support",
-    "description": "Automate your customer service across email, live chat, tickets, and social. AI replies, chatbots, and smart ticket handling that save your team hours every day.",
+    "name": "AI Support – Live Chat & Email Automation",
+    "description": "Two ways we automate your customer service: AI live chat that answers customers instantly, and AI email automation that drafts or sends replies across every inbox.",
     "provider": {
       "@type": "Organization",
       "name": "Autoeight",
@@ -49,13 +49,101 @@
       "@type": "Country",
       "name": "United Kingdom"
     },
-    "serviceType": "AI Support"
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "AI Support Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Live Chat",
+            "description": "AI-powered live chat for your website that answers customer questions instantly, looks up orders, and hands off to your team when needed."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Email Automation",
+            "description": "AI reads incoming emails, checks your company data, and either sends replies automatically or prepares drafts for your team to review."
+          }
+        }
+      ]
+    }
   }
   </script>
   <style>
-    /* Mobile responsive fixes for inline-styled grids */
+    /* ── Page-level overrides ── */
+
+    /* Fix readability on eflow node descriptions */
+    .eflow-node-desc { color: rgba(0,0,0,0.55) !important; font-size: 0.72rem !important; }
+    .eflow-callout { color: rgba(0,0,0,0.6); }
+
+    /* Service anchor cards */
+    .service-anchor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .service-anchor {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-decoration: none;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .service-anchor:hover {
+      transform: translateY(-3px);
+      border-color: rgba(124,92,252,0.3);
+    }
+    .service-anchor-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; margin-bottom: 16px;
+    }
+    .service-anchor h3 {
+      font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 8px;
+    }
+    .service-anchor p {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 14px;
+    }
+    .service-anchor .anchor-link {
+      font-size: 0.8rem; font-weight: 600; color: #7c5cfc;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+
+    /* Section banners for the two service areas */
+    .service-banner {
+      text-align: center;
+      padding: 14px 20px;
+      border-radius: 12px;
+      margin-bottom: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .service-banner-chat {
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.18);
+      color: #15803d;
+    }
+    .service-banner-email {
+      background: rgba(124,92,252,0.08);
+      border: 1px solid rgba(124,92,252,0.18);
+      color: #7c5cfc;
+    }
+
+    /* Mobile stacking */
     @media (max-width: 768px) {
-      /* Stack 2-column and 3-column inline grids on mobile */
+      .service-anchor-grid { grid-template-columns: 1fr; }
+
       [style*="grid-template-columns:1fr 1fr"],
       [style*="grid-template-columns: 1fr 1fr"],
       [style*="grid-template-columns:repeat(2, 1fr)"],
@@ -64,10 +152,16 @@
       [style*="grid-template-columns:repeat(3,1fr)"] {
         grid-template-columns: 1fr !important;
       }
-      /* Allow flex rows to wrap and stack on very small screens */
+
       .page-section [style*="display:flex"][style*="gap:14px"],
       .page-section [style*="display:flex"][style*="gap:16px"] {
         flex-wrap: wrap;
+      }
+
+      /* Stat bar labels - stop them being too wide on mobile */
+      [style*="flex:0 0 220px"] {
+        flex: 0 0 140px !important;
+        font-size: 0.78rem !important;
       }
     }
   </style>
@@ -104,27 +198,137 @@
     <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0" onclick="var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} return false;" onkeydown="if(event.key===''Enter'' || event.key==='' ''){var cb=document.getElementById('mobile-nav-toggle'); if(cb){cb.checked=!cb.checked;} event.preventDefault();}"><span></span><span></span><span></span></label>
   </nav>
 
-  <!-- HERO -->
+  <!-- ══════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════ -->
   <div class="page-hero">
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
     <div class="page-hero-content">
-      <span class="section-label">Services</span>
-      <h1>AI Support<br /><em>Your inbox, chat, and tickets handled</em></h1>
-      <p>We build AI that replies to your customers across email, live chat, and support tickets. It knows your products, pricing, and policies because we train it on your data. Your team steps in when they're needed, not for every message.</p>
+      <span class="section-label">AI Support</span>
+      <h1>Your customers get answers.<br /><em>Your team gets time back.</em></h1>
+      <p>We build two things: an AI live chat that handles customer questions on your website in real time, and an AI email system that drafts or sends replies across every inbox. Both trained on your data, your tone, your rules.</p>
       <a href="../book.html" class="btn btn-primary btn-lg">Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 
   <div class="hero-section-split"></div>
 
-  <!-- LIVE CHAT DEMO -->
+  <!-- ══════════════════════════════════════════
+       THE PROBLEM (condensed)
+       ══════════════════════════════════════════ -->
   <section class="page-section">
     <div class="page-section-inner">
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
-        <span class="section-label">Live chat demo</span>
-        <h2 class="section-title">AI handles it. Customer sorted in under a minute.</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Watch the AI process a real customer request, take the action, and reply. No human needed.</p>
+        <span class="section-label">The Problem</span>
+        <h2 class="section-title">Your team spends hours on things AI can handle in seconds</h2>
+        <p class="section-sub" style="margin:14px auto 0;">The same questions land every day — order status, refund requests, pricing queries. Your team knows the answer, but finding the info and typing the reply still takes time.</p>
+      </div>
+
+      <div class="reveal" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-bottom:16px;">
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-clock" style="color:#ef4444;font-size:0.9rem;"></i></div>
+          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">Slow responses</h3>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Customers wait hours for simple answers while your team manually checks different systems.</p>
+        </div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-sterling-sign" style="color:#ef4444;font-size:0.9rem;"></i></div>
+          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">Rising costs</h3>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Every ticket costs time and money. As volume grows, you hire more or let response times slip.</p>
+        </div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-puzzle-piece" style="color:#ef4444;font-size:0.9rem;"></i></div>
+          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">No real context</h3>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Generic chatbots don't know your products or policies. They give vague answers that frustrate customers.</p>
+        </div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-hand" style="color:#ef4444;font-size:0.9rem;"></i></div>
+          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">Can't take action</h3>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Most tools just reply. They can't cancel an order, process a refund, or check stock. Your team still does that manually.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       TWO SERVICES OVERVIEW
+       ══════════════════════════════════════════ -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
+        <span class="section-label">The Solution</span>
+        <h2 class="section-title">Two ways we automate your customer support</h2>
+        <p class="section-sub" style="margin:14px auto 0;">We don't just build one chatbot and call it done. We give you two systems that cover every channel your customers use — live chat for instant answers, and email AI for your inbox.</p>
+      </div>
+
+      <div class="service-anchor-grid reveal">
+        <a href="#live-chat" class="service-anchor">
+          <div class="service-anchor-icon" style="background:rgba(34,197,94,0.1); color:#16a34a;">
+            <i class="fa-solid fa-comment-dots"></i>
+          </div>
+          <h3>AI Live Chat</h3>
+          <p>Instant answers on your website, support tickets, and social DMs. Customers get help in seconds, not hours.</p>
+          <span class="anchor-link">See how it works <i class="fa-solid fa-arrow-down"></i></span>
+        </a>
+        <a href="#email-ai" class="service-anchor">
+          <div class="service-anchor-icon" style="background:rgba(124,92,252,0.1); color:#7c5cfc;">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <h3>AI Email Automation</h3>
+          <p>AI reads your emails, writes replies using your company data, and either sends them or saves drafts for your team.</p>
+          <span class="anchor-link">See how it works <i class="fa-solid fa-arrow-down"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ██  SECTION 1: AI LIVE CHAT
+       ══════════════════════════════════════════════════════════════ -->
+
+  <section class="page-section" id="live-chat">
+    <div class="page-section-inner">
+
+      <div class="reveal" style="text-align:center;margin-bottom:48px;">
+        <div class="service-banner service-banner-chat"><i class="fa-solid fa-comment-dots"></i> AI Live Chat</div>
+      </div>
+
+      <!-- Intro -->
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
+        <h2 class="section-title">Customers get answers instantly, not after a 20-minute wait</h2>
+        <p class="section-sub" style="margin:14px auto 0;">A chatbot on your website that actually knows your business. It looks up orders, answers pricing questions, processes requests, and hands off to a real person when it needs to — all in real time.</p>
+      </div>
+
+      <!-- Key benefits -->
+      <div class="reveal" style="max-width:680px; margin:0 auto 56px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
+            <i class="fa-solid fa-bolt" style="color:#16a34a; margin-top:3px; font-size:0.8rem;"></i>
+            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">Under 5 seconds</strong> — average response time for common questions</div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
+            <i class="fa-solid fa-rotate" style="color:#16a34a; margin-top:3px; font-size:0.8rem;"></i>
+            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">Takes real action</strong> — cancels orders, processes refunds, checks stock</div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
+            <i class="fa-solid fa-moon" style="color:#16a34a; margin-top:3px; font-size:0.8rem;"></i>
+            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">24/7 coverage</strong> — no night shifts, no extra hires needed</div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
+            <i class="fa-solid fa-user" style="color:#16a34a; margin-top:3px; font-size:0.8rem;"></i>
+            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">Human handoff</strong> — complex issues go straight to your team</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat demo -->
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 24px;">
+        <span class="section-label">Live demo</span>
+        <h2 class="section-title" style="font-size:clamp(1.2rem,2.5vw,1.6rem);">Watch it handle a real request in under a minute</h2>
       </div>
 
       <div class="reveal" style="max-width:440px; margin:0 auto;">
@@ -134,7 +338,7 @@
           <div style="background:#12121f; padding:14px 18px; display:flex; align-items:center; gap:10px; border-bottom:1px solid rgba(255,255,255,0.06);">
             <div style="width:32px;height:32px;border-radius:50%;background:rgba(124,92,252,0.2);display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-robot" style="color:#c4b5fd;font-size:0.8rem;"></i></div>
             <div style="flex:1;">
-              <div style="font-size:0.82rem; font-weight:600; color:#111111;">Live Chat</div>
+              <div style="font-size:0.82rem; font-weight:600; color:#e2e2e8;">Live Chat</div>
               <div style="font-size:0.65rem; color:#86efac;"><i class="fa-solid fa-circle" style="font-size:0.4rem;vertical-align:middle;margin-right:4px;"></i>Online</div>
             </div>
             <div style="font-size:0.65rem; color:rgba(255,255,255,0.25);">Live</div>
@@ -149,11 +353,11 @@
               <div style="font-size:0.6rem; color:rgba(255,255,255,0.25); margin-top:6px; text-align:right;">Anna, 10:31 AM</div>
             </div>
 
-            <!-- AI thinking (shown first, then replaced) -->
+            <!-- AI thinking -->
             <div id="chatThinking" style="align-self:flex-start; max-width:85%; display:none;">
               <div style="background:rgba(124,92,252,0.08); border:1px solid rgba(124,92,252,0.12); border-radius:12px; padding:12px 14px; margin-bottom:8px;">
                 <div style="font-size:0.68rem; font-weight:700; color:#c4b5fd; margin-bottom:8px;"><i class="fa-solid fa-brain"></i> Processing...</div>
-                <div id="thinkingSteps" style="font-size:0.75rem; color:#52525b; line-height:1.7;"></div>
+                <div id="thinkingSteps" style="font-size:0.75rem; color:rgba(255,255,255,0.45); line-height:1.7;"></div>
               </div>
             </div>
 
@@ -163,7 +367,7 @@
                 <div style="width:36px;height:36px;border-radius:8px;background:rgba(34,197,94,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fa-solid fa-check" style="color:#22c55e;font-size:0.85rem;"></i></div>
                 <div style="flex:1;">
                   <div style="font-size:0.72rem; font-weight:700; color:#86efac;">Order #12345678 cancelled</div>
-                  <div style="font-size:0.7rem; color:#71717a; margin-top:2px;">Refund of &pound;89.00 initiated &bull; 3-5 business days</div>
+                  <div style="font-size:0.7rem; color:rgba(255,255,255,0.4); margin-top:2px;">Refund of &pound;89.00 initiated &bull; 3-5 business days</div>
                 </div>
               </div>
             </div>
@@ -188,11 +392,79 @@
 
         <!-- Replay button -->
         <div style="text-align:center; margin-top:16px;">
-          <button onclick="runChat()" style="background:none; border:1px solid rgba(255,255,255,0.1); color:#71717a; padding:8px 16px; border-radius:8px; font-size:0.75rem; cursor:pointer; font-family:inherit;">
+          <button onclick="runChat()" style="background:none; border:1px solid rgba(0,0,0,0.1); color:var(--muted); padding:8px 16px; border-radius:8px; font-size:0.75rem; cursor:pointer; font-family:inherit;">
             <i class="fa-solid fa-rotate-left"></i> Replay demo
           </button>
         </div>
       </div>
+
+      <!-- Where live chat works -->
+      <div class="reveal" style="text-align:center;max-width:640px;margin:56px auto 40px;">
+        <span class="section-label">Where it works</span>
+        <h2 class="section-title" style="font-size:clamp(1.2rem,2.5vw,1.6rem);">Same AI brain across every real-time channel</h2>
+        <p class="section-sub" style="margin:14px auto 0;">Your customers reach out in different ways. The AI uses the same company knowledge and tone everywhere.</p>
+      </div>
+
+      <div class="reveal" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; max-width:900px; margin:0 auto;">
+        <div style="background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.12); border-radius:12px; padding:24px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-solid fa-comment-dots" style="font-size:1rem;color:#16a34a;"></i>
+            </div>
+            <h3 style="font-size:0.95rem;font-weight:700;">Website Chat</h3>
+          </div>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:10px;">A chatbot on your site that handles common questions instantly. Looks up orders, explains services, answers pricing queries, and hands off to a real person when needed.</p>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Your website</span>
+            <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">24/7</span>
+            <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Human handoff</span>
+          </div>
+        </div>
+
+        <div style="background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.12); border-radius:12px; padding:24px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-solid fa-ticket" style="font-size:1rem;color:#16a34a;"></i>
+            </div>
+            <h3 style="font-size:0.95rem;font-weight:700;">Support Tickets</h3>
+          </div>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:10px;">Incoming tickets get read, categorised by type, prioritised by urgency, and responded to automatically. Complex ones get flagged for your team with full context.</p>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Auto-categorised</span>
+            <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Priority flagging</span>
+            <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Smart escalation</span>
+          </div>
+        </div>
+
+        <div style="background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.12); border-radius:12px; padding:24px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-brands fa-facebook-messenger" style="font-size:1rem;color:#16a34a;"></i>
+            </div>
+            <h3 style="font-size:0.95rem;font-weight:700;">Social DMs</h3>
+          </div>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:10px;">DMs on Facebook and Instagram get answered using the same knowledge base as every other channel. Same tone, same accuracy. No more leaving messages on read.</p>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Facebook</span>
+            <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Instagram</span>
+            <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Same knowledge</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Human escalation note -->
+      <div class="reveal" style="max-width:900px; margin:24px auto 0;">
+        <div style="background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.1); border-radius:10px; padding:18px 24px; display:flex; align-items:center; gap:12px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="fa-solid fa-shield-halved" style="color:#16a34a; font-size:0.9rem;"></i>
+          </div>
+          <div>
+            <div style="font-size:0.85rem; font-weight:600; margin-bottom:2px;">Human escalation built in</div>
+            <div style="font-size:0.78rem; color:var(--muted);">When something's too complex or sensitive for AI, it flags it for your team with full context. No customer ever gets stuck talking to a bot that can't help them.</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -203,7 +475,6 @@
     var action = document.getElementById('chatAction');
     var reply = document.getElementById('chatReply');
 
-    // Reset
     thinking.style.display = 'none';
     action.style.display = 'none';
     reply.style.display = 'none';
@@ -217,17 +488,14 @@
       '<i class="fa-solid fa-check" style="color:#22c55e;font-size:0.6rem;"></i> Refund of &pound;89.00 queued'
     ];
 
-    // Show thinking
     setTimeout(function() { thinking.style.display = 'block'; }, 800);
 
-    // Add steps one by one
     thinkSteps.forEach(function(step, i) {
       setTimeout(function() {
         steps.innerHTML += step + '<br/>';
       }, 1200 + (i * 600));
     });
 
-    // Show action card
     setTimeout(function() {
       action.style.display = 'block';
       action.style.opacity = '0';
@@ -237,7 +505,6 @@
       });
     }, 4400);
 
-    // Show reply
     setTimeout(function() {
       reply.style.display = 'block';
       reply.style.opacity = '0';
@@ -248,257 +515,109 @@
     }, 5200);
   }
 
-  // Auto-run on scroll into view
   var chatObserver = new IntersectionObserver(function(entries) {
     if (entries[0].isIntersecting) { runChat(); chatObserver.disconnect(); }
   }, { threshold: 0.3 });
   chatObserver.observe(document.getElementById('chatArea'));
   </script>
 
-  <!-- PROBLEM / SOLUTION -->
-  <section class="page-section">
+  <div class="section-divider"></div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ██  SECTION 2: AI EMAIL AUTOMATION
+       ══════════════════════════════════════════════════════════════ -->
+
+  <section class="page-section" id="email-ai">
     <div class="page-section-inner">
 
-      <!-- The Problem -->
-      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 48px;">
-        <span class="section-label">The Problem</span>
-        <h2 class="section-title">Your team is spending hours on stuff AI can handle in seconds</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Most support teams are buried in the same questions every day. Where's my order, can I get a refund, how do I change my password. Your team knows the answer, but finding the info and typing the reply still takes time.</p>
+      <div class="reveal" style="text-align:center;margin-bottom:48px;">
+        <div class="service-banner service-banner-email"><i class="fa-solid fa-envelope"></i> AI Email Automation</div>
       </div>
 
-      <div class="reveal" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-bottom:56px;">
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-clock" style="color:#ef4444;font-size:0.9rem;"></i></div>
-          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">Slow responses</h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Customers wait hours for answers to "where's my order?" while your team manually looks things up across different systems.</p>
-        </div>
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-sterling-sign" style="color:#ef4444;font-size:0.9rem;"></i></div>
-          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">Rising costs</h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Every ticket handled manually costs time and money. As volume grows, you either hire more people or let response times slip.</p>
-        </div>
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-puzzle-piece" style="color:#ef4444;font-size:0.9rem;"></i></div>
-          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">No context</h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Generic chatbots don't know your products, pricing, or policies. Without your actual data, they just give vague answers that frustrate people.</p>
-        </div>
-        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-hand" style="color:#ef4444;font-size:0.9rem;"></i></div>
-          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">Can't take action</h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Most tools can only reply. They can't actually cancel an order, process a refund, or check stock. Your team still has to do that bit manually.</p>
-        </div>
-      </div>
-
-      <!-- The Solution -->
+      <!-- Intro -->
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
-        <span class="section-label">The Solution</span>
-        <h2 class="section-title">AI that actually knows your business and can take action</h2>
-        <p class="section-sub" style="margin:14px auto 0;">We connect your AI to your real data — orders, products, pricing, policies, CRM. It doesn't just reply. It looks things up, processes requests, and handles tickets from start to finish.</p>
+        <h2 class="section-title">AI that reads, writes, and sends your emails</h2>
+        <p class="section-sub" style="margin:14px auto 0;">Every incoming email gets read, matched against your company data, and replied to — either automatically or as a ready-made draft your team can review and send. Works with Gmail, Outlook, and shared inboxes.</p>
       </div>
 
-      <div class="reveal" style="max-width:680px; margin:0 auto;">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
-          <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
-            <i class="fa-solid fa-bolt" style="color:#22c55e; margin-top:3px; font-size:0.8rem;"></i>
-            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">Instant answers</strong> using real-time order, shipping, and product data</div>
+      <!-- Email demo -->
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 24px;">
+        <span class="section-label">Email example</span>
+        <h2 class="section-title" style="font-size:clamp(1.2rem,2.5vw,1.6rem);">Customer emails in. AI writes the reply.</h2>
+        <p class="section-sub" style="margin:14px auto 0;">A real enquiry comes in. The AI reads it, checks your company data, and drafts a reply. Your team can send it as-is or tweak it first.</p>
+      </div>
+
+      <div class="reveal" style="max-width:800px; margin:0 auto 56px;">
+        <div style="background:#1a1a2e; border:1px solid rgba(124,92,252,0.2); border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+          <div style="background:#12121f; padding:10px 16px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(255,255,255,0.06);">
+            <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;"></span>
+            <span style="width:12px;height:12px;border-radius:50%;background:#ffbd2e;"></span>
+            <span style="width:12px;height:12px;border-radius:50%;background:#28c840;"></span>
+            <span style="flex:1;text-align:center;font-size:0.72rem;color:#a1a1aa;">Outlook — Inbox</span>
           </div>
-          <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
-            <i class="fa-solid fa-rotate" style="color:#22c55e; margin-top:3px; font-size:0.8rem;"></i>
-            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">Automated actions</strong> like refunds, cancellations, and order updates</div>
-          </div>
-          <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
-            <i class="fa-solid fa-layer-group" style="color:#22c55e; margin-top:3px; font-size:0.8rem;"></i>
-            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">One system</strong> instead of switching between 8 browser tabs</div>
-          </div>
-          <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
-            <i class="fa-solid fa-moon" style="color:#22c55e; margin-top:3px; font-size:0.8rem;"></i>
-            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">24/7 support</strong> without scaling your team or adding night shifts</div>
+          <div style="padding:24px 28px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
+              <div style="font-size:1rem; font-weight:700; color:#e2e2e8;">Pricing for 20-person team?</div>
+              <div style="font-size:0.65rem; color:rgba(255,255,255,0.3);">10:42 AM</div>
+            </div>
+            <div style="border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:18px; margin-bottom:16px;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                <div style="width:32px;height:32px;border-radius:50%;background:rgba(124,92,252,0.15);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#c4b5fd;">SM</div>
+                <div>
+                  <div style="font-size:0.8rem; font-weight:600; color:#e2e2e8;">Sarah Mitchell</div>
+                  <div style="font-size:0.65rem; color:#a1a1aa;">sarah@brightpath.co.uk</div>
+                </div>
+              </div>
+              <div style="font-size:0.82rem; color:rgba(255,255,255,0.65); line-height:1.7;">
+                Hi there,<br/><br/>We're a marketing agency with about 20 staff and we're looking at automating some of our client reporting and email follow-ups. Could you give us a rough idea of pricing and what's included?<br/><br/>We currently use HubSpot and Mailchimp if that helps.<br/><br/>Thanks,<br/>Sarah
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; margin:20px 0;">
+              <div style="flex:1; height:1px; background:rgba(255,255,255,0.06);"></div>
+              <div style="display:flex; align-items:center; gap:6px; background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.15); border-radius:20px; padding:5px 14px;">
+                <i class="fa-solid fa-robot" style="color:#86efac; font-size:0.65rem;"></i>
+                <span style="font-size:0.68rem; font-weight:700; color:#86efac;">AI draft ready — 2.1s</span>
+                <span style="font-size:0.65rem; color:rgba(255,255,255,0.35); margin-left:4px;">94% confidence</span>
+              </div>
+              <div style="flex:1; height:1px; background:rgba(255,255,255,0.06);"></div>
+            </div>
+            <div style="border:1px solid rgba(34,197,94,0.12); border-radius:10px; padding:18px; background:rgba(34,197,94,0.03);">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                <div style="width:32px;height:32px;border-radius:50%;background:rgba(34,197,94,0.12);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#86efac;"><i class="fa-solid fa-robot"></i></div>
+                <div>
+                  <div style="font-size:0.8rem; font-weight:600; color:#e2e2e8;">AI Draft Reply</div>
+                  <div style="font-size:0.65rem; color:rgba(255,255,255,0.35);">Matched: pricing, HubSpot, Mailchimp, team size</div>
+                </div>
+              </div>
+              <div style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.75;">
+                Hi Sarah,<br/><br/>Thanks for getting in touch. For a team of 20 with HubSpot and Mailchimp already in the stack, we'd typically look at two things:<br/><br/><strong style="color:#e2e2e8;">Client reporting automation</strong> — we pull data from HubSpot and build reports that go out to your clients automatically. No more Friday afternoons spent compiling them. Starts at around &pound;2,500.<br/><br/><strong style="color:#e2e2e8;">Email follow-up sequences</strong> — automated sequences in Mailchimp triggered by client activity or deal stage. Keeps leads warm without your team having to remember who to chase. Starts at around &pound;1,500.<br/><br/>Happy to jump on a quick call this week. Would Thursday or Friday work?<br/><br/>Best,<br/>The Autoeight Team
+              </div>
+              <div style="display:flex; gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(34,197,94,0.1);">
+                <div style="background:#22c55e; color:#fff; padding:8px 18px; border-radius:6px; font-size:0.75rem; font-weight:600; display:inline-flex; align-items:center; gap:5px;"><i class="fa-solid fa-paper-plane"></i> Send</div>
+                <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#a1a1aa; padding:8px 18px; border-radius:6px; font-size:0.75rem; font-weight:600; display:inline-flex; align-items:center; gap:5px;"><i class="fa-solid fa-pen"></i> Edit first</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- CHANNELS FLOWCHART -->
-  <section class="page-section">
-    <div class="page-section-inner">
+      <!-- Two approaches -->
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 48px;">
-        <span class="section-label">Every channel</span>
-        <h2 class="section-title">One AI brain across every customer touchpoint</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Your customers reach out in different ways. The AI uses the same company knowledge and tone of voice everywhere.</p>
-      </div>
-
-      <!-- Flowchart -->
-      <div class="reveal" style="max-width:900px; margin:0 auto;">
-
-        <!-- Data source -->
-        <div style="background:rgba(245,158,11,0.06); border:1px solid rgba(245,158,11,0.18); border-radius:14px; padding:24px 28px; margin-bottom:16px;">
-          <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
-            <div style="width:48px;height:48px;border-radius:12px;background:rgba(245,158,11,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <i class="fa-solid fa-database" style="color:#f59e0b; font-size:1.1rem;"></i>
-            </div>
-            <div>
-              <div style="font-size:1rem; font-weight:700; color:#111111;">Your Company Data</div>
-              <div style="font-size:0.78rem; color:#71717a;">This is what the AI learns from. You control it, we set it up.</div>
-            </div>
-          </div>
-          <div style="display:flex; flex-wrap:wrap; gap:8px;">
-            <span style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#fbbf24;">Products &amp; pricing</span>
-            <span style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#fbbf24;">Return &amp; refund policies</span>
-            <span style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#fbbf24;">FAQs</span>
-            <span style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#fbbf24;">Shipping info</span>
-            <span style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#fbbf24;">Tone of voice</span>
-            <span style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#fbbf24;">Service descriptions</span>
-          </div>
-        </div>
-
-        <!-- Arrow -->
-        <div style="text-align:center; padding:4px 0;">
-          <div style="display:inline-flex; flex-direction:column; align-items:center; gap:2px;">
-            <div style="width:2px; height:20px; background:rgba(124,92,252,0.2);"></div>
-            <i class="fa-solid fa-chevron-down" style="color:rgba(124,92,252,0.35); font-size:0.7rem;"></i>
-          </div>
-        </div>
-
-        <!-- AI Engine -->
-        <div style="background:rgba(124,92,252,0.08); border:2px solid rgba(124,92,252,0.25); border-radius:14px; padding:28px; margin-bottom:16px;">
-          <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
-            <div style="width:56px;height:56px;border-radius:50%;background:rgba(124,92,252,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <i class="fa-solid fa-brain" style="color:#c4b5fd; font-size:1.4rem;"></i>
-            </div>
-            <div>
-              <div style="font-size:1.1rem; font-weight:800; color:#c4b5fd;">AI Engine</div>
-              <div style="font-size:0.8rem; color:#52525b;">Reads the message, checks your data, writes a response that sounds like your team wrote it</div>
-            </div>
-          </div>
-          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
-            <div style="background:rgba(124,92,252,0.06); border-radius:8px; padding:14px; text-align:center;">
-              <div style="font-size:1.3rem; font-weight:800; color:#c4b5fd;">2s</div>
-              <div style="font-size:0.7rem; color:#71717a; margin-top:2px;">Avg response time</div>
-            </div>
-            <div style="background:rgba(124,92,252,0.06); border-radius:8px; padding:14px; text-align:center;">
-              <div style="font-size:1.3rem; font-weight:800; color:#c4b5fd;">94%</div>
-              <div style="font-size:0.7rem; color:#71717a; margin-top:2px;">Accuracy</div>
-            </div>
-            <div style="background:rgba(124,92,252,0.06); border-radius:8px; padding:14px; text-align:center;">
-              <div style="font-size:1.3rem; font-weight:800; color:#c4b5fd;">24/7</div>
-              <div style="font-size:0.7rem; color:#71717a; margin-top:2px;">Always on</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Arrow -->
-        <div style="text-align:center; padding:4px 0;">
-          <div style="display:inline-flex; flex-direction:column; align-items:center; gap:2px;">
-            <div style="width:2px; height:20px; background:rgba(124,92,252,0.2);"></div>
-            <i class="fa-solid fa-chevron-down" style="color:rgba(124,92,252,0.35); font-size:0.7rem;"></i>
-          </div>
-        </div>
-
-        <!-- 4 channels -->
-        <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:14px;">
-
-          <div style="background:rgba(124,92,252,0.05); border:1px solid rgba(124,92,252,0.12); border-radius:12px; padding:24px;">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:42px;height:42px;border-radius:10px;background:rgba(124,92,252,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <i class="fa-solid fa-envelope" style="font-size:1rem;color:#7c5cfc;"></i>
-              </div>
-              <h3 style="font-size:0.95rem;font-weight:700;color:#111111;">Email</h3>
-            </div>
-            <p style="font-size:0.82rem;color:#52525b;line-height:1.6;margin-bottom:10px;">Reads incoming emails, matches them against your company data, and either sends a reply automatically or drops a draft into your inbox for your team to review. Works with Gmail, Outlook, and shared inboxes.</p>
-            <div style="display:flex; gap:6px; flex-wrap:wrap;">
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Gmail</span>
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Outlook</span>
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Shared inboxes</span>
-            </div>
-          </div>
-
-          <div style="background:rgba(124,92,252,0.05); border:1px solid rgba(124,92,252,0.12); border-radius:12px; padding:24px;">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:42px;height:42px;border-radius:10px;background:rgba(124,92,252,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <i class="fa-solid fa-comment-dots" style="font-size:1rem;color:#7c5cfc;"></i>
-              </div>
-              <h3 style="font-size:0.95rem;font-weight:700;color:#111111;">Live Chat</h3>
-            </div>
-            <p style="font-size:0.82rem;color:#52525b;line-height:1.6;margin-bottom:10px;">A chatbot on your website that handles the most common questions instantly. It can look up orders, explain your services, answer pricing questions, and hand off to a real person when it needs to.</p>
-            <div style="display:flex; gap:6px; flex-wrap:wrap;">
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Your website</span>
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">24/7</span>
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Human handoff</span>
-            </div>
-          </div>
-
-          <div style="background:rgba(124,92,252,0.05); border:1px solid rgba(124,92,252,0.12); border-radius:12px; padding:24px;">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:42px;height:42px;border-radius:10px;background:rgba(124,92,252,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <i class="fa-solid fa-ticket" style="font-size:1rem;color:#7c5cfc;"></i>
-              </div>
-              <h3 style="font-size:0.95rem;font-weight:700;color:#111111;">Support Tickets</h3>
-            </div>
-            <p style="font-size:0.82rem;color:#52525b;line-height:1.6;margin-bottom:10px;">Incoming tickets get read, categorised by type (billing, tech, general), prioritised by urgency, and responded to automatically. Nothing sits in a queue unanswered. Complex ones get flagged for your team.</p>
-            <div style="display:flex; gap:6px; flex-wrap:wrap;">
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Auto-categorised</span>
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Priority flagging</span>
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Smart escalation</span>
-            </div>
-          </div>
-
-          <div style="background:rgba(124,92,252,0.05); border:1px solid rgba(124,92,252,0.12); border-radius:12px; padding:24px;">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:42px;height:42px;border-radius:10px;background:rgba(124,92,252,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <i class="fa-brands fa-facebook-messenger" style="font-size:1rem;color:#7c5cfc;"></i>
-              </div>
-              <h3 style="font-size:0.95rem;font-weight:700;color:#111111;">Social DMs</h3>
-            </div>
-            <p style="font-size:0.82rem;color:#52525b;line-height:1.6;margin-bottom:10px;">DMs on Facebook and Instagram get answered using the same knowledge base as every other channel. Same tone, same accuracy, but on the platforms your customers actually use. No more leaving messages on read.</p>
-            <div style="display:flex; gap:6px; flex-wrap:wrap;">
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Facebook</span>
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Instagram</span>
-              <span style="background:rgba(124,92,252,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#c4b5fd;">Same knowledge</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Bottom note -->
-        <div style="margin-top:24px; background:rgba(34,197,94,0.05); border:1px solid rgba(34,197,94,0.1); border-radius:10px; padding:18px 24px; display:flex; align-items:center; gap:12px;">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <i class="fa-solid fa-shield-halved" style="color:#86efac; font-size:0.9rem;"></i>
-          </div>
-          <div>
-            <div style="font-size:0.85rem; font-weight:600; color:#111111; margin-bottom:2px;">Human escalation built in</div>
-            <div style="font-size:0.78rem; color:#71717a;">When something's too complex or sensitive for AI, it flags it for your team with full context. No customer ever gets stuck talking to a bot that can't help them.</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- TWO TIERS -->
-  <section class="page-section">
-    <div class="page-section-inner">
-      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
         <span class="section-label">Two approaches</span>
         <h2 class="section-title">Pick the level of automation that works for your team</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Both options use the same AI engine and the same customer datasheet. The only difference is how much control you want your team to keep.</p>
+        <p class="section-sub" style="margin:14px auto 0;">Both use the same AI engine and company data. The only difference is how much control your team keeps.</p>
       </div>
       <div class="tier-grid reveal" style="transition-delay:0.1s;">
         <div class="tier-card featured">
           <div class="tier-icon"><i class="fa-solid fa-bolt"></i></div>
           <div class="tier-badge">Full Automation</div>
-          <h3>Fully Automated Customer Service</h3>
-          <p>AI handles emails, chats, and tickets automatically. It reads every incoming message, works out what the customer needs, pulls the right info from your datasheet, and responds across whichever channel they used.</p>
-          <p>Great for businesses that get a high volume of routine enquiries across multiple channels where speed and consistency matter most.</p>
+          <h3>AI Sends Automatically</h3>
+          <p>Every incoming email gets read, understood, and replied to — automatically. The AI pulls the right info from your company data and sends the response, day or night, any volume.</p>
+          <p>Best for businesses with high volumes of routine enquiries where speed and consistency matter most.</p>
           <ul class="check-list" style="margin-top:16px;">
-            <li><i class="fa-solid fa-circle-check"></i><span>Instant responses across all channels, 24/7</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Instant responses, 24/7</span></li>
             <li><i class="fa-solid fa-circle-check"></i><span>Handles unlimited volume</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span>Answers grounded in your datasheet</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Grounded in your approved data</span></li>
             <li><i class="fa-solid fa-circle-check"></i><span>Smart escalation to humans when needed</span></li>
           </ul>
         </div>
@@ -506,29 +625,32 @@
           <div class="tier-icon"><i class="fa-solid fa-user-check"></i></div>
           <div class="tier-badge">Draft Mode</div>
           <h3>AI Drafts, Your Team Sends</h3>
-          <p>For teams that want to move faster without giving up control. AI prepares responses across all channels — emails, chat replies, ticket responses — then queues them for your team to review and send.</p>
-          <p>Works inside Gmail, Outlook, your chat platform, and your ticketing system. You can turn draft mode on or off per channel whenever you want.</p>
+          <p>AI writes the reply and drops it into your inbox as a draft. Your team reviews it, makes any tweaks, and hits send. Way faster than writing from scratch, full control over what goes out.</p>
+          <p>Works inside Gmail, Outlook, and shared inboxes. Turn draft mode on or off per inbox whenever you want.</p>
           <ul class="check-list" style="margin-top:16px;">
-            <li><i class="fa-solid fa-circle-check"></i><span>Full human oversight before anything goes out</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span>Way faster response times across every channel</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span>Consistent tone based on your company's knowledge</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span>Your team can edit, approve, or send in seconds</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Full human oversight on every reply</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>10x faster response times</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Consistent tone from your company data</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span>Edit, approve, or send in seconds</span></li>
           </ul>
         </div>
       </div>
+
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- EMAIL WORKFLOW VISUALISER -->
+  <!-- ══════════════════════════════════════════
+       EMAIL WORKFLOW VISUALISER
+       ══════════════════════════════════════════ -->
   <section class="page-section eflow-section">
     <div class="page-section-inner">
 
       <div class="reveal" style="text-align:center;max-width:660px;margin:0 auto 48px;">
         <span class="section-label">How it works</span>
         <h2 class="section-title">See how your email flow works</h2>
-        <p class="section-sub">From your company datasheet to the final reply, here's how it all moves. Switch between modes to see the difference between auto-sending and draft mode.</p>
+        <p class="section-sub">From your company data to the final reply — switch between modes to see the difference.</p>
       </div>
 
       <!-- Mode tabs -->
@@ -541,15 +663,15 @@
         </button>
       </div>
 
-      <!-- ── Full Automation Flow ── -->
+      <!-- Full Automation Flow -->
       <div class="eflow-diagram reveal" id="eflow-full" style="transition-delay:0.1s;">
         <div class="eflow-row">
 
           <div class="eflow-node wf-amber">
             <div class="eflow-node-icon"><i class="fa-solid fa-file-lines"></i></div>
             <div class="eflow-node-step">Step 1</div>
-            <div class="eflow-node-title">Company Datasheet</div>
-            <div class="eflow-node-desc">Products, pricing, policies, tone of voice, and service rules all sorted in one place your team has approved.</div>
+            <div class="eflow-node-title">Company Data</div>
+            <div class="eflow-node-desc">Products, pricing, policies, tone of voice, and service rules — all approved by your team.</div>
           </div>
 
           <div class="eflow-conn" style="--pd:0s;">
@@ -561,7 +683,7 @@
             <div class="eflow-node-icon"><i class="fa-solid fa-brain"></i></div>
             <div class="eflow-node-step">Step 2</div>
             <div class="eflow-node-title">AI Engine</div>
-            <div class="eflow-node-desc">Reads your full datasheet and learns from previous email history so replies sound informed and consistent.</div>
+            <div class="eflow-node-desc">Reads your data and learns from email history so replies sound informed and consistent.</div>
           </div>
 
           <div class="eflow-conn" style="--pd:0.45s;">
@@ -573,7 +695,7 @@
             <div class="eflow-node-icon"><i class="fa-solid fa-envelope-open"></i></div>
             <div class="eflow-node-step">Step 3</div>
             <div class="eflow-node-title">Customer Email</div>
-            <div class="eflow-node-desc">Incoming email gets read straight away. Intent, urgency, and customer history are all taken into account.</div>
+            <div class="eflow-node-desc">Incoming email gets read instantly. Intent, urgency, and customer history are all factored in.</div>
           </div>
 
           <div class="eflow-conn" style="--pd:0.9s;">
@@ -584,8 +706,8 @@
           <div class="eflow-node wf-indigo">
             <div class="eflow-node-icon"><i class="fa-solid fa-lightbulb"></i></div>
             <div class="eflow-node-step">Step 4</div>
-            <div class="eflow-node-title">Recommendations</div>
-            <div class="eflow-node-desc">A personalised reply gets written using your datasheet and email history, so every response sounds like it came from your team.</div>
+            <div class="eflow-node-title">Reply Written</div>
+            <div class="eflow-node-desc">A personalised reply using your data and email history — sounds like your team wrote it.</div>
           </div>
 
           <div class="eflow-conn" style="--pd:1.35s;">
@@ -597,13 +719,13 @@
             <div class="eflow-node-icon"><i class="fa-solid fa-paper-plane"></i></div>
             <div class="eflow-node-step">Step 5</div>
             <div class="eflow-node-title">Auto-Sent</div>
-            <div class="eflow-node-desc">Reply goes out instantly. Any time of day, any volume, without adding more work for your team.</div>
+            <div class="eflow-node-desc">Reply goes out instantly. Any time of day, any volume, zero extra work for your team.</div>
           </div>
 
         </div>
         <div class="eflow-callout">
           <i class="fa-solid fa-bolt eflow-callout-icon"></i>
-          <div><strong>Full Automation</strong> takes care of the whole journey. Every incoming email is read, understood, and replied to automatically, day or night. Best for routine enquiries where speed and consistency matter most.</div>
+          <div><strong>Full Automation</strong> handles the whole journey. Every email is read, understood, and replied to automatically — day or night.</div>
         </div>
       </div>
 
@@ -614,8 +736,8 @@
           <div class="eflow-node wf-amber">
             <div class="eflow-node-icon"><i class="fa-solid fa-file-lines"></i></div>
             <div class="eflow-node-step">Step 1</div>
-            <div class="eflow-node-title">Company Datasheet</div>
-            <div class="eflow-node-desc">Products, pricing, policies, tone of voice, and service rules all sorted in one place your team has approved.</div>
+            <div class="eflow-node-title">Company Data</div>
+            <div class="eflow-node-desc">Products, pricing, policies, tone of voice, and service rules — all approved by your team.</div>
           </div>
 
           <div class="eflow-conn" style="--pd:0s;">
@@ -627,7 +749,7 @@
             <div class="eflow-node-icon"><i class="fa-solid fa-brain"></i></div>
             <div class="eflow-node-step">Step 2</div>
             <div class="eflow-node-title">AI Engine</div>
-            <div class="eflow-node-desc">Reads your datasheet and previous email history so every draft sounds right and stays on brand.</div>
+            <div class="eflow-node-desc">Reads your data and previous email history so every draft sounds right and stays on brand.</div>
           </div>
 
           <div class="eflow-conn" style="--pd:0.4s;">
@@ -639,7 +761,7 @@
             <div class="eflow-node-icon"><i class="fa-solid fa-envelope-open"></i></div>
             <div class="eflow-node-step">Step 3</div>
             <div class="eflow-node-title">Customer Email</div>
-            <div class="eflow-node-desc">Incoming email gets reviewed with the full context of the conversation and customer history.</div>
+            <div class="eflow-node-desc">Incoming email gets reviewed with the full conversation context and customer history.</div>
           </div>
 
           <div class="eflow-conn" style="--pd:0.8s;">
@@ -650,8 +772,8 @@
           <div class="eflow-node wf-indigo">
             <div class="eflow-node-icon"><i class="fa-solid fa-lightbulb"></i></div>
             <div class="eflow-node-step">Step 4</div>
-            <div class="eflow-node-title">Recommendations</div>
-            <div class="eflow-node-desc">A full draft reply gets created and dropped in for review. Your team can approve it in seconds.</div>
+            <div class="eflow-node-title">Draft Created</div>
+            <div class="eflow-node-desc">A full reply gets written and queued for review. Your team can approve it in seconds.</div>
           </div>
 
           <div class="eflow-conn" style="--pd:1.2s;">
@@ -662,8 +784,8 @@
           <div class="eflow-node wf-rose">
             <div class="eflow-node-icon"><i class="fa-solid fa-user-check"></i></div>
             <div class="eflow-node-step">Step 5</div>
-            <div class="eflow-node-title">Draft Review</div>
-            <div class="eflow-node-desc">Your team opens the ready-made draft, makes any tweaks they want, and stays fully in control of the final message.</div>
+            <div class="eflow-node-title">Team Reviews</div>
+            <div class="eflow-node-desc">Your team opens the draft, makes any tweaks, and keeps full control of the final message.</div>
           </div>
 
           <div class="eflow-conn" style="--pd:1.6s;">
@@ -675,13 +797,13 @@
             <div class="eflow-node-icon"><i class="fa-solid fa-paper-plane"></i></div>
             <div class="eflow-node-step">Step 6</div>
             <div class="eflow-node-title">Approved &amp; Sent</div>
-            <div class="eflow-node-desc">Your team hits send. Much faster than writing from scratch, and the final sign-off stays in-house.</div>
+            <div class="eflow-node-desc">Your team hits send. Much faster than writing from scratch, final sign-off stays in-house.</div>
           </div>
 
         </div>
         <div class="eflow-callout eflow-callout-loop">
           <i class="fa-solid fa-user-check eflow-callout-icon"></i>
-          <div><strong>Draft Mode</strong> does the heavy lifting while your team keeps full control. Every reply gets written, saved into drafts, and is ready to send. Perfect for teams that want to move faster without handing over the final click.</div>
+          <div><strong>Draft Mode</strong> does the heavy lifting while your team keeps full control. Every reply gets written, saved to drafts, and is ready to send.</div>
         </div>
       </div>
 
@@ -699,6 +821,111 @@
 
   <div class="section-divider"></div>
 
+  <!-- ══════════════════════════════════════════════════════════════
+       ██  SHARED: HOW IT ALL WORKS
+       ══════════════════════════════════════════════════════════════ -->
+
+  <!-- AI ENGINE + DATA -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 48px;">
+        <span class="section-label">Under the hood</span>
+        <h2 class="section-title">One AI brain powered by your business data</h2>
+        <p class="section-sub" style="margin:14px auto 0;">Both live chat and email use the same engine. We train it on your products, pricing, policies, and tone of voice — so every response sounds like it came from your team.</p>
+      </div>
+
+      <div class="reveal" style="max-width:900px; margin:0 auto;">
+        <!-- Data source -->
+        <div style="background:rgba(180,130,20,0.06); border:1px solid rgba(180,130,20,0.18); border-radius:14px; padding:24px 28px; margin-bottom:16px;">
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
+            <div style="width:48px;height:48px;border-radius:12px;background:rgba(180,130,20,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-solid fa-database" style="color:#b45309; font-size:1.1rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:1rem; font-weight:700;">Your Company Data</div>
+              <div style="font-size:0.78rem; color:var(--muted);">This is what the AI learns from. You control it, we set it up.</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="background:rgba(180,130,20,0.08); border:1px solid rgba(180,130,20,0.18); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#92400e;">Products &amp; pricing</span>
+            <span style="background:rgba(180,130,20,0.08); border:1px solid rgba(180,130,20,0.18); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#92400e;">Return &amp; refund policies</span>
+            <span style="background:rgba(180,130,20,0.08); border:1px solid rgba(180,130,20,0.18); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#92400e;">FAQs</span>
+            <span style="background:rgba(180,130,20,0.08); border:1px solid rgba(180,130,20,0.18); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#92400e;">Shipping info</span>
+            <span style="background:rgba(180,130,20,0.08); border:1px solid rgba(180,130,20,0.18); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#92400e;">Tone of voice</span>
+            <span style="background:rgba(180,130,20,0.08); border:1px solid rgba(180,130,20,0.18); border-radius:6px; padding:6px 12px; font-size:0.75rem; color:#92400e;">Service descriptions</span>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div style="text-align:center; padding:4px 0;">
+          <div style="display:inline-flex; flex-direction:column; align-items:center; gap:2px;">
+            <div style="width:2px; height:20px; background:rgba(124,92,252,0.2);"></div>
+            <i class="fa-solid fa-chevron-down" style="color:rgba(124,92,252,0.35); font-size:0.7rem;"></i>
+          </div>
+        </div>
+
+        <!-- AI Engine -->
+        <div style="background:rgba(124,92,252,0.06); border:2px solid rgba(124,92,252,0.2); border-radius:14px; padding:28px; margin-bottom:16px;">
+          <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
+            <div style="width:56px;height:56px;border-radius:50%;background:rgba(124,92,252,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-solid fa-brain" style="color:#7c5cfc; font-size:1.4rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:1.1rem; font-weight:800; color:#7c5cfc;">AI Engine</div>
+              <div style="font-size:0.8rem; color:var(--muted);">Reads the message, checks your data, writes a response that sounds like your team wrote it</div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
+            <div style="background:rgba(124,92,252,0.05); border-radius:8px; padding:14px; text-align:center;">
+              <div style="font-size:1.3rem; font-weight:800; color:#7c5cfc;">2s</div>
+              <div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">Avg response time</div>
+            </div>
+            <div style="background:rgba(124,92,252,0.05); border-radius:8px; padding:14px; text-align:center;">
+              <div style="font-size:1.3rem; font-weight:800; color:#7c5cfc;">94%</div>
+              <div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">Accuracy</div>
+            </div>
+            <div style="background:rgba(124,92,252,0.05); border-radius:8px; padding:14px; text-align:center;">
+              <div style="font-size:1.3rem; font-weight:800; color:#7c5cfc;">24/7</div>
+              <div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">Always on</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div style="text-align:center; padding:4px 0;">
+          <div style="display:inline-flex; flex-direction:column; align-items:center; gap:2px;">
+            <div style="width:2px; height:20px; background:rgba(124,92,252,0.2);"></div>
+            <i class="fa-solid fa-chevron-down" style="color:rgba(124,92,252,0.35); font-size:0.7rem;"></i>
+          </div>
+        </div>
+
+        <!-- Channels output -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div style="background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.12); border-radius:12px; padding:20px; display:flex; align-items:center; gap:14px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-solid fa-comment-dots" style="color:#16a34a;"></i>
+            </div>
+            <div>
+              <div style="font-size:0.88rem; font-weight:700;">Live Chat &amp; Tickets</div>
+              <div style="font-size:0.75rem; color:var(--muted);">Instant answers on your website, ticketing system, and social DMs</div>
+            </div>
+          </div>
+          <div style="background:rgba(124,92,252,0.04); border:1px solid rgba(124,92,252,0.12); border-radius:12px; padding:20px; display:flex; align-items:center; gap:14px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(124,92,252,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-solid fa-envelope" style="color:#7c5cfc;"></i>
+            </div>
+            <div>
+              <div style="font-size:0.88rem; font-weight:700;">Email</div>
+              <div style="font-size:0.75rem; color:var(--muted);">Auto-replies or ready-made drafts across Gmail, Outlook, shared inboxes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
   <!-- WHAT GETS AUTOMATED -->
   <section class="page-section">
     <div class="page-section-inner" style="max-width:760px;">
@@ -711,67 +938,67 @@
 
       <!-- Stat bar -->
       <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:40px;">
-        <div style="background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:12px;padding:20px 16px;text-align:center;">
-          <div style="font-size:1.6rem;font-weight:800;color:#c4b5fd;">92%</div>
-          <div style="font-size:0.78rem;color:#52525b;margin-top:4px;">Handled by AI</div>
+        <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.12);border-radius:12px;padding:20px 16px;text-align:center;">
+          <div style="font-size:1.6rem;font-weight:800;color:#7c5cfc;">92%</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Handled by AI</div>
         </div>
-        <div style="background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:12px;padding:20px 16px;text-align:center;">
-          <div style="font-size:1.6rem;font-weight:800;color:#c4b5fd;">&lt; 2 min</div>
-          <div style="font-size:0.78rem;color:#52525b;margin-top:4px;">Response time</div>
+        <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.12);border-radius:12px;padding:20px 16px;text-align:center;">
+          <div style="font-size:1.6rem;font-weight:800;color:#7c5cfc;">&lt; 2 min</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Response time</div>
         </div>
-        <div style="background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:12px;padding:20px 16px;text-align:center;">
-          <div style="font-size:1.6rem;font-weight:800;color:#c4b5fd;">24/7</div>
-          <div style="font-size:0.78rem;color:#52525b;margin-top:4px;">Coverage</div>
+        <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.12);border-radius:12px;padding:20px 16px;text-align:center;">
+          <div style="font-size:1.6rem;font-weight:800;color:#7c5cfc;">24/7</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Coverage</div>
         </div>
-        <div style="background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:12px;padding:20px 16px;text-align:center;">
-          <div style="font-size:1.6rem;font-weight:800;color:#c4b5fd;">0</div>
-          <div style="font-size:0.78rem;color:#52525b;margin-top:4px;">Extra hires needed</div>
+        <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.12);border-radius:12px;padding:20px 16px;text-align:center;">
+          <div style="font-size:1.6rem;font-weight:800;color:#7c5cfc;">0</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Extra hires needed</div>
         </div>
       </div>
 
       <!-- Ticket distribution bars -->
       <div class="reveal" style="display:flex;flex-direction:column;gap:14px;">
         <div style="display:flex;align-items:center;gap:14px;">
-          <span style="flex:0 0 220px;font-size:0.85rem;color:rgba(255,255,255,0.7);text-align:right;">Pricing &amp; product questions</span>
-          <div style="flex:1;height:28px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;position:relative;">
-            <div style="width:30%;height:100%;background:rgba(124,92,252,0.35);border-radius:6px;"></div>
+          <span style="flex:0 0 220px;font-size:0.85rem;color:var(--white);text-align:right;">Pricing &amp; product questions</span>
+          <div style="flex:1;height:28px;background:rgba(0,0,0,0.04);border-radius:6px;overflow:hidden;position:relative;">
+            <div style="width:30%;height:100%;background:rgba(124,92,252,0.25);border-radius:6px;"></div>
           </div>
-          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#c4b5fd;">30%</span>
+          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#7c5cfc;">30%</span>
         </div>
         <div style="display:flex;align-items:center;gap:14px;">
-          <span style="flex:0 0 220px;font-size:0.85rem;color:rgba(255,255,255,0.7);text-align:right;">Order status &amp; tracking</span>
-          <div style="flex:1;height:28px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;position:relative;">
-            <div style="width:25%;height:100%;background:rgba(124,92,252,0.35);border-radius:6px;"></div>
+          <span style="flex:0 0 220px;font-size:0.85rem;color:var(--white);text-align:right;">Order status &amp; tracking</span>
+          <div style="flex:1;height:28px;background:rgba(0,0,0,0.04);border-radius:6px;overflow:hidden;position:relative;">
+            <div style="width:25%;height:100%;background:rgba(124,92,252,0.25);border-radius:6px;"></div>
           </div>
-          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#c4b5fd;">25%</span>
+          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#7c5cfc;">25%</span>
         </div>
         <div style="display:flex;align-items:center;gap:14px;">
-          <span style="flex:0 0 220px;font-size:0.85rem;color:rgba(255,255,255,0.7);text-align:right;">Returns &amp; refunds</span>
-          <div style="flex:1;height:28px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;position:relative;">
-            <div style="width:15%;height:100%;background:rgba(124,92,252,0.35);border-radius:6px;"></div>
+          <span style="flex:0 0 220px;font-size:0.85rem;color:var(--white);text-align:right;">Returns &amp; refunds</span>
+          <div style="flex:1;height:28px;background:rgba(0,0,0,0.04);border-radius:6px;overflow:hidden;position:relative;">
+            <div style="width:15%;height:100%;background:rgba(124,92,252,0.25);border-radius:6px;"></div>
           </div>
-          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#c4b5fd;">15%</span>
+          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#7c5cfc;">15%</span>
         </div>
         <div style="display:flex;align-items:center;gap:14px;">
-          <span style="flex:0 0 220px;font-size:0.85rem;color:rgba(255,255,255,0.7);text-align:right;">Booking &amp; scheduling</span>
-          <div style="flex:1;height:28px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;position:relative;">
-            <div style="width:12%;height:100%;background:rgba(124,92,252,0.35);border-radius:6px;"></div>
+          <span style="flex:0 0 220px;font-size:0.85rem;color:var(--white);text-align:right;">Booking &amp; scheduling</span>
+          <div style="flex:1;height:28px;background:rgba(0,0,0,0.04);border-radius:6px;overflow:hidden;position:relative;">
+            <div style="width:12%;height:100%;background:rgba(124,92,252,0.25);border-radius:6px;"></div>
           </div>
-          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#c4b5fd;">12%</span>
+          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#7c5cfc;">12%</span>
         </div>
         <div style="display:flex;align-items:center;gap:14px;">
-          <span style="flex:0 0 220px;font-size:0.85rem;color:rgba(255,255,255,0.7);text-align:right;">General enquiries</span>
-          <div style="flex:1;height:28px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;position:relative;">
-            <div style="width:10%;height:100%;background:rgba(124,92,252,0.35);border-radius:6px;"></div>
+          <span style="flex:0 0 220px;font-size:0.85rem;color:var(--white);text-align:right;">General enquiries</span>
+          <div style="flex:1;height:28px;background:rgba(0,0,0,0.04);border-radius:6px;overflow:hidden;position:relative;">
+            <div style="width:10%;height:100%;background:rgba(124,92,252,0.25);border-radius:6px;"></div>
           </div>
-          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#c4b5fd;">10%</span>
+          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#7c5cfc;">10%</span>
         </div>
         <div style="display:flex;align-items:center;gap:14px;">
-          <span style="flex:0 0 220px;font-size:0.85rem;color:rgba(255,255,255,0.5);text-align:right;">Requires human</span>
-          <div style="flex:1;height:28px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;position:relative;">
-            <div style="width:8%;height:100%;background:rgba(255,255,255,0.12);border-radius:6px;"></div>
+          <span style="flex:0 0 220px;font-size:0.85rem;color:var(--muted);text-align:right;">Requires human</span>
+          <div style="flex:1;height:28px;background:rgba(0,0,0,0.04);border-radius:6px;overflow:hidden;position:relative;">
+            <div style="width:8%;height:100%;background:rgba(0,0,0,0.08);border-radius:6px;"></div>
           </div>
-          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:600;color:#71717a;">8%</span>
+          <span style="flex:0 0 40px;font-size:0.82rem;font-weight:600;color:var(--muted);">8%</span>
         </div>
       </div>
 
@@ -780,15 +1007,49 @@
 
   <div class="section-divider"></div>
 
-  <!-- INTEGRATIONS ACCORDION -->
+  <!-- DATASHEET -->
+  <section class="page-section alt">
+    <div class="page-section-inner">
+      <div class="two-col reveal">
+        <div class="content-block">
+          <span class="section-label">The Foundation</span>
+          <h2 class="section-title">Everything the AI needs lives in one datasheet</h2>
+          <p class="section-sub">Before we go live, we build a detailed customer datasheet with you. Pricing, products, policies, FAQs, tone of voice, escalation rules — everything the AI needs to represent your business properly.</p>
+          <p class="section-sub" style="margin-top:14px;">Replies stay grounded in your approved info, whether it's sending automatically or preparing drafts for your team.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div><h3>Grounded Responses</h3><p>Replies are built from your approved content. Fast answers that still sound informed and consistent.</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-pen-fancy"></i></div>
+            <div><h3>Your Voice, Your Tone</h3><p>We shape the AI around your communication style so every reply sounds like it came from your team.</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <div><h3>Always Up to Date</h3><p>Update the datasheet and the AI picks up the new info straight away. No retraining needed.</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-sitemap"></i></div>
+            <div><h3>Smart Escalation</h3><p>Anything outside the datasheet gets flagged and sent to the right person with the context they need.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- INTEGRATIONS -->
   <section class="page-section">
     <div class="page-section-inner">
       <div class="two-col reveal">
         <div class="content-block">
           <span class="section-label">Integrations</span>
           <h2 class="section-title">Plugs into the tools your team already uses</h2>
-          <p class="section-sub">Our email automation connects straight to your existing tools. No migration, no disruption. Each integration is set up around how your business already works.</p>
-          <p class="section-sub" style="margin-top:14px;">Click any integration below to see how it connects and what it can do for your workflow.</p>
+          <p class="section-sub">Connects straight to your existing tools. No migration, no disruption. Each integration is set up around how your business already works.</p>
+          <p class="section-sub" style="margin-top:14px;">Click any integration below to see how it connects.</p>
         </div>
         <div class="int-accordion">
 
@@ -803,7 +1064,7 @@
             </button>
             <div class="int-acc-content-wrap">
               <div class="int-acc-content-inner">
-                <p class="int-acc-body">We connect through secure OAuth, no passwords stored. The AI reads incoming emails, applies your label and folder logic, and either sends replies or drops them into drafts from your address. It works with shared inboxes, aliases, and Google Groups straight away.</p>
+                <p class="int-acc-body">We connect through secure OAuth, no passwords stored. The AI reads incoming emails, applies your label and folder logic, and either sends replies or drops them into drafts from your address. Works with shared inboxes, aliases, and Google Groups.</p>
               </div>
             </div>
           </div>
@@ -819,7 +1080,7 @@
             </button>
             <div class="int-acc-content-wrap">
               <div class="int-acc-content-inner">
-                <p class="int-acc-body">Full integration through the Microsoft Graph API. Handles shared mailboxes, distribution lists, and delegated access. Meeting requests, calendar events, and ready-made draft replies all fit into the same setup. No extra add-ins needed.</p>
+                <p class="int-acc-body">Full integration through the Microsoft Graph API. Handles shared mailboxes, distribution lists, and delegated access. Meeting requests, calendar events, and ready-made draft replies all fit into the same setup.</p>
               </div>
             </div>
           </div>
@@ -835,7 +1096,7 @@
             </button>
             <div class="int-acc-content-wrap">
               <div class="int-acc-content-inner">
-                <p class="int-acc-body">Every email, sent and received, gets logged against the right contact and deal. Deal stages update based on reply content, new contacts get created for unknown senders, and your pipeline stays tidy without anyone doing data entry.</p>
+                <p class="int-acc-body">Every email gets logged against the right contact and deal. Deal stages update based on reply content, new contacts get created for unknown senders, and your pipeline stays tidy without manual data entry.</p>
               </div>
             </div>
           </div>
@@ -851,7 +1112,7 @@
             </button>
             <div class="int-acc-content-wrap">
               <div class="int-acc-content-inner">
-                <p class="int-acc-body">Email events can trigger actions across your full stack. Slack alerts, Notion entries, invoices, handovers for your team. Inbound emails can also kick off follow-up sequences automatically when it makes sense for your workflow.</p>
+                <p class="int-acc-body">Email events can trigger actions across your full stack. Slack alerts, Notion entries, invoices, team handovers. Inbound emails can also kick off follow-up sequences automatically.</p>
               </div>
             </div>
           </div>
@@ -862,109 +1123,8 @@
   </section>
 
   <div class="section-divider"></div>
-  <!-- DATASHEET -->
-  <section class="page-section alt">
-    <div class="page-section-inner">
-      <div class="two-col reveal">
-        <div class="content-block">
-          <span class="section-label">The Foundation</span>
-          <h2 class="section-title">Everything the AI needs to know about your business lives in one datasheet</h2>
-          <p class="section-sub">Before we go live, we work with you to build a detailed customer datasheet. It's a structured doc with everything the AI needs to represent your business properly. Pricing, products, policies, FAQs, tone of voice, escalation rules, the lot.</p>
-          <p class="section-sub" style="margin-top:14px;">That means replies stay grounded in your approved info, whether the system's sending automatically or preparing drafts for your team.</p>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <div><h3>Grounded Responses</h3><p>Replies are built from your approved content. Fast answers that still sound informed and consistent.</p></div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-pen-fancy"></i></div>
-            <div><h3>Your Voice, Your Tone</h3><p>We shape the AI around your communication style so every reply sounds like it came from your team.</p></div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
-            <div><h3>Always Up to Date</h3><p>Update the datasheet and the AI picks up the new info straight away. No complicated retraining needed.</p></div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-sitemap"></i></div>
-            <div><h3>Smart Escalation</h3><p>Anything outside the datasheet gets flagged and sent to the right person with the context they need.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- EMAIL DEMO -->
-  <section class="page-section">
-    <div class="page-section-inner">
-      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
-        <span class="section-label">Email example</span>
-        <h2 class="section-title">Customer emails in. AI writes the reply.</h2>
-        <p class="section-sub" style="margin:14px auto 0;">A real enquiry comes in. The AI reads it, checks your company data, and drafts a reply. Your team can send it as-is or tweak it first.</p>
-      </div>
-
-      <div class="reveal" style="max-width:800px; margin:0 auto;">
-        <div style="background:#1a1a2e; border:1px solid rgba(124,92,252,0.2); border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-          <div style="background:#12121f; padding:10px 16px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(255,255,255,0.06);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;"></span>
-            <span style="width:12px;height:12px;border-radius:50%;background:#ffbd2e;"></span>
-            <span style="width:12px;height:12px;border-radius:50%;background:#28c840;"></span>
-            <span style="flex:1;text-align:center;font-size:0.72rem;color:#71717a;">Outlook — Inbox</span>
-          </div>
-          <div style="padding:24px 28px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
-              <div style="font-size:1rem; font-weight:700; color:#111111;">Pricing for 20-person team?</div>
-              <div style="font-size:0.65rem; color:rgba(255,255,255,0.2);">10:42 AM</div>
-            </div>
-            <div style="border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:18px; margin-bottom:16px;">
-              <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-                <div style="width:32px;height:32px;border-radius:50%;background:rgba(124,92,252,0.15);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#c4b5fd;">SM</div>
-                <div>
-                  <div style="font-size:0.8rem; font-weight:600; color:#111111;">Sarah Mitchell</div>
-                  <div style="font-size:0.65rem; color:#71717a;">sarah@brightpath.co.uk</div>
-                </div>
-              </div>
-              <div style="font-size:0.82rem; color:rgba(255,255,255,0.55); line-height:1.7;">
-                Hi there,<br/><br/>We're a marketing agency with about 20 staff and we're looking at automating some of our client reporting and email follow-ups. Could you give us a rough idea of pricing and what's included?<br/><br/>We currently use HubSpot and Mailchimp if that helps.<br/><br/>Thanks,<br/>Sarah
-              </div>
-            </div>
-            <div style="display:flex; align-items:center; gap:10px; margin:20px 0;">
-              <div style="flex:1; height:1px; background:rgba(255,255,255,0.06);"></div>
-              <div style="display:flex; align-items:center; gap:6px; background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.15); border-radius:20px; padding:5px 14px;">
-                <i class="fa-solid fa-robot" style="color:#86efac; font-size:0.65rem;"></i>
-                <span style="font-size:0.68rem; font-weight:700; color:#86efac;">AI draft ready — 2.1s</span>
-                <span style="font-size:0.65rem; color:rgba(255,255,255,0.3); margin-left:4px;">94% confidence</span>
-              </div>
-              <div style="flex:1; height:1px; background:rgba(255,255,255,0.06);"></div>
-            </div>
-            <div style="border:1px solid rgba(34,197,94,0.12); border-radius:10px; padding:18px; background:rgba(34,197,94,0.03);">
-              <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-                <div style="width:32px;height:32px;border-radius:50%;background:rgba(34,197,94,0.12);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#86efac;"><i class="fa-solid fa-robot"></i></div>
-                <div>
-                  <div style="font-size:0.8rem; font-weight:600; color:#111111;">AI Draft Reply</div>
-                  <div style="font-size:0.65rem; color:rgba(255,255,255,0.3);">Matched: pricing, HubSpot, Mailchimp, team size</div>
-                </div>
-              </div>
-              <div style="font-size:0.82rem; color:rgba(255,255,255,0.65); line-height:1.75;">
-                Hi Sarah,<br/><br/>Thanks for getting in touch. For a team of 20 with HubSpot and Mailchimp already in the stack, we'd typically look at two things:<br/><br/><strong style="color:#111111;">Client reporting automation</strong> — we pull data from HubSpot and build reports that go out to your clients automatically. No more Friday afternoons spent compiling them. Starts at around &pound;2,500.<br/><br/><strong style="color:#111111;">Email follow-up sequences</strong> — automated sequences in Mailchimp triggered by client activity or deal stage. Keeps leads warm without your team having to remember who to chase. Starts at around &pound;1,500.<br/><br/>Happy to jump on a quick call this week. Would Thursday or Friday work?<br/><br/>Best,<br/>The Autoeight Team
-              </div>
-              <div style="display:flex; gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(34,197,94,0.1);">
-                <div style="background:#22c55e; color:#fff; padding:8px 18px; border-radius:6px; font-size:0.75rem; font-weight:600; display:inline-flex; align-items:center; gap:5px;"><i class="fa-solid fa-paper-plane"></i> Send</div>
-                <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#52525b; padding:8px 18px; border-radius:6px; font-size:0.75rem; font-weight:600; display:inline-flex; align-items:center; gap:5px;"><i class="fa-solid fa-pen"></i> Edit first</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  
-  <div class="section-divider"></div>
-
-  <!-- ── CASE STUDIES ── -->
+  <!-- CASE STUDIES -->
   <section class="page-section">
     <div class="page-section-inner">
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
@@ -1021,7 +1181,7 @@
           <h4>Services</h4>
           <ul>
             <li><a href="ai-automation.html">AI &amp; Automation</a></li>
-            <li><a href="email-automation.html">Email Automation</a></li>
+            <li><a href="email-automation.html">AI Support</a></li>
             <li><a href="sales-automation.html">Sales Automation</a></li>
             <li><a href="sales-marketing.html">Sales &amp; Marketing Intel</a></li>
             <li><a href="internal-systems.html">Internal Systems</a></li>
@@ -1044,22 +1204,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
