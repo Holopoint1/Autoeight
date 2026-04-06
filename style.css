@@ -5744,8 +5744,8 @@ footer {
 /* Mobile */
 @media (max-width: 600px) {
   .cs-section { padding: 60px 0 50px; }
-  .cs-carousel-wrap { padding: 0 40px; }
-  .cs-card { padding: 28px 24px; gap: 12px; }
+  .cs-carousel-wrap { padding: 0 14px; max-width: 100%; }
+  .cs-card { padding: 24px 20px; gap: 12px; }
   .cs-card-title { font-size: 1.05rem; }
   .cs-card-body { font-size: 0.85rem; line-height: 1.65; }
   .cs-card-stats { gap: 20px; flex-wrap: wrap; }
@@ -5759,8 +5759,8 @@ footer {
 
 /* Small phone */
 @media (max-width: 400px) {
-  .cs-carousel-wrap { padding: 0 32px; }
-  .cs-card { padding: 24px 20px; }
+  .cs-carousel-wrap { padding: 0 10px; }
+  .cs-card { padding: 22px 16px; }
   .cs-arrow { width: 30px; height: 30px; font-size: 0.7rem; }
 }
 
