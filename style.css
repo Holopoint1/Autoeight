@@ -2816,9 +2816,10 @@ footer {
   nav {
     height: 62px;
     padding: 0 14px;
-    left: 10px;
-    right: 10px;
-    top: 10px;
+    left: 8px;
+    right: 8px;
+    top: 8px;
+    max-width: calc(100vw - 16px);
     display: flex;
     align-items: center;
     justify-content: space-between;
