@@ -247,6 +247,7 @@ nav.scrolled {
   margin-top: 0;
   margin-left: 0;
   flex-shrink: 0;
+  mix-blend-mode: multiply;
 }
 .nav-logo {
   flex-shrink: 0;
@@ -4590,6 +4591,8 @@ footer {
   border: 1px solid rgba(124,92,252,0.14);
   background: linear-gradient(180deg, rgba(20,22,30,0.98), rgba(12,13,19,0.98));
   box-shadow: 0 26px 90px rgba(0,0,0,0.34);
+  --white: #ffffff;
+  --muted: rgba(255,255,255,0.6);
 }
 
 .sales-demo-topbar {
@@ -4606,7 +4609,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 14px;
-  color: var(--white);
+  color: rgba(255,255,255,0.7);
   font-size: 0.88rem;
   font-weight: 700;
 }
@@ -4651,7 +4654,7 @@ footer {
 
 .sales-demo-nav.active {
   background: rgba(124,92,252,0.14);
-  color: var(--white);
+  color: #fff;
 }
 
 .sales-demo-apps {
@@ -4692,8 +4695,9 @@ footer {
 
 .sales-demo-stat-label {
   display: block;
-  color: rgba(255,255,255,0.58);
-  font-size: 0.74rem;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.76rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -4701,7 +4705,7 @@ footer {
 
 .sales-demo-stat strong {
   display: block;
-  color: var(--white);
+  color: #fff;
   font-size: 1.8rem;
   line-height: 1;
   margin-bottom: 8px;
@@ -4709,7 +4713,7 @@ footer {
 
 .sales-demo-stat-sub {
   display: block;
-  color: var(--muted);
+  color: rgba(255,255,255,0.55);
   font-size: 0.82rem;
   line-height: 1.6;
 }
@@ -4736,7 +4740,7 @@ footer {
 }
 
 .sales-demo-panel-head h3 {
-  color: var(--white);
+  color: #fff;
   font-size: 1rem;
 }
 
@@ -4777,14 +4781,14 @@ footer {
 
 .sales-lead-card strong {
   display: block;
-  color: var(--white);
+  color: #fff;
   font-size: 0.92rem;
   margin-bottom: 5px;
 }
 
 .sales-lead-card span {
   display: block;
-  color: var(--muted);
+  color: rgba(255,255,255,0.55);
   font-size: 0.82rem;
   line-height: 1.6;
 }
@@ -4837,7 +4841,7 @@ footer {
 }
 
 .sales-message-preview p {
-  color: var(--muted);
+  color: rgba(255,255,255,0.7);
   font-size: 0.9rem;
   line-height: 1.8;
 }
@@ -4877,7 +4881,7 @@ footer {
 
 .sales-pipeline-title {
   display: block;
-  color: var(--white);
+  color: #fff;
   font-size: 0.84rem;
   font-weight: 700;
   margin-bottom: 10px;
@@ -4887,7 +4891,7 @@ footer {
   padding: 10px 12px;
   border-radius: 12px;
   background: rgba(255,255,255,0.04);
-  color: var(--muted);
+  color: rgba(255,255,255,0.6);
   font-size: 0.8rem;
   margin-top: 8px;
 }
@@ -4905,12 +4909,12 @@ footer {
 }
 
 .sales-report-mini-row span {
-  color: var(--muted);
+  color: rgba(255,255,255,0.55);
   font-size: 0.84rem;
 }
 
 .sales-report-mini-row strong {
-  color: var(--white);
+  color: #fff;
   font-size: 0.9rem;
 }
 
@@ -5920,15 +5924,18 @@ footer {
   .sales-demo-brand span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .sales-demo-status { font-size: 0.6rem; padding: 5px 9px; }
   .sales-demo-main { padding: 14px; }
-  .sales-demo-sidebar { padding: 14px 12px; }
+  .sales-demo-sidebar { padding: 14px 12px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .sales-demo-stat-row { gap: 10px; }
   .sales-demo-stat { padding: 12px 14px; }
   .sales-demo-stat strong { font-size: 1.6rem; }
-  .sales-demo-grid { gap: 10px; }
+  .sales-demo-grid { gap: 10px; grid-template-columns: 1fr !important; }
   .sales-demo-panel { padding: 14px; border-radius: 18px; }
   .sales-demo-nav { font-size: 0.82rem; padding: 10px 12px; }
   .sales-demo-apps { gap: 8px; }
   .sales-demo-app-pill { font-size: 0.75rem; padding: 8px 10px; }
+  .sales-demo-layout { grid-template-columns: 1fr !important; }
+  .sales-pipeline-columns { grid-template-columns: repeat(2, 1fr) !important; }
+  .sales-message-preview p { font-size: 0.85rem; }
 
   /* Hero dashboard */
   .sales-dashboard-grid { grid-template-columns: 1fr !important; gap: 16px; }
@@ -5949,6 +5956,8 @@ footer {
 @media (max-width: 480px) {
   .dashboard-body { grid-template-columns: 1fr !important; }
   .sales-demo-stat-row { grid-template-columns: 1fr !important; }
+  .sales-pipeline-columns { grid-template-columns: 1fr !important; }
+  .sales-demo-sidebar { display: none; }
 }
 
 /* ── EXTRA DASHBOARD MOBILE FIXES ── */

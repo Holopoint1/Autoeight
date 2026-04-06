@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Browse the Autoeight blog for practical advice on automation, sales systems, AI workflows, CRM tools, and business growth." />
-  <title>Blog – Autoeight</title>
+  <meta name="description" content="AI and automation news that matters. Curated articles on how businesses are using AI, automation, and smart systems to grow faster, cut costs, and work smarter." />
+  <title>News – AI &amp; Automation Industry Updates | Autoeight</title>
   <link rel="canonical" href="https://autoeight.ai/resources/blog.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://autoeight.ai/resources/blog.html" />
-  <meta property="og:title" content="Blog – Autoeight" />
-  <meta property="og:description" content="Browse the Autoeight blog for practical advice on automation, sales systems, AI workflows, CRM tools, and business growth." />
+  <meta property="og:title" content="News – AI &amp; Automation Industry Updates | Autoeight" />
+  <meta property="og:description" content="AI and automation news that matters. Curated articles on how businesses are using AI, automation, and smart systems to grow faster, cut costs, and work smarter." />
   <meta property="og:image" content="https://autoeight.ai/brand_assets/1.png" />
   <meta property="og:site_name" content="Autoeight" />
   <meta property="og:locale" content="en_GB" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Blog – Autoeight" />
-  <meta name="twitter:description" content="Browse the Autoeight blog for practical advice on automation, sales systems, AI workflows, CRM tools, and business growth." />
+  <meta name="twitter:title" content="News – AI &amp; Automation Industry Updates | Autoeight" />
+  <meta name="twitter:description" content="AI and automation news that matters. Curated articles on how businesses are using AI, automation, and smart systems to grow faster, cut costs, and work smarter." />
   <meta name="twitter:image" content="https://autoeight.ai/brand_assets/1.png" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Autoeight Blog",
-    "description": "Practical advice on automation, sales systems, AI workflows, CRM tools, and business growth.",
+    "@type": "CollectionPage",
+    "name": "AI & Automation News",
+    "description": "Curated articles on how businesses are using AI, automation, and smart systems to grow faster, cut costs, and work smarter.",
     "url": "https://autoeight.ai/resources/blog.html",
     "publisher": {
       "@type": "Organization",
@@ -43,6 +43,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../style.css?v=20260406b" />
+  <style>
+    .news-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #52525b;
+      margin-bottom: 2px;
+    }
+    .news-source i {
+      color: var(--purple-light);
+      font-size: 0.65rem;
+    }
+    .blog-card .external-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--purple-light);
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .blog-card .external-arrow i {
+      font-size: 0.65rem;
+      transition: transform 0.2s;
+    }
+    .blog-card:hover .external-arrow i {
+      transform: translateX(3px);
+    }
+    .blog-thumb-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -66,7 +108,7 @@
       <li class="nav-item has-dropdown active">
         <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
         <ul class="dropdown">
-          <li><a href="blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="blog.html"><i class="fa-solid fa-newspaper"></i> News</a></li>
           <li><a href="videos.html"><i class="fa-solid fa-play"></i> Videos</a></li>
           <li><a href="blueprints.html"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
         </ul>
@@ -80,9 +122,9 @@
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
     <div class="page-hero-content">
-      <span class="section-label">Resources</span>
-      <h1>Straight-talking<br /><em>automation insights</em></h1>
-      <p>Practical guides, deep dives, and straight-talking articles on AI, automation, and scaling your sales.</p>
+      <span class="section-label">News</span>
+      <h1>AI &amp; automation<br /><em>in the real world</em></h1>
+      <p>What's actually happening with AI and automation across industries. Real stories, real businesses, real impact.</p>
     </div>
   </div>
 
@@ -90,63 +132,93 @@
     <div class="page-section-inner">
       <div class="blog-grid reveal">
 
-        <a class="blog-card" href="blog-sales-teams-hard-way.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#1a0f2e,#2d1a4a);">🤖</div>
-          <div class="blog-body">
-            <span class="blog-tag">AI &amp; Automation</span>
-            <h3>Why 90% of Sales Teams Are Still Doing It the Hard Way</h3>
-            <p>Manual prospecting, manual follow-ups, manual data entry. Here's why most teams haven't automated yet — and what it's costing them.</p>
-            <div class="blog-meta">March 2025 · 6 min read</div>
+        <!-- 1. TechCrunch - Rox AI -->
+        <a class="blog-card" href="https://techcrunch.com/2026/03/12/sales-automation-startup-rox-ai-hits-1-2b-valuation-sources-say/" target="_blank" rel="noopener">
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#1a2e0f,#2d4a1a);">
+            <div class="blog-thumb-icon" style="background:rgba(34,197,94,0.15); color:#22c55e;"><i class="fa-solid fa-chart-line"></i></div>
           </div>
-        </a>
-
-        <a class="blog-card" href="blog-full-automation-vs-human-in-the-loop.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#0f1e2e,#1a3d5a);">📧</div>
           <div class="blog-body">
-            <span class="blog-tag">Email Automation</span>
-            <h3>Full Automation vs Human-in-the-Loop: Which Email Approach Is Right for You?</h3>
-            <p>We break down both approaches, who each is suited for, and what to consider before choosing.</p>
-            <div class="blog-meta">February 2025 · 5 min read</div>
-          </div>
-        </a>
-
-        <a class="blog-card" href="blog-measure-roi-sales-automation.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#1a1e0f,#2e3a1a);">📊</div>
-          <div class="blog-body">
-            <span class="blog-tag">ROI</span>
-            <h3>How to Measure the ROI of Sales Automation (With Real Numbers)</h3>
-            <p>Before and after metrics, what to track, and how to build a simple ROI model for your automation investment.</p>
-            <div class="blog-meta">January 2025 · 8 min read</div>
-          </div>
-        </a>
-
-        <a class="blog-card" href="blog-hubspot-vs-salesforce.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#2e0f1a,#4a1a2d);">🔌</div>
-          <div class="blog-body">
-            <span class="blog-tag">Integrations</span>
-            <h3>HubSpot vs Salesforce: Which CRM Works Best With Automated Outreach?</h3>
-            <p>A practical comparison from the integration trenches — what works, what doesn't, and how to get the most from both.</p>
-            <div class="blog-meta">January 2025 · 7 min read</div>
-          </div>
-        </a>
-
-        <a class="blog-card" href="blog-personalisation-at-scale.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#0f2e2e,#1a4a3d);">💬</div>
-          <div class="blog-body">
+            <div class="news-source"><i class="fa-solid fa-arrow-up-right-from-square"></i> TechCrunch</div>
             <span class="blog-tag">Sales Automation</span>
-            <h3>Personalisation at Scale: How AI Writes Cold Emails That Don't Feel Cold</h3>
-            <p>The techniques we use to make automated outreach feel genuinely human — and the data showing why it works.</p>
-            <div class="blog-meta">December 2024 · 6 min read</div>
+            <h3>Sales Automation Startup Rox AI Hits $1.2B Valuation</h3>
+            <p>An AI-native alternative to traditional CRM tools just hit unicorn status. Rox AI, founded in 2024, is proving that sales automation is one of the fastest-growing sectors in tech.</p>
+            <div class="blog-meta">March 2026</div>
+            <div class="external-arrow">Read on TechCrunch <i class="fa-solid fa-arrow-right"></i></div>
           </div>
         </a>
 
-        <a class="blog-card" href="blog-5-automations-every-business.html">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#1e1a0f,#3a2e1a);">⚡</div>
+        <!-- 2. Manufacturing Dive - Food manufacturers -->
+        <a class="blog-card" href="https://www.manufacturingdive.com/news/food-manufacturers-ai-automation-robotics-technologies-deloitte-stealth/815727/" target="_blank" rel="noopener">
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#1a1e2e,#2d3a5a);">
+            <div class="blog-thumb-icon" style="background:rgba(96,165,250,0.15); color:#60a5fa;"><i class="fa-solid fa-industry"></i></div>
+          </div>
           <div class="blog-body">
-            <span class="blog-tag">Getting Started</span>
-            <h3>The 5 Automations Every Business Should Have in Place by Month 3</h3>
-            <p>If you're just getting started with automation, these are the five highest-impact workflows to build first.</p>
-            <div class="blog-meta">November 2024 · 5 min read</div>
+            <div class="news-source"><i class="fa-solid fa-arrow-up-right-from-square"></i> Manufacturing Dive</div>
+            <span class="blog-tag">AI in Manufacturing</span>
+            <h3>How Food Manufacturers Are Using AI and Automation to Transform Operations</h3>
+            <p>A Deloitte report shows how food manufacturers are adopting AI, robotics, and automation technologies to improve efficiency, reduce waste, and scale production.</p>
+            <div class="blog-meta">March 2026</div>
+            <div class="external-arrow">Read on Manufacturing Dive <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </a>
+
+        <!-- 3. Marketing Stockport - Students + manufacturers -->
+        <a class="blog-card" href="https://marketingstockport.co.uk/news/students-deliver-ai-automation-and-digital-tools-to-greater-manchester-manufacturers/" target="_blank" rel="noopener">
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#2e1a0f,#4a2d1a);">
+            <div class="blog-thumb-icon" style="background:rgba(251,191,36,0.15); color:#fbbf24;"><i class="fa-solid fa-graduation-cap"></i></div>
+          </div>
+          <div class="blog-body">
+            <div class="news-source"><i class="fa-solid fa-arrow-up-right-from-square"></i> Marketing Stockport</div>
+            <span class="blog-tag">Digital Transformation</span>
+            <h3>Students Deliver AI, Automation and Digital Tools to Greater Manchester Manufacturers</h3>
+            <p>SME manufacturers in Greater Manchester are partnering with students through Made Smarter's Digital Internship Programme to bring AI and automation onto the factory floor.</p>
+            <div class="blog-meta">February 2026</div>
+            <div class="external-arrow">Read on Marketing Stockport <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </a>
+
+        <!-- 4. Towards Data Science - n8n for low-tech -->
+        <a class="blog-card" href="https://towardsdatascience.com/the-hidden-opportunity-in-ai-workflow-automation-with-n8n-for-low-tech-companies/" target="_blank" rel="noopener">
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#0f1e2e,#1a3d5a);">
+            <div class="blog-thumb-icon" style="background:rgba(124,92,252,0.15); color:#7c5cfc;"><i class="fa-solid fa-gears"></i></div>
+          </div>
+          <div class="blog-body">
+            <div class="news-source"><i class="fa-solid fa-arrow-up-right-from-square"></i> Towards Data Science</div>
+            <span class="blog-tag">Workflow Automation</span>
+            <h3>The Hidden Opportunity in AI Workflow Automation for Low-Tech Companies</h3>
+            <p>Companies that still rely on manual, paper-based processes have the most to gain from workflow automation. This piece shows how tools like n8n make it accessible without deep technical expertise.</p>
+            <div class="blog-meta">January 2026</div>
+            <div class="external-arrow">Read on Towards Data Science <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </a>
+
+        <!-- 5. Packaging Europe - Dow -->
+        <a class="blog-card" href="https://packagingeurope.com/news/dow-to-replace-4500-jobs-with-automation-and-ai-as-shares-decline/13869.article" target="_blank" rel="noopener">
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#2e0f1a,#4a1a2d);">
+            <div class="blog-thumb-icon" style="background:rgba(251,113,133,0.15); color:#fb7185;"><i class="fa-solid fa-building"></i></div>
+          </div>
+          <div class="blog-body">
+            <div class="news-source"><i class="fa-solid fa-arrow-up-right-from-square"></i> Packaging Europe</div>
+            <span class="blog-tag">Enterprise AI</span>
+            <h3>Dow to Replace 4,500 Jobs With Automation and AI as Part of $2B Restructure</h3>
+            <p>Dow Chemical's "Transform to Outperform" plan shows how large enterprises are betting on AI and automation to boost operating earnings — and the debate it's sparking about workforce impact.</p>
+            <div class="blog-meta">February 2026</div>
+            <div class="external-arrow">Read on Packaging Europe <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </a>
+
+        <!-- 6. Sify - AI vs simple automation -->
+        <a class="blog-card" href="https://www.sify.com/ai-analytics/does-your-company-need-ai-or-simple-automation-dont-spend-more-on-wrong-solutions/" target="_blank" rel="noopener">
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#1a0f2e,#2d1a4a);">
+            <div class="blog-thumb-icon" style="background:rgba(167,139,250,0.15); color:#a78bfa;"><i class="fa-solid fa-scale-balanced"></i></div>
+          </div>
+          <div class="blog-body">
+            <div class="news-source"><i class="fa-solid fa-arrow-up-right-from-square"></i> Sify</div>
+            <span class="blog-tag">Strategy</span>
+            <h3>Does Your Company Need AI or Simple Automation? Don't Spend More on the Wrong Solution</h3>
+            <p>Not every problem needs AI. This article breaks down when basic automation is enough and when you genuinely need machine learning — plus a framework for making the right call.</p>
+            <div class="blog-meta">March 2026</div>
+            <div class="external-arrow">Read on Sify <i class="fa-solid fa-arrow-right"></i></div>
           </div>
         </a>
 
@@ -158,8 +230,8 @@
     <div class="container">
       <div class="cta-box reveal">
         <div class="cta-glow"></div>
-        <h2>Ready to stop reading and start automating?</h2>
-        <p>Book a free 30-minute audit and let's build something that actually moves your business forward.</p>
+        <h2>Ready to bring AI and automation into your business?</h2>
+        <p>Book a free 30-minute audit and we'll map out exactly what automation can do for you.</p>
         <a href="../book.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book your free audit</a>
       </div>
     </div>
@@ -192,7 +264,6 @@
         <div class="footer-col">
           <h4>Contact</h4>
           <address class="footer-address">Halifax,<br />West Yorkshire<br /><br /><a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a></address>
-          <a href="../backend/login.html" class="btn btn-primary" style="font-size:0.85rem; padding:9px 20px; margin-top:16px;">Sales Portal</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -206,22 +277,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

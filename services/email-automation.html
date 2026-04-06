@@ -83,10 +83,13 @@
     .eflow-callout strong { color: #111 !important; }
 
     /* Integration accordion body text */
-    .int-acc-body { color: #3f3f46 !important; }
+    .int-acc-body { color: #3f3f46 !important; font-size: 0.9rem !important; }
 
     /* Section sub-text on this page */
     .section-sub { color: #52525b !important; }
+
+    /* Service anchor card descriptions */
+    .service-anchor p { color: #52525b !important; }
 
     /* Service anchor cards */
     .service-anchor-grid {
@@ -168,8 +171,30 @@
 
       /* Stat bar labels - stop them being too wide on mobile */
       [style*="flex:0 0 220px"] {
-        flex: 0 0 140px !important;
+        flex: 0 0 auto !important;
+        min-width: 0 !important;
         font-size: 0.78rem !important;
+        text-align: left !important;
+      }
+
+      /* Stack stat bars vertically on mobile */
+      .stat-bar-row {
+        flex-direction: column !important;
+        gap: 6px !important;
+      }
+
+      /* Eflow nodes: bigger text on mobile vertical layout */
+      .eflow-node-desc {
+        font-size: 0.78rem !important;
+        color: #3f3f46 !important;
+      }
+      .eflow-node-title {
+        font-size: 0.9rem !important;
+      }
+
+      /* Email demo padding on mobile */
+      .email-demo-inner {
+        padding: 16px 16px !important;
       }
     }
   </style>
@@ -196,7 +221,7 @@
       <li class="nav-item has-dropdown">
         <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
         <ul class="dropdown">
-          <li><a href="../resources/blog.html"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+          <li><a href="../resources/blog.html"><i class="fa-solid fa-newspaper"></i> News</a></li>
           <li><a href="../resources/videos.html"><i class="fa-solid fa-play"></i> Videos</a></li>
           <li><a href="../resources/blueprints.html"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
         </ul>
