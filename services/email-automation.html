@@ -77,8 +77,16 @@
     /* ── Page-level overrides ── */
 
     /* Fix readability on eflow node descriptions */
-    .eflow-node-desc { color: rgba(0,0,0,0.55) !important; font-size: 0.72rem !important; }
-    .eflow-callout { color: rgba(0,0,0,0.6); }
+    .eflow-node-desc { color: #3f3f46 !important; font-size: 0.74rem !important; line-height: 1.6 !important; }
+    .eflow-node-title { color: #111 !important; }
+    .eflow-callout { color: #3f3f46; }
+    .eflow-callout strong { color: #111 !important; }
+
+    /* Integration accordion body text */
+    .int-acc-body { color: #3f3f46 !important; }
+
+    /* Section sub-text on this page */
+    .section-sub { color: #52525b !important; }
 
     /* Service anchor cards */
     .service-anchor-grid {
@@ -229,22 +237,22 @@
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
           <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-clock" style="color:#ef4444;font-size:0.9rem;"></i></div>
           <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">Slow responses</h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Customers wait hours for simple answers while your team manually checks different systems.</p>
+          <p style="font-size:0.85rem;color:#3f3f46;line-height:1.6;">Customers wait hours for simple answers while your team manually checks different systems.</p>
         </div>
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
           <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-sterling-sign" style="color:#ef4444;font-size:0.9rem;"></i></div>
           <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">Rising costs</h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Every ticket costs time and money. As volume grows, you hire more or let response times slip.</p>
+          <p style="font-size:0.85rem;color:#3f3f46;line-height:1.6;">Every ticket costs time and money. As volume grows, you hire more or let response times slip.</p>
         </div>
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
           <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-puzzle-piece" style="color:#ef4444;font-size:0.9rem;"></i></div>
           <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">No real context</h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Generic chatbots don't know your products or policies. They give vague answers that frustrate customers.</p>
+          <p style="font-size:0.85rem;color:#3f3f46;line-height:1.6;">Generic chatbots don't know your products or policies. They give vague answers that frustrate customers.</p>
         </div>
         <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px;">
           <div style="width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;"><i class="fa-solid fa-hand" style="color:#ef4444;font-size:0.9rem;"></i></div>
           <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">Can't take action</h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Most tools just reply. They can't cancel an order, process a refund, or check stock. Your team still does that manually.</p>
+          <p style="font-size:0.85rem;color:#3f3f46;line-height:1.6;">Most tools just reply. They can't cancel an order, process a refund, or check stock. Your team still does that manually.</p>
         </div>
       </div>
     </div>
@@ -308,19 +316,19 @@
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
           <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
             <i class="fa-solid fa-bolt" style="color:#16a34a; margin-top:3px; font-size:0.8rem;"></i>
-            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">Under 5 seconds</strong> — average response time for common questions</div>
+            <div style="font-size:0.88rem; color:#3f3f46; line-height:1.55;"><strong style="color:var(--white);">Under 5 seconds</strong> — average response time for common questions</div>
           </div>
           <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
             <i class="fa-solid fa-rotate" style="color:#16a34a; margin-top:3px; font-size:0.8rem;"></i>
-            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">Takes real action</strong> — cancels orders, processes refunds, checks stock</div>
+            <div style="font-size:0.88rem; color:#3f3f46; line-height:1.55;"><strong style="color:var(--white);">Takes real action</strong> — cancels orders, processes refunds, checks stock</div>
           </div>
           <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
             <i class="fa-solid fa-moon" style="color:#16a34a; margin-top:3px; font-size:0.8rem;"></i>
-            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">24/7 coverage</strong> — no night shifts, no extra hires needed</div>
+            <div style="font-size:0.88rem; color:#3f3f46; line-height:1.55;"><strong style="color:var(--white);">24/7 coverage</strong> — no night shifts, no extra hires needed</div>
           </div>
           <div style="display:flex; align-items:flex-start; gap:10px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:10px;">
             <i class="fa-solid fa-user" style="color:#16a34a; margin-top:3px; font-size:0.8rem;"></i>
-            <div style="font-size:0.85rem; color:var(--muted); line-height:1.5;"><strong style="color:var(--white);">Human handoff</strong> — complex issues go straight to your team</div>
+            <div style="font-size:0.88rem; color:#3f3f46; line-height:1.55;"><strong style="color:var(--white);">Human handoff</strong> — complex issues go straight to your team</div>
           </div>
         </div>
       </div>
@@ -349,7 +357,7 @@
 
             <!-- Customer message -->
             <div style="align-self:flex-end; max-width:80%; background:rgba(124,92,252,0.15); border:1px solid rgba(124,92,252,0.2); border-radius:12px 12px 4px 12px; padding:12px 14px;">
-              <div style="font-size:0.82rem; color:rgba(255,255,255,0.8); line-height:1.5;">I'd like to cancel my order #12345678. I ordered the wrong size by mistake.</div>
+              <div style="font-size:0.88rem; color:rgba(255,255,255,0.9); line-height:1.5;">I'd like to cancel my order #12345678. I ordered the wrong size by mistake.</div>
               <div style="font-size:0.6rem; color:rgba(255,255,255,0.25); margin-top:6px; text-align:right;">Anna, 10:31 AM</div>
             </div>
 
@@ -375,7 +383,7 @@
             <!-- AI reply -->
             <div id="chatReply" style="align-self:flex-start; max-width:85%; display:none;">
               <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px 12px 12px 4px; padding:12px 14px;">
-                <div style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.6;">Hi Anna,<br/><br/>I've cancelled order #12345678 for you. Your refund of &pound;89.00 will be processed within 3-5 business days.<br/><br/>If you'd like to reorder in the correct size, just let me know and I'll sort it out for you.</div>
+                <div style="font-size:0.88rem; color:rgba(255,255,255,0.9); line-height:1.6;">Hi Anna,<br/><br/>I've cancelled order #12345678 for you. Your refund of &pound;89.00 will be processed within 3-5 business days.<br/><br/>If you'd like to reorder in the correct size, just let me know and I'll sort it out for you.</div>
                 <div style="font-size:0.6rem; color:rgba(255,255,255,0.25); margin-top:8px;">AI Support, 10:32 AM &bull; Replied in 47s</div>
               </div>
             </div>
@@ -413,7 +421,7 @@
             </div>
             <h3 style="font-size:0.95rem;font-weight:700;">Website Chat</h3>
           </div>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:10px;">A chatbot on your site that handles common questions instantly. Looks up orders, explains services, answers pricing queries, and hands off to a real person when needed.</p>
+          <p style="font-size:0.85rem;color:#3f3f46;line-height:1.6;margin-bottom:10px;">A chatbot on your site that handles common questions instantly. Looks up orders, explains services, answers pricing queries, and hands off to a real person when needed.</p>
           <div style="display:flex; gap:6px; flex-wrap:wrap;">
             <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Your website</span>
             <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">24/7</span>
@@ -428,7 +436,7 @@
             </div>
             <h3 style="font-size:0.95rem;font-weight:700;">Support Tickets</h3>
           </div>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:10px;">Incoming tickets get read, categorised by type, prioritised by urgency, and responded to automatically. Complex ones get flagged for your team with full context.</p>
+          <p style="font-size:0.85rem;color:#3f3f46;line-height:1.6;margin-bottom:10px;">Incoming tickets get read, categorised by type, prioritised by urgency, and responded to automatically. Complex ones get flagged for your team with full context.</p>
           <div style="display:flex; gap:6px; flex-wrap:wrap;">
             <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Auto-categorised</span>
             <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Priority flagging</span>
@@ -443,7 +451,7 @@
             </div>
             <h3 style="font-size:0.95rem;font-weight:700;">Social DMs</h3>
           </div>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:10px;">DMs on Facebook and Instagram get answered using the same knowledge base as every other channel. Same tone, same accuracy. No more leaving messages on read.</p>
+          <p style="font-size:0.85rem;color:#3f3f46;line-height:1.6;margin-bottom:10px;">DMs on Facebook and Instagram get answered using the same knowledge base as every other channel. Same tone, same accuracy. No more leaving messages on read.</p>
           <div style="display:flex; gap:6px; flex-wrap:wrap;">
             <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Facebook</span>
             <span style="background:rgba(34,197,94,0.08); border-radius:4px; padding:3px 8px; font-size:0.68rem; color:#15803d;">Instagram</span>
@@ -460,7 +468,7 @@
           </div>
           <div>
             <div style="font-size:0.85rem; font-weight:600; margin-bottom:2px;">Human escalation built in</div>
-            <div style="font-size:0.78rem; color:var(--muted);">When something's too complex or sensitive for AI, it flags it for your team with full context. No customer ever gets stuck talking to a bot that can't help them.</div>
+            <div style="font-size:0.82rem; color:#52525b;">When something's too complex or sensitive for AI, it flags it for your team with full context. No customer ever gets stuck talking to a bot that can't help them.</div>
           </div>
         </div>
       </div>
@@ -557,7 +565,7 @@
           </div>
           <div style="padding:24px 28px;">
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
-              <div style="font-size:1rem; font-weight:700; color:#e2e2e8;">Pricing for 20-person team?</div>
+              <div style="font-size:1.05rem; font-weight:700; color:#fff;">Pricing for 20-person team?</div>
               <div style="font-size:0.65rem; color:rgba(255,255,255,0.3);">10:42 AM</div>
             </div>
             <div style="border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:18px; margin-bottom:16px;">
@@ -568,7 +576,7 @@
                   <div style="font-size:0.65rem; color:#a1a1aa;">sarah@brightpath.co.uk</div>
                 </div>
               </div>
-              <div style="font-size:0.82rem; color:rgba(255,255,255,0.65); line-height:1.7;">
+              <div style="font-size:0.88rem; color:rgba(255,255,255,0.85); line-height:1.7;">
                 Hi there,<br/><br/>We're a marketing agency with about 20 staff and we're looking at automating some of our client reporting and email follow-ups. Could you give us a rough idea of pricing and what's included?<br/><br/>We currently use HubSpot and Mailchimp if that helps.<br/><br/>Thanks,<br/>Sarah
               </div>
             </div>
@@ -589,8 +597,8 @@
                   <div style="font-size:0.65rem; color:rgba(255,255,255,0.35);">Matched: pricing, HubSpot, Mailchimp, team size</div>
                 </div>
               </div>
-              <div style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.75;">
-                Hi Sarah,<br/><br/>Thanks for getting in touch. For a team of 20 with HubSpot and Mailchimp already in the stack, we'd typically look at two things:<br/><br/><strong style="color:#e2e2e8;">Client reporting automation</strong> — we pull data from HubSpot and build reports that go out to your clients automatically. No more Friday afternoons spent compiling them. Starts at around &pound;2,500.<br/><br/><strong style="color:#e2e2e8;">Email follow-up sequences</strong> — automated sequences in Mailchimp triggered by client activity or deal stage. Keeps leads warm without your team having to remember who to chase. Starts at around &pound;1,500.<br/><br/>Happy to jump on a quick call this week. Would Thursday or Friday work?<br/><br/>Best,<br/>The Autoeight Team
+              <div style="font-size:0.88rem; color:rgba(255,255,255,0.88); line-height:1.75;">
+                Hi Sarah,<br/><br/>Thanks for getting in touch. For a team of 20 with HubSpot and Mailchimp already in the stack, we'd typically look at two things:<br/><br/><strong style="color:#fff;">Client reporting automation</strong> — we pull data from HubSpot and build reports that go out to your clients automatically. No more Friday afternoons spent compiling them. Starts at around &pound;2,500.<br/><br/><strong style="color:#fff;">Email follow-up sequences</strong> — automated sequences in Mailchimp triggered by client activity or deal stage. Keeps leads warm without your team having to remember who to chase. Starts at around &pound;1,500.<br/><br/>Happy to jump on a quick call this week. Would Thursday or Friday work?<br/><br/>Best,<br/>The Autoeight Team
               </div>
               <div style="display:flex; gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(34,197,94,0.1);">
                 <div style="background:#22c55e; color:#fff; padding:8px 18px; border-radius:6px; font-size:0.75rem; font-weight:600; display:inline-flex; align-items:center; gap:5px;"><i class="fa-solid fa-paper-plane"></i> Send</div>
@@ -843,7 +851,7 @@
             </div>
             <div>
               <div style="font-size:1rem; font-weight:700;">Your Company Data</div>
-              <div style="font-size:0.78rem; color:var(--muted);">This is what the AI learns from. You control it, we set it up.</div>
+              <div style="font-size:0.82rem; color:#52525b;">This is what the AI learns from. You control it, we set it up.</div>
             </div>
           </div>
           <div style="display:flex; flex-wrap:wrap; gap:8px;">
@@ -872,21 +880,21 @@
             </div>
             <div>
               <div style="font-size:1.1rem; font-weight:800; color:#7c5cfc;">AI Engine</div>
-              <div style="font-size:0.8rem; color:var(--muted);">Reads the message, checks your data, writes a response that sounds like your team wrote it</div>
+              <div style="font-size:0.85rem; color:#3f3f46;">Reads the message, checks your data, writes a response that sounds like your team wrote it</div>
             </div>
           </div>
           <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
             <div style="background:rgba(124,92,252,0.05); border-radius:8px; padding:14px; text-align:center;">
               <div style="font-size:1.3rem; font-weight:800; color:#7c5cfc;">2s</div>
-              <div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">Avg response time</div>
+              <div style="font-size:0.78rem; color:#52525b; margin-top:2px;">Avg response time</div>
             </div>
             <div style="background:rgba(124,92,252,0.05); border-radius:8px; padding:14px; text-align:center;">
               <div style="font-size:1.3rem; font-weight:800; color:#7c5cfc;">94%</div>
-              <div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">Accuracy</div>
+              <div style="font-size:0.78rem; color:#52525b; margin-top:2px;">Accuracy</div>
             </div>
             <div style="background:rgba(124,92,252,0.05); border-radius:8px; padding:14px; text-align:center;">
               <div style="font-size:1.3rem; font-weight:800; color:#7c5cfc;">24/7</div>
-              <div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">Always on</div>
+              <div style="font-size:0.78rem; color:#52525b; margin-top:2px;">Always on</div>
             </div>
           </div>
         </div>
@@ -907,7 +915,7 @@
             </div>
             <div>
               <div style="font-size:0.88rem; font-weight:700;">Live Chat &amp; Tickets</div>
-              <div style="font-size:0.75rem; color:var(--muted);">Instant answers on your website, ticketing system, and social DMs</div>
+              <div style="font-size:0.8rem; color:#3f3f46;">Instant answers on your website, ticketing system, and social DMs</div>
             </div>
           </div>
           <div style="background:rgba(124,92,252,0.04); border:1px solid rgba(124,92,252,0.12); border-radius:12px; padding:20px; display:flex; align-items:center; gap:14px;">
@@ -916,7 +924,7 @@
             </div>
             <div>
               <div style="font-size:0.88rem; font-weight:700;">Email</div>
-              <div style="font-size:0.75rem; color:var(--muted);">Auto-replies or ready-made drafts across Gmail, Outlook, shared inboxes</div>
+              <div style="font-size:0.8rem; color:#3f3f46;">Auto-replies or ready-made drafts across Gmail, Outlook, shared inboxes</div>
             </div>
           </div>
         </div>
@@ -940,19 +948,19 @@
       <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:40px;">
         <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.12);border-radius:12px;padding:20px 16px;text-align:center;">
           <div style="font-size:1.6rem;font-weight:800;color:#7c5cfc;">92%</div>
-          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Handled by AI</div>
+          <div style="font-size:0.82rem;color:#52525b;margin-top:4px;">Handled by AI</div>
         </div>
         <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.12);border-radius:12px;padding:20px 16px;text-align:center;">
           <div style="font-size:1.6rem;font-weight:800;color:#7c5cfc;">&lt; 2 min</div>
-          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Response time</div>
+          <div style="font-size:0.82rem;color:#52525b;margin-top:4px;">Response time</div>
         </div>
         <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.12);border-radius:12px;padding:20px 16px;text-align:center;">
           <div style="font-size:1.6rem;font-weight:800;color:#7c5cfc;">24/7</div>
-          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Coverage</div>
+          <div style="font-size:0.82rem;color:#52525b;margin-top:4px;">Coverage</div>
         </div>
         <div style="background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.12);border-radius:12px;padding:20px 16px;text-align:center;">
           <div style="font-size:1.6rem;font-weight:800;color:#7c5cfc;">0</div>
-          <div style="font-size:0.78rem;color:var(--muted);margin-top:4px;">Extra hires needed</div>
+          <div style="font-size:0.82rem;color:#52525b;margin-top:4px;">Extra hires needed</div>
         </div>
       </div>
 
@@ -994,7 +1002,7 @@
           <span style="flex:0 0 40px;font-size:0.82rem;font-weight:700;color:#7c5cfc;">10%</span>
         </div>
         <div style="display:flex;align-items:center;gap:14px;">
-          <span style="flex:0 0 220px;font-size:0.85rem;color:var(--muted);text-align:right;">Requires human</span>
+          <span style="flex:0 0 220px;font-size:0.85rem;color:#52525b;text-align:right;">Requires human</span>
           <div style="flex:1;height:28px;background:rgba(0,0,0,0.04);border-radius:6px;overflow:hidden;position:relative;">
             <div style="width:8%;height:100%;background:rgba(0,0,0,0.08);border-radius:6px;"></div>
           </div>

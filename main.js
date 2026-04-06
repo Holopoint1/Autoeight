@@ -190,10 +190,12 @@ if (typewriterEl) {
   if (words.length) typeStep();
 }
 
-// Accordion behaviour for tier-expandable cards
+// Accordion behaviour for tier-expandable cards (only one open at a time)
 document.querySelectorAll('.tier-expandable').forEach(function(card) {
-  card.removeAttribute('onclick');
-  card.addEventListener('click', function() {
+  // Remove inline onclick and replace with accordion
+  card.setAttribute('onclick', '');
+  card.onclick = function(e) {
+    e.stopPropagation();
     var wasExpanded = card.classList.contains('expanded');
     // Close all siblings in the same grid
     var parent = card.closest('.tier-grid');
@@ -206,5 +208,5 @@ document.querySelectorAll('.tier-expandable').forEach(function(card) {
     if (!wasExpanded) {
       card.classList.add('expanded');
     }
-  });
+  };
 });
