@@ -71,13 +71,82 @@ function extractIP(req: Request): string {
 }
 
 function cleanCompanyName(org: string): string {
-  // IPinfo org field looks like "AS1234 Acme Corp" — strip ASN prefix
   return org.replace(/^AS\d+\s+/, "").trim();
 }
 
 function isISP(org: string, blocklist: string[]): boolean {
   const lower = org.toLowerCase();
   return blocklist.some((pattern) => lower.includes(pattern.toLowerCase()));
+}
+
+// Extract company domain from a hostname like "host-1-2.acmecorp.co.uk"
+function extractDomainFromHostname(hostname: string): string | null {
+  if (!hostname || hostname.match(/^\d+\.\d+\.\d+\.\d+$/)) return null;
+  // Strip common ISP/generic patterns
+  const ispPatterns = /\b(dynamic|static|pool|dial|dsl|cable|broadband|residential|mobile|gprs|lte|nat|dhcp|ppp)\b/i;
+  if (ispPatterns.test(hostname)) return null;
+  // Get the registrable domain (last two parts, or three for .co.uk etc)
+  const parts = hostname.split(".");
+  if (parts.length < 2) return null;
+  const twoPartTLDs = ["co.uk", "org.uk", "ac.uk", "com.au", "co.nz", "co.za", "com.br"];
+  const lastTwo = parts.slice(-2).join(".");
+  if (twoPartTLDs.includes(lastTwo) && parts.length >= 3) {
+    return parts.slice(-3).join(".");
+  }
+  return lastTwo;
+}
+
+// Query RIPE RDAP for European IPs — free, no auth needed
+async function queryRIPE(ip: string): Promise<string | null> {
+  try {
+    const res = await fetch(`https://rdap.db.ripe.net/ip/${ip}`, {
+      headers: { "Accept": "application/json" },
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    // Look for the organisation or entity name
+    if (data.entities) {
+      for (const entity of data.entities) {
+        if (entity.roles?.includes("registrant") || entity.roles?.includes("administrative")) {
+          const name = entity.vcardArray?.[1]?.find((v: string[]) => v[0] === "fn")?.[3];
+          if (name && typeof name === "string") return name;
+        }
+      }
+      // Fallback: first entity with a name
+      for (const entity of data.entities) {
+        const name = entity.vcardArray?.[1]?.find((v: string[]) => v[0] === "fn")?.[3];
+        if (name && typeof name === "string") return name;
+      }
+    }
+    // Fallback: check the name field directly
+    if (data.name) return data.name;
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+// Query ARIN RDAP for US/CA IPs — free, no auth needed
+async function queryARIN(ip: string): Promise<string | null> {
+  try {
+    const res = await fetch(`https://rdap.arin.net/registry/ip/${ip}`, {
+      headers: { "Accept": "application/json" },
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data.entities) {
+      for (const entity of data.entities) {
+        if (entity.roles?.includes("registrant") || entity.roles?.includes("administrative")) {
+          const name = entity.vcardArray?.[1]?.find((v: string[]) => v[0] === "fn")?.[3];
+          if (name && typeof name === "string") return name;
+        }
+      }
+    }
+    if (data.name) return data.name;
+    return null;
+  } catch {
+    return null;
+  }
 }
 
 async function enrichIP(
@@ -89,32 +158,69 @@ async function enrichIP(
   if (!ipinfoToken) return;
 
   try {
+    // Step 1: IPinfo lookup (hostname + org)
     const res = await fetch(`https://ipinfo.io/${ip}?token=${ipinfoToken}`);
     if (!res.ok) return;
-
-    const data = await res.json();
-    if (!data.org) return;
+    const ipinfo = await res.json();
+    if (!ipinfo.org) return;
 
     // Fetch ISP blocklist
     const { data: blocklist } = await supabase
       .from("isp_blocklist")
       .select("org_pattern");
-
     const patterns = (blocklist || []).map((b: { org_pattern: string }) => b.org_pattern);
-    const cleanName = cleanCompanyName(data.org);
-    const isp = isISP(data.org, patterns);
 
-    // Upsert company
+    let companyName = cleanCompanyName(ipinfo.org);
+    let domain: string | null = null;
+    let isp = isISP(ipinfo.org, patterns);
+
+    // Step 2: If it looks like an ISP, try to find the real company
+    if (isp) {
+      // Try hostname first — sometimes reveals company domain
+      if (ipinfo.hostname) {
+        domain = extractDomainFromHostname(ipinfo.hostname);
+        if (domain && !isISP(domain, patterns)) {
+          // Hostname revealed a non-ISP domain — use it as company name
+          const domainName = domain.split(".")[0];
+          // Capitalise first letter
+          companyName = domainName.charAt(0).toUpperCase() + domainName.slice(1) + " (" + domain + ")";
+          isp = false;
+        }
+      }
+
+      // Try RIPE RDAP (European IPs) — often has the actual leaseholder
+      if (isp) {
+        const ripeName = await queryRIPE(ip);
+        if (ripeName && !isISP(ripeName, patterns) && ripeName !== companyName) {
+          companyName = ripeName;
+          isp = false;
+        }
+      }
+
+      // Try ARIN RDAP (US/CA IPs) as fallback
+      if (isp) {
+        const arinName = await queryARIN(ip);
+        if (arinName && !isISP(arinName, patterns) && arinName !== companyName) {
+          companyName = arinName;
+          isp = false;
+        }
+      }
+    }
+
+    // Step 3: Store the enriched company
+    const enrichmentData = { ...ipinfo, ripe_check: true, resolved_name: companyName };
+
     const { data: company } = await supabase
       .from("companies")
       .upsert(
         {
           site_id: siteId,
-          name: data.org,
-          clean_name: cleanName,
-          city: data.city || null,
-          region: data.region || null,
-          country: data.country || null,
+          name: companyName,
+          clean_name: companyName,
+          domain: domain,
+          city: ipinfo.city || null,
+          region: ipinfo.region || null,
+          country: ipinfo.country || null,
           is_isp: isp,
           last_seen: new Date().toISOString(),
         },
@@ -124,18 +230,17 @@ async function enrichIP(
       .single();
 
     if (company) {
-      // Link visitor to company
       await supabase
         .from("visitors")
         .update({
           company_id: company.id,
           ip_enriched: true,
-          enrichment: data,
+          enrichment: enrichmentData,
         })
         .eq("id", visitorId);
     }
   } catch {
-    // Enrichment is best-effort — don't fail the request
+    // Enrichment is best-effort
   }
 }
 
