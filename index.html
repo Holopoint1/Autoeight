@@ -142,19 +142,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css?v=20260406b" />
   <style>
-    /* Calendly widget fills container */
+    /* Calendly widget fills container — no internal scroll */
     .calendly-inline-widget,
     .calendly-inline-widget iframe {
       width: 100% !important;
-      min-height: 700px !important;
-      height: 700px !important;
+      min-height: 950px !important;
+      height: 950px !important;
       border: 0 !important;
     }
     @media (max-width: 768px) {
       .calendly-inline-widget,
       .calendly-inline-widget iframe {
-        min-height: 680px !important;
-        height: 680px !important;
+        min-height: 1100px !important;
+        height: 1100px !important;
       }
     }
   </style>
@@ -821,7 +821,7 @@
         <div class="reveal" style="transition-delay: 0.12s; padding: 0; border: 1px solid rgba(0,0,0,0.06); border-radius: 20px; overflow: hidden;">
           <div class="calendly-inline-widget"
             data-url="https://calendly.com/alfie-autoeight/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=1a1a1a&primary_color=7c5cfc"
-            style="min-width:320px;min-height:700px;height:700px;width:100%;">
+            style="min-width:320px;width:100%;">
           </div>
           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
