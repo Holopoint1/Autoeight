@@ -97,21 +97,52 @@
 <body>
   <script>AEAuth.check();</script>
 
-  <nav class="b-nav">
-    <div class="b-nav-left">
-      <a href="dashboard" class="b-logo">
+  <div class="app-layout">
+
+    <aside class="sidebar">
+      <a href="dashboard" class="sidebar-logo">
         <img src="../brand_assets/1.png" alt="Autoeight" />
-        <span class="b-logo-sub">Visitor Intelligence</span>
+        <div class="sidebar-logo-text">
+          <span class="sidebar-logo-name">Autoeight</span>
+          <span class="sidebar-logo-sub">Internal Portal</span>
+        </div>
       </a>
-      <span class="staff-badge">Internal</span>
-    </div>
-    <div class="b-nav-right">
-      <a href="dashboard" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Portal</a>
-      <a href="seo-dashboard" class="b-btn"><i class="fa-solid fa-chart-simple"></i> SEO</a>
-      <a href="../index" class="b-btn"><i class="fa-solid fa-globe"></i> Live Site</a>
-      <button onclick="AEAuth.logout()" class="b-btn danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
-    </div>
-  </nav>
+
+      <div class="sidebar-section">Tools</div>
+      <nav class="sidebar-nav">
+        <a href="dashboard" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard </a>
+        <a href="visitors" class="sidebar-link active"><i class="fa-solid fa-eye"></i> Visitor Intelligence <span class="sidebar-badge">New</span></a>
+        <a href="seo-dashboard" class="sidebar-link"><i class="fa-solid fa-chart-simple"></i> SEO &amp; Site Health </a>
+        <a href="skills" class="sidebar-link"><i class="fa-solid fa-book"></i> AI Skills </a>
+      </nav>
+
+      <div class="sidebar-section">Sales Demos</div>
+      <nav class="sidebar-nav">
+        <a href="customer-service" class="sidebar-link"><i class="fa-solid fa-headset"></i> Customer Service </a>
+        <a href="sales" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Sales Automation </a>
+        <a href="scheduling" class="sidebar-link"><i class="fa-solid fa-calendar-check"></i> Scheduling </a>
+        <a href="marketing" class="sidebar-link"><i class="fa-solid fa-bullhorn"></i> Marketing </a>
+        <a href="data-admin" class="sidebar-link"><i class="fa-solid fa-database"></i> Data &amp; Admin </a>
+        <a href="project-management" class="sidebar-link"><i class="fa-solid fa-diagram-project"></i> Project Management </a>
+        <a href="business-impact" class="sidebar-link"><i class="fa-solid fa-trophy"></i> Business Impact </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="../" class="sidebar-link"><i class="fa-solid fa-globe"></i> Live Site</a>
+        <a href="#" onclick="AEAuth.logout();return false;" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="topbar">
+        <div class="topbar-breadcrumb">
+          <span>Portal</span> <span>/</span> <span>Tools</span> <span>/</span> <strong>Visitor Intelligence</strong>
+        </div>
+        <div class="topbar-actions">
+          <a href="dashboard" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+        </div>
+      </div>
 
   <main class="b-main">
 
@@ -561,5 +592,8 @@
     };
   }
   </script>
+    </div><!-- /main-content -->
+  </div><!-- /app-layout -->
+
 </body>
 </html>
