@@ -19,7 +19,34 @@
   };
 })();
 
+// ── Theme toggle ──
+(function () {
+  var TK = 'ae_theme';
+  var saved = localStorage.getItem(TK) || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+
+  window.AETheme = {
+    toggle: function () {
+      var current = document.documentElement.getAttribute('data-theme') || 'dark';
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem(TK, next);
+    }
+  };
+})();
+
 document.addEventListener('DOMContentLoaded', function () {
+  // Inject theme toggle into topbar if present
+  var topbarActions = document.querySelector('.topbar-actions');
+  if (topbarActions) {
+    var btn = document.createElement('button');
+    btn.className = 'theme-toggle';
+    btn.title = 'Toggle light/dark theme';
+    btn.innerHTML = '<i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun"></i>';
+    btn.addEventListener('click', AETheme.toggle);
+    topbarActions.insertBefore(btn, topbarActions.firstChild);
+  }
+
   // Tab switching
   document.querySelectorAll('.tab-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
