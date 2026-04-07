@@ -100,12 +100,22 @@
   }
 
   // ── Send event ──
-  function send(data) {
+  function send(data, isUnload) {
     data.api_key = cfg.apiKey;
     var body = JSON.stringify(data);
 
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(cfg.endpoint, new Blob([body], { type: 'application/json' }));
+    // Use sendBeacon only on unload (where fetch may be cancelled).
+    // For normal events use fetch with keepalive for proper CORS handling.
+    if (isUnload && navigator.sendBeacon) {
+      navigator.sendBeacon(cfg.endpoint, new Blob([body], { type: 'text/plain' }));
+    } else if (typeof fetch !== 'undefined') {
+      fetch(cfg.endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: body,
+        keepalive: true,
+        mode: 'cors'
+      }).catch(function () {});
     } else {
       var xhr = new XMLHttpRequest();
       xhr.open('POST', cfg.endpoint, true);
@@ -148,7 +158,7 @@
       url: location.href,
       path: location.pathname,
       duration: duration
-    });
+    }, true);
   }
 
   // Use visibilitychange as primary (more reliable than unload)

@@ -150,7 +150,15 @@ serve(async (req: Request) => {
   }
 
   try {
-    const event: TrackEvent = await req.json();
+    // Handle both application/json and text/plain (from sendBeacon)
+    const contentType = req.headers.get("content-type") || "";
+    let event: TrackEvent;
+    if (contentType.includes("application/json")) {
+      event = await req.json();
+    } else {
+      const text = await req.text();
+      event = JSON.parse(text);
+    }
 
     // Validate required fields
     if (!event.api_key || !event.session_key || !event.path) {
