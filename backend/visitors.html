@@ -207,8 +207,8 @@
         <div>
           <label>ISPs</label><br />
           <select id="filterIsp">
-            <option value="hide">Hide ISPs</option>
             <option value="show">Show all</option>
+            <option value="hide">Hide ISPs</option>
           </select>
         </div>
         <div style="margin-left:auto; align-self:flex-end;">
@@ -378,6 +378,23 @@
   // ════════════════════════════════════════════════════════════
   // COMPANIES
   // ════════════════════════════════════════════════════════════
+  function loadKPIs() {
+    // Always load KPIs from ALL companies (no filters)
+    api('/companies', { days: '30', hide_isp: 'false' }).then(function(data) {
+      var all = data.companies || [];
+      var totalSessions = 0, totalPageviews = 0, hotCount = 0;
+      all.forEach(function(c) {
+        totalSessions += c.total_sessions || 0;
+        totalPageviews += c.total_pageviews || 0;
+        if (c.lead_score >= 50) hotCount++;
+      });
+      document.getElementById('kCompanies').textContent = all.length;
+      document.getElementById('kSessions').textContent = totalSessions;
+      document.getElementById('kPageviews').textContent = totalPageviews;
+      document.getElementById('kHot').textContent = hotCount;
+    });
+  }
+
   function loadCompanies() {
     var params = {
       days: document.getElementById('filterDays').value,
@@ -389,18 +406,6 @@
     api('/companies', params).then(function(data) {
       var companies = data.companies || [];
       var el = document.getElementById('companiesBody');
-
-      // Update KPIs
-      document.getElementById('kCompanies').textContent = companies.length;
-      var totalSessions = 0, totalPageviews = 0, hotCount = 0;
-      companies.forEach(function(c) {
-        totalSessions += c.total_sessions || 0;
-        totalPageviews += c.total_pageviews || 0;
-        if (c.lead_score >= 50) hotCount++;
-      });
-      document.getElementById('kSessions').textContent = totalSessions;
-      document.getElementById('kPageviews').textContent = totalPageviews;
-      document.getElementById('kHot').textContent = hotCount;
 
       if (!companies.length) {
         el.innerHTML = '<tr><td colspan="7" class="empty-state"><i class="fa-solid fa-building"></i><p>No companies found matching your filters.</p></td></tr>';
@@ -571,6 +576,7 @@
   // ════════════════════════════════════════════════════════════
   document.addEventListener('DOMContentLoaded', function() {
     loadLive();
+    loadKPIs();
     loadCompanies();
     loadAnalytics();
 
