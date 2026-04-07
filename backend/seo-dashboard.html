@@ -62,6 +62,20 @@
     .page-item-name { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
     .page-item-name a { color: var(--off-white); }
     .page-checks { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .metrics-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 0.8rem; }
+    .metrics-table th { text-align: left; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px 10px; border-bottom: 2px solid var(--border); }
+    .metrics-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    .metrics-table tr:hover { background: var(--surface); }
+    .metric-bar { height: 6px; background: var(--surface); border-radius: 3px; overflow: hidden; width: 80px; display: inline-block; vertical-align: middle; margin-left: 6px; }
+    .metric-fill { height: 100%; border-radius: 3px; }
+    .kw-pill { display: inline-block; background: var(--surface); border: 1px solid var(--border); padding: 1px 7px; border-radius: 4px; font-size: 0.7rem; color: var(--off-white); margin: 1px; }
+    .kw-pill.found { background: var(--green-d); border-color: rgba(62,207,142,0.3); color: var(--green); }
+    .kw-pill.missing { background: var(--red-d); border-color: rgba(239,68,68,0.2); color: var(--red); }
+    .local-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .local-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 16px; }
+    .local-card h4 { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 6px; }
+    .local-val { font-size: 0.88rem; font-weight: 600; color: var(--off-white); }
   </style>
 </head>
 <body>
@@ -160,6 +174,25 @@
     <div class="sh"><i class="fa-solid fa-clipboard-check"></i> Technical Checklist</div>
     <ul class="checklist" id="checklist"><li style="color:var(--subtle);">Run a scan...</li></ul>
 
+    <!-- Content Metrics -->
+    <div class="sh"><i class="fa-solid fa-ruler"></i> Content Metrics</div>
+    <table class="metrics-table">
+      <thead><tr><th>Page</th><th>Words</th><th>Internal Links</th><th>External Links</th><th>Images</th><th>Title Length</th><th>Desc Length</th></tr></thead>
+      <tbody id="metricsTable"><tr><td colspan="7" style="color:var(--subtle);">Run a scan...</td></tr></tbody>
+    </table>
+
+    <!-- Local SEO -->
+    <div class="sh"><i class="fa-solid fa-map-location-dot"></i> Local SEO</div>
+    <div class="local-grid" id="localSeo"></div>
+
+    <!-- Keyword Presence -->
+    <div class="sh"><i class="fa-solid fa-key"></i> Target Keywords</div>
+    <p style="font-size:0.78rem; color:var(--muted); margin-bottom:14px;">Checking if target keywords appear in title, H1, meta description, or body content.</p>
+    <table class="metrics-table">
+      <thead><tr><th>Keyword</th><th>Homepage</th><th>Service Pages</th><th>About</th></tr></thead>
+      <tbody id="keywordTable"><tr><td colspan="4" style="color:var(--subtle);">Run a scan...</td></tr></tbody>
+    </table>
+
     <!-- Case Studies -->
     <div class="sh"><i class="fa-solid fa-trophy"></i> Case Studies</div>
     <table class="seo-table">
@@ -179,8 +212,11 @@
     { path: '../services/sales-automation', name: 'Sales Automation', url: 'https://autoeight.ai/services/sales-automation' },
     { path: '../services/email-automation', name: 'Email Automation', url: 'https://autoeight.ai/services/email-automation' },
     { path: '../services/web-design', name: 'Web Design', url: 'https://autoeight.ai/services/web-design' },
-    { path: '../services/system-integration', name: 'System Integration', url: 'https://autoeight.ai/services/system-integration' },
     { path: '../results/case-studies', name: 'Case Studies', url: 'https://autoeight.ai/results/case-studies' },
+    { path: '../services/sales-marketing', name: 'Sales & Marketing', url: 'https://autoeight.ai/services/sales-marketing' },
+    { path: '../services/internal-systems', name: 'Internal Systems', url: 'https://autoeight.ai/services/internal-systems' },
+    { path: '../resources/blog', name: 'Blog Hub', url: 'https://autoeight.ai/resources/blog' },
+    { path: '../resources/blueprints', name: 'Blueprints', url: 'https://autoeight.ai/resources/blueprints' },
   ];
   var CASES = [
     { path: '../brand_assets/case-studies/matrix-tsl/matrix-sales', name: 'Matrix TSL' },
@@ -213,6 +249,32 @@
     schemas.forEach(function(s) {
       try { var j = JSON.parse(s.textContent); if (j['@type']) types.push(j['@type']); if (j['@graph']) j['@graph'].forEach(function(g) { if (g['@type']) types.push(g['@type']); }); } catch(e) {}
     });
+    // Content metrics
+    var bodyText = d.body ? d.body.textContent || '' : '';
+    var wordCount = bodyText.split(/\s+/).filter(function(w) { return w.length > 0; }).length;
+    var internalLinks = d.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"], a[href*="autoeight.ai"]');
+    var externalLinks = d.querySelectorAll('a[href^="http"]');
+    var extCount = 0;
+    externalLinks.forEach(function(a) { if (a.href.indexOf('autoeight.ai') === -1) extCount++; });
+
+    // Local SEO signals
+    var fullText = (bodyText + ' ' + (title ? title.textContent : '') + ' ' + (desc ? desc.getAttribute('content') || '' : '')).toLowerCase();
+    var hasHalifax = fullText.indexOf('halifax') !== -1;
+    var hasWestYorkshire = fullText.indexOf('west yorkshire') !== -1;
+    var hasLeeds = fullText.indexOf('leeds') !== -1;
+    var hasBradford = fullText.indexOf('bradford') !== -1;
+
+    // Schema local business check
+    var hasLocalBusiness = false;
+    var hasGeoCoords = false;
+    var hasAreaServed = false;
+    schemas.forEach(function(s) {
+      var txt = s.textContent || '';
+      if (txt.indexOf('LocalBusiness') !== -1 || txt.indexOf('ProfessionalService') !== -1) hasLocalBusiness = true;
+      if (txt.indexOf('latitude') !== -1 || txt.indexOf('geo') !== -1) hasGeoCoords = true;
+      if (txt.indexOf('areaServed') !== -1) hasAreaServed = true;
+    });
+
     return {
       title: title ? title.textContent.trim() : null,
       titleLen: title ? title.textContent.trim().length : 0,
@@ -228,7 +290,18 @@
       imgCount: imgs.length,
       imgsNoAlt: imgsNoAlt,
       hasClientBar: !!d.querySelector('.cs-client-bar'),
-      hasLiveLink: !!d.querySelector('.cs-visit-site')
+      hasLiveLink: !!d.querySelector('.cs-visit-site'),
+      wordCount: wordCount,
+      internalLinks: internalLinks.length,
+      externalLinks: extCount,
+      hasHalifax: hasHalifax,
+      hasWestYorkshire: hasWestYorkshire,
+      hasLeeds: hasLeeds,
+      hasBradford: hasBradford,
+      hasLocalBusiness: hasLocalBusiness,
+      hasGeoCoords: hasGeoCoords,
+      hasAreaServed: hasAreaServed,
+      fullText: fullText
     };
   }
 
@@ -363,6 +436,59 @@
         '<td>' + b(r.hasSchema) + (r.schemaTypes.length ? '<div style="font-size:0.7rem;color:var(--subtle);margin-top:2px;">' + r.schemaTypes.join(', ') + '</div>' : '') + '</td>' +
         '<td>' + b(r.hasClientBar) + '</td>' +
         '<td>' + b(r.hasLiveLink) + '</td></tr>';
+    }).join('');
+
+    // Content Metrics table
+    function lenBadge(val, low, high, unit) {
+      var cls = val >= low && val <= high ? 'pass' : val < low ? 'warn' : 'warn';
+      return '<span class="badge ' + cls + '">' + val + (unit || '') + '</span>';
+    }
+    document.getElementById('metricsTable').innerHTML = results.map(function(r) {
+      if (r.error) return '<tr><td>' + r.name + '</td><td colspan="6"><span class="badge fail">Error</span></td></tr>';
+      return '<tr>' +
+        '<td><strong>' + r.name + '</strong></td>' +
+        '<td>' + r.wordCount + '<div class="metric-bar"><div class="metric-fill" style="width:' + Math.min(100, Math.round(r.wordCount / 20)) + '%;background:' + (r.wordCount > 300 ? 'var(--green)' : r.wordCount > 100 ? 'var(--amber)' : 'var(--red)') + '"></div></div></td>' +
+        '<td>' + r.internalLinks + '</td>' +
+        '<td>' + r.externalLinks + '</td>' +
+        '<td>' + r.imgCount + (r.imgsNoAlt > 0 ? ' <span class="badge fail">' + r.imgsNoAlt + ' no alt</span>' : '') + '</td>' +
+        '<td>' + lenBadge(r.titleLen, 30, 60, ' chars') + '</td>' +
+        '<td>' + lenBadge(r.descLen, 120, 160, ' chars') + '</td>' +
+      '</tr>';
+    }).join('');
+
+    // Local SEO cards
+    var homePage = main[0] || {};
+    var servicePages = main.slice(3);
+    var halifaxCount = results.filter(function(r) { return r.hasHalifax; }).length;
+    var wyCount = results.filter(function(r) { return r.hasWestYorkshire; }).length;
+    document.getElementById('localSeo').innerHTML =
+      '<div class="local-card"><h4>LocalBusiness Schema</h4><div class="local-val">' + b(homePage.hasLocalBusiness) + '</div></div>' +
+      '<div class="local-card"><h4>Geo Coordinates</h4><div class="local-val">' + b(homePage.hasGeoCoords) + '</div></div>' +
+      '<div class="local-card"><h4>areaServed in Schema</h4><div class="local-val">' + b(results.some(function(r){ return r.hasAreaServed; })) + '</div></div>' +
+      '<div class="local-card"><h4>"Halifax" Mentions</h4><div class="local-val">' + halifaxCount + '/' + results.length + ' pages</div></div>' +
+      '<div class="local-card"><h4>"West Yorkshire" Mentions</h4><div class="local-val">' + wyCount + '/' + results.length + ' pages</div></div>' +
+      '<div class="local-card"><h4>"Leeds" Mentions</h4><div class="local-val">' + results.filter(function(r){ return r.hasLeeds; }).length + '/' + results.length + ' pages</div></div>';
+
+    // Keyword presence table
+    var targetKW = [
+      'ai automation halifax', 'automation agency', 'ai companies', 'sales automation',
+      'web design halifax', 'email automation', 'system integration', 'business automation'
+    ];
+    var kwPages = {
+      home: results[0] || {},
+      services: results.slice(3, 8),
+      about: results[1] || {}
+    };
+    document.getElementById('keywordTable').innerHTML = targetKW.map(function(kw) {
+      var inHome = kwPages.home.fullText && kwPages.home.fullText.indexOf(kw) !== -1;
+      var inServices = kwPages.services.some(function(s) { return s.fullText && s.fullText.indexOf(kw) !== -1; });
+      var inAbout = kwPages.about.fullText && kwPages.about.fullText.indexOf(kw) !== -1;
+      return '<tr>' +
+        '<td><span class="kw-pill">' + kw + '</span></td>' +
+        '<td>' + b(inHome) + '</td>' +
+        '<td>' + b(inServices) + '</td>' +
+        '<td>' + b(inAbout) + '</td>' +
+      '</tr>';
     }).join('');
 
     // Done
