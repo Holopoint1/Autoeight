@@ -6134,3 +6134,37 @@ footer {
   .hero-orb { opacity: 0.5; }
   .hero-bg-noise { opacity: 0.02; }
 }
+
+/* ── CONSENT BANNER ── */
+#ae-consent-banner {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: rgba(10, 10, 14, 0.96); backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(124, 92, 252, 0.25);
+  padding: 18px 5%; animation: consent-slide 0.4s ease;
+}
+@keyframes consent-slide { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.ae-consent-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.ae-consent-inner p {
+  flex: 1; min-width: 260px; font-size: 0.82rem; color: #a1a1aa; line-height: 1.5; margin: 0;
+}
+.ae-consent-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.ae-consent-btn {
+  padding: 8px 20px; border-radius: 8px; border: 1px solid transparent;
+  font-family: 'Inter', system-ui, sans-serif; font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+}
+.ae-consent-accept {
+  background: #7c5cfc; color: #fff; border-color: #7c5cfc;
+}
+.ae-consent-accept:hover { background: #6d4de6; }
+.ae-consent-decline {
+  background: transparent; color: #a1a1aa; border-color: #3f3f46;
+}
+.ae-consent-decline:hover { color: #fff; border-color: #71717a; }
+@media (max-width: 600px) {
+  .ae-consent-inner { flex-direction: column; text-align: center; }
+  .ae-consent-actions { width: 100%; justify-content: center; }
+}
