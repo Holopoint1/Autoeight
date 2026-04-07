@@ -5,7 +5,7 @@
   window.AEAuth = {
     check: function () {
       if (sessionStorage.getItem(K) !== '1') {
-        window.location.href = 'login.html';
+        window.location.href = 'login';
       }
     },
     login: function (pass) {
@@ -14,7 +14,7 @@
     },
     logout: function () {
       sessionStorage.removeItem(K);
-      window.location.href = 'login.html';
+      window.location.href = 'login';
     }
   };
 })();

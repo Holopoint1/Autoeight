@@ -42,7 +42,7 @@
   <script>
     // Already logged in? Skip to dashboard
     if (sessionStorage.getItem('ae_staff') === '1') {
-      window.location.href = 'dashboard.html';
+      window.location.href = 'dashboard';
     }
 
     function handleLogin(e) {
@@ -50,7 +50,7 @@
       var pw  = document.getElementById('pw').value;
       var err = document.getElementById('login-err');
       if (AEAuth.login(pw)) {
-        window.location.href = 'dashboard.html';
+        window.location.href = 'dashboard';
       } else {
         err.classList.add('show');
         document.getElementById('pw').value = '';

@@ -4,175 +4,175 @@
   <!-- Homepage -->
   <url>
     <loc>https://autoeight.ai/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Services -->
   <url>
-    <loc>https://autoeight.ai/services/ai-automation.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/services/ai-automation</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/services/email-automation.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/services/email-automation</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/services/sales-automation.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/services/sales-automation</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/services/sales-marketing.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/services/sales-marketing</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/services/internal-systems.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/services/internal-systems</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/services/web-design.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/services/web-design</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/services/system-integration.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/services/system-integration</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Core Pages -->
   <url>
-    <loc>https://autoeight.ai/about.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/about</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/book.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/book</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/results/case-studies.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/results/case-studies</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Individual Case Studies -->
   <url>
-    <loc>https://autoeight.ai/brand_assets/case-studies/matrix-tsl/matrix-sales.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/brand_assets/case-studies/matrix-tsl/matrix-sales</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/brand_assets/case-studies/learn-with-lorna/learn-with-lorna.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/brand_assets/case-studies/learn-with-lorna/learn-with-lorna</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/brand_assets/case-studies/tm-joinery/tm-joinery.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/brand_assets/case-studies/tm-joinery/tm-joinery</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/brand_assets/case-studies/dice-tavern/dice-tavern.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/brand_assets/case-studies/dice-tavern/dice-tavern</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Resource Hubs -->
   <url>
-    <loc>https://autoeight.ai/resources/blog.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blog</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/resources/blueprints.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blueprints</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Blog Posts -->
   <url>
-    <loc>https://autoeight.ai/resources/blog-5-automations-every-business.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blog-5-automations-every-business</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/resources/blog-full-automation-vs-human-in-the-loop.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blog-full-automation-vs-human-in-the-loop</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/resources/blog-hubspot-vs-salesforce.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blog-hubspot-vs-salesforce</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/resources/blog-measure-roi-sales-automation.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blog-measure-roi-sales-automation</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/resources/blog-personalisation-at-scale.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blog-personalisation-at-scale</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/resources/blog-sales-teams-hard-way.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blog-sales-teams-hard-way</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <!-- Blueprints -->
   <url>
-    <loc>https://autoeight.ai/resources/blueprint-ai-automation.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blueprint-ai-automation</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/resources/blueprint-email-automation.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blueprint-email-automation</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/resources/blueprint-sales-automation.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blueprint-sales-automation</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://autoeight.ai/resources/blueprint-web-design.html</loc>
-    <lastmod>2026-04-03</lastmod>
+    <loc>https://autoeight.ai/resources/blueprint-web-design</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
