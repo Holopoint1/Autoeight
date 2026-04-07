@@ -16,7 +16,7 @@
     .vi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; margin-bottom: 36px; }
     .vi-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 20px 22px; }
     .vi-card h4 { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
-    .vi-val { font-size: 1.8rem; font-weight: 800; color: var(--purple-l); line-height: 1.1; margin-bottom: 3px; }
+    .vi-val { font-size: 1.8rem; font-weight: 700; color: var(--green); line-height: 1.1; margin-bottom: 3px; }
     .vi-val.green { color: var(--green); }
     .vi-val.amber { color: var(--amber); }
     .vi-val.red { color: var(--red); }
@@ -26,7 +26,7 @@
     .vi-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 0.82rem; }
     .vi-table th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px 12px; border-bottom: 2px solid var(--border); }
     .vi-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
-    .vi-table tr:hover { background: var(--dark); }
+    .vi-table tr:hover { background: var(--surface); }
     .vi-table tr.isp { opacity: 0.45; }
 
     /* ── Badges ── */
@@ -42,18 +42,18 @@
 
     /* ── Section headers ── */
     .sh { font-size: 1rem; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
-    .sh i { color: var(--purple-l); font-size: 0.85rem; }
+    .sh i { color: var(--green); font-size: 0.85rem; }
 
     /* ── Filter bar ── */
     .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; }
     .filter-bar input, .filter-bar select { background: var(--card); border: 1px solid var(--border); color: var(--white); padding: 7px 12px; border-radius: 8px; font-family: var(--font); font-size: 0.82rem; }
-    .filter-bar input:focus, .filter-bar select:focus { outline: none; border-color: var(--purple); }
+    .filter-bar input:focus, .filter-bar select:focus { outline: none; border-color: var(--green); }
     .filter-bar label { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
 
     /* ── Timeline ── */
     .timeline { list-style: none; padding: 0; }
     .timeline-item { border-left: 2px solid var(--border); padding: 0 0 24px 20px; margin-left: 6px; position: relative; }
-    .timeline-item::before { content: ''; width: 10px; height: 10px; background: var(--purple-l); border-radius: 50%; position: absolute; left: -6px; top: 4px; }
+    .timeline-item::before { content: ''; width: 10px; height: 10px; background: var(--green); border-radius: 50%; position: absolute; left: -6px; top: 4px; }
     .timeline-date { font-size: 0.72rem; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
     .timeline-pages { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
     .timeline-page { background: var(--surface); border: 1px solid var(--border); padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; color: var(--off-white); }
@@ -63,9 +63,9 @@
     .company-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rl); padding: 24px; margin-bottom: 24px; }
     .company-card h2 { font-size: 1.3rem; margin-bottom: 8px; }
     .company-meta { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.82rem; color: var(--muted); }
-    .company-meta i { color: var(--purple-l); margin-right: 4px; }
+    .company-meta i { color: var(--green); margin-right: 4px; }
     .notes-area { width: 100%; min-height: 80px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: var(--font); font-size: 0.82rem; color: var(--white); resize: vertical; margin-top: 12px; }
-    .notes-area:focus { outline: none; border-color: var(--purple); }
+    .notes-area:focus { outline: none; border-color: var(--green); }
     .save-notes { margin-top: 8px; }
 
     /* ── Analytics bars ── */
@@ -73,7 +73,7 @@
     .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
     .bar-label { width: 180px; font-size: 0.78rem; color: var(--off-white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
     .bar-track { flex: 1; height: 22px; background: var(--surface); border-radius: 4px; overflow: hidden; }
-    .bar-fill { height: 100%; background: var(--purple-l); border-radius: 4px; transition: width 0.4s; }
+    .bar-fill { height: 100%; background: var(--green); border-radius: 4px; transition: width 0.4s; }
     .bar-count { width: 40px; font-size: 0.72rem; color: var(--muted); text-align: right; flex-shrink: 0; }
 
     /* ── Action buttons ── */
