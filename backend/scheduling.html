@@ -1,409 +1,1684 @@
 <!DOCTYPE html>
+
+
+
 <html lang="en">
+
+
+
 <head>
+
+
+
   <meta charset="UTF-8" />
+
+
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scheduling â€” Autoeight Portal</title>
+
+
+
+  <title>Scheduling — Autoeight Portal</title>
+
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+
   <link rel="stylesheet" href="backend.css?v=3" />
+
+
+
   <script src="auth.js"></script>
+
+
+
 </head>
+
+
+
 <body>
+
+
+
   <script>AEAuth.check();</script>
+
+
+
+
+
+
 
   <div class="app-layout">
 
+
+
+
+
+
+
     <aside class="sidebar">
+
+
+
       <a href="dashboard" class="sidebar-logo">
+
+
+
         <img src="../brand_assets/1.png" alt="Autoeight" />
+
+
+
         <div class="sidebar-logo-text">
+
+
+
           <span class="sidebar-logo-name">Autoeight</span>
+
+
+
           <span class="sidebar-logo-sub">Internal Portal</span>
+
+
+
         </div>
+
+
+
       </a>
 
+
+
+
+
+
+
       <div class="sidebar-section">Tools</div>
+
+
+
       <nav class="sidebar-nav">
+
+
+
         <a href="dashboard" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard </a>
+
+
+
         <a href="visitors" class="sidebar-link"><i class="fa-solid fa-eye"></i> Visitor Intelligence <span class="sidebar-badge">New</span></a>
+
+
+
         <a href="seo-dashboard" class="sidebar-link"><i class="fa-solid fa-chart-simple"></i> SEO &amp; Site Health </a>
+
+
+
         <a href="skills" class="sidebar-link"><i class="fa-solid fa-book"></i> AI Skills </a>
+
+
+
       </nav>
+
+
+
+
+
+
 
       <div class="sidebar-section">Sales Demos</div>
+
+
+
       <nav class="sidebar-nav">
+
+
+
         <a href="customer-service" class="sidebar-link"><i class="fa-solid fa-headset"></i> Customer Service </a>
+
+
+
         <a href="sales" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Sales Automation </a>
+
+
+
         <a href="scheduling" class="sidebar-link active"><i class="fa-solid fa-calendar-check"></i> Scheduling </a>
+
+
+
         <a href="marketing" class="sidebar-link"><i class="fa-solid fa-bullhorn"></i> Marketing </a>
+
+
+
         <a href="data-admin" class="sidebar-link"><i class="fa-solid fa-database"></i> Data &amp; Admin </a>
+
+
+
         <a href="project-management" class="sidebar-link"><i class="fa-solid fa-diagram-project"></i> Project Management </a>
+
+
+
         <a href="business-impact" class="sidebar-link"><i class="fa-solid fa-trophy"></i> Business Impact </a>
+
+
+
       </nav>
 
+
+
+
+
+
+
       <div class="sidebar-footer">
+
+
+
         <a href="../" class="sidebar-link"><i class="fa-solid fa-globe"></i> Live Site</a>
+
+
+
         <a href="#" onclick="AEAuth.logout();return false;" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+
+
+
       </div>
+
+
+
     </aside>
 
+
+
+
+
+
+
     <!-- Main Content -->
+
+
+
     <div class="main-content">
+
+
+
       <div class="topbar">
+
+
+
         <div class="topbar-breadcrumb">
+
+
+
           <span>Portal</span> <span>/</span> <span>Sales Demos</span> <span>/</span> <strong>Scheduling</strong>
+
+
+
         </div>
+
+
+
         <div class="topbar-actions">
+
+
+
           <a href="dashboard" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+
+
+
         </div>
+
+
+
       </div>
+
+
+
+
+
+
 
   <main class="b-main">
 
+
+
+
+
+
+
     <div class="page-header">
+
+
+
       <span class="section-num">Section 03 of 07</span>
+
+
+
       <h1 class="page-title">Scheduling <em>Automation</em></h1>
-      <p class="page-desc">Back-and-forth emails to book a single meeting are a silent time-killer. Every team member loses 60â€“90 minutes a day to scheduling logistics. Automated booking eliminates this friction completely â€” for the business and the customer.</p>
+
+
+
+      <p class="page-desc">Back-and-forth emails to book a single meeting are a silent time-killer. Every team member loses 60–90 minutes a day to scheduling logistics. Automated booking eliminates this friction completely — for the business and the customer.</p>
+
+
+
       <div class="quick-stats">
+
+
+
         <div class="qs"><div class="qs-val green">1.3 hrs</div><div class="qs-label">Saved per employee per day</div></div>
-        <div class="qs"><div class="qs-val green">Â£7kâ€“Â£10k</div><div class="qs-label">Saved per employee per year</div></div>
+
+
+
+        <div class="qs"><div class="qs-val green">£7k–£10k</div><div class="qs-label">Saved per employee per year</div></div>
+
+
+
         <div class="qs"><div class="qs-val purple">87%</div><div class="qs-label">Reduction in scheduling time</div></div>
+
+
+
         <div class="qs"><div class="qs-val amber">0</div><div class="qs-label">No-shows with automated reminders</div></div>
+
+
+
       </div>
+
+
+
     </div>
+
+
+
+
+
+
 
     <div class="tabs">
+
+
+
       <button class="tab-btn active" data-tab="visual"><i class="fa-solid fa-eye"></i> Visual</button>
+
+
+
       <button class="tab-btn" data-tab="auditory"><i class="fa-solid fa-ear-listen"></i> Auditory</button>
+
+
+
       <button class="tab-btn" data-tab="kinesthetic"><i class="fa-solid fa-hand"></i> Kinesthetic</button>
+
+
+
     </div>
+
+
+
+
+
+
 
     <!-- â”€â”€ VISUAL TAB â”€â”€ -->
+
+
+
     <div id="visual" class="tab-content active">
 
+
+
+
+
+
+
       <!-- Email chain SVG -->
+
+
+
       <div class="svg-area" style="margin-bottom:20px;">
+
+
+
         <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:14px;">Traditional Email Back-and-Forth vs AI Booking</div>
+
+
+
         <svg viewBox="0 0 700 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;height:auto;">
+
+
+
           <!-- Traditional column header -->
+
+
+
           <rect x="0" y="0" width="310" height="28" rx="5" fill="rgba(239,68,68,0.12)" stroke="#ef4444" stroke-width="1"/>
-          <text x="155" y="18" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700" font-family="system-ui">TRADITIONAL â€” 6 emails to book 1 meeting</text>
+
+
+
+          <text x="155" y="18" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700" font-family="system-ui">TRADITIONAL — 6 emails to book 1 meeting</text>
+
+
+
           <!-- Email chain -->
+
+
+
           <rect x="10" y="38" width="290" height="24" rx="5" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="0.8"/>
+
+
+
           <text x="20" y="54" fill="#ececec" font-size="10" font-family="system-ui">"Are you free for a call this week?"</text>
+
+
+
           <rect x="10" y="70" width="290" height="24" rx="5" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="0.8"/>
+
+
+
           <text x="20" y="86" fill="#ececec" font-size="10" font-family="system-ui">"Sorry, Tuesday doesn't work. How about Thursday?"</text>
+
+
+
           <rect x="10" y="102" width="290" height="24" rx="5" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="0.8"/>
-          <text x="20" y="118" fill="#ececec" font-size="10" font-family="system-ui">"Thursday works â€” morning or afternoon?"</text>
+
+
+
+          <text x="20" y="118" fill="#ececec" font-size="10" font-family="system-ui">"Thursday works — morning or afternoon?"</text>
+
+
+
           <rect x="10" y="134" width="290" height="24" rx="5" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="0.8"/>
-          <text x="20" y="150" fill="#ececec" font-size="10" font-family="system-ui">"Afternoon please â€” 2pm or 3pm?"</text>
+
+
+
+          <text x="20" y="150" fill="#ececec" font-size="10" font-family="system-ui">"Afternoon please — 2pm or 3pm?"</text>
+
+
+
           <rect x="10" y="166" width="290" height="24" rx="5" fill="rgba(239,68,68,0.08)" stroke="#ef4444" stroke-width="0.8"/>
-          <text x="20" y="182" fill="#ececec" font-size="10" font-family="system-ui">"3pm works for me â€” confirmed!"</text>
+
+
+
+          <text x="20" y="182" fill="#ececec" font-size="10" font-family="system-ui">"3pm works for me — confirmed!"</text>
+
+
+
           <rect x="10" y="198" width="290" height="24" rx="5" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
-          <text x="20" y="214" fill="#ef4444" font-size="10" font-weight="700" font-family="system-ui">Total: 6 emails Ã— 1.5 hrs elapsed Ã— manual reminder set</text>
+
+
+
+          <text x="20" y="214" fill="#ef4444" font-size="10" font-weight="700" font-family="system-ui">Total: 6 emails × 1.5 hrs elapsed × manual reminder set</text>
+
+
+
           <!-- AI column header -->
+
+
+
           <rect x="330" y="0" width="360" height="28" rx="5" fill="rgba(34,197,94,0.12)" stroke="#22c55e" stroke-width="1"/>
-          <text x="510" y="18" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700" font-family="system-ui">WITH AI â€” Booked in 1 click</text>
+
+
+
+          <text x="510" y="18" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700" font-family="system-ui">WITH AI — Booked in 1 click</text>
+
+
+
           <!-- AI steps -->
+
+
+
           <rect x="340" y="38" width="340" height="28" rx="5" fill="rgba(34,197,94,0.08)" stroke="#22c55e" stroke-width="0.8"/>
-          <text x="510" y="57" text-anchor="middle" fill="#ececec" font-size="10" font-family="system-ui">"Here's my booking link â€” pick any time that suits you"</text>
+
+
+
+          <text x="510" y="57" text-anchor="middle" fill="#ececec" font-size="10" font-family="system-ui">"Here's my booking link — pick any time that suits you"</text>
+
+
+
           <rect x="340" y="76" width="340" height="40" rx="5" fill="rgba(34,197,94,0.12)" stroke="#22c55e" stroke-width="1"/>
-          <text x="510" y="93" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700" font-family="system-ui">Customer views live calendar â€” picks slot</text>
+
+
+
+          <text x="510" y="93" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700" font-family="system-ui">Customer views live calendar — picks slot</text>
+
+
+
           <text x="510" y="108" text-anchor="middle" fill="#22c55e" font-size="10" font-family="system-ui">Meeting confirmed instantly &lt;60 seconds</text>
+
+
+
           <rect x="340" y="126" width="160" height="36" rx="5" fill="rgba(34,197,94,0.08)" stroke="#22c55e" stroke-width="0.8"/>
+
+
+
           <text x="420" y="143" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="600" font-family="system-ui">Auto-confirmation</text>
+
+
+
           <text x="420" y="157" text-anchor="middle" fill="#22c55e" font-size="9" font-family="system-ui">email sent instantly</text>
+
+
+
           <rect x="520" y="126" width="160" height="36" rx="5" fill="rgba(124,92,252,0.1)" stroke="#7c5cfc" stroke-width="0.8"/>
+
+
+
           <text x="600" y="143" text-anchor="middle" fill="#a07aff" font-size="10" font-weight="600" font-family="system-ui">Auto-reminders</text>
+
+
+
           <text x="600" y="157" text-anchor="middle" fill="#a07aff" font-size="9" font-family="system-ui">SMS + email sent</text>
+
+
+
           <rect x="340" y="172" width="340" height="28" rx="5" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1"/>
+
+
+
           <text x="510" y="190" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700" font-family="system-ui">Total: 0 admin time. Zero no-shows. Zero friction.</text>
+
+
+
         </svg>
+
+
+
       </div>
+
+
+
+
+
+
 
       <div class="flow-grid">
+
+
+
         <div class="flow-col trad">
+
+
+
           <div class="flow-col-head">
+
+
+
             <div class="flow-icon"><i class="fa-solid fa-envelope"></i></div>
+
+
+
             <h3>Traditional Scheduling</h3>
+
+
+
             <span class="time-tag">1.5 hrs/day</span>
+
+
+
           </div>
+
+
+
           <div class="steps">
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">1</div>
+
+
+
               <div class="step-body">
+
+
+
                 <div class="step-title">Customer or prospect wants a meeting</div>
-                <div class="step-detail">Emails to suggest a time â€” starts an email chain</div>
+
+
+
+                <div class="step-detail">Emails to suggest a time — starts an email chain</div>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">2</div>
+
+
+
               <div class="step-body">
-                <div class="step-title">4â€“6 emails back and forth</div>
+
+
+
+                <div class="step-title">4–6 emails back and forth</div>
+
+
+
                 <div class="step-detail">Checking availability, negotiating times, confirming</div>
-                <span class="step-badge badge-red">30â€“90 min wasted per meeting</span>
+
+
+
+                <span class="step-badge badge-red">30–90 min wasted per meeting</span>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">3</div>
+
+
+
               <div class="step-body">
+
+
+
                 <div class="step-title">Manual calendar entry</div>
-                <div class="step-detail">Someone adds the meeting â€” risk of double-booking</div>
+
+
+
+                <div class="step-detail">Someone adds the meeting — risk of double-booking</div>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">4</div>
+
+
+
               <div class="step-body">
+
+
+
                 <div class="step-title">Manual reminder set (or forgotten)</div>
+
+
+
                 <div class="step-detail">Often no reminder â†’ customer forgets â†’ no-show</div>
+
+
+
                 <span class="step-badge badge-red">High no-show rate</span>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">5</div>
+
+
+
               <div class="step-body">
-                <div class="step-title">Rescheduling â€” more email chains</div>
-                <div class="step-detail">When meetings are missed or moved â€” cycle repeats</div>
+
+
+
+                <div class="step-title">Rescheduling — more email chains</div>
+
+
+
+                <div class="step-detail">When meetings are missed or moved — cycle repeats</div>
+
+
+
                 <span class="step-badge badge-red">Compounding time loss</span>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
           </div>
+
+
+
         </div>
+
+
+
+
+
+
 
         <div class="flow-col ai">
+
+
+
           <div class="flow-col-head">
+
+
+
             <div class="flow-icon"><i class="fa-solid fa-calendar-check"></i></div>
+
+
+
             <h3>AI Automated Scheduling</h3>
+
+
+
             <span class="time-tag">0.2 hrs/day</span>
+
+
+
           </div>
+
+
+
           <div class="steps">
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">1</div>
+
+
+
               <div class="step-body">
+
+
+
                 <div class="step-title">Booking link sent in one message</div>
+
+
+
                 <div class="step-detail">A Calendly or equivalent link showing live availability</div>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">2</div>
+
+
+
               <div class="step-body">
+
+
+
                 <div class="step-title">Customer picks slot themselves</div>
+
+
+
                 <div class="step-detail">Sees real-time availability, selects, confirms in &lt;60 seconds</div>
+
+
+
                 <span class="step-badge badge-green">Zero email back-and-forth</span>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">3</div>
+
+
+
               <div class="step-body">
+
+
+
                 <div class="step-title">Auto-confirms with both calendars</div>
+
+
+
                 <div class="step-detail">Syncs to Google Calendar / Outlook automatically</div>
+
+
+
                 <span class="step-badge badge-green">Zero double-booking risk</span>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">4</div>
+
+
+
               <div class="step-body">
+
+
+
                 <div class="step-title">Auto-reminders sent (email + SMS)</div>
-                <div class="step-detail">24 hours and 1 hour before â€” customer never forgets</div>
+
+
+
+                <div class="step-detail">24 hours and 1 hour before — customer never forgets</div>
+
+
+
                 <span class="step-badge badge-purple">No-show rate drops dramatically</span>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
             <div class="step">
+
+
+
               <div class="step-dot">5</div>
+
+
+
               <div class="step-body">
+
+
+
                 <div class="step-title">Rescheduling handled automatically</div>
-                <div class="step-detail">Customer reschedules via link â€” no emails needed</div>
+
+
+
+                <div class="step-detail">Customer reschedules via link — no emails needed</div>
+
+
+
                 <span class="step-badge badge-green">Zero admin involvement</span>
+
+
+
               </div>
+
+
+
             </div>
+
+
+
           </div>
+
+
+
         </div>
+
+
+
       </div>
+
+
+
+
+
+
 
       <div class="compare-wrap">
+
+
+
         <table class="compare-table">
+
+
+
           <thead>
+
+
+
             <tr><th class="cm">Metric</th><th class="ct"><i class="fa-solid fa-xmark"></i> Traditional</th><th class="ca"><i class="fa-solid fa-check"></i> With AI</th></tr>
+
+
+
           </thead>
+
+
+
           <tbody>
-            <tr><td class="tm">Time spent per booking</td><td class="tt">30â€“90 min</td><td class="ta">&lt;60 seconds</td></tr>
+
+
+
+            <tr><td class="tm">Time spent per booking</td><td class="tt">30–90 min</td><td class="ta">&lt;60 seconds</td></tr>
+
+
+
             <tr><td class="tm">Daily scheduling time (team)</td><td class="tt">1.5 hrs/day</td><td class="ta">0.2 hrs/day</td></tr>
-            <tr><td class="tm">Time saved per day</td><td class="tt">â€”</td><td class="ta">1.3 hrs/day</td></tr>
-            <tr><td class="tm">No-show rate</td><td class="tt">20â€“30%</td><td class="ta">&lt;5% (auto-reminders)</td></tr>
+
+
+
+            <tr><td class="tm">Time saved per day</td><td class="tt">—</td><td class="ta">1.3 hrs/day</td></tr>
+
+
+
+            <tr><td class="tm">No-show rate</td><td class="tt">20–30%</td><td class="ta">&lt;5% (auto-reminders)</td></tr>
+
+
+
             <tr><td class="tm">Double-booking risk</td><td class="tt">High (manual entry)</td><td class="ta">Zero (live calendar sync)</td></tr>
+
+
+
             <tr><td class="tm">After-hours bookings</td><td class="tt">Not possible</td><td class="ta">24/7 self-serve booking</td></tr>
-            <tr><td class="tm">Annual saving (Â£30k salary)</td><td class="tt">Â£0</td><td class="ta">~Â£8,125/yr per employee</td></tr>
+
+
+
+            <tr><td class="tm">Annual saving (£30k salary)</td><td class="tt">£0</td><td class="ta">~£8,125/yr per employee</td></tr>
+
+
+
           </tbody>
+
+
+
         </table>
+
+
+
       </div>
+
+
+
+
+
+
 
       <div class="stats-row">
+
+
+
         <div class="sbox green"><div class="sbox-val">1.3 hrs</div><div class="sbox-label">Saved per person per day</div></div>
+
+
+
         <div class="sbox purple"><div class="sbox-val">87%</div><div class="sbox-label">Reduction in scheduling time</div></div>
-        <div class="sbox green"><div class="sbox-val">Â£8k</div><div class="sbox-label">Saved per employee per year</div></div>
-        <div class="sbox amber"><div class="sbox-val">&lt;5%</div><div class="sbox-label">No-show rate (down from 20â€“30%)</div></div>
+
+
+
+        <div class="sbox green"><div class="sbox-val">£8k</div><div class="sbox-label">Saved per employee per year</div></div>
+
+
+
+        <div class="sbox amber"><div class="sbox-val">&lt;5%</div><div class="sbox-label">No-show rate (down from 20–30%)</div></div>
+
+
+
       </div>
 
+
+
+
+
+
+
     </div>
+
+
+
+
+
+
 
     <!-- â”€â”€ AUDITORY TAB â”€â”€ -->
-    <div id="auditory" class="tab-content">
-      <div class="narrative">
-        <h3>The Story to Tell Your Prospect</h3>
-        <p>Here's a question: how many emails does it take to book a meeting in your business? For most companies, the honest answer is five or six. "Are you free Tuesday?" "Not Tuesday, how about Thursday?" "Morning or afternoon?" "I'll need to check â€” can I come back to you?" By the time you've booked a 30-minute call, you've spent more time arranging it than the call itself takes.</p>
 
-        <blockquote>"Scheduling is one of the most invisible time costs in a business â€” because it feels necessary, so nobody questions it."</blockquote>
+
+
+    <div id="auditory" class="tab-content">
+
+
+
+      <div class="narrative">
+
+
+
+        <h3>The Story to Tell Your Prospect</h3>
+
+
+
+        <p>Here's a question: how many emails does it take to book a meeting in your business? For most companies, the honest answer is five or six. "Are you free Tuesday?" "Not Tuesday, how about Thursday?" "Morning or afternoon?" "I'll need to check — can I come back to you?" By the time you've booked a 30-minute call, you've spent more time arranging it than the call itself takes.</p>
+
+
+
+
+
+
+
+        <blockquote>"Scheduling is one of the most invisible time costs in a business — because it feels necessary, so nobody questions it."</blockquote>
+
+
+
+
+
+
 
         <h3>The Hidden Scale of the Problem</h3>
-        <p>In a 5-person team that each book 3â€“4 meetings a day, the scheduling overhead alone can consume 7â€“10 hours of collective time daily. That's nearly a full working day lost across the team, every single day, just to arrange when people will talk to each other.</p>
 
-        <p>Then add no-shows. When there's no automated reminder, 20â€“30% of meetings simply don't happen. The prospect forgets, the customer moves on, and someone has blocked out time that produces nothing. Over a month, that's days of capacity gone.</p>
+
+
+        <p>In a 5-person team that each book 3–4 meetings a day, the scheduling overhead alone can consume 7–10 hours of collective time daily. That's nearly a full working day lost across the team, every single day, just to arrange when people will talk to each other.</p>
+
+
+
+
+
+
+
+        <p>Then add no-shows. When there's no automated reminder, 20–30% of meetings simply don't happen. The prospect forgets, the customer moves on, and someone has blocked out time that produces nothing. Over a month, that's days of capacity gone.</p>
+
+
+
+
+
+
 
         <div class="callout">
-          <p><strong>Analogy to use:</strong> "It's like booking a restaurant. You don't email the restaurant five times to find a table â€” you just go online, pick a time, and you're done. Your business should work the same way for every customer trying to book time with you."</p>
+
+
+
+          <p><strong>Analogy to use:</strong> "It's like booking a restaurant. You don't email the restaurant five times to find a table — you just go online, pick a time, and you're done. Your business should work the same way for every customer trying to book time with you."</p>
+
+
+
         </div>
+
+
+
+
+
+
 
         <h3>What Changes With Automation</h3>
+
+
+
         <p>When a prospect wants to speak with you, instead of an email chain starting, they receive a single link. They see your live calendar. They pick a time. It's confirmed instantly. A reminder goes to their phone the day before and an hour before. That's the entire process.</p>
 
-        <p>No emails. No back-and-forth. No double-booking. No forgotten reminders. No no-shows. The time saving per booking is enormous â€” but across an entire team, the cumulative impact is transformational.</p>
+
+
+
+
+
+
+        <p>No emails. No back-and-forth. No double-booking. No forgotten reminders. No no-shows. The time saving per booking is enormous — but across an entire team, the cumulative impact is transformational.</p>
+
+
+
+
+
+
 
         <h3>The Financial Outcome</h3>
-        <p>A team member on Â£30,000 costs roughly Â£14.50 an hour. If they're losing 1.3 hours a day to scheduling, that's about Â£19 a day â€” approximately Â£4,750 a year of their salary going into email back-and-forth. For a five-person team, that's Â£24,000 a year. Gone. Into scheduling.</p>
 
-        <blockquote>"The most expensive thing in your business isn't software or overheads â€” it's the hours your people spend on tasks that a Â£20-a-month tool can do automatically."</blockquote>
+
+
+        <p>A team member on £30,000 costs roughly £14.50 an hour. If they're losing 1.3 hours a day to scheduling, that's about £19 a day — approximately £4,750 a year of their salary going into email back-and-forth. For a five-person team, that's £24,000 a year. Gone. Into scheduling.</p>
+
+
+
+
+
+
+
+        <blockquote>"The most expensive thing in your business isn't software or overheads — it's the hours your people spend on tasks that a £20-a-month tool can do automatically."</blockquote>
+
+
+
+
+
+
 
         <h3>What to Emphasise</h3>
+
+
+
         <ul>
+
+
+
           <li>Speed: Meetings are booked in seconds, not a day of email chains.</li>
-          <li>No-shows: Automated reminders cut no-shows by 80â€“90% â€” protecting valuable meeting slots.</li>
-          <li>After-hours: Prospects can book at midnight â€” no one has to be awake to confirm.</li>
+
+
+
+          <li>No-shows: Automated reminders cut no-shows by 80–90% — protecting valuable meeting slots.</li>
+
+
+
+          <li>After-hours: Prospects can book at midnight — no one has to be awake to confirm.</li>
+
+
+
           <li>Customer experience: A frictionless booking process sets the tone for the entire relationship.</li>
+
+
+
         </ul>
+
+
+
       </div>
+
+
+
     </div>
+
+
+
+
+
+
 
     <!-- â”€â”€ KINESTHETIC TAB â”€â”€ -->
+
+
+
     <div id="kinesthetic" class="tab-content">
 
+
+
+
+
+
+
       <div class="demo-steps">
+
+
+
         <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:4px;">Walk Through This With Your Prospect</div>
+
+
+
         <div class="demo-step">
+
+
+
           <div class="demo-num">1</div>
+
+
+
           <div class="demo-body">
+
+
+
             <h4>Ask: "How many emails does it usually take to confirm a meeting?"</h4>
-            <p>They'll say 3â€“6. Ask them to visualise that multiplied by every meeting, every day, across every person in their team.</p>
+
+
+
+            <p>They'll say 3–6. Ask them to visualise that multiplied by every meeting, every day, across every person in their team.</p>
+
+
+
           </div>
+
+
+
         </div>
+
+
+
         <div class="demo-step">
+
+
+
           <div class="demo-num">2</div>
+
+
+
           <div class="demo-body">
+
+
+
             <h4>Ask: "What's your no-show rate on meetings?"</h4>
-            <p>Most prospects haven't measured it â€” but when they think about it, they know it's significant. This creates urgency around the reminder automation.</p>
+
+
+
+            <p>Most prospects haven't measured it — but when they think about it, they know it's significant. This creates urgency around the reminder automation.</p>
+
+
+
           </div>
-          <div class="demo-save"><div class="demo-save-val">20â€“30%</div><div class="demo-save-label">typical no-show rate</div></div>
+
+
+
+          <div class="demo-save"><div class="demo-save-val">20–30%</div><div class="demo-save-label">typical no-show rate</div></div>
+
+
+
         </div>
+
+
+
         <div class="demo-step">
+
+
+
           <div class="demo-num">3</div>
+
+
+
           <div class="demo-body">
+
+
+
             <h4>Show them: 1 link vs 6 emails</h4>
+
+
+
             <p>Pull up a Calendly demo page and show them how quick the booking experience is. The contrast is immediate and visceral.</p>
+
+
+
           </div>
+
+
+
         </div>
+
+
+
         <div class="demo-step">
+
+
+
           <div class="demo-num">4</div>
+
+
+
           <div class="demo-body">
+
+
+
             <h4>Calculate their team's scheduling cost with the calculator below</h4>
+
+
+
             <p>Even for small teams, the number is surprisingly large. It's a cost nobody has ever put a price on before.</p>
+
+
+
           </div>
+
+
+
         </div>
+
+
+
       </div>
+
+
+
+
+
+
 
       <div class="roi-calc">
-        <div class="roi-calc-title"><i class="fa-solid fa-calculator" style="color:var(--purple-l);margin-right:8px;"></i>Live ROI Calculator â€” Scheduling</div>
+
+
+
+        <div class="roi-calc-title"><i class="fa-solid fa-calculator" style="color:var(--purple-l);margin-right:8px;"></i>Live ROI Calculator — Scheduling</div>
+
+
+
         <div class="roi-calc-sub">Enter team details to show the hidden cost of manual scheduling.</div>
+
+
+
         <div class="roi-inputs">
+
+
+
           <div>
+
+
+
             <label class="roi-label" for="sch-staff">Number of staff who book meetings</label>
+
+
+
             <input type="number" id="sch-staff" class="roi-input" value="3" min="1" max="50" oninput="calcSch()" />
+
+
+
           </div>
+
+
+
           <div>
-            <label class="roi-label" for="sch-salary">Average annual salary (Â£)</label>
+
+
+
+            <label class="roi-label" for="sch-salary">Average annual salary (£)</label>
+
+
+
             <input type="number" id="sch-salary" class="roi-input" value="30000" min="18000" max="80000" step="1000" oninput="calcSch()" />
+
+
+
           </div>
+
+
+
         </div>
+
+
+
         <div class="roi-results">
+
+
+
           <div class="roi-res"><div class="roi-res-val" id="sch-hrs">3.9 hrs</div><div class="roi-res-label">Hours saved per day (team)</div></div>
-          <div class="roi-res hi"><div class="roi-res-val" id="sch-annual">Â£17,308</div><div class="roi-res-label">Annual saving</div></div>
-          <div class="roi-res big"><div class="roi-res-val" id="sch-5yr">Â£86,538</div><div class="roi-res-label">5-year saving</div></div>
+
+
+
+          <div class="roi-res hi"><div class="roi-res-val" id="sch-annual">£17,308</div><div class="roi-res-label">Annual saving</div></div>
+
+
+
+          <div class="roi-res big"><div class="roi-res-val" id="sch-5yr">£86,538</div><div class="roi-res-label">5-year saving</div></div>
+
+
+
           <div class="roi-res"><div class="roi-res-val">87%</div><div class="roi-res-label">Scheduling time reduction</div></div>
+
+
+
         </div>
-        <p class="roi-note">Based on 1.3 hours saved per employee per day, calculated at salary Ã· 2,080 working hours per year.</p>
+
+
+
+        <p class="roi-note">Based on 1.3 hours saved per employee per day, calculated at salary ÷ 2,080 working hours per year.</p>
+
+
+
       </div>
 
+
+
+
+
+
+
     </div>
+
+
+
+
+
+
 
     <div class="divider"></div>
 
+
+
+
+
+
+
     <div style="margin-bottom:12px;"><span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--purple);">Talking Points</span></div>
+
+
+
     <div class="tp-grid">
+
+
+
       <div class="tp"><div class="tp-label">On time</div><div class="tp-text">"Every meeting in your business takes 6 emails before it even happens. We turn those 6 emails into 1 link and 60 seconds."</div></div>
+
+
+
       <div class="tp"><div class="tp-label">On no-shows</div><div class="tp-text">"Automated SMS and email reminders cut no-show rates by up to 85%. That's almost a day a month given back to your team immediately."</div></div>
+
+
+
       <div class="tp"><div class="tp-label">On customer experience</div><div class="tp-text">"The booking experience is the first impression of how you run your business. Frictionless booking says: we are organised, we value your time."</div></div>
+
+
+
       <div class="tp"><div class="tp-label">On scale</div><div class="tp-text">"With automated scheduling, a prospect can book a meeting with you at 11pm on a Sunday without anyone from your team being online."</div></div>
+
+
+
     </div>
+
+
+
+
+
+
 
     <div style="margin-bottom:12px;"><span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--amber);">Objection Handlers</span></div>
+
+
+
     <div class="objections">
+
+
+
       <div class="objection">
+
+
+
         <div class="objection-header">
+
+
+
           <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "We already use Calendly"</span>
+
+
+
           <span class="toggle-icon">+</span>
+
+
+
         </div>
+
+
+
         <div class="objection-answer">
-          <p>Great â€” then you've seen the value. What most businesses don't do is integrate it into their full outreach and CRM workflow. We connect it so that when someone books, it auto-logs in the CRM, triggers a pre-meeting email sequence, and updates the sales pipeline. It goes from a booking tool to a complete meeting pipeline system.</p>
+
+
+
+          <p>Great — then you've seen the value. What most businesses don't do is integrate it into their full outreach and CRM workflow. We connect it so that when someone books, it auto-logs in the CRM, triggers a pre-meeting email sequence, and updates the sales pipeline. It goes from a booking tool to a complete meeting pipeline system.</p>
+
+
+
         </div>
+
+
+
       </div>
+
+
+
       <div class="objection">
+
+
+
         <div class="objection-header">
+
+
+
           <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "Some clients prefer to call and book directly"</span>
+
+
+
           <span class="toggle-icon">+</span>
+
+
+
         </div>
+
+
+
         <div class="objection-answer">
-          <p>That still works. Automated booking doesn't replace phone calls â€” it's an additional option that many clients actively prefer. The ones who call still call. But the ones who would have emailed 5 times to arrange a time now just pick a slot in 30 seconds, and you've saved everyone time.</p>
+
+
+
+          <p>That still works. Automated booking doesn't replace phone calls — it's an additional option that many clients actively prefer. The ones who call still call. But the ones who would have emailed 5 times to arrange a time now just pick a slot in 30 seconds, and you've saved everyone time.</p>
+
+
+
         </div>
+
+
+
       </div>
+
+
+
     </div>
 
+
+
+
+
+
+
     <div class="section-nav">
+
+
+
       <a href="sales"><i class="fa-solid fa-arrow-left"></i> Sales Automation</a>
+
+
+
       <a href="marketing" class="btn-next">Next: Marketing <i class="fa-solid fa-arrow-right"></i></a>
+
+
+
     </div>
+
+
+
+
+
+
 
   </main>
 
+
+
+
+
+
+
   <script>
+
+
+
     function calcSch() {
+
+
+
       var staff  = Math.max(1, parseInt(document.getElementById('sch-staff').value) || 3);
+
+
+
       var salary = Math.max(15000, parseInt(document.getElementById('sch-salary').value) || 30000);
+
+
+
       var hourlyRate = salary / 2080;
+
+
+
       var hrsSavedDay = 1.3 * staff;
+
+
+
       var annual = Math.round(hrsSavedDay * 260 * hourlyRate);
+
+
+
       var fiveYr = annual * 5;
+
+
+
       document.getElementById('sch-hrs').textContent    = hrsSavedDay.toFixed(1) + ' hrs';
-      document.getElementById('sch-annual').textContent = 'Â£' + annual.toLocaleString();
-      document.getElementById('sch-5yr').textContent    = 'Â£' + fiveYr.toLocaleString();
+
+
+
+      document.getElementById('sch-annual').textContent = '£' + annual.toLocaleString();
+
+
+
+      document.getElementById('sch-5yr').textContent    = '£' + fiveYr.toLocaleString();
+
+
+
     }
+
+
+
     calcSch();
+
+
+
   </script>
 
+
+
+
+
+
+
     </div><!-- /main-content -->
+
+
+
   </div><!-- /app-layout -->
 
+
+
+
+
+
+
 </body>
+
+
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
