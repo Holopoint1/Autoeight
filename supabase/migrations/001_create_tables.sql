@@ -143,7 +143,12 @@ SELECT
   COUNT(pv.id)          AS total_pageviews,
   MAX(s.last_activity)  AS last_visit,
   MIN(v.first_seen)     AS first_visit,
-  ARRAY_AGG(DISTINCT pv.path) FILTER (WHERE pv.path IS NOT NULL) AS pages_visited
+  ARRAY_AGG(DISTINCT pv.path) FILTER (WHERE pv.path IS NOT NULL) AS pages_visited,
+  ROUND(AVG(s.duration_secs) FILTER (WHERE s.duration_secs > 0))::INTEGER AS avg_duration,
+  MODE() WITHIN GROUP (ORDER BY s.device_type) FILTER (WHERE s.device_type IS NOT NULL) AS top_device,
+  MODE() WITHIN GROUP (ORDER BY s.browser) FILTER (WHERE s.browser IS NOT NULL) AS top_browser,
+  MODE() WITHIN GROUP (ORDER BY s.os) FILTER (WHERE s.os IS NOT NULL) AS top_os,
+  MODE() WITHIN GROUP (ORDER BY s.referrer) FILTER (WHERE s.referrer IS NOT NULL) AS top_referrer
 FROM companies c
 LEFT JOIN visitors v  ON v.company_id = c.id
 LEFT JOIN sessions s  ON s.visitor_id = v.id

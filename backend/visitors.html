@@ -232,9 +232,13 @@
           <tr>
             <th>Company</th>
             <th>Location</th>
+            <th>Device</th>
+            <th>Browser / OS</th>
             <th>Visitors</th>
             <th>Sessions</th>
             <th>Pages</th>
+            <th>Avg Duration</th>
+            <th>Top Pages</th>
             <th>First Seen</th>
             <th>Last Visit</th>
             <th>Source</th>
@@ -242,7 +246,7 @@
           </tr>
         </thead>
         <tbody id="companiesBody">
-          <tr><td colspan="9" class="empty-state"><i class="fa-solid fa-building"></i><p>No data yet. Tracking data will appear once visitors arrive.</p></td></tr>
+          <tr><td colspan="13" class="empty-state"><i class="fa-solid fa-building"></i><p>No data yet. Tracking data will appear once visitors arrive.</p></td></tr>
         </tbody>
       </table>
     </div>
@@ -450,7 +454,7 @@
       var el = document.getElementById('companiesBody');
 
       if (!companies.length) {
-        el.innerHTML = '<tr><td colspan="9" class="empty-state"><i class="fa-solid fa-building"></i><p>No companies found matching your filters.</p></td></tr>';
+        el.innerHTML = '<tr><td colspan="13" class="empty-state"><i class="fa-solid fa-building"></i><p>No companies found matching your filters.</p></td></tr>';
         return;
       }
 
@@ -459,13 +463,25 @@
         var cls = c.is_isp ? ' class="isp"' : '';
         var firstSeen = c.first_visit ? new Date(c.first_visit).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) : '-';
         var lastVisit = c.last_visit ? new Date(c.last_visit).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) + ' <span style="color:var(--subtle);font-size:0.72rem">' + new Date(c.last_visit).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) + '</span>' : '-';
-        var source = c.top_referrer || c.referrer || c.utm_source || '<span style="color:var(--subtle)">direct</span>';
+        var source = c.top_referrer || '<span style="color:var(--subtle)">direct</span>';
+        var device = c.top_device ? deviceIcon(c.top_device) + ' ' + escHtml(c.top_device) : '<span style="color:var(--subtle)">-</span>';
+        var browserOs = [c.top_browser, c.top_os].filter(Boolean).join(' / ') || '-';
+        var avgDur = c.avg_duration ? formatDuration(c.avg_duration) : '-';
+        var pages = (c.pages_visited || []).slice(0, 3).map(function(p) {
+          return '<span class="timeline-page">' + escHtml(p) + '</span>';
+        }).join(' ');
+        if ((c.pages_visited || []).length > 3) pages += ' <span style="color:var(--subtle);font-size:0.68rem">+' + (c.pages_visited.length - 3) + '</span>';
+        if (!pages) pages = '-';
         return '<tr' + cls + ' style="cursor:pointer" onclick="showTimeline(\'' + c.company_id + '\')">' +
           '<td><strong>' + escHtml(c.clean_name || c.raw_name) + '</strong>' + (c.is_isp ? ' <span class="badge isp-badge">ISP</span>' : '') + '</td>' +
           '<td>' + escHtml(loc) + '</td>' +
+          '<td>' + device + '</td>' +
+          '<td>' + escHtml(browserOs) + '</td>' +
           '<td>' + (c.unique_visitors || 0) + '</td>' +
           '<td>' + (c.total_sessions || 0) + '</td>' +
           '<td>' + (c.total_pageviews || 0) + '</td>' +
+          '<td>' + avgDur + '</td>' +
+          '<td>' + pages + '</td>' +
           '<td>' + firstSeen + '</td>' +
           '<td>' + lastVisit + '</td>' +
           '<td>' + (typeof source === 'string' && source.startsWith('<') ? source : escHtml(source)) + '</td>' +
@@ -473,7 +489,7 @@
         '</tr>';
       }).join('');
     }).catch(function() {
-      document.getElementById('companiesBody').innerHTML = '<tr><td colspan="7" style="color:var(--red)">Failed to load companies</td></tr>';
+      document.getElementById('companiesBody').innerHTML = '<tr><td colspan="13" style="color:var(--red)">Failed to load companies</td></tr>';
     });
   }
 

@@ -149,8 +149,15 @@ serve(async (req: Request) => {
 
   // ── GET /live ──
   if (req.method === "GET" && path === "/live") {
-    // Only show sessions active in the last 5 minutes
     const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
+
+    // Mark stale sessions as inactive before querying
+    await supabase
+      .from("sessions")
+      .update({ is_active: false })
+      .eq("site_id", siteId)
+      .eq("is_active", true)
+      .lt("last_activity", fiveMinAgo);
 
     const { data: sessions } = await supabase
       .from("sessions")
@@ -161,7 +168,6 @@ serve(async (req: Request) => {
       `)
       .eq("site_id", siteId)
       .eq("is_active", true)
-      .gte("last_activity", fiveMinAgo)
       .order("last_activity", { ascending: false });
 
     // Enrich with company info

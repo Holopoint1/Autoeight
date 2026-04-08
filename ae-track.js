@@ -2,6 +2,9 @@
  * Autoeight Visitor Intelligence — Tracking Script
  * Lightweight (<3KB min), zero-dependency visitor tracker.
  * Configure via window.AE_TRACK = { apiKey, endpoint }
+ *
+ * GDPR/PECR: Does NOT track until explicit consent is granted.
+ * Listens for the 'ae:consent-granted' event from ae-consent.js.
  */
 (function () {
   'use strict';
@@ -12,10 +15,11 @@
   var SK = 'ae_sid';        // sessionStorage key for session ID
   var FK = 'ae_fid';        // localStorage key for fingerprint
   var CK = 'ae_consent';    // localStorage consent state
+  var started = false;
 
   // ── Consent check ──
   function hasConsent() {
-    try { return localStorage.getItem(CK) !== 'declined'; } catch (e) { return true; }
+    try { return localStorage.getItem(CK) === 'accepted'; } catch (e) { return false; }
   }
 
   // ── UUID v4 generator ──
@@ -38,7 +42,6 @@
 
   // ── Fingerprint (best-effort, not bulletproof) ──
   function getFingerprint() {
-    if (!hasConsent()) return null;
     var fp;
     try { fp = localStorage.getItem(FK); } catch (e) { /* ignore */ }
     if (fp) return fp;
@@ -104,8 +107,6 @@
     data.api_key = cfg.apiKey;
     var body = JSON.stringify(data);
 
-    // Use sendBeacon only on unload (where fetch may be cancelled).
-    // For normal events use fetch with keepalive for proper CORS handling.
     if (isUnload && navigator.sendBeacon) {
       navigator.sendBeacon(cfg.endpoint, new Blob([body], { type: 'text/plain' }));
     } else if (typeof fetch !== 'undefined') {
@@ -124,49 +125,62 @@
     }
   }
 
-  // ── Track page view ──
-  var session = getSessionKey();
-  var startTime = Date.now();
+  // ── Start tracking (only called after consent) ──
+  var startTime;
 
-  var event = {
-    type: 'pageview',
-    session_key: session.key,
-    fingerprint: getFingerprint(),
-    url: location.href,
-    path: location.pathname,
-    title: document.title,
-    referrer: document.referrer || null,
-    is_new_session: session.isNew
-  };
+  function startTracking() {
+    if (started) return;
+    started = true;
+    startTime = Date.now();
 
-  // Only include UTM and device on new sessions to save bandwidth
-  if (session.isNew) {
-    event.utm = getUTM();
-    event.device = getDevice();
-  }
+    var session = getSessionKey();
 
-  send(event);
-
-  // ── Heartbeat on page unload ──
-  function heartbeat() {
-    var duration = Math.round((Date.now() - startTime) / 1000);
-    if (duration < 1) return;
-
-    send({
-      type: 'heartbeat',
+    var event = {
+      type: 'pageview',
       session_key: session.key,
+      fingerprint: getFingerprint(),
       url: location.href,
       path: location.pathname,
-      duration: duration
-    }, true);
+      title: document.title,
+      referrer: document.referrer || null,
+      is_new_session: session.isNew
+    };
+
+    if (session.isNew) {
+      event.utm = getUTM();
+      event.device = getDevice();
+    }
+
+    send(event);
+
+    // ── Heartbeat on page unload ──
+    function heartbeat() {
+      var duration = Math.round((Date.now() - startTime) / 1000);
+      if (duration < 1) return;
+
+      send({
+        type: 'heartbeat',
+        session_key: session.key,
+        url: location.href,
+        path: location.pathname,
+        duration: duration
+      }, true);
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') heartbeat();
+    });
+
+    window.addEventListener('pagehide', heartbeat);
   }
 
-  // Use visibilitychange as primary (more reliable than unload)
-  document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'hidden') heartbeat();
-  });
-
-  // Fallback for older browsers
-  window.addEventListener('pagehide', heartbeat);
+  // ── Initialise based on consent state ──
+  if (hasConsent()) {
+    // Already consented in a previous session — start immediately
+    startTracking();
+  } else {
+    // Wait for consent event from ae-consent.js
+    window.addEventListener('ae:consent-granted', startTracking);
+  }
 
 })();
