@@ -192,7 +192,17 @@ serve(async (req: Request) => {
       };
     });
 
-    return json({ live: enriched });
+    // Split into real companies and ISPs
+    const realVisitors = enriched.filter((s: Record<string, unknown>) => {
+      const c = s.company as Record<string, unknown> | null;
+      return !c || !c.is_isp;
+    });
+    const ispVisitors = enriched.filter((s: Record<string, unknown>) => {
+      const c = s.company as Record<string, unknown> | null;
+      return c && c.is_isp;
+    });
+
+    return json({ live: realVisitors, isp: ispVisitors, total_active: enriched.length });
   }
 
   // ── GET /analytics ──
