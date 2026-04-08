@@ -48,7 +48,7 @@ serve(async (req: Request) => {
     const days = parseInt(params.get("days") || "30");
     const search = params.get("search") || "";
     const minScore = parseInt(params.get("min_score") || "0");
-    const hideIsp = params.get("hide_isp") !== "false";
+    const hideIsp = params.get("hide_isp") === "true";
     const page = parseInt(params.get("page") || "1");
     const perPage = parseInt(params.get("per_page") || "50");
     const offset = (page - 1) * perPage;
