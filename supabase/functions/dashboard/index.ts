@@ -57,10 +57,13 @@ serve(async (req: Request) => {
       .from("company_activity")
       .select("*")
       .eq("site_id", siteId)
-      .gte("last_visit", new Date(Date.now() - days * 86400000).toISOString())
       .gte("lead_score", minScore)
       .order("lead_score", { ascending: false })
       .range(offset, offset + perPage - 1);
+
+    // Filter by recency — but use OR to also include companies with null last_visit
+    const since = new Date(Date.now() - days * 86400000).toISOString();
+    query = query.or(`last_visit.gte.${since},last_visit.is.null`);
 
     if (hideIsp) {
       query = query.eq("is_isp", false);
@@ -72,7 +75,7 @@ serve(async (req: Request) => {
 
     const { data, error, count } = await query;
 
-    if (error) return json({ error: error.message }, 500);
+    if (error) return json({ error: error.message, details: error }, 500);
     return json({ companies: data || [], total: count, page, per_page: perPage });
   }
 
