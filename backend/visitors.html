@@ -172,9 +172,9 @@
     <div class="tab-content active" id="tab-live">
       <div class="sh"><span class="live-dot"></span> Active Visitors</div>
       <table class="vi-table" id="liveTable">
-        <thead><tr><th>Company / IP</th><th>Current Page</th><th>Pages</th><th>Duration</th><th>Device</th></tr></thead>
+        <thead><tr><th>Company / IP</th><th>Referrer</th><th>Current Page</th><th>Pages</th><th>Duration</th><th>Started</th><th>Last Activity</th><th>Device</th></tr></thead>
         <tbody id="liveBody">
-          <tr><td colspan="5" class="empty-state"><i class="fa-solid fa-satellite-dish"></i><p>Waiting for visitors...</p></td></tr>
+          <tr><td colspan="8" class="empty-state"><i class="fa-solid fa-satellite-dish"></i><p>Waiting for visitors...</p></td></tr>
         </tbody>
       </table>
     </div>
@@ -224,12 +224,14 @@
             <th>Visitors</th>
             <th>Sessions</th>
             <th>Pages</th>
+            <th>First Seen</th>
             <th>Last Visit</th>
+            <th>Source</th>
             <th>Lead Score</th>
           </tr>
         </thead>
         <tbody id="companiesBody">
-          <tr><td colspan="7" class="empty-state"><i class="fa-solid fa-building"></i><p>No data yet. Tracking data will appear once visitors arrive.</p></td></tr>
+          <tr><td colspan="9" class="empty-state"><i class="fa-solid fa-building"></i><p>No data yet. Tracking data will appear once visitors arrive.</p></td></tr>
         </tbody>
       </table>
     </div>
@@ -354,7 +356,7 @@
       document.getElementById('kLive').textContent = items.length;
 
       if (!items.length) {
-        el.innerHTML = '<tr><td colspan="5" class="empty-state"><i class="fa-solid fa-satellite-dish"></i><p>No active visitors right now.</p></td></tr>';
+        el.innerHTML = '<tr><td colspan="8" class="empty-state"><i class="fa-solid fa-satellite-dish"></i><p>No active visitors right now.</p></td></tr>';
         return;
       }
 
@@ -362,11 +364,18 @@
         var name = s.company ? escHtml(s.company.name) : '<span style="color:var(--subtle)">' + escHtml(s.ip) + '</span>';
         if (s.company && s.company.is_isp) name += ' <span class="badge isp-badge">ISP</span>';
         var duration = formatDuration(s.duration_secs);
+        var started = s.started_at ? new Date(s.started_at).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) : '-';
+        var lastAct = s.last_activity || s.updated_at;
+        var lastActStr = lastAct ? timeAgo(lastAct) : '-';
+        var referrer = s.referrer || s.utm_source || '<span style="color:var(--subtle)">direct</span>';
         return '<tr>' +
           '<td><span class="live-dot"></span>' + name + '</td>' +
+          '<td>' + (typeof referrer === 'string' && referrer.startsWith('<') ? referrer : escHtml(referrer)) + '</td>' +
           '<td>' + escHtml(s.exit_page) + '</td>' +
           '<td>' + s.page_count + '</td>' +
           '<td>' + duration + '</td>' +
+          '<td>' + started + '</td>' +
+          '<td>' + lastActStr + '</td>' +
           '<td>' + deviceIcon(s.device_type) + ' ' + escHtml(s.browser) + '</td>' +
         '</tr>';
       }).join('');
@@ -408,20 +417,25 @@
       var el = document.getElementById('companiesBody');
 
       if (!companies.length) {
-        el.innerHTML = '<tr><td colspan="7" class="empty-state"><i class="fa-solid fa-building"></i><p>No companies found matching your filters.</p></td></tr>';
+        el.innerHTML = '<tr><td colspan="9" class="empty-state"><i class="fa-solid fa-building"></i><p>No companies found matching your filters.</p></td></tr>';
         return;
       }
 
       el.innerHTML = companies.map(function(c) {
         var loc = [c.city, c.country].filter(Boolean).join(', ') || '-';
         var cls = c.is_isp ? ' class="isp"' : '';
+        var firstSeen = c.first_visit ? new Date(c.first_visit).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) : '-';
+        var lastVisit = c.last_visit ? new Date(c.last_visit).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) + ' <span style="color:var(--subtle);font-size:0.72rem">' + new Date(c.last_visit).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) + '</span>' : '-';
+        var source = c.top_referrer || c.referrer || c.utm_source || '<span style="color:var(--subtle)">direct</span>';
         return '<tr' + cls + ' style="cursor:pointer" onclick="showTimeline(\'' + c.company_id + '\')">' +
           '<td><strong>' + escHtml(c.clean_name || c.raw_name) + '</strong>' + (c.is_isp ? ' <span class="badge isp-badge">ISP</span>' : '') + '</td>' +
           '<td>' + escHtml(loc) + '</td>' +
           '<td>' + (c.unique_visitors || 0) + '</td>' +
           '<td>' + (c.total_sessions || 0) + '</td>' +
           '<td>' + (c.total_pageviews || 0) + '</td>' +
-          '<td>' + timeAgo(c.last_visit) + '</td>' +
+          '<td>' + firstSeen + '</td>' +
+          '<td>' + lastVisit + '</td>' +
+          '<td>' + (typeof source === 'string' && source.startsWith('<') ? source : escHtml(source)) + '</td>' +
           '<td>' + scoreBadge(c.lead_score) + '</td>' +
         '</tr>';
       }).join('');

@@ -1,0 +1,34 @@
+# Autoeight V2 — Aider Configuration
+
+# Project: Static HTML/CSS/JS website for Autoeight (AI automation agency, Halifax, West Yorkshire)
+# Hosted on GitHub Pages at autoeight.ai
+# No framework, no build tools, no CMS
+
+# Model preferences
+# model: claude-sonnet-4-20250514
+
+# Files to always include in context
+read:
+  - CLAUDE.md
+  - .claude/skills/product-context.md
+
+# Auto-commit settings
+auto-commits: true
+commit-prompt: |
+  Write a concise commit message for these changes.
+  Use imperative mood. Keep under 72 chars.
+  Focus on what changed and why.
+
+# Lint / style
+lint-cmd: ""
+
+# Conventions to follow:
+# - HTML: semantic, one H1 per page, 2-space indent
+# - CSS: custom properties, hyphenated class names
+# - JS: vanilla DOM, no jQuery or libraries
+# - Copy: British English (colour, optimise, analyse)
+# - SEO: every page needs title with "Halifax", meta description with location, JSON-LD schema
+# - External links: target="_blank" rel="noopener"
+# - Nav and footer must list all 7 services including system-integration
+# - Update sitemap.xml when adding pages
+# - Never commit .env or credentials
