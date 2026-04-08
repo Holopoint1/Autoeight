@@ -146,15 +146,19 @@ serve(async (req: Request) => {
 
   // ── GET /live ──
   if (req.method === "GET" && path === "/live") {
+    // Only show sessions active in the last 5 minutes
+    const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
+
     const { data: sessions } = await supabase
       .from("sessions")
       .select(`
         id, session_key, entry_page, exit_page, device_type, browser, os,
-        page_count, duration_secs, started_at, last_activity,
+        page_count, duration_secs, started_at, last_activity, referrer,
         visitor_id
       `)
       .eq("site_id", siteId)
       .eq("is_active", true)
+      .gte("last_activity", fiveMinAgo)
       .order("last_activity", { ascending: false });
 
     // Enrich with company info
@@ -183,6 +187,7 @@ serve(async (req: Request) => {
       return {
         ...s,
         ip: visitor?.ip_address || null,
+        referrer: s.referrer || null,
         company: company ? { name: company.clean_name, city: company.city, country: company.country, is_isp: company.is_isp } : null,
       };
     });
