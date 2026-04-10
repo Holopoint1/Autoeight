@@ -91,6 +91,54 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is email automation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Email automation uses AI and workflow tools to handle your email communication automatically. This includes reading and categorising incoming emails, drafting replies, sending follow-up sequences, and routing messages to the right person — all without manual effort."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can the AI reply to emails on my behalf?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We can set it up to draft replies for your approval (human-in-the-loop) or send them automatically for routine queries. You choose the level of control for each type of email."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will automated emails sound robotic?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. We train the AI on your tone of voice, previous emails, and brand guidelines. The emails it generates sound like they came from your team, because they're based on how your team actually writes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What email platforms does this work with?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We integrate with Gmail, Google Workspace, Outlook, Microsoft 365, and most major email marketing platforms. We connect via secure OAuth — no passwords stored."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can email automation be set up?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A basic email automation system can be live within 1-2 weeks. More complex setups with multiple sequences, CRM integration, and conditional logic typically take 2-4 weeks."
+        }
+      }
+    ]
+  }
+  </script>
   <style>
     /* ── Page-level overrides ── */
 
@@ -226,14 +274,10 @@
       <li class="nav-item has-dropdown active">
         <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
         <ul class="dropdown">
-          <li><a href="ai-automation"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a></li>
-          <li><a href="email-automation"><i class="fa-solid fa-headset"></i> AI Support</a></li>
-          <li><a href="sales-automation"><i class="fa-solid fa-chart-line"></i> Sales Automation</a></li>
-          <li><a href="sales-marketing"><i class="fa-solid fa-chart-pie"></i> Sales &amp; Marketing Intel</a></li>
-          <li><a href="internal-systems"><i class="fa-solid fa-server"></i> Internal Systems</a></li>
           <li><a href="web-design"><i class="fa-solid fa-globe"></i> Web Design</a></li>
+          <li><a href="ai-automation"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a></li>
           <li><a href="crm-integration"><i class="fa-solid fa-plug"></i> CRM &amp; Integration</a></li>
-          <li><a href="data-reporting"><i class="fa-solid fa-database"></i> Data &amp; Reporting</a></li>
+          <li><a href="sales-automation"><i class="fa-solid fa-chart-line"></i> Sales Automation</a></li>
         </ul>
       </li>
       <li class="nav-item"><a href="../results/case-studies">Results</a></li>
@@ -241,8 +285,10 @@
       <li class="nav-item has-dropdown">
         <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
         <ul class="dropdown">
+          <li><a href="../resources/blog"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
           <li><a href="../resources/news"><i class="fa-solid fa-newspaper"></i> News</a></li>
           <li><a href="../resources/blueprints"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
+          <li><a href="../resources/glossary"><i class="fa-solid fa-book"></i> Glossary</a></li>
         </ul>
       </li>
     </ul>
@@ -265,6 +311,17 @@
   </div>
 
   <div class="hero-section-split"></div>
+
+  <!-- ── DEFINITION (AI Search) ── -->
+  <section class="page-section" style="padding:40px 5% 0;">
+    <div class="page-section-inner" style="max-width:760px;margin:0 auto;">
+      <div class="reveal">
+        <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:10px;">What is email automation?</h2>
+        <p style="font-size:0.95rem;line-height:1.75;color:var(--muted);">Email automation uses AI and workflow tools to manage your email communication automatically. This goes beyond basic autoresponders — it includes reading and categorising incoming emails, drafting contextual replies, sending personalised follow-up sequences, and routing messages to the right team member. Modern email automation powered by AI can understand the intent behind messages and respond appropriately based on your business rules and tone of voice.</p>
+        <p style="font-size:0.95rem;line-height:1.75;color:var(--muted);margin-top:10px;">Email automation is ideal for businesses that handle high volumes of customer enquiries, run outbound sales campaigns, or need consistent follow-up sequences without relying on individual team members to remember every email.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- ══════════════════════════════════════════
        THE PROBLEM (condensed)
@@ -1203,6 +1260,42 @@
     </div>
   </section>
 
+  <!-- ── FAQ ── -->
+  <section id="faq" class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 48px;">
+        <span class="section-label">FAQs</span>
+        <h2 class="section-title">Frequently asked questions</h2>
+      </div>
+      <div class="faq-inner reveal">
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">What is email automation?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Email automation uses AI and workflow tools to handle your email communication automatically. This includes reading and categorising incoming emails, drafting replies, sending follow-up sequences, and routing messages to the right person — all without manual effort.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Can the AI reply to emails on my behalf?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Yes. We can set it up to draft replies for your approval (human-in-the-loop) or send them automatically for routine queries. You choose the level of control for each type of email.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Will automated emails sound robotic?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>No. We train the AI on your tone of voice, previous emails, and brand guidelines. The emails it generates sound like they came from your team, because they're based on how your team actually writes.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What email platforms does this work with?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>We integrate with Gmail, Google Workspace, Outlook, Microsoft 365, and most major email marketing platforms. We connect via secure OAuth — no passwords stored.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How quickly can email automation be set up?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>A basic email automation system can be live within 1-2 weeks. More complex setups with multiple sequences, CRM integration, and conditional logic typically take 2-4 weeks.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
   <!-- CTA -->
   <div class="page-cta">
     <div class="container">
@@ -1232,14 +1325,10 @@
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="ai-automation">AI &amp; Automation</a></li>
-            <li><a href="email-automation">AI Support</a></li>
-            <li><a href="sales-automation">Sales Automation</a></li>
-            <li><a href="sales-marketing">Sales &amp; Marketing Intel</a></li>
-            <li><a href="internal-systems">Internal Systems</a></li>
             <li><a href="web-design">Web Design</a></li>
+            <li><a href="ai-automation">AI &amp; Automation</a></li>
             <li><a href="crm-integration">CRM &amp; Integration</a></li>
-            <li><a href="data-reporting">Data &amp; Reporting</a></li>
+            <li><a href="sales-automation">Sales Automation</a></li>
           </ul>
         </div>
         <div class="footer-col">

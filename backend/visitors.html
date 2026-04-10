@@ -154,7 +154,7 @@
     <!-- KPI Cards -->
     <div class="vi-grid">
       <div class="vi-card"><h4>Companies</h4><div class="vi-val" id="kCompanies">-</div><div class="vi-sub">identified</div></div>
-      <div class="vi-card"><h4>Active Now</h4><div class="vi-val green" id="kLive">-</div><div class="vi-sub">on site</div></div>
+      <div class="vi-card"><h4>Active Now</h4><div class="vi-val green" id="kLive">-</div><div class="vi-sub">all visitors on site</div></div>
       <div class="vi-card"><h4>Sessions</h4><div class="vi-val" id="kSessions">-</div><div class="vi-sub">last 30 days</div></div>
       <div class="vi-card"><h4>Page Views</h4><div class="vi-val" id="kPageviews">-</div><div class="vi-sub">last 30 days</div></div>
       <div class="vi-card"><h4>Hot Leads</h4><div class="vi-val amber" id="kHot">-</div><div class="vi-sub">score 50+</div></div>
@@ -170,24 +170,13 @@
 
     <!-- ═══════════════ TAB: LIVE FEED ═══════════════ -->
     <div class="tab-content active" id="tab-live">
-      <div class="sh"><span class="live-dot"></span> Active Visitors <span id="liveCount" style="font-weight:400;color:var(--muted);font-size:0.82rem;"></span></div>
+      <div class="sh"><span class="live-dot"></span> All Active Visitors <span id="liveCount" style="font-weight:400;color:var(--muted);font-size:0.82rem;"></span></div>
       <table class="vi-table" id="liveTable">
-        <thead><tr><th>Company / IP</th><th>Referrer</th><th>Current Page</th><th>Pages</th><th>Duration</th><th>Started</th><th>Last Activity</th><th>Device</th></tr></thead>
+        <thead><tr><th>Visitor</th><th>Referrer</th><th>Current Page</th><th>Pages</th><th>Duration</th><th>Started</th><th>Last Activity</th><th>Device</th></tr></thead>
         <tbody id="liveBody">
           <tr><td colspan="8" class="empty-state"><i class="fa-solid fa-satellite-dish"></i><p>Waiting for visitors...</p></td></tr>
         </tbody>
       </table>
-
-      <div id="ispSection" style="display:none; margin-top:24px;">
-        <div class="sh" style="cursor:pointer; user-select:none;" onclick="var b=document.getElementById('ispBody');var i=document.getElementById('ispChevron');if(b.style.display==='none'){b.style.display='';i.className='fa-solid fa-chevron-up';}else{b.style.display='none';i.className='fa-solid fa-chevron-down';}">
-          <i class="fa-solid fa-wifi" style="color:var(--subtle);"></i> ISP / Residential Traffic <span id="ispCount" style="font-weight:400;color:var(--subtle);font-size:0.82rem;"></span>
-          <i id="ispChevron" class="fa-solid fa-chevron-down" style="margin-left:auto;color:var(--subtle);font-size:0.7rem;"></i>
-        </div>
-        <table class="vi-table" style="display:none;" id="ispBody">
-          <thead><tr><th>ISP</th><th>Referrer</th><th>Current Page</th><th>Pages</th><th>Duration</th><th>Started</th><th>Last Activity</th><th>Device</th></tr></thead>
-          <tbody id="ispTableBody"></tbody>
-        </table>
-      </div>
     </div>
 
     <!-- ═══════════════ TAB: COMPANIES ═══════════════ -->
@@ -365,8 +354,14 @@
   // LIVE FEED
   // ════════════════════════════════════════════════════════════
   function renderLiveRow(s) {
-    var name = s.company ? escHtml(s.company.name) : '<span style="color:var(--subtle)">' + escHtml(s.ip) + '</span>';
-    if (s.company && s.company.is_isp) name += ' <span class="badge isp-badge">ISP</span>';
+    var name;
+    if (s.company && !s.company.is_isp) {
+      name = '<strong style="color:var(--green)">' + escHtml(s.company.name) + '</strong> <span class="badge hot" style="font-size:0.6rem;padding:2px 6px;">Company</span>';
+    } else if (s.company && s.company.is_isp) {
+      name = escHtml(s.ip || 'Visitor') + ' <span class="badge isp-badge">' + escHtml(s.company.name) + '</span>';
+    } else {
+      name = escHtml(s.ip || 'Anonymous Visitor');
+    }
     var duration = formatDuration(s.duration_secs);
     var started = s.started_at ? new Date(s.started_at).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) : '-';
     var lastAct = s.last_activity || s.updated_at;
@@ -386,35 +381,24 @@
 
   function loadLive() {
     api('/live').then(function(data) {
-      var realVisitors = data.live || [];
-      var ispVisitors = data.isp || [];
-      // Backwards compat: if API returns old format (no isp key), split client-side
-      if (!data.isp && realVisitors.length) {
-        ispVisitors = realVisitors.filter(function(s) { return s.company && s.company.is_isp; });
-        realVisitors = realVisitors.filter(function(s) { return !s.company || !s.company.is_isp; });
-      }
+      var allVisitors = [].concat(data.live || [], data.isp || []);
+      // Sort by last activity (most recent first)
+      allVisitors.sort(function(a, b) {
+        var ta = a.last_activity || a.started_at || '';
+        var tb = b.last_activity || b.started_at || '';
+        return tb.localeCompare(ta);
+      });
 
       var el = document.getElementById('liveBody');
-      var totalActive = data.total_active || (realVisitors.length + ispVisitors.length);
-      document.getElementById('kLive').textContent = realVisitors.length;
-      document.getElementById('liveCount').textContent = realVisitors.length ? '(' + realVisitors.length + ' identified)' : '';
+      var total = allVisitors.length;
+      var identified = allVisitors.filter(function(s) { return s.company && !s.company.is_isp; }).length;
+      document.getElementById('kLive').textContent = total;
+      document.getElementById('liveCount').textContent = total ? '(' + total + ' total' + (identified ? ', ' + identified + ' identified' : '') + ')' : '';
 
-      if (!realVisitors.length) {
-        el.innerHTML = '<tr><td colspan="8" class="empty-state"><i class="fa-solid fa-satellite-dish"></i><p>No identified company visitors right now.</p></td></tr>';
+      if (!total) {
+        el.innerHTML = '<tr><td colspan="8" class="empty-state"><i class="fa-solid fa-satellite-dish"></i><p>No active visitors right now.</p></td></tr>';
       } else {
-        el.innerHTML = realVisitors.map(renderLiveRow).join('');
-      }
-
-      // ISP section
-      var ispSection = document.getElementById('ispSection');
-      var ispBody = document.getElementById('ispTableBody');
-      var ispCount = document.getElementById('ispCount');
-      if (ispVisitors.length) {
-        ispSection.style.display = '';
-        ispCount.textContent = '(' + ispVisitors.length + ')';
-        ispBody.innerHTML = ispVisitors.map(renderLiveRow).join('');
-      } else {
-        ispSection.style.display = 'none';
+        el.innerHTML = allVisitors.map(renderLiveRow).join('');
       }
     }).catch(function() {
       document.getElementById('liveBody').innerHTML = '<tr><td colspan="8" style="color:var(--red)">Failed to load live data</td></tr>';

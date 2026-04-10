@@ -112,6 +112,12 @@
 
   <!-- Resource Hubs -->
   <url>
+    <loc>https://autoeight.ai/resources/blog</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://autoeight.ai/resources/news</loc>
     <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -160,6 +166,80 @@
     <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+
+  <!-- New Blog Posts -->
+  <url>
+    <loc>https://autoeight.ai/resources/blog-make-vs-zapier-vs-n8n</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://autoeight.ai/resources/blog-how-much-does-automation-cost</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- New Blog Posts (continued) -->
+  <url>
+    <loc>https://autoeight.ai/resources/blog-best-automation-tools-small-business</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://autoeight.ai/resources/blog-ai-automation-vs-traditional-automation</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://autoeight.ai/resources/blog-what-is-business-automation</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Web Design Blog Posts -->
+  <url>
+    <loc>https://autoeight.ai/resources/blog-how-much-does-a-website-cost</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://autoeight.ai/resources/blog-why-website-not-generating-leads</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://autoeight.ai/resources/blog-wordpress-vs-custom-website</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://autoeight.ai/resources/blog-what-makes-high-converting-website</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://autoeight.ai/resources/blog-local-seo-uk-small-businesses</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Glossary -->
+  <url>
+    <loc>https://autoeight.ai/resources/glossary</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Blueprints -->
