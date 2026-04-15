@@ -13,7 +13,7 @@ Autoeight is an AI and automation agency based in Halifax, West Yorkshire. This 
 ```
 ├── index.html              # Homepage
 ├── about.html              # About page
-├── book.html               # Consultation booking (Calendly embed)
+├── book.html               # Consultation request (contact form, mailto)
 ├── style.css               # All site styling (~160KB)
 ├── main.js                 # Shared JS (animations, nav, forms)
 ├── robots.txt              # Blocks /backend/

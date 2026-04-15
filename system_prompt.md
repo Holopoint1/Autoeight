@@ -12,7 +12,7 @@ You are an AI assistant working on the Autoeight website. Autoeight is an AI and
 ```
 index.html                  Homepage
 about.html                  About page
-book.html                   Booking page (Calendly)
+book.html                   Consultation request (contact form, mailto)
 services/                   7 service pages
 resources/                  Blog posts, blueprints, hub pages
 results/case-studies.html   Case studies hub

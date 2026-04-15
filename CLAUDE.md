@@ -56,7 +56,7 @@ Every page follows this structure:
 ```
 ├── index.html                  # Homepage
 ├── about.html                  # About page
-├── book.html                   # Calendly booking
+├── book.html                   # Contact form (consultation request)
 ├── style.css                   # All styling
 ├── main.js                     # All shared JS
 ├── ae-track.js                 # Analytics tracking

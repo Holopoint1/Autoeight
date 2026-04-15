@@ -13,7 +13,7 @@ This is the website for Autoeight, an AI and automation agency based in Halifax,
 ```
 index.html              Homepage
 about.html              About page
-book.html               Booking (Calendly embed)
+book.html               Consultation request (contact form, mailto)
 services/               7 service pages (ai-automation, email-automation, sales-automation, sales-marketing, internal-systems, web-design, system-integration)
 resources/              Blog hub, blueprint hub, individual posts
 results/                Case studies hub

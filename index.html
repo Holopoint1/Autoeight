@@ -171,20 +171,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css?v=20260406b" />
   <style>
-    /* Calendly widget fills container — no internal scroll */
-    .calendly-inline-widget,
-    .calendly-inline-widget iframe {
-      width: 100% !important;
-      min-height: 950px !important;
-      height: 950px !important;
-      border: 0 !important;
+    .form-success {
+      padding: 40px 24px;
+      text-align: center;
     }
-    @media (max-width: 768px) {
-      .calendly-inline-widget,
-      .calendly-inline-widget iframe {
-        min-height: 1100px !important;
-        height: 1100px !important;
-      }
+    .form-success-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(124,92,252,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.5rem;
+      color: var(--purple-light);
+    }
+    .form-success h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .form-success p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      max-width: 360px;
+      margin: 0 auto;
+      color: var(--muted);
     }
   </style>
 </head>
@@ -204,6 +217,7 @@
           <li><a href="services/ai-automation"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a></li>
           <li><a href="services/crm-integration"><i class="fa-solid fa-plug"></i> CRM &amp; Integration</a></li>
           <li><a href="services/sales-automation"><i class="fa-solid fa-chart-line"></i> Sales Automation</a></li>
+          <li><a href="services/lms"><i class="fa-solid fa-graduation-cap"></i> Learning Management</a></li>
         </ul>
       </li>
       <li class="nav-item"><a href="results/case-studies">Results</a></li>
@@ -302,7 +316,6 @@
           <span class="logo-pill"><i class="fa-solid fa-bolt" style="color:#FF4A00;"></i> Zapier</span>
           <span class="logo-pill"><i class="fa-brands fa-linkedin" style="color:#0A66C2;"></i> LinkedIn</span>
           <span class="logo-pill"><i class="fa-solid fa-table-cells" style="color:#18BFFF;"></i> Airtable</span>
-          <span class="logo-pill"><i class="fa-solid fa-calendar-days" style="color:#006BFF;"></i> Calendly</span>
           <span class="logo-pill"><i class="fa-solid fa-envelope" style="color:#EA4335;"></i> Gmail</span>
           <span class="logo-pill"><i class="fa-brands fa-microsoft" style="color:#5059C9;"></i> MS Teams</span>
           <span class="logo-pill"><i class="fa-solid fa-video" style="color:#2D8CFF;"></i> Zoom</span>
@@ -333,7 +346,6 @@
           <span class="logo-pill"><i class="fa-solid fa-bolt" style="color:#FF4A00;"></i> Zapier</span>
           <span class="logo-pill"><i class="fa-brands fa-linkedin" style="color:#0A66C2;"></i> LinkedIn</span>
           <span class="logo-pill"><i class="fa-solid fa-table-cells" style="color:#18BFFF;"></i> Airtable</span>
-          <span class="logo-pill"><i class="fa-solid fa-calendar-days" style="color:#006BFF;"></i> Calendly</span>
           <span class="logo-pill"><i class="fa-solid fa-envelope" style="color:#EA4335;"></i> Gmail</span>
           <span class="logo-pill"><i class="fa-brands fa-microsoft" style="color:#5059C9;"></i> MS Teams</span>
           <span class="logo-pill"><i class="fa-solid fa-video" style="color:#2D8CFF;"></i> Zoom</span>
@@ -456,7 +468,7 @@
         <div class="step-card">
           <div class="step-number">3</div>
           <h3>Connect &amp; Automate</h3>
-          <p>Forms wired to your CRM. Automated email sequences. Calendly bookings. AI chat. Your site doesn't just sit there. It captures leads and follows up automatically.</p>
+          <p>Forms wired to your CRM. Automated email sequences. Booking systems. AI chat. Your site doesn't just sit there. It captures leads and follows up automatically.</p>
         </div>
         <div class="step-card">
           <div class="step-number">4</div>
@@ -708,7 +720,6 @@
       <div class="logo-row">
         <div class="logo-pill" style="--dur:44s;--delay:-44s;"><i class="fa-solid fa-bolt" style="color:#ff4a00;"></i>Zapier</div>
         <div class="logo-pill" style="--dur:44s;--delay:-33s;"><i class="fa-solid fa-puzzle-piece" style="color:#6d00cc;"></i>Make</div>
-        <div class="logo-pill" style="--dur:44s;--delay:-22s;"><i class="fa-solid fa-calendar-days" style="color:#006bff;"></i>Calendly</div>
         <div class="logo-pill" style="--dur:44s;--delay:-11s;"><span class="logo-letter" style="background:#ea4b71;color:#fff;border-radius:4px;">n</span>n8n</div>
         <div class="logo-pill" style="--dur:44s;--delay:-4s;"><i class="fa-solid fa-gears" style="color:#9333ea;"></i>Workato</div>
       </div>
@@ -753,7 +764,7 @@
             <li style="display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.95rem;"><i class="fa-solid fa-check" style="color: var(--purple-light); font-size: 0.8rem;"></i> Build systems that run without constant oversight</li>
             <li style="display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.95rem;"><i class="fa-solid fa-check" style="color: var(--purple-light); font-size: 0.8rem;"></i> Do more with a leaner, more focused team</li>
           </ul>
-          <p class="section-sub" style="margin-bottom: 24px;">Then let's talk. Pick a time that works for you and we'll book it straight into the calendar.</p>
+          <p class="section-sub" style="margin-bottom: 24px;">Then let's talk. Drop us a message using the form and we'll reply within one working day.</p>
           <p class="section-sub" style="font-style: italic; opacity: 0.75;">No sales pitch. Just a genuine conversation about what's possible for your business.</p>
 
           <div class="contact-detail" style="margin-top: 28px;">
@@ -786,13 +797,37 @@
           </div>
         </div>
 
-        <div class="reveal" style="transition-delay: 0.12s; padding: 0; border: 1px solid rgba(0,0,0,0.06); border-radius: 20px; overflow: hidden;">
-          <div class="calendly-inline-widget"
-            data-url="https://calendly.com/alfie-autoeight/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=1a1a1a&primary_color=7c5cfc"
-            style="min-width:320px;width:100%;">
+        <form class="contact-form reveal" id="contact-form-home" action="mailto:contact@autoeight.ai" method="post" enctype="text/plain" style="transition-delay: 0.12s;" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="hf-name">Your name</label>
+              <input id="hf-name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="hf-email">Email</label>
+              <input id="hf-email" name="email" type="email" required autocomplete="email" />
+            </div>
           </div>
-          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="hf-company">Company</label>
+              <input id="hf-company" name="company" type="text" autocomplete="organization" />
+            </div>
+            <div class="form-group">
+              <label for="hf-phone">Phone (optional)</label>
+              <input id="hf-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="hf-message">How can we help?</label>
+            <textarea id="hf-message" name="message" required placeholder="Tell us a bit about your business and what you'd like to automate…"></textarea>
+          </div>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
+          <div class="form-submit">
+            <span class="form-note">We'll reply within one working day. No spam, ever.</span>
+            <button type="submit" class="btn btn-primary">Send message</button>
+          </div>
+        </form>
 
       </div>
     </div>
@@ -819,6 +854,7 @@
             <li><a href="services/ai-automation">AI &amp; Automation</a></li>
             <li><a href="services/crm-integration">CRM &amp; Integration</a></li>
             <li><a href="services/sales-automation">Sales Automation</a></li>
+            <li><a href="services/lms">Learning Management</a></li>
           </ul>
         </div>
         <div class="footer-col">
