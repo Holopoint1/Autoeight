@@ -154,11 +154,16 @@
   <!-- HERO -->
   <style>
     .lms-compat {
-      position: relative;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
       z-index: 2;
-      margin-top: 44px;
       padding: 14px 0;
       border-top: 1px solid rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
       gap: 20px;
@@ -213,7 +218,7 @@
     }
   </style>
 
-  <div class="page-hero">
+  <div class="page-hero" style="padding-bottom:110px;">
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
     <div class="page-hero-content">
