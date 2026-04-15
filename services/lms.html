@@ -168,10 +168,24 @@
   <!-- ── INTERACTIVE DEMO DASHBOARD ── -->
   <style>
     .lms-demo-section {
+      /* Local variable overrides — the global theme uses inverted
+         light-mode vars (--white = #111), so we reassign to real
+         dark-theme colours for this scoped section only. */
+      --white: #ffffff;
+      --off-white: #f5f5f7;
+      --muted: rgba(255,255,255,0.62);
+      --text-muted: rgba(255,255,255,0.7);
+      --subtle: rgba(255,255,255,0.45);
+      --purple: #6d4de6;
+      --purple-light: #a78bfa;
+      color: #ffffff;
       padding: 64px 5% 72px;
       background: linear-gradient(180deg, #0a0a0e 0%, #0d0d14 100%);
       position: relative;
       overflow: hidden;
+    }
+    .lms-demo-section *, .lms-demo-section *::before, .lms-demo-section *::after {
+      box-sizing: border-box;
     }
     .lms-demo-section::before {
       content: "";
@@ -206,16 +220,24 @@
       max-width: 680px;
       margin: 0 auto 40px;
     }
+    .lms-demo-header .section-label {
+      color: #a78bfa;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: inline-block;
+    }
     .lms-demo-header h2 {
       font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 800;
       line-height: 1.2;
       margin: 12px 0 14px;
-      color: var(--white);
+      color: #ffffff;
     }
     .lms-demo-header h2 em {
       font-style: normal;
-      background: linear-gradient(135deg, var(--purple-light), var(--purple));
+      background: linear-gradient(135deg, #a78bfa, #6d4de6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -223,8 +245,9 @@
     .lms-demo-header p {
       font-size: 0.95rem;
       line-height: 1.65;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.7);
     }
+    .lms-demo-header p strong { color: #ffffff; }
     .lms-demo-header .demo-hint {
       display: inline-flex;
       align-items: center;
@@ -928,14 +951,14 @@
 
   <section class="lms-demo-section">
     <div class="lms-demo-inner">
-      <div class="lms-demo-header reveal">
-        <span class="section-label" style="justify-content:center;">Interactive Preview</span>
+      <div class="lms-demo-header">
+        <span class="section-label">Interactive Preview</span>
         <h2>See what your <em>teachers actually use</em></h2>
         <p>A real, clickable preview of a teacher dashboard tracking a <strong>Basic Electrical Engineering</strong> class. Navigate the sidebar, open a student, drill into a course. This is the kind of platform we build for your learners.</p>
         <div class="demo-hint"><i class="fa-solid fa-hand-pointer"></i> Click anywhere to explore</div>
       </div>
 
-      <div class="lms-demo-frame reveal" id="lms-demo" style="transition-delay:0.1s;">
+      <div class="lms-demo-frame" id="lms-demo">
         <div class="lms-demo-chrome">
           <span class="lms-demo-dot red"></span>
           <span class="lms-demo-dot amber"></span>
