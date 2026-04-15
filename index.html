@@ -840,6 +840,105 @@
     </div>
   </section>
 
+  <!-- ── COMPATIBILITY STRIP ── -->
+  <style>
+    .home-compat {
+      position: relative;
+      padding: 26px 0;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .home-compat-label {
+      flex-shrink: 0;
+      padding-left: 5%;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.5);
+      white-space: nowrap;
+    }
+    .home-compat-label span { color: #6d4de6; }
+    .home-compat-scroll {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+              mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+    }
+    .home-compat-track {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      animation: home-compat-scroll 55s linear infinite;
+      flex-shrink: 0;
+      padding-right: 30px;
+    }
+    .home-compat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: rgba(0,0,0,0.7);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .home-compat-pill i { font-size: 0.98rem; }
+    @keyframes home-compat-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .home-compat-track { animation: none; }
+    }
+    @media (max-width: 768px) {
+      .home-compat { flex-direction: column; gap: 12px; padding: 22px 0; }
+      .home-compat-label { padding-left: 0; text-align: center; }
+    }
+  </style>
+  <div class="home-compat">
+    <div class="home-compat-label">Works with <span>what you already use</span></div>
+    <div class="home-compat-scroll">
+      <div class="home-compat-track">
+        <span class="home-compat-pill"><i class="fa-brands fa-hubspot" style="color:#FF7A59;"></i> HubSpot</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-salesforce" style="color:#00A1E0;"></i> Salesforce</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-microsoft" style="color:#6264A7;"></i> Microsoft Teams</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-microsoft" style="color:#D83B01;"></i> Microsoft 365</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-google" style="color:#4285F4;"></i> Google Workspace</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-google" style="color:#1a73e8;"></i> Google Classroom</span>
+        <span class="home-compat-pill"><i class="fa-solid fa-graduation-cap" style="color:#ff7518;"></i> Moodle</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-slack" style="color:#E01E5A;"></i> Slack</span>
+        <span class="home-compat-pill"><i class="fa-solid fa-video" style="color:#2D8CFF;"></i> Zoom</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-mailchimp" style="color:#FFE01B;"></i> Mailchimp</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-stripe" style="color:#635BFF;"></i> Stripe</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-shopify" style="color:#96BF48;"></i> Shopify</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-wordpress" style="color:#21759B;"></i> WordPress</span>
+        <span class="home-compat-pill"><i class="fa-solid fa-bolt" style="color:#FF4A00;"></i> Zapier</span>
+        <span class="home-compat-pill"><i class="fa-solid fa-robot" style="color:#10a37f;"></i> OpenAI</span>
+        <!-- Duplicate set for seamless loop -->
+        <span class="home-compat-pill"><i class="fa-brands fa-hubspot" style="color:#FF7A59;"></i> HubSpot</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-salesforce" style="color:#00A1E0;"></i> Salesforce</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-microsoft" style="color:#6264A7;"></i> Microsoft Teams</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-microsoft" style="color:#D83B01;"></i> Microsoft 365</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-google" style="color:#4285F4;"></i> Google Workspace</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-google" style="color:#1a73e8;"></i> Google Classroom</span>
+        <span class="home-compat-pill"><i class="fa-solid fa-graduation-cap" style="color:#ff7518;"></i> Moodle</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-slack" style="color:#E01E5A;"></i> Slack</span>
+        <span class="home-compat-pill"><i class="fa-solid fa-video" style="color:#2D8CFF;"></i> Zoom</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-mailchimp" style="color:#FFE01B;"></i> Mailchimp</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-stripe" style="color:#635BFF;"></i> Stripe</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-shopify" style="color:#96BF48;"></i> Shopify</span>
+        <span class="home-compat-pill"><i class="fa-brands fa-wordpress" style="color:#21759B;"></i> WordPress</span>
+        <span class="home-compat-pill"><i class="fa-solid fa-bolt" style="color:#FF4A00;"></i> Zapier</span>
+        <span class="home-compat-pill"><i class="fa-solid fa-robot" style="color:#10a37f;"></i> OpenAI</span>
+      </div>
+    </div>
+  </div>
+
   <!-- ── FOOTER ── -->
   <footer>
     <div class="container">
