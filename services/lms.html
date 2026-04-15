@@ -88,7 +88,7 @@
         "name": "Who is a custom LMS for?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Schools, colleges, private tutors, training providers, and any company that needs to onboard staff or run internal training. If you're teaching people something in a repeatable way — whether that's GCSE maths, compliance training, product onboarding, or apprentice curriculum — a custom LMS gives you a proper home for it."
+          "text": "Schools, colleges, private tutors, training providers, and any business that needs to onboard staff or run internal training. If you're teaching people something in a repeatable way, whether that's GCSE maths, compliance training, product onboarding, or apprentice curriculum, a custom LMS gives you a proper home for it."
         }
       },
       {
@@ -96,7 +96,7 @@
         "name": "Why build a custom LMS instead of using Moodle or Google Classroom?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Off-the-shelf systems like Moodle, Google Classroom, and Canvas are built for the average user and get in your way the moment you want anything specific. A custom LMS is built around your exact workflow — your branding, your course structure, your user roles, your reporting — with no licence fees per user and no features you'll never use."
+          "text": "Off-the-shelf systems like Moodle, Google Classroom and Canvas are built for the average user and get in the way the moment you want anything specific. A custom LMS is built around your exact workflow. Your branding, your course structure, your user roles, your reporting. No licence fees per user and no features you'll never use."
         }
       },
       {
@@ -224,7 +224,7 @@
     <div class="page-hero-content">
       <span class="section-label">Services</span>
       <h1>Custom Learning Management Systems<br /><em>Platforms that teach, track, and get out of the way</em></h1>
-      <p>We build bespoke LMS platforms for schools, colleges, tutors, training providers, and companies running internal learning or staff onboarding. Everything is built around your content, your students, and your workflows — no generic templates, no per-user licences, no features you'll never use.</p>
+      <p>We build custom LMS platforms for schools, colleges, tutors, training providers, and businesses running internal learning or staff onboarding. Built around your content, your learners, and the way you actually work. No templates. No per-user licences. No features you'll never use.</p>
       <a href="../book" class="btn btn-primary btn-lg">Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
@@ -261,7 +261,7 @@
   <!-- ── INTERACTIVE DEMO DASHBOARD ── -->
   <style>
     .lms-demo-section {
-      /* Local variable overrides — the global theme uses inverted
+      /* Local variable overrides. The global theme uses inverted
          light-mode vars (--white = #111), so we reassign to real
          dark-theme colours for this scoped section only. */
       --white: #ffffff;
@@ -320,7 +320,10 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       display: inline-block;
+      justify-content: center;
     }
+    .lms-demo-header .section-label::before { display: none !important; }
+    .lms-demo-section .section-label::before { display: none !important; }
     .lms-demo-header h2 {
       font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 800;
@@ -1131,7 +1134,7 @@
                       <div class="lms-activity-item">
                         <div class="act-icon amber"><i class="fa-solid fa-clock"></i></div>
                         <div class="act-text">
-                          <div class="line"><strong>Daniel Brooks</strong> submitted Assignment 3 — Circuit Lab Report <em style="color:#fbbf24;">(late)</em></div>
+                          <div class="line"><strong>Daniel Brooks</strong> submitted Assignment 3: Circuit Lab Report <em style="color:#fbbf24;">(late)</em></div>
                           <div class="time">1 hour ago</div>
                         </div>
                       </div>
@@ -1152,7 +1155,7 @@
                       <div class="lms-activity-item">
                         <div class="act-icon green"><i class="fa-solid fa-pen"></i></div>
                         <div class="act-text">
-                          <div class="line"><strong>James Okoye</strong> completed Module 5 quiz — scored 87%</div>
+                          <div class="line"><strong>James Okoye</strong> completed Module 5 quiz, scored 87%</div>
                           <div class="time">5 hours ago</div>
                         </div>
                       </div>
@@ -1318,7 +1321,7 @@
                   </div>
                 </div>
 
-                <h4 style="color:var(--white); font-size:0.85rem; font-weight:700; margin: 0 0 12px;">Module progress — Basic Electrical Engineering</h4>
+                <h4 style="color:var(--white); font-size:0.85rem; font-weight:700; margin: 0 0 12px;">Module progress: Basic Electrical Engineering</h4>
                 <div class="lms-modules">
                   <div class="lms-module done">
                     <div class="num">1</div>
@@ -1399,7 +1402,7 @@
                       <div class="status">In progress · 40% complete</div>
                     </div>
                     <div class="mini-bar"><div class="fill" style="width:40%;"></div></div>
-                    <div class="grade">—</div>
+                    <div class="grade">N/A</div>
                   </div>
                   <div class="lms-module">
                     <div class="num">10</div>
@@ -1408,7 +1411,7 @@
                       <div class="status">Not started</div>
                     </div>
                     <div class="mini-bar"><div class="fill" style="width:0%;"></div></div>
-                    <div class="grade">—</div>
+                    <div class="grade">N/A</div>
                   </div>
                 </div>
               </div>
@@ -1439,7 +1442,7 @@
                   </div>
                 </div>
 
-                <h4 style="color:var(--white); font-size:0.85rem; font-weight:700; margin: 24px 0 12px;">Class-wide progress — Basic Electrical Engineering</h4>
+                <h4 style="color:var(--white); font-size:0.85rem; font-weight:700; margin: 24px 0 12px;">Class-wide progress: Basic Electrical Engineering</h4>
                 <div class="lms-modules">
                   <div class="lms-module done">
                     <div class="num">1</div>
@@ -1499,7 +1502,7 @@
                     <div class="num">10</div>
                     <div><div class="name">Transistors &amp; Amplifiers</div><div class="status">Not yet released</div></div>
                     <div class="mini-bar"><div class="fill" style="width:0%;"></div></div>
-                    <div class="grade">—</div>
+                    <div class="grade">N/A</div>
                   </div>
                 </div>
               </div>
@@ -1515,28 +1518,28 @@
                 <div class="lms-assign">
                   <div class="lms-assign-item">
                     <div class="ic"><i class="fa-solid fa-file-lines"></i></div>
-                    <div><div class="t">Module 3 — Worksheet: Series &amp; Parallel Circuits</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div><div class="t">Module 3 Worksheet: Series &amp; Parallel Circuits</div><div class="s">Basic Electrical Engineering</div></div>
                     <div class="due">Due 21 Jan</div>
                     <div class="submitted"><strong>12</strong>/12 submitted</div>
                     <div class="pill graded">Graded</div>
                   </div>
                   <div class="lms-assign-item">
                     <div class="ic"><i class="fa-solid fa-flask"></i></div>
-                    <div><div class="t">Circuit Lab Report — Kirchhoff's Voltage Law</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div><div class="t">Circuit Lab Report: Kirchhoff's Voltage Law</div><div class="s">Basic Electrical Engineering</div></div>
                     <div class="due">Due 25 Jan</div>
                     <div class="submitted"><strong>10</strong>/12 submitted</div>
                     <div class="pill pending">Review</div>
                   </div>
                   <div class="lms-assign-item">
                     <div class="ic"><i class="fa-solid fa-award"></i></div>
-                    <div><div class="t">Mid-term Exam — Modules 1-5</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div><div class="t">Mid-term Exam: Modules 1 to 5</div><div class="s">Basic Electrical Engineering</div></div>
                     <div class="due">Sat 31 Jan</div>
                     <div class="submitted"><strong>12</strong>/12 complete · avg 74%</div>
                     <div class="pill graded">Graded</div>
                   </div>
                   <div class="lms-assign-item">
                     <div class="ic"><i class="fa-solid fa-bolt"></i></div>
-                    <div><div class="t">Module 6 Practical — Transformer Ratio Lab</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div><div class="t">Module 6 Practical: Transformer Ratio Lab</div><div class="s">Basic Electrical Engineering</div></div>
                     <div class="due">Due tomorrow</div>
                     <div class="submitted"><strong>8</strong>/12 submitted</div>
                     <div class="pill pending">Pending</div>
@@ -1557,7 +1560,7 @@
                   </div>
                   <div class="lms-assign-item">
                     <div class="ic"><i class="fa-solid fa-microchip"></i></div>
-                    <div><div class="t">Microcontroller — Hello Blink</div><div class="s">Introduction to Microcontrollers</div></div>
+                    <div><div class="t">Microcontroller: Hello Blink</div><div class="s">Introduction to Microcontrollers</div></div>
                     <div class="due">Due 22 Jan</div>
                     <div class="submitted"><strong>8</strong>/8 complete</div>
                     <div class="pill graded">Graded</div>
@@ -1711,8 +1714,8 @@
     <div class="page-section-inner" style="max-width:760px;margin:0 auto;">
       <div class="reveal">
         <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:10px;">What is a Learning Management System?</h2>
-        <p style="font-size:0.95rem;line-height:1.75;color:var(--muted);">A Learning Management System (LMS) is a platform that hosts your courses, tracks who has completed what, and gives students, teachers, parents, or staff one place to learn. It replaces scattered PDFs, shared drives, email chains, and spreadsheets with a single branded hub where content lives, progress is tracked, assignments are submitted, and work gets marked.</p>
-        <p style="font-size:0.95rem;line-height:1.75;color:var(--muted);margin-top:10px;">A custom LMS is for anyone teaching in a repeatable way — schools running curriculum, colleges delivering qualifications, tutors running after-school sessions, training providers delivering accredited courses, and companies onboarding staff or running compliance and product training. Unlike Moodle, Google Classroom, or Canvas, a custom platform is shaped around exactly how you work, not how the average customer works.</p>
+        <p style="font-size:0.95rem;line-height:1.75;color:var(--muted);">A Learning Management System (LMS) is a platform that hosts your courses, tracks who has completed what, and gives learners, teachers, parents, or staff one place to go. It replaces scattered PDFs, shared drives, email chains and spreadsheets with a single branded hub where content lives, progress is tracked, and work gets marked.</p>
+        <p style="font-size:0.95rem;line-height:1.75;color:var(--muted);margin-top:10px;">A custom LMS makes sense for anyone teaching in a repeatable way. That's schools running curriculum, colleges delivering qualifications, tutors running after-school sessions, training providers delivering accredited courses, and businesses onboarding staff or running compliance and product training. Unlike Moodle, Google Classroom or Canvas, a custom platform is shaped around how you actually work, not how the average customer does.</p>
       </div>
     </div>
   </section>
@@ -1725,7 +1728,7 @@
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
         <span class="section-label">How It Works</span>
         <h2 class="section-title">How we build your learning platform</h2>
-        <p class="section-sub" style="margin:14px auto 0;">We start with what you're teaching and how you teach it. Then we build the platform around that — not the other way round.</p>
+        <p class="section-sub" style="margin:14px auto 0;">We start with what you're teaching and how you teach it, then build the platform around that. Not the other way round.</p>
       </div>
       <div class="steps-grid reveal">
         <div class="steps-connector">
@@ -1738,7 +1741,7 @@
         <div class="step-card">
           <div class="step-number">1</div>
           <h3>Discovery &amp; structure</h3>
-          <p>We sit down with whoever runs the learning — head of department, training lead, tutor, or L&amp;D manager — and map out your courses, roles, and how progress actually needs to be tracked.</p>
+          <p>We sit down with whoever actually runs the learning. That could be a head of department, a training lead, a tutor, or an L&amp;D manager. We map out the courses, the roles, and how progress really needs to be tracked.</p>
         </div>
         <div class="step-card">
           <div class="step-number">2</div>
@@ -1748,12 +1751,12 @@
         <div class="step-card">
           <div class="step-number">3</div>
           <h3>Build &amp; brand</h3>
-          <p>We build the platform around your courses and users. Student portals, teacher dashboards, parent access, admin tools, assessments, certificates — whatever your setup needs. Fully branded, on your own domain.</p>
+          <p>We build the platform around your courses and the people using them. Student portals, teacher dashboards, parent access, admin tools, assessments, certificates. Whatever your setup actually needs. Fully branded and on your own domain.</p>
         </div>
         <div class="step-card">
           <div class="step-number">4</div>
           <h3>Launch &amp; improve</h3>
-          <p>We train your team, onboard your first cohort, and stick around to refine things based on how it's actually being used. New courses, new features, new integrations — the platform grows with you.</p>
+          <p>We train your team, onboard your first cohort, and stick around to refine things based on how people actually use it. New courses, new features, new integrations. The platform grows with you.</p>
         </div>
       </div>
     </div>
@@ -1819,7 +1822,7 @@
           <div class="tier-icon"><i class="fa-solid fa-user-tie"></i></div>
           <div class="tier-badge">Staff Onboarding</div>
           <h3>New starters up to speed without a line manager babysitting them</h3>
-          <p>Every new hire gets a structured onboarding path — documents to read, videos to watch, short assessments, and an instant dashboard that shows HR who's done what.</p>
+          <p>Every new hire gets a structured onboarding path. Documents to read, videos to watch, short assessments, and a dashboard that shows HR exactly who's done what.</p>
           <div class="tier-expand-content">
             <ul class="tier-detail-list">
               <li><i class="fa-solid fa-check"></i> Role-specific onboarding paths built from your existing docs and decks</li>
@@ -1849,7 +1852,7 @@
           <div class="tier-icon"><i class="fa-solid fa-box-open"></i></div>
           <div class="tier-badge">Product &amp; Customer Training</div>
           <h3>Teach your customers how to use what you sell</h3>
-          <p>For manufacturers, software companies, and any business that ships something complicated. Give your customers a proper academy so they can self-serve — fewer support tickets, stickier users.</p>
+          <p>For manufacturers, software companies, and any business that ships something complicated. Give your customers a proper academy so they can self-serve. Fewer support tickets. Stickier users.</p>
           <div class="tier-expand-content">
             <ul class="tier-detail-list">
               <li><i class="fa-solid fa-check"></i> Public or gated customer academy on your own domain</li>
@@ -1922,14 +1925,14 @@
             <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
             <div>
               <h3>Content builder from source docs</h3>
-              <p>We've built systems that read Word documents and generate course screens automatically — opening screens, worksheet layouts, embedded videos, PDFs. Turns a folder of existing content into a live course in minutes.</p>
+              <p>We've built systems that read Word documents and generate course screens automatically. Opening screens, worksheet layouts, embedded videos, PDFs. Turns a folder of existing content into a live course in minutes.</p>
             </div>
           </div>
           <div class="feature-card">
             <div class="feature-icon"><i class="fa-solid fa-user-shield"></i></div>
             <div>
               <h3>Multi-role auth &amp; permissions</h3>
-              <p>Students, parents, teachers, admins, external examiners — each role sees exactly what they should, and nothing they shouldn't. Built with proper security from day one.</p>
+              <p>Students, parents, teachers, admins, external examiners. Each role sees exactly what they should and nothing they shouldn't. Proper security built in from day one.</p>
             </div>
           </div>
           <div class="feature-card">
@@ -1952,7 +1955,7 @@
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
         <span class="section-label">Custom vs Off-the-Shelf</span>
         <h2 class="section-title">Why custom beats Moodle, Canvas, or Google Classroom</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Generic LMS platforms are built for the average customer. If your setup is specific — and it always is — you end up fighting the tool instead of using it.</p>
+        <p class="section-sub" style="margin:14px auto 0;">Generic LMS platforms are built for the average customer. If your setup is specific, and it always is, you end up fighting the tool instead of using it.</p>
       </div>
       <div class="about-stats reveal" style="max-width:900px;margin:0 auto;">
         <div class="stat-card" style="grid-column:1/-1;display:flex;flex-wrap:wrap;gap:24px;padding:32px;">
@@ -1964,7 +1967,7 @@
           <div style="flex:1 1 250px;min-width:0;">
             <div class="feature-icon" style="margin-bottom:14px;"><i class="fa-solid fa-sterling-sign"></i></div>
             <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:6px;">No per-user licences</h3>
-            <p style="font-size:0.88rem;color:var(--muted);line-height:1.6;">Off-the-shelf LMS platforms charge per seat, per month, forever. A custom build is a one-off project with ongoing hosting that scales cheaply — not linearly with your user count.</p>
+            <p style="font-size:0.88rem;color:var(--muted);line-height:1.6;">Off-the-shelf LMS platforms charge per seat, per month, forever. A custom build is a one-off project with cheap ongoing hosting. Your cost doesn't scale linearly with your user count.</p>
           </div>
           <div style="flex:1 1 250px;min-width:0;">
             <div class="feature-icon" style="margin-bottom:14px;"><i class="fa-solid fa-palette"></i></div>
@@ -2028,7 +2031,7 @@
             <i class="fa-solid fa-robot" style="color:#10a37f;font-size:1.4rem;"></i>
           </div>
           <h3 class="tool-name">OpenAI &amp; Claude</h3>
-          <p>For anything AI-powered — auto-generating quizzes from source material, marking free-text responses, answering student questions, or summarising lessons.</p>
+          <p>For anything AI-powered. Auto-generating quizzes from source material, marking free-text responses, answering student questions, or summarising lessons.</p>
         </div>
       </div>
     </div>
@@ -2078,11 +2081,11 @@
           </div>
           <div class="faq-item">
             <div class="faq-q">Who is a custom LMS for?<span class="faq-toggle">+</span></div>
-            <div class="faq-body"><div class="faq-body-inner"><p>Schools, colleges, private tutors, training providers, and any company that needs to onboard staff or run internal training. If you're teaching people something in a repeatable way — whether that's GCSE maths, compliance training, product onboarding, or apprentice curriculum — a custom LMS gives you a proper home for it.</p></div></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Schools, colleges, private tutors, training providers, and any business that needs to onboard staff or run internal training. If you're teaching people something in a repeatable way, whether that's GCSE maths, compliance training, product onboarding, or apprentice curriculum, a custom LMS gives you a proper home for it.</p></div></div>
           </div>
           <div class="faq-item">
             <div class="faq-q">Why build a custom LMS instead of using Moodle or Google Classroom?<span class="faq-toggle">+</span></div>
-            <div class="faq-body"><div class="faq-body-inner"><p>Off-the-shelf systems like Moodle, Google Classroom, and Canvas are built for the average user and get in your way the moment you want anything specific. A custom LMS is built around your exact workflow — your branding, your course structure, your user roles, your reporting — with no licence fees per user and no features you'll never use.</p></div></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Off-the-shelf systems like Moodle, Google Classroom and Canvas are built for the average user and get in the way the moment you want anything specific. A custom LMS is built around your exact workflow. Your branding, your course structure, your user roles, your reporting. No licence fees per user and no features you'll never use.</p></div></div>
           </div>
           <div class="faq-item">
             <div class="faq-q">Can you import existing courses, worksheets, or SCORM packages?<span class="faq-toggle">+</span></div>
