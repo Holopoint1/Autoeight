@@ -156,54 +156,50 @@
     .lms-compat {
       position: relative;
       z-index: 2;
-      padding: 26px 0 34px;
-      background: linear-gradient(180deg, rgba(13,13,20,0) 0%, rgba(10,10,16,0.6) 60%, rgba(10,10,16,0.85) 100%);
-      overflow: hidden;
+      margin-top: 44px;
+      padding: 14px 0;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
     .lms-compat-label {
-      text-align: center;
-      margin-bottom: 16px;
-      font-size: 0.72rem;
+      flex-shrink: 0;
+      padding-left: 4%;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
+      color: rgba(0,0,0,0.5);
+      white-space: nowrap;
     }
-    .lms-compat-label span {
-      color: #a78bfa;
-    }
+    .lms-compat-label span { color: #6d4de6; }
     .lms-compat-scroll {
+      flex: 1;
       display: flex;
       overflow: hidden;
-      -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-              mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+              mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
     }
     .lms-compat-track {
       display: flex;
       align-items: center;
-      gap: 40px;
-      animation: lms-compat-scroll 48s linear infinite;
+      gap: 26px;
+      animation: lms-compat-scroll 52s linear infinite;
       flex-shrink: 0;
-      padding-right: 40px;
+      padding-right: 26px;
     }
     .lms-compat-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 999px;
-      font-size: 0.86rem;
+      gap: 8px;
+      font-size: 0.82rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.85);
+      color: rgba(0,0,0,0.7);
       white-space: nowrap;
       flex-shrink: 0;
-      backdrop-filter: blur(8px);
     }
-    .lms-compat-pill i {
-      font-size: 1rem;
-    }
+    .lms-compat-pill i { font-size: 0.95rem; }
     @keyframes lms-compat-scroll {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -211,9 +207,13 @@
     @media (prefers-reduced-motion: reduce) {
       .lms-compat-track { animation: none; }
     }
+    @media (max-width: 768px) {
+      .lms-compat { flex-direction: column; gap: 10px; padding: 16px 0; }
+      .lms-compat-label { padding-left: 0; text-align: center; }
+    }
   </style>
 
-  <div class="page-hero" style="padding-bottom:0;">
+  <div class="page-hero">
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
     <div class="page-hero-content">
@@ -224,7 +224,7 @@
     </div>
 
     <div class="lms-compat">
-      <div class="lms-compat-label">Plugs straight into the tools <span>your school already uses</span></div>
+      <div class="lms-compat-label">Works with <span>your school's existing stack</span></div>
       <div class="lms-compat-scroll">
         <div class="lms-compat-track">
           <span class="lms-compat-pill"><i class="fa-solid fa-graduation-cap" style="color:#ff7518;"></i> Moodle</span>
