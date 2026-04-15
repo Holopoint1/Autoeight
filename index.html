@@ -804,7 +804,10 @@
           </div>
         </div>
 
-        <form class="contact-form reveal" id="contact-form-home" action="mailto:alfie@autoeight.ai" method="post" enctype="text/plain" style="transition-delay: 0.12s;" novalidate>
+        <form class="contact-form reveal" id="contact-form-home" action="https://formsubmit.co/ajax/alfie@autoeight.ai" method="POST" style="transition-delay: 0.12s;" novalidate>
+          <input type="hidden" name="_subject" value="New enquiry from autoeight.ai">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-row">
             <div class="form-group">
               <label for="hf-name">Your name</label>
@@ -829,15 +832,55 @@
             <label for="hf-message">How can we help?</label>
             <textarea id="hf-message" name="message" required placeholder="Tell us a bit about your business and what you'd like to automate…"></textarea>
           </div>
-          <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
           <div class="form-submit">
             <span class="form-note">We'll reply within one working day. No spam, ever.</span>
             <button type="submit" class="btn btn-primary">Send message</button>
           </div>
+          <div class="form-error" id="hf-error" hidden></div>
         </form>
+
+        <div class="form-success" id="hf-success" hidden>
+          <div class="form-success-icon"><i class="fa-solid fa-check"></i></div>
+          <h3>Thanks, message received</h3>
+          <p>We've got your details and will be in touch within one working day.</p>
+        </div>
 
       </div>
     </div>
+    <script>
+    (function(){
+      var form = document.getElementById('contact-form-home');
+      if (!form) return;
+      var success = document.getElementById('hf-success');
+      var errorBox = document.getElementById('hf-error');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        var btn = form.querySelector('button[type=submit]');
+        var original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        errorBox.hidden = true;
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        }).then(function(res){
+          if (!res.ok) throw new Error('Network response was not ok');
+          return res.json();
+        }).then(function(){
+          form.style.display = 'none';
+          if (success) success.hidden = false;
+        }).catch(function(){
+          btn.disabled = false;
+          btn.textContent = original;
+          errorBox.textContent = "Something went wrong. Please email alfie@autoeight.ai directly and we'll get right back to you.";
+          errorBox.hidden = false;
+        });
+      });
+    })();
+    </script>
   </section>
 
   <!-- ── COMPATIBILITY STRIP ── -->

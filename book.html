@@ -302,7 +302,10 @@
       <h3>Tell us about your business</h3>
       <p class="form-intro">Fill in a few details and we'll be in touch within one working day to arrange your free 30-minute consultation.</p>
 
-      <form class="contact-form" id="contact-form" action="mailto:alfie@autoeight.ai" method="post" enctype="text/plain" style="background:transparent;border:0;padding:0;" novalidate>
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/alfie@autoeight.ai" method="POST" style="background:transparent;border:0;padding:0;" novalidate>
+        <input type="hidden" name="_subject" value="New consultation request from autoeight.ai">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
         <div class="form-row">
           <div class="form-group">
             <label for="cf-name">Your name</label>
@@ -327,8 +330,8 @@
           <label for="cf-message">How can we help?</label>
           <textarea id="cf-message" name="message" required placeholder="Tell us a bit about your business and what you'd like to automate…"></textarea>
         </div>
-        <!-- Honeypot -->
-        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
+        <!-- FormSubmit honeypot -->
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
         <div class="form-submit">
           <span class="form-note">We'll reply within one working day. No spam, ever.</span>
           <button type="submit" class="btn btn-primary">Send message</button>
@@ -338,10 +341,44 @@
 
       <div class="form-success" id="cf-success" hidden>
         <div class="form-success-icon"><i class="fa-solid fa-check"></i></div>
-        <h3>Thanks — message received</h3>
+        <h3>Thanks, message received</h3>
         <p>We've got your details and will be in touch within one working day to arrange your consultation.</p>
       </div>
     </div>
+
+    <script>
+    (function(){
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      var success = document.getElementById('cf-success');
+      var errorBox = document.getElementById('cf-error');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        var btn = form.querySelector('button[type=submit]');
+        var original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        errorBox.hidden = true;
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        }).then(function(res){
+          if (!res.ok) throw new Error('Network response was not ok');
+          return res.json();
+        }).then(function(){
+          form.style.display = 'none';
+          if (success) success.hidden = false;
+        }).catch(function(){
+          btn.disabled = false;
+          btn.textContent = original;
+          errorBox.textContent = "Something went wrong. Please email alfie@autoeight.ai directly and we'll get right back to you.";
+          errorBox.hidden = false;
+        });
+      });
+    })();
+    </script>
 
   </div>
 
