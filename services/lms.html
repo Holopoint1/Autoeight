@@ -165,6 +165,1435 @@
 
   <div class="hero-section-split"></div>
 
+  <!-- ── INTERACTIVE DEMO DASHBOARD ── -->
+  <style>
+    .lms-demo-section {
+      padding: 64px 5% 72px;
+      background: linear-gradient(180deg, #0a0a0e 0%, #0d0d14 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .lms-demo-section::before {
+      content: "";
+      position: absolute;
+      top: 10%;
+      left: 8%;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(124,92,252,0.15), transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .lms-demo-section::after {
+      content: "";
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(109,77,230,0.1), transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .lms-demo-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .lms-demo-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 40px;
+    }
+    .lms-demo-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 12px 0 14px;
+      color: var(--white);
+    }
+    .lms-demo-header h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--purple-light), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .lms-demo-header p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .lms-demo-header .demo-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 7px 14px;
+      background: rgba(124,92,252,0.12);
+      border: 1px solid rgba(124,92,252,0.3);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: var(--purple-light);
+      font-weight: 600;
+    }
+    .lms-demo-header .demo-hint i { font-size: 0.7rem; animation: demo-pulse 1.8s ease-in-out infinite; }
+    @keyframes demo-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    /* ── Frame (browser chrome) ── */
+    .lms-demo-frame {
+      background: #0d0d14;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,92,252,0.1);
+    }
+    .lms-demo-chrome {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #15151f;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .lms-demo-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .lms-demo-dot.red { background: #ff5f57; }
+    .lms-demo-dot.amber { background: #febc2e; }
+    .lms-demo-dot.green { background: #28c840; }
+    .lms-demo-url {
+      flex: 1;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #8a8a95;
+      background: #0d0d14;
+      padding: 5px 14px;
+      border-radius: 6px;
+      font-family: 'SF Mono', Menlo, monospace;
+    }
+    .lms-demo-url i { color: #4ade80; margin-right: 6px; font-size: 0.72rem; }
+
+    /* ── App layout ── */
+    .lms-demo-app {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 640px;
+      max-height: 640px;
+    }
+
+    /* ── Sidebar ── */
+    .lms-demo-sidebar {
+      background: #0a0a12;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+    }
+    .lms-demo-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 20px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .lms-demo-brand i {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--purple-light), var(--purple));
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .lms-demo-brand span {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .lms-demo-nav {
+      flex: 1;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .lms-demo-nav button {
+      background: none;
+      border: 0;
+      color: #8a8a95;
+      text-align: left;
+      padding: 10px 14px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 0.84rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .lms-demo-nav button i { width: 16px; font-size: 0.85rem; }
+    .lms-demo-nav button:hover { background: rgba(255,255,255,0.04); color: var(--white); }
+    .lms-demo-nav button.active {
+      background: rgba(124,92,252,0.15);
+      color: var(--purple-light);
+    }
+    .lms-demo-nav button.active i { color: var(--purple-light); }
+    .lms-demo-user {
+      margin: 12px;
+      padding: 12px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lms-demo-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c5cfc, #a78bfa);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .lms-demo-user .u-name { color: var(--white); font-size: 0.82rem; font-weight: 600; }
+    .lms-demo-user .u-role { color: #8a8a95; font-size: 0.72rem; }
+
+    /* ── Main area ── */
+    .lms-demo-main {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .lms-demo-topbar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex-shrink: 0;
+    }
+    .lms-demo-topbar h3 {
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .lms-demo-search {
+      flex: 1;
+      max-width: 320px;
+      margin-left: auto;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 8px 13px;
+      color: #8a8a95;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lms-demo-bell {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      color: var(--white);
+      cursor: pointer;
+      position: relative;
+      font-size: 0.85rem;
+    }
+    .lms-demo-bell span {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background: #ef4444;
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+    .lms-demo-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 22px 24px 28px;
+    }
+    .lms-demo-body::-webkit-scrollbar { width: 6px; }
+    .lms-demo-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+
+    /* ── Views ── */
+    .lms-demo-view { display: none; animation: demo-fade 0.25s ease; }
+    .lms-demo-view.active { display: block; }
+    @keyframes demo-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    /* Dashboard view */
+    .lms-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .lms-stat-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .lms-stat-card .icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: rgba(124,92,252,0.12);
+      color: var(--purple-light);
+      display: grid;
+      place-items: center;
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+    }
+    .lms-stat-card.green .icon { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .lms-stat-card.amber .icon { background: rgba(245,158,11,0.12); color: #fbbf24; }
+    .lms-stat-card.red .icon { background: rgba(239,68,68,0.12); color: #f87171; }
+    .lms-stat-card .v { font-size: 1.5rem; font-weight: 800; color: var(--white); line-height: 1.1; }
+    .lms-stat-card .l { font-size: 0.72rem; color: #8a8a95; margin-top: 3px; }
+    .lms-stat-card .d { font-size: 0.68rem; margin-top: 8px; color: #4ade80; font-weight: 600; }
+    .lms-stat-card .d.down { color: #f87171; }
+
+    .lms-dash-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 16px;
+    }
+    .lms-panel {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .lms-panel h4 {
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .lms-panel h4 a {
+      font-size: 0.72rem;
+      color: var(--purple-light);
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Activity feed */
+    .lms-activity { display: flex; flex-direction: column; gap: 11px; }
+    .lms-activity-item {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      padding: 9px 10px;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .lms-activity-item:hover { background: rgba(255,255,255,0.03); }
+    .lms-activity-item .act-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(124,92,252,0.14);
+      color: var(--purple-light);
+      display: grid;
+      place-items: center;
+      font-size: 0.68rem;
+      flex-shrink: 0;
+    }
+    .lms-activity-item .act-icon.green { background: rgba(34,197,94,0.14); color: #4ade80; }
+    .lms-activity-item .act-icon.amber { background: rgba(245,158,11,0.14); color: #fbbf24; }
+    .lms-activity-item .act-icon.red { background: rgba(239,68,68,0.14); color: #f87171; }
+    .lms-activity-item .act-text { flex: 1; min-width: 0; }
+    .lms-activity-item .act-text strong { color: var(--white); font-size: 0.82rem; font-weight: 600; }
+    .lms-activity-item .act-text .line { color: #8a8a95; font-size: 0.78rem; line-height: 1.45; }
+    .lms-activity-item .act-text .time { color: #5e5e6a; font-size: 0.7rem; margin-top: 2px; }
+
+    /* Needs-attention panel */
+    .lms-mini-student {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .lms-mini-student:hover { background: rgba(255,255,255,0.04); }
+    .lms-mini-student .avt {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: grid; place-items: center;
+      color: #fff; font-size: 0.75rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .lms-mini-student .avt.a { background: linear-gradient(135deg,#f87171,#ef4444); }
+    .lms-mini-student .avt.b { background: linear-gradient(135deg,#fbbf24,#f59e0b); }
+    .lms-mini-student .avt.c { background: linear-gradient(135deg,#4ade80,#22c55e); }
+    .lms-mini-student .avt.d { background: linear-gradient(135deg,#7c5cfc,#a78bfa); }
+    .lms-mini-student .avt.e { background: linear-gradient(135deg,#06b6d4,#0891b2); }
+    .lms-mini-student .info { flex: 1; min-width: 0; }
+    .lms-mini-student .info .n { color: var(--white); font-size: 0.82rem; font-weight: 600; }
+    .lms-mini-student .info .p { color: #8a8a95; font-size: 0.72rem; }
+    .lms-mini-student .pct { color: var(--white); font-size: 0.82rem; font-weight: 700; }
+    .lms-mini-student .pct.red { color: #f87171; }
+    .lms-mini-student .pct.amber { color: #fbbf24; }
+    .lms-mini-student .pct.green { color: #4ade80; }
+
+    /* Students view */
+    .lms-toolbar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .lms-chip {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.76rem;
+      color: #8a8a95;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .lms-chip:hover { color: var(--white); }
+    .lms-chip.active {
+      background: rgba(124,92,252,0.15);
+      border-color: rgba(124,92,252,0.3);
+      color: var(--purple-light);
+    }
+    .lms-chip .count { opacity: 0.6; margin-left: 4px; }
+
+    .lms-student-table {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .lms-student-row {
+      display: grid;
+      grid-template-columns: 2.2fr 2fr 1.4fr 1fr 0.6fr;
+      gap: 16px;
+      padding: 12px 16px;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.15s;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .lms-student-row:last-child { border-bottom: 0; }
+    .lms-student-row.head {
+      background: rgba(255,255,255,0.03);
+      cursor: default;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #8a8a95;
+      font-weight: 700;
+    }
+    .lms-student-row:not(.head):hover { background: rgba(124,92,252,0.06); }
+    .lms-student-row .who { display: flex; align-items: center; gap: 11px; min-width: 0; }
+    .lms-student-row .who .avt {
+      width: 30px; height: 30px; border-radius: 50%;
+      display: grid; place-items: center;
+      color: #fff; font-size: 0.72rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .lms-student-row .who .n { color: var(--white); font-size: 0.84rem; font-weight: 600; }
+    .lms-student-row .who .e { color: #8a8a95; font-size: 0.7rem; }
+    .lms-student-row .course { color: #c8c8d0; font-size: 0.8rem; }
+    .lms-student-row .bar {
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .lms-student-row .bar .fill {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--purple), var(--purple-light));
+      transition: width 0.8s ease;
+    }
+    .lms-student-row .bar .fill.green { background: linear-gradient(90deg, #22c55e, #4ade80); }
+    .lms-student-row .bar .fill.amber { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .lms-student-row .bar .fill.red { background: linear-gradient(90deg, #ef4444, #f87171); }
+    .lms-student-row .pill {
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .lms-student-row .pill.on { background: rgba(124,92,252,0.15); color: var(--purple-light); }
+    .lms-student-row .pill.top { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .lms-student-row .pill.help { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .lms-student-row .pill.risk { background: rgba(239,68,68,0.15); color: #f87171; }
+    .lms-student-row .arr { color: #5e5e6a; text-align: right; font-size: 0.75rem; }
+
+    /* Student detail */
+    .lms-back {
+      background: none;
+      border: 0;
+      color: var(--purple-light);
+      font-size: 0.8rem;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+    .lms-back:hover { text-decoration: underline; }
+    .lms-profile-head {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      margin-bottom: 18px;
+    }
+    .lms-profile-head .big-avt {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #7c5cfc, #a78bfa);
+      color: #fff;
+      display: grid; place-items: center;
+      font-size: 1.3rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .lms-profile-head h3 {
+      color: var(--white);
+      font-size: 1.15rem;
+      margin: 0 0 3px;
+    }
+    .lms-profile-head .meta {
+      color: #8a8a95;
+      font-size: 0.8rem;
+    }
+    .lms-profile-head .overall {
+      margin-left: auto;
+      text-align: right;
+    }
+    .lms-profile-head .overall .big {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #4ade80;
+      line-height: 1;
+    }
+    .lms-profile-head .overall .lbl {
+      font-size: 0.7rem;
+      color: #8a8a95;
+      margin-top: 4px;
+    }
+    .lms-modules {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .lms-module {
+      display: grid;
+      grid-template-columns: 28px 1fr 90px 70px;
+      gap: 14px;
+      align-items: center;
+      padding: 11px 14px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 9px;
+    }
+    .lms-module .num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(124,92,252,0.15);
+      color: var(--purple-light);
+      display: grid; place-items: center;
+      font-size: 0.68rem; font-weight: 700;
+    }
+    .lms-module.done .num { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .lms-module .name { color: var(--white); font-size: 0.82rem; font-weight: 500; }
+    .lms-module .status { font-size: 0.7rem; color: #8a8a95; }
+    .lms-module.done .status { color: #4ade80; }
+    .lms-module .mini-bar {
+      height: 5px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .lms-module .mini-bar .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--purple), var(--purple-light));
+      border-radius: 999px;
+      transition: width 0.6s ease;
+    }
+    .lms-module.done .mini-bar .fill { background: linear-gradient(90deg, #22c55e, #4ade80); }
+    .lms-module .grade {
+      text-align: right;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* Courses view */
+    .lms-course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .lms-course-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 18px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lms-course-card:hover {
+      border-color: rgba(124,92,252,0.35);
+      transform: translateY(-2px);
+    }
+    .lms-course-card .cv {
+      height: 70px;
+      background: linear-gradient(135deg, rgba(124,92,252,0.25), rgba(109,77,230,0.1));
+      border-radius: 9px;
+      margin-bottom: 14px;
+      display: grid;
+      place-items: center;
+      color: var(--purple-light);
+      font-size: 1.4rem;
+    }
+    .lms-course-card.c2 .cv { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(5,150,105,0.08)); color: #4ade80; }
+    .lms-course-card.c3 .cv { background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(8,145,178,0.08)); color: #22d3ee; }
+    .lms-course-card h4 {
+      color: var(--white);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 0 0 5px;
+    }
+    .lms-course-card .sub {
+      color: #8a8a95;
+      font-size: 0.74rem;
+      margin-bottom: 12px;
+    }
+    .lms-course-card .row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: #8a8a95;
+      margin-bottom: 6px;
+    }
+    .lms-course-card .row strong { color: var(--white); }
+    .lms-course-card .bar {
+      height: 5px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .lms-course-card .bar .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--purple), var(--purple-light));
+      border-radius: 999px;
+      transition: width 0.8s ease;
+    }
+
+    /* Assignments view */
+    .lms-assign {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .lms-assign-item {
+      display: grid;
+      grid-template-columns: 40px 1.6fr 1fr 1fr 90px;
+      gap: 14px;
+      align-items: center;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+    }
+    .lms-assign-item .ic {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(124,92,252,0.14); color: var(--purple-light);
+      display: grid; place-items: center;
+      font-size: 0.78rem;
+    }
+    .lms-assign-item .t { color: var(--white); font-size: 0.84rem; font-weight: 600; }
+    .lms-assign-item .s { color: #8a8a95; font-size: 0.72rem; margin-top: 2px; }
+    .lms-assign-item .due { color: #c8c8d0; font-size: 0.78rem; }
+    .lms-assign-item .submitted { color: #8a8a95; font-size: 0.76rem; }
+    .lms-assign-item .submitted strong { color: var(--white); }
+    .lms-assign-item .pill {
+      font-size: 0.68rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .lms-assign-item .pill.ok { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .lms-assign-item .pill.pending { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .lms-assign-item .pill.graded { background: rgba(124,92,252,0.15); color: var(--purple-light); }
+
+    /* Reports view */
+    .lms-report-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .lms-chart {
+      height: 170px;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 10px 0 0;
+    }
+    .lms-chart .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .lms-chart .col .bar-wrap {
+      width: 100%;
+      max-width: 26px;
+      height: 130px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .lms-chart .col .bar {
+      width: 100%;
+      background: linear-gradient(180deg, var(--purple-light), var(--purple));
+      border-radius: 5px 5px 0 0;
+      transition: height 0.8s ease;
+    }
+    .lms-chart .col .lbl {
+      font-size: 0.66rem;
+      color: #8a8a95;
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .lms-demo-app { grid-template-columns: 1fr; max-height: none; }
+      .lms-demo-sidebar {
+        flex-direction: row;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding: 12px;
+        overflow-x: auto;
+      }
+      .lms-demo-brand { display: none; }
+      .lms-demo-user { display: none; }
+      .lms-demo-nav { flex-direction: row; padding: 0; flex: none; }
+      .lms-demo-nav button { white-space: nowrap; font-size: 0.76rem; padding: 8px 12px; }
+      .lms-stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .lms-dash-grid { grid-template-columns: 1fr; }
+      .lms-course-grid { grid-template-columns: 1fr; }
+      .lms-student-row { grid-template-columns: 1.5fr 80px 40px; gap: 10px; }
+      .lms-student-row .course, .lms-student-row .pill { display: none; }
+      .lms-student-row.head .course, .lms-student-row.head .pill { display: none; }
+      .lms-assign-item { grid-template-columns: 32px 1fr 80px; }
+      .lms-assign-item .due, .lms-assign-item .submitted { display: none; }
+      .lms-demo-search { display: none; }
+      .lms-demo-topbar { padding: 14px 16px; }
+      .lms-demo-body { padding: 18px 16px 22px; }
+    }
+  </style>
+
+  <section class="lms-demo-section">
+    <div class="lms-demo-inner">
+      <div class="lms-demo-header reveal">
+        <span class="section-label" style="justify-content:center;">Interactive Preview</span>
+        <h2>See what your <em>teachers actually use</em></h2>
+        <p>A real, clickable preview of a teacher dashboard tracking a <strong>Basic Electrical Engineering</strong> class. Navigate the sidebar, open a student, drill into a course. This is the kind of platform we build for your learners.</p>
+        <div class="demo-hint"><i class="fa-solid fa-hand-pointer"></i> Click anywhere to explore</div>
+      </div>
+
+      <div class="lms-demo-frame reveal" id="lms-demo" style="transition-delay:0.1s;">
+        <div class="lms-demo-chrome">
+          <span class="lms-demo-dot red"></span>
+          <span class="lms-demo-dot amber"></span>
+          <span class="lms-demo-dot green"></span>
+          <div class="lms-demo-url"><i class="fa-solid fa-lock"></i>northgate-technical.autoeight.ai/teacher</div>
+        </div>
+
+        <div class="lms-demo-app">
+          <!-- Sidebar -->
+          <aside class="lms-demo-sidebar">
+            <div class="lms-demo-brand">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>Northgate Technical</span>
+            </div>
+            <nav class="lms-demo-nav">
+              <button data-view="dashboard" class="active"><i class="fa-solid fa-gauge-high"></i> Dashboard</button>
+              <button data-view="students"><i class="fa-solid fa-users"></i> Students</button>
+              <button data-view="courses"><i class="fa-solid fa-book-open"></i> Courses</button>
+              <button data-view="assignments"><i class="fa-solid fa-file-pen"></i> Assignments</button>
+              <button data-view="reports"><i class="fa-solid fa-chart-column"></i> Reports</button>
+            </nav>
+            <div class="lms-demo-user">
+              <div class="lms-demo-avatar">AH</div>
+              <div>
+                <div class="u-name">Alfie Hodson</div>
+                <div class="u-role">Lead Tutor</div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Main -->
+          <div class="lms-demo-main">
+            <header class="lms-demo-topbar">
+              <h3 id="lms-view-title">Dashboard</h3>
+              <div class="lms-demo-search"><i class="fa-solid fa-magnifying-glass"></i> <span>Search students, courses…</span></div>
+              <button class="lms-demo-bell"><i class="fa-regular fa-bell"></i><span>3</span></button>
+            </header>
+
+            <div class="lms-demo-body">
+
+              <!-- DASHBOARD -->
+              <div class="lms-demo-view active" data-panel="dashboard">
+                <div class="lms-stat-grid">
+                  <div class="lms-stat-card">
+                    <div class="icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="v">12</div>
+                    <div class="l">Active students</div>
+                    <div class="d">+2 this week</div>
+                  </div>
+                  <div class="lms-stat-card green">
+                    <div class="icon"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="v">3</div>
+                    <div class="l">Active courses</div>
+                    <div class="d">All running</div>
+                  </div>
+                  <div class="lms-stat-card">
+                    <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="v">68%</div>
+                    <div class="l">Avg. class progress</div>
+                    <div class="d">+4% vs last week</div>
+                  </div>
+                  <div class="lms-stat-card red">
+                    <div class="icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="v">2</div>
+                    <div class="l">Students at risk</div>
+                    <div class="d down">Needs attention</div>
+                  </div>
+                </div>
+
+                <div class="lms-dash-grid">
+                  <div class="lms-panel">
+                    <h4>Recent activity <a data-view="students">View all →</a></h4>
+                    <div class="lms-activity">
+                      <div class="lms-activity-item">
+                        <div class="act-icon green"><i class="fa-solid fa-check"></i></div>
+                        <div class="act-text">
+                          <div class="line"><strong>Sarah Mitchell</strong> completed Module 8: AC Circuits &amp; Waveforms</div>
+                          <div class="time">12 min ago</div>
+                        </div>
+                      </div>
+                      <div class="lms-activity-item">
+                        <div class="act-icon amber"><i class="fa-solid fa-clock"></i></div>
+                        <div class="act-text">
+                          <div class="line"><strong>Daniel Brooks</strong> submitted Assignment 3 — Circuit Lab Report <em style="color:#fbbf24;">(late)</em></div>
+                          <div class="time">1 hour ago</div>
+                        </div>
+                      </div>
+                      <div class="lms-activity-item">
+                        <div class="act-icon"><i class="fa-solid fa-award"></i></div>
+                        <div class="act-text">
+                          <div class="line"><strong>Yasmin Kaur</strong> earned the <em style="color:var(--purple-light);">Circuit Master</em> badge</div>
+                          <div class="time">2 hours ago</div>
+                        </div>
+                      </div>
+                      <div class="lms-activity-item">
+                        <div class="act-icon red"><i class="fa-solid fa-user-slash"></i></div>
+                        <div class="act-text">
+                          <div class="line"><strong>Ellie Thompson</strong> hasn't logged in for 6 days</div>
+                          <div class="time">3 hours ago</div>
+                        </div>
+                      </div>
+                      <div class="lms-activity-item">
+                        <div class="act-icon green"><i class="fa-solid fa-pen"></i></div>
+                        <div class="act-text">
+                          <div class="line"><strong>James Okoye</strong> completed Module 5 quiz — scored 87%</div>
+                          <div class="time">5 hours ago</div>
+                        </div>
+                      </div>
+                      <div class="lms-activity-item">
+                        <div class="act-icon"><i class="fa-solid fa-comment"></i></div>
+                        <div class="act-text">
+                          <div class="line"><strong>Priya Patel</strong> requested feedback on her circuit diagram</div>
+                          <div class="time">Yesterday</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="lms-panel">
+                    <h4>Needs attention <a data-view="students">Review →</a></h4>
+                    <div class="lms-mini-student" data-student="12">
+                      <div class="avt a">RW</div>
+                      <div class="info"><div class="n">Ryan Whitfield</div><div class="p">3 overdue assignments</div></div>
+                      <div class="pct red">29%</div>
+                    </div>
+                    <div class="lms-mini-student" data-student="7">
+                      <div class="avt a">ET</div>
+                      <div class="info"><div class="n">Ellie Thompson</div><div class="p">Inactive 6 days</div></div>
+                      <div class="pct red">34%</div>
+                    </div>
+                    <div class="lms-mini-student" data-student="4">
+                      <div class="avt b">DB</div>
+                      <div class="info"><div class="n">Daniel Brooks</div><div class="p">Late submissions</div></div>
+                      <div class="pct amber">45%</div>
+                    </div>
+
+                    <h4 style="margin-top:20px;">Top performers</h4>
+                    <div class="lms-mini-student" data-student="1">
+                      <div class="avt c">SM</div>
+                      <div class="info"><div class="n">Sarah Mitchell</div><div class="p">2 badges earned</div></div>
+                      <div class="pct green">92%</div>
+                    </div>
+                    <div class="lms-mini-student" data-student="9">
+                      <div class="avt c">YK</div>
+                      <div class="info"><div class="n">Yasmin Kaur</div><div class="p">Ahead of schedule</div></div>
+                      <div class="pct green">91%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STUDENTS -->
+              <div class="lms-demo-view" data-panel="students">
+                <div class="lms-toolbar">
+                  <button class="lms-chip active">All <span class="count">12</span></button>
+                  <button class="lms-chip">Top performers <span class="count">3</span></button>
+                  <button class="lms-chip">On track <span class="count">7</span></button>
+                  <button class="lms-chip">At risk <span class="count">2</span></button>
+                </div>
+                <div class="lms-student-table">
+                  <div class="lms-student-row head">
+                    <div>Student</div>
+                    <div>Course</div>
+                    <div>Progress</div>
+                    <div>Status</div>
+                    <div></div>
+                  </div>
+                  <div class="lms-student-row" data-student="1">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#7c5cfc,#a78bfa);">SM</div><div><div class="n">Sarah Mitchell</div><div class="e">sarah.m@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill green" style="width:92%;"></div></div>
+                    <div class="pill top">Top</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="2">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">JO</div><div><div class="n">James Okoye</div><div class="e">james.o@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill" style="width:78%;"></div></div>
+                    <div class="pill on">On track</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="3">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#f472b6,#ec4899);">PP</div><div><div class="n">Priya Patel</div><div class="e">priya.p@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill" style="width:85%;"></div></div>
+                    <div class="pill on">On track</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="4">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#fbbf24,#f59e0b);">DB</div><div><div class="n">Daniel Brooks</div><div class="e">daniel.b@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill amber" style="width:45%;"></div></div>
+                    <div class="pill help">Needs help</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="5">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#4ade80,#22c55e);">CR</div><div><div class="n">Chloe Richardson</div><div class="e">chloe.r@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill" style="width:67%;"></div></div>
+                    <div class="pill on">On track</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="6">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#a78bfa,#7c5cfc);">MH</div><div><div class="n">Mohammed Hassan</div><div class="e">mohammed.h@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill" style="width:88%;"></div></div>
+                    <div class="pill on">On track</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="7">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#f87171,#ef4444);">ET</div><div><div class="n">Ellie Thompson</div><div class="e">ellie.t@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill red" style="width:34%;"></div></div>
+                    <div class="pill risk">At risk</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="8">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#60a5fa,#3b82f6);">LA</div><div><div class="n">Lewis Anderson</div><div class="e">lewis.a@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill" style="width:72%;"></div></div>
+                    <div class="pill on">On track</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="9">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#fcd34d,#facc15);">YK</div><div><div class="n">Yasmin Kaur</div><div class="e">yasmin.k@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill green" style="width:91%;"></div></div>
+                    <div class="pill top">Top</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="10">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#34d399,#10b981);">TF</div><div><div class="n">Tom Fletcher</div><div class="e">tom.f@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill" style="width:58%;"></div></div>
+                    <div class="pill on">On track</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="11">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#c084fc,#a855f7);">AN</div><div><div class="n">Aisha Nkomo</div><div class="e">aisha.n@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill" style="width:81%;"></div></div>
+                    <div class="pill on">On track</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                  <div class="lms-student-row" data-student="12">
+                    <div class="who"><div class="avt" style="background:linear-gradient(135deg,#f87171,#dc2626);">RW</div><div><div class="n">Ryan Whitfield</div><div class="e">ryan.w@northgate.ac.uk</div></div></div>
+                    <div class="course">Basic Electrical Engineering</div>
+                    <div class="bar"><div class="fill red" style="width:29%;"></div></div>
+                    <div class="pill risk">At risk</div>
+                    <div class="arr"><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STUDENT DETAIL -->
+              <div class="lms-demo-view" data-panel="student-detail">
+                <button class="lms-back" data-view="students"><i class="fa-solid fa-arrow-left"></i> Back to all students</button>
+
+                <div class="lms-profile-head">
+                  <div class="big-avt" id="sd-avt" style="background:linear-gradient(135deg,#7c5cfc,#a78bfa);">SM</div>
+                  <div>
+                    <h3 id="sd-name">Sarah Mitchell</h3>
+                    <div class="meta" id="sd-meta">sarah.m@northgate.ac.uk · Basic Electrical Engineering · Enrolled 12 Jan 2026</div>
+                  </div>
+                  <div class="overall">
+                    <div class="big" id="sd-pct">92%</div>
+                    <div class="lbl">Course progress</div>
+                  </div>
+                </div>
+
+                <h4 style="color:var(--white); font-size:0.85rem; font-weight:700; margin: 0 0 12px;">Module progress — Basic Electrical Engineering</h4>
+                <div class="lms-modules">
+                  <div class="lms-module done">
+                    <div class="num">1</div>
+                    <div>
+                      <div class="name">Circuit Fundamentals</div>
+                      <div class="status">Completed · 14 Jan</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">95%</div>
+                  </div>
+                  <div class="lms-module done">
+                    <div class="num">2</div>
+                    <div>
+                      <div class="name">Ohm's Law &amp; Voltage</div>
+                      <div class="status">Completed · 17 Jan</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">91%</div>
+                  </div>
+                  <div class="lms-module done">
+                    <div class="num">3</div>
+                    <div>
+                      <div class="name">Resistors &amp; Series/Parallel Circuits</div>
+                      <div class="status">Completed · 21 Jan</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">89%</div>
+                  </div>
+                  <div class="lms-module done">
+                    <div class="num">4</div>
+                    <div>
+                      <div class="name">Kirchhoff's Laws</div>
+                      <div class="status">Completed · 25 Jan</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">94%</div>
+                  </div>
+                  <div class="lms-module done">
+                    <div class="num">5</div>
+                    <div>
+                      <div class="name">Capacitors</div>
+                      <div class="status">Completed · 29 Jan</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">92%</div>
+                  </div>
+                  <div class="lms-module done">
+                    <div class="num">6</div>
+                    <div>
+                      <div class="name">Inductors &amp; Transformers</div>
+                      <div class="status">Completed · 4 Feb</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">90%</div>
+                  </div>
+                  <div class="lms-module done">
+                    <div class="num">7</div>
+                    <div>
+                      <div class="name">DC Circuit Analysis</div>
+                      <div class="status">Completed · 8 Feb</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">93%</div>
+                  </div>
+                  <div class="lms-module done">
+                    <div class="num">8</div>
+                    <div>
+                      <div class="name">AC Circuits &amp; Waveforms</div>
+                      <div class="status">Completed · Today</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">96%</div>
+                  </div>
+                  <div class="lms-module">
+                    <div class="num">9</div>
+                    <div>
+                      <div class="name">Semiconductors &amp; Diodes</div>
+                      <div class="status">In progress · 40% complete</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:40%;"></div></div>
+                    <div class="grade">—</div>
+                  </div>
+                  <div class="lms-module">
+                    <div class="num">10</div>
+                    <div>
+                      <div class="name">Transistors &amp; Amplifiers</div>
+                      <div class="status">Not started</div>
+                    </div>
+                    <div class="mini-bar"><div class="fill" style="width:0%;"></div></div>
+                    <div class="grade">—</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COURSES -->
+              <div class="lms-demo-view" data-panel="courses">
+                <div class="lms-course-grid">
+                  <div class="lms-course-card">
+                    <div class="cv"><i class="fa-solid fa-bolt"></i></div>
+                    <h4>Basic Electrical Engineering</h4>
+                    <div class="sub">10 modules · 12 students enrolled</div>
+                    <div class="row"><span>Avg. progress</span><strong>68%</strong></div>
+                    <div class="bar"><div class="fill" style="width:68%;"></div></div>
+                  </div>
+                  <div class="lms-course-card c2">
+                    <div class="cv"><i class="fa-solid fa-microchip"></i></div>
+                    <h4>Introduction to Microcontrollers</h4>
+                    <div class="sub">12 worksheets · 8 students enrolled</div>
+                    <div class="row"><span>Avg. progress</span><strong>54%</strong></div>
+                    <div class="bar"><div class="fill" style="width:54%;"></div></div>
+                  </div>
+                  <div class="lms-course-card c3">
+                    <div class="cv"><i class="fa-solid fa-wave-square"></i></div>
+                    <h4>Digital Electronics</h4>
+                    <div class="sub">8 modules · 6 students enrolled</div>
+                    <div class="row"><span>Avg. progress</span><strong>41%</strong></div>
+                    <div class="bar"><div class="fill" style="width:41%;"></div></div>
+                  </div>
+                </div>
+
+                <h4 style="color:var(--white); font-size:0.85rem; font-weight:700; margin: 24px 0 12px;">Class-wide progress — Basic Electrical Engineering</h4>
+                <div class="lms-modules">
+                  <div class="lms-module done">
+                    <div class="num">1</div>
+                    <div><div class="name">Circuit Fundamentals</div><div class="status">12 of 12 complete</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">100%</div>
+                  </div>
+                  <div class="lms-module done">
+                    <div class="num">2</div>
+                    <div><div class="name">Ohm's Law &amp; Voltage</div><div class="status">12 of 12 complete</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:100%;"></div></div>
+                    <div class="grade">100%</div>
+                  </div>
+                  <div class="lms-module done">
+                    <div class="num">3</div>
+                    <div><div class="name">Resistors &amp; Series/Parallel</div><div class="status">11 of 12 complete</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:92%;"></div></div>
+                    <div class="grade">92%</div>
+                  </div>
+                  <div class="lms-module">
+                    <div class="num">4</div>
+                    <div><div class="name">Kirchhoff's Laws</div><div class="status">10 of 12 complete</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:83%;"></div></div>
+                    <div class="grade">83%</div>
+                  </div>
+                  <div class="lms-module">
+                    <div class="num">5</div>
+                    <div><div class="name">Capacitors</div><div class="status">9 of 12 in progress</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:75%;"></div></div>
+                    <div class="grade">75%</div>
+                  </div>
+                  <div class="lms-module">
+                    <div class="num">6</div>
+                    <div><div class="name">Inductors &amp; Transformers</div><div class="status">7 of 12 in progress</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:58%;"></div></div>
+                    <div class="grade">58%</div>
+                  </div>
+                  <div class="lms-module">
+                    <div class="num">7</div>
+                    <div><div class="name">DC Circuit Analysis</div><div class="status">5 of 12 started</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:42%;"></div></div>
+                    <div class="grade">42%</div>
+                  </div>
+                  <div class="lms-module">
+                    <div class="num">8</div>
+                    <div><div class="name">AC Circuits &amp; Waveforms</div><div class="status">3 of 12 started</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:25%;"></div></div>
+                    <div class="grade">25%</div>
+                  </div>
+                  <div class="lms-module">
+                    <div class="num">9</div>
+                    <div><div class="name">Semiconductors &amp; Diodes</div><div class="status">1 of 12 started</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:8%;"></div></div>
+                    <div class="grade">8%</div>
+                  </div>
+                  <div class="lms-module">
+                    <div class="num">10</div>
+                    <div><div class="name">Transistors &amp; Amplifiers</div><div class="status">Not yet released</div></div>
+                    <div class="mini-bar"><div class="fill" style="width:0%;"></div></div>
+                    <div class="grade">—</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ASSIGNMENTS -->
+              <div class="lms-demo-view" data-panel="assignments">
+                <div class="lms-toolbar">
+                  <button class="lms-chip active">All <span class="count">8</span></button>
+                  <button class="lms-chip">Pending review <span class="count">3</span></button>
+                  <button class="lms-chip">Graded <span class="count">4</span></button>
+                  <button class="lms-chip">Overdue <span class="count">1</span></button>
+                </div>
+                <div class="lms-assign">
+                  <div class="lms-assign-item">
+                    <div class="ic"><i class="fa-solid fa-file-lines"></i></div>
+                    <div><div class="t">Module 3 — Worksheet: Series &amp; Parallel Circuits</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div class="due">Due 21 Jan</div>
+                    <div class="submitted"><strong>12</strong>/12 submitted</div>
+                    <div class="pill graded">Graded</div>
+                  </div>
+                  <div class="lms-assign-item">
+                    <div class="ic"><i class="fa-solid fa-flask"></i></div>
+                    <div><div class="t">Circuit Lab Report — Kirchhoff's Voltage Law</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div class="due">Due 25 Jan</div>
+                    <div class="submitted"><strong>10</strong>/12 submitted</div>
+                    <div class="pill pending">Review</div>
+                  </div>
+                  <div class="lms-assign-item">
+                    <div class="ic"><i class="fa-solid fa-award"></i></div>
+                    <div><div class="t">Mid-term Exam — Modules 1-5</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div class="due">Sat 31 Jan</div>
+                    <div class="submitted"><strong>12</strong>/12 complete · avg 74%</div>
+                    <div class="pill graded">Graded</div>
+                  </div>
+                  <div class="lms-assign-item">
+                    <div class="ic"><i class="fa-solid fa-bolt"></i></div>
+                    <div><div class="t">Module 6 Practical — Transformer Ratio Lab</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div class="due">Due tomorrow</div>
+                    <div class="submitted"><strong>8</strong>/12 submitted</div>
+                    <div class="pill pending">Pending</div>
+                  </div>
+                  <div class="lms-assign-item">
+                    <div class="ic"><i class="fa-solid fa-chart-line"></i></div>
+                    <div><div class="t">Ohm's Law Quiz</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div class="due">Due 18 Jan</div>
+                    <div class="submitted"><strong>12</strong>/12 complete · avg 81%</div>
+                    <div class="pill graded">Graded</div>
+                  </div>
+                  <div class="lms-assign-item">
+                    <div class="ic"><i class="fa-solid fa-file-pen"></i></div>
+                    <div><div class="t">Final Project Proposal</div><div class="s">Basic Electrical Engineering</div></div>
+                    <div class="due">Due next week</div>
+                    <div class="submitted"><strong>3</strong>/12 submitted</div>
+                    <div class="pill pending">Open</div>
+                  </div>
+                  <div class="lms-assign-item">
+                    <div class="ic"><i class="fa-solid fa-microchip"></i></div>
+                    <div><div class="t">Microcontroller — Hello Blink</div><div class="s">Introduction to Microcontrollers</div></div>
+                    <div class="due">Due 22 Jan</div>
+                    <div class="submitted"><strong>8</strong>/8 complete</div>
+                    <div class="pill graded">Graded</div>
+                  </div>
+                  <div class="lms-assign-item">
+                    <div class="ic"><i class="fa-solid fa-wave-square"></i></div>
+                    <div><div class="t">Boolean Logic Worksheet</div><div class="s">Digital Electronics</div></div>
+                    <div class="due">Overdue · 3 Feb</div>
+                    <div class="submitted"><strong>4</strong>/6 submitted</div>
+                    <div class="pill pending">Overdue</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- REPORTS -->
+              <div class="lms-demo-view" data-panel="reports">
+                <div class="lms-stat-grid">
+                  <div class="lms-stat-card green">
+                    <div class="icon"><i class="fa-solid fa-check-double"></i></div>
+                    <div class="v">86%</div>
+                    <div class="l">Assignment completion</div>
+                    <div class="d">+6% vs last month</div>
+                  </div>
+                  <div class="lms-stat-card">
+                    <div class="icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="v">74%</div>
+                    <div class="l">Avg. grade</div>
+                    <div class="d">+2% vs last month</div>
+                  </div>
+                  <div class="lms-stat-card">
+                    <div class="icon"><i class="fa-solid fa-clock"></i></div>
+                    <div class="v">4.2h</div>
+                    <div class="l">Avg. time on platform/week</div>
+                    <div class="d">+0.4h</div>
+                  </div>
+                  <div class="lms-stat-card amber">
+                    <div class="icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <div class="v">9</div>
+                    <div class="l">Late submissions this month</div>
+                    <div class="d down">+3 vs last month</div>
+                  </div>
+                </div>
+                <div class="lms-panel">
+                  <h4>Class progress over the last 10 weeks</h4>
+                  <div class="lms-chart">
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:24%;"></div></div><div class="lbl">W1</div></div>
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:32%;"></div></div><div class="lbl">W2</div></div>
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:38%;"></div></div><div class="lbl">W3</div></div>
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:45%;"></div></div><div class="lbl">W4</div></div>
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:52%;"></div></div><div class="lbl">W5</div></div>
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:55%;"></div></div><div class="lbl">W6</div></div>
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:60%;"></div></div><div class="lbl">W7</div></div>
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:62%;"></div></div><div class="lbl">W8</div></div>
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:65%;"></div></div><div class="lbl">W9</div></div>
+                    <div class="col"><div class="bar-wrap"><div class="bar" style="height:68%;"></div></div><div class="lbl">W10</div></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    var demo = document.getElementById('lms-demo');
+    if (!demo) return;
+    var views = demo.querySelectorAll('.lms-demo-view');
+    var navBtns = demo.querySelectorAll('.lms-demo-nav button');
+    var title = document.getElementById('lms-view-title');
+    var titles = {
+      'dashboard': 'Dashboard',
+      'students': 'Students',
+      'student-detail': 'Student profile',
+      'courses': 'Courses',
+      'assignments': 'Assignments',
+      'reports': 'Reports'
+    };
+    var studentData = {
+      1:  {name:'Sarah Mitchell',     email:'sarah.m@northgate.ac.uk',     init:'SM', grad:'linear-gradient(135deg,#7c5cfc,#a78bfa)', pct:'92%', col:'#4ade80'},
+      2:  {name:'James Okoye',        email:'james.o@northgate.ac.uk',     init:'JO', grad:'linear-gradient(135deg,#06b6d4,#0891b2)', pct:'78%', col:'#a78bfa'},
+      3:  {name:'Priya Patel',        email:'priya.p@northgate.ac.uk',     init:'PP', grad:'linear-gradient(135deg,#f472b6,#ec4899)', pct:'85%', col:'#a78bfa'},
+      4:  {name:'Daniel Brooks',      email:'daniel.b@northgate.ac.uk',    init:'DB', grad:'linear-gradient(135deg,#fbbf24,#f59e0b)', pct:'45%', col:'#fbbf24'},
+      5:  {name:'Chloe Richardson',   email:'chloe.r@northgate.ac.uk',     init:'CR', grad:'linear-gradient(135deg,#4ade80,#22c55e)', pct:'67%', col:'#a78bfa'},
+      6:  {name:'Mohammed Hassan',    email:'mohammed.h@northgate.ac.uk',  init:'MH', grad:'linear-gradient(135deg,#a78bfa,#7c5cfc)', pct:'88%', col:'#a78bfa'},
+      7:  {name:'Ellie Thompson',     email:'ellie.t@northgate.ac.uk',     init:'ET', grad:'linear-gradient(135deg,#f87171,#ef4444)', pct:'34%', col:'#f87171'},
+      8:  {name:'Lewis Anderson',     email:'lewis.a@northgate.ac.uk',     init:'LA', grad:'linear-gradient(135deg,#60a5fa,#3b82f6)', pct:'72%', col:'#a78bfa'},
+      9:  {name:'Yasmin Kaur',        email:'yasmin.k@northgate.ac.uk',    init:'YK', grad:'linear-gradient(135deg,#fcd34d,#facc15)', pct:'91%', col:'#4ade80'},
+      10: {name:'Tom Fletcher',       email:'tom.f@northgate.ac.uk',       init:'TF', grad:'linear-gradient(135deg,#34d399,#10b981)', pct:'58%', col:'#a78bfa'},
+      11: {name:'Aisha Nkomo',        email:'aisha.n@northgate.ac.uk',     init:'AN', grad:'linear-gradient(135deg,#c084fc,#a855f7)', pct:'81%', col:'#a78bfa'},
+      12: {name:'Ryan Whitfield',     email:'ryan.w@northgate.ac.uk',      init:'RW', grad:'linear-gradient(135deg,#f87171,#dc2626)', pct:'29%', col:'#f87171'}
+    };
+
+    function switchTo(view) {
+      views.forEach(function(v){ v.classList.toggle('active', v.getAttribute('data-panel') === view); });
+      navBtns.forEach(function(b){
+        var dv = b.getAttribute('data-view');
+        b.classList.toggle('active', dv === view || (view === 'student-detail' && dv === 'students'));
+      });
+      if (title) title.textContent = titles[view] || view;
+    }
+
+    navBtns.forEach(function(b){
+      b.addEventListener('click', function(){ switchTo(b.getAttribute('data-view')); });
+    });
+
+    // Panel links with data-view attribute
+    demo.querySelectorAll('[data-view]').forEach(function(el){
+      if (el.tagName === 'BUTTON' && el.closest('.lms-demo-nav')) return;
+      el.addEventListener('click', function(e){
+        e.stopPropagation();
+        switchTo(el.getAttribute('data-view'));
+      });
+    });
+
+    // Student row click → detail
+    demo.querySelectorAll('[data-student]').forEach(function(row){
+      row.addEventListener('click', function(e){
+        var id = row.getAttribute('data-student');
+        var s = studentData[id];
+        if (!s) return;
+        var avt = document.getElementById('sd-avt');
+        avt.textContent = s.init;
+        avt.style.background = s.grad;
+        document.getElementById('sd-name').textContent = s.name;
+        document.getElementById('sd-meta').textContent = s.email + ' · Basic Electrical Engineering · Enrolled 12 Jan 2026';
+        var p = document.getElementById('sd-pct');
+        p.textContent = s.pct;
+        p.style.color = s.col;
+        switchTo('student-detail');
+      });
+    });
+
+    // Chip toggle (cosmetic)
+    demo.querySelectorAll('.lms-toolbar').forEach(function(bar){
+      bar.querySelectorAll('.lms-chip').forEach(function(c){
+        c.addEventListener('click', function(){
+          bar.querySelectorAll('.lms-chip').forEach(function(x){ x.classList.remove('active'); });
+          c.classList.add('active');
+        });
+      });
+    });
+  })();
+  </script>
+
   <!-- ── DEFINITION ── -->
   <section class="page-section" style="padding:40px 5% 0;">
     <div class="page-section-inner" style="max-width:760px;margin:0 auto;">
