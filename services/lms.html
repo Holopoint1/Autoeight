@@ -123,7 +123,7 @@
 
   <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
   <nav id="nav">
-    <a href="../" class="nav-logo"><img src="../brand_assets/1.png" alt="Autoeight" /></a>
+    <a href="../" class="nav-logo"><img src="../brand_assets/logo-white.png" alt="Autoeight" /></a>
     <ul class="nav-menu" id="nav-menu">
       <li class="nav-item has-dropdown active">
         <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
@@ -2050,6 +2050,77 @@
     .sp-resource .r-name { color: #fff; font-size: 0.8rem; font-weight: 600; }
     .sp-resource .r-meta { color: #8a8a95; font-size: 0.68rem; margin-top: 2px; }
 
+    /* Expandable module cards */
+    .sp-module-card {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      margin-bottom: 6px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .sp-module-card:hover { border-color: rgba(255,255,255,0.12); }
+    .sp-module-card.locked { opacity: 0.5; }
+    .sp-mod-head {
+      display: grid;
+      grid-template-columns: 14px 1fr auto auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .sp-mod-head:hover { background: rgba(255,255,255,0.03); }
+    .sp-mod-head .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); }
+    .sp-mod-head .dot.done { background: #4ade80; }
+    .sp-mod-head .dot.active { background: #a78bfa; }
+    .sp-mod-head .name { color: rgba(255,255,255,0.85); font-size: 0.82rem; font-weight: 600; }
+    .sp-mod-head .grade { color: #8a8a95; font-size: 0.75rem; font-weight: 600; }
+    .sp-mod-head .grade.done { color: #4ade80; }
+    .sp-mod-chev {
+      color: #8a8a95;
+      font-size: 0.7rem;
+      transition: transform 0.25s;
+    }
+    .sp-module-card.open .sp-mod-chev { transform: rotate(180deg); }
+    .sp-mod-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 14px;
+    }
+    .sp-module-card.open .sp-mod-body {
+      max-height: 600px;
+      padding: 4px 14px 16px;
+    }
+    .sp-mod-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 9px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .sp-mod-row:first-child { border-top: 0; }
+    .sp-mod-row i {
+      width: 16px;
+      text-align: center;
+      margin-top: 3px;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+    }
+    .sp-mod-row strong {
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .sp-mod-row p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.74rem;
+      line-height: 1.45;
+      margin: 0;
+    }
+
     @media (max-width: 820px) {
       .sp-app { grid-template-columns: 1fr; }
       .sp-sidebar { flex-direction: row; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px; overflow-x: auto; }
@@ -2194,20 +2265,102 @@
                     </div>
                     <div class="sp-course-info">
                       <div class="c-name">Basic Electrical Engineering</div>
-                      <div class="c-meta">10 modules total. 8 complete, 1 in progress, 1 not started.</div>
+                      <div class="c-meta">10 modules total. 8 complete, 1 in progress, 1 not started. Click a module to explore.</div>
                     </div>
                   </div>
                 </div>
-                <div class="sp-module-mini"><span class="dot done"></span><span class="name">1. Circuit Fundamentals</span><span class="grade done">95%</span></div>
-                <div class="sp-module-mini"><span class="dot done"></span><span class="name">2. Ohm's Law &amp; Voltage</span><span class="grade done">91%</span></div>
-                <div class="sp-module-mini"><span class="dot done"></span><span class="name">3. Resistors &amp; Series/Parallel Circuits</span><span class="grade done">89%</span></div>
-                <div class="sp-module-mini"><span class="dot done"></span><span class="name">4. Kirchhoff's Laws</span><span class="grade done">94%</span></div>
-                <div class="sp-module-mini"><span class="dot done"></span><span class="name">5. Capacitors</span><span class="grade done">92%</span></div>
-                <div class="sp-module-mini"><span class="dot done"></span><span class="name">6. Inductors &amp; Transformers</span><span class="grade done">90%</span></div>
-                <div class="sp-module-mini"><span class="dot done"></span><span class="name">7. DC Circuit Analysis</span><span class="grade done">93%</span></div>
-                <div class="sp-module-mini"><span class="dot done"></span><span class="name">8. AC Circuits &amp; Waveforms</span><span class="grade done">96%</span></div>
-                <div class="sp-module-mini"><span class="dot active"></span><span class="name">9. Semiconductors &amp; Diodes</span><span class="grade">In progress: 40%</span></div>
-                <div class="sp-module-mini"><span class="dot"></span><span class="name">10. Transistors &amp; Amplifiers</span><span class="grade">Locked</span></div>
+
+                <div class="sp-module-card done" data-mod="1">
+                  <div class="sp-mod-head"><span class="dot done"></span><span class="name">1. Circuit Fundamentals</span><span class="grade done">95%</span><i class="fa-solid fa-chevron-down sp-mod-chev"></i></div>
+                  <div class="sp-mod-body">
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: What is a circuit?</strong><p>Completed 14 Jan. Basic circuit components, open vs closed circuits, current flow.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-play" style="color:#60a5fa;"></i><div><strong>Video: Introduction to E-blocks 3</strong><p>YouTube, 12 min. Watched.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-file-pen" style="color:#a78bfa;"></i><div><strong>Worksheet: Basic Circuit Drawing</strong><p>Submitted 14 Jan. Grade: 95%</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-star" style="color:#fbbf24;"></i><div><strong>Quiz: Circuit Fundamentals</strong><p>Score: 95%. 19 of 20 correct.</p></div></div>
+                  </div>
+                </div>
+
+                <div class="sp-module-card done" data-mod="2">
+                  <div class="sp-mod-head"><span class="dot done"></span><span class="name">2. Ohm's Law &amp; Voltage</span><span class="grade done">91%</span><i class="fa-solid fa-chevron-down sp-mod-chev"></i></div>
+                  <div class="sp-mod-body">
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: Voltage, current, resistance</strong><p>Completed 17 Jan. Relationship between V, I, R and the Ohm's Law formula.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-flask" style="color:#f472b6;"></i><div><strong>Practical: Measuring resistance with a multimeter</strong><p>Completed in lab, 17 Jan.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-file-pen" style="color:#a78bfa;"></i><div><strong>Worksheet: Ohm's Law calculations</strong><p>Submitted 18 Jan. Grade: 88%</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-star" style="color:#fbbf24;"></i><div><strong>Quiz: Ohm's Law</strong><p>Score: 97%. 29 of 30 correct.</p></div></div>
+                  </div>
+                </div>
+
+                <div class="sp-module-card done" data-mod="3">
+                  <div class="sp-mod-head"><span class="dot done"></span><span class="name">3. Resistors &amp; Series/Parallel</span><span class="grade done">89%</span><i class="fa-solid fa-chevron-down sp-mod-chev"></i></div>
+                  <div class="sp-mod-body">
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: Resistor colour codes &amp; types</strong><p>Completed 20 Jan.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: Series vs parallel circuits</strong><p>Completed 20 Jan. Total resistance calculations for each configuration.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-file-pen" style="color:#a78bfa;"></i><div><strong>Worksheet: Series &amp; Parallel Circuits</strong><p>Submitted 21 Jan. Grade: 89%</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-flask" style="color:#f472b6;"></i><div><strong>Practical: Building series and parallel circuits</strong><p>Completed in lab, 21 Jan. Passed.</p></div></div>
+                  </div>
+                </div>
+
+                <div class="sp-module-card done" data-mod="4">
+                  <div class="sp-mod-head"><span class="dot done"></span><span class="name">4. Kirchhoff's Laws</span><span class="grade done">94%</span><i class="fa-solid fa-chevron-down sp-mod-chev"></i></div>
+                  <div class="sp-mod-body">
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: KVL and KCL explained</strong><p>Completed 24 Jan. Kirchhoff's Voltage Law and Current Law with worked examples.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-play" style="color:#60a5fa;"></i><div><strong>Video: Kirchhoff's Laws step-by-step</strong><p>YouTube, 15 min. Watched.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-file-pen" style="color:#a78bfa;"></i><div><strong>Lab Report: Kirchhoff's Voltage Law</strong><p>Submitted 24 Jan. Grade: 91%</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-star" style="color:#fbbf24;"></i><div><strong>Quiz: Kirchhoff's Laws</strong><p>Score: 94%. Full marks on mesh analysis.</p></div></div>
+                  </div>
+                </div>
+
+                <div class="sp-module-card done" data-mod="5">
+                  <div class="sp-mod-head"><span class="dot done"></span><span class="name">5. Capacitors</span><span class="grade done">92%</span><i class="fa-solid fa-chevron-down sp-mod-chev"></i></div>
+                  <div class="sp-mod-body">
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: How capacitors store charge</strong><p>Completed 28 Jan. Capacitance, charging curves, time constants.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-flask" style="color:#f472b6;"></i><div><strong>Practical: Capacitor charge/discharge</strong><p>Completed in lab, 29 Jan. Oscilloscope readings recorded.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-star" style="color:#fbbf24;"></i><div><strong>Quiz: Capacitors</strong><p>Score: 92%. 23 of 25 correct.</p></div></div>
+                  </div>
+                </div>
+
+                <div class="sp-module-card done" data-mod="6">
+                  <div class="sp-mod-head"><span class="dot done"></span><span class="name">6. Inductors &amp; Transformers</span><span class="grade done">90%</span><i class="fa-solid fa-chevron-down sp-mod-chev"></i></div>
+                  <div class="sp-mod-body">
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: Inductance and magnetic fields</strong><p>Completed 3 Feb.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: Transformer ratios</strong><p>Completed 4 Feb. Step-up, step-down, turns ratio.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-file-pen" style="color:#a78bfa;"></i><div><strong>Practical: Transformer Ratio Lab</strong><p>Due tomorrow. Not yet submitted.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-star" style="color:#fbbf24;"></i><div><strong>Quiz: Inductors &amp; Transformers</strong><p>Score: 90%. 18 of 20 correct.</p></div></div>
+                  </div>
+                </div>
+
+                <div class="sp-module-card done" data-mod="7">
+                  <div class="sp-mod-head"><span class="dot done"></span><span class="name">7. DC Circuit Analysis</span><span class="grade done">93%</span><i class="fa-solid fa-chevron-down sp-mod-chev"></i></div>
+                  <div class="sp-mod-body">
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: Thevenin and Norton equivalents</strong><p>Completed 7 Feb.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: Superposition theorem</strong><p>Completed 8 Feb.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-file-pen" style="color:#a78bfa;"></i><div><strong>Worksheet: DC Analysis problems</strong><p>Submitted 8 Feb. Grade: 93%</p></div></div>
+                  </div>
+                </div>
+
+                <div class="sp-module-card done" data-mod="8">
+                  <div class="sp-mod-head"><span class="dot done"></span><span class="name">8. AC Circuits &amp; Waveforms</span><span class="grade done">96%</span><i class="fa-solid fa-chevron-down sp-mod-chev"></i></div>
+                  <div class="sp-mod-body">
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: AC waveforms, frequency, period</strong><p>Completed today.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-play" style="color:#60a5fa;"></i><div><strong>Video: AC Phasor Walkthrough</strong><p>YouTube, 18 min. Watched.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-file-pen" style="color:#a78bfa;"></i><div><strong>Worksheet: Phasor diagrams</strong><p>Submitted today. Grade: 96%</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-star" style="color:#fbbf24;"></i><div><strong>Quiz: AC Circuits</strong><p>Score: 96%. Mr Hodson: "Excellent phasor work."</p></div></div>
+                  </div>
+                </div>
+
+                <div class="sp-module-card active" data-mod="9">
+                  <div class="sp-mod-head"><span class="dot active"></span><span class="name">9. Semiconductors &amp; Diodes</span><span class="grade">40%</span><i class="fa-solid fa-chevron-down sp-mod-chev"></i></div>
+                  <div class="sp-mod-body">
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#4ade80;"></i><div><strong>Lesson: P-N junctions and how diodes work</strong><p>Completed yesterday.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-book-open" style="color:#8a8a95;"></i><div><strong>Lesson: Zener diodes and voltage regulation</strong><p>Not started.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-file-pen" style="color:#8a8a95;"></i><div><strong>Worksheet: Diode circuits</strong><p>Not started.</p></div></div>
+                    <div class="sp-mod-row"><i class="fa-solid fa-star" style="color:#8a8a95;"></i><div><strong>Quiz: Semiconductors &amp; Diodes</strong><p>Locked until worksheet is submitted.</p></div></div>
+                  </div>
+                </div>
+
+                <div class="sp-module-card locked" data-mod="10">
+                  <div class="sp-mod-head"><span class="dot"></span><span class="name">10. Transistors &amp; Amplifiers</span><span class="grade">Locked</span><i class="fa-solid fa-lock sp-mod-chev" style="font-size:0.65rem;"></i></div>
+                </div>
               </div>
 
               <!-- ASSIGNMENTS -->
@@ -2319,6 +2472,14 @@
 
     navBtns.forEach(function(b){
       b.addEventListener('click', function(){ switchSP(b.getAttribute('data-sp')); });
+    });
+
+    // Expandable module cards
+    demo.querySelectorAll('.sp-module-card:not(.locked) .sp-mod-head').forEach(function(head){
+      head.addEventListener('click', function(){
+        var card = head.parentElement;
+        card.classList.toggle('open');
+      });
     });
   })();
   </script>
