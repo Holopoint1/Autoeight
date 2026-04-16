@@ -203,39 +203,8 @@
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
-  <nav id="nav">
-    <a href="/" class="nav-logo"><img src="/brand_assets/logo.png?v=3" alt="Autoeight" /></a>
-    <ul class="nav-menu" id="nav-menu">
-      <li class="nav-item has-dropdown">
-        <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
-        <ul class="dropdown">
-          <li><a href="/services/web-design"><i class="fa-solid fa-globe"></i> Web Design</a></li>
-          <li><a href="/services/ai-automation"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a></li>
-          <li><a href="/services/crm-integration"><i class="fa-solid fa-plug"></i> CRM &amp; Integration</a></li>
-          <li><a href="/services/sales-automation"><i class="fa-solid fa-chart-line"></i> Sales Automation</a></li>
-          <li><a href="/services/lms"><i class="fa-solid fa-graduation-cap"></i> Learning Management</a></li>
-        </ul>
-      </li>
-      <li class="nav-item"><a href="/results/case-studies">Results</a></li>
-      <li class="nav-item"><a href="/about">About Us</a></li>
-      <li class="nav-item has-dropdown">
-        <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
-        <ul class="dropdown">
-          <li><a href="/resources/blog"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
-          <li><a href="/resources/news"><i class="fa-solid fa-newspaper"></i> News</a></li>
-          <li><a href="/resources/blueprints"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
-          <li><a href="/resources/glossary"><i class="fa-solid fa-book"></i> Glossary</a></li>
-        </ul>
-      </li>
-    </ul>
-    <a href="/book" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Free Consultation</a>
-    <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></label>
-  </nav>
-
-
-  <!-- ── HERO ── -->
+  <div id="nav-placeholder"></div>
+<!-- ── HERO ── -->
   <section id="home">
     <canvas id="hero-canvas"></canvas>
     <div class="hero-bg-base"></div>
@@ -258,11 +227,11 @@
         </div>
 
         <h1 class="hero-headline glow-text">
-          We build custom software for UK businesses <em class="typewriter-cycle" data-words='["sales pipelines","CRM systems","AI automation","client portals","learning platforms"]'>sales pipelines</em>
+          Your business, <em class="typewriter-cycle" data-words='["automated","connected","streamlined","scalable","sorted"]'>automated</em>
         </h1>
 
         <p class="hero-sub">
-          No templates, no per-seat licences. One team designs, builds, and supports everything your operation runs on.
+          We build the systems UK businesses actually run on. AI automation, CRM integration, sales pipelines, learning platforms, and websites. One team, no templates.
         </p>
 
         <div class="hero-actions">
@@ -979,47 +948,8 @@
     </div>
   </div>
 
-  <!-- ── FOOTER ── -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="/brand_assets/logo.png?v=3" alt="Autoeight" />
-          <p>We build custom software, automations and integrations for businesses across the UK.</p>
-          <div class="socials">
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="services/web-design">Web Design</a></li>
-            <li><a href="services/ai-automation">AI &amp; Automation</a></li>
-            <li><a href="services/crm-integration">CRM &amp; Integration</a></li>
-            <li><a href="services/sales-automation">Sales Automation</a></li>
-            <li><a href="services/lms">Learning Management</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <address class="footer-address">Halifax,<br />West Yorkshire<br /><br /><a href="mailto:alfie@autoeight.ai">alfie@autoeight.ai</a></address>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; Copyright 2026, Autoeight</p>
-        <div class="footer-legal">
-          <a href="terms">Terms &amp; Conditions</a>
-          <a href="privacy">Privacy Policy</a>
-          <a href="javascript:void(0)" onclick="if(window.AE_CONSENT_SHOW)window.AE_CONSENT_SHOW();">Manage Cookies</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="main.js?v=20260331r"></script>
+  <div id="footer-placeholder"></div>
+<script src="main.js?v=20260331r"></script>
   <script>
     // ── Index-only: active section highlight
     window.addEventListener('scroll', () => {
@@ -1129,6 +1059,7 @@
   <script>window.AE_TRACK={apiKey:'991d5076a16d0a4d1c00379d040173fb2ff38f31e49c178e',endpoint:'https://useohuvyxzshmskjngpo.supabase.co/functions/v1/track'}</script>
   <script src="ae-track.js" async></script>
   <script src="ae-consent.js" async></script>
+  <script src="/includes.js"></script>
 </body>
 </html>
 
