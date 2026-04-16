@@ -238,10 +238,10 @@ nav.scrolled {
 }
 
 .nav-logo img {
-  height: 46px;
-  width: auto !important;
+  width: 160px;
+  height: auto;
   max-width: none;
-  max-height: 46px;
+  max-height: 56px;
   object-fit: contain;
   display: block;
   margin-top: 0;
@@ -2831,7 +2831,7 @@ footer {
     align-items: center;
     min-width: 0;
   }
-  .nav-logo img { height: 36px; width: auto !important; max-height: 36px; margin-top: 0; }
+  .nav-logo img { width: 120px; height: auto; max-height: 42px; margin-top: 0; }
   .nav-menu { display: none; }
   .mobile-nav-sheet {
     position: fixed;
