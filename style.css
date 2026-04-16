@@ -247,7 +247,8 @@ nav.scrolled {
   margin-top: 0;
   margin-left: 0;
   flex-shrink: 0;
-  filter: brightness(0) invert(1);
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
 .nav-logo {
   flex-shrink: 0;
