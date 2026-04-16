@@ -454,7 +454,7 @@
           <div class="cs-highlight-stats"><div class="cs-highlight-stat"><strong>6</strong> regions ranking</div><div class="cs-highlight-stat"><strong>5.0★</strong> Google</div></div>
           <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
         </a>
-        <a href="../brand_assets/case-studies/dice-tavern/dice-tavern" class="cs-highlight">
+        <a href="/brand_assets/case-studies/dice-tavern/dice-tavern" class="cs-highlight">
           <span class="cs-highlight-tag">E-Commerce + CMS</span>
           <h3>The Dice Tavern</h3>
           <div class="cs-highlight-stats"><div class="cs-highlight-stat"><strong>4.9★</strong> rating</div><div class="cs-highlight-stat"><strong>4</strong> emails per order</div></div>
@@ -466,6 +466,152 @@
       </div>
     </div>
   </section>
+
+  <!-- ── DICE TAVERN LIVE PREVIEW ── -->
+  <style>
+    .dt-preview-section {
+      padding: 64px 5% 72px;
+      background: linear-gradient(180deg, #0a0a0e 0%, #111118 100%);
+      position: relative;
+      overflow: hidden;
+      --white: #ffffff;
+      --muted: rgba(255,255,255,0.62);
+      color: #ffffff;
+    }
+    .dt-preview-section::before {
+      content: "";
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124,92,252,0.12), transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .dt-preview-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .dt-preview-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 36px;
+    }
+    .dt-preview-header .section-label {
+      color: #a78bfa;
+      display: inline-block;
+    }
+    .dt-preview-header .section-label::before { display: none !important; }
+    .dt-preview-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 12px 0 14px;
+      color: #ffffff;
+    }
+    .dt-preview-header h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #a78bfa, #6d4de6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .dt-preview-header p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.7);
+    }
+    .dt-preview-header p a {
+      color: #a78bfa;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .dt-preview-header p a:hover { text-decoration: underline; }
+    .dt-frame {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+    }
+    .dt-chrome {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #15151f;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .dt-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+    .dt-dot.r { background: #ff5f57; }
+    .dt-dot.a { background: #febc2e; }
+    .dt-dot.g { background: #28c840; }
+    .dt-url {
+      flex: 1;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #8a8a95;
+      background: #0d0d14;
+      padding: 5px 14px;
+      border-radius: 6px;
+      font-family: 'SF Mono', Menlo, monospace;
+    }
+    .dt-url i { color: #4ade80; margin-right: 6px; font-size: 0.72rem; }
+    .dt-iframe-wrap {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      background: #0a0a0e;
+    }
+    .dt-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .dt-visit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      color: #a78bfa;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .dt-visit:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .dt-iframe-wrap { height: 400px; }
+    }
+  </style>
+  <section class="dt-preview-section">
+    <div class="dt-preview-inner">
+      <div class="dt-preview-header">
+        <span class="section-label">Live Client Site</span>
+        <h2>The Dice Tavern. <em>Built by us, live right now.</em></h2>
+        <p>A full e-commerce site with custom product pages, automated order emails, stock management, and a CMS dashboard. Scroll around inside the preview or <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener">visit the live site</a>.</p>
+      </div>
+
+      <div class="dt-frame">
+        <div class="dt-chrome">
+          <span class="dt-dot r"></span>
+          <span class="dt-dot a"></span>
+          <span class="dt-dot g"></span>
+          <div class="dt-url"><i class="fa-solid fa-lock"></i>www.thedicetavern.co.uk</div>
+        </div>
+        <div class="dt-iframe-wrap">
+          <iframe src="https://www.thedicetavern.co.uk/" loading="lazy" title="The Dice Tavern - Live Website Preview" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-visit">Visit thedicetavern.co.uk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
 
   <!-- ── FAQ ── -->
   <section id="faq" class="page-section">

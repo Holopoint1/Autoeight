@@ -3130,7 +3130,7 @@ footer {
   .sales-demo-topbar,
   .email-app-header { flex-direction: column; align-items: flex-start; }
   .workflow-add-btn { width: 100%; justify-content: center; }
-  .workflow-canvas-area { height: 260px; }
+  .workflow-canvas-area { min-height: 260px; }
   .workflow-node { width: 160px; }
   .sales-demo-shell,
   .workflow-builder-wrap,
@@ -5088,12 +5088,12 @@ footer {
 .workflow-add-btn:hover { color: var(--white); border-color: rgba(0,0,0,0.12); background: rgba(0,0,0,0.04); }
 .workflow-canvas-area {
   position: relative;
-  height: 310px;
-  overflow: auto;
+  min-height: 310px;
+  overflow: visible;
 }
 .workflow-canvas-inner {
   position: relative;
-  min-width: 100%;
+  width: 100%;
   min-height: 100%;
 }
 .workflow-svg { position: absolute; top: 0; left: 0; pointer-events: none; overflow: visible; }
