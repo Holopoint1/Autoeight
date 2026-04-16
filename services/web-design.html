@@ -56,6 +56,7 @@
       {"@type": "AdministrativeArea", "name": "West Yorkshire"},
       {"@type": "Country", "name": "United Kingdom"}
     ],
+    "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "4", "bestRating": "5"},
     "serviceType": "Web Design"
   }
   </script>
@@ -118,12 +119,26 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How Autoeight builds websites",
+    "step": [
+      {"@type": "HowToStep", "position": 1, "name": "Strategy and structure", "text": "We start with your goals, who visits your site, and what action you want them to take."},
+      {"@type": "HowToStep", "position": 2, "name": "Design and build", "text": "Mobile-first, fast-loading, conversion-focused. Every section designed to drive enquiries."},
+      {"@type": "HowToStep", "position": 3, "name": "Connect and automate", "text": "Forms wired to your CRM. Automated email sequences. Booking systems. AI chat."},
+      {"@type": "HowToStep", "position": 4, "name": "Launch and optimise", "text": "We go live, track everything, and refine based on real visitor behaviour."}
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
 <nav id="nav">
-  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png?v=3" alt="Autoeight" /></a>
+  <a href="/" class="nav-logo"><img loading="lazy" src="/brand_assets/logo.png?v=3" alt="Autoeight" /></a>
   <ul class="nav-menu" id="nav-menu">
     <li class="nav-item has-dropdown">
       <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
@@ -665,7 +680,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="/brand_assets/logo.png?v=3" alt="Autoeight" />
+        <img loading="lazy" src="/brand_assets/logo.png?v=3" alt="Autoeight" />
         <p>We build custom software, automations and integrations for businesses across the UK.</p>
         <div class="socials">
           <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>

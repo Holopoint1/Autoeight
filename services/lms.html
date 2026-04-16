@@ -56,6 +56,7 @@
       {"@type": "AdministrativeArea", "name": "West Yorkshire"},
       {"@type": "Country", "name": "United Kingdom"}
     ],
+    "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "4", "bestRating": "5"},
     "serviceType": "Learning Management Systems"
   }
   </script>
@@ -118,12 +119,26 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How Autoeight builds learning platforms",
+    "step": [
+      {"@type": "HowToStep", "position": 1, "name": "Discovery and structure", "text": "We sit down with whoever runs the learning and map out courses, roles, and progress tracking."},
+      {"@type": "HowToStep", "position": 2, "name": "Content and course import", "text": "We pull in whatever you already have. Word docs, PDFs, PowerPoints, YouTube videos, SCORM packages."},
+      {"@type": "HowToStep", "position": 3, "name": "Build and brand", "text": "We build the platform around your courses and users. Fully branded, on your own domain."},
+      {"@type": "HowToStep", "position": 4, "name": "Launch and improve", "text": "We train your team, onboard your first cohort, and stick around to refine things."}
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
 <nav id="nav">
-  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png?v=3" alt="Autoeight" /></a>
+  <a href="/" class="nav-logo"><img loading="lazy" src="/brand_assets/logo.png?v=3" alt="Autoeight" /></a>
   <ul class="nav-menu" id="nav-menu">
     <li class="nav-item has-dropdown">
       <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
@@ -2883,7 +2898,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="/brand_assets/logo.png?v=3" alt="Autoeight" />
+        <img loading="lazy" src="/brand_assets/logo.png?v=3" alt="Autoeight" />
         <p>We build custom software, automations and integrations for businesses across the UK.</p>
         <div class="socials">
           <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
