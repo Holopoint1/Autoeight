@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /backend/
+Disallow: /nav.html
+Disallow: /footer.html
+Disallow: /includes.js
 
 Sitemap: https://autoeight.ai/sitemap.xml
