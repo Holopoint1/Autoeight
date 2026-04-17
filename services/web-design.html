@@ -556,21 +556,85 @@
         <p>A full e-commerce site with custom product pages, automated order emails, stock management, and a CMS dashboard.</p>
       </div>
 
-      <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-frame" style="display:block;text-decoration:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;">
+      <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-frame" style="display:block;text-decoration:none;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;">
         <div class="dt-chrome">
           <span class="dt-dot r"></span>
           <span class="dt-dot a"></span>
           <span class="dt-dot g"></span>
           <div class="dt-url"><i class="fa-solid fa-lock"></i>www.thedicetavern.co.uk</div>
         </div>
-        <div style="position:relative;overflow:hidden;">
-          <img loading="lazy" src="/brand_assets/case-studies/dice-tavern/Site_pics/home%20hero%20banner.png" alt="The Dice Tavern homepage" style="width:100%;display:block;" />
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.2s;">
-            <span style="background:rgba(255,255,255,0.95);color:#111;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:700;">Visit live site <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.72rem;margin-left:6px;"></i></span>
+        <div class="dt-hero-mini">
+          <img loading="lazy" src="/brand_assets/case-studies/dice-tavern/Site_pics/home%20hero%20banner.png" alt="The Dice Tavern homepage" />
+          <!-- Animated effects overlay -->
+          <div class="dt-fx">
+            <div class="dt-ember dt-e1"></div>
+            <div class="dt-ember dt-e2"></div>
+            <div class="dt-ember dt-e3"></div>
+            <div class="dt-ember dt-e4"></div>
+            <div class="dt-ember dt-e5"></div>
+            <div class="dt-ember dt-e6"></div>
+            <div class="dt-ember dt-e7"></div>
+            <div class="dt-ember dt-e8"></div>
+            <div class="dt-glow"></div>
+          </div>
+          <div class="dt-hover-cta">
+            <span>Visit live site <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
           </div>
         </div>
       </a>
-      <style>.dt-frame:hover div[style*="opacity:0"] { opacity: 1 !important; } .dt-frame:hover { transform: translateY(-3px); box-shadow: 0 50px 140px rgba(0,0,0,0.7) !important; }</style>
+      <style>
+        .dt-hero-mini { position: relative; overflow: hidden; height: 420px; }
+        .dt-hero-mini img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+        .dt-fx { position: absolute; inset: 0; pointer-events: none; }
+        .dt-glow {
+          position: absolute;
+          top: 30%; left: 40%;
+          width: 200px; height: 200px;
+          background: radial-gradient(circle, rgba(212,160,23,0.2), transparent 70%);
+          border-radius: 50%;
+          filter: blur(40px);
+          animation: dt-glow-pulse 4s ease-in-out infinite;
+        }
+        @keyframes dt-glow-pulse { 0%,100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.3); } }
+        .dt-ember {
+          position: absolute;
+          width: 3px; height: 3px;
+          background: #d4a017;
+          border-radius: 50%;
+          box-shadow: 0 0 6px 2px rgba(212,160,23,0.6);
+          animation: dt-float 6s ease-in-out infinite;
+        }
+        .dt-e1 { bottom: 20%; left: 15%; animation-duration: 5s; animation-delay: 0s; }
+        .dt-e2 { bottom: 30%; left: 55%; animation-duration: 7s; animation-delay: 1s; }
+        .dt-e3 { bottom: 10%; left: 75%; animation-duration: 4.5s; animation-delay: 0.5s; }
+        .dt-e4 { bottom: 40%; left: 35%; animation-duration: 6s; animation-delay: 2s; }
+        .dt-e5 { bottom: 15%; left: 85%; animation-duration: 5.5s; animation-delay: 1.5s; }
+        .dt-e6 { bottom: 25%; left: 25%; animation-duration: 8s; animation-delay: 0.8s; }
+        .dt-e7 { bottom: 35%; left: 65%; animation-duration: 6.5s; animation-delay: 3s; }
+        .dt-e8 { bottom: 45%; left: 45%; animation-duration: 5s; animation-delay: 2.5s; }
+        @keyframes dt-float {
+          0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+          10% { opacity: 1; }
+          80% { opacity: 0.6; }
+          100% { transform: translateY(-120px) translateX(20px) scale(0.3); opacity: 0; }
+        }
+        .dt-hover-cta {
+          position: absolute; inset: 0;
+          display: flex; align-items: center; justify-content: center;
+          background: rgba(0,0,0,0.35);
+          opacity: 0; transition: opacity 0.25s;
+        }
+        .dt-hover-cta span {
+          background: rgba(255,255,255,0.95); color: #111;
+          padding: 12px 28px; border-radius: 10px;
+          font-size: 0.9rem; font-weight: 700;
+        }
+        .dt-hover-cta span i { font-size: 0.72rem; margin-left: 6px; }
+        .dt-frame:hover .dt-hover-cta { opacity: 1; }
+        .dt-frame:hover { transform: translateY(-3px); box-shadow: 0 50px 140px rgba(0,0,0,0.7) !important; }
+        @media (max-width: 768px) { .dt-hero-mini { height: 280px; } }
+        @media (prefers-reduced-motion: reduce) { .dt-ember, .dt-glow { animation: none; } }
+      </style>
 
       <div style="text-align:center;">
         <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-visit">Visit thedicetavern.co.uk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
