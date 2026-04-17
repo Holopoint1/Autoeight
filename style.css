@@ -793,10 +793,10 @@ nav.scrolled {
 /* â”€â”€ LOGOS / SOCIAL PROOF â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #logos {
-  padding: 32px 5%;
-  border-top: 1px solid var(--border);
+  padding: 16px 5%;
+  border-top: none;
   border-bottom: 1px solid var(--border);
-  background: var(--dark);
+  background: transparent;
 }
 
 .logos-inner {
@@ -808,7 +808,7 @@ nav.scrolled {
 }
 
 .logos-label {
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--subtle);
   text-transform: uppercase;
@@ -819,7 +819,7 @@ nav.scrolled {
 
 .logos-divider {
   width: 1px;
-  height: 28px;
+  height: 20px;
   background: var(--border);
   flex-shrink: 0;
 }
@@ -845,8 +845,8 @@ nav.scrolled {
 .logo-pill {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.88rem;
+  gap: 7px;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--subtle);
   white-space: nowrap;
@@ -5177,7 +5177,7 @@ footer {
 }
 .logo-timeline-rows {
   display: grid;
-  grid-template-rows: repeat(7, 60px);
+  grid-template-rows: repeat(7, 48px);
   position: relative;
 }
 .logo-row {
@@ -5251,19 +5251,19 @@ footer {
 }
 .logo-timeline-center {
   text-align: center;
-  padding: 22px 36px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  padding: 16px 28px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
 }
 .logo-timeline-center h2 {
-  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  font-size: clamp(0.95rem, 1.8vw, 1.35rem);
   font-weight: 800;
   color: var(--white);
   line-height: 1.25;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .logo-timeline-center h2 em {
   font-style: normal;
@@ -5273,8 +5273,8 @@ footer {
   background-clip: text;
 }
 .logo-timeline-center p {
-  font-size: 0.8rem;
-  color: rgba(0,0,0,0.55);
+  font-size: 0.72rem;
+  color: rgba(0,0,0,0.5);
   letter-spacing: 0.02em;
 }
 
