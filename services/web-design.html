@@ -178,13 +178,13 @@
     </div>
   </div>
 
-  <!-- ── DEFINITION (AI Search) ── -->
-  <section class="page-section" style="padding:40px 5% 0;">
+  <!-- ── DEFINITION ── -->
+  <section class="page-section" style="padding:48px 5% 0;">
     <div class="page-section-inner" style="max-width:760px;margin:0 auto;">
-      <div class="reveal">
-        <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:10px;">What makes a high-converting business website?</h2>
-        <p style="font-size:0.95rem;line-height:1.75;color:var(--muted);">A high-converting business website is designed around a clear conversion path — guiding visitors from their first interaction to a specific action like booking a call, requesting a quote, or making a purchase. It combines fast loading speeds, mobile-first design, search engine optimisation, and persuasive copy with backend automation so that every form submission, enquiry, and interaction is captured and acted on automatically.</p>
-        <p style="font-size:0.95rem;line-height:1.75;color:var(--muted);margin-top:10px;">This approach to web design is ideal for businesses that rely on their website to generate leads, service-based companies that need enquiry-driven sites, and any business that wants a website that works as a sales tool rather than just a digital brochure.</p>
+      <div class="reveal" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;">
+        <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:12px;">What makes a website actually work for a business?</h2>
+        <p style="font-size:0.92rem;line-height:1.75;color:var(--muted);">Most business websites look fine but don't actually do anything. They sit there. Nobody follows up with the people who visit. Forms go to a shared inbox and get forgotten. There's no connection between the website and the tools the team uses every day.</p>
+        <p style="font-size:0.92rem;line-height:1.75;color:var(--muted);margin-top:10px;">A website that works is one where every form, button, and page is connected to something. Enquiries go straight into your CRM. Confirmation emails go out on their own. Leads get scored and routed. The site loads fast, ranks on Google, and looks good on every device. That's what we build.</p>
       </div>
     </div>
   </section>
@@ -227,43 +227,6 @@
   </section>
 
   <div class="section-divider"></div>
-
-  <!-- INTERACTIVE WORKFLOW BUILDER -->
-  <section class="page-section alt">
-    <div class="page-section-inner">
-      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 48px;">
-        <span class="section-label">How We Build</span>
-        <h2 class="section-title">Your project as a live workflow</h2>
-        <p class="section-sub" style="margin:14px auto 0;">Every project follows a clear process from brief to launch. Drag the nodes around to explore each stage.</p>
-      </div>
-      <div class="workflow-builder-wrap reveal" style="transition-delay:0.1s;">
-        <div class="workflow-header">
-          <span class="workflow-badge">Live Process</span>
-          <button class="workflow-add-btn" id="workflow-add-btn">
-            <i class="fa-solid fa-plus"></i> Add Step
-          </button>
-        </div>
-        <div class="workflow-canvas-area" id="workflow-canvas-area">
-          <div class="workflow-canvas-inner" id="workflow-canvas-inner">
-            <svg class="workflow-svg" id="workflow-svg"></svg>
-          </div>
-        </div>
-        <div class="workflow-footer-bar">
-          <div class="workflow-stats">
-            <div class="workflow-stat">
-              <div class="workflow-stat-dot" style="background:#4ade80;"></div>
-              <span id="wf-node-count">5 Steps</span>
-            </div>
-            <div class="workflow-stat">
-              <div class="workflow-stat-dot" style="background:var(--purple-light);"></div>
-              <span id="wf-conn-count">4 Connections</span>
-            </div>
-          </div>
-          <span class="workflow-hint">Drag nodes to reposition</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <div class="section-divider"></div>
 
@@ -573,17 +536,6 @@
       font-family: 'SF Mono', Menlo, monospace;
     }
     .dt-url i { color: #4ade80; margin-right: 6px; font-size: 0.72rem; }
-    .dt-iframe-wrap {
-      position: relative;
-      width: 100%;
-      height: 600px;
-      background: #0a0a0e;
-    }
-    .dt-iframe-wrap iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
     .dt-visit {
       display: inline-flex;
       align-items: center;
@@ -595,29 +547,30 @@
       text-decoration: none;
     }
     .dt-visit:hover { text-decoration: underline; }
-    @media (max-width: 768px) {
-      .dt-iframe-wrap { height: 400px; }
-    }
   </style>
   <section class="dt-preview-section">
     <div class="dt-preview-inner">
       <div class="dt-preview-header">
         <span class="section-label">Live Client Site</span>
         <h2>The Dice Tavern. <em>Built by us, live right now.</em></h2>
-        <p>A full e-commerce site with custom product pages, automated order emails, stock management, and a CMS dashboard. Scroll around inside the preview or <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener">visit the live site</a>.</p>
+        <p>A full e-commerce site with custom product pages, automated order emails, stock management, and a CMS dashboard.</p>
       </div>
 
-      <div class="dt-frame">
+      <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-frame" style="display:block;text-decoration:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;">
         <div class="dt-chrome">
           <span class="dt-dot r"></span>
           <span class="dt-dot a"></span>
           <span class="dt-dot g"></span>
           <div class="dt-url"><i class="fa-solid fa-lock"></i>www.thedicetavern.co.uk</div>
         </div>
-        <div class="dt-iframe-wrap">
-          <iframe src="https://www.thedicetavern.co.uk/" loading="lazy" title="The Dice Tavern - Live Website Preview" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+        <div style="position:relative;overflow:hidden;">
+          <img loading="lazy" src="/brand_assets/case-studies/dice-tavern/Site_pics/home%20hero%20banner.png" alt="The Dice Tavern homepage" style="width:100%;display:block;" />
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.2s;">
+            <span style="background:rgba(255,255,255,0.95);color:#111;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:700;">Visit live site <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.72rem;margin-left:6px;"></i></span>
+          </div>
         </div>
-      </div>
+      </a>
+      <style>.dt-frame:hover div[style*="opacity:0"] { opacity: 1 !important; } .dt-frame:hover { transform: translateY(-3px); box-shadow: 0 50px 140px rgba(0,0,0,0.7) !important; }</style>
 
       <div style="text-align:center;">
         <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-visit">Visit thedicetavern.co.uk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
