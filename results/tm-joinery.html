@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://autoeight.ai/results/tm-joinery" />
   <meta property="og:title" content="Case Study: TM Joinery Ltd – Autoeight" />
   <meta property="og:description" content="How Autoeight built TM Joinery Ltd a high-converting trades website with advanced SEO, structured data, and scroll animations that ranks on page one in Glasgow." />
-  <meta property="og:image" content="https://autoeight.ai/brand_assets/logo.png" />
+  <meta property="og:image" content="https://autoeight.ai/brand_assets/case-studies/tm-joinery/tmjoineryhomepage.png" />
   <meta property="og:site_name" content="Autoeight" />
   <meta property="og:locale" content="en_GB" />
 
@@ -117,8 +117,25 @@
     ]
   }
   </script>
+  <style>
+    .cs-img-wrap { cursor: zoom-in; transition: transform 0.2s, box-shadow 0.2s; }
+    .cs-img-wrap:hover { transform: scale(1.01); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+    .cs-img-wrap img { display: block; width: 100%; }
+    .cs-lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+    .cs-lightbox.open { display: flex; }
+    .cs-lightbox img { max-width: 95vw; max-height: 92vh; border-radius: 12px; box-shadow: 0 24px 80px rgba(0,0,0,0.5); object-fit: contain; }
+    .cs-lb-close { position: absolute; top: 20px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 1.2rem; cursor: pointer; display: grid; place-items: center; }
+    .cs-lb-close:hover { background: rgba(255,255,255,0.2); }
+    .cs-lb-caption { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 0.82rem; text-align: center; max-width: 600px; }
+  </style>
 </head>
 <body>
+
+  <div class="cs-lightbox" id="cs-lightbox">
+    <button class="cs-lb-close" id="cs-lb-close"><i class="fa-solid fa-xmark"></i></button>
+    <img id="cs-lb-img" src="" alt="" />
+    <div class="cs-lb-caption" id="cs-lb-caption"></div>
+  </div>
 
   <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-hidden="true" />
 <nav id="nav">
@@ -179,6 +196,15 @@
         </div>
       </div>
 
+      <!-- Homepage screenshot -->
+      <div class="cs-img-wrap reveal" style="margin-bottom:32px; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border); box-shadow:0 20px 60px rgba(0,0,0,0.08);">
+        <img loading="lazy" src="/brand_assets/case-studies/tm-joinery/tmjoineryhomepage.png" alt="TM Joinery homepage showing hero banner with professional joinery photography" style="width:100%; display:block;" />
+        <div style="padding:12px 16px; background:var(--surface); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+          <span style="font-size:0.72rem; color:var(--muted);">TM Joinery homepage. Full-width hero with professional project photography and clear CTAs.</span>
+          <a href="https://tmjoineryltd.co.uk/" target="_blank" rel="noopener" style="font-size:0.72rem; font-weight:600; color:var(--purple-light); text-decoration:none; display:inline-flex; align-items:center; gap:5px;">Visit live site <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i></a>
+        </div>
+      </div>
+
       <div class="reveal" style="margin-bottom: 48px;">
         <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;">The Problem</h2>
         <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px;">TM Joinery is based near Glasgow and does kitchens, extensions, decking, doors, and cabinetry. Great reputation, quality work, but every single job came through word of mouth or the odd social media post. No website. No Google presence. If someone searched for a joiner in Glasgow, they'd never find them.</p>
@@ -186,30 +212,78 @@
       </div>
 
       <div class="reveal" style="margin-bottom: 48px;">
-        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;">What We Did</h2>
-        <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 20px;">We built a website designed to do two things: rank on Google across multiple areas around Glasgow, and turn visitors into actual quote requests.</p>
+        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;">What We Built</h2>
+        <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 24px;">A website designed to do two things: rank on Google across multiple areas around Glasgow, and turn visitors into actual quote requests. Here's what went into it.</p>
 
-        <div class="case-grid" style="margin-bottom: 24px;">
-          <div class="case-card">
-            <span class="case-tag">Conversion Design</span>
-            <h3>A website that looks the part</h3>
-            <p>Clean design, clear service pages, professional photos, and a layout built around getting people to enquire. When someone lands on the site, they see quality and credibility straight away. That first impression matters, especially in trades.</p>
+        <!-- Feature 1: Design -->
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; margin-bottom:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(124,92,252,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-solid fa-pen-nib" style="color:#7c5cfc;font-size:0.9rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:1rem; font-weight:700; color:var(--white);">Premium conversion design</div>
+              <div style="font-size:0.75rem; color:var(--muted);">First impressions win jobs in trades</div>
+            </div>
           </div>
-          <div class="case-card">
-            <span class="case-tag">Local SEO</span>
-            <h3>Set up to rank across 6 regions</h3>
-            <p>We handled all the technical SEO: structured data, local business schema, service area targeting across 6 regions around Glasgow, and properly optimised metadata. Google gets a full picture of the business in exactly the format it wants. That's what gets you higher rankings.</p>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.7;">Full-width hero with professional photography of their best work. Clear service pages for kitchens, extensions, decking, doors, and cabinetry. Every page built around a single goal: get the visitor to request a quote. When someone lands on the site, they see quality and credibility immediately. That first impression matters in trades more than almost any other industry.</p>
+        </div>
+
+        <!-- Feature 2: Local SEO (expanded) -->
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; margin-bottom:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(34,197,94,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-solid fa-magnifying-glass" style="color:#22c55e;font-size:0.9rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:1rem; font-weight:700; color:var(--white);">Local SEO across 6 regions</div>
+              <div style="font-size:0.75rem; color:var(--muted);">Structured data, service areas, and Google Business Profile</div>
+            </div>
           </div>
-          <div class="case-card">
-            <span class="case-tag">Automated Leads</span>
-            <h3>Quote requests come in automatically</h3>
-            <p>Customers pick their service, describe their project, and hit submit. The team gets the enquiry straight away. We also added click-to-call, embedded maps, and the 5-star Google reviews right on the page. The site builds trust and captures leads around the clock, even when nobody's at the desk.</p>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.7; margin-bottom:14px;">This is where most trades websites fail. They look decent but Google can't understand what the business does or where it operates. We implemented:</p>
+          <ul style="list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:8px;">
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.6;"><i class="fa-solid fa-check" style="color:#22c55e;font-size:0.7rem;margin-top:5px;flex-shrink:0;"></i><span><strong style="color:var(--white);">LocalBusiness schema</strong> with full address, service area covering Glasgow, Eaglesham, East Renfrewshire, Newton Mearns, East Kilbride, and Lanarkshire, opening hours, and contact details</span></li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.6;"><i class="fa-solid fa-check" style="color:#22c55e;font-size:0.7rem;margin-top:5px;flex-shrink:0;"></i><span><strong style="color:var(--white);">Service schema</strong> for each trade offered: kitchen fitting, extensions, decking, doors, cabinetry</span></li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.6;"><i class="fa-solid fa-check" style="color:#22c55e;font-size:0.7rem;margin-top:5px;flex-shrink:0;"></i><span><strong style="color:var(--white);">AggregateRating schema</strong> pulling the 5.0-star Google rating into search results so the stars show up before anyone clicks</span></li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.6;"><i class="fa-solid fa-check" style="color:#22c55e;font-size:0.7rem;margin-top:5px;flex-shrink:0;"></i><span><strong style="color:var(--white);">FAQ and BreadcrumbList schema</strong> for richer Google snippets with expandable answers</span></li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.6;"><i class="fa-solid fa-check" style="color:#22c55e;font-size:0.7rem;margin-top:5px;flex-shrink:0;"></i><span><strong style="color:var(--white);">Core Web Vitals optimised</strong> for fast loading on mobile. Google uses page speed as a direct ranking factor</span></li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.6;"><i class="fa-solid fa-check" style="color:#22c55e;font-size:0.7rem;margin-top:5px;flex-shrink:0;"></i><span><strong style="color:var(--white);">Google Business Profile</strong> set up and linked so the website, maps, and reviews all reinforce each other</span></li>
+          </ul>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.7;">The result: Google gets a complete, structured picture of the business in exactly the format it wants. That's what pushes you up the rankings in local search.</p>
+        </div>
+
+        <!-- Feature 3: Leads -->
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; margin-bottom:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(124,92,252,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-solid fa-inbox" style="color:#7c5cfc;font-size:0.9rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:1rem; font-weight:700; color:var(--white);">Automated lead capture</div>
+              <div style="font-size:0.75rem; color:var(--muted);">Quote requests come in without anyone chasing</div>
+            </div>
           </div>
-          <div class="case-card">
-            <span class="case-tag">Social Proof</span>
-            <h3>The work speaks for itself</h3>
-            <p>A portfolio section showing off completed kitchens, decking, doors, all with real project photos. People can see the quality of the work before they even get to the contact form. It shortens the sales process because by the time someone reaches out, they're already sold on the craftsmanship.</p>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.7;">Customers pick their service, describe the project, and submit. The team gets the enquiry immediately. Click-to-call for mobile visitors, embedded Google Maps so people can see the location, and the 5-star reviews displayed right on the page. The site builds trust and captures leads around the clock, even at 11pm on a Sunday.</p>
+        </div>
+
+        <!-- Feature 4: Social integration -->
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; margin-bottom:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(59,130,246,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i class="fa-brands fa-facebook" style="color:#3b82f6;font-size:0.9rem;"></i>
+            </div>
+            <div>
+              <div style="font-size:1rem; font-weight:700; color:var(--white);">Social media integration</div>
+              <div style="font-size:0.75rem; color:var(--muted);">Facebook and Instagram content pulled onto the site</div>
+            </div>
           </div>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.7;">Their latest Facebook posts appear directly on the website, so the site always looks fresh and active without anyone manually updating it. Visitors see real project updates, completed jobs, and customer interactions. It shows the business is active and engaged, which builds confidence before anyone picks up the phone.</p>
+        </div>
+
+        <!-- Facebook integration screenshot -->
+        <div class="cs-img-wrap reveal" style="margin-bottom:24px; border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border);">
+          <img loading="lazy" src="/brand_assets/case-studies/tm-joinery/tmjoineryfacebooklink.png" alt="TM Joinery website showing live Facebook feed integration with recent project posts" style="width:100%; display:block;" />
+          <div style="padding:10px 16px; background:var(--surface); font-size:0.72rem; color:var(--muted);">Live Facebook feed on the website. Latest project posts and social proof pulled in automatically.</div>
         </div>
       </div>
 
@@ -224,14 +298,9 @@
         </div>
       </div>
 
-    </div>
-  </section>
-
-
       <!-- FAQ -->
       <div class="reveal" style="margin-bottom: 48px;">
         <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 20px;">Frequently asked questions</h2>
-
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:12px;">
           <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">How does local SEO help tradespeople get more work?</h3>
           <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;">Local SEO makes your business appear in Google search results when people nearby search for your trade. For TM Joinery, we implemented LocalBusiness schema, service area targeting across 6 regions, and Google Business Profile optimisation. They now rank on the first page for joinery searches across multiple UK cities.</p>
@@ -249,7 +318,7 @@
       <!-- Internal links -->
       <div style="margin-bottom:32px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;gap:12px;">
         <i class="fa-solid fa-arrow-right" style="color:var(--purple-light);"></i>
-        <span style="font-size:0.88rem;color:var(--muted);">This project was delivered as part of our <a href="/services/web-design" style="color:var(--purple-light);font-weight:600;text-decoration:none;">Web Design</a> service, with local SEO built in from day one.</span>
+        <span style="font-size:0.88rem;color:var(--muted);">This project was delivered as part of our <a href="/services/web-design" style="color:var(--purple-light);font-weight:600;text-decoration:none;">Web Design</a> service, with local SEO built in from day one. <a href="https://tmjoineryltd.co.uk/" target="_blank" rel="noopener" style="color:var(--purple-light);font-weight:600;text-decoration:none;">Visit the live site</a>.</span>
       </div>
 
     </div>
@@ -261,7 +330,7 @@
         <div class="cta-glow"></div>
         <h2>Need a website that actually ranks?</h2>
         <p>Book a free 30-minute audit and we'll show you what's possible.</p>
-        <a href="../../../book" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book your free audit</a>
+        <a href="/book" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book your free audit</a>
       </div>
     </div>
   </div>
@@ -306,6 +375,31 @@
   </div>
 </footer>
 <script src="/main.js?v=20260402"></script>
+  <script>
+  (function(){
+    var lb = document.getElementById('cs-lightbox');
+    var lbImg = document.getElementById('cs-lb-img');
+    var lbCap = document.getElementById('cs-lb-caption');
+    var closeBtn = document.getElementById('cs-lb-close');
+    if (!lb) return;
+    document.querySelectorAll('.cs-img-wrap').forEach(function(wrap){
+      wrap.addEventListener('click', function(){
+        var img = wrap.querySelector('img');
+        var cap = wrap.querySelector('div[style*="font-size:0.72rem"], div[style*="font-size:0.68rem"]');
+        if (!img) return;
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbCap.textContent = cap ? cap.textContent : img.alt;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+    closeBtn.addEventListener('click', closeLb);
+    lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+  })();
+  </script>
 
   <script>window.AE_TRACK={apiKey:'991d5076a16d0a4d1c00379d040173fb2ff38f31e49c178e',endpoint:'https://useohuvyxzshmskjngpo.supabase.co/functions/v1/track'}</script>
   <script src="/ae-track.js" async></script>
