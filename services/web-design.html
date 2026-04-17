@@ -563,16 +563,182 @@
           <span class="dt-dot g"></span>
           <div class="dt-url"><i class="fa-solid fa-lock"></i>www.thedicetavern.co.uk</div>
         </div>
-        <div style="position:relative;">
-          <img loading="lazy" src="/brand_assets/case-studies/dice-tavern/Site_pics/home%20hero%20banner.png" alt="The Dice Tavern homepage" style="width:100%;display:block;" />
+        <!-- Recreated Dice Tavern hero (native HTML/CSS, no iframe) -->
+        <div class="dt-mock">
+          <!-- Mini nav bar -->
+          <div class="dt-mock-nav">
+            <img loading="lazy" src="/brand_assets/case-studies/dice-tavern/logo-RESIZE.png" alt="" style="height:32px;filter:brightness(10);" />
+            <div class="dt-mock-links">
+              <span>HOME</span><span>SHOP</span><span>ABOUT</span><span>CONTACT</span>
+            </div>
+          </div>
+          <!-- Hero content -->
+          <div class="dt-mock-hero">
+            <div class="dt-mock-badge">EST. 2024 &mdash; YORK, ENGLAND</div>
+            <div class="dt-mock-h1">
+              <span class="dt-line dt-l1">BUILD YOUR</span>
+              <span class="dt-line dt-l2">BATTLEFIELD.</span>
+              <span class="dt-line dt-l3">WIN THE WAR.</span>
+            </div>
+            <p class="dt-mock-sub">Handcrafted MDF terrain, gaming mats, storage solutions &amp; accessories for Warhammer 40K.</p>
+            <div class="dt-mock-btns">
+              <span class="dt-mock-btn-pri">SHOP NOW &rarr;</span>
+              <span class="dt-mock-btn-sec">OUR STORY</span>
+            </div>
+            <div class="dt-mock-trust">
+              <span>&starf;&starf;&starf;&starf;&starf; 4.9 from 80+ reviews</span>
+              <span>&bull; Ships in 1-3 days</span>
+            </div>
+          </div>
+          <!-- Ember particles -->
+          <div class="dt-embers">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <!-- Hover CTA -->
           <div class="dt-hover-cta">
             <span>Visit live site <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
           </div>
         </div>
       </a>
       <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
+        .dt-mock {
+          position: relative;
+          background: radial-gradient(ellipse 80% 60% at 50% 80%, #1a1408 0%, #0c0a06 50%, #050404 100%);
+          padding: 0;
+          overflow: hidden;
+          min-height: 480px;
+          display: flex;
+          flex-direction: column;
+        }
+        .dt-mock-nav {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px 28px;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .dt-mock-links {
+          display: flex; gap: 24px;
+          font-family: 'Inter', sans-serif;
+          font-size: 0.68rem; font-weight: 600;
+          letter-spacing: 0.12em;
+          color: rgba(255,255,255,0.7);
+        }
+        .dt-mock-hero {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 40px 24px 48px;
+          position: relative;
+          z-index: 2;
+        }
+        .dt-mock-badge {
+          font-family: 'Inter', sans-serif;
+          font-size: 0.62rem;
+          letter-spacing: 0.18em;
+          color: rgba(212,160,23,0.7);
+          margin-bottom: 20px;
+        }
+        .dt-mock-h1 {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          margin-bottom: 18px;
+        }
+        .dt-line {
+          font-family: 'Cinzel', serif;
+          font-weight: 900;
+          line-height: 1.05;
+          color: #ffffff;
+          opacity: 0;
+          animation: dt-line-in 0.6s ease forwards;
+        }
+        .dt-l1 { font-size: clamp(1.4rem, 3.5vw, 2.4rem); animation-delay: 0.3s; }
+        .dt-l2 {
+          font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+          background: linear-gradient(135deg, #d4a017, #f5d060, #d4a017);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation-delay: 0.6s;
+        }
+        .dt-l3 { font-size: clamp(1.4rem, 3.5vw, 2.4rem); animation-delay: 0.9s; }
+        @keyframes dt-line-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        .dt-mock-sub {
+          font-family: 'Inter', sans-serif;
+          font-size: 0.78rem;
+          color: rgba(255,255,255,0.55);
+          max-width: 400px;
+          line-height: 1.6;
+          margin-bottom: 22px;
+          opacity: 0;
+          animation: dt-line-in 0.6s ease 1.2s forwards;
+        }
+        .dt-mock-btns {
+          display: flex; gap: 12px; align-items: center;
+          opacity: 0;
+          animation: dt-line-in 0.5s ease 1.5s forwards;
+        }
+        .dt-mock-btn-pri {
+          font-family: 'Inter', sans-serif;
+          font-size: 0.76rem; font-weight: 700;
+          letter-spacing: 0.08em;
+          padding: 10px 22px;
+          border: 1.5px solid #d4a017;
+          color: #d4a017;
+          border-radius: 4px;
+        }
+        .dt-mock-btn-sec {
+          font-family: 'Inter', sans-serif;
+          font-size: 0.76rem; font-weight: 500;
+          color: rgba(255,255,255,0.5);
+          letter-spacing: 0.06em;
+        }
+        .dt-mock-trust {
+          margin-top: 20px;
+          font-family: 'Inter', sans-serif;
+          font-size: 0.65rem;
+          color: rgba(255,255,255,0.4);
+          display: flex; gap: 10px;
+          opacity: 0;
+          animation: dt-line-in 0.5s ease 1.8s forwards;
+        }
+        /* Embers */
+        .dt-embers { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+        .dt-embers i {
+          position: absolute;
+          width: 2.5px; height: 2.5px;
+          background: #d4a017;
+          border-radius: 50%;
+          box-shadow: 0 0 4px 1px rgba(212,160,23,0.5);
+          opacity: 0;
+          animation: dt-ember-up linear infinite;
+        }
+        .dt-embers i:nth-child(1)  { left:10%; bottom:5%;  animation-duration:4.2s; animation-delay:0s; }
+        .dt-embers i:nth-child(2)  { left:20%; bottom:8%;  animation-duration:5.1s; animation-delay:0.7s; }
+        .dt-embers i:nth-child(3)  { left:35%; bottom:3%;  animation-duration:3.8s; animation-delay:1.2s; }
+        .dt-embers i:nth-child(4)  { left:50%; bottom:6%;  animation-duration:4.8s; animation-delay:0.3s; }
+        .dt-embers i:nth-child(5)  { left:65%; bottom:4%;  animation-duration:5.5s; animation-delay:1.8s; }
+        .dt-embers i:nth-child(6)  { left:78%; bottom:7%;  animation-duration:4.0s; animation-delay:0.9s; }
+        .dt-embers i:nth-child(7)  { left:88%; bottom:5%;  animation-duration:5.3s; animation-delay:2.1s; }
+        .dt-embers i:nth-child(8)  { left:15%; bottom:10%; animation-duration:6.0s; animation-delay:1.5s; }
+        .dt-embers i:nth-child(9)  { left:42%; bottom:2%;  animation-duration:4.5s; animation-delay:0.5s; }
+        .dt-embers i:nth-child(10) { left:58%; bottom:9%;  animation-duration:5.8s; animation-delay:2.5s; }
+        .dt-embers i:nth-child(11) { left:72%; bottom:3%;  animation-duration:4.1s; animation-delay:1.0s; }
+        .dt-embers i:nth-child(12) { left:30%; bottom:6%;  animation-duration:5.0s; animation-delay:3.0s; }
+        @keyframes dt-ember-up {
+          0%   { transform: translateY(0) translateX(0); opacity: 0; }
+          8%   { opacity: 0.9; }
+          70%  { opacity: 0.4; }
+          100% { transform: translateY(-380px) translateX(30px); opacity: 0; }
+        }
+        /* Hover */
         .dt-hover-cta {
-          position: absolute; inset: 0;
+          position: absolute; inset: 0; z-index: 10;
           display: flex; align-items: center; justify-content: center;
           background: rgba(0,0,0,0.3);
           opacity: 0; transition: opacity 0.25s;
@@ -585,6 +751,15 @@
         .dt-hover-cta span i { font-size: 0.72rem; margin-left: 6px; }
         .dt-frame:hover .dt-hover-cta { opacity: 1; }
         .dt-frame:hover { transform: translateY(-3px); box-shadow: 0 50px 140px rgba(0,0,0,0.7) !important; }
+        @media (max-width: 640px) {
+          .dt-mock { min-height: 360px; }
+          .dt-mock-links { display: none; }
+          .dt-mock-hero { padding: 28px 16px 36px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .dt-line, .dt-mock-sub, .dt-mock-btns, .dt-mock-trust { opacity: 1; animation: none; }
+          .dt-embers i { animation: none; }
+        }
       </style>
 
       <div style="text-align:center;">
