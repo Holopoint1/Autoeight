@@ -21,12 +21,15 @@
     banner.id = BANNER_ID;
     banner.innerHTML =
       '<div class="ae-consent-inner">' +
-        '<p>We use cookies and analytics to see which companies visit our site. ' +
-        'This includes your IP address and browsing behaviour to identify your organisation (not you personally). ' +
-        '<a href="/privacy" style="color:var(--purple-l,#a78bfa);text-decoration:underline;">Privacy Policy</a></p>' +
+        '<div class="ae-consent-header">' +
+          '<div class="ae-consent-icon"><i class="fa-solid fa-cookie-bite"></i></div>' +
+          '<div class="ae-consent-title">Cookies &amp; tracking</div>' +
+        '</div>' +
+        '<p>We use analytics to identify which companies visit our site, not individuals. ' +
+        '<a href="/privacy">Read more</a>.</p>' +
         '<div class="ae-consent-actions">' +
-          '<button id="ae-consent-accept" class="ae-consent-btn ae-consent-accept">Accept</button>' +
           '<button id="ae-consent-decline" class="ae-consent-btn ae-consent-decline">Decline</button>' +
+          '<button id="ae-consent-accept" class="ae-consent-btn ae-consent-accept">Accept</button>' +
         '</div>' +
       '</div>';
     document.body.appendChild(banner);

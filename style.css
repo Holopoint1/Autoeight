@@ -6136,34 +6136,86 @@ footer {
 
 /* ── CONSENT BANNER ── */
 #ae-consent-banner {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
-  background: rgba(10, 10, 14, 0.96); backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(124, 92, 252, 0.25);
-  padding: 18px 5%; animation: consent-slide 0.4s ease;
+  position: fixed; bottom: 20px; left: 20px; z-index: 9999;
+  width: 320px; max-width: calc(100vw - 40px);
+  background: rgba(13, 13, 20, 0.85);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(124, 92, 252, 0.25);
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(124,92,252,0.08);
+  animation: ae-consent-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
-@keyframes consent-slide { from { transform: translateY(100%); } to { transform: translateY(0); } }
-.ae-consent-inner {
-  max-width: 1080px; margin: 0 auto;
-  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+#ae-consent-banner::before {
+  content: ''; position: absolute; inset: -1px;
+  background: linear-gradient(135deg, rgba(124,92,252,0.3), transparent 40%, transparent 60%, rgba(124,92,252,0.15));
+  border-radius: 16px; opacity: 0.5; pointer-events: none; z-index: -1;
+}
+#ae-consent-banner::after {
+  content: ''; position: absolute; top: -30px; right: -30px;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(124,92,252,0.25), transparent 70%);
+  filter: blur(20px); pointer-events: none;
+  animation: ae-consent-pulse 4s ease-in-out infinite;
+}
+@keyframes ae-consent-in {
+  from { transform: translateY(20px) scale(0.96); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes ae-consent-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+.ae-consent-inner { position: relative; z-index: 1; }
+.ae-consent-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+}
+.ae-consent-icon {
+  width: 32px; height: 32px; border-radius: 10px;
+  background: linear-gradient(135deg, #7c5cfc, #6d4de6);
+  display: grid; place-items: center;
+  font-size: 0.95rem; color: #fff;
+  box-shadow: 0 6px 20px rgba(124,92,252,0.4);
+  flex-shrink: 0;
+}
+.ae-consent-title {
+  font-size: 0.88rem; font-weight: 700; color: #fff;
 }
 .ae-consent-inner p {
-  flex: 1; min-width: 260px; font-size: 0.82rem; color: #a1a1aa; line-height: 1.5; margin: 0;
+  font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.55;
+  margin: 0 0 14px;
 }
-.ae-consent-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.ae-consent-inner p a {
+  color: #a78bfa; text-decoration: none; font-weight: 600;
+  border-bottom: 1px solid rgba(167,139,250,0.3);
+}
+.ae-consent-inner p a:hover { border-bottom-color: #a78bfa; }
+.ae-consent-actions { display: flex; gap: 8px; }
 .ae-consent-btn {
-  padding: 8px 20px; border-radius: 8px; border: 1px solid transparent;
+  flex: 1; padding: 9px 14px; border-radius: 9px; border: 1px solid transparent;
   font-family: 'Inter', system-ui, sans-serif; font-size: 0.8rem; font-weight: 600;
-  cursor: pointer; transition: all 0.2s;
+  cursor: pointer; transition: all 0.18s;
 }
 .ae-consent-accept {
-  background: #7c5cfc; color: #fff; border-color: #7c5cfc;
+  background: linear-gradient(135deg, #7c5cfc, #6d4de6); color: #fff;
+  box-shadow: 0 6px 20px rgba(124,92,252,0.3);
 }
-.ae-consent-accept:hover { background: #6d4de6; }
+.ae-consent-accept:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(124,92,252,0.45);
+}
 .ae-consent-decline {
-  background: rgba(63, 63, 70, 0.5); color: #e4e4e7; border-color: #52525b;
+  background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.7);
+  border-color: rgba(255,255,255,0.08);
 }
-.ae-consent-decline:hover { background: rgba(63, 63, 70, 0.8); color: #fff; border-color: #71717a; }
-@media (max-width: 600px) {
-  .ae-consent-inner { flex-direction: column; text-align: center; }
-  .ae-consent-actions { width: 100%; justify-content: center; }
+.ae-consent-decline:hover {
+  background: rgba(255,255,255,0.08); color: #fff;
+  border-color: rgba(255,255,255,0.15);
+}
+@media (max-width: 520px) {
+  #ae-consent-banner {
+    left: 12px; right: 12px; bottom: 12px; width: auto;
+  }
 }
