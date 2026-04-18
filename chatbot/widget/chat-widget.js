@@ -12,8 +12,8 @@
   const LEAD_KEY = 'ae_chat_lead';
   const DISMISS_KEY = 'ae_chat_dismissed';
 
-  // Respect previous dismissal for this session
-  if (sessionStorage.getItem(DISMISS_KEY) === '1') return;
+  // Track whether the widget was dismissed for this session — hide UI but keep API available
+  const wasDismissed = sessionStorage.getItem(DISMISS_KEY) === '1';
 
   // ── Styles ──
   const styles = `
@@ -283,6 +283,9 @@
   launcher.innerHTML = '<i class="fa-solid fa-comment-dots"></i><span class="ae-chat-dot"></span>';
   wrap.appendChild(launcher);
   document.body.appendChild(wrap);
+
+  // If dismissed this session, hide the floating UI until AE_CHAT_OPEN is called
+  if (wasDismissed) wrap.style.display = 'none';
 
   const panel = document.createElement('div');
   panel.className = 'ae-chat-panel';
@@ -613,15 +616,17 @@
     });
   });
 
-  // Dismiss button hides the entire widget for the session
+  // Dismiss button hides the floating UI for the session (but keeps AE_CHAT_OPEN working)
   dismissBtn.addEventListener('click', () => {
     try { sessionStorage.setItem(DISMISS_KEY, '1'); } catch (e) { /* ignore */ }
-    wrap.remove();
-    panel.remove();
+    wrap.style.display = 'none';
+    panel.classList.remove('open');
   });
 
   // Expose a way for other page elements (e.g. "Live chat" buttons) to open the widget
   window.AE_CHAT_OPEN = function () {
+    try { sessionStorage.removeItem(DISMISS_KEY); } catch (e) { /* ignore */ }
+    wrap.style.display = 'flex';
     if (!panel.classList.contains('open')) {
       launcher.click();
     }
