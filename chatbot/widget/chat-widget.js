@@ -87,13 +87,54 @@
     .ae-chat-header .title { font-size: 0.95rem; font-weight: 700; }
     .ae-chat-header .subtitle { font-size: 0.72rem; opacity: 0.85; margin-top: 2px; }
 
+    /* ── Intro (yes/no gate) ── */
+    .ae-intro {
+      flex: 1; overflow-y: auto;
+      padding: 28px 22px;
+      background: #f7f7fa;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .ae-intro-bubble {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 14px;
+      padding: 16px 18px;
+      font-size: 0.95rem; line-height: 1.5;
+      color: #1a1a2e;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .ae-intro-buttons {
+      display: flex; gap: 10px;
+    }
+    .ae-intro-btn {
+      flex: 1; padding: 12px 16px;
+      border-radius: 12px; cursor: pointer;
+      font-family: inherit; font-size: 0.9rem; font-weight: 600;
+      border: 0;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .ae-intro-btn-yes {
+      background: linear-gradient(135deg, #7c5cfc, #6d4de6);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(109,77,230,0.25);
+    }
+    .ae-intro-btn-yes:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(109,77,230,0.35); }
+    .ae-intro-btn-no {
+      background: #fff;
+      color: #52525b;
+      border: 1px solid rgba(0,0,0,0.12);
+    }
+    .ae-intro-btn-no:hover { background: #f3f3f5; }
+
     /* ── Lead form (gate before chat) ── */
     .ae-lead-form {
       flex: 1; overflow-y: auto;
       padding: 24px 20px;
       background: #f7f7fa;
-      display: flex; flex-direction: column;
+      display: none; flex-direction: column;
     }
+    .ae-lead-form.active { display: flex; }
     .ae-lead-form h3 {
       font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
       margin: 0 0 6px;
@@ -254,6 +295,16 @@
       </div>
     </div>
 
+    <div class="ae-intro" id="ae-intro">
+      <div class="ae-intro-bubble">
+        Hi! Would you like to speak to a human from the Autoeight team?
+      </div>
+      <div class="ae-intro-buttons">
+        <button class="ae-intro-btn ae-intro-btn-no" id="ae-intro-no">No thanks</button>
+        <button class="ae-intro-btn ae-intro-btn-yes" id="ae-intro-yes">Yes please</button>
+      </div>
+    </div>
+
     <div class="ae-lead-form" id="ae-lead-form">
       <h3>Let's get started</h3>
       <p>Drop your details and we'll start a live chat. We'll reply on-screen, and if you leave we'll email you back.</p>
@@ -284,14 +335,17 @@
   document.body.appendChild(panel);
 
   // ── State ──
-  // Stages: 'lead' (form), 'first_message' (gated chat waiting for first msg), 'live' (ongoing)
-  let stage = 'lead';
+  // Stages: 'intro' (yes/no), 'lead' (form), 'first_message' (gated chat waiting for first msg), 'live' (ongoing)
+  let stage = 'intro';
   let lead = loadLead();
   let conversationId = localStorage.getItem(STORAGE_KEY) || null;
   let sending = false;
   let pollTimer = null;
   let lastMessageTs = null;
 
+  const intro = document.getElementById('ae-intro');
+  const introYesBtn = document.getElementById('ae-intro-yes');
+  const introNoBtn = document.getElementById('ae-intro-no');
   const leadForm = document.getElementById('ae-lead-form');
   const leadNameEl = document.getElementById('ae-lead-name');
   const leadCompanyEl = document.getElementById('ae-lead-company');
@@ -341,13 +395,21 @@
     return await res.json();
   }
 
+  function showIntro() {
+    intro.style.display = 'flex';
+    leadForm.classList.remove('active');
+    chatBody.classList.remove('active');
+  }
+
   function showChatBody() {
-    leadForm.style.display = 'none';
+    intro.style.display = 'none';
+    leadForm.classList.remove('active');
     chatBody.classList.add('active');
   }
 
   function showLeadForm() {
-    leadForm.style.display = 'flex';
+    intro.style.display = 'none';
+    leadForm.classList.add('active');
     chatBody.classList.remove('active');
   }
 
@@ -497,22 +559,39 @@
 
     if (isOpen && !opened) {
       opened = true;
-      // If returning visitor with a live conversation, skip form and resume
+      // If returning visitor with a live conversation, skip intro and resume
       if (conversationId) {
         stage = 'live';
         showChatBody();
         loadHistory();
         startPolling();
       } else {
-        // Show lead form; focus first empty field
-        showLeadForm();
-        setTimeout(() => {
-          if (!leadNameEl.value) leadNameEl.focus();
-          else if (!leadCompanyEl.value) leadCompanyEl.focus();
-          else leadEmailEl.focus();
-        }, 200);
+        // Show intro (yes/no) first
+        stage = 'intro';
+        showIntro();
       }
     }
+  });
+
+  // Intro buttons
+  introYesBtn.addEventListener('click', () => {
+    stage = 'lead';
+    showLeadForm();
+    setTimeout(() => {
+      if (!leadNameEl.value) leadNameEl.focus();
+      else if (!leadCompanyEl.value) leadCompanyEl.focus();
+      else leadEmailEl.focus();
+    }, 150);
+  });
+
+  introNoBtn.addEventListener('click', () => {
+    // Close the panel and hide the launcher for the session
+    panel.classList.remove('open');
+    launcher.classList.remove('open');
+    launcher.innerHTML = '<i class="fa-solid fa-comment-dots"></i><span class="ae-chat-dot"></span>';
+    try { sessionStorage.setItem(DISMISS_KEY, '1'); } catch (e) { /* ignore */ }
+    wrap.remove();
+    panel.remove();
   });
 
   sendBtn.addEventListener('click', () => handleSend(inputEl.value));
