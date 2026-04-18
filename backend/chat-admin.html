@@ -300,13 +300,14 @@ function renderConvoList() {
     const name = c.visitor_name || (c.visitor_email ? c.visitor_email : 'Anonymous');
     const time = new Date(c.last_message_at).toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' });
     const page = c.page_url ? new URL(c.page_url).pathname : '';
+    const preview = c.visitor_company ? `${c.visitor_company} · ${page || 'chat'}` : (page || 'chat');
     return `
       <div class="convo-item ${c.id === currentConvId ? 'active' : ''}" data-id="${c.id}">
         <div class="top">
           <span class="name">${escapeHtml(name)}</span>
           <span class="time">${time}</span>
         </div>
-        <div class="preview">${escapeHtml(page || 'chat')}</div>
+        <div class="preview">${escapeHtml(preview)}</div>
         <span class="status ${c.status}">${c.status.replace('_', ' ')}</span>
       </div>
     `;
@@ -328,7 +329,11 @@ async function openConversation(id) {
   $('chat-header').style.display = 'flex';
   $('reply-wrap').style.display = 'flex';
   $('chat-name').textContent = conv.visitor_name || conv.visitor_email || 'Anonymous';
-  $('chat-meta').textContent = `${conv.visitor_email || 'no email'} · ${conv.page_url || ''}`;
+  const metaParts = [];
+  if (conv.visitor_company) metaParts.push(conv.visitor_company);
+  if (conv.visitor_email) metaParts.push(conv.visitor_email);
+  if (conv.page_url) metaParts.push(conv.page_url);
+  $('chat-meta').textContent = metaParts.join(' · ') || 'no details';
   $('app').classList.add('view-chat');
 
   renderConvoList();

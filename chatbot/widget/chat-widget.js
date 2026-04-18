@@ -1,8 +1,7 @@
 // ============================================================
-// Autoeight Chat Widget
+// Autoeight Chat Widget — free version (no AI)
 // ============================================================
-// Floating chat widget that loads on every page.
-// Connects to the /chat Supabase edge function.
+// Flow: lead form (name*, company*, email optional) -> chat.
 
 (function () {
   // Don't load on backend/admin pages
@@ -10,17 +9,26 @@
 
   const CHAT_ENDPOINT = 'https://useohuvyxzshmskjngpo.supabase.co/functions/v1/chat';
   const STORAGE_KEY = 'ae_chat_conversation';
+  const LEAD_KEY = 'ae_chat_lead';
+  const DISMISS_KEY = 'ae_chat_dismissed';
+
+  // Respect previous dismissal for this session
+  if (sessionStorage.getItem(DISMISS_KEY) === '1') return;
 
   // ── Styles ──
   const styles = `
-    .ae-chat-launcher {
+    .ae-chat-wrap {
       position: fixed; bottom: 24px; right: 24px; z-index: 9998;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+    }
+    .ae-chat-launcher {
       width: 56px; height: 56px; border-radius: 50%;
       background: linear-gradient(135deg, #7c5cfc, #6d4de6);
       box-shadow: 0 12px 32px rgba(109, 77, 230, 0.4);
       border: 0; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       color: #fff; font-size: 1.4rem;
+      position: relative;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .ae-chat-launcher:hover { transform: scale(1.05); box-shadow: 0 16px 40px rgba(109, 77, 230, 0.5); }
@@ -29,6 +37,24 @@
       position: absolute; top: 6px; right: 6px;
       width: 10px; height: 10px; border-radius: 50%;
       background: #4ade80; border: 2px solid #fff;
+    }
+    .ae-chat-dismiss {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(30, 30, 40, 0.65);
+      backdrop-filter: blur(6px);
+      border: 0; cursor: pointer;
+      color: #fff; font-size: 0.7rem;
+      display: grid; place-items: center;
+      opacity: 0.55;
+      transition: opacity 0.15s, transform 0.15s, background 0.15s;
+    }
+    .ae-chat-dismiss:hover { opacity: 1; transform: scale(1.08); background: rgba(30, 30, 40, 0.85); }
+    .ae-chat-dismiss[title]:hover::after {
+      content: attr(title);
+      position: absolute; right: 32px;
+      background: rgba(30,30,40,0.9); color: #fff;
+      padding: 4px 8px; border-radius: 6px;
+      font-size: 0.68rem; white-space: nowrap;
     }
 
     .ae-chat-panel {
@@ -61,6 +87,63 @@
     .ae-chat-header .title { font-size: 0.95rem; font-weight: 700; }
     .ae-chat-header .subtitle { font-size: 0.72rem; opacity: 0.85; margin-top: 2px; }
 
+    /* ── Lead form (gate before chat) ── */
+    .ae-lead-form {
+      flex: 1; overflow-y: auto;
+      padding: 24px 20px;
+      background: #f7f7fa;
+      display: flex; flex-direction: column;
+    }
+    .ae-lead-form h3 {
+      font-size: 1.05rem; font-weight: 700; color: #1a1a2e;
+      margin: 0 0 6px;
+    }
+    .ae-lead-form p {
+      font-size: 0.85rem; color: #52525b;
+      margin: 0 0 20px; line-height: 1.5;
+    }
+    .ae-lead-field { margin-bottom: 12px; }
+    .ae-lead-field label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      color: #1a1a2e; margin-bottom: 6px;
+    }
+    .ae-lead-field label .opt { color: #8b8b95; font-weight: 500; margin-left: 4px; font-size: 0.72rem; }
+    .ae-lead-field input {
+      width: 100%; box-sizing: border-box;
+      padding: 11px 14px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 10px;
+      background: #fff;
+      font-family: inherit; font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .ae-lead-field input:focus {
+      border-color: #7c5cfc;
+      box-shadow: 0 0 0 3px rgba(124,92,252,0.1);
+    }
+    .ae-lead-submit {
+      width: 100%; padding: 12px;
+      background: linear-gradient(135deg, #7c5cfc, #6d4de6);
+      color: #fff; font-family: inherit;
+      font-size: 0.9rem; font-weight: 600;
+      border: 0; border-radius: 12px;
+      cursor: pointer;
+      margin-top: 8px;
+      box-shadow: 0 8px 20px rgba(109,77,230,0.25);
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    }
+    .ae-lead-submit:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 12px 24px rgba(109,77,230,0.35); }
+    .ae-lead-submit:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+    .ae-lead-note {
+      font-size: 0.72rem; color: #8b8b95;
+      text-align: center; margin-top: 14px;
+    }
+
+    /* ── Chat view (shown after lead submitted) ── */
+    .ae-chat-body { flex: 1; display: none; flex-direction: column; min-height: 0; }
+    .ae-chat-body.active { display: flex; }
+
     .ae-chat-messages {
       flex: 1; overflow-y: auto;
       padding: 20px 16px;
@@ -74,6 +157,7 @@
       max-width: 80%; padding: 10px 14px; border-radius: 14px;
       font-size: 0.88rem; line-height: 1.5;
       word-wrap: break-word;
+      white-space: pre-wrap;
     }
     .ae-msg.user {
       align-self: flex-end;
@@ -95,41 +179,9 @@
       color: #6d4de6;
       font-size: 0.78rem;
       padding: 8px 14px;
+      text-align: center;
     }
-
-    .ae-typing {
-      align-self: flex-start;
-      background: #fff; border: 1px solid rgba(0,0,0,0.06);
-      padding: 14px 16px; border-radius: 14px;
-      display: none;
-    }
-    .ae-typing.show { display: block; }
-    .ae-typing span {
-      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-      background: #999; margin: 0 2px;
-      animation: ae-dot 1.4s infinite ease-in-out;
-    }
-    .ae-typing span:nth-child(1) { animation-delay: 0s; }
-    .ae-typing span:nth-child(2) { animation-delay: 0.2s; }
-    .ae-typing span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes ae-dot { 0%,60%,100% { transform: scale(0.6); opacity: 0.4; } 30% { transform: scale(1); opacity: 1; } }
-
-    .ae-chat-actions {
-      padding: 0 16px 8px;
-      background: #f7f7fa;
-    }
-    .ae-chat-human-btn {
-      width: 100%; padding: 10px;
-      background: rgba(124,92,252,0.08);
-      border: 1px solid rgba(124,92,252,0.2);
-      border-radius: 10px;
-      color: #6d4de6; font-size: 0.82rem; font-weight: 600;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      transition: background 0.15s;
-    }
-    .ae-chat-human-btn:hover { background: rgba(124,92,252,0.15); }
-    .ae-chat-human-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .ae-msg a { color: inherit; text-decoration: underline; }
 
     .ae-chat-input-wrap {
       padding: 12px 16px 16px;
@@ -149,6 +201,7 @@
       line-height: 1.4;
     }
     .ae-chat-input:focus { border-color: #7c5cfc; box-shadow: 0 0 0 3px rgba(124,92,252,0.1); }
+    .ae-chat-input:disabled { background: #f5f5f7; cursor: not-allowed; }
     .ae-chat-send {
       width: 40px; height: 40px; border-radius: 50%;
       background: linear-gradient(135deg, #7c5cfc, #6d4de6);
@@ -157,30 +210,6 @@
       flex-shrink: 0;
     }
     .ae-chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    .ae-human-modal {
-      position: absolute; inset: 0; z-index: 10;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      display: none; flex-direction: column; justify-content: center;
-      padding: 28px 24px;
-    }
-    .ae-human-modal.open { display: flex; }
-    .ae-human-modal h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: #1a1a2e; }
-    .ae-human-modal p { font-size: 0.85rem; color: #52525b; margin-bottom: 20px; line-height: 1.5; }
-    .ae-human-modal input {
-      width: 100%; padding: 10px 14px; margin-bottom: 10px;
-      border: 1px solid rgba(0,0,0,0.12); border-radius: 10px;
-      font-family: inherit; font-size: 0.88rem; outline: none;
-    }
-    .ae-human-modal input:focus { border-color: #7c5cfc; }
-    .ae-human-modal .btns { display: flex; gap: 8px; margin-top: 10px; }
-    .ae-human-modal button {
-      flex: 1; padding: 11px; border-radius: 10px; cursor: pointer;
-      font-family: inherit; font-size: 0.88rem; font-weight: 600; border: 0;
-    }
-    .ae-human-modal .btn-primary { background: linear-gradient(135deg, #7c5cfc, #6d4de6); color: #fff; }
-    .ae-human-modal .btn-ghost { background: transparent; color: #52525b; border: 1px solid rgba(0,0,0,0.12); }
 
     @media (max-width: 480px) {
       .ae-chat-panel {
@@ -197,11 +226,22 @@
   styleEl.textContent = styles;
   document.head.appendChild(styleEl);
 
+  const wrap = document.createElement('div');
+  wrap.className = 'ae-chat-wrap';
+
+  const dismissBtn = document.createElement('button');
+  dismissBtn.className = 'ae-chat-dismiss';
+  dismissBtn.setAttribute('aria-label', 'Dismiss chat');
+  dismissBtn.setAttribute('title', 'Hide chat');
+  dismissBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+  wrap.appendChild(dismissBtn);
+
   const launcher = document.createElement('button');
   launcher.className = 'ae-chat-launcher';
   launcher.setAttribute('aria-label', 'Open chat');
   launcher.innerHTML = '<i class="fa-solid fa-comment-dots"></i><span class="ae-chat-dot"></span>';
-  document.body.appendChild(launcher);
+  wrap.appendChild(launcher);
+  document.body.appendChild(wrap);
 
   const panel = document.createElement('div');
   panel.className = 'ae-chat-panel';
@@ -209,126 +249,78 @@
     <div class="ae-chat-header">
       <div class="avatar"><i class="fa-solid fa-bolt"></i></div>
       <div>
-        <div class="title">Autoeight Assistant</div>
-        <div class="subtitle">Ask anything. Or tap below to reach Adam.</div>
+        <div class="title">Connect with us</div>
+        <div class="subtitle">Usually replies within a working day</div>
       </div>
     </div>
-    <div class="ae-chat-messages" id="ae-chat-messages">
-      <div class="ae-typing" id="ae-typing"><span></span><span></span><span></span></div>
-    </div>
-    <div class="ae-chat-actions">
-      <button class="ae-chat-human-btn" id="ae-chat-human-btn">
-        <i class="fa-solid fa-user-headset" style="font-size:0.78rem;"></i> Talk to a human
-      </button>
-    </div>
-    <div class="ae-chat-input-wrap">
-      <textarea class="ae-chat-input" id="ae-chat-input" placeholder="Type your message..." rows="1"></textarea>
-      <button class="ae-chat-send" id="ae-chat-send" aria-label="Send"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <div class="ae-lead-form" id="ae-lead-form">
+      <h3>Let's get started</h3>
+      <p>Drop your details and we'll start a live chat. We'll reply on-screen, and if you leave we'll email you back.</p>
+      <div class="ae-lead-field">
+        <label for="ae-lead-name">Your name</label>
+        <input id="ae-lead-name" type="text" autocomplete="name" placeholder="Jane Smith" />
+      </div>
+      <div class="ae-lead-field">
+        <label for="ae-lead-company">Your company</label>
+        <input id="ae-lead-company" type="text" autocomplete="organization" placeholder="Acme Ltd" />
+      </div>
+      <div class="ae-lead-field">
+        <label for="ae-lead-email">Your email <span class="opt">(optional)</span></label>
+        <input id="ae-lead-email" type="email" autocomplete="email" placeholder="jane@acme.com" />
+      </div>
+      <button class="ae-lead-submit" id="ae-lead-submit" disabled>Start chat</button>
+      <div class="ae-lead-note">Your details stay private. We use them only to reply.</div>
     </div>
 
-    <div class="ae-human-modal" id="ae-human-modal">
-      <h3>Connect with Adam</h3>
-      <p>Drop your name and email so he can reply. He usually responds within one working day.</p>
-      <input id="ae-human-name" placeholder="Your name" />
-      <input id="ae-human-email" type="email" placeholder="Your email" />
-      <div class="btns">
-        <button class="btn-ghost" id="ae-human-cancel">Cancel</button>
-        <button class="btn-primary" id="ae-human-submit">Connect me</button>
+    <div class="ae-chat-body" id="ae-chat-body">
+      <div class="ae-chat-messages" id="ae-chat-messages"></div>
+      <div class="ae-chat-input-wrap">
+        <textarea class="ae-chat-input" id="ae-chat-input" placeholder="Type your message..." rows="1"></textarea>
+        <button class="ae-chat-send" id="ae-chat-send" aria-label="Send"><i class="fa-solid fa-arrow-up"></i></button>
       </div>
     </div>
   `;
   document.body.appendChild(panel);
 
   // ── State ──
+  // Stages: 'lead' (form), 'first_message' (gated chat waiting for first msg), 'live' (ongoing)
+  let stage = 'lead';
+  let lead = loadLead();
   let conversationId = localStorage.getItem(STORAGE_KEY) || null;
   let sending = false;
-  let status = 'ai';
+  let pollTimer = null;
+  let lastMessageTs = null;
 
+  const leadForm = document.getElementById('ae-lead-form');
+  const leadNameEl = document.getElementById('ae-lead-name');
+  const leadCompanyEl = document.getElementById('ae-lead-company');
+  const leadEmailEl = document.getElementById('ae-lead-email');
+  const leadSubmitBtn = document.getElementById('ae-lead-submit');
+
+  const chatBody = document.getElementById('ae-chat-body');
   const messagesEl = document.getElementById('ae-chat-messages');
-  const typingEl = document.getElementById('ae-typing');
   const inputEl = document.getElementById('ae-chat-input');
   const sendBtn = document.getElementById('ae-chat-send');
-  const humanBtn = document.getElementById('ae-chat-human-btn');
-  const humanModal = document.getElementById('ae-human-modal');
 
   // ── Helpers ──
+  function loadLead() {
+    try {
+      const raw = localStorage.getItem(LEAD_KEY);
+      return raw ? JSON.parse(raw) : { name: '', company: '', email: '' };
+    } catch (e) { return { name: '', company: '', email: '' }; }
+  }
+
+  function saveLead() {
+    try { localStorage.setItem(LEAD_KEY, JSON.stringify(lead)); } catch (e) { /* ignore */ }
+  }
+
   function addMessage(role, content) {
     const el = document.createElement('div');
     el.className = 'ae-msg ' + role;
     el.textContent = content;
-    messagesEl.insertBefore(el, typingEl);
+    messagesEl.appendChild(el);
     messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
-
-  function showTyping() { typingEl.classList.add('show'); messagesEl.scrollTop = messagesEl.scrollHeight; }
-  function hideTyping() { typingEl.classList.remove('show'); }
-
-  async function apiCall(payload) {
-    const res = await fetch(CHAT_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    return await res.json();
-  }
-
-  async function loadHistory() {
-    if (!conversationId) {
-      addMessage('assistant', "Hi, I'm the Autoeight assistant. I can answer questions about our services, process, case studies, or pricing. What can I help with?");
-      return;
-    }
-    try {
-      const data = await apiCall({ action: 'history', conversation_id: conversationId });
-      if (data.messages && data.messages.length > 0) {
-        data.messages.forEach((m) => addMessage(m.role, m.content));
-      } else {
-        addMessage('assistant', "Hi, welcome back. What can I help with?");
-      }
-    } catch (e) {
-      addMessage('assistant', "Hi, I'm the Autoeight assistant. What can I help with?");
-    }
-  }
-
-  async function sendMessage(text) {
-    if (!text.trim() || sending) return;
-    sending = true;
-    sendBtn.disabled = true;
-    addMessage('user', text);
-    inputEl.value = '';
-    inputEl.style.height = 'auto';
-    showTyping();
-
-    try {
-      const data = await apiCall({
-        action: 'message',
-        conversation_id: conversationId,
-        visitor_id: getVisitorId(),
-        message: text,
-        page_url: location.href,
-        user_agent: navigator.userAgent,
-      });
-
-      hideTyping();
-
-      if (data.conversation_id) {
-        conversationId = data.conversation_id;
-        localStorage.setItem(STORAGE_KEY, conversationId);
-      }
-      if (data.status) status = data.status;
-
-      if (data.reply) {
-        addMessage('assistant', data.reply);
-      } else if (status === 'waiting_human' || status === 'human_active') {
-        addMessage('system', "Adam will pick this up shortly.");
-      }
-    } catch (e) {
-      hideTyping();
-      addMessage('assistant', "Sorry, something went wrong. Try the 'Talk to a human' button above.");
-    } finally {
-      sending = false;
-      sendBtn.disabled = false;
-      inputEl.focus();
-    }
   }
 
   function getVisitorId() {
@@ -340,46 +332,219 @@
     return id;
   }
 
+  async function apiCall(payload) {
+    const res = await fetch(CHAT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    return await res.json();
+  }
+
+  function showChatBody() {
+    leadForm.style.display = 'none';
+    chatBody.classList.add('active');
+  }
+
+  function showLeadForm() {
+    leadForm.style.display = 'flex';
+    chatBody.classList.remove('active');
+  }
+
+  // ── Lead form gating ──
+  function validateLead() {
+    const nameOk = leadNameEl.value.trim().length > 0;
+    const companyOk = leadCompanyEl.value.trim().length > 0;
+    leadSubmitBtn.disabled = !(nameOk && companyOk);
+  }
+
+  leadNameEl.addEventListener('input', validateLead);
+  leadCompanyEl.addEventListener('input', validateLead);
+
+  // Pre-fill if we've stored a lead previously
+  if (lead.name) leadNameEl.value = lead.name;
+  if (lead.company) leadCompanyEl.value = lead.company;
+  if (lead.email) leadEmailEl.value = lead.email;
+  validateLead();
+
+  leadSubmitBtn.addEventListener('click', () => {
+    const name = leadNameEl.value.trim();
+    const company = leadCompanyEl.value.trim();
+    const email = leadEmailEl.value.trim();
+    if (!name || !company) { validateLead(); return; }
+    lead = { name, company, email };
+    saveLead();
+
+    stage = 'first_message';
+    showChatBody();
+    addMessage('assistant', "Thanks, " + name + ". What can we help with? Drop as much detail as you'd like about your project, timeline or budget.");
+    inputEl.focus();
+  });
+
+  // ── Chat flow ──
+  async function loadHistory() {
+    if (!conversationId) return;
+    try {
+      const data = await apiCall({ action: 'history', conversation_id: conversationId });
+      if (data.messages && data.messages.length > 0) {
+        messagesEl.innerHTML = '';
+        data.messages.forEach((m) => {
+          addMessage(m.role, m.content);
+          if (m.created_at) lastMessageTs = m.created_at;
+        });
+      }
+    } catch (e) { /* ignore */ }
+  }
+
+  function startPolling() {
+    if (pollTimer) return;
+    pollTimer = setInterval(async () => {
+      if (!conversationId) return;
+      try {
+        const data = await apiCall({
+          action: 'history',
+          conversation_id: conversationId,
+          since: lastMessageTs,
+        });
+        if (data.messages && data.messages.length) {
+          data.messages.forEach((m) => {
+            if (m.role === 'human' || m.role === 'assistant') {
+              addMessage(m.role, m.content);
+            }
+            if (m.created_at) lastMessageTs = m.created_at;
+          });
+        }
+      } catch (e) { /* ignore */ }
+    }, 8000);
+  }
+
+  async function handleSend(text) {
+    if (!text.trim() || sending) return;
+    const value = text.trim();
+    inputEl.value = '';
+    inputEl.style.height = 'auto';
+
+    if (stage === 'first_message') {
+      addMessage('user', value);
+      sending = true;
+      sendBtn.disabled = true;
+      inputEl.disabled = true;
+
+      try {
+        const data = await apiCall({
+          action: 'submit_lead',
+          visitor_id: getVisitorId(),
+          name: lead.name,
+          company: lead.company,
+          email: lead.email || null,
+          message: value,
+          page_url: location.href,
+          user_agent: navigator.userAgent,
+        });
+
+        if (data.conversation_id) {
+          conversationId = data.conversation_id;
+          localStorage.setItem(STORAGE_KEY, conversationId);
+          if (data.last_message_at) lastMessageTs = data.last_message_at;
+        }
+
+        addMessage('system', "We've been notified. You'll get a reply here" + (lead.email ? " and at " + lead.email : "") + " — usually within a working day.");
+
+        stage = 'live';
+        inputEl.disabled = false;
+        inputEl.setAttribute('placeholder', 'Add another message...');
+        startPolling();
+      } catch (e) {
+        addMessage('system', "Couldn't send that. Please email alfie@autoeight.ai directly.");
+        inputEl.disabled = false;
+      } finally {
+        sending = false;
+        sendBtn.disabled = false;
+        inputEl.focus();
+      }
+      return;
+    }
+
+    if (stage === 'live') {
+      addMessage('user', value);
+      sending = true;
+      sendBtn.disabled = true;
+      try {
+        await apiCall({
+          action: 'append_message',
+          conversation_id: conversationId,
+          message: value,
+          page_url: location.href,
+        });
+      } catch (e) {
+        addMessage('system', "Message didn't send. Try again in a moment.");
+      } finally {
+        sending = false;
+        sendBtn.disabled = false;
+        inputEl.focus();
+      }
+    }
+  }
+
   // ── Event handlers ──
-  launcher.addEventListener('click', async () => {
+  let opened = false;
+  launcher.addEventListener('click', () => {
     const isOpen = panel.classList.toggle('open');
     launcher.classList.toggle('open', isOpen);
     launcher.innerHTML = isOpen
       ? '<i class="fa-solid fa-xmark"></i>'
       : '<i class="fa-solid fa-comment-dots"></i><span class="ae-chat-dot"></span>';
-    if (isOpen && messagesEl.children.length <= 1) {
-      await loadHistory();
+
+    if (isOpen && !opened) {
+      opened = true;
+      // If returning visitor with a live conversation, skip form and resume
+      if (conversationId) {
+        stage = 'live';
+        showChatBody();
+        loadHistory();
+        startPolling();
+      } else {
+        // Show lead form; focus first empty field
+        showLeadForm();
+        setTimeout(() => {
+          if (!leadNameEl.value) leadNameEl.focus();
+          else if (!leadCompanyEl.value) leadCompanyEl.focus();
+          else leadEmailEl.focus();
+        }, 200);
+      }
     }
   });
 
-  sendBtn.addEventListener('click', () => sendMessage(inputEl.value));
+  sendBtn.addEventListener('click', () => handleSend(inputEl.value));
   inputEl.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(inputEl.value); }
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(inputEl.value); }
   });
   inputEl.addEventListener('input', () => {
     inputEl.style.height = 'auto';
     inputEl.style.height = Math.min(inputEl.scrollHeight, 100) + 'px';
   });
 
-  humanBtn.addEventListener('click', () => humanModal.classList.add('open'));
-  document.getElementById('ae-human-cancel').addEventListener('click', () => humanModal.classList.remove('open'));
-  document.getElementById('ae-human-submit').addEventListener('click', async () => {
-    const name = document.getElementById('ae-human-name').value.trim();
-    const email = document.getElementById('ae-human-email').value.trim();
-    if (!email) { alert('Please add your email so Adam can reply.'); return; }
-    if (!conversationId) { await sendMessage('Hi, I would like to talk to someone.'); }
-    humanModal.classList.remove('open');
-    humanBtn.disabled = true;
-    humanBtn.innerHTML = '<i class="fa-solid fa-check"></i> Adam has been notified';
-    try {
-      await apiCall({
-        action: 'request_human',
-        conversation_id: conversationId,
-        name, email,
-      });
-      addMessage('system', 'Adam has been notified. He will reply here shortly.');
-    } catch (e) {
-      addMessage('system', 'Something went wrong. Email alfie@autoeight.ai directly.');
-    }
+  // Allow Enter on lead form inputs to advance
+  [leadNameEl, leadCompanyEl, leadEmailEl].forEach((el) => {
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        if (!leadSubmitBtn.disabled) leadSubmitBtn.click();
+      }
+    });
   });
+
+  // Dismiss button hides the entire widget for the session
+  dismissBtn.addEventListener('click', () => {
+    try { sessionStorage.setItem(DISMISS_KEY, '1'); } catch (e) { /* ignore */ }
+    wrap.remove();
+    panel.remove();
+  });
+
+  // Expose a way for other page elements (e.g. "Live chat" buttons) to open the widget
+  window.AE_CHAT_OPEN = function () {
+    if (!panel.classList.contains('open')) {
+      launcher.click();
+    }
+  };
 })();

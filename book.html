@@ -302,6 +302,21 @@
       <h3>Tell us about your business</h3>
       <p class="form-intro">Fill in a few details and we'll be in touch within one working day to arrange your free 30-minute consultation.</p>
 
+      <button type="button" id="live-chat-cta" onclick="if(window.AE_CHAT_OPEN) window.AE_CHAT_OPEN();" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 18px;margin-bottom:20px;background:linear-gradient(135deg,#7c5cfc,#6d4de6);color:#fff;border:0;border-radius:12px;font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer;box-shadow:0 8px 20px rgba(109,77,230,0.25);transition:transform 0.15s,box-shadow 0.15s;">
+        <i class="fa-solid fa-comments"></i>
+        Prefer to chat live? Start a chat
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:rgba(255,255,255,0.18);border-radius:999px;font-size:0.72rem;font-weight:500;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
+          Online
+        </span>
+      </button>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--muted);font-size:0.8rem;">
+        <span style="flex:1;height:1px;background:rgba(255,255,255,0.08);"></span>
+        <span>or fill out the form</span>
+        <span style="flex:1;height:1px;background:rgba(255,255,255,0.08);"></span>
+      </div>
+
       <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/alfie@autoeight.ai" method="POST" style="background:transparent;border:0;padding:0;" novalidate>
         <input type="hidden" name="_subject" value="New consultation request from autoeight.ai">
         <input type="hidden" name="_template" value="table">

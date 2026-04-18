@@ -8,8 +8,9 @@
 CREATE TABLE IF NOT EXISTS chat_conversations (
   id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   visitor_id        TEXT,                      -- browser fingerprint or anon id
-  visitor_email     TEXT,                      -- set when they request a human
-  visitor_name      TEXT,                      -- set when they request a human
+  visitor_email     TEXT,                      -- optional
+  visitor_name      TEXT,                      -- collected at start of chat
+  visitor_company   TEXT,                      -- collected at start of chat
   started_at        TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   last_message_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   status            TEXT NOT NULL DEFAULT 'ai',       -- 'ai' | 'waiting_human' | 'human_active' | 'closed'
