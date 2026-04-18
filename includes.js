@@ -1,3 +1,11 @@
+// Load chat widget (skip on backend pages)
+if (!location.pathname.includes('/backend/')) {
+  var chatScript = document.createElement('script');
+  chatScript.src = '/chatbot/widget/chat-widget.js';
+  chatScript.defer = true;
+  document.head.appendChild(chatScript);
+}
+
 // Shared nav and footer loader
 // Pages ship with inline nav/footer as fallback. This script
 // fetches the latest nav.html/footer.html and swaps them in,
