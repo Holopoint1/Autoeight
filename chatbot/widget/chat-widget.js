@@ -224,6 +224,25 @@
     }
     .ae-msg a { color: inherit; text-decoration: underline; }
 
+    .ae-waiting {
+      align-self: center;
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(124,92,252,0.08);
+      color: #6d4de6;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .ae-spinner {
+      width: 14px; height: 14px;
+      border: 2px solid rgba(124,92,252,0.25);
+      border-top-color: #6d4de6;
+      border-radius: 50%;
+      animation: ae-spin 0.8s linear infinite;
+    }
+    @keyframes ae-spin { to { transform: rotate(360deg); } }
+
     .ae-chat-input-wrap {
       padding: 12px 16px 16px;
       background: #fff;
@@ -380,6 +399,20 @@
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
+  let waitingEl = null;
+  function addWaiting() {
+    removeWaiting();
+    waitingEl = document.createElement('div');
+    waitingEl.className = 'ae-waiting';
+    waitingEl.innerHTML = '<div class="ae-spinner"></div><span>Someone\'s coming to reply…</span>';
+    messagesEl.appendChild(waitingEl);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+  function removeWaiting() {
+    if (waitingEl && waitingEl.parentNode) waitingEl.parentNode.removeChild(waitingEl);
+    waitingEl = null;
+  }
+
   function getVisitorId() {
     let id = localStorage.getItem('ae_visitor_id');
     if (!id) {
@@ -474,6 +507,7 @@
         if (data.messages && data.messages.length) {
           data.messages.forEach((m) => {
             if (m.role === 'human' || m.role === 'assistant') {
+              removeWaiting();
               addMessage(m.role, m.content);
             }
             if (m.created_at) lastMessageTs = m.created_at;
@@ -513,7 +547,7 @@
           if (data.last_message_at) lastMessageTs = data.last_message_at;
         }
 
-        addMessage('system', "We've been notified. You'll get a reply here" + (lead.email ? " and at " + lead.email : "") + " — usually within a working day.");
+        addWaiting();
 
         stage = 'live';
         inputEl.disabled = false;
