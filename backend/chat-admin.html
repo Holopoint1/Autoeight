@@ -183,7 +183,7 @@ body {
 <div class="login" id="login">
   <div class="login-card">
     <h1>Autoeight Chat Admin</h1>
-    <input type="password" id="admin-token" placeholder="Admin token" autofocus />
+    <input type="password" id="admin-token" placeholder="Password" autofocus />
     <button id="login-btn">Sign in</button>
     <p class="error" id="login-error" style="display:none;"></p>
   </div>
@@ -226,11 +226,11 @@ body {
 </div>
 
 <script>
-// Configuration - uses same Supabase project as the track endpoint
-const SUPABASE_URL = 'https://useohuvyxzshmskjngpo.supabase.co';
-const TOKEN_KEY = 'ae_chat_admin_token';
+// Admin panel — talks to the chat edge function with a password
+const CHAT_ENDPOINT = 'https://useohuvyxzshmskjngpo.supabase.co/functions/v1/chat';
+const TOKEN_KEY = 'ae_chat_admin_pw';
 
-let adminToken = sessionStorage.getItem(TOKEN_KEY) || '';
+let adminPassword = sessionStorage.getItem(TOKEN_KEY) || '';
 let conversations = [];
 let currentConvId = null;
 let currentFilter = 'all';
@@ -238,37 +238,31 @@ let pollTimer = null;
 
 const $ = (id) => document.getElementById(id);
 
-async function api(path, options = {}) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-    ...options,
-    headers: {
-      'apikey': adminToken,
-      'Authorization': `Bearer ${adminToken}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=representation',
-      ...(options.headers || {}),
-    },
+async function rpc(payload) {
+  const res = await fetch(CHAT_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...payload, password: adminPassword }),
   });
-  if (!res.ok) throw new Error(await res.text());
-  if (res.status === 204) return null;
-  return await res.json();
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || res.statusText);
+  return data;
 }
 
 // ── Login flow ──
 async function tryLogin() {
-  const token = $('admin-token').value.trim();
-  if (!token) return;
-  adminToken = token;
+  const pw = $('admin-token').value.trim();
+  if (!pw) return;
+  adminPassword = pw;
   try {
-    // Test by fetching conversations
-    await api('chat_conversations?select=id&limit=1');
-    sessionStorage.setItem(TOKEN_KEY, token);
+    await rpc({ action: 'admin_login' });
+    sessionStorage.setItem(TOKEN_KEY, pw);
     $('login').style.display = 'none';
     $('app').classList.add('active');
     await loadConversations();
     startPolling();
   } catch (e) {
-    $('login-error').textContent = 'Invalid token or connection error.';
+    $('login-error').textContent = 'Wrong password or connection error.';
     $('login-error').style.display = 'block';
   }
 }
@@ -276,13 +270,16 @@ async function tryLogin() {
 $('login-btn').addEventListener('click', tryLogin);
 $('admin-token').addEventListener('keydown', (e) => { if (e.key === 'Enter') tryLogin(); });
 
-if (adminToken) { tryLogin(); }
+if (adminPassword) {
+  $('admin-token').value = adminPassword;
+  tryLogin();
+}
 
 // ── Load conversations ──
 async function loadConversations() {
   try {
-    const data = await api('chat_conversations?select=*&order=last_message_at.desc&limit=100');
-    conversations = data;
+    const data = await rpc({ action: 'admin_list' });
+    conversations = data.conversations || [];
     renderConvoList();
   } catch (e) {
     console.error(e);
@@ -339,8 +336,8 @@ async function openConversation(id) {
   renderConvoList();
 
   try {
-    const messages = await api(`chat_messages?conversation_id=eq.${id}&select=*&order=created_at.asc`);
-    renderMessages(messages);
+    const data = await rpc({ action: 'admin_messages', conversation_id: id });
+    renderMessages(data.messages || []);
   } catch (e) {
     console.error(e);
   }
@@ -369,14 +366,7 @@ async function sendReply() {
   if (!text || !currentConvId) return;
   $('send-btn').disabled = true;
   try {
-    await api('chat_messages', {
-      method: 'POST',
-      body: JSON.stringify({ conversation_id: currentConvId, role: 'human', content: text }),
-    });
-    await api(`chat_conversations?id=eq.${currentConvId}`, {
-      method: 'PATCH',
-      body: JSON.stringify({ status: 'human_active', last_message_at: new Date().toISOString() }),
-    });
+    await rpc({ action: 'admin_reply', conversation_id: currentConvId, message: text });
     $('reply-input').value = '';
     $('reply-input').style.height = 'auto';
     await openConversation(currentConvId);
@@ -391,10 +381,7 @@ async function sendReply() {
 // ── Close conversation ──
 $('close-btn').addEventListener('click', async () => {
   if (!currentConvId || !confirm('Mark this conversation as closed?')) return;
-  await api(`chat_conversations?id=eq.${currentConvId}`, {
-    method: 'PATCH',
-    body: JSON.stringify({ status: 'closed' }),
-  });
+  await rpc({ action: 'admin_close', conversation_id: currentConvId });
   await loadConversations();
 });
 
@@ -423,8 +410,8 @@ function startPolling() {
   pollTimer = setInterval(async () => {
     await loadConversations();
     if (currentConvId) {
-      const messages = await api(`chat_messages?conversation_id=eq.${currentConvId}&select=*&order=created_at.asc`);
-      renderMessages(messages);
+      const data = await rpc({ action: 'admin_messages', conversation_id: currentConvId });
+      renderMessages(data.messages || []);
     }
   }, 20000);
 }

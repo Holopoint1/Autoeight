@@ -21,6 +21,7 @@ const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const NOTIFY_EMAIL = Deno.env.get("NOTIFY_EMAIL") || "alfie@autoeight.ai";
 const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || "Autoeight Chat <onboarding@resend.dev>";
+const ADMIN_PASSWORD = Deno.env.get("ADMIN_PASSWORD") || "";
 const PUSHOVER_TOKEN = Deno.env.get("PUSHOVER_TOKEN");
 const PUSHOVER_USER = Deno.env.get("PUSHOVER_USER");
 const TELEGRAM_BOT_TOKEN = Deno.env.get("TELEGRAM_BOT_TOKEN");
@@ -36,7 +37,15 @@ const CORS_HEADERS: Record<string, string> = {
 };
 
 interface ChatRequest {
-  action: "submit_lead" | "append_message" | "history";
+  action:
+    | "submit_lead"
+    | "append_message"
+    | "history"
+    | "admin_login"
+    | "admin_list"
+    | "admin_messages"
+    | "admin_reply"
+    | "admin_close";
   conversation_id?: string;
   visitor_id?: string;
   name?: string;
@@ -46,6 +55,18 @@ interface ChatRequest {
   page_url?: string;
   user_agent?: string;
   since?: string;
+  password?: string;
+}
+
+function checkAdmin(body: ChatRequest): boolean {
+  return !!ADMIN_PASSWORD && body.password === ADMIN_PASSWORD;
+}
+
+function adminDenied() {
+  return new Response(JSON.stringify({ error: "Invalid password" }), {
+    status: 401,
+    headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+  });
 }
 
 async function sendEmail(subject: string, body: string): Promise<void> {
@@ -289,6 +310,71 @@ serve(async (req: Request) => {
       await notifyFollowUp(body.conversation_id, conv?.visitor_name || "", body.message);
 
       return new Response(JSON.stringify({ success: true }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    // ──────────────────────────────────────────────────────────
+    //  ADMIN ACTIONS — password-gated
+    // ──────────────────────────────────────────────────────────
+
+    if (body.action === "admin_login") {
+      if (!checkAdmin(body)) return adminDenied();
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_list") {
+      if (!checkAdmin(body)) return adminDenied();
+      const { data } = await supabase
+        .from("chat_conversations")
+        .select("*")
+        .order("last_message_at", { ascending: false })
+        .limit(100);
+      return new Response(JSON.stringify({ conversations: data || [] }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_messages" && body.conversation_id) {
+      if (!checkAdmin(body)) return adminDenied();
+      const { data } = await supabase
+        .from("chat_messages")
+        .select("*")
+        .eq("conversation_id", body.conversation_id)
+        .order("created_at", { ascending: true });
+      return new Response(JSON.stringify({ messages: data || [] }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_reply" && body.conversation_id && body.message) {
+      if (!checkAdmin(body)) return adminDenied();
+      await supabase.from("chat_messages").insert({
+        conversation_id: body.conversation_id,
+        role: "human",
+        content: body.message,
+      });
+      await supabase
+        .from("chat_conversations")
+        .update({
+          status: "human_active",
+          last_message_at: new Date().toISOString(),
+        })
+        .eq("id", body.conversation_id);
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_close" && body.conversation_id) {
+      if (!checkAdmin(body)) return adminDenied();
+      await supabase
+        .from("chat_conversations")
+        .update({ status: "closed" })
+        .eq("id", body.conversation_id);
+      return new Response(JSON.stringify({ ok: true }), {
         headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
       });
     }
