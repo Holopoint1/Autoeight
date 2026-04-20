@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+
+
+<head>
+
+
+
+  <meta charset="UTF-8" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+  <title>Project Management — Autoeight Portal</title>
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+
+  <link rel="stylesheet" href="/admin/admin.css?v=3" />
+
+
+
+  <script src="/admin/auth.js"></script>
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+  <script>AEAuth.check();</script>
+
+
+
+
+
+
+
+  <div class="app-layout">
+
+
+
+
+
+
+
+    <aside class="sidebar">
+
+
+
+      <a href="/admin" class="sidebar-logo">
+
+
+
+        <img src="/brand_assets/logo.png?v=3" alt="Autoeight" />
+
+
+
+        <div class="sidebar-logo-text">
+
+
+
+          <span class="sidebar-logo-name">Autoeight</span>
+
+
+
+          <span class="sidebar-logo-sub">Internal Portal</span>
+
+
+
+        </div>
+
+
+
+      </a>
+
+
+
+
+
+
+
+      <div class="sidebar-section">Tools</div>
+
+
+
+      <nav class="sidebar-nav">
+
+
+
+        <a href="/admin" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard </a>
+
+
+
+        <a href="/admin/visitors" class="sidebar-link"><i class="fa-solid fa-eye"></i> Visitor Intelligence <span class="sidebar-badge">New</span></a>
+
+
+
+        <a href="/admin/seo" class="sidebar-link"><i class="fa-solid fa-chart-simple"></i> SEO &amp; Site Health </a>
+
+
+
+        <a href="/admin/skills" class="sidebar-link"><i class="fa-solid fa-book"></i> AI Skills </a>
+
+
+
+      </nav>
+
+
+
+
+
+
+
+      <div class="sidebar-section">Sales Demos</div>
+      <nav class="sidebar-nav">
+        <a href="/services/web-design" class="sidebar-link"><i class="fa-solid fa-globe"></i> Web Design</a>
+        <a href="/admin/support" class="sidebar-link"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a>
+        <a href="/admin/data" class="sidebar-link"><i class="fa-solid fa-plug"></i> CRM &amp; Integration</a>
+        <a href="/admin/sales" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Sales Automation</a>
+        <a href="/services/lms" class="sidebar-link"><i class="fa-solid fa-graduation-cap"></i> Learning Management</a>
+      </nav>
+
+
+
+
+
+
+
+      <div class="sidebar-footer">
+
+
+
+        <a href="/" class="sidebar-link"><i class="fa-solid fa-globe"></i> Live Site</a>
+
+
+
+        <a href="#" onclick="AEAuth.logout();return false;" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+
+
+
+      </div>
+
+
+
+    </aside>
+
+
+
+
+
+
+
+    <!-- Main Content -->
+
+
+
+    <div class="main-content">
+
+
+
+      <div class="topbar">
+
+
+
+        <div class="topbar-breadcrumb">
+
+
+
+          <span>Portal</span> <span>/</span> <span>Sales Demos</span> <span>/</span> <strong>Project Management</strong>
+
+
+
+        </div>
+
+
+
+        <div class="topbar-actions">
+
+
+
+          <a href="/admin" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+  <main class="b-main">
+
+
+
+
+
+
+
+    <div class="page-header">
+
+
+
+      <span class="section-num">Section 06 of 07</span>
+
+
+
+      <h1 class="page-title">Project Management <em>Automation</em></h1>
+
+
+
+      <p class="page-desc">Traditional project management runs on email threads, status meetings, and manual tracking. The result: tasks get missed, deadlines slip, and managers spend more time chasing updates than doing meaningful work. Automation changes that entirely.</p>
+
+
+
+      <div class="quick-stats">
+        <div class="qs"><div class="qs-val green">3.6 hrs</div><div class="qs-label">Reclaimed per person per week via automation<br><span style="opacity:0.55;font-size:0.72rem;">Zapier Automation Trends, 2024</span></div></div>
+        <div class="qs"><div class="qs-val green">40%</div><div class="qs-label">Reduction in admin time across ops<br><span style="opacity:0.55;font-size:0.72rem;">McKinsey State of AI, 2024</span></div></div>
+        <div class="qs"><div class="qs-val purple">32%</div><div class="qs-label">Less time lost to tool-switching<br><span style="opacity:0.55;font-size:0.72rem;">Qatalog / HBR Workgeist, 2023</span></div></div>
+        <div class="qs"><div class="qs-val amber">+21%</div><div class="qs-label">Productivity lift with integrated tooling<br><span style="opacity:0.55;font-size:0.72rem;">Salesforce State of Sales, 2024</span></div></div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="tabs">
+
+
+
+      <button class="tab-btn active" data-tab="visual"><i class="fa-solid fa-eye"></i> Visual</button>
+
+
+
+      <button class="tab-btn" data-tab="auditory"><i class="fa-solid fa-ear-listen"></i> Auditory</button>
+
+
+
+      <button class="tab-btn" data-tab="kinesthetic"><i class="fa-solid fa-hand"></i> Kinesthetic</button>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- â”€â”€ VISUAL TAB â”€â”€ -->
+
+
+
+    <div id="visual" class="tab-content active">
+
+
+
+
+
+
+
+      <!-- Meeting vs dashboard SVG -->
+
+
+
+      <div class="svg-area" style="margin-bottom:20px;">
+
+
+
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:14px;">Getting Project Status — Traditional vs AI</div>
+
+
+
+        <svg viewBox="0 0 700 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;height:auto;">
+
+
+
+          <!-- Traditional -->
+
+
+
+          <text x="0" y="16" fill="#6b6b6b" font-size="11" font-weight="700" font-family="system-ui">TRADITIONAL — Status meeting every week</text>
+
+
+
+          <rect x="0" y="26" width="90" height="36" rx="6" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1"/>
+
+
+
+          <text x="45" y="44" text-anchor="middle" fill="#ececec" font-size="10" font-weight="600" font-family="system-ui">Manager</text>
+
+
+
+          <text x="45" y="57" text-anchor="middle" fill="#ef4444" font-size="9" font-family="system-ui">needs update</text>
+
+
+
+          <text x="98" y="49" fill="#6b6b6b" font-size="18" font-family="system-ui">â†’</text>
+
+
+
+          <rect x="110" y="26" width="120" height="36" rx="6" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1"/>
+
+
+
+          <text x="170" y="44" text-anchor="middle" fill="#ececec" font-size="10" font-weight="600" font-family="system-ui">Emails 4 people</text>
+
+
+
+          <text x="170" y="57" text-anchor="middle" fill="#ef4444" font-size="9" font-family="system-ui">30 min to gather</text>
+
+
+
+          <text x="238" y="49" fill="#6b6b6b" font-size="18" font-family="system-ui">â†’</text>
+
+
+
+          <rect x="250" y="26" width="120" height="36" rx="6" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1"/>
+
+
+
+          <text x="310" y="44" text-anchor="middle" fill="#ececec" font-size="10" font-weight="600" font-family="system-ui">Weekly meeting</text>
+
+
+
+          <text x="310" y="57" text-anchor="middle" fill="#ef4444" font-size="9" font-family="system-ui">60 min, 5 people</text>
+
+
+
+          <text x="378" y="49" fill="#6b6b6b" font-size="18" font-family="system-ui">â†’</text>
+
+
+
+          <rect x="390" y="26" width="140" height="36" rx="6" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+
+
+
+          <text x="460" y="44" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="700" font-family="system-ui">Data is already a week old</text>
+
+
+
+          <text x="460" y="57" text-anchor="middle" fill="#6b6b6b" font-size="9" font-family="system-ui">Decisions delayed</text>
+
+
+
+          <!-- AI -->
+
+
+
+          <text x="0" y="110" fill="#6b6b6b" font-size="11" font-weight="700" font-family="system-ui">WITH AI — Live dashboard, instant visibility</text>
+
+
+
+          <rect x="0" y="120" width="90" height="36" rx="6" fill="rgba(34,197,94,0.1)" stroke="#22c55e" stroke-width="1"/>
+
+
+
+          <text x="45" y="138" text-anchor="middle" fill="#ececec" font-size="10" font-weight="600" font-family="system-ui">Manager</text>
+
+
+
+          <text x="45" y="151" text-anchor="middle" fill="#22c55e" font-size="9" font-family="system-ui">needs update</text>
+
+
+
+          <text x="98" y="143" fill="#6b6b6b" font-size="18" font-family="system-ui">â†’</text>
+
+
+
+          <rect x="110" y="120" width="200" height="36" rx="6" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1.5"/>
+
+
+
+          <text x="210" y="138" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700" font-family="system-ui">Opens dashboard</text>
+
+
+
+          <text x="210" y="151" text-anchor="middle" fill="#22c55e" font-size="9" font-family="system-ui">Live data — 5 seconds</text>
+
+
+
+          <text x="318" y="143" fill="#6b6b6b" font-size="18" font-family="system-ui">â†’</text>
+
+
+
+          <rect x="330" y="120" width="200" height="36" rx="6" fill="rgba(124,92,252,0.1)" stroke="#7c5cfc" stroke-width="1"/>
+
+
+
+          <text x="430" y="138" text-anchor="middle" fill="#a07aff" font-size="10" font-weight="700" font-family="system-ui">Auto-notifications already sent</text>
+
+
+
+          <text x="430" y="151" text-anchor="middle" fill="#a07aff" font-size="9" font-family="system-ui">No chasing, no meetings needed</text>
+
+
+
+          <!-- Time labels -->
+
+
+
+          <text x="540" y="49" fill="#ef4444" font-size="13" font-weight="800" font-family="system-ui">2 hrs/week</text>
+
+
+
+          <text x="540" y="143" fill="#22c55e" font-size="13" font-weight="800" font-family="system-ui">0 hrs</text>
+
+
+
+        </svg>
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <div class="flow-grid">
+
+
+
+        <div class="flow-col trad">
+
+
+
+          <div class="flow-col-head">
+
+
+
+            <div class="flow-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+
+
+
+            <h3>Traditional PM</h3>
+
+
+
+            <span class="time-tag">2 hrs/day</span>
+
+
+
+          </div>
+
+
+
+          <div class="steps">
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">1</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Task assigned via email</div>
+
+
+
+                <div class="step-detail">Long email chain sets the context, often loses detail</div>
+
+
+
+                <span class="step-badge badge-red">Unclear ownership</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">2</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Progress tracked in spreadsheets</div>
+
+
+
+                <div class="step-detail">Updated manually, rarely current, hard to share</div>
+
+
+
+                <span class="step-badge badge-red">Always out of date</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">3</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Weekly status meetings</div>
+
+
+
+                <div class="step-detail">1–2 hrs of everyone's time just to report what happened</div>
+
+
+
+                <span class="step-badge badge-red">5 people × 1.5 hrs = 7.5 hrs/week wasted</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">4</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Manager chases updates manually</div>
+
+
+
+                <div class="step-detail">Emails, calls, messages — just to find out where things stand</div>
+
+
+
+                <span class="step-badge badge-red">30–60 min/day per manager</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">5</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Tasks missed or deadlines slipped</div>
+
+
+
+                <div class="step-detail">No automated reminders, no accountability system</div>
+
+
+
+                <span class="step-badge badge-red">Compounding project delays</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="flow-col ai">
+
+
+
+          <div class="flow-col-head">
+
+
+
+            <div class="flow-icon"><i class="fa-solid fa-diagram-project"></i></div>
+
+
+
+            <h3>AI Project Management</h3>
+
+
+
+            <span class="time-tag">0.5 hrs/day</span>
+
+
+
+          </div>
+
+
+
+          <div class="steps">
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">1</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Tasks auto-assigned with full context</div>
+
+
+
+                <div class="step-detail">Triggered by events — deal closed, project started, deadline set</div>
+
+
+
+                <span class="step-badge badge-green">Clear ownership from the start</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">2</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Real-time progress dashboard</div>
+
+
+
+                <div class="step-detail">Live status across all tasks, projects, and team members</div>
+
+
+
+                <span class="step-badge badge-purple">Always current, always visible</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">3</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Auto-notifications replace status meetings</div>
+
+
+
+                <div class="step-detail">Updates pushed to relevant people only when relevant</div>
+
+
+
+                <span class="step-badge badge-green">75% fewer meetings needed</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">4</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Automated deadline reminders</div>
+
+
+
+                <div class="step-detail">48hrs, 24hrs, 2hrs before — no task ever sneaks up</div>
+
+
+
+                <span class="step-badge badge-green">Zero missed deadlines</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">5</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Manager reviews, not chases</div>
+
+
+
+                <div class="step-detail">30 min/day checking dashboard vs 2 hrs chasing people</div>
+
+
+
+                <span class="step-badge badge-purple">Manager focuses on decisions, not admin</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <div class="compare-wrap">
+
+
+
+        <table class="compare-table">
+
+
+
+          <thead>
+
+
+
+            <tr><th class="cm">Metric</th><th class="ct"><i class="fa-solid fa-xmark"></i> Traditional</th><th class="ca"><i class="fa-solid fa-check"></i> With AI</th></tr>
+
+
+
+          </thead>
+
+
+
+          <tbody>
+
+
+
+            <tr><td class="tm">Time on PM tasks per day</td><td class="tt">2 hrs</td><td class="ta">0.5 hrs</td></tr>
+
+
+
+            <tr><td class="tm">Time saved per day</td><td class="tt">—</td><td class="ta">1.5 hrs</td></tr>
+
+
+
+            <tr><td class="tm">Status meetings per week</td><td class="tt">2–3 (1–2 hrs each)</td><td class="ta">0–1 (optional)</td></tr>
+
+
+
+            <tr><td class="tm">Project visibility</td><td class="tt">Weekly snapshot (outdated)</td><td class="ta">Real-time, always current</td></tr>
+
+
+
+            <tr><td class="tm">Missed deadlines</td><td class="tt">Common (no reminders)</td><td class="ta">Near-zero (auto-reminders)</td></tr>
+
+
+
+            <tr><td class="tm">Task assignment</td><td class="tt">Manual, via email</td><td class="ta">Automated, triggered by events</td></tr>
+
+
+
+            <tr><td class="tm">Annual saving (£35k salary)</td><td class="tt">£0</td><td class="ta">~£12,500/yr per manager</td></tr>
+
+
+
+          </tbody>
+
+
+
+        </table>
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <div class="stats-row">
+
+
+
+        <div class="sbox green"><div class="sbox-val">1.5 hrs</div><div class="sbox-label">Saved per manager per day</div></div>
+
+
+
+        <div class="sbox purple"><div class="sbox-val">75%</div><div class="sbox-label">Reduction in status meetings</div></div>
+
+
+
+        <div class="sbox green"><div class="sbox-val">£12.5k</div><div class="sbox-label">Saved per manager per year</div></div>
+
+
+
+        <div class="sbox amber"><div class="sbox-val">Zero</div><div class="sbox-label">Tasks missed with automated tracking</div></div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- â”€â”€ AUDITORY TAB â”€â”€ -->
+
+
+
+    <div id="auditory" class="tab-content">
+
+
+
+      <div class="narrative">
+
+
+
+        <h3>The Story to Tell Your Prospect</h3>
+
+
+
+        <p>If you asked every manager in your organisation what eats the most time, status updates would almost always be in the top three. "Where is this up to?" "Did that get done?" "Can everyone join the call Thursday to go through progress?" It's a constant overhead — and for most businesses, it costs thousands of hours a year across the management team.</p>
+
+
+
+
+
+
+
+        <blockquote>"A manager's job is to make decisions that move the business forward. But in most companies, they spend more time finding out what's happening than acting on it."</blockquote>
+
+
+
+
+
+
+
+        <h3>The Meeting Tax</h3>
+
+
+
+        <p>Consider a five-person team with a weekly one-hour status meeting. That's 5 hours of collective time — every single week — just to update each other on what's already happened. Over a year, that's 260 hours. If the average salary is £35,000, that's roughly £4,300 a year spent in one weekly meeting, alone.</p>
+
+
+
+
+
+
+
+        <p>Now add the emails sent asking for updates. The messages chasing deadlines. The time spent preparing for meetings. The context-switching that comes with all of it. The real cost of traditional project management is easily three to four times what most managers estimate.</p>
+
+
+
+
+
+
+
+        <div class="callout">
+
+
+
+          <p><strong>Analogy to use:</strong> "Running a business without a real-time project dashboard is like driving a car with a blindfold on and someone in the back seat shouting directions based on where you were five minutes ago. Automation gives you the windscreen back."</p>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <h3>What Changes With Automation</h3>
+
+
+
+        <p>When project management is automated, tasks are assigned the moment they become relevant — triggered by events like a deal being closed, a project being kicked off, or a deadline being set. Every team member knows exactly what they need to do, by when, and why. No email chains required.</p>
+
+
+
+
+
+
+
+        <p>Progress is tracked in real time. A manager can see the status of every project, every task, and every person in 30 seconds — without speaking to anyone. And instead of waiting for the weekly meeting to find out a deadline is at risk, the system sends a notification the moment it detects a problem.</p>
+
+
+
+
+
+
+
+        <h3>The Financial Outcome</h3>
+
+
+
+        <p>A manager on £35,000 a year costs roughly £16.80 an hour. If they're spending 1.5 hours every day on PM admin — chasing, updating, meeting — that's approximately £25 a day, over £6,500 a year, going into overhead. For a three-manager team, that's nearly £20,000 a year in management capacity lost to process friction.</p>
+
+
+
+
+
+
+
+        <blockquote>"We don't just save meeting time. We give your managers the visibility to make better decisions faster — and that has a compounding effect on everything the business delivers."</blockquote>
+
+
+
+
+
+
+
+        <h3>What to Emphasise</h3>
+
+
+
+        <ul>
+
+
+
+          <li>Visibility: Real-time dashboards mean leaders always know what's happening — without having to ask.</li>
+
+
+
+          <li>Accountability: Automated task assignment with deadlines creates clear ownership from day one.</li>
+
+
+
+          <li>Meeting reduction: When status is always visible, most meetings become unnecessary.</li>
+
+
+
+          <li>Deadline protection: Automated reminders mean nothing slips through the cracks.</li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- â”€â”€ KINESTHETIC TAB â”€â”€ -->
+
+
+
+    <div id="kinesthetic" class="tab-content">
+
+
+
+
+
+
+
+      <div class="demo-steps">
+
+
+
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:4px;">Walk Through This With Your Prospect</div>
+
+
+
+        <div class="demo-step">
+
+
+
+          <div class="demo-num">1</div>
+
+
+
+          <div class="demo-body">
+
+
+
+            <h4>Ask: "How do you currently track project progress?"</h4>
+
+
+
+            <p>Common answers: emails, spreadsheets, weekly meetings. Each one is a signal that visibility is a problem.</p>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <div class="demo-step">
+
+
+
+          <div class="demo-num">2</div>
+
+
+
+          <div class="demo-body">
+
+
+
+            <h4>Ask: "How many hours per week do you spend in status-update meetings?"</h4>
+
+
+
+            <p>Then ask: "What would you do with that time if those meetings didn't need to happen?" Again, let them answer — it becomes their own pitch.</p>
+
+
+
+          </div>
+
+
+
+          <div class="demo-save"><div class="demo-save-val">5–10 hrs</div><div class="demo-save-label">per week per team</div></div>
+
+
+
+        </div>
+
+
+
+        <div class="demo-step">
+
+
+
+          <div class="demo-num">3</div>
+
+
+
+          <div class="demo-body">
+
+
+
+            <h4>Ask: "Has anything ever been missed because no one was tracking it?"</h4>
+
+
+
+            <p>The answer is almost always yes. This creates genuine desire for automated accountability — it's not theoretical, it's a solved pain point.</p>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <div class="demo-step">
+
+
+
+          <div class="demo-num">4</div>
+
+
+
+          <div class="demo-body">
+
+
+
+            <h4>Calculate their PM overhead cost with the calculator below</h4>
+
+
+
+            <p>Show the annual cost of their management team's time on admin vs strategic work. The contrast is usually eye-opening.</p>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <div class="roi-calc">
+
+
+
+        <div class="roi-calc-title"><i class="fa-solid fa-calculator" style="color:var(--purple-l);margin-right:8px;"></i>Live ROI Calculator — Project Management</div>
+
+
+
+        <div class="roi-calc-sub">Enter the prospect's management team details.</div>
+
+
+
+        <div class="roi-inputs">
+
+
+
+          <div>
+
+
+
+            <label class="roi-label" for="pm-staff">Number of managers / team leads</label>
+
+
+
+            <input type="number" id="pm-staff" class="roi-input" value="2" min="1" max="20" oninput="calcPM()" />
+
+
+
+          </div>
+
+
+
+          <div>
+
+
+
+            <label class="roi-label" for="pm-salary">Average annual salary (£)</label>
+
+
+
+            <input type="number" id="pm-salary" class="roi-input" value="35000" min="20000" max="100000" step="1000" oninput="calcPM()" />
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <div class="roi-results">
+
+
+
+          <div class="roi-res"><div class="roi-res-val" id="pm-hrs">3 hrs</div><div class="roi-res-label">PM hours saved per day (team)</div></div>
+
+
+
+          <div class="roi-res hi"><div class="roi-res-val" id="pm-annual">£21,635</div><div class="roi-res-label">Annual saving</div></div>
+
+
+
+          <div class="roi-res big"><div class="roi-res-val" id="pm-5yr">£108,173</div><div class="roi-res-label">5-year saving</div></div>
+
+
+
+          <div class="roi-res"><div class="roi-res-val">75%</div><div class="roi-res-label">Fewer status meetings needed</div></div>
+
+
+
+        </div>
+
+
+
+        <p class="roi-note">Based on 1.5 hours PM admin saved per manager per day, calculated at salary ÷ 2,080 working hours per year.</p>
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="divider"></div>
+
+
+
+
+
+
+
+    <div style="margin-bottom:12px;"><span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--purple);">Talking Points</span></div>
+
+
+
+    <div class="tp-grid">
+
+
+
+      <div class="tp"><div class="tp-label">On meetings</div><div class="tp-text">"If your team knows what's happening in real time, the status meeting becomes optional. Most businesses could eliminate half their meetings with the right dashboard."</div></div>
+
+
+
+      <div class="tp"><div class="tp-label">On accountability</div><div class="tp-text">"When a task is assigned automatically with a deadline and an owner, nothing falls through the cracks. When it's assigned via email — things get missed."</div></div>
+
+
+
+      <div class="tp"><div class="tp-label">On decisions</div><div class="tp-text">"Your managers should be making decisions, not collecting information to make decisions. Automation gives them the information instantly so they can act."</div></div>
+
+
+
+      <div class="tp"><div class="tp-label">On scale</div><div class="tp-text">"As you take on more clients and projects, manual tracking breaks down. Automated systems scale with you — without adding management overhead."</div></div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div style="margin-bottom:12px;"><span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--amber);">Objection Handlers</span></div>
+
+
+
+    <div class="objections">
+
+
+
+      <div class="objection">
+
+
+
+        <div class="objection-header">
+
+
+
+          <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "We already use Asana / Monday / Trello"</span>
+
+
+
+          <span class="toggle-icon">+</span>
+
+
+
+        </div>
+
+
+
+        <div class="objection-answer">
+
+
+
+          <p>Those tools are great — but they still require manual input. What we add is the automation layer on top: tasks that create themselves when triggers happen, notifications that send without anyone setting them, dashboards that update without anyone touching them. Your tool becomes active, not passive.</p>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <div class="objection">
+
+
+
+        <div class="objection-header">
+
+
+
+          <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "Our projects are too complex to automate"</span>
+
+
+
+          <span class="toggle-icon">+</span>
+
+
+
+        </div>
+
+
+
+        <div class="objection-answer">
+
+
+
+          <p>Complex projects aren't automated — they're managed better. Automation handles the administrative overhead: task creation, deadline reminders, status notifications, progress tracking. The actual project decisions and problem-solving stay with your team. We just remove the noise around them.</p>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="section-nav">
+
+
+
+      <a href="/admin/data"><i class="fa-solid fa-arrow-left"></i> Data &amp; Admin</a>
+
+
+
+      <a href="/admin/impact" class="btn-next">Next: Full Business Impact <i class="fa-solid fa-arrow-right"></i></a>
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </main>
+
+
+
+
+
+
+
+  <script>
+
+
+
+    function calcPM() {
+
+
+
+      var staff  = Math.max(1, parseInt(document.getElementById('pm-staff').value) || 2);
+
+
+
+      var salary = Math.max(15000, parseInt(document.getElementById('pm-salary').value) || 35000);
+
+
+
+      var hourlyRate = salary / 2080;
+
+
+
+      var hrsSavedDay = 1.5 * staff;
+
+
+
+      var annual = Math.round(hrsSavedDay * 260 * hourlyRate);
+
+
+
+      var fiveYr = annual * 5;
+
+
+
+      document.getElementById('pm-hrs').textContent    = hrsSavedDay + ' hrs';
+
+
+
+      document.getElementById('pm-annual').textContent = '£' + annual.toLocaleString();
+
+
+
+      document.getElementById('pm-5yr').textContent    = '£' + fiveYr.toLocaleString();
+
+
+
+    }
+
+
+
+    calcPM();
+
+
+
+  </script>
+
+
+
+
+
+
+
+    </div><!-- /main-content -->
+
+
+
+  </div><!-- /app-layout -->
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

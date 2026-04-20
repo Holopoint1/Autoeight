@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+
+
+<head>
+
+
+
+  <meta charset="UTF-8" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+  <title>Customer Service — Autoeight Portal</title>
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+
+  <link rel="stylesheet" href="/admin/admin.css?v=3" />
+
+
+
+  <script src="/admin/auth.js"></script>
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+  <script>AEAuth.check();</script>
+
+
+
+
+
+
+
+  <div class="app-layout">
+
+
+
+
+
+
+
+    <aside class="sidebar">
+
+
+
+      <a href="/admin" class="sidebar-logo">
+
+
+
+        <img src="/brand_assets/logo.png?v=3" alt="Autoeight" />
+
+
+
+        <div class="sidebar-logo-text">
+
+
+
+          <span class="sidebar-logo-name">Autoeight</span>
+
+
+
+          <span class="sidebar-logo-sub">Internal Portal</span>
+
+
+
+        </div>
+
+
+
+      </a>
+
+
+
+
+
+
+
+      <div class="sidebar-section">Tools</div>
+
+
+
+      <nav class="sidebar-nav">
+
+
+
+        <a href="/admin" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard </a>
+
+
+
+        <a href="/admin/visitors" class="sidebar-link"><i class="fa-solid fa-eye"></i> Visitor Intelligence <span class="sidebar-badge">New</span></a>
+
+
+
+        <a href="/admin/seo" class="sidebar-link"><i class="fa-solid fa-chart-simple"></i> SEO &amp; Site Health </a>
+
+
+
+        <a href="/admin/skills" class="sidebar-link"><i class="fa-solid fa-book"></i> AI Skills </a>
+
+
+
+      </nav>
+
+
+
+
+
+
+
+      <div class="sidebar-section">Sales Demos</div>
+      <nav class="sidebar-nav">
+        <a href="/services/web-design" class="sidebar-link"><i class="fa-solid fa-globe"></i> Web Design</a>
+        <a href="/admin/support" class="sidebar-link active"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a>
+        <a href="/admin/data" class="sidebar-link"><i class="fa-solid fa-plug"></i> CRM &amp; Integration</a>
+        <a href="/admin/sales" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Sales Automation</a>
+        <a href="/services/lms" class="sidebar-link"><i class="fa-solid fa-graduation-cap"></i> Learning Management</a>
+      </nav>
+
+
+
+
+
+
+
+      <div class="sidebar-footer">
+
+
+
+        <a href="/" class="sidebar-link"><i class="fa-solid fa-globe"></i> Live Site</a>
+
+
+
+        <a href="#" onclick="AEAuth.logout();return false;" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+
+
+
+      </div>
+
+
+
+    </aside>
+
+
+
+
+
+
+
+    <!-- Main Content -->
+
+
+
+    <div class="main-content">
+
+
+
+      <div class="topbar">
+
+
+
+        <div class="topbar-breadcrumb">
+
+
+
+          <span>Portal</span> <span>/</span> <span>Sales Demos</span> <span>/</span> <strong>Customer Service</strong>
+
+
+
+        </div>
+
+
+
+        <div class="topbar-actions">
+
+
+
+          <a href="/admin" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+  <main class="b-main">
+
+
+
+
+
+
+
+    <!-- PAGE HEADER -->
+
+
+
+    <div class="page-header">
+
+
+
+      <span class="section-num">Section 01 of 07</span>
+
+
+
+      <h1 class="page-title">Customer Service <em>Automation</em></h1>
+
+
+
+      <p class="page-desc">Traditional customer service teams spend 70–80% of their day answering the same repetitive questions. AI automation handles the bulk automatically — freeing your team for work that actually needs a human touch.</p>
+
+      <div class="quick-stats">
+        <div class="qs"><div class="qs-val green">10 hrs</div><div class="qs-label">Saved per agent per week on repetitive queries<br><span style="opacity:0.55;font-size:0.72rem;">Juniper Research, 2023</span></div></div>
+        <div class="qs"><div class="qs-val green">70%</div><div class="qs-label">Of tier-1 tickets resolved without a human<br><span style="opacity:0.55;font-size:0.72rem;">Gartner, 2024</span></div></div>
+        <div class="qs"><div class="qs-val purple">96%</div><div class="qs-label">Cost reduction per ticket (£12 → &lt;£0.50)<br><span style="opacity:0.55;font-size:0.72rem;">IBM, 2024</span></div></div>
+        <div class="qs"><div class="qs-val amber">&lt;3 sec</div><div class="qs-label">AI response time vs 10+ min team average<br><span style="opacity:0.55;font-size:0.72rem;">Salesforce State of Service, 2024</span></div></div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- LEARNING TABS -->
+
+
+
+    <div class="tabs">
+
+
+
+      <button class="tab-btn active" data-tab="visual"><i class="fa-solid fa-eye"></i> Visual</button>
+
+
+
+      <button class="tab-btn" data-tab="auditory"><i class="fa-solid fa-ear-listen"></i> Auditory</button>
+
+
+
+      <button class="tab-btn" data-tab="kinesthetic"><i class="fa-solid fa-hand"></i> Kinesthetic</button>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- â”€â”€ VISUAL TAB â”€â”€ -->
+
+
+
+    <div id="visual" class="tab-content active">
+
+
+
+
+
+
+
+      <div style="margin-bottom:10px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);">Process Comparison — Traditional vs AI</div>
+
+
+
+
+
+
+
+      <div class="flow-grid">
+
+
+
+
+
+
+
+        <!-- TRADITIONAL -->
+
+
+
+        <div class="flow-col trad">
+
+
+
+          <div class="flow-col-head">
+
+
+
+            <div class="flow-icon"><i class="fa-solid fa-person-digging"></i></div>
+
+
+
+            <h3>Traditional Process</h3>
+
+
+
+            <span class="time-tag">6 hrs/day</span>
+
+
+
+          </div>
+
+
+
+          <div class="steps">
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">1</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Customer sends an enquiry</div>
+
+
+
+                <div class="step-detail">Via email, web form, or phone call</div>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">2</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Lands in a shared inbox</div>
+
+
+
+                <div class="step-detail">Sits unread — no prioritisation, no routing</div>
+
+
+
+                <span class="step-badge badge-red">Sits waiting 30–120 min</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">3</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Staff reads and interprets</div>
+
+
+
+                <div class="step-detail">Must understand context before doing anything</div>
+
+
+
+                <span class="step-badge badge-red">15–20 min per query</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">4</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Researches the answer</div>
+
+
+
+                <div class="step-detail">Searches knowledge base, asks colleagues, checks systems</div>
+
+
+
+                <span class="step-badge badge-red">10–20 min</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">5</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Writes and sends reply</div>
+
+
+
+                <div class="step-detail">Manually types a response from scratch</div>
+
+
+
+                <span class="step-badge badge-red">10–15 min</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">6</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Customer finally gets an answer</div>
+
+
+
+                <div class="step-detail">After waiting 4 to 24 hours — often frustrated</div>
+
+
+
+                <span class="step-badge badge-red">70–80% of queries were repetitive</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <!-- AI -->
+
+
+
+        <div class="flow-col ai">
+
+
+
+          <div class="flow-col-head">
+
+
+
+            <div class="flow-icon"><i class="fa-solid fa-robot"></i></div>
+
+
+
+            <h3>AI-Powered Process</h3>
+
+
+
+            <span class="time-tag">2 hrs/day</span>
+
+
+
+          </div>
+
+
+
+          <div class="steps">
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">1</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Customer sends an enquiry</div>
+
+
+
+                <div class="step-detail">Any channel — email, chat, or form</div>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">2</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">AI chatbot receives it instantly</div>
+
+
+
+                <div class="step-detail">Connected to your full knowledge base and previous context</div>
+
+
+
+                <span class="step-badge badge-green">Response in &lt;30 seconds</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">3</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">AI evaluates and routes</div>
+
+
+
+                <div class="step-detail">Determines if it can resolve or needs a human</div>
+
+
+
+                <div class="step-branches">
+
+
+
+                  <div class="branch good"><div class="branch-label">80% of cases</div>Resolved instantly — no human needed</div>
+
+
+
+                  <div class="branch alt"><div class="branch-label">20% complex</div>Auto-routed to specialist with full context</div>
+
+
+
+                </div>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">4</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Staff handles complex work only</div>
+
+
+
+                <div class="step-detail">With AI-suggested reply drafts ready to review</div>
+
+
+
+                <span class="step-badge badge-purple">Only 2 hrs of human time needed</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+            <div class="step">
+
+
+
+              <div class="step-dot">5</div>
+
+
+
+              <div class="step-body">
+
+
+
+                <div class="step-title">Customer satisfaction improves</div>
+
+
+
+                <div class="step-detail">Faster answers, consistent quality, 24/7 availability</div>
+
+
+
+                <span class="step-badge badge-green">65% workload reduction</span>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <!-- SVG diagram: Time comparison bar -->
+
+
+
+      <div class="svg-area">
+
+
+
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:16px;">Daily Time Usage — Side by Side</div>
+
+
+
+        <svg viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;height:auto;">
+
+
+
+          <!-- Traditional bar -->
+
+
+
+          <text x="0" y="22" fill="#6b6b6b" font-size="11" font-family="system-ui" font-weight="700">TRADITIONAL</text>
+
+
+
+          <rect x="0" y="30" width="520" height="36" rx="6" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+
+
+
+          <text x="260" y="53" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="700" font-family="system-ui">6 hrs/day on repetitive queries (70–80% low-value work)</text>
+
+
+
+          <text x="528" y="53" fill="#ef4444" font-size="12" font-weight="700" font-family="system-ui">6 hrs</text>
+
+
+
+          <!-- AI bar -->
+
+
+
+          <text x="0" y="98" fill="#6b6b6b" font-size="11" font-family="system-ui" font-weight="700">WITH AI</text>
+
+
+
+          <rect x="0" y="106" width="173" height="36" rx="6" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1"/>
+
+
+
+          <text x="86" y="129" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="700" font-family="system-ui">2 hrs — complex cases only</text>
+
+
+
+          <rect x="180" y="106" width="347" height="36" rx="6" fill="rgba(124,92,252,0.1)" stroke="rgba(124,92,252,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
+
+
+
+          <text x="353" y="129" text-anchor="middle" fill="#7c5cfc" font-size="12" font-weight="600" font-family="system-ui">4 hrs saved — redirected to high-value work</text>
+
+
+
+          <!-- Labels -->
+
+
+
+          <text x="528" y="112" fill="#22c55e" font-size="12" font-weight="700" font-family="system-ui">2 hrs</text>
+
+
+
+          <text x="528" y="130" fill="#7c5cfc" font-size="11" font-family="system-ui">+4 saved</text>
+
+
+
+        </svg>
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <!-- Comparison table -->
+
+
+
+      <div class="compare-wrap">
+
+
+
+        <table class="compare-table">
+
+
+
+          <thead>
+
+
+
+            <tr><th class="cm">Metric</th><th class="ct"><i class="fa-solid fa-xmark"></i> Traditional</th><th class="ca"><i class="fa-solid fa-check"></i> With AI</th></tr>
+
+
+
+          </thead>
+
+
+
+          <tbody>
+
+
+
+            <tr><td class="tm">Time spent on queries</td><td class="tt">6 hrs/day</td><td class="ta">2 hrs/day</td></tr>
+
+
+
+            <tr><td class="tm">Time saved per day</td><td class="tt">—</td><td class="ta">4 hrs/day</td></tr>
+
+
+
+            <tr><td class="tm">Repetitive query handling</td><td class="tt">100% manual</td><td class="ta">80% automated</td></tr>
+
+
+
+            <tr><td class="tm">Customer response time</td><td class="tt">4–24 hours</td><td class="ta">&lt;30 seconds (AI) / &lt;1 hr (complex)</td></tr>
+
+
+
+            <tr><td class="tm">Staff focus</td><td class="tt">70% low-value tasks</td><td class="ta">100% high-value tasks</td></tr>
+
+
+
+            <tr><td class="tm">Availability</td><td class="tt">Business hours only</td><td class="ta">24/7 / 365</td></tr>
+
+
+
+            <tr><td class="tm">Annual cost saving (£25k salary)</td><td class="tt">£0</td><td class="ta">~£16,250/yr per employee</td></tr>
+
+
+
+          </tbody>
+
+
+
+        </table>
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <!-- Stats row -->
+
+
+
+      <div class="stats-row">
+
+
+
+        <div class="sbox green"><div class="sbox-val">4 hrs</div><div class="sbox-label">Saved per employee per day</div></div>
+
+
+
+        <div class="sbox purple"><div class="sbox-val">65%</div><div class="sbox-label">Reduction in repetitive workload</div></div>
+
+
+
+        <div class="sbox green"><div class="sbox-val">£16k</div><div class="sbox-label">Saved per CS employee per year</div></div>
+
+
+
+        <div class="sbox amber"><div class="sbox-val">80%</div><div class="sbox-label">Of queries resolved by AI with no human</div></div>
+
+
+
+        <div class="sbox purple"><div class="sbox-val">24/7</div><div class="sbox-label">Coverage — no extra headcount</div></div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- â”€â”€ AUDITORY TAB â”€â”€ -->
+
+
+
+    <div id="auditory" class="tab-content">
+
+
+
+      <div class="narrative">
+
+
+
+        <h3>The Story to Tell Your Prospect</h3>
+
+
+
+        <p>Picture your customer service team right now. Every morning they arrive, open their inbox, and spend the next 6 hours answering questions. "What are your opening hours?" "Can I change my order?" "How do I return this?" The same 10 questions, over and over, every single day.</p>
+
+
+
+
+
+
+
+        <blockquote>"70 to 80 percent of everything your customer service team does today is repetitive, predictable, and could be handled automatically."</blockquote>
+
+
+
+
+
+
+
+        <p>Now here's what's painful about that: these are talented people. You hired them to solve problems, build relationships, and retain customers. Instead, they're a human FAQ machine. And every time they answer a basic question, you're paying £12 to £17 an hour for something a machine can do instantly and flawlessly.</p>
+
+
+
+
+
+
+
+        <h3>What Changes With AI</h3>
+
+
+
+        <p>When we implement an AI chatbot connected to your business knowledge base, something immediate happens: the chatbot starts answering enquiries the moment they arrive. Not in four hours. Not in the morning. Right now. In under 30 seconds.</p>
+
+
+
+
+
+
+
+        <p>For 80% of your incoming queries, that's the end of the process. The customer gets their answer, you didn't spend a penny of staff time, and they're happy. It's done.</p>
+
+
+
+
+
+
+
+        <p>For the other 20% — the complex issues, the upset customers, the edge cases — the AI doesn't guess. It routes the enquiry directly to the right member of your team, with a summary of the conversation, what the customer needs, and even a suggested reply. Your staff member can resolve it in a fraction of the normal time because all the work has been done for them.</p>
+
+
+
+
+
+
+
+        <div class="callout">
+
+
+
+          <p><strong>Analogy to use:</strong> "Think of it like a receptionist who never goes on holiday, never has an off-day, never makes a mistake, and can handle 500 callers at once. Your human team then handles only the conversations that genuinely need a human."</p>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <h3>The Financial Outcome</h3>
+
+
+
+        <p>A customer service employee on £25,000 a year costs you roughly £12 an hour. If they're spending 4 hours every day on queries that AI can handle, that's approximately £50 a day — over £12,000 a year — of salary being paid to answer questions you could automate for a fraction of that.</p>
+
+
+
+
+
+
+
+        <p>Across a team of three customer service reps, that's potentially £36,000 to £48,000 a year being spent on work that costs almost nothing to automate. That money doesn't just disappear when you automate it — it converts into capacity. Your team handles more, better, without you needing to hire.</p>
+
+
+
+
+
+
+
+        <blockquote>"This isn't about replacing your team. It's about making each person on your team worth three people in terms of output."</blockquote>
+
+
+
+
+
+
+
+        <h3>What to Emphasise</h3>
+
+
+
+        <ul>
+
+
+
+          <li>Speed: Customers get answers in seconds, not hours — that alone improves satisfaction and reduces complaints.</li>
+
+
+
+          <li>Consistency: The AI gives the same accurate answer every time, unlike humans who might vary or make mistakes.</li>
+
+
+
+          <li>Availability: Your support desk is now open 24 hours a day, 7 days a week — without paying anyone overtime.</li>
+
+
+
+          <li>Scalability: As your business grows and enquiries increase, your cost of handling them stays flat.</li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- â”€â”€ KINESTHETIC TAB â”€â”€ -->
+
+
+
+    <div id="kinesthetic" class="tab-content">
+
+
+
+
+
+
+
+      <div class="demo-steps">
+
+
+
+        <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:4px;">Walk Through This With Your Prospect</div>
+
+
+
+        <div class="demo-step">
+
+
+
+          <div class="demo-num">1</div>
+
+
+
+          <div class="demo-body">
+
+
+
+            <h4>Ask: "How many emails does your CS team handle per day?"</h4>
+
+
+
+            <p>Most prospects guess 50–200. The honest answer is often more. Get them to commit to a number before showing the ROI.</p>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <div class="demo-step">
+
+
+
+          <div class="demo-num">2</div>
+
+
+
+          <div class="demo-body">
+
+
+
+            <h4>Ask: "What percentage of those would you say are the same questions repeated?"</h4>
+
+
+
+            <p>Almost always 60–80%. This is the "aha" moment — they've never framed it as wasted resource before.</p>
+
+
+
+          </div>
+
+
+
+          <div class="demo-save"><div class="demo-save-val">60–80%</div><div class="demo-save-label">is automatable</div></div>
+
+
+
+        </div>
+
+
+
+        <div class="demo-step">
+
+
+
+          <div class="demo-num">3</div>
+
+
+
+          <div class="demo-body">
+
+
+
+            <h4>Show them the time maths</h4>
+
+
+
+            <p>If 60 queries × 15 min each = 900 min = 15 staff-hours per day. AI handles 80% = 12 hours freed per day.</p>
+
+
+
+          </div>
+
+
+
+          <div class="demo-save"><div class="demo-save-val">12 hrs</div><div class="demo-save-label">freed daily</div></div>
+
+
+
+        </div>
+
+
+
+        <div class="demo-step">
+
+
+
+          <div class="demo-num">4</div>
+
+
+
+          <div class="demo-body">
+
+
+
+            <h4>Use the calculator below — enter their actual numbers</h4>
+
+
+
+            <p>Personalise it to their team size and salary. The number that comes back is what they're paying today to do what AI can do.</p>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <div class="demo-step">
+
+
+
+          <div class="demo-num">5</div>
+
+
+
+          <div class="demo-body">
+
+
+
+            <h4>Close with: "What would your team do with that time instead?"</h4>
+
+
+
+            <p>This reframes the conversation from "cost of AI" to "value of time freed." Let them answer. Their answer becomes your pitch.</p>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <!-- ROI Calculator -->
+
+
+
+      <div class="roi-calc">
+
+
+
+        <div class="roi-calc-title"><i class="fa-solid fa-calculator" style="color:var(--purple-l);margin-right:8px;"></i>Live ROI Calculator — Customer Service</div>
+
+
+
+        <div class="roi-calc-sub">Enter the prospect's team details to calculate their personalised savings in real time.</div>
+
+
+
+        <div class="roi-inputs">
+
+
+
+          <div>
+
+
+
+            <label class="roi-label" for="cs-staff">Number of CS staff</label>
+
+
+
+            <input type="number" id="cs-staff" class="roi-input" value="2" min="1" max="50" oninput="calcCS()" />
+
+
+
+          </div>
+
+
+
+          <div>
+
+
+
+            <label class="roi-label" for="cs-salary">Average annual salary (£)</label>
+
+
+
+            <input type="number" id="cs-salary" class="roi-input" value="25000" min="18000" max="60000" step="1000" oninput="calcCS()" />
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <div class="roi-results">
+
+
+
+          <div class="roi-res"><div class="roi-res-val" id="cs-hrs">8 hrs</div><div class="roi-res-label">Hours saved per day (team)</div></div>
+
+
+
+          <div class="roi-res hi"><div class="roi-res-val" id="cs-annual">£24,038</div><div class="roi-res-label">Annual saving (salary cost)</div></div>
+
+
+
+          <div class="roi-res big"><div class="roi-res-val" id="cs-5yr">£120,192</div><div class="roi-res-label">5-year saving</div></div>
+
+
+
+          <div class="roi-res"><div class="roi-res-val" id="cs-pct">65%</div><div class="roi-res-label">Workload reduction</div></div>
+
+
+
+        </div>
+
+
+
+        <p class="roi-note">Based on 4 hours saved per employee per day (65% reduction), calculated at salary ÷ 2,080 working hours per year.</p>
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="divider"></div>
+
+
+
+
+
+
+
+    <!-- TALKING POINTS -->
+
+
+
+    <div style="margin-bottom:12px;"><span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--purple);">Talking Points — Use These Phrases</span></div>
+
+
+
+    <div class="tp-grid">
+
+
+
+      <div class="tp"><div class="tp-label">Opening</div><div class="tp-text">"Right now, your team is the answer to every question your customers ask. With AI, they become the answer to the questions that matter."</div></div>
+
+
+
+      <div class="tp"><div class="tp-label">On speed</div><div class="tp-text">"Your customers are waiting hours for answers that AI can give them in seconds. That's not just inefficiency — it's customer experience damage."</div></div>
+
+
+
+      <div class="tp"><div class="tp-label">On cost</div><div class="tp-text">"You're paying skilled staff £25,000 a year to do the job of a machine. That's not their fault — it's a process problem. We fix the process."</div></div>
+
+
+
+      <div class="tp"><div class="tp-label">On scale</div><div class="tp-text">"As you grow, your enquiry volume doubles. With traditional methods, so does your headcount. With AI, your cost stays flat."</div></div>
+
+
+
+      <div class="tp"><div class="tp-label">On quality</div><div class="tp-text">"AI gives the same correct answer at 3am on a Sunday as it does at 9am on a Monday. Your team never had that consistency."</div></div>
+
+
+
+      <div class="tp"><div class="tp-label">Closing</div><div class="tp-text">"This doesn't make your CS team redundant. It makes them twice as valuable — because all they do now is the work only a human can do."</div></div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- OBJECTION HANDLERS -->
+
+
+
+    <div style="margin-bottom:12px;"><span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--amber);">Objection Handlers</span></div>
+
+
+
+    <div class="objections">
+
+
+
+      <div class="objection">
+
+
+
+        <div class="objection-header">
+
+
+
+          <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "Our customers prefer talking to a real person"</span>
+
+
+
+          <span class="toggle-icon">+</span>
+
+
+
+        </div>
+
+
+
+        <div class="objection-answer">
+
+
+
+          <p>Customers prefer getting their answer quickly. When the AI resolves their issue in 20 seconds, they're not frustrated that it wasn't a human — they're satisfied. The research shows satisfaction scores actually improve with AI because speed matters more than medium. Complex or sensitive issues still go to your team.</p>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <div class="objection">
+
+
+
+        <div class="objection-header">
+
+
+
+          <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "What if the AI gives the wrong answer?"</span>
+
+
+
+          <span class="toggle-icon">+</span>
+
+
+
+        </div>
+
+
+
+        <div class="objection-answer">
+
+
+
+          <p>The AI only answers based on the knowledge base we build with you. It doesn't make things up. If it isn't confident, it routes to your team instead. This is often more consistent than human staff who might misremember policies, be having a bad day, or give different answers depending on who picks up.</p>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <div class="objection">
+
+
+
+        <div class="objection-header">
+
+
+
+          <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "Will this mean we need fewer staff?"</span>
+
+
+
+          <span class="toggle-icon">+</span>
+
+
+
+        </div>
+
+
+
+        <div class="objection-answer">
+
+
+
+          <p>Not necessarily — and that's not the point. The point is that your existing staff can now handle 3× the volume without working harder. If your business is growing, automation lets you absorb that growth without hiring. If you're already resourced, your team moves from reactive query-answering to proactive customer success work.</p>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <div class="objection">
+
+
+
+        <div class="objection-header">
+
+
+
+          <span class="objection-q"><i class="fa-solid fa-circle-question" style="color:var(--amber);"></i> "How long does it take to set up?"</span>
+
+
+
+          <span class="toggle-icon">+</span>
+
+
+
+        </div>
+
+
+
+        <div class="objection-answer">
+
+
+
+          <p>For most businesses, a core customer service chatbot is live within 2–4 weeks. We train it on your existing FAQs, product information, and policies. It improves over time as it handles more queries. You'll see measurable time savings within the first month.</p>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- SECTION NAV -->
+
+
+
+    <div class="section-nav">
+
+
+
+      <a href="/admin"><i class="fa-solid fa-grid-2"></i> Dashboard</a>
+
+
+
+      <a href="/admin/sales" class="btn-next">Next: Sales Automation <i class="fa-solid fa-arrow-right"></i></a>
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </main>
+
+
+
+
+
+
+
+  <script>
+
+
+
+    function calcCS() {
+
+
+
+      var staff  = Math.max(1, parseInt(document.getElementById('cs-staff').value) || 2);
+
+
+
+      var salary = Math.max(15000, parseInt(document.getElementById('cs-salary').value) || 25000);
+
+
+
+      var hourlyRate = salary / 2080;
+
+
+
+      var hrsSavedDay = 4 * staff;
+
+
+
+      var annual = Math.round(hrsSavedDay * 260 * hourlyRate);
+
+
+
+      var fiveYr = annual * 5;
+
+
+
+      document.getElementById('cs-hrs').textContent    = hrsSavedDay + ' hrs';
+
+
+
+      document.getElementById('cs-annual').textContent = '£' + annual.toLocaleString();
+
+
+
+      document.getElementById('cs-5yr').textContent    = '£' + fiveYr.toLocaleString();
+
+
+
+    }
+
+
+
+    calcCS();
+
+
+
+  </script>
+
+
+
+
+
+
+
+    </div><!-- /main-content -->
+
+
+
+  </div><!-- /app-layout -->
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

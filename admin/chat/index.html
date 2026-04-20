@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#6d4de6" />
+<link rel="manifest" href="/backend/chat-admin-manifest.json" />
+<link rel="apple-touch-icon" href="/brand_assets/logo.png" />
+<title>Chat Admin — Autoeight</title>
+<style>
+:root {
+  --bg: #0d0d14;
+  --panel: #15151f;
+  --border: rgba(255,255,255,0.08);
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.6);
+  --purple: #7c5cfc;
+  --purple-dark: #6d4de6;
+  --green: #4ade80;
+  --amber: #fbbf24;
+  --red: #f87171;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg); color: var(--text);
+  height: 100dvh; overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.login {
+  height: 100dvh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.login-card {
+  width: 100%; max-width: 360px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+}
+.login-card h1 { font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
+.login-card input {
+  width: 100%; padding: 11px 14px; margin-bottom: 10px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-family: inherit; font-size: 0.9rem;
+  outline: none;
+}
+.login-card input:focus { border-color: var(--purple); }
+.login-card button {
+  width: 100%; padding: 12px; margin-top: 8px;
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  border: 0; border-radius: 10px; color: #fff;
+  font-family: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+}
+.login-card .error { color: var(--red); font-size: 0.82rem; margin-top: 10px; }
+
+.app { display: none; height: 100dvh; }
+.app.active { display: flex; }
+
+/* ── Sidebar (conversation list) ── */
+.sidebar {
+  width: 340px; max-width: 100%; flex-shrink: 0;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+}
+.sidebar-header {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.sidebar-header h1 { font-size: 1rem; font-weight: 700; }
+.sidebar-header .refresh {
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+  color: var(--muted); padding: 6px 10px; border-radius: 8px;
+  font-size: 0.72rem; cursor: pointer;
+}
+.filter-tabs {
+  display: flex; padding: 10px; gap: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.filter-tabs button {
+  flex: 1; padding: 6px; border-radius: 7px;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--muted); cursor: pointer;
+  font-family: inherit; font-size: 0.72rem;
+}
+.filter-tabs button.active { background: var(--purple); color: #fff; border-color: var(--purple); }
+
+.convo-list { flex: 1; overflow-y: auto; }
+.convo-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.convo-item:hover, .convo-item.active { background: rgba(124,92,252,0.08); }
+.convo-item .top { display: flex; justify-content: space-between; align-items: center; }
+.convo-item .name { font-size: 0.88rem; font-weight: 600; }
+.convo-item .time { font-size: 0.68rem; color: var(--muted); }
+.convo-item .preview { font-size: 0.78rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.convo-item .status {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+  margin-top: 2px; width: fit-content;
+}
+.status.ai { background: rgba(124,92,252,0.15); color: var(--purple); }
+.status.waiting_human { background: rgba(251,191,36,0.18); color: var(--amber); }
+.status.human_active { background: rgba(74,222,128,0.15); color: var(--green); }
+.status.closed { background: rgba(255,255,255,0.08); color: var(--muted); }
+
+/* ── Main (conversation view) ── */
+.main {
+  flex: 1; display: flex; flex-direction: column;
+  min-width: 0;
+}
+.chat-header {
+  padding: 14px 20px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--panel);
+}
+.chat-header .back { display: none; background: none; border: 0; color: var(--muted); cursor: pointer; padding: 8px; }
+.chat-header .info { min-width: 0; flex: 1; }
+.chat-header .info h2 { font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chat-header .info p { font-size: 0.72rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chat-header .actions { display: flex; gap: 6px; }
+.chat-header .actions button {
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+  color: var(--muted); padding: 7px 12px; border-radius: 8px;
+  font-size: 0.72rem; cursor: pointer;
+}
+
+.chat-body {
+  flex: 1; overflow-y: auto; padding: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--bg);
+}
+.msg { max-width: 75%; padding: 10px 14px; border-radius: 12px; font-size: 0.88rem; line-height: 1.5; }
+.msg.user { align-self: flex-start; background: rgba(255,255,255,0.05); }
+.msg.assistant { align-self: flex-start; background: rgba(124,92,252,0.12); border: 1px solid rgba(124,92,252,0.2); }
+.msg.human { align-self: flex-end; background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: #fff; }
+.msg-meta { font-size: 0.68rem; color: var(--muted); margin-top: 3px; }
+.msg.user .msg-meta, .msg.assistant .msg-meta { text-align: left; }
+.msg.human .msg-meta { text-align: right; color: rgba(255,255,255,0.7); }
+
+.empty-state { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--muted); font-size: 0.88rem; text-align: center; padding: 40px; }
+
+.reply-wrap {
+  padding: 14px 16px; background: var(--panel);
+  border-top: 1px solid var(--border);
+  display: flex; gap: 8px; align-items: flex-end;
+}
+.reply-wrap textarea {
+  flex: 1; padding: 10px 14px; min-height: 42px; max-height: 140px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text);
+  font-family: inherit; font-size: 0.88rem; line-height: 1.4;
+  resize: none; outline: none;
+}
+.reply-wrap textarea:focus { border-color: var(--purple); }
+.reply-wrap button {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+  border: 0; color: #fff; cursor: pointer; font-size: 1rem; flex-shrink: 0;
+}
+.reply-wrap button:disabled { opacity: 0.4; }
+
+@media (max-width: 768px) {
+  .app.active { flex-direction: row; }
+  .sidebar { width: 100%; position: absolute; inset: 0; z-index: 10; }
+  .main { width: 100%; position: absolute; inset: 0; z-index: 5; display: none; }
+  .app.view-chat .sidebar { display: none; }
+  .app.view-chat .main { display: flex; z-index: 20; }
+  .chat-header .back { display: block; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login" id="login">
+  <div class="login-card">
+    <h1>Autoeight Chat Admin</h1>
+    <input type="password" id="admin-token" placeholder="Password" autofocus />
+    <button id="login-btn">Sign in</button>
+    <p class="error" id="login-error" style="display:none;"></p>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>Conversations</h1>
+      <button class="refresh" id="refresh-btn">Refresh</button>
+    </div>
+    <div class="filter-tabs">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="waiting_human">Waiting</button>
+      <button data-filter="human_active">Active</button>
+      <button data-filter="closed">Closed</button>
+    </div>
+    <div class="convo-list" id="convo-list"></div>
+  </aside>
+  <main class="main">
+    <div class="chat-header" id="chat-header" style="display:none;">
+      <button class="back" id="back-btn">&larr;</button>
+      <div class="info">
+        <h2 id="chat-name">&nbsp;</h2>
+        <p id="chat-meta">&nbsp;</p>
+      </div>
+      <div class="actions">
+        <button id="close-btn">Close</button>
+      </div>
+    </div>
+    <div class="chat-body" id="chat-body">
+      <div class="empty-state">Select a conversation to reply</div>
+    </div>
+    <div class="reply-wrap" id="reply-wrap" style="display:none;">
+      <textarea id="reply-input" placeholder="Type your reply..." rows="1"></textarea>
+      <button id="send-btn" aria-label="Send">&uarr;</button>
+    </div>
+  </main>
+</div>
+
+<script>
+// Admin panel — talks to the chat edge function with a password
+const CHAT_ENDPOINT = 'https://useohuvyxzshmskjngpo.supabase.co/functions/v1/chat';
+const TOKEN_KEY = 'ae_chat_admin_pw';
+
+let adminPassword = sessionStorage.getItem(TOKEN_KEY) || '';
+let conversations = [];
+let currentConvId = null;
+let currentFilter = 'all';
+let pollTimer = null;
+
+const $ = (id) => document.getElementById(id);
+
+async function rpc(payload) {
+  const res = await fetch(CHAT_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...payload, password: adminPassword }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || res.statusText);
+  return data;
+}
+
+// ── Login flow ──
+async function tryLogin() {
+  const pw = $('admin-token').value.trim();
+  if (!pw) return;
+  adminPassword = pw;
+  try {
+    await rpc({ action: 'admin_login' });
+    sessionStorage.setItem(TOKEN_KEY, pw);
+    $('login').style.display = 'none';
+    $('app').classList.add('active');
+    await loadConversations();
+    startPolling();
+  } catch (e) {
+    $('login-error').textContent = 'Wrong password or connection error.';
+    $('login-error').style.display = 'block';
+  }
+}
+
+$('login-btn').addEventListener('click', tryLogin);
+$('admin-token').addEventListener('keydown', (e) => { if (e.key === 'Enter') tryLogin(); });
+
+if (adminPassword) {
+  $('admin-token').value = adminPassword;
+  tryLogin();
+}
+
+// ── Load conversations ──
+async function loadConversations() {
+  try {
+    const data = await rpc({ action: 'admin_list' });
+    conversations = data.conversations || [];
+    renderConvoList();
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function renderConvoList() {
+  const list = $('convo-list');
+  const filtered = currentFilter === 'all' ? conversations : conversations.filter((c) => c.status === currentFilter);
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="empty-state" style="padding:40px 20px;">No conversations yet</div>';
+    return;
+  }
+  list.innerHTML = filtered.map((c) => {
+    const name = c.visitor_name || (c.visitor_email ? c.visitor_email : 'Anonymous');
+    const time = new Date(c.last_message_at).toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' });
+    const page = c.page_url ? new URL(c.page_url).pathname : '';
+    const preview = c.visitor_company ? `${c.visitor_company} · ${page || 'chat'}` : (page || 'chat');
+    return `
+      <div class="convo-item ${c.id === currentConvId ? 'active' : ''}" data-id="${c.id}">
+        <div class="top">
+          <span class="name">${escapeHtml(name)}</span>
+          <span class="time">${time}</span>
+        </div>
+        <div class="preview">${escapeHtml(preview)}</div>
+        <span class="status ${c.status}">${c.status.replace('_', ' ')}</span>
+      </div>
+    `;
+  }).join('');
+  list.querySelectorAll('.convo-item').forEach((el) => {
+    el.addEventListener('click', () => openConversation(el.dataset.id));
+  });
+}
+
+function escapeHtml(str) {
+  return String(str || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+// ── Open a conversation ──
+async function openConversation(id) {
+  currentConvId = id;
+  const conv = conversations.find((c) => c.id === id);
+  if (!conv) return;
+  $('chat-header').style.display = 'flex';
+  $('reply-wrap').style.display = 'flex';
+  $('chat-name').textContent = conv.visitor_name || conv.visitor_email || 'Anonymous';
+  const metaParts = [];
+  if (conv.visitor_company) metaParts.push(conv.visitor_company);
+  if (conv.visitor_email) metaParts.push(conv.visitor_email);
+  if (conv.page_url) metaParts.push(conv.page_url);
+  $('chat-meta').textContent = metaParts.join(' · ') || 'no details';
+  $('app').classList.add('view-chat');
+
+  renderConvoList();
+
+  try {
+    const data = await rpc({ action: 'admin_messages', conversation_id: id });
+    renderMessages(data.messages || []);
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function renderMessages(messages) {
+  const body = $('chat-body');
+  if (!messages.length) { body.innerHTML = '<div class="empty-state">No messages yet</div>'; return; }
+  body.innerHTML = messages.map((m) => {
+    const time = new Date(m.created_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    return `<div class="msg ${m.role}"><div>${escapeHtml(m.content)}</div><div class="msg-meta">${time}</div></div>`;
+  }).join('');
+  body.scrollTop = body.scrollHeight;
+}
+
+// ── Send reply ──
+$('send-btn').addEventListener('click', sendReply);
+$('reply-input').addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendReply(); } });
+$('reply-input').addEventListener('input', (e) => {
+  e.target.style.height = 'auto';
+  e.target.style.height = Math.min(e.target.scrollHeight, 140) + 'px';
+});
+
+async function sendReply() {
+  const text = $('reply-input').value.trim();
+  if (!text || !currentConvId) return;
+  $('send-btn').disabled = true;
+  try {
+    await rpc({ action: 'admin_reply', conversation_id: currentConvId, message: text });
+    $('reply-input').value = '';
+    $('reply-input').style.height = 'auto';
+    await openConversation(currentConvId);
+    await loadConversations();
+  } catch (e) {
+    alert('Failed to send: ' + e.message);
+  } finally {
+    $('send-btn').disabled = false;
+  }
+}
+
+// ── Close conversation ──
+$('close-btn').addEventListener('click', async () => {
+  if (!currentConvId || !confirm('Mark this conversation as closed?')) return;
+  await rpc({ action: 'admin_close', conversation_id: currentConvId });
+  await loadConversations();
+});
+
+// ── Back button (mobile) ──
+$('back-btn').addEventListener('click', () => {
+  $('app').classList.remove('view-chat');
+  currentConvId = null;
+});
+
+// ── Refresh ──
+$('refresh-btn').addEventListener('click', () => loadConversations());
+
+// ── Filter tabs ──
+document.querySelectorAll('.filter-tabs button').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-tabs button').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderConvoList();
+  });
+});
+
+// ── Auto-refresh every 20s ──
+function startPolling() {
+  if (pollTimer) clearInterval(pollTimer);
+  pollTimer = setInterval(async () => {
+    await loadConversations();
+    if (currentConvId) {
+      const data = await rpc({ action: 'admin_messages', conversation_id: currentConvId });
+      renderMessages(data.messages || []);
+    }
+  }, 20000);
+}
+
+// ── Deep link support ──
+const urlParams = new URLSearchParams(location.search);
+if (urlParams.get('conversation')) {
+  const deepLinkId = urlParams.get('conversation');
+  setTimeout(() => { if (conversations.length) openConversation(deepLinkId); }, 500);
+}
+</script>
+</body>
+</html>

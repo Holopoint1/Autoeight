@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Knowledge Base - Autoeight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/admin/admin.css?v=3" />
+  <script src="/admin/auth.js"></script>
+  <style>
+    .ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .ref-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; }
+    .ref-card h4 { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .ref-card h4 i { color: var(--green); font-size: 0.7rem; }
+    .ref-card p { font-size: 0.82rem; color: var(--off-white); line-height: 1.6; }
+    .proof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .proof-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; border-top: 3px solid var(--green); }
+    .proof-name { font-size: 0.92rem; font-weight: 700; margin-bottom: 4px; }
+    .proof-service { font-size: 0.68rem; color: var(--muted); margin-bottom: 12px; }
+    .proof-metric { display: flex; align-items: baseline; gap: 6px; margin-bottom: 6px; }
+    .proof-val { font-size: 1.1rem; font-weight: 700; color: var(--green); }
+    .proof-label { font-size: 0.76rem; color: var(--off-white); }
+    .sh { font-size: 1rem; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    .sh i { color: var(--green); font-size: 0.85rem; }
+    .voice-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 22px; margin-bottom: 24px; }
+    .voice-box h3 { font-size: 0.92rem; margin-bottom: 10px; }
+    .banned-words { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .bw { background: var(--red-d); border: 1px solid rgba(239,68,68,0.2); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; color: var(--red); text-decoration: line-through; }
+    .example-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+    .example-bad, .example-good { padding: 14px; border-radius: 8px; font-size: 0.82rem; line-height: 1.6; }
+    .example-bad { background: var(--red-d); border: 1px solid rgba(239,68,68,0.15); }
+    .example-good { background: var(--green-d); border: 1px solid rgba(62,207,142,0.15); }
+    .example-label { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .kw-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-bottom: 32px; }
+    .kw-table th { text-align: left; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px 10px; border-bottom: 2px solid var(--border); }
+    .kw-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    .kw-table tr:hover { background: var(--surface); }
+    .priority-high { color: var(--green); font-weight: 700; }
+    .priority-med { color: var(--amber); font-weight: 600; }
+    .obj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .obj-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; }
+    .obj-q { font-size: 0.88rem; font-weight: 700; color: var(--amber); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .obj-q i { font-size: 0.72rem; }
+    .obj-a { font-size: 0.82rem; color: var(--off-white); line-height: 1.6; font-style: italic; }
+    .email-seq { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-bottom: 14px; }
+    .email-step { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; }
+    .email-day { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-bottom: 6px; }
+    .email-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; }
+    .email-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; cursor: pointer; transition: border-color 0.15s; }
+    .skill-card:hover { border-color: var(--border-l); }
+    .skill-card.open { border-color: var(--green); }
+    .skill-head { display: flex; align-items: center; gap: 10px; }
+    .skill-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+    .skill-icon.purple { background: var(--purple-d); color: var(--purple-l); }
+    .skill-icon.green { background: var(--green-d); color: var(--green); }
+    .skill-icon.amber { background: var(--amber-d); color: var(--amber); }
+    .skill-name { font-size: 0.88rem; font-weight: 700; }
+    .skill-cat { font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-top: 1px; }
+    .skill-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-top: 10px; }
+    .skill-detail { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .skill-card.open .skill-detail { display: block; }
+    .skill-detail h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--green); margin: 14px 0 6px; }
+    .skill-detail h4:first-child { margin-top: 0; }
+    .skill-detail ul { padding-left: 16px; font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .skill-detail p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .toggle-arrow { margin-left: auto; color: var(--subtle); font-size: 0.7rem; transition: transform 0.15s; }
+    .skill-card.open .toggle-arrow { transform: rotate(180deg); }
+    @media (max-width: 768px) { .ref-grid, .proof-grid, .obj-grid, .email-seq, .skill-grid { grid-template-columns: 1fr; } .example-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <script>AEAuth.check();</script>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a href="/admin" class="sidebar-logo"><img src="/brand_assets/logo.png?v=3" alt="Autoeight" /><div class="sidebar-logo-text"><span class="sidebar-logo-name">Autoeight</span><span class="sidebar-logo-sub">Internal Portal</span></div></a>
+      <div class="sidebar-section">Tools</div>
+      <nav class="sidebar-nav">
+        <a href="/admin" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="/admin/visitors" class="sidebar-link"><i class="fa-solid fa-eye"></i> Visitor Intelligence <span class="sidebar-badge">New</span></a>
+        <a href="/admin/seo" class="sidebar-link"><i class="fa-solid fa-chart-simple"></i> SEO &amp; Site Health</a>
+        <a href="/admin/skills" class="sidebar-link active"><i class="fa-solid fa-book"></i> Knowledge Base</a>
+      </nav>
+      <div class="sidebar-section">Sales Demos</div>
+      <nav class="sidebar-nav">
+        <a href="/services/web-design" class="sidebar-link"><i class="fa-solid fa-globe"></i> Web Design</a>
+        <a href="/admin/support" class="sidebar-link"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a>
+        <a href="/admin/data" class="sidebar-link"><i class="fa-solid fa-plug"></i> CRM &amp; Integration</a>
+        <a href="/admin/sales" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Sales Automation</a>
+        <a href="/services/lms" class="sidebar-link"><i class="fa-solid fa-graduation-cap"></i> Learning Management</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="/" class="sidebar-link"><i class="fa-solid fa-globe"></i> Live Site</a>
+        <a href="#" onclick="AEAuth.logout();return false;" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+      </div>
+    </aside>
+    <div class="main-content">
+      <div class="topbar">
+        <div class="topbar-breadcrumb"><span>Portal</span> <span>/</span> <span>Tools</span> <span>/</span> <strong>Knowledge Base</strong></div>
+        <div class="topbar-actions"><a href="/admin" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a></div>
+      </div>
+      <main class="b-main">
+        <div class="dw"><h1>Knowledge Base</h1><p style="margin-top:6px;color:var(--muted);font-size:0.88rem;">Internal reference for everything Autoeight. Positioning, proof points, voice, SEO targets, sales playbook, and AI skill docs.</p></div>
+
+        <div class="sh"><i class="fa-solid fa-bolt"></i> Quick Reference</div>
+        <div class="ref-grid">
+          <div class="ref-card"><h4><i class="fa-solid fa-crosshairs"></i> Who We Sell To</h4><p>SMB owners with 5-50 staff. Operations managers and sales directors drowning in manual work. People who know they need to automate but don't know where to start.</p></div>
+          <div class="ref-card"><h4><i class="fa-solid fa-hammer"></i> What We Build</h4><p>Custom automation systems, AI tools, websites, and e-commerce platforms. Not off-the-shelf SaaS. We build it, hand it over, and train the team.</p></div>
+          <div class="ref-card"><h4><i class="fa-solid fa-bullseye"></i> How We Position</h4><p>"We build AI systems that save your team hours every day." We're not consultants and we're not a SaaS product. We build custom systems that the client owns.</p></div>
+          <div class="ref-card"><h4><i class="fa-solid fa-map-pin"></i> Where We Target</h4><p>Halifax, Leeds, Bradford, Huddersfield, West Yorkshire, UK. Keywords: "AI automation Halifax", "automation agency West Yorkshire", "AI companies Leeds".</p></div>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-trophy"></i> Proof Points</div>
+        <div class="proof-grid">
+          <div class="proof-card"><div class="proof-name">Matrix TSL</div><div class="proof-service">Sales Automation + System Integration</div><div class="proof-metric"><span class="proof-val">3hrs</span><span class="proof-label">saved per person per day</span></div><div class="proof-metric"><span class="proof-val">29 &rarr; 1</span><span class="proof-label">tools consolidated</span></div><div class="proof-metric"><span class="proof-val">10x</span><span class="proof-label">outreach volume increase</span></div></div>
+          <div class="proof-card"><div class="proof-name">TM Joinery</div><div class="proof-service">Web Design + SEO</div><div class="proof-metric"><span class="proof-val">Page 1</span><span class="proof-label">in 6 regions from zero</span></div><div class="proof-metric"><span class="proof-val">Full</span><span class="proof-label">SEO website build</span></div><div class="proof-metric"><span class="proof-val">Google</span><span class="proof-label">Business optimised</span></div></div>
+          <div class="proof-card"><div class="proof-name">The Dice Tavern</div><div class="proof-service">Web Design + E-commerce</div><div class="proof-metric"><span class="proof-val">0%</span><span class="proof-label">marketplace fees (was 15%)</span></div><div class="proof-metric"><span class="proof-val">4.9</span><span class="proof-label">star rating</span></div><div class="proof-metric"><span class="proof-val">Custom</span><span class="proof-label">e-commerce platform</span></div></div>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-volume-high"></i> Brand Voice</div>
+        <div class="voice-box">
+          <h3>How Autoeight sounds</h3>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:12px;">Like explaining to a business owner at a pub. Direct. Conversational. Confident but not arrogant. We use contractions, mix short and long sentences, and lead with outcomes not features.</p>
+          <p style="font-size:0.78rem;color:var(--off-white);margin-bottom:4px;"><strong>Rules:</strong> Use contractions. Mix sentence lengths. Lead with outcomes. No em dashes everywhere. No perfect parallel structures. No exclamation marks.</p>
+          <p style="font-size:0.78rem;color:var(--off-white);margin-bottom:8px;"><strong>Banned words:</strong></p>
+          <div class="banned-words"><span class="bw">comprehensive</span><span class="bw">streamlined</span><span class="bw">robust</span><span class="bw">holistic</span><span class="bw">empower</span><span class="bw">bespoke</span><span class="bw">cutting-edge</span><span class="bw">seamlessly</span><span class="bw">leverage</span><span class="bw">utilize</span><span class="bw">facilitate</span><span class="bw">innovative</span><span class="bw">synergy</span><span class="bw">paradigm</span></div>
+          <div class="example-row">
+            <div class="example-bad"><div class="example-label" style="color:var(--red);">Don't write like this</div>"We leverage cutting-edge AI technology to deliver comprehensive, end-to-end automation solutions that empower businesses to streamline their operations."</div>
+            <div class="example-good"><div class="example-label" style="color:var(--green);">Write like this</div>"We build AI systems that save your team hours every day. No fluff, just tools that actually work."</div>
+          </div>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-key"></i> SEO Targets</div>
+        <table class="kw-table"><thead><tr><th>Target Keyword</th><th>Location</th><th>Target Page</th><th>Priority</th></tr></thead><tbody>
+          <tr><td>AI automation Halifax</td><td>Halifax</td><td>/services/ai-automation</td><td><span class="priority-high">High</span></td></tr>
+          <tr><td>sales automation agency</td><td>West Yorkshire</td><td>/services/sales-automation</td><td><span class="priority-high">High</span></td></tr>
+          <tr><td>AI companies Halifax</td><td>Halifax</td><td>/services/ai-automation</td><td><span class="priority-high">High</span></td></tr>
+          <tr><td>AI companies Leeds</td><td>Leeds</td><td>/services/ai-automation</td><td><span class="priority-med">Medium</span></td></tr>
+          <tr><td>web design Halifax</td><td>Halifax</td><td>/services/web-design</td><td><span class="priority-med">Medium</span></td></tr>
+          <tr><td>automation agency West Yorkshire</td><td>West Yorkshire</td><td>/</td><td><span class="priority-high">High</span></td></tr>
+          <tr><td>business automation UK</td><td>UK</td><td>/</td><td><span class="priority-med">Medium</span></td></tr>
+          <tr><td>email automation for business</td><td>UK</td><td>/services/email-automation</td><td><span class="priority-med">Medium</span></td></tr>
+          <tr><td>CRM automation</td><td>UK</td><td>/services/sales-automation</td><td><span class="priority-med">Medium</span></td></tr>
+        </tbody></table>
+
+        <div class="sh"><i class="fa-solid fa-shield-halved"></i> Objection Handling</div>
+        <div class="obj-grid">
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "It's too expensive"</div><div class="obj-a">"What's the cost of NOT doing it? Matrix TSL was spending thousands in manual hours every month. Our system paid for itself in 6 weeks. The question isn't whether you can afford automation -- it's whether you can afford not to."</div></div>
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "We can do it in-house"</div><div class="obj-a">"You could. The question is whether your team's time is better spent building automation or doing the work they were hired for. We've seen companies spend 6 months trying to build what we deliver in 6 weeks."</div></div>
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "We tried automation before"</div><div class="obj-a">"Most automation fails because it's off-the-shelf and nobody customises it to how your team actually works. We study your process first, then build around it. That's why our stuff sticks."</div></div>
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "We're too small for this"</div><div class="obj-a">"Our best results come from teams of 5-15. Smaller teams feel the impact faster because every hour saved is a bigger percentage of your capacity. The Dice Tavern went from paying 15% marketplace fees to zero overnight with their own platform."</div></div>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-paper-plane"></i> Cold Email Playbook</div>
+        <div class="email-seq">
+          <div class="email-step"><div class="email-day">Day 0 - Intro</div><div class="email-title">Open with something specific</div><div class="email-desc">Reference something real about them. One pain point. One proof point. Ask one question. Under 100 words.</div></div>
+          <div class="email-step"><div class="email-day">Day 3 - Proof</div><div class="email-title">Share a relevant result</div><div class="email-desc">"We did this for [similar company], here's what happened." Pick the closest case study. Link metric to their pain.</div></div>
+          <div class="email-step"><div class="email-day">Day 7 - Angle</div><div class="email-title">Try a different pain point</div><div class="email-desc">First email led with time? This one leads with cost. Or vice versa. Shorter. 2-3 sentences max.</div></div>
+          <div class="email-step"><div class="email-day">Day 14 - Break-up</div><div class="email-title">Low-pressure close</div><div class="email-desc">"Looks like timing isn't right. If things change, here's where to find us." No guilt. No pressure. Leave the door open.</div></div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;margin-bottom:32px;">
+          <p style="font-size:0.78rem;color:var(--off-white);line-height:1.6;"><strong style="color:var(--amber);">Rules:</strong> Under 100 words. No attachments. Sound like a person. Never "I hope this finds you well." Subject under 50 chars, lowercase. One CTA per email -- always a question.</p>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Skills Reference</div>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:16px;">Claude Code skills configured for this project. Click to expand.</p>
+        <div class="skill-grid">
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-pen-nib"></i></div><div><div class="skill-name">Copywriting</div><div class="skill-cat">Content</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Write or rewrite website copy. Headlines, CTAs, service pages.</div><div class="skill-detail"><h4>Key rules</h4><ul><li>Lead with benefit, not feature</li><li>One idea per paragraph, 2-3 sentences</li><li>Use specific numbers over vague claims</li><li>One CTA per section</li></ul></div></div>
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-envelope"></i></div><div><div class="skill-name">Cold Email</div><div class="skill-cat">Sales</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">B2B outreach emails that sound human and get replies.</div><div class="skill-detail"><h4>Key rules</h4><ul><li>Under 100 words per email</li><li>Reference something specific about the prospect</li><li>One question CTA, low commitment</li><li>4-email sequence: intro, proof, angle, break-up</li></ul></div></div>
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-envelope-open-text"></i></div><div><div class="skill-name">Email Sequences</div><div class="skill-cat">Automation</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Automated email flows. Welcome, post-purchase, nurture, re-engagement.</div><div class="skill-detail"><h4>Types</h4><ul><li><strong>Welcome:</strong> 4 emails over 8 days</li><li><strong>Post-purchase:</strong> Confirm, dispatch, check-in, review</li><li><strong>Cold:</strong> Intro, proof, angle, break-up</li><li><strong>Re-engage:</strong> Offer, social proof, deadline</li></ul></div></div>
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-newspaper"></i></div><div><div class="skill-name">Content Strategy</div><div class="skill-cat">Marketing</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Blog content, topic clusters, editorial calendars.</div><div class="skill-detail"><h4>Approach</h4><ul><li>5 pillars: AI, Sales, Email, Web Design, Integration</li><li>Types: How-to, comparisons, case studies, listicles</li><li>Each post: one keyword + service page link + CTA</li></ul></div></div>
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-trophy"></i></div><div><div class="skill-name">Case Study Writer</div><div class="skill-cat">Content</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Client case studies with the right structure and KPIs.</div><div class="skill-detail"><h4>Structure</h4><ul><li>Summary card with 3 metrics</li><li>Problem &rarr; What We Did &rarr; Result</li><li>No personal names, no tech stack sections</li></ul></div></div>
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-handshake"></i></div><div><div class="skill-name">Sales Enablement</div><div class="skill-cat">Sales</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Pitch decks, one-pagers, proposals, objection handling.</div><div class="skill-detail"><h4>Rules</h4><ul><li>Lead with pain, not capabilities</li><li>Use case study numbers as proof</li><li>Write for the decision-maker</li><li>2 pages max for any document</li></ul></div></div>
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon green"><i class="fa-solid fa-stethoscope"></i></div><div><div class="skill-name">SEO Audit</div><div class="skill-cat">SEO</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Technical + on-page SEO audits with local SEO focus.</div><div class="skill-detail"><h4>Checks</h4><ul><li>Title, description, H1, canonical, viewport, schema</li><li>OG tags, Twitter Cards, alt text, internal links</li><li>Local: NAP, geo-coords, areaServed, location keywords</li></ul></div></div>
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon green"><i class="fa-solid fa-code"></i></div><div><div class="skill-name">Schema Markup</div><div class="skill-cat">SEO</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">JSON-LD structured data for Google rich results.</div><div class="skill-detail"><h4>By page</h4><ul><li><strong>Homepage:</strong> Organization + WebSite + LocalBusiness</li><li><strong>Services:</strong> Service + BreadcrumbList</li><li><strong>Blog/Cases:</strong> Article + BreadcrumbList</li></ul></div></div>
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon amber"><i class="fa-solid fa-bullseye"></i></div><div><div class="skill-name">Page CRO</div><div class="skill-cat">Conversion</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Conversion rate optimisation analysis for any page.</div><div class="skill-detail"><h4>Checks</h4><ul><li>Value prop clear in 5 seconds above fold</li><li>Trust + proof near CTAs</li><li>Flow: Problem &rarr; Solution &rarr; Proof &rarr; CTA</li><li>Friction: forms, load time, dead ends</li></ul></div></div>
+          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon amber"><i class="fa-solid fa-volume-high"></i></div><div><div class="skill-name">Brand Voice</div><div class="skill-cat">Quality</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Check content against Autoeight's voice. Flags AI-sounding copy.</div><div class="skill-detail"><h4>Rules</h4><ul><li>Contractions, mixed sentence lengths</li><li>Lead with outcomes not features</li><li>No em dashes, no parallel structures</li><li>No banned words</li></ul></div></div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

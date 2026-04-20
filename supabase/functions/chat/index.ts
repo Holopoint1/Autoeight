@@ -138,7 +138,7 @@ function escapeHtml(s: string): string {
 }
 
 async function notifyNewLead(conversationId: string, name: string, company: string, email: string, message: string, pageUrl: string) {
-  const adminUrl = `https://autoeight.ai/backend/chat-admin.html?conversation=${conversationId}`;
+  const adminUrl = `https://autoeight.ai/admin/chat/?conversation=${conversationId}`;
   const safeName = escapeHtml(name);
   const safeCompany = escapeHtml(company);
   const safeEmail = escapeHtml(email);
@@ -178,7 +178,7 @@ async function notifyNewLead(conversationId: string, name: string, company: stri
 }
 
 async function notifyFollowUp(conversationId: string, name: string, message: string) {
-  const adminUrl = `https://autoeight.ai/backend/chat-admin.html?conversation=${conversationId}`;
+  const adminUrl = `https://autoeight.ai/admin/chat/?conversation=${conversationId}`;
   const safe = escapeHtml(message);
   const safeName = escapeHtml(name || "visitor");
 

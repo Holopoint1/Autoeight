@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Visitor Intelligence - Autoeight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/admin/admin.css?v=3" />
+  <script src="/admin/auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <style>
+    /* ── KPI Grid ── */
+    .vi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; margin-bottom: 36px; }
+    .vi-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 20px 22px; }
+    .vi-card h4 { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
+    .vi-val { font-size: 1.8rem; font-weight: 700; color: var(--green); line-height: 1.1; margin-bottom: 3px; }
+    .vi-val.green { color: var(--green); }
+    .vi-val.amber { color: var(--amber); }
+    .vi-val.red { color: var(--red); }
+    .vi-sub { font-size: 0.72rem; color: var(--subtle); }
+
+    /* ── Tables ── */
+    .vi-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 0.82rem; }
+    .vi-table th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .vi-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .vi-table tr:hover { background: var(--surface); }
+    .vi-table tr.isp { opacity: 0.45; }
+
+    /* ── Badges ── */
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
+    .badge.hot { background: var(--green-d); color: var(--green); }
+    .badge.warm { background: var(--amber-d); color: var(--amber); }
+    .badge.cold { background: var(--red-d); color: var(--red); }
+    .badge.isp-badge { background: var(--surface); color: var(--subtle); }
+
+    /* ── Live indicator ── */
+    .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-right: 6px; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* ── Section headers ── */
+    .sh { font-size: 1rem; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    .sh i { color: var(--green); font-size: 0.85rem; }
+
+    /* ── Filter bar ── */
+    .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; }
+    .filter-bar input, .filter-bar select { background: var(--card); border: 1px solid var(--border); color: var(--white); padding: 7px 12px; border-radius: 8px; font-family: var(--font); font-size: 0.82rem; }
+    .filter-bar input:focus, .filter-bar select:focus { outline: none; border-color: var(--green); }
+    .filter-bar label { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── Timeline ── */
+    .timeline { list-style: none; padding: 0; }
+    .timeline-item { border-left: 2px solid var(--border); padding: 0 0 24px 20px; margin-left: 6px; position: relative; }
+    .timeline-item::before { content: ''; width: 10px; height: 10px; background: var(--green); border-radius: 50%; position: absolute; left: -6px; top: 4px; }
+    .timeline-date { font-size: 0.72rem; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+    .timeline-pages { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .timeline-page { background: var(--surface); border: 1px solid var(--border); padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; color: var(--off-white); }
+    .timeline-meta { font-size: 0.72rem; color: var(--subtle); margin-top: 4px; }
+
+    /* ── Company detail card ── */
+    .company-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rl); padding: 24px; margin-bottom: 24px; }
+    .company-card h2 { font-size: 1.3rem; margin-bottom: 8px; }
+    .company-meta { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.82rem; color: var(--muted); }
+    .company-meta i { color: var(--green); margin-right: 4px; }
+    .notes-area { width: 100%; min-height: 80px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: var(--font); font-size: 0.82rem; color: var(--white); resize: vertical; margin-top: 12px; }
+    .notes-area:focus { outline: none; border-color: var(--green); }
+    .save-notes { margin-top: 8px; }
+
+    /* ── Analytics bars ── */
+    .bar-chart { margin-bottom: 24px; }
+    .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .bar-label { width: 180px; font-size: 0.78rem; color: var(--off-white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 22px; background: var(--surface); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--green); border-radius: 4px; transition: width 0.4s; }
+    .bar-count { width: 40px; font-size: 0.72rem; color: var(--muted); text-align: right; flex-shrink: 0; }
+
+    /* ── Action buttons ── */
+    .vi-btn { background: var(--purple-d); border: 1px solid rgba(124,92,252,0.3); color: var(--purple-l); padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; font-family: var(--font); transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .vi-btn:hover { background: rgba(124,92,252,0.2); }
+    .vi-btn.green-btn { background: var(--green-d); border-color: rgba(34,197,94,0.3); color: var(--green); }
+
+    /* ── Empty state ── */
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--subtle); }
+    .empty-state i { font-size: 2.5rem; margin-bottom: 14px; display: block; color: var(--muted); }
+    .empty-state p { font-size: 0.88rem; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .vi-grid { grid-template-columns: repeat(2, 1fr); }
+      .filter-bar { flex-direction: column; align-items: stretch; }
+      .bar-label { width: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <script>AEAuth.check();</script>
+
+  <div class="app-layout">
+
+    <aside class="sidebar">
+      <a href="/admin" class="sidebar-logo">
+        <img src="/brand_assets/logo.png?v=3" alt="Autoeight" />
+        <div class="sidebar-logo-text">
+          <span class="sidebar-logo-name">Autoeight</span>
+          <span class="sidebar-logo-sub">Internal Portal</span>
+        </div>
+      </a>
+
+      <div class="sidebar-section">Tools</div>
+      <nav class="sidebar-nav">
+        <a href="/admin" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard </a>
+        <a href="/admin/visitors" class="sidebar-link active"><i class="fa-solid fa-eye"></i> Visitor Intelligence <span class="sidebar-badge">New</span></a>
+        <a href="/admin/seo" class="sidebar-link"><i class="fa-solid fa-chart-simple"></i> SEO &amp; Site Health </a>
+        <a href="/admin/skills" class="sidebar-link"><i class="fa-solid fa-book"></i> AI Skills </a>
+      </nav>
+
+      <div class="sidebar-section">Sales Demos</div>
+      <nav class="sidebar-nav">
+        <a href="/services/web-design" class="sidebar-link"><i class="fa-solid fa-globe"></i> Web Design</a>
+        <a href="/admin/support" class="sidebar-link"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a>
+        <a href="/admin/data" class="sidebar-link"><i class="fa-solid fa-plug"></i> CRM &amp; Integration</a>
+        <a href="/admin/sales" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Sales Automation</a>
+        <a href="/services/lms" class="sidebar-link"><i class="fa-solid fa-graduation-cap"></i> Learning Management</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/" class="sidebar-link"><i class="fa-solid fa-globe"></i> Live Site</a>
+        <a href="#" onclick="AEAuth.logout();return false;" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="topbar">
+        <div class="topbar-breadcrumb">
+          <span>Portal</span> <span>/</span> <span>Tools</span> <span>/</span> <strong>Visitor Intelligence</strong>
+        </div>
+        <div class="topbar-actions">
+          <a href="/admin" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+        </div>
+      </div>
+
+  <main class="b-main">
+
+    <div class="dw">
+      <h1>Visitor <em style="font-style:normal;color:var(--purple-l)">Intelligence</em></h1>
+      <p style="margin-top:6px; color:var(--muted); font-size:0.88rem;">See which companies are visiting autoeight.ai, what pages they view, and how engaged they are. Powered by IP-to-company enrichment.</p>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="vi-grid">
+      <div class="vi-card"><h4>Companies</h4><div class="vi-val" id="kCompanies">-</div><div class="vi-sub">identified</div></div>
+      <div class="vi-card"><h4>Active Now</h4><div class="vi-val green" id="kLive">-</div><div class="vi-sub">all visitors on site</div></div>
+      <div class="vi-card"><h4>Sessions</h4><div class="vi-val" id="kSessions">-</div><div class="vi-sub">last 30 days</div></div>
+      <div class="vi-card"><h4>Page Views</h4><div class="vi-val" id="kPageviews">-</div><div class="vi-sub">last 30 days</div></div>
+      <div class="vi-card"><h4>Hot Leads</h4><div class="vi-val amber" id="kHot">-</div><div class="vi-sub">score 50+</div></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab-live"><i class="fa-solid fa-signal"></i> Live</button>
+      <button class="tab-btn" data-tab="tab-companies"><i class="fa-solid fa-building"></i> Companies</button>
+      <button class="tab-btn" data-tab="tab-timeline"><i class="fa-solid fa-timeline"></i> Timeline</button>
+      <button class="tab-btn" data-tab="tab-analytics"><i class="fa-solid fa-chart-pie"></i> Analytics</button>
+    </div>
+
+    <!-- ═══════════════ TAB: LIVE FEED ═══════════════ -->
+    <div class="tab-content active" id="tab-live">
+      <div class="sh"><span class="live-dot"></span> All Active Visitors <span id="liveCount" style="font-weight:400;color:var(--muted);font-size:0.82rem;"></span></div>
+      <table class="vi-table" id="liveTable">
+        <thead><tr><th>Visitor</th><th>Referrer</th><th>Current Page</th><th>Pages</th><th>Duration</th><th>Started</th><th>Last Activity</th><th>Device</th></tr></thead>
+        <tbody id="liveBody">
+          <tr><td colspan="8" class="empty-state"><i class="fa-solid fa-satellite-dish"></i><p>Waiting for visitors...</p></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ═══════════════ TAB: COMPANIES ═══════════════ -->
+    <div class="tab-content" id="tab-companies">
+      <div class="filter-bar">
+        <div>
+          <label>Search</label><br />
+          <input type="text" id="filterSearch" placeholder="Company name..." style="width:200px;" />
+        </div>
+        <div>
+          <label>Period</label><br />
+          <select id="filterDays">
+            <option value="7">Last 7 days</option>
+            <option value="30" selected>Last 30 days</option>
+            <option value="90">Last 90 days</option>
+            <option value="365">Last year</option>
+          </select>
+        </div>
+        <div>
+          <label>Min Score</label><br />
+          <select id="filterScore">
+            <option value="0">All</option>
+            <option value="10">10+</option>
+            <option value="25">25+</option>
+            <option value="50">50+ (Hot)</option>
+          </select>
+        </div>
+        <div>
+          <label>ISPs</label><br />
+          <select id="filterIsp">
+            <option value="show">Show all</option>
+            <option value="hide">Hide ISPs</option>
+          </select>
+        </div>
+        <div style="margin-left:auto; align-self:flex-end;">
+          <button class="vi-btn green-btn" onclick="exportCSV()"><i class="fa-solid fa-download"></i> Export CSV</button>
+        </div>
+      </div>
+
+      <table class="vi-table" id="companiesTable">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Device</th>
+            <th>Browser / OS</th>
+            <th>Visitors</th>
+            <th>Sessions</th>
+            <th>Pages</th>
+            <th>Avg Duration</th>
+            <th>Top Pages</th>
+            <th>First Seen</th>
+            <th>Last Visit</th>
+            <th>Source</th>
+            <th>Lead Score</th>
+          </tr>
+        </thead>
+        <tbody id="companiesBody">
+          <tr><td colspan="13" class="empty-state"><i class="fa-solid fa-building"></i><p>No data yet. Tracking data will appear once visitors arrive.</p></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ═══════════════ TAB: TIMELINE ═══════════════ -->
+    <div class="tab-content" id="tab-timeline">
+      <div id="timelineContent">
+        <div class="empty-state">
+          <i class="fa-solid fa-timeline"></i>
+          <p>Select a company from the Companies tab to view their visit timeline.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ TAB: ANALYTICS ═══════════════ -->
+    <div class="tab-content" id="tab-analytics">
+      <div class="filter-bar">
+        <div>
+          <label>Period</label><br />
+          <select id="analyticsDays" onchange="loadAnalytics()">
+            <option value="7">Last 7 days</option>
+            <option value="30" selected>Last 30 days</option>
+            <option value="90">Last 90 days</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <div class="sh"><i class="fa-solid fa-file-lines"></i> Top Pages</div>
+          <div id="topPages" class="bar-chart"></div>
+        </div>
+        <div>
+          <div class="sh"><i class="fa-solid fa-arrow-right-to-bracket"></i> Traffic Sources</div>
+          <div id="topSources" class="bar-chart"></div>
+        </div>
+      </div>
+
+      <div class="sh"><i class="fa-solid fa-chart-line"></i> Visits Per Day</div>
+      <div id="visitsChart" class="bar-chart"></div>
+
+      <div class="sh"><i class="fa-solid fa-laptop-mobile"></i> Devices</div>
+      <div id="deviceBreakdown" class="bar-chart"></div>
+    </div>
+
+  </main>
+
+  <script>
+  // ════════════════════════════════════════════════════════════
+  // CONFIGURATION — Update these after Supabase setup
+  // ════════════════════════════════════════════════════════════
+  var CONFIG = {
+    supabaseUrl: 'https://useohuvyxzshmskjngpo.supabase.co',
+    dashboardEndpoint: 'https://useohuvyxzshmskjngpo.supabase.co/functions/v1/dashboard',
+    dashboardToken: 'e33c1f52dda15c5ee94cf37532a8b734b251b6108260fd96d611a3085517dffa',
+    siteId: '0c7847e3-018b-44aa-a874-da3116b3440e',
+    refreshInterval: 30000  // live feed refresh (30 seconds)
+  };
+
+  // ════════════════════════════════════════════════════════════
+  // API HELPER
+  // ════════════════════════════════════════════════════════════
+  function api(path, params) {
+    params = params || {};
+    params.site_id = CONFIG.siteId;
+    var qs = Object.keys(params).map(function(k) { return k + '=' + encodeURIComponent(params[k]); }).join('&');
+    var url = CONFIG.dashboardEndpoint + path + '?' + qs;
+    return fetch(url, {
+      headers: { 'Authorization': 'Bearer ' + CONFIG.dashboardToken }
+    }).then(function(r) { return r.json(); });
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // UTILITIES
+  // ════════════════════════════════════════════════════════════
+  function timeAgo(dateStr) {
+    if (!dateStr) return '-';
+    var diff = Date.now() - new Date(dateStr).getTime();
+    var mins = Math.floor(diff / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return mins + 'm ago';
+    var hours = Math.floor(mins / 60);
+    if (hours < 24) return hours + 'h ago';
+    var days = Math.floor(hours / 24);
+    return days + 'd ago';
+  }
+
+  function formatDuration(secs) {
+    if (!secs || secs < 1) return '0s';
+    if (secs < 60) return secs + 's';
+    var m = Math.floor(secs / 60);
+    var s = secs % 60;
+    return m + 'm ' + s + 's';
+  }
+
+  function scoreBadge(score) {
+    if (score >= 50) return '<span class="badge hot"><i class="fa-solid fa-fire"></i> ' + score + '</span>';
+    if (score >= 20) return '<span class="badge warm"><i class="fa-solid fa-temperature-half"></i> ' + score + '</span>';
+    return '<span class="badge cold">' + score + '</span>';
+  }
+
+  function deviceIcon(type) {
+    if (type === 'mobile') return '<i class="fa-solid fa-mobile-screen"></i>';
+    if (type === 'tablet') return '<i class="fa-solid fa-tablet-screen-button"></i>';
+    return '<i class="fa-solid fa-desktop"></i>';
+  }
+
+  function escHtml(s) {
+    if (!s) return '';
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // LIVE FEED
+  // ════════════════════════════════════════════════════════════
+  function renderLiveRow(s) {
+    var name;
+    if (s.company && !s.company.is_isp) {
+      name = '<strong style="color:var(--green)">' + escHtml(s.company.name) + '</strong> <span class="badge hot" style="font-size:0.6rem;padding:2px 6px;">Company</span>';
+    } else if (s.company && s.company.is_isp) {
+      name = escHtml(s.ip || 'Visitor') + ' <span class="badge isp-badge">' + escHtml(s.company.name) + '</span>';
+    } else {
+      name = escHtml(s.ip || 'Anonymous Visitor');
+    }
+    var duration = formatDuration(s.duration_secs);
+    var started = s.started_at ? new Date(s.started_at).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) : '-';
+    var lastAct = s.last_activity || s.updated_at;
+    var lastActStr = lastAct ? timeAgo(lastAct) : '-';
+    var referrer = s.referrer || s.utm_source || '<span style="color:var(--subtle)">direct</span>';
+    return '<tr>' +
+      '<td><span class="live-dot"></span>' + name + '</td>' +
+      '<td>' + (typeof referrer === 'string' && referrer.startsWith('<') ? referrer : escHtml(referrer)) + '</td>' +
+      '<td>' + escHtml(s.exit_page) + '</td>' +
+      '<td>' + s.page_count + '</td>' +
+      '<td>' + duration + '</td>' +
+      '<td>' + started + '</td>' +
+      '<td>' + lastActStr + '</td>' +
+      '<td>' + deviceIcon(s.device_type) + ' ' + escHtml(s.browser) + '</td>' +
+    '</tr>';
+  }
+
+  function loadLive() {
+    api('/live').then(function(data) {
+      var allVisitors = [].concat(data.live || [], data.isp || []);
+      // Sort by last activity (most recent first)
+      allVisitors.sort(function(a, b) {
+        var ta = a.last_activity || a.started_at || '';
+        var tb = b.last_activity || b.started_at || '';
+        return tb.localeCompare(ta);
+      });
+
+      var el = document.getElementById('liveBody');
+      var total = allVisitors.length;
+      var identified = allVisitors.filter(function(s) { return s.company && !s.company.is_isp; }).length;
+      document.getElementById('kLive').textContent = total;
+      document.getElementById('liveCount').textContent = total ? '(' + total + ' total' + (identified ? ', ' + identified + ' identified' : '') + ')' : '';
+
+      if (!total) {
+        el.innerHTML = '<tr><td colspan="8" class="empty-state"><i class="fa-solid fa-satellite-dish"></i><p>No active visitors right now.</p></td></tr>';
+      } else {
+        el.innerHTML = allVisitors.map(renderLiveRow).join('');
+      }
+    }).catch(function() {
+      document.getElementById('liveBody').innerHTML = '<tr><td colspan="8" style="color:var(--red)">Failed to load live data</td></tr>';
+    });
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // COMPANIES
+  // ════════════════════════════════════════════════════════════
+  function loadKPIs() {
+    // Always load KPIs from ALL companies (no filters)
+    api('/companies', { days: '30', hide_isp: 'false' }).then(function(data) {
+      var all = data.companies || [];
+      var totalSessions = 0, totalPageviews = 0, hotCount = 0;
+      all.forEach(function(c) {
+        totalSessions += c.total_sessions || 0;
+        totalPageviews += c.total_pageviews || 0;
+        if (c.lead_score >= 50) hotCount++;
+      });
+      document.getElementById('kCompanies').textContent = all.length;
+      document.getElementById('kSessions').textContent = totalSessions;
+      document.getElementById('kPageviews').textContent = totalPageviews;
+      document.getElementById('kHot').textContent = hotCount;
+    });
+  }
+
+  function loadCompanies() {
+    var params = {
+      days: document.getElementById('filterDays').value,
+      search: document.getElementById('filterSearch').value,
+      min_score: document.getElementById('filterScore').value,
+      hide_isp: document.getElementById('filterIsp').value === 'hide' ? 'true' : 'false'
+    };
+
+    api('/companies', params).then(function(data) {
+      var companies = data.companies || [];
+      var el = document.getElementById('companiesBody');
+
+      if (!companies.length) {
+        el.innerHTML = '<tr><td colspan="13" class="empty-state"><i class="fa-solid fa-building"></i><p>No companies found matching your filters.</p></td></tr>';
+        return;
+      }
+
+      el.innerHTML = companies.map(function(c) {
+        var loc = [c.city, c.country].filter(Boolean).join(', ') || '-';
+        var cls = c.is_isp ? ' class="isp"' : '';
+        var firstSeen = c.first_visit ? new Date(c.first_visit).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) : '-';
+        var lastVisit = c.last_visit ? new Date(c.last_visit).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) + ' <span style="color:var(--subtle);font-size:0.72rem">' + new Date(c.last_visit).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) + '</span>' : '-';
+        var source = c.top_referrer || '<span style="color:var(--subtle)">direct</span>';
+        var device = c.top_device ? deviceIcon(c.top_device) + ' ' + escHtml(c.top_device) : '<span style="color:var(--subtle)">-</span>';
+        var browserOs = [c.top_browser, c.top_os].filter(Boolean).join(' / ') || '-';
+        var avgDur = c.avg_duration ? formatDuration(c.avg_duration) : '-';
+        var pages = (c.pages_visited || []).slice(0, 3).map(function(p) {
+          return '<span class="timeline-page">' + escHtml(p) + '</span>';
+        }).join(' ');
+        if ((c.pages_visited || []).length > 3) pages += ' <span style="color:var(--subtle);font-size:0.68rem">+' + (c.pages_visited.length - 3) + '</span>';
+        if (!pages) pages = '-';
+        return '<tr' + cls + ' style="cursor:pointer" onclick="showTimeline(\'' + c.company_id + '\')">' +
+          '<td><strong>' + escHtml(c.clean_name || c.raw_name) + '</strong>' + (c.is_isp ? ' <span class="badge isp-badge">ISP</span>' : '') + '</td>' +
+          '<td>' + escHtml(loc) + '</td>' +
+          '<td>' + device + '</td>' +
+          '<td>' + escHtml(browserOs) + '</td>' +
+          '<td>' + (c.unique_visitors || 0) + '</td>' +
+          '<td>' + (c.total_sessions || 0) + '</td>' +
+          '<td>' + (c.total_pageviews || 0) + '</td>' +
+          '<td>' + avgDur + '</td>' +
+          '<td>' + pages + '</td>' +
+          '<td>' + firstSeen + '</td>' +
+          '<td>' + lastVisit + '</td>' +
+          '<td>' + (typeof source === 'string' && source.startsWith('<') ? source : escHtml(source)) + '</td>' +
+          '<td>' + scoreBadge(c.lead_score) + '</td>' +
+        '</tr>';
+      }).join('');
+    }).catch(function() {
+      document.getElementById('companiesBody').innerHTML = '<tr><td colspan="13" style="color:var(--red)">Failed to load companies</td></tr>';
+    });
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // TIMELINE (Company Detail)
+  // ════════════════════════════════════════════════════════════
+  function showTimeline(companyId) {
+    // Switch to timeline tab
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+    document.querySelector('[data-tab="tab-timeline"]').classList.add('active');
+    document.getElementById('tab-timeline').classList.add('active');
+
+    var el = document.getElementById('timelineContent');
+    el.innerHTML = '<div class="empty-state"><i class="fa-solid fa-spinner fa-spin"></i><p>Loading timeline...</p></div>';
+
+    api('/companies/' + companyId + '/timeline').then(function(data) {
+      var company = data.company;
+      var timeline = data.timeline || [];
+
+      var html = '';
+
+      // Company card
+      html += '<div class="company-card">';
+      html += '<h2>' + escHtml(company.clean_name || company.name) + '</h2>';
+      html += '<div class="company-meta">';
+      if (company.city || company.country) html += '<span><i class="fa-solid fa-location-dot"></i> ' + escHtml([company.city, company.region, company.country].filter(Boolean).join(', ')) + '</span>';
+      html += '<span><i class="fa-solid fa-calendar"></i> First seen: ' + (company.first_seen ? new Date(company.first_seen).toLocaleDateString() : '-') + '</span>';
+      html += '<span><i class="fa-solid fa-clock"></i> Last seen: ' + timeAgo(company.last_seen) + '</span>';
+      html += '<span>' + scoreBadge(company.lead_score) + '</span>';
+      if (company.is_isp) html += '<span class="badge isp-badge">ISP / Residential</span>';
+      html += '</div>';
+      html += '<textarea class="notes-area" id="companyNotes" placeholder="Add sales notes...">' + escHtml(company.notes || '') + '</textarea>';
+      html += '<button class="vi-btn save-notes" onclick="saveNotes(\'' + companyId + '\')"><i class="fa-solid fa-floppy-disk"></i> Save Notes</button>';
+      html += '</div>';
+
+      // Session timeline
+      if (timeline.length) {
+        html += '<div class="sh"><i class="fa-solid fa-timeline"></i> Visit History (' + timeline.length + ' sessions)</div>';
+        html += '<ul class="timeline">';
+        timeline.forEach(function(session) {
+          html += '<li class="timeline-item">';
+          html += '<div class="timeline-date">' + new Date(session.started_at).toLocaleString() + '</div>';
+          html += '<div class="timeline-meta">';
+          html += deviceIcon(session.device_type) + ' ' + escHtml(session.browser) + ' on ' + escHtml(session.os);
+          if (session.referrer) html += ' &middot; from <strong>' + escHtml(session.referrer) + '</strong>';
+          if (session.utm_source) html += ' &middot; utm: ' + escHtml(session.utm_source);
+          html += ' &middot; ' + formatDuration(session.duration_secs);
+          html += '</div>';
+          html += '<div class="timeline-pages">';
+          (session.pages || []).forEach(function(pv) {
+            html += '<span class="timeline-page">' + escHtml(pv.path) + (pv.time_on_page ? ' (' + pv.time_on_page + 's)' : '') + '</span>';
+          });
+          html += '</div>';
+          html += '</li>';
+        });
+        html += '</ul>';
+      } else {
+        html += '<div class="empty-state"><p>No session data for this company yet.</p></div>';
+      }
+
+      el.innerHTML = html;
+    }).catch(function() {
+      el.innerHTML = '<div class="empty-state" style="color:var(--red)"><p>Failed to load timeline.</p></div>';
+    });
+  }
+
+  function saveNotes(companyId) {
+    var notes = document.getElementById('companyNotes').value;
+    fetch(CONFIG.dashboardEndpoint + '/companies/' + companyId + '/notes?site_id=' + CONFIG.siteId, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + CONFIG.dashboardToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ notes: notes })
+    }).then(function(r) {
+      if (r.ok) {
+        var btn = document.querySelector('.save-notes');
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Saved';
+        setTimeout(function() { btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Save Notes'; }, 2000);
+      }
+    });
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // ANALYTICS
+  // ════════════════════════════════════════════════════════════
+  function loadAnalytics() {
+    var days = document.getElementById('analyticsDays').value;
+
+    api('/analytics', { days: days }).then(function(data) {
+      // Top pages
+      renderBarChart('topPages', data.top_pages || [], 'path', 'count');
+
+      // Top sources
+      renderBarChart('topSources', data.top_sources || [], 'source', 'count');
+
+      // Visits per day
+      renderBarChart('visitsChart', data.visits_per_day || [], 'date', 'count');
+
+      // Devices
+      var devices = Object.entries(data.devices || {}).map(function(e) { return { device: e[0], count: e[1] }; });
+      renderBarChart('deviceBreakdown', devices, 'device', 'count');
+    });
+  }
+
+  function renderBarChart(containerId, items, labelKey, valueKey) {
+    var el = document.getElementById(containerId);
+    if (!items.length) {
+      el.innerHTML = '<p style="color:var(--subtle); font-size:0.82rem;">No data</p>';
+      return;
+    }
+    var max = Math.max.apply(null, items.map(function(i) { return i[valueKey]; }));
+    el.innerHTML = items.map(function(item) {
+      var pct = max > 0 ? Math.round((item[valueKey] / max) * 100) : 0;
+      return '<div class="bar-row">' +
+        '<span class="bar-label">' + escHtml(String(item[labelKey])) + '</span>' +
+        '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%"></div></div>' +
+        '<span class="bar-count">' + item[valueKey] + '</span>' +
+      '</div>';
+    }).join('');
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // EXPORT CSV
+  // ════════════════════════════════════════════════════════════
+  function exportCSV() {
+    var days = document.getElementById('filterDays').value;
+    var url = CONFIG.dashboardEndpoint + '/export?site_id=' + CONFIG.siteId + '&days=' + days;
+
+    fetch(url, {
+      headers: { 'Authorization': 'Bearer ' + CONFIG.dashboardToken }
+    })
+    .then(function(r) { return r.blob(); })
+    .then(function(blob) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'visitor-intelligence-' + new Date().toISOString().slice(0, 10) + '.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+  }
+
+  // ════════════════════════════════════════════════════════════
+  // INIT
+  // ════════════════════════════════════════════════════════════
+  document.addEventListener('DOMContentLoaded', function() {
+    loadLive();
+    loadKPIs();
+    loadCompanies();
+    loadAnalytics();
+
+    // Auto-refresh live feed
+    setInterval(loadLive, CONFIG.refreshInterval);
+
+    // Filter listeners
+    document.getElementById('filterSearch').addEventListener('input', debounce(loadCompanies, 400));
+    document.getElementById('filterDays').addEventListener('change', loadCompanies);
+    document.getElementById('filterScore').addEventListener('change', loadCompanies);
+    document.getElementById('filterIsp').addEventListener('change', loadCompanies);
+  });
+
+  function debounce(fn, delay) {
+    var timer;
+    return function() {
+      clearTimeout(timer);
+      timer = setTimeout(fn, delay);
+    };
+  }
+  </script>
+    </div><!-- /main-content -->
+  </div><!-- /app-layout -->
+
+</body>
+</html>
