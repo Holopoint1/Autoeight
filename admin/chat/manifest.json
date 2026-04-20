@@ -1,7 +1,7 @@
 {
   "name": "Autoeight Chat Admin",
   "short_name": "Autoeight Chat",
-  "start_url": "/backend/chat-admin.html",
+  "start_url": "/admin/chat",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0d0d14",
