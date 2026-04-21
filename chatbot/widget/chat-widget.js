@@ -566,6 +566,14 @@
           addMessage(m.role, m.content, attachmentFrom(m));
           if (m.created_at) lastMessageTs = m.created_at;
         });
+        // If the visitor's last message is still unanswered, re-show the waiting indicator
+        const msgs = data.messages;
+        let awaiting = false;
+        for (let i = msgs.length - 1; i >= 0; i--) {
+          if (msgs[i].role === 'user') { awaiting = true; break; }
+          if (msgs[i].role === 'human' || msgs[i].role === 'assistant') break;
+        }
+        if (awaiting) addWaiting();
       }
     } catch (e) { /* ignore */ }
   }
