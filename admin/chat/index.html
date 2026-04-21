@@ -83,7 +83,9 @@ body {
 }
 .login-card .error { color: var(--red); font-size: 0.82rem; margin-top: 10px; }
 
-.app { display: none; height: 100dvh; flex-direction: column; }
+/* App is visible by default so users never see a blank screen; .active
+   is still added on successful login so any legacy code paths work. */
+.app { display: flex; height: 100dvh; flex-direction: column; }
 .app.active { display: flex; }
 
 /* ── Admin nav strip across the top ── */
@@ -503,20 +505,28 @@ $('login-btn').addEventListener('click', tryLogin);
 $('admin-token').addEventListener('keydown', (e) => { if (e.key === 'Enter') tryLogin(); });
 
 if (adminPassword) {
-  // Silently validate the shared password; if it works, skip the login card entirely
+  sessionStorage.setItem(TOKEN_KEY, adminPassword);
+  $('login').style.display = 'none';
+  $('app').classList.add('active');
+  // Load conversations in the background. If the password was wrong/expired
+  // the admin_list call will 401 and the catch sends the user to login — but
+  // the chat shell is already visible so users never see a blank page.
   (async () => {
     try {
-      await rpc({ action: 'admin_login' });
-      sessionStorage.setItem(TOKEN_KEY, adminPassword);
-      $('login').style.display = 'none';
-      $('app').classList.add('active');
       await loadConversations();
       startPolling();
     } catch (e) {
-      // Password was wrong or expired — fall back to login page
-      window.location.href = '/admin/login';
+      console.error('Admin load failed:', e);
+      if ((e.message || '').toLowerCase().includes('invalid password')) {
+        sessionStorage.removeItem(TOKEN_KEY);
+        sessionStorage.removeItem('ae_staff');
+        window.location.href = '/admin/login';
+      }
     }
   })();
+} else {
+  // No password in session — go get one
+  window.location.href = '/admin/login';
 }
 
 // ── Load conversations ──
