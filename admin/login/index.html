@@ -63,15 +63,46 @@
 
     async function handleLogin(e) {
       e.preventDefault();
-      var pw  = document.getElementById('pw').value;
-      var err = document.getElementById('login-err');
-      var ok = await AEAuth.login(pw);
-      if (ok) {
-        window.location.href = nextUrl();
-      } else {
+      var pwInput = document.getElementById('pw');
+      var err     = document.getElementById('login-err');
+      var btn     = document.querySelector('.btn-login');
+      var pw      = pwInput.value;
+      err.classList.remove('show');
+      err.textContent = '';
+
+      if (!pw) {
+        err.textContent = 'Please enter a password.';
         err.classList.add('show');
-        document.getElementById('pw').value = '';
-        document.getElementById('pw').focus();
+        pwInput.focus();
+        return;
+      }
+
+      if (typeof window.AEAuth === 'undefined' || typeof AEAuth.login !== 'function') {
+        err.textContent = 'Login script failed to load. Hard refresh the page (Ctrl+Shift+R).';
+        err.classList.add('show');
+        return;
+      }
+
+      var originalLabel = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Signing in…';
+
+      try {
+        var ok = await AEAuth.login(pw);
+        if (ok) {
+          window.location.href = nextUrl();
+          return;
+        }
+        err.textContent = 'Wrong password. Check the ADMIN_PASSWORD secret in Supabase.';
+        err.classList.add('show');
+      } catch (e) {
+        err.textContent = 'Could not reach the server: ' + (e.message || 'unknown error');
+        err.classList.add('show');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalLabel;
+        pwInput.value = '';
+        pwInput.focus();
       }
     }
   </script>
