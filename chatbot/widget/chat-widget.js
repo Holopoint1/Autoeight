@@ -249,6 +249,29 @@
       border-top: 1px solid rgba(0,0,0,0.06);
       display: flex; gap: 8px; align-items: flex-end;
     }
+    .ae-chat-attach {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(0,0,0,0.04); color: #6d4de6;
+      border: 0; cursor: pointer;
+      display: grid; place-items: center; font-size: 1rem;
+      flex-shrink: 0; transition: background 0.15s;
+    }
+    .ae-chat-attach:hover { background: rgba(124,92,252,0.12); }
+    .ae-chat-attach:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .ae-msg.user .ae-attach, .ae-msg.human .ae-attach, .ae-msg.assistant .ae-attach {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 6px; padding: 8px 10px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 10px;
+      color: inherit; text-decoration: none;
+      font-size: 0.82rem;
+    }
+    .ae-msg.user .ae-attach { background: rgba(255,255,255,0.18); color: #fff; }
+    .ae-msg .ae-attach-img {
+      display: block; max-width: 100%; max-height: 240px;
+      border-radius: 10px; margin-top: 6px;
+    }
     .ae-chat-input {
       flex: 1;
       border: 1px solid rgba(0,0,0,0.1);
@@ -349,6 +372,8 @@
     <div class="ae-chat-body" id="ae-chat-body">
       <div class="ae-chat-messages" id="ae-chat-messages"></div>
       <div class="ae-chat-input-wrap">
+        <input type="file" id="ae-chat-file" style="display:none" accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip" />
+        <button class="ae-chat-attach" id="ae-chat-attach" aria-label="Attach file" title="Attach file"><i class="fa-solid fa-paperclip"></i></button>
         <textarea class="ae-chat-input" id="ae-chat-input" placeholder="Type your message..." rows="1"></textarea>
         <button class="ae-chat-send" id="ae-chat-send" aria-label="Send"><i class="fa-solid fa-arrow-up"></i></button>
       </div>
@@ -378,6 +403,8 @@
   const messagesEl = document.getElementById('ae-chat-messages');
   const inputEl = document.getElementById('ae-chat-input');
   const sendBtn = document.getElementById('ae-chat-send');
+  const fileInput = document.getElementById('ae-chat-file');
+  const attachBtn = document.getElementById('ae-chat-attach');
 
   // ── Helpers ──
   function loadLead() {
@@ -391,10 +418,34 @@
     try { localStorage.setItem(LEAD_KEY, JSON.stringify(lead)); } catch (e) { /* ignore */ }
   }
 
-  function addMessage(role, content) {
+  function addMessage(role, content, attachment) {
     const el = document.createElement('div');
     el.className = 'ae-msg ' + role;
-    el.textContent = content;
+    if (content) {
+      const textEl = document.createElement('div');
+      textEl.textContent = content;
+      el.appendChild(textEl);
+    }
+    if (attachment && attachment.url) {
+      const isImage = (attachment.type || '').startsWith('image/');
+      if (isImage) {
+        const img = document.createElement('img');
+        img.src = attachment.url;
+        img.alt = attachment.name || 'attachment';
+        img.className = 'ae-attach-img';
+        img.loading = 'lazy';
+        el.appendChild(img);
+      } else {
+        const link = document.createElement('a');
+        link.href = attachment.url;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.className = 'ae-attach';
+        link.innerHTML = '<i class="fa-solid fa-paperclip"></i><span></span>';
+        link.querySelector('span').textContent = attachment.name || 'attachment';
+        el.appendChild(link);
+      }
+    }
     messagesEl.appendChild(el);
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
@@ -480,6 +531,11 @@
   });
 
   // ── Chat flow ──
+  function attachmentFrom(m) {
+    if (!m.attachment_url) return null;
+    return { url: m.attachment_url, name: m.attachment_name, type: m.attachment_type };
+  }
+
   async function loadHistory() {
     if (!conversationId) return;
     try {
@@ -487,7 +543,7 @@
       if (data.messages && data.messages.length > 0) {
         messagesEl.innerHTML = '';
         data.messages.forEach((m) => {
-          addMessage(m.role, m.content);
+          addMessage(m.role, m.content, attachmentFrom(m));
           if (m.created_at) lastMessageTs = m.created_at;
         });
       }
@@ -508,7 +564,7 @@
           data.messages.forEach((m) => {
             if (m.role === 'human' || m.role === 'assistant') {
               removeWaiting();
-              addMessage(m.role, m.content);
+              addMessage(m.role, m.content, attachmentFrom(m));
             }
             if (m.created_at) lastMessageTs = m.created_at;
           });
@@ -639,6 +695,68 @@
     inputEl.style.height = 'auto';
     inputEl.style.height = Math.min(inputEl.scrollHeight, 100) + 'px';
   });
+
+  // File attachment flow
+  attachBtn.addEventListener('click', () => {
+    if (stage !== 'live' && stage !== 'first_message') {
+      alert('Please complete the form first, then you can send files.');
+      return;
+    }
+    if (stage === 'first_message') {
+      alert('Send your first message first, then you can attach files.');
+      return;
+    }
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files && fileInput.files[0];
+    if (!file) return;
+    fileInput.value = '';
+    if (!conversationId) return;
+    if (file.size > 5 * 1024 * 1024) {
+      addMessage('system', 'That file is over 5MB. Please send a smaller one.');
+      return;
+    }
+    attachBtn.disabled = true;
+    addMessage('system', 'Uploading ' + file.name + '...');
+    try {
+      const b64 = await fileToBase64(file);
+      const data = await apiCall({
+        action: 'upload_file',
+        conversation_id: conversationId,
+        filename: file.name,
+        content_type: file.type || 'application/octet-stream',
+        file_base64: b64,
+        sender: 'user',
+      });
+      if (data && data.url) {
+        // Remove the "Uploading…" system message
+        const systemMsgs = messagesEl.querySelectorAll('.ae-msg.system');
+        if (systemMsgs.length) systemMsgs[systemMsgs.length - 1].remove();
+        addMessage('user', '', { url: data.url, name: file.name, type: file.type });
+      } else {
+        addMessage('system', (data && data.error) || "Couldn't upload that file.");
+      }
+    } catch (e) {
+      addMessage('system', "Upload failed. Please try again.");
+    } finally {
+      attachBtn.disabled = false;
+    }
+  });
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result || '';
+        const comma = result.indexOf(',');
+        resolve(comma >= 0 ? result.slice(comma + 1) : result);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
 
   // Allow Enter on lead form inputs to advance
   [leadNameEl, leadCompanyEl, leadEmailEl].forEach((el) => {

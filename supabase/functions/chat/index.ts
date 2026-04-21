@@ -41,6 +41,7 @@ interface ChatRequest {
     | "submit_lead"
     | "append_message"
     | "history"
+    | "upload_file"
     | "admin_login"
     | "admin_list"
     | "admin_messages"
@@ -57,6 +58,35 @@ interface ChatRequest {
   user_agent?: string;
   since?: string;
   password?: string;
+  filename?: string;
+  content_type?: string;
+  file_base64?: string;
+  sender?: "user" | "human";
+}
+
+const MAX_UPLOAD_BYTES = 5 * 1024 * 1024; // 5 MB
+const STORAGE_BUCKET = "chat-files";
+
+function base64ToBytes(b64: string): Uint8Array {
+  const bin = atob(b64);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+function randomPath(filename: string): string {
+  const ext = filename.includes(".") ? filename.split(".").pop()!.toLowerCase() : "bin";
+  const uuid = crypto.randomUUID();
+  return `${uuid}.${ext}`;
+}
+
+async function storeAttachment(bytes: Uint8Array, path: string, contentType: string) {
+  const { error } = await supabase.storage
+    .from(STORAGE_BUCKET)
+    .upload(path, bytes, { contentType, upsert: false });
+  if (error) throw new Error(error.message);
+  const { data } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+  return data.publicUrl;
 }
 
 function checkAdmin(body: ChatRequest): boolean {
@@ -72,6 +102,9 @@ function adminDenied() {
 
 async function sendEmail(subject: string, body: string): Promise<void> {
   if (!RESEND_API_KEY) return;
+  // NOTIFY_EMAIL can be a single address or a comma-separated list.
+  // Every address receives the same notification.
+  const recipients = NOTIFY_EMAIL.split(",").map((s) => s.trim()).filter(Boolean);
   try {
     await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -81,7 +114,7 @@ async function sendEmail(subject: string, body: string): Promise<void> {
       },
       body: JSON.stringify({
         from: FROM_EMAIL,
-        to: NOTIFY_EMAIL,
+        to: recipients,
         subject,
         html: body,
       }),
@@ -215,7 +248,7 @@ serve(async (req: Request) => {
     if (body.action === "history" && body.conversation_id) {
       let query = supabase
         .from("chat_messages")
-        .select("role, content, created_at")
+        .select("role, content, created_at, attachment_url, attachment_name, attachment_type")
         .eq("conversation_id", body.conversation_id)
         .order("created_at", { ascending: true });
 
@@ -313,6 +346,71 @@ serve(async (req: Request) => {
       return new Response(JSON.stringify({ success: true }), {
         headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
       });
+    }
+
+    // ── ACTION: Upload a file attachment (visitor or admin) ──
+    if (body.action === "upload_file" && body.conversation_id && body.filename && body.file_base64) {
+      const bytes = base64ToBytes(body.file_base64);
+      if (bytes.length > MAX_UPLOAD_BYTES) {
+        return new Response(JSON.stringify({ error: "File too large (max 5MB)" }), {
+          status: 413,
+          headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+        });
+      }
+
+      // Admin uploads require password; visitor uploads are authorized implicitly via conversation_id
+      const isAdmin = body.sender === "human";
+      if (isAdmin && !checkAdmin(body)) return adminDenied();
+
+      const path = randomPath(body.filename);
+      const contentType = body.content_type || "application/octet-stream";
+      let publicUrl: string;
+      try {
+        publicUrl = await storeAttachment(bytes, path, contentType);
+      } catch (e) {
+        console.error("Upload failed:", e);
+        return new Response(JSON.stringify({ error: "Upload failed" }), {
+          status: 500,
+          headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+        });
+      }
+
+      const role = isAdmin ? "human" : "user";
+      await supabase.from("chat_messages").insert({
+        conversation_id: body.conversation_id,
+        role,
+        content: body.message || `Sent a file: ${body.filename}`,
+        attachment_url: publicUrl,
+        attachment_name: body.filename,
+        attachment_type: contentType,
+      });
+
+      await supabase
+        .from("chat_conversations")
+        .update({
+          last_message_at: new Date().toISOString(),
+          ...(isAdmin ? { status: "human_active" } : {}),
+        })
+        .eq("id", body.conversation_id);
+
+      // Notify Adam if this was a visitor upload
+      if (!isAdmin) {
+        const { data: conv } = await supabase
+          .from("chat_conversations")
+          .select("visitor_name")
+          .eq("id", body.conversation_id)
+          .single();
+        await notifyFollowUp(
+          body.conversation_id,
+          conv?.visitor_name || "",
+          `[File attached] ${body.filename}\n${publicUrl}`
+        );
+      }
+
+      return new Response(
+        JSON.stringify({ ok: true, url: publicUrl, filename: body.filename }),
+        { headers: { ...CORS_HEADERS, "Content-Type": "application/json" } }
+      );
     }
 
     // ──────────────────────────────────────────────────────────

@@ -29,8 +29,21 @@ CREATE TABLE IF NOT EXISTS chat_messages (
   conversation_id UUID NOT NULL REFERENCES chat_conversations(id) ON DELETE CASCADE,
   role            TEXT NOT NULL,           -- 'user' | 'assistant' | 'human'
   content         TEXT NOT NULL,
+  attachment_url  TEXT,                    -- public URL if message has a file attached
+  attachment_name TEXT,                    -- original filename
+  attachment_type TEXT,                    -- MIME type e.g. image/png
   created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Additive for existing tables (safe to re-run)
+ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS attachment_url  TEXT;
+ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS attachment_name TEXT;
+ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS attachment_type TEXT;
+
+-- Storage bucket for chat attachments (public read, edge-function-only write)
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('chat-files', 'chat-files', true)
+ON CONFLICT (id) DO NOTHING;
 
 CREATE INDEX IF NOT EXISTS idx_chat_messages_conversation ON chat_messages(conversation_id, created_at);
 
