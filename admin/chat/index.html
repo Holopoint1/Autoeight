@@ -184,8 +184,13 @@ body {
 
 .convo-item .convo-check {
   position: absolute; right: 10px; top: 10px;
-  width: 14px; height: 14px; cursor: pointer;
+  width: 18px; height: 18px; cursor: pointer;
   accent-color: var(--purple);
+}
+.bulk-bar .select-all input[type="checkbox"] {
+  width: 18px; height: 18px; cursor: pointer;
+  accent-color: var(--purple);
+  margin-right: 2px;
 }
 
 /* Confirm modal */
@@ -330,6 +335,20 @@ body {
 }
 .msg-row.assistant .msg-text { color: var(--muted); font-style: italic; font-size: 0.88rem; }
 .msg-text:empty { display: none; }
+
+/* Hover-only delete button on your own messages */
+.msg-row { position: relative; }
+.msg-del-btn {
+  position: absolute; right: 0; top: 8px;
+  background: var(--panel); border: 1px solid var(--border);
+  color: var(--muted); cursor: pointer;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: none; align-items: center; justify-content: center;
+  font-size: 0.72rem; line-height: 1;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.msg-row.human:hover .msg-del-btn { display: flex; }
+.msg-del-btn:hover { color: var(--red); border-color: rgba(248,113,113,0.35); background: rgba(248,113,113,0.08); }
 
 /* ── Right-click context menu ── */
 .ctx-menu {
@@ -762,6 +781,9 @@ function renderMessages(messages) {
       }
     }
 
+    const delBtn = m.role === 'human'
+      ? `<button type="button" class="msg-del-btn" data-msg-id="${escapeHtml(m.id)}" title="Delete this message">&times;</button>`
+      : '';
     html += `
       <div class="msg-row ${m.role}">
         <div class="avatar">${escapeHtml(initialFor(m.role))}</div>
@@ -773,11 +795,33 @@ function renderMessages(messages) {
           <div class="msg-text">${escapeHtml(text)}</div>
           ${attach}
         </div>
+        ${delBtn}
       </div>`;
   });
   html += '</div>';
   body.innerHTML = html;
   body.scrollTop = body.scrollHeight;
+
+  // Wire up the hover "delete my message" buttons
+  body.querySelectorAll('.msg-del-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const msgId = btn.dataset.msgId;
+      confirmAction({
+        title: 'Delete this message?',
+        body: "It'll disappear from the visitor's chat too. This can't be undone.",
+        okLabel: 'Delete',
+        danger: true,
+        onOk: async () => {
+          await rpc({ action: 'admin_delete_message', message_id: msgId });
+          if (currentConvId) {
+            const data = await rpc({ action: 'admin_messages', conversation_id: currentConvId });
+            renderMessages(data.messages || []);
+          }
+        },
+      });
+    });
+  });
 }
 
 // ── Send reply ──

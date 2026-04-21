@@ -51,9 +51,11 @@ interface ChatRequest {
     | "admin_archive"
     | "admin_unarchive"
     | "admin_bulk_archive"
-    | "admin_bulk_delete";
+    | "admin_bulk_delete"
+    | "admin_delete_message";
   ids?: string[];
   include_archived?: boolean;
+  message_id?: string;
   conversation_id?: string;
   visitor_id?: string;
   name?: string;
@@ -537,6 +539,27 @@ serve(async (req: Request) => {
         .from("chat_conversations")
         .update({ status: "closed" })
         .eq("id", body.conversation_id);
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_delete_message" && body.message_id) {
+      if (!checkAdmin(body)) return adminDenied();
+      // Only allow deleting the operator's own messages (role = 'human').
+      // Never let a visitor's message be removed from the admin side.
+      const { data: msg } = await supabase
+        .from("chat_messages")
+        .select("role")
+        .eq("id", body.message_id)
+        .single();
+      if (!msg || msg.role !== "human") {
+        return new Response(JSON.stringify({ error: "Can only delete your own messages" }), {
+          status: 400,
+          headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+        });
+      }
+      await supabase.from("chat_messages").delete().eq("id", body.message_id);
       return new Response(JSON.stringify({ ok: true }), {
         headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
       });
