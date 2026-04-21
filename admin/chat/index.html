@@ -56,8 +56,35 @@ body {
 }
 .login-card .error { color: var(--red); font-size: 0.82rem; margin-top: 10px; }
 
-.app { display: none; height: 100dvh; }
+.app { display: none; height: 100dvh; flex-direction: column; }
 .app.active { display: flex; }
+
+/* ── Admin nav strip across the top ── */
+.admin-nav {
+  display: flex; align-items: center; gap: 4px;
+  padding: 8px 14px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+.admin-nav::-webkit-scrollbar { display: none; }
+.admin-nav a {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 10px;
+  color: var(--muted);
+  font-size: 0.74rem; font-weight: 500;
+  text-decoration: none;
+  border-radius: 7px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.admin-nav a:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+.admin-nav a.active { background: rgba(124,92,252,0.15); color: var(--purple); }
+.admin-nav .spacer { flex: 1; }
+.admin-nav .sep { width: 1px; height: 18px; background: var(--border); margin: 0 6px; }
+
+.app-body { flex: 1; display: flex; min-height: 0; }
 
 /* ── Sidebar (conversation list) ── */
 .sidebar {
@@ -138,24 +165,90 @@ body {
 }
 
 .chat-body {
-  flex: 1; overflow-y: auto; padding: 16px 18px;
-  display: flex; flex-direction: column; gap: 6px;
+  flex: 1; overflow-y: auto;
+  padding: 24px 0 16px;
   background: var(--bg);
 }
-.msg {
-  max-width: 70%; padding: 8px 12px; border-radius: 14px;
-  font-size: 0.85rem; line-height: 1.45;
-  word-wrap: break-word; white-space: pre-wrap;
+.chat-scroll {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex; flex-direction: column; gap: 2px;
 }
-.msg.user { align-self: flex-start; background: rgba(255,255,255,0.06); border-bottom-left-radius: 4px; }
-.msg.assistant { align-self: flex-start; background: rgba(124,92,252,0.12); border: 1px solid rgba(124,92,252,0.2); border-bottom-left-radius: 4px; }
-.msg.human { align-self: flex-end; background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: #fff; border-bottom-right-radius: 4px; }
-.msg-meta { font-size: 0.62rem; color: var(--muted); margin-top: 2px; opacity: 0.65; }
+.msg {
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  border-radius: 12px;
+  max-width: 82%;
+}
+.msg.user {
+  align-self: flex-start;
+  background: transparent;
+  color: var(--text);
+  padding-left: 0; padding-right: 14px;
+}
+.msg.assistant {
+  align-self: flex-start;
+  background: transparent;
+  color: rgba(255,255,255,0.82);
+  padding-left: 0;
+  font-style: italic;
+  font-size: 0.85rem;
+}
+.msg.human {
+  align-self: flex-end;
+  background: rgba(124,92,252,0.18);
+  border: 1px solid rgba(124,92,252,0.25);
+  color: var(--text);
+}
+.msg-meta {
+  font-size: 0.66rem; color: var(--muted);
+  margin-top: 2px; opacity: 0.6;
+  padding: 0 4px;
+}
 .msg.user .msg-meta, .msg.assistant .msg-meta { text-align: left; }
-.msg.human .msg-meta { text-align: right; color: rgba(255,255,255,0.8); }
+.msg.human .msg-meta { text-align: right; }
 
-/* Group consecutive messages from same role: tighten gap */
-.msg + .msg { margin-top: -2px; }
+/* Role label above grouped messages */
+.role-label {
+  font-size: 0.68rem; font-weight: 600;
+  color: var(--muted); margin: 14px 0 4px;
+  padding: 0 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.role-label.user { align-self: flex-start; padding-left: 0; color: var(--purple); }
+.role-label.human { align-self: flex-end; padding-right: 4px; color: var(--green); }
+.role-label.assistant { align-self: flex-start; padding-left: 0; color: var(--muted); }
+
+/* Group consecutive messages */
+.msg + .msg { margin-top: 4px; }
+
+/* ── Right-click context menu ── */
+.ctx-menu {
+  position: fixed; z-index: 100;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px;
+  min-width: 180px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  display: none;
+}
+.ctx-menu.active { display: block; }
+.ctx-menu button {
+  display: block; width: 100%; text-align: left;
+  padding: 8px 12px; border-radius: 6px;
+  background: transparent; border: 0;
+  color: var(--text); cursor: pointer;
+  font-family: inherit; font-size: 0.84rem;
+}
+.ctx-menu button:hover { background: rgba(255,255,255,0.06); }
+.ctx-menu button.danger { color: var(--red); }
+.ctx-menu button.danger:hover { background: rgba(248,113,113,0.1); }
 
 .empty-state { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--muted); font-size: 0.88rem; text-align: center; padding: 40px; }
 
@@ -221,6 +314,27 @@ body {
 
 <!-- APP -->
 <div class="app" id="app">
+
+<nav class="admin-nav" aria-label="Admin navigation">
+  <a href="/admin" title="Dashboard">📊 Dashboard</a>
+  <a href="/admin/chat" class="active" title="Live chat">💬 Live Chat</a>
+  <a href="/admin/visitors" title="Visitors">👁 Visitors</a>
+  <a href="/admin/seo" title="SEO">📈 SEO</a>
+  <a href="/admin/sales" title="Sales">💼 Sales</a>
+  <a href="/admin/marketing" title="Marketing">📣 Marketing</a>
+  <a href="/admin/data" title="Data">🗂 Data</a>
+  <a href="/admin/scheduling" title="Scheduling">📅 Scheduling</a>
+  <a href="/admin/skills" title="AI Skills">🎓 Skills</a>
+  <a href="/admin/projects" title="Projects">📋 Projects</a>
+  <a href="/admin/support" title="Support">🛎 Support</a>
+  <a href="/admin/impact" title="Impact">🌱 Impact</a>
+  <div class="spacer"></div>
+  <a href="/" title="Live site">🌐 Site</a>
+  <a href="#" onclick="sessionStorage.clear();location.reload();return false;" title="Sign out">🔓 Sign out</a>
+</nav>
+
+<div class="app-body">
+
   <aside class="sidebar">
     <div class="sidebar-header">
       <h1>Conversations</h1>
@@ -256,7 +370,17 @@ body {
       <button id="send-btn" aria-label="Send">&uarr;</button>
     </div>
   </main>
+</div><!-- /.app-body -->
+
+<!-- Right-click context menu for conversations -->
+<div id="ctx-menu" class="ctx-menu" role="menu">
+  <button data-act="open">Open</button>
+  <button data-act="read">Mark as read</button>
+  <button data-act="close">Mark as closed</button>
+  <button data-act="delete" class="danger">Delete forever</button>
 </div>
+
+</div><!-- /.app -->
 
 <script>
 // Admin panel — talks to the chat edge function with a password
@@ -268,6 +392,14 @@ let conversations = [];
 let currentConvId = null;
 let currentFilter = 'all';
 let pollTimer = null;
+const READ_KEY = 'ae_chat_read_state'; // { [conversationId]: lastReadISO }
+function readState() {
+  try { return JSON.parse(localStorage.getItem(READ_KEY) || '{}'); } catch (e) { return {}; }
+}
+function markRead(id, ts) {
+  const s = readState(); s[id] = ts || new Date().toISOString();
+  localStorage.setItem(READ_KEY, JSON.stringify(s));
+}
 
 const $ = (id) => document.getElementById(id);
 
@@ -326,13 +458,16 @@ function renderConvoList() {
     list.innerHTML = '<div class="empty-state" style="padding:40px 20px;">No conversations yet</div>';
     return;
   }
+  const rs = readState();
   list.innerHTML = filtered.map((c) => {
     const name = c.visitor_name || (c.visitor_email ? c.visitor_email : 'Anonymous');
     const time = new Date(c.last_message_at).toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' });
     const page = c.page_url ? new URL(c.page_url).pathname : '';
     const preview = c.visitor_company ? `${c.visitor_company} · ${page || 'chat'}` : (page || 'chat');
+    const unread = !rs[c.id] || new Date(c.last_message_at) > new Date(rs[c.id]);
     return `
       <div class="convo-item ${c.id === currentConvId ? 'active' : ''}" data-id="${c.id}">
+        ${unread && c.id !== currentConvId ? '<span class="dot-unread" title="Unread"></span>' : ''}
         <div class="top">
           <span class="name">${escapeHtml(name)}</span>
           <span class="time">${time}</span>
@@ -344,6 +479,10 @@ function renderConvoList() {
   }).join('');
   list.querySelectorAll('.convo-item').forEach((el) => {
     el.addEventListener('click', () => openConversation(el.dataset.id));
+    el.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      openContextMenu(e.clientX, e.clientY, el.dataset.id);
+    });
   });
 }
 
@@ -356,6 +495,7 @@ async function openConversation(id) {
   currentConvId = id;
   const conv = conversations.find((c) => c.id === id);
   if (!conv) return;
+  markRead(id, conv.last_message_at);
   $('chat-header').style.display = 'flex';
   $('reply-wrap').style.display = 'flex';
   $('chat-name').textContent = conv.visitor_name || conv.visitor_email || 'Anonymous';
@@ -378,8 +518,18 @@ async function openConversation(id) {
 
 function renderMessages(messages) {
   const body = $('chat-body');
-  if (!messages.length) { body.innerHTML = '<div class="empty-state">No messages yet</div>'; return; }
-  body.innerHTML = messages.map((m) => {
+  if (!messages.length) {
+    body.innerHTML = '<div class="empty-state">No messages yet</div>';
+    return;
+  }
+  const labelFor = (r) => r === 'user' ? 'Visitor' : r === 'human' ? 'You' : 'System';
+  let html = '<div class="chat-scroll">';
+  let lastRole = null;
+  messages.forEach((m) => {
+    if (m.role !== lastRole) {
+      html += `<div class="role-label ${m.role}">${labelFor(m.role)}</div>`;
+      lastRole = m.role;
+    }
     const time = new Date(m.created_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
     const textPart = m.content ? `<div>${escapeHtml(m.content)}</div>` : '';
     let attachPart = '';
@@ -391,8 +541,10 @@ function renderMessages(messages) {
         attachPart = `<a class="attach-link" href="${escapeHtml(m.attachment_url)}" target="_blank" rel="noopener">📎 ${escapeHtml(m.attachment_name || 'attachment')}</a>`;
       }
     }
-    return `<div class="msg ${m.role}">${textPart}${attachPart}<div class="msg-meta">${time}</div></div>`;
-  }).join('');
+    html += `<div class="msg ${m.role}">${textPart}${attachPart}<div class="msg-meta">${time}</div></div>`;
+  });
+  html += '</div>';
+  body.innerHTML = html;
   body.scrollTop = body.scrollHeight;
 }
 
@@ -514,6 +666,76 @@ function startPolling() {
     }
   }, 8000);
 }
+
+// ── Right-click context menu ──
+let ctxTargetId = null;
+const ctxMenu = $('ctx-menu');
+
+function openContextMenu(x, y, id) {
+  ctxTargetId = id;
+  ctxMenu.classList.add('active');
+  // Keep within viewport
+  const rect = ctxMenu.getBoundingClientRect();
+  const maxX = window.innerWidth - 200;
+  const maxY = window.innerHeight - 180;
+  ctxMenu.style.left = Math.min(x, maxX) + 'px';
+  ctxMenu.style.top = Math.min(y, maxY) + 'px';
+}
+function closeContextMenu() {
+  ctxMenu.classList.remove('active');
+  ctxTargetId = null;
+}
+
+document.addEventListener('click', (e) => {
+  if (!ctxMenu.contains(e.target)) closeContextMenu();
+});
+document.addEventListener('contextmenu', (e) => {
+  if (!e.target.closest('.convo-item')) closeContextMenu();
+});
+window.addEventListener('scroll', closeContextMenu, true);
+window.addEventListener('resize', closeContextMenu);
+
+ctxMenu.querySelectorAll('button').forEach((btn) => {
+  btn.addEventListener('click', async () => {
+    const act = btn.dataset.act;
+    const id = ctxTargetId;
+    closeContextMenu();
+    if (!id) return;
+
+    if (act === 'open') {
+      openConversation(id);
+      return;
+    }
+    if (act === 'read') {
+      const conv = conversations.find((c) => c.id === id);
+      markRead(id, (conv && conv.last_message_at) || new Date().toISOString());
+      renderConvoList();
+      return;
+    }
+    if (act === 'close') {
+      try {
+        await rpc({ action: 'admin_close', conversation_id: id });
+        await loadConversations();
+      } catch (e) { alert('Failed: ' + e.message); }
+      return;
+    }
+    if (act === 'delete') {
+      if (!confirm('Delete this conversation forever? This cannot be undone.')) return;
+      try {
+        await rpc({ action: 'admin_delete', conversation_id: id });
+        if (currentConvId === id) {
+          currentConvId = null;
+          $('chat-header').style.display = 'none';
+          $('reply-wrap').style.display = 'none';
+          $('chat-body').innerHTML = '<div class="empty-state">Select a conversation to reply</div>';
+          $('app').classList.remove('view-chat');
+        }
+        await loadConversations();
+      } catch (e) { alert('Failed: ' + e.message); }
+      return;
+    }
+  });
+});
 
 // ── Deep link support ──
 const urlParams = new URLSearchParams(location.search);
