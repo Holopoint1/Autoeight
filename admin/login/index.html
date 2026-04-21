@@ -43,8 +43,9 @@
 
   <script src="/admin/auth.js"></script>
   <script>
-    // Already logged in? Skip to dashboard
-    if (sessionStorage.getItem('ae_staff') === '1') {
+    // Already logged in AND have the chat password stored? Skip to dashboard.
+    // Otherwise show the form so the user can re-enter and get both keys saved.
+    if (sessionStorage.getItem('ae_staff') === '1' && sessionStorage.getItem('ae_chat_admin_pw')) {
       window.location.href = '/admin';
     }
 

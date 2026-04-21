@@ -182,8 +182,24 @@
     }
 
     /* ── Chat view (shown after lead submitted) ── */
-    .ae-chat-body { flex: 1; display: none; flex-direction: column; min-height: 0; }
+    .ae-chat-body { flex: 1; display: none; flex-direction: column; min-height: 0; position: relative; }
     .ae-chat-body.active { display: flex; }
+
+    /* ── Drag-and-drop overlay ── */
+    .ae-drop-overlay {
+      position: absolute; inset: 0; z-index: 5;
+      display: none;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+      background: rgba(124,92,252,0.12);
+      border: 2px dashed #7c5cfc;
+      border-radius: 12px;
+      margin: 8px;
+      color: #6d4de6; font-weight: 600; font-size: 0.92rem;
+      pointer-events: none;
+    }
+    .ae-chat-body.dragging .ae-drop-overlay { display: flex; }
+    .ae-drop-overlay i { font-size: 2rem; }
 
     .ae-chat-messages {
       flex: 1; overflow-y: auto;
@@ -370,6 +386,10 @@
     </div>
 
     <div class="ae-chat-body" id="ae-chat-body">
+      <div class="ae-drop-overlay" aria-hidden="true">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <span>Drop to attach</span>
+      </div>
       <div class="ae-chat-messages" id="ae-chat-messages"></div>
       <div class="ae-chat-input-wrap">
         <input type="file" id="ae-chat-file" style="display:none" accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip" />
@@ -694,6 +714,65 @@
   inputEl.addEventListener('input', () => {
     inputEl.style.height = 'auto';
     inputEl.style.height = Math.min(inputEl.scrollHeight, 100) + 'px';
+  });
+
+  // Drag & drop file upload
+  async function handleDroppedFile(file) {
+    if (!file) return;
+    if (stage !== 'live' && stage !== 'first_message') {
+      addMessage('system', 'Send your first message first, then you can attach files.');
+      return;
+    }
+    if (!conversationId) return;
+    if (file.size > 5 * 1024 * 1024) {
+      addMessage('system', 'That file is over 5MB. Please send a smaller one.');
+      return;
+    }
+    attachBtn.disabled = true;
+    addMessage('system', 'Uploading ' + file.name + '...');
+    try {
+      const b64 = await fileToBase64(file);
+      const data = await apiCall({
+        action: 'upload_file',
+        conversation_id: conversationId,
+        filename: file.name,
+        content_type: file.type || 'application/octet-stream',
+        file_base64: b64,
+        sender: 'user',
+      });
+      if (data && data.url) {
+        const systemMsgs = messagesEl.querySelectorAll('.ae-msg.system');
+        if (systemMsgs.length) systemMsgs[systemMsgs.length - 1].remove();
+        addMessage('user', '', { url: data.url, name: file.name, type: file.type });
+      } else {
+        addMessage('system', (data && data.error) || "Couldn't upload that file.");
+      }
+    } catch (e) {
+      addMessage('system', "Upload failed. Please try again.");
+    } finally {
+      attachBtn.disabled = false;
+    }
+  }
+
+  chatBody.addEventListener('dragover', (e) => {
+    if (stage !== 'live' && stage !== 'first_message') return;
+    e.preventDefault();
+    chatBody.classList.add('dragging');
+  });
+  chatBody.addEventListener('dragleave', (e) => {
+    if (e.target === chatBody) chatBody.classList.remove('dragging');
+  });
+  chatBody.addEventListener('drop', (e) => {
+    e.preventDefault();
+    chatBody.classList.remove('dragging');
+    const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (file) handleDroppedFile(file);
+  });
+
+  // Prevent the browser from opening the file if dropped outside the overlay
+  window.addEventListener('dragover', (e) => e.preventDefault());
+  window.addEventListener('drop', (e) => {
+    if (!chatBody.contains(e.target)) e.preventDefault();
   });
 
   // File attachment flow
