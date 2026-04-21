@@ -79,10 +79,17 @@
   }
 
   function render() {
-    var sidebar = document.querySelector('aside.sidebar[data-admin-sidebar]') ||
-                  document.querySelector('aside.sidebar');
-    if (!sidebar) return;
-    sidebar.innerHTML = buildSidebarHtml();
+    // Only replace sidebars that explicitly opt in. Pages with a custom
+    // sidebar layout (e.g. the chat admin's conversation list) must NOT
+    // get their contents clobbered.
+    var sidebars = document.querySelectorAll('aside.sidebar[data-admin-sidebar]');
+    if (!sidebars.length) {
+      // Back-compat fallback: look for the standard admin layout sidebar
+      // alongside a .main-content element (the shared admin page pattern).
+      var legacy = document.querySelector('.app-layout > aside.sidebar');
+      if (legacy) sidebars = [legacy];
+    }
+    sidebars.forEach(function (el) { el.innerHTML = buildSidebarHtml(); });
   }
 
   if (document.readyState === 'loading') {
