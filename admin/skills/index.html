@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Knowledge Base - Autoeight</title>
+  <title>Sales Playbook — Autoeight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -16,6 +16,32 @@
     .ref-card h4 { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
     .ref-card h4 i { color: var(--green); font-size: 0.7rem; }
     .ref-card p { font-size: 0.82rem; color: var(--off-white); line-height: 1.6; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; border-top: 3px solid var(--green); }
+    .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--green); line-height: 1.1; margin-bottom: 4px; }
+    .stat-label { font-size: 0.84rem; color: var(--off-white); line-height: 1.45; margin-bottom: 10px; }
+    .stat-source { font-size: 0.68rem; color: var(--muted); }
+    .stat-source a { color: var(--purple-l); text-decoration: none; }
+    .stat-source a:hover { text-decoration: underline; }
+
+    .pitch-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 22px 24px; margin-bottom: 16px; }
+    .pitch-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+    .pitch-card h3 i { color: var(--green); font-size: 0.9rem; }
+    .pitch-card .pitch-sub { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
+    .pitch-card h5 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--green); margin: 16px 0 6px; }
+    .pitch-card h5:first-of-type { margin-top: 0; }
+    .pitch-card p { font-size: 0.84rem; color: var(--off-white); line-height: 1.6; margin-bottom: 8px; }
+    .pitch-card ul { padding-left: 18px; font-size: 0.82rem; color: var(--off-white); line-height: 1.6; margin-bottom: 8px; }
+    .pitch-card li { margin-bottom: 4px; }
+    .pitch-script {
+      background: var(--green-d); border: 1px solid rgba(62,207,142,0.2);
+      border-left: 3px solid var(--green);
+      padding: 14px 16px; border-radius: 0 8px 8px 0;
+      font-size: 0.84rem; color: var(--off-white); line-height: 1.6;
+      font-style: italic; margin: 10px 0;
+    }
+
     .proof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-bottom: 32px; }
     .proof-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 20px; border-top: 3px solid var(--green); }
     .proof-name { font-size: 0.92rem; font-weight: 700; margin-bottom: 4px; }
@@ -23,8 +49,10 @@
     .proof-metric { display: flex; align-items: baseline; gap: 6px; margin-bottom: 6px; }
     .proof-val { font-size: 1.1rem; font-weight: 700; color: var(--green); }
     .proof-label { font-size: 0.76rem; color: var(--off-white); }
+
     .sh { font-size: 1rem; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
     .sh i { color: var(--green); font-size: 0.85rem; }
+
     .voice-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 22px; margin-bottom: 24px; }
     .voice-box h3 { font-size: 0.92rem; margin-bottom: 10px; }
     .banned-words { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
@@ -34,97 +62,278 @@
     .example-bad { background: var(--red-d); border: 1px solid rgba(239,68,68,0.15); }
     .example-good { background: var(--green-d); border: 1px solid rgba(62,207,142,0.15); }
     .example-label { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-    .kw-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-bottom: 32px; }
-    .kw-table th { text-align: left; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px 10px; border-bottom: 2px solid var(--border); }
-    .kw-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
-    .kw-table tr:hover { background: var(--surface); }
-    .priority-high { color: var(--green); font-weight: 700; }
-    .priority-med { color: var(--amber); font-weight: 600; }
+
     .obj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-bottom: 32px; }
     .obj-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; }
     .obj-q { font-size: 0.88rem; font-weight: 700; color: var(--amber); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
     .obj-q i { font-size: 0.72rem; }
     .obj-a { font-size: 0.82rem; color: var(--off-white); line-height: 1.6; font-style: italic; }
+
     .email-seq { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-bottom: 14px; }
     .email-step { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; }
     .email-day { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-bottom: 6px; }
     .email-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; }
     .email-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
-    .skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-bottom: 32px; }
-    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; cursor: pointer; transition: border-color 0.15s; }
-    .skill-card:hover { border-color: var(--border-l); }
-    .skill-card.open { border-color: var(--green); }
-    .skill-head { display: flex; align-items: center; gap: 10px; }
-    .skill-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
-    .skill-icon.purple { background: var(--purple-d); color: var(--purple-l); }
-    .skill-icon.green { background: var(--green-d); color: var(--green); }
-    .skill-icon.amber { background: var(--amber-d); color: var(--amber); }
-    .skill-name { font-size: 0.88rem; font-weight: 700; }
-    .skill-cat { font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-top: 1px; }
-    .skill-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-top: 10px; }
-    .skill-detail { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
-    .skill-card.open .skill-detail { display: block; }
-    .skill-detail h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--green); margin: 14px 0 6px; }
-    .skill-detail h4:first-child { margin-top: 0; }
-    .skill-detail ul { padding-left: 16px; font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
-    .skill-detail p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
-    .toggle-arrow { margin-left: auto; color: var(--subtle); font-size: 0.7rem; transition: transform 0.15s; }
-    .skill-card.open .toggle-arrow { transform: rotate(180deg); }
-    @media (max-width: 768px) { .ref-grid, .proof-grid, .obj-grid, .email-seq, .skill-grid { grid-template-columns: 1fr; } .example-row { grid-template-columns: 1fr; } }
+
+    .news-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .news-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 14px 18px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .news-item .news-source { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .news-item a { font-size: 0.88rem; font-weight: 700; color: var(--purple-l); text-decoration: none; }
+    .news-item a:hover { text-decoration: underline; }
+    .news-item p { font-size: 0.78rem; color: var(--off-white); line-height: 1.5; }
+
+    @media (max-width: 768px) { .ref-grid, .proof-grid, .obj-grid, .email-seq, .stat-grid { grid-template-columns: 1fr; } .example-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <script>AEAuth.check();</script>
   <div class="app-layout">
     <aside class="sidebar">
-      <a href="/admin" class="sidebar-logo"><img src="/brand_assets/logo.png?v=3" alt="Autoeight" /><div class="sidebar-logo-text"><span class="sidebar-logo-name">Autoeight</span><span class="sidebar-logo-sub">Internal Portal</span></div></a>
+      <a href="/admin" class="sidebar-logo"><img src="/brand_assets/logo.png?v=3" alt="Autoeight" /><div class="sidebar-logo-text"><span class="sidebar-logo-name">Autoeight</span><span class="sidebar-logo-sub">Sales Portal</span></div></a>
       <div class="sidebar-section">Tools</div>
       <nav class="sidebar-nav">
         <a href="/admin" class="sidebar-link"><i class="fa-solid fa-house"></i> Dashboard</a>
-        <a href="/admin/visitors" class="sidebar-link"><i class="fa-solid fa-eye"></i> Visitor Intelligence <span class="sidebar-badge">New</span></a>
+        <a href="/admin/chat" class="sidebar-link"><i class="fa-solid fa-comments"></i> Live Chat</a>
+        <a href="/admin/visitors" class="sidebar-link"><i class="fa-solid fa-eye"></i> Visitor Intelligence</a>
         <a href="/admin/seo" class="sidebar-link"><i class="fa-solid fa-chart-simple"></i> SEO &amp; Site Health</a>
-        <a href="/admin/skills" class="sidebar-link active"><i class="fa-solid fa-book"></i> Knowledge Base</a>
+        <a href="/admin/skills" class="sidebar-link active"><i class="fa-solid fa-book"></i> Sales Playbook</a>
       </nav>
-      <div class="sidebar-section">Sales Demos</div>
+      <div class="sidebar-section">Pitch Views</div>
       <nav class="sidebar-nav">
-        <a href="/services/web-design" class="sidebar-link"><i class="fa-solid fa-globe"></i> Web Design</a>
+        <a href="/admin/sales" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Sales Automation</a>
         <a href="/admin/support" class="sidebar-link"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a>
         <a href="/admin/data" class="sidebar-link"><i class="fa-solid fa-plug"></i> CRM &amp; Integration</a>
-        <a href="/admin/sales" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> Sales Automation</a>
-        <a href="/services/lms" class="sidebar-link"><i class="fa-solid fa-graduation-cap"></i> Learning Management</a>
+        <a href="/admin/marketing" class="sidebar-link"><i class="fa-solid fa-bullhorn"></i> Marketing</a>
       </nav>
       <div class="sidebar-footer">
-        <a href="/" class="sidebar-link"><i class="fa-solid fa-globe"></i> Live Site</a>
         <a href="#" onclick="AEAuth.logout();return false;" class="sidebar-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
       </div>
     </aside>
     <div class="main-content">
       <div class="topbar">
-        <div class="topbar-breadcrumb"><span>Portal</span> <span>/</span> <span>Tools</span> <span>/</span> <strong>Knowledge Base</strong></div>
+        <div class="topbar-breadcrumb"><span>Portal</span> <span>/</span> <span>Tools</span> <span>/</span> <strong>Sales Playbook</strong></div>
         <div class="topbar-actions"><a href="/admin" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a></div>
       </div>
       <main class="b-main">
-        <div class="dw"><h1>Knowledge Base</h1><p style="margin-top:6px;color:var(--muted);font-size:0.88rem;">Internal reference for everything Autoeight. Positioning, proof points, voice, SEO targets, sales playbook, and AI skill docs.</p></div>
+        <div class="dw">
+          <h1>Sales Playbook</h1>
+          <p style="margin-top:6px;color:var(--muted);font-size:0.88rem;">Everything you need to pitch and close Autoeight services. Stats, scripts, proof, objection answers, and news references. Not a service catalogue — a selling tool.</p>
+        </div>
 
         <div class="sh"><i class="fa-solid fa-bolt"></i> Quick Reference</div>
         <div class="ref-grid">
-          <div class="ref-card"><h4><i class="fa-solid fa-crosshairs"></i> Who We Sell To</h4><p>SMB owners with 5-50 staff. Operations managers and sales directors drowning in manual work. People who know they need to automate but don't know where to start.</p></div>
+          <div class="ref-card"><h4><i class="fa-solid fa-crosshairs"></i> Who We Sell To</h4><p>SMBs with 5–50 staff. Operations managers and sales directors drowning in manual work. People who know they need to automate but don't know where to start.</p></div>
           <div class="ref-card"><h4><i class="fa-solid fa-hammer"></i> What We Build</h4><p>Custom automation systems, AI tools, websites, and e-commerce platforms. Not off-the-shelf SaaS. We build it, hand it over, and train the team.</p></div>
-          <div class="ref-card"><h4><i class="fa-solid fa-bullseye"></i> How We Position</h4><p>"We build AI systems that save your team hours every day." We're not consultants and we're not a SaaS product. We build custom systems that the client owns.</p></div>
-          <div class="ref-card"><h4><i class="fa-solid fa-map-pin"></i> Where We Target</h4><p>Halifax, Leeds, Bradford, Huddersfield, West Yorkshire, UK. Keywords: "AI automation Halifax", "automation agency West Yorkshire", "AI companies Leeds".</p></div>
+          <div class="ref-card"><h4><i class="fa-solid fa-bullseye"></i> How We Position</h4><p>"We build AI systems that save your team hours every day." Not consultants, not a SaaS product. Custom systems the client owns outright.</p></div>
+          <div class="ref-card"><h4><i class="fa-solid fa-map-pin"></i> Where We Target</h4><p>Halifax, Leeds, Bradford, Huddersfield, West Yorkshire. Also UK-wide remote work for the right clients.</p></div>
         </div>
 
-        <div class="sh"><i class="fa-solid fa-trophy"></i> Proof Points</div>
+        <div class="sh"><i class="fa-solid fa-chart-column"></i> Industry Stats You Can Quote</div>
+        <p style="font-size:0.82rem;color:var(--muted);margin:-6px 0 16px;">Drop these into emails, calls, and proposals. Every number has a source you can link to.</p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-val">5 hrs</div>
+            <div class="stat-label">Per week saved per employee using AI tools</div>
+            <div class="stat-source">Source: <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">McKinsey, State of AI</a></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">$4.4T</div>
+            <div class="stat-label">Annual value generative AI could add to the global economy</div>
+            <div class="stat-source">Source: <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener">McKinsey, Economic potential of AI</a></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">40%</div>
+            <div class="stat-label">Productivity increase reported by companies using AI</div>
+            <div class="stat-source">Source: <a href="https://www.ibm.com/thought-leadership/institute-business-value/report/ceo-generative-ai" target="_blank" rel="noopener">IBM Institute for Business Value</a></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">320%</div>
+            <div class="stat-label">More revenue from automated email nurture vs broadcast emails</div>
+            <div class="stat-source">Source: <a href="https://blog.hubspot.com/marketing/email-marketing-stats" target="_blank" rel="noopener">HubSpot Email Marketing Report</a></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">3×</div>
+            <div class="stat-label">Sales teams using automation are 3× more likely to hit quota</div>
+            <div class="stat-source">Source: <a href="https://www.salesforce.com/resources/research-reports/state-of-sales/" target="_blank" rel="noopener">Salesforce, State of Sales</a></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">77%</div>
+            <div class="stat-label">Of customers expect businesses to respond within an hour</div>
+            <div class="stat-source">Source: <a href="https://www.hubspot.com/state-of-service" target="_blank" rel="noopener">HubSpot State of Service</a></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">70%</div>
+            <div class="stat-label">Of SMBs say their tech stack has too many disconnected tools</div>
+            <div class="stat-source">Source: <a href="https://www.gartner.com/en/newsroom" target="_blank" rel="noopener">Gartner SMB Research</a></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">6 weeks</div>
+            <div class="stat-label">Typical payback period on a well-scoped automation project</div>
+            <div class="stat-source">Source: Autoeight internal (Matrix TSL, Dice Tavern, TM Joinery)</div>
+          </div>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-building"></i> Famous Companies to Name-Drop</div>
+        <p style="font-size:0.82rem;color:var(--muted);margin:-6px 0 16px;">If a prospect thinks AI and automation are "just hype" — these are the comparisons that anchor the conversation.</p>
+        <div class="stat-grid">
+          <div class="stat-card" style="border-top-color:var(--purple-l);">
+            <div class="stat-val" style="color:var(--purple-l);">$40M</div>
+            <div class="stat-label"><strong>Klarna</strong> — AI chatbot does the work of 700 full-time agents, saving $40M/year.</div>
+            <div class="stat-source">"If the world's biggest Buy-Now-Pay-Later firm can automate customer service at that scale, so can we."</div>
+          </div>
+          <div class="stat-card" style="border-top-color:var(--purple-l);">
+            <div class="stat-val" style="color:var(--purple-l);">360k hrs</div>
+            <div class="stat-label"><strong>JPMorgan</strong> — COIN AI reviews legal contracts in seconds, saving 360,000 hours of lawyer time annually.</div>
+            <div class="stat-source">"Banks spend more on tech than anyone — this is where they're spending it."</div>
+          </div>
+          <div class="stat-card" style="border-top-color:var(--purple-l);">
+            <div class="stat-val" style="color:var(--purple-l);">100k hrs</div>
+            <div class="stat-label"><strong>Unilever</strong> — AI screens 500k+ job applicants a year, saving 100,000 interview hours.</div>
+            <div class="stat-source">"Imagine what the hours saved in your own recruitment would free up."</div>
+          </div>
+          <div class="stat-card" style="border-top-color:var(--purple-l);">
+            <div class="stat-val" style="color:var(--purple-l);">$8B+</div>
+            <div class="stat-label"><strong>Starbucks</strong> — Deep Brew AI personalises app offers, drove $8B+ in incremental revenue.</div>
+            <div class="stat-source">"Same principle applies to your quote/nurture emails, just at your scale."</div>
+          </div>
+          <div class="stat-card" style="border-top-color:var(--purple-l);">
+            <div class="stat-val" style="color:var(--purple-l);">$1B</div>
+            <div class="stat-label"><strong>Netflix</strong> — recommendation ML saves an estimated $1B/year in customer retention.</div>
+            <div class="stat-source">"Recommendations aren't a streaming thing — they're a 'make buyers buy more' thing."</div>
+          </div>
+          <div class="stat-card" style="border-top-color:var(--purple-l);">
+            <div class="stat-val" style="color:var(--purple-l);">30%</div>
+            <div class="stat-label"><strong>Coca-Cola</strong> — AI inventory management cut warehousing costs by 30%.</div>
+            <div class="stat-source">"If you hold stock, there's money trapped in your supply chain right now."</div>
+          </div>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-handshake"></i> Our Own Proof Points</div>
         <div class="proof-grid">
-          <div class="proof-card"><div class="proof-name">Matrix TSL</div><div class="proof-service">Sales Automation + System Integration</div><div class="proof-metric"><span class="proof-val">3hrs</span><span class="proof-label">saved per person per day</span></div><div class="proof-metric"><span class="proof-val">29 &rarr; 1</span><span class="proof-label">tools consolidated</span></div><div class="proof-metric"><span class="proof-val">10x</span><span class="proof-label">outreach volume increase</span></div></div>
-          <div class="proof-card"><div class="proof-name">TM Joinery</div><div class="proof-service">Web Design + SEO</div><div class="proof-metric"><span class="proof-val">Page 1</span><span class="proof-label">in 6 regions from zero</span></div><div class="proof-metric"><span class="proof-val">Full</span><span class="proof-label">SEO website build</span></div><div class="proof-metric"><span class="proof-val">Google</span><span class="proof-label">Business optimised</span></div></div>
-          <div class="proof-card"><div class="proof-name">The Dice Tavern</div><div class="proof-service">Web Design + E-commerce</div><div class="proof-metric"><span class="proof-val">0%</span><span class="proof-label">marketplace fees (was 15%)</span></div><div class="proof-metric"><span class="proof-val">4.9</span><span class="proof-label">star rating</span></div><div class="proof-metric"><span class="proof-val">Custom</span><span class="proof-label">e-commerce platform</span></div></div>
+          <div class="proof-card"><div class="proof-name">Matrix TSL</div><div class="proof-service">Sales Automation + System Integration</div><div class="proof-metric"><span class="proof-val">3 hrs</span><span class="proof-label">saved per person per day</span></div><div class="proof-metric"><span class="proof-val">29 → 1</span><span class="proof-label">tools consolidated</span></div><div class="proof-metric"><span class="proof-val">10×</span><span class="proof-label">outreach volume increase</span></div></div>
+          <div class="proof-card"><div class="proof-name">TM Joinery</div><div class="proof-service">Web Design + Local SEO</div><div class="proof-metric"><span class="proof-val">Page 1</span><span class="proof-label">in 6 regions from zero</span></div><div class="proof-metric"><span class="proof-val">Custom</span><span class="proof-label">SEO-first website</span></div><div class="proof-metric"><span class="proof-val">Google</span><span class="proof-label">Business optimised</span></div></div>
+          <div class="proof-card"><div class="proof-name">The Dice Tavern</div><div class="proof-service">E-commerce + Own Platform</div><div class="proof-metric"><span class="proof-val">0%</span><span class="proof-label">marketplace fees (was 15%)</span></div><div class="proof-metric"><span class="proof-val">4.9★</span><span class="proof-label">review rating</span></div><div class="proof-metric"><span class="proof-val">Custom</span><span class="proof-label">e-commerce platform</span></div></div>
+          <div class="proof-card"><div class="proof-name">Learn With Lorna</div><div class="proof-service">Learning Management System</div><div class="proof-metric"><span class="proof-val">Custom</span><span class="proof-label">LMS platform built</span></div><div class="proof-metric"><span class="proof-val">No</span><span class="proof-label">per-seat licences</span></div><div class="proof-metric"><span class="proof-val">Own</span><span class="proof-label">student community</span></div></div>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-comments"></i> How to Pitch Each Service</div>
+
+        <div class="pitch-card">
+          <h3><i class="fa-solid fa-robot"></i> AI &amp; Automation</h3>
+          <div class="pitch-sub">Pitch framework + script</div>
+
+          <h5>Lead with the time saved</h5>
+          <p>Studies show AI tools save the average knowledge worker <strong>5 hours a week</strong> (McKinsey). For a team of 10 that's <strong>2,600 hours a year</strong>. At UK average salary that's over <strong>£60k in recoverable time</strong> — annually, compounding.</p>
+
+          <h5>Name a company they know</h5>
+          <p>Klarna runs customer service with a chatbot that does the work of 700 people. JPMorgan's COIN AI reviews contracts in seconds. The technology is real and deployed — the only question is whether it's built <em>for you</em> or whether you're using someone else's.</p>
+
+          <h5>Tie it to their pain</h5>
+          <p>Ask: "What's the most repetitive thing your team does every day?" Then pitch automating that specific task. Avoid selling "AI" — sell "four hours of your receptionist's Tuesday back."</p>
+
+          <div class="pitch-script">
+            "You said your team spends about 10 hours a week on quote follow-ups. That's half a full-time person, doing admin. We'd build you a system that drafts and schedules those follow-ups automatically — you'd just approve or edit. Matrix TSL went from 29 tools to 1 with something similar and got 3 hours a day back per person."
+          </div>
+        </div>
+
+        <div class="pitch-card">
+          <h3><i class="fa-solid fa-plug"></i> CRM &amp; Integration</h3>
+          <div class="pitch-sub">Pitch framework + script</div>
+
+          <h5>Lead with tool sprawl</h5>
+          <p>Gartner research shows <strong>70% of SMBs have too many disconnected tools</strong>. Every one is a login, a data silo, and a monthly bill. The cost isn't just the subscription — it's the hours lost copy-pasting between them.</p>
+
+          <h5>Anchor the cost</h5>
+          <p>"You're already paying for the tools. You're just not making them talk to each other." Frame integration as <em>unlocking</em> the value they already own, not adding another line item.</p>
+
+          <h5>Use the Matrix TSL proof</h5>
+          <p>"Matrix went from 29 separate platforms to 1 connected system. Their sales team got three hours a day back. Now tell me — how many logins does your team have to juggle?"</p>
+
+          <div class="pitch-script">
+            "Your CRM, email platform, accounts, and calendar — right now they probably don't share data. Quote goes to the CRM, invoice gets raised by hand, accountant re-keys it into Xero. We connect them so it flows end-to-end. Typical ROI is 6 weeks."
+          </div>
+        </div>
+
+        <div class="pitch-card">
+          <h3><i class="fa-solid fa-chart-line"></i> Sales Automation</h3>
+          <div class="pitch-sub">Pitch framework + script</div>
+
+          <h5>Lead with the 3× stat</h5>
+          <p>Salesforce's State of Sales: <strong>reps using automation are 3× more likely to hit quota</strong>. HubSpot found automated nurture sequences generate <strong>320% more revenue</strong> than broadcast email.</p>
+
+          <h5>Focus on pipeline hygiene</h5>
+          <p>Most SMBs don't lose deals because their product is wrong — they lose them because follow-up falls through the cracks. Automate the follow-up and you win deals the competition let slip.</p>
+
+          <h5>Proof: Matrix TSL 10× outreach</h5>
+          <p>"Same team, same hours, 10× the outreach volume. Not because they worked harder — because the system picked up the repetitive bits."</p>
+
+          <div class="pitch-script">
+            "Let's say you get 50 leads a month and follow up with maybe 30 properly. That's 20 deals walking out the door because nobody had time. We'd build a sequence that chases every single one — personalised, from your address, with your voice. You just take calls from the ones who reply."
+          </div>
+        </div>
+
+        <div class="pitch-card">
+          <h3><i class="fa-solid fa-globe"></i> Web Design</h3>
+          <div class="pitch-sub">Pitch framework + script</div>
+
+          <h5>Lead with ownership</h5>
+          <p>"No templates, no per-seat licences, you own the code." Most SMB sites are on Wix or Squarespace, paying £20–50/month forever, locked into their platform. Our builds are yours permanently.</p>
+
+          <h5>Tie to local SEO</h5>
+          <p>TM Joinery went from invisible to <strong>Page 1 in six local regions</strong>. Their website IS their marketing — built right, it earns leads for years with no ad spend.</p>
+
+          <h5>Differentiate from templates</h5>
+          <p>"A £200 template will get you online. A custom build will get you ranking, converting, and integrated with the rest of your business. Different league, different outcome."</p>
+
+          <div class="pitch-script">
+            "You've got a Wix site that looks OK, but the phone isn't ringing from Google. That's because Wix sites don't rank — they're templates, and Google treats them like wallpaper. TM Joinery had the same problem. Six weeks after we launched theirs, they were Page 1 for joiner Halifax, joiner Bradford, joiner Huddersfield. All free traffic, forever."
+          </div>
+        </div>
+
+        <div class="pitch-card">
+          <h3><i class="fa-solid fa-graduation-cap"></i> Learning Management Systems (LMS)</h3>
+          <div class="pitch-sub">Pitch framework + script</div>
+
+          <h5>Lead with control</h5>
+          <p>Off-the-shelf LMS platforms (Teachable, Thinkific, Kajabi) charge <strong>£30–£300/month forever</strong> and take a cut of every sale. A custom LMS is a one-time build that you own outright.</p>
+
+          <h5>Focus on the community angle</h5>
+          <p>Learn With Lorna didn't just need course delivery — they needed a student community, progress tracking, and branded experience. Third-party platforms don't do that without looking like a rental.</p>
+
+          <div class="pitch-script">
+            "If you're selling courses, you're paying a platform a slice every month and every sale. That's fine when you're small — but once you scale, you're handing over real money to use someone else's UI. We build you your own. You keep the revenue, you keep the brand, you keep the student data."
+          </div>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-shield-halved"></i> Objection Handling</div>
+        <div class="obj-grid">
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "It's too expensive"</div><div class="obj-a">"What's the cost of NOT doing it? Matrix TSL was spending thousands in manual hours every month. Our system paid for itself in 6 weeks. The question isn't whether you can afford automation — it's whether you can afford not to."</div></div>
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "We can do it in-house"</div><div class="obj-a">"You could. The question is whether your team's time is better spent building automation or doing the work they were hired for. We've seen companies spend 6 months trying to build what we deliver in 6 weeks."</div></div>
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "We tried automation before"</div><div class="obj-a">"Most automation fails because it's off-the-shelf and nobody customises it to how your team actually works. We study your process first, then build around it. That's why our stuff sticks."</div></div>
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "We're too small for this"</div><div class="obj-a">"Our best results come from teams of 5-15. Smaller teams feel the impact faster because every hour saved is a bigger percentage of your capacity. The Dice Tavern went from paying 15% marketplace fees to zero overnight with their own platform."</div></div>
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "AI will replace my people"</div><div class="obj-a">"We're not replacing anyone — we're removing the admin so your people can do the work they're actually good at. Klarna's bot took the repetitive tickets. Their humans still handle anything complex. Same idea for your team."</div></div>
+          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "Our industry is too specific"</div><div class="obj-a">"Every industry says that. Joiners, bars, teachers, manufacturers — we've built for all of them. Because we study your process first, the industry details end up baked into the system, not fighting against it."</div></div>
+        </div>
+
+        <div class="sh"><i class="fa-solid fa-paper-plane"></i> Cold Email Playbook</div>
+        <div class="email-seq">
+          <div class="email-step"><div class="email-day">Day 0 – Intro</div><div class="email-title">Open with something specific</div><div class="email-desc">Reference something real about them. One pain point. One proof point. Ask one question. Under 100 words.</div></div>
+          <div class="email-step"><div class="email-day">Day 3 – Proof</div><div class="email-title">Share a relevant result</div><div class="email-desc">"We did this for [similar company], here's what happened." Pick the closest case study. Link metric to their pain.</div></div>
+          <div class="email-step"><div class="email-day">Day 7 – Angle</div><div class="email-title">Try a different pain point</div><div class="email-desc">First email led with time? This one leads with cost. Or vice versa. Shorter. 2–3 sentences max.</div></div>
+          <div class="email-step"><div class="email-day">Day 14 – Break-up</div><div class="email-title">Low-pressure close</div><div class="email-desc">"Looks like timing isn't right. If things change, here's where to find us." No guilt. No pressure. Leave the door open.</div></div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;margin-bottom:32px;">
+          <p style="font-size:0.78rem;color:var(--off-white);line-height:1.6;"><strong style="color:var(--amber);">Rules:</strong> Under 100 words. No attachments. Sound like a person. Never "I hope this finds you well." Subject under 50 chars, lowercase. One CTA per email — always a question.</p>
         </div>
 
         <div class="sh"><i class="fa-solid fa-volume-high"></i> Brand Voice</div>
         <div class="voice-box">
           <h3>How Autoeight sounds</h3>
-          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:12px;">Like explaining to a business owner at a pub. Direct. Conversational. Confident but not arrogant. We use contractions, mix short and long sentences, and lead with outcomes not features.</p>
+          <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:12px;">Like explaining to a business owner at a pub. Direct. Conversational. Confident but not arrogant. Contractions, mix short and long sentences, lead with outcomes not features.</p>
           <p style="font-size:0.78rem;color:var(--off-white);margin-bottom:4px;"><strong>Rules:</strong> Use contractions. Mix sentence lengths. Lead with outcomes. No em dashes everywhere. No perfect parallel structures. No exclamation marks.</p>
           <p style="font-size:0.78rem;color:var(--off-white);margin-bottom:8px;"><strong>Banned words:</strong></p>
           <div class="banned-words"><span class="bw">comprehensive</span><span class="bw">streamlined</span><span class="bw">robust</span><span class="bw">holistic</span><span class="bw">empower</span><span class="bw">bespoke</span><span class="bw">cutting-edge</span><span class="bw">seamlessly</span><span class="bw">leverage</span><span class="bw">utilize</span><span class="bw">facilitate</span><span class="bw">innovative</span><span class="bw">synergy</span><span class="bw">paradigm</span></div>
@@ -134,52 +343,46 @@
           </div>
         </div>
 
-        <div class="sh"><i class="fa-solid fa-key"></i> SEO Targets</div>
-        <table class="kw-table"><thead><tr><th>Target Keyword</th><th>Location</th><th>Target Page</th><th>Priority</th></tr></thead><tbody>
-          <tr><td>AI automation Halifax</td><td>Halifax</td><td>/services/ai-automation</td><td><span class="priority-high">High</span></td></tr>
-          <tr><td>sales automation agency</td><td>West Yorkshire</td><td>/services/sales-automation</td><td><span class="priority-high">High</span></td></tr>
-          <tr><td>AI companies Halifax</td><td>Halifax</td><td>/services/ai-automation</td><td><span class="priority-high">High</span></td></tr>
-          <tr><td>AI companies Leeds</td><td>Leeds</td><td>/services/ai-automation</td><td><span class="priority-med">Medium</span></td></tr>
-          <tr><td>web design Halifax</td><td>Halifax</td><td>/services/web-design</td><td><span class="priority-med">Medium</span></td></tr>
-          <tr><td>automation agency West Yorkshire</td><td>West Yorkshire</td><td>/</td><td><span class="priority-high">High</span></td></tr>
-          <tr><td>business automation UK</td><td>UK</td><td>/</td><td><span class="priority-med">Medium</span></td></tr>
-          <tr><td>email automation for business</td><td>UK</td><td>/services/email-automation</td><td><span class="priority-med">Medium</span></td></tr>
-          <tr><td>CRM automation</td><td>UK</td><td>/services/sales-automation</td><td><span class="priority-med">Medium</span></td></tr>
-        </tbody></table>
-
-        <div class="sh"><i class="fa-solid fa-shield-halved"></i> Objection Handling</div>
-        <div class="obj-grid">
-          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "It's too expensive"</div><div class="obj-a">"What's the cost of NOT doing it? Matrix TSL was spending thousands in manual hours every month. Our system paid for itself in 6 weeks. The question isn't whether you can afford automation -- it's whether you can afford not to."</div></div>
-          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "We can do it in-house"</div><div class="obj-a">"You could. The question is whether your team's time is better spent building automation or doing the work they were hired for. We've seen companies spend 6 months trying to build what we deliver in 6 weeks."</div></div>
-          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "We tried automation before"</div><div class="obj-a">"Most automation fails because it's off-the-shelf and nobody customises it to how your team actually works. We study your process first, then build around it. That's why our stuff sticks."</div></div>
-          <div class="obj-card"><div class="obj-q"><i class="fa-solid fa-quote-left"></i> "We're too small for this"</div><div class="obj-a">"Our best results come from teams of 5-15. Smaller teams feel the impact faster because every hour saved is a bigger percentage of your capacity. The Dice Tavern went from paying 15% marketplace fees to zero overnight with their own platform."</div></div>
+        <div class="sh"><i class="fa-solid fa-newspaper"></i> News &amp; Research to Reference</div>
+        <p style="font-size:0.82rem;color:var(--muted);margin:-6px 0 16px;">Drop these into conversations when a prospect says "is AI really ready?" or "is this just hype?"</p>
+        <div class="news-list">
+          <div class="news-item">
+            <span class="news-source">McKinsey Global Institute</span>
+            <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener">The economic potential of generative AI</a>
+            <p>$2.6T–$4.4T/year in productivity gains across 63 use cases. The definitive report to cite for "AI is real money."</p>
+          </div>
+          <div class="news-item">
+            <span class="news-source">IBM Institute for Business Value</span>
+            <a href="https://www.ibm.com/thought-leadership/institute-business-value/report/ceo-generative-ai" target="_blank" rel="noopener">CEO Study on Generative AI</a>
+            <p>Documented productivity increases across thousands of enterprise deployments. Great for the "but does it actually work" objection.</p>
+          </div>
+          <div class="news-item">
+            <span class="news-source">Salesforce Research</span>
+            <a href="https://www.salesforce.com/resources/research-reports/state-of-sales/" target="_blank" rel="noopener">State of Sales Report</a>
+            <p>Sales automation and AI adoption among high performers. The source for the "3× more likely to hit quota" stat.</p>
+          </div>
+          <div class="news-item">
+            <span class="news-source">HubSpot</span>
+            <a href="https://www.hubspot.com/state-of-marketing" target="_blank" rel="noopener">State of Marketing Report</a>
+            <p>Email automation ROI, nurture sequence performance, and marketing AI adoption data for SMBs.</p>
+          </div>
+          <div class="news-item">
+            <span class="news-source">BBC News</span>
+            <a href="https://www.bbc.co.uk/news/technology" target="_blank" rel="noopener">Technology news — AI and business</a>
+            <p>Evergreen source for "company X just launched an AI-powered X" stories to warm up the conversation with something topical.</p>
+          </div>
+          <div class="news-item">
+            <span class="news-source">The Register</span>
+            <a href="https://www.theregister.com/business/ai/" target="_blank" rel="noopener">AI in enterprise coverage</a>
+            <p>Honest, skeptical tech journalism. Good for balanced takes when a prospect is AI-sceptical and hates marketing fluff.</p>
+          </div>
+          <div class="news-item">
+            <span class="news-source">Gartner</span>
+            <a href="https://www.gartner.com/en/newsroom/press-releases" target="_blank" rel="noopener">Gartner press releases</a>
+            <p>Analyst-grade research that decision-makers trust. Useful when pitching to someone in finance or ops who wants hard numbers.</p>
+          </div>
         </div>
 
-        <div class="sh"><i class="fa-solid fa-paper-plane"></i> Cold Email Playbook</div>
-        <div class="email-seq">
-          <div class="email-step"><div class="email-day">Day 0 - Intro</div><div class="email-title">Open with something specific</div><div class="email-desc">Reference something real about them. One pain point. One proof point. Ask one question. Under 100 words.</div></div>
-          <div class="email-step"><div class="email-day">Day 3 - Proof</div><div class="email-title">Share a relevant result</div><div class="email-desc">"We did this for [similar company], here's what happened." Pick the closest case study. Link metric to their pain.</div></div>
-          <div class="email-step"><div class="email-day">Day 7 - Angle</div><div class="email-title">Try a different pain point</div><div class="email-desc">First email led with time? This one leads with cost. Or vice versa. Shorter. 2-3 sentences max.</div></div>
-          <div class="email-step"><div class="email-day">Day 14 - Break-up</div><div class="email-title">Low-pressure close</div><div class="email-desc">"Looks like timing isn't right. If things change, here's where to find us." No guilt. No pressure. Leave the door open.</div></div>
-        </div>
-        <div style="background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;margin-bottom:32px;">
-          <p style="font-size:0.78rem;color:var(--off-white);line-height:1.6;"><strong style="color:var(--amber);">Rules:</strong> Under 100 words. No attachments. Sound like a person. Never "I hope this finds you well." Subject under 50 chars, lowercase. One CTA per email -- always a question.</p>
-        </div>
-
-        <div class="sh"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Skills Reference</div>
-        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:16px;">Claude Code skills configured for this project. Click to expand.</p>
-        <div class="skill-grid">
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-pen-nib"></i></div><div><div class="skill-name">Copywriting</div><div class="skill-cat">Content</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Write or rewrite website copy. Headlines, CTAs, service pages.</div><div class="skill-detail"><h4>Key rules</h4><ul><li>Lead with benefit, not feature</li><li>One idea per paragraph, 2-3 sentences</li><li>Use specific numbers over vague claims</li><li>One CTA per section</li></ul></div></div>
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-envelope"></i></div><div><div class="skill-name">Cold Email</div><div class="skill-cat">Sales</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">B2B outreach emails that sound human and get replies.</div><div class="skill-detail"><h4>Key rules</h4><ul><li>Under 100 words per email</li><li>Reference something specific about the prospect</li><li>One question CTA, low commitment</li><li>4-email sequence: intro, proof, angle, break-up</li></ul></div></div>
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-envelope-open-text"></i></div><div><div class="skill-name">Email Sequences</div><div class="skill-cat">Automation</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Automated email flows. Welcome, post-purchase, nurture, re-engagement.</div><div class="skill-detail"><h4>Types</h4><ul><li><strong>Welcome:</strong> 4 emails over 8 days</li><li><strong>Post-purchase:</strong> Confirm, dispatch, check-in, review</li><li><strong>Cold:</strong> Intro, proof, angle, break-up</li><li><strong>Re-engage:</strong> Offer, social proof, deadline</li></ul></div></div>
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-newspaper"></i></div><div><div class="skill-name">Content Strategy</div><div class="skill-cat">Marketing</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Blog content, topic clusters, editorial calendars.</div><div class="skill-detail"><h4>Approach</h4><ul><li>5 pillars: AI, Sales, Email, Web Design, Integration</li><li>Types: How-to, comparisons, case studies, listicles</li><li>Each post: one keyword + service page link + CTA</li></ul></div></div>
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-trophy"></i></div><div><div class="skill-name">Case Study Writer</div><div class="skill-cat">Content</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Client case studies with the right structure and KPIs.</div><div class="skill-detail"><h4>Structure</h4><ul><li>Summary card with 3 metrics</li><li>Problem &rarr; What We Did &rarr; Result</li><li>No personal names, no tech stack sections</li></ul></div></div>
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon purple"><i class="fa-solid fa-handshake"></i></div><div><div class="skill-name">Sales Enablement</div><div class="skill-cat">Sales</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Pitch decks, one-pagers, proposals, objection handling.</div><div class="skill-detail"><h4>Rules</h4><ul><li>Lead with pain, not capabilities</li><li>Use case study numbers as proof</li><li>Write for the decision-maker</li><li>2 pages max for any document</li></ul></div></div>
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon green"><i class="fa-solid fa-stethoscope"></i></div><div><div class="skill-name">SEO Audit</div><div class="skill-cat">SEO</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Technical + on-page SEO audits with local SEO focus.</div><div class="skill-detail"><h4>Checks</h4><ul><li>Title, description, H1, canonical, viewport, schema</li><li>OG tags, Twitter Cards, alt text, internal links</li><li>Local: NAP, geo-coords, areaServed, location keywords</li></ul></div></div>
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon green"><i class="fa-solid fa-code"></i></div><div><div class="skill-name">Schema Markup</div><div class="skill-cat">SEO</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">JSON-LD structured data for Google rich results.</div><div class="skill-detail"><h4>By page</h4><ul><li><strong>Homepage:</strong> Organization + WebSite + LocalBusiness</li><li><strong>Services:</strong> Service + BreadcrumbList</li><li><strong>Blog/Cases:</strong> Article + BreadcrumbList</li></ul></div></div>
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon amber"><i class="fa-solid fa-bullseye"></i></div><div><div class="skill-name">Page CRO</div><div class="skill-cat">Conversion</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Conversion rate optimisation analysis for any page.</div><div class="skill-detail"><h4>Checks</h4><ul><li>Value prop clear in 5 seconds above fold</li><li>Trust + proof near CTAs</li><li>Flow: Problem &rarr; Solution &rarr; Proof &rarr; CTA</li><li>Friction: forms, load time, dead ends</li></ul></div></div>
-          <div class="skill-card" onclick="this.classList.toggle('open')"><div class="skill-head"><div class="skill-icon amber"><i class="fa-solid fa-volume-high"></i></div><div><div class="skill-name">Brand Voice</div><div class="skill-cat">Quality</div></div><i class="fa-solid fa-chevron-down toggle-arrow"></i></div><div class="skill-desc">Check content against Autoeight's voice. Flags AI-sounding copy.</div><div class="skill-detail"><h4>Rules</h4><ul><li>Contractions, mixed sentence lengths</li><li>Lead with outcomes not features</li><li>No em dashes, no parallel structures</li><li>No banned words</li></ul></div></div>
-        </div>
       </main>
     </div>
   </div>
