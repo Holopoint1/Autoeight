@@ -20,6 +20,8 @@
   --amber: #fbbf24;
   --red: #f87171;
 }
+/* Scale the root font-size so every rem unit downstream scales too */
+html { font-size: calc(16px * var(--font-scale)); }
 html[data-theme="dark"] {
   --bg: #0d0d14;
   --panel: #15151f;
@@ -205,66 +207,52 @@ body {
 
 .chat-body {
   flex: 1; overflow-y: auto;
-  padding: 24px 0 16px;
+  padding: 24px 0 24px;
   background: var(--bg);
 }
 .chat-scroll {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 0 24px;
-  display: flex; flex-direction: column; gap: 2px;
+  padding: 0 28px;
+  display: flex; flex-direction: column;
 }
-.msg {
-  padding: 10px 14px;
+
+/* ── Claude-style message row ── */
+.msg-row {
+  display: flex; gap: 14px;
+  padding: 14px 0;
+  align-items: flex-start;
+}
+.msg-row + .msg-row { border-top: 1px solid var(--border); }
+.msg-row.user + .msg-row.user,
+.msg-row.human + .msg-row.human,
+.msg-row.assistant + .msg-row.assistant { border-top: 0; padding-top: 4px; }
+.msg-row.user .avatar { background: rgba(124,92,252,0.15); color: var(--purple); }
+.msg-row.human .avatar { background: rgba(74,222,128,0.18); color: var(--green); }
+.msg-row.assistant .avatar { background: var(--panel-hover); color: var(--muted); }
+.avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 0.76rem; font-weight: 700;
+  flex-shrink: 0;
+}
+.msg-body { flex: 1; min-width: 0; }
+.msg-head {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-bottom: 4px;
+}
+.msg-name { font-size: 0.82rem; font-weight: 700; color: var(--text); }
+.msg-row.assistant .msg-name { color: var(--muted); }
+.msg-time { font-size: 0.66rem; color: var(--muted); opacity: 0.7; }
+.msg-text {
   font-size: 0.92rem;
-  line-height: 1.55;
+  line-height: 1.6;
+  color: var(--text-soft);
   word-wrap: break-word;
   white-space: pre-wrap;
-  border-radius: 12px;
-  max-width: 82%;
 }
-.msg.user {
-  align-self: flex-start;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-.msg.assistant {
-  align-self: flex-start;
-  background: transparent;
-  color: var(--muted);
-  padding-left: 0;
-  font-style: italic;
-  font-size: 0.85rem;
-}
-.msg.human {
-  align-self: flex-end;
-  background: var(--you-bg);
-  border: 1px solid var(--you-border);
-  color: var(--text);
-}
-.msg-meta {
-  font-size: 0.66rem; color: var(--muted);
-  margin-top: 2px; opacity: 0.6;
-  padding: 0 4px;
-}
-.msg.user .msg-meta, .msg.assistant .msg-meta { text-align: left; }
-.msg.human .msg-meta { text-align: right; }
-
-/* Role label above grouped messages */
-.role-label {
-  font-size: 0.68rem; font-weight: 600;
-  color: var(--muted); margin: 14px 0 4px;
-  padding: 0 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.role-label.user { align-self: flex-start; padding-left: 0; color: var(--purple); }
-.role-label.human { align-self: flex-end; padding-right: 4px; color: var(--green); }
-.role-label.assistant { align-self: flex-start; padding-left: 0; color: var(--muted); }
-
-/* Group consecutive messages */
-.msg + .msg { margin-top: 4px; }
+.msg-row.assistant .msg-text { color: var(--muted); font-style: italic; font-size: 0.88rem; }
+.msg-text:empty { display: none; }
 
 /* ── Right-click context menu ── */
 .ctx-menu {
@@ -397,25 +385,13 @@ body {
 <div class="app" id="app">
 
 <nav class="admin-nav" aria-label="Admin navigation">
-  <a href="/admin" title="Dashboard">📊 Dashboard</a>
-  <a href="/admin/chat" class="active" title="Live chat">💬 Live Chat</a>
-  <a href="/admin/visitors" title="Visitors">👁 Visitors</a>
-  <a href="/admin/seo" title="SEO">📈 SEO</a>
-  <a href="/admin/sales" title="Sales">💼 Sales</a>
-  <a href="/admin/marketing" title="Marketing">📣 Marketing</a>
-  <a href="/admin/data" title="Data">🗂 Data</a>
-  <a href="/admin/scheduling" title="Scheduling">📅 Scheduling</a>
-  <a href="/admin/skills" title="AI Skills">🎓 Skills</a>
-  <a href="/admin/projects" title="Projects">📋 Projects</a>
-  <a href="/admin/support" title="Support">🛎 Support</a>
-  <a href="/admin/impact" title="Impact">🌱 Impact</a>
+  <a href="/admin" title="Back to dashboard">← Dashboard</a>
   <div class="spacer"></div>
   <button id="font-smaller" class="nav-tool" title="Smaller text" aria-label="Smaller text">A-</button>
   <button id="font-reset" class="nav-tool" title="Default text size" aria-label="Reset text size">A</button>
   <button id="font-bigger" class="nav-tool" title="Bigger text" aria-label="Bigger text">A+</button>
   <button id="theme-toggle" class="nav-tool" title="Toggle theme" aria-label="Toggle theme">🌓</button>
-  <a href="/" title="Live site">🌐 Site</a>
-  <a href="#" onclick="sessionStorage.clear();location.reload();return false;" title="Sign out">🔓 Sign out</a>
+  <a href="#" onclick="sessionStorage.removeItem('ae_staff');sessionStorage.removeItem('ae_chat_admin_pw');location.href='/admin/login';return false;" title="Sign out">🔓 Sign out</a>
 </nav>
 
 <div class="app-body">
@@ -632,26 +608,41 @@ function renderMessages(messages) {
     body.innerHTML = '<div class="empty-state">No messages yet</div>';
     return;
   }
-  const labelFor = (r) => r === 'user' ? 'Visitor' : r === 'human' ? 'You' : 'System';
+  const conv = conversations.find((c) => c.id === currentConvId) || {};
+  const visitor = conv.visitor_name || 'Visitor';
+  const nameFor = (r) => r === 'human' ? 'You' : r === 'assistant' ? 'System' : visitor;
+  const initialFor = (r) => r === 'human' ? 'A' : r === 'assistant' ? 'S' : visitor.charAt(0).toUpperCase();
+
   let html = '<div class="chat-scroll">';
-  let lastRole = null;
   messages.forEach((m) => {
-    if (m.role !== lastRole) {
-      html += `<div class="role-label ${m.role}">${labelFor(m.role)}</div>`;
-      lastRole = m.role;
-    }
     const time = new Date(m.created_at).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-    const textPart = m.content ? `<div>${escapeHtml(m.content)}</div>` : '';
-    let attachPart = '';
+    // Avoid duplicating the filename — when an attachment is present, drop
+    // auto-text like "Sent a file: foo.pdf" so the link speaks for itself.
+    let text = m.content || '';
+    if (m.attachment_url && /^sent a file:/i.test(text)) text = '';
+
+    let attach = '';
     if (m.attachment_url) {
       const isImg = (m.attachment_type || '').startsWith('image/');
       if (isImg) {
-        attachPart = `<a href="${escapeHtml(m.attachment_url)}" target="_blank" rel="noopener"><img class="attach-img" src="${escapeHtml(m.attachment_url)}" alt="${escapeHtml(m.attachment_name || '')}" loading="lazy" /></a>`;
+        attach = `<a href="${escapeHtml(m.attachment_url)}" target="_blank" rel="noopener"><img class="attach-img" src="${escapeHtml(m.attachment_url)}" alt="${escapeHtml(m.attachment_name || '')}" loading="lazy" /></a>`;
       } else {
-        attachPart = `<a class="attach-link" href="${escapeHtml(m.attachment_url)}" target="_blank" rel="noopener">📎 ${escapeHtml(m.attachment_name || 'attachment')}</a>`;
+        attach = `<a class="attach-link" href="${escapeHtml(m.attachment_url)}" target="_blank" rel="noopener">📎 ${escapeHtml(m.attachment_name || 'attachment')}</a>`;
       }
     }
-    html += `<div class="msg ${m.role}">${textPart}${attachPart}<div class="msg-meta">${time}</div></div>`;
+
+    html += `
+      <div class="msg-row ${m.role}">
+        <div class="avatar">${escapeHtml(initialFor(m.role))}</div>
+        <div class="msg-body">
+          <div class="msg-head">
+            <span class="msg-name">${escapeHtml(nameFor(m.role))}</span>
+            <span class="msg-time">${time}</span>
+          </div>
+          <div class="msg-text">${escapeHtml(text)}</div>
+          ${attach}
+        </div>
+      </div>`;
   });
   html += '</div>';
   body.innerHTML = html;
