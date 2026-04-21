@@ -45,7 +45,8 @@ interface ChatRequest {
     | "admin_list"
     | "admin_messages"
     | "admin_reply"
-    | "admin_close";
+    | "admin_close"
+    | "admin_delete";
   conversation_id?: string;
   visitor_id?: string;
   name?: string;
@@ -373,6 +374,18 @@ serve(async (req: Request) => {
       await supabase
         .from("chat_conversations")
         .update({ status: "closed" })
+        .eq("id", body.conversation_id);
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_delete" && body.conversation_id) {
+      if (!checkAdmin(body)) return adminDenied();
+      // Messages are removed via ON DELETE CASCADE on the foreign key
+      await supabase
+        .from("chat_conversations")
+        .delete()
         .eq("id", body.conversation_id);
       return new Response(JSON.stringify({ ok: true }), {
         headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
