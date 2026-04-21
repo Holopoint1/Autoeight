@@ -1,6 +1,10 @@
 (function () {
+  // One password for everything. Checked by the Supabase edge function,
+  // which stores it as the ADMIN_PASSWORD secret. Browser never sees the
+  // password in source — it only knows whether the server accepted it.
   var K = 'ae_staff';
-  var P = 'AE-Staff-2025';
+  var PW_KEY = 'ae_chat_admin_pw'; // same key the chat admin uses, shared across panels
+  var CHAT_ENDPOINT = 'https://useohuvyxzshmskjngpo.supabase.co/functions/v1/chat';
 
   window.AEAuth = {
     check: function () {
@@ -8,12 +12,29 @@
         window.location.href = '/admin/login';
       }
     },
-    login: function (pass) {
-      if (pass === P) { sessionStorage.setItem(K, '1'); return true; }
-      return false;
+    // Async — returns a promise
+    login: async function (pass) {
+      try {
+        var res = await fetch(CHAT_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'admin_login', password: pass }),
+        });
+        if (!res.ok) return false;
+        sessionStorage.setItem(K, '1');
+        sessionStorage.setItem(PW_KEY, pass);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    },
+    // Read the stored password so other admin pages (chat) can reuse it
+    getPassword: function () {
+      return sessionStorage.getItem(PW_KEY) || '';
     },
     logout: function () {
       sessionStorage.removeItem(K);
+      sessionStorage.removeItem(PW_KEY);
       window.location.href = '/admin/login';
     }
   };

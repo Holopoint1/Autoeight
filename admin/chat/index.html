@@ -302,11 +302,19 @@ body {
 </head>
 <body>
 
-<!-- LOGIN -->
-<div class="login" id="login">
+<script src="/admin/auth.js"></script>
+<script>
+  // If the staff session isn't active, send to the unified login page.
+  if (sessionStorage.getItem('ae_staff') !== '1') {
+    window.location.href = '/admin/login';
+  }
+</script>
+
+<!-- LOGIN (unused now — kept hidden as a fallback) -->
+<div class="login" id="login" style="display:none;">
   <div class="login-card">
     <h1>Autoeight Chat Admin</h1>
-    <input type="password" id="admin-token" placeholder="Password" autofocus />
+    <input type="password" id="admin-token" />
     <button id="login-btn">Sign in</button>
     <p class="error" id="login-error" style="display:none;"></p>
   </div>
@@ -387,7 +395,8 @@ body {
 const CHAT_ENDPOINT = 'https://useohuvyxzshmskjngpo.supabase.co/functions/v1/chat';
 const TOKEN_KEY = 'ae_chat_admin_pw';
 
-let adminPassword = sessionStorage.getItem(TOKEN_KEY) || '';
+// Use the shared staff password from auth.js (stored by the unified login page)
+let adminPassword = (window.AEAuth && AEAuth.getPassword()) || sessionStorage.getItem(TOKEN_KEY) || '';
 let conversations = [];
 let currentConvId = null;
 let currentFilter = 'all';
@@ -436,8 +445,20 @@ $('login-btn').addEventListener('click', tryLogin);
 $('admin-token').addEventListener('keydown', (e) => { if (e.key === 'Enter') tryLogin(); });
 
 if (adminPassword) {
-  $('admin-token').value = adminPassword;
-  tryLogin();
+  // Silently validate the shared password; if it works, skip the login card entirely
+  (async () => {
+    try {
+      await rpc({ action: 'admin_login' });
+      sessionStorage.setItem(TOKEN_KEY, adminPassword);
+      $('login').style.display = 'none';
+      $('app').classList.add('active');
+      await loadConversations();
+      startPolling();
+    } catch (e) {
+      // Password was wrong or expired — fall back to login page
+      window.location.href = '/admin/login';
+    }
+  })();
 }
 
 // ── Load conversations ──
