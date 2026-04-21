@@ -217,36 +217,53 @@ body {
   display: flex; flex-direction: column;
 }
 
-/* ── Claude-style message row ── */
+/* ── Chat message bubbles ── */
 .msg-row {
-  display: flex; gap: 14px;
-  padding: 14px 0;
+  display: flex; gap: 12px;
+  margin-bottom: 10px;
   align-items: flex-start;
 }
-.msg-row + .msg-row { border-top: 1px solid var(--border); }
-.msg-row.user + .msg-row.user,
-.msg-row.human + .msg-row.human,
-.msg-row.assistant + .msg-row.assistant { border-top: 0; padding-top: 4px; }
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 0.78rem; font-weight: 700;
+  flex-shrink: 0;
+}
 .msg-row.user .avatar { background: rgba(124,92,252,0.15); color: var(--purple); }
 .msg-row.human .avatar { background: rgba(74,222,128,0.18); color: var(--green); }
 .msg-row.assistant .avatar { background: var(--panel-hover); color: var(--muted); }
-.avatar {
-  width: 30px; height: 30px; border-radius: 50%;
-  display: grid; place-items: center;
-  font-size: 0.76rem; font-weight: 700;
-  flex-shrink: 0;
+
+.msg-body {
+  flex: 1; min-width: 0; max-width: calc(100% - 44px);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
-.msg-body { flex: 1; min-width: 0; }
+.msg-row.user .msg-body {
+  background: var(--panel);
+  border-color: var(--border);
+}
+.msg-row.human .msg-body {
+  background: var(--you-bg);
+  border-color: var(--you-border);
+}
+.msg-row.assistant .msg-body {
+  background: transparent;
+  border: 1px dashed var(--border);
+  box-shadow: none;
+}
 .msg-head {
   display: flex; align-items: baseline; gap: 10px;
   margin-bottom: 4px;
 }
-.msg-name { font-size: 0.82rem; font-weight: 700; color: var(--text); }
+.msg-name { font-size: 0.8rem; font-weight: 700; color: var(--text); }
 .msg-row.assistant .msg-name { color: var(--muted); }
 .msg-time { font-size: 0.66rem; color: var(--muted); opacity: 0.7; }
 .msg-text {
   font-size: 0.92rem;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--text-soft);
   word-wrap: break-word;
   white-space: pre-wrap;
