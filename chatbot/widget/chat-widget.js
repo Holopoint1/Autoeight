@@ -210,22 +210,19 @@
     .ae-chat-messages::-webkit-scrollbar { width: 5px; }
     .ae-chat-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 3px; }
 
-    /* Small label above each message so it's obvious who sent it */
+    /* Label above each message so it's obvious who sent it */
     .ae-role {
-      font-size: 0.66rem; font-weight: 600;
-      color: #8b8b95;
-      margin: 10px 4px 2px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      display: flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; font-weight: 700;
+      margin: 12px 4px 4px;
+      display: flex; align-items: center; gap: 8px;
     }
     .ae-role.user { align-self: flex-end; color: #6d4de6; }
-    .ae-role.them { align-self: flex-start; color: #4ade80; }
+    .ae-role.them { align-self: flex-start; color: #2fa96a; }
     .ae-role .ae-dot {
-      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%;
     }
-    .ae-role.user .ae-dot { background: #6d4de6; }
-    .ae-role.them .ae-dot { background: #4ade80; }
+    .ae-role.user .ae-dot { background: #6d4de6; box-shadow: 0 0 0 2px rgba(109,77,230,0.18); }
+    .ae-role.them .ae-dot { background: #2fa96a; box-shadow: 0 0 0 2px rgba(47,169,106,0.18); }
 
     .ae-msg {
       max-width: 82%; padding: 10px 14px; border-radius: 14px;
