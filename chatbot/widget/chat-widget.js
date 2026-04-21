@@ -205,13 +205,30 @@
       flex: 1; overflow-y: auto;
       padding: 20px 16px;
       background: #f7f7fa;
-      display: flex; flex-direction: column; gap: 10px;
+      display: flex; flex-direction: column; gap: 2px;
     }
     .ae-chat-messages::-webkit-scrollbar { width: 5px; }
     .ae-chat-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 3px; }
 
+    /* Small label above each message so it's obvious who sent it */
+    .ae-role {
+      font-size: 0.66rem; font-weight: 600;
+      color: #8b8b95;
+      margin: 10px 4px 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .ae-role.user { align-self: flex-end; color: #6d4de6; }
+    .ae-role.them { align-self: flex-start; color: #4ade80; }
+    .ae-role .ae-dot {
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    }
+    .ae-role.user .ae-dot { background: #6d4de6; }
+    .ae-role.them .ae-dot { background: #4ade80; }
+
     .ae-msg {
-      max-width: 80%; padding: 10px 14px; border-radius: 14px;
+      max-width: 82%; padding: 10px 14px; border-radius: 14px;
       font-size: 0.88rem; line-height: 1.5;
       word-wrap: break-word;
       white-space: pre-wrap;
@@ -237,6 +254,7 @@
       font-size: 0.78rem;
       padding: 8px 14px;
       text-align: center;
+      margin-top: 6px;
     }
     .ae-msg a { color: inherit; text-decoration: underline; }
 
@@ -438,7 +456,32 @@
     try { localStorage.setItem(LEAD_KEY, JSON.stringify(lead)); } catch (e) { /* ignore */ }
   }
 
+  // Insert a role label above a new message unless the previous visible
+  // message was from the same speaker (keeps consecutive replies clean).
+  function maybeAddRoleLabel(role) {
+    if (role === 'system') return;
+    // 'human' (from Adam) and 'assistant' (bot) both appear as "Autoeight"
+    // from the visitor's perspective. 'user' is "You".
+    const group = (role === 'user') ? 'user' : 'them';
+    const lastRow = messagesEl.lastElementChild;
+    if (lastRow && lastRow.classList && lastRow.classList.contains('ae-role') && lastRow.classList.contains(group)) return;
+    // Find the previous ae-msg to see who sent it
+    let prev = lastRow;
+    while (prev && !(prev.classList && prev.classList.contains('ae-msg'))) {
+      prev = prev.previousElementSibling;
+    }
+    if (prev) {
+      const prevGroup = prev.classList.contains('user') ? 'user' : (prev.classList.contains('system') ? 'system' : 'them');
+      if (prevGroup === group) return; // same speaker, skip label
+    }
+    const label = document.createElement('div');
+    label.className = 'ae-role ' + group;
+    label.innerHTML = '<span class="ae-dot"></span>' + (group === 'user' ? 'You' : 'Autoeight');
+    messagesEl.appendChild(label);
+  }
+
   function addMessage(role, content, attachment) {
+    maybeAddRoleLabel(role);
     const el = document.createElement('div');
     el.className = 'ae-msg ' + role;
     if (content) {
