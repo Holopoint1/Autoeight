@@ -442,6 +442,43 @@ serve(async (req: Request) => {
         .delete()
         .lt("archived_at", cutoff);
 
+      // Purge attachments older than 30 days to keep the storage bucket small.
+      // Conversation text is preserved — only the physical files and their
+      // URLs are removed. Safe to run on every admin load because it only
+      // touches messages with a non-null attachment_url.
+      try {
+        const { data: oldAttachments } = await supabase
+          .from("chat_messages")
+          .select("id, attachment_url")
+          .not("attachment_url", "is", null)
+          .lt("created_at", cutoff)
+          .limit(100);
+
+        if (oldAttachments && oldAttachments.length) {
+          const paths = oldAttachments
+            .map((m: { attachment_url: string }) => {
+              // attachment_url looks like:
+              //   https://<ref>.supabase.co/storage/v1/object/public/chat-files/<uuid>.<ext>
+              const marker = "/" + STORAGE_BUCKET + "/";
+              const idx = m.attachment_url.indexOf(marker);
+              return idx >= 0 ? m.attachment_url.slice(idx + marker.length) : null;
+            })
+            .filter((p): p is string => !!p);
+
+          if (paths.length) {
+            await supabase.storage.from(STORAGE_BUCKET).remove(paths);
+          }
+          // Null out the message columns so the UI stops trying to show dead links
+          const ids = oldAttachments.map((m: { id: string }) => m.id);
+          await supabase
+            .from("chat_messages")
+            .update({ attachment_url: null, attachment_name: null, attachment_type: null })
+            .in("id", ids);
+        }
+      } catch (e) {
+        console.error("Attachment purge failed (non-fatal):", e);
+      }
+
       let q = supabase
         .from("chat_conversations")
         .select("*")
