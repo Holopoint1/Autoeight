@@ -43,10 +43,22 @@
 
   <script src="/admin/auth.js"></script>
   <script>
-    // Already logged in AND have the chat password stored? Skip to dashboard.
-    // Otherwise show the form so the user can re-enter and get both keys saved.
+    // Where should we go after signing in? The page that sent us here
+    // will have stashed its path. Default to the dashboard.
+    function nextUrl() {
+      var next = sessionStorage.getItem('ae_login_next');
+      if (next && next.indexOf('/admin') === 0) {
+        sessionStorage.removeItem('ae_login_next');
+        return next;
+      }
+      return '/admin';
+    }
+
+    // Already logged in AND have the chat password stored? Skip to the
+    // originally-requested page (or dashboard if none). Otherwise show
+    // the form so the user can re-enter and get both keys saved.
     if (sessionStorage.getItem('ae_staff') === '1' && sessionStorage.getItem('ae_chat_admin_pw')) {
-      window.location.href = '/admin';
+      window.location.href = nextUrl();
     }
 
     async function handleLogin(e) {
@@ -55,7 +67,7 @@
       var err = document.getElementById('login-err');
       var ok = await AEAuth.login(pw);
       if (ok) {
-        window.location.href = '/admin';
+        window.location.href = nextUrl();
       } else {
         err.classList.add('show');
         document.getElementById('pw').value = '';

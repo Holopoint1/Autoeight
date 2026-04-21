@@ -376,6 +376,8 @@ body {
     if (!signedIn || !storedPw) {
       sessionStorage.removeItem('ae_staff');
       sessionStorage.removeItem('ae_chat_admin_pw');
+      // Remember where we were going so login can send us back here
+      sessionStorage.setItem('ae_login_next', location.pathname + location.search);
       window.location.href = '/admin/login';
     }
   })();
