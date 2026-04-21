@@ -387,10 +387,11 @@ body {
 <nav class="admin-nav" aria-label="Admin navigation">
   <a href="/admin" title="Back to dashboard">← Dashboard</a>
   <div class="spacer"></div>
-  <button id="font-smaller" class="nav-tool" title="Smaller text" aria-label="Smaller text">A-</button>
-  <button id="font-reset" class="nav-tool" title="Default text size" aria-label="Reset text size">A</button>
-  <button id="font-bigger" class="nav-tool" title="Bigger text" aria-label="Bigger text">A+</button>
-  <button id="theme-toggle" class="nav-tool" title="Toggle theme" aria-label="Toggle theme">🌓</button>
+  <button type="button" id="font-smaller" class="nav-tool" title="Smaller text" aria-label="Smaller text">A-</button>
+  <button type="button" id="font-reset" class="nav-tool" title="Default text size" aria-label="Reset text size">A</button>
+  <button type="button" id="font-bigger" class="nav-tool" title="Bigger text" aria-label="Bigger text">A+</button>
+  <button type="button" id="theme-toggle" class="nav-tool" title="Toggle theme" aria-label="Toggle theme">🌓</button>
+  <div class="spacer"></div>
   <a href="#" onclick="sessionStorage.removeItem('ae_staff');sessionStorage.removeItem('ae_chat_admin_pw');location.href='/admin/login';return false;" title="Sign out">🔓 Sign out</a>
 </nav>
 
@@ -786,7 +787,25 @@ $('back-btn').addEventListener('click', () => {
 });
 
 // ── Refresh ──
-$('refresh-btn').addEventListener('click', () => loadConversations());
+$('refresh-btn').addEventListener('click', async function () {
+  var btn = this;
+  var original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Refreshing…';
+  try {
+    await loadConversations();
+    if (currentConvId) {
+      const data = await rpc({ action: 'admin_messages', conversation_id: currentConvId });
+      renderMessages(data.messages || []);
+    }
+  } catch (e) {
+    console.error('Refresh failed:', e);
+    alert('Refresh failed: ' + (e.message || 'unknown error'));
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+});
 
 // ── Filter tabs ──
 document.querySelectorAll('.filter-tabs button').forEach((btn) => {
@@ -881,28 +900,33 @@ ctxMenu.querySelectorAll('button').forEach((btn) => {
 });
 
 // ── Theme + text size controls ──
+let fontScale = parseFloat(localStorage.getItem('ae_admin_font_scale') || '1') || 1;
 function setTheme(t) {
   document.documentElement.setAttribute('data-theme', t);
   localStorage.setItem('ae_admin_theme', t);
 }
 function setFontScale(s) {
-  const clamped = Math.max(0.8, Math.min(1.4, s));
-  document.documentElement.style.setProperty('--font-scale', clamped);
-  localStorage.setItem('ae_admin_font_scale', clamped);
+  fontScale = Math.max(0.8, Math.min(1.4, s));
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+  localStorage.setItem('ae_admin_font_scale', fontScale);
 }
-$('theme-toggle').addEventListener('click', () => {
-  const curr = document.documentElement.getAttribute('data-theme') || 'dark';
-  setTheme(curr === 'dark' ? 'light' : 'dark');
-});
-$('font-bigger').addEventListener('click', () => {
-  const curr = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--font-scale')) || 1;
-  setFontScale(curr + 0.1);
-});
-$('font-smaller').addEventListener('click', () => {
-  const curr = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--font-scale')) || 1;
-  setFontScale(curr - 0.1);
-});
-$('font-reset').addEventListener('click', () => setFontScale(1));
+(function wireToolButtons() {
+  var bigger = $('font-bigger');
+  var smaller = $('font-smaller');
+  var reset = $('font-reset');
+  var theme = $('theme-toggle');
+  if (!bigger || !smaller || !reset || !theme) {
+    console.warn('Chat toolbar buttons missing from DOM');
+    return;
+  }
+  bigger.addEventListener('click', function () { setFontScale(fontScale + 0.1); });
+  smaller.addEventListener('click', function () { setFontScale(fontScale - 0.1); });
+  reset.addEventListener('click', function () { setFontScale(1); });
+  theme.addEventListener('click', function () {
+    var curr = document.documentElement.getAttribute('data-theme') || 'dark';
+    setTheme(curr === 'dark' ? 'light' : 'dark');
+  });
+})();
 
 // ── Deep link support ──
 const urlParams = new URLSearchParams(location.search);
