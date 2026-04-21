@@ -255,6 +255,59 @@
     }
     .ae-msg a { color: inherit; text-decoration: underline; }
 
+    /* Hours banner inside chat header */
+    .ae-hours {
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin-top: 4px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .ae-hours .dot { width: 7px; height: 7px; border-radius: 50%; }
+    .ae-hours.open .dot { background: #4ade80; box-shadow: 0 0 0 2px rgba(74,222,128,0.25); }
+    .ae-hours.closed .dot { background: #fbbf24; box-shadow: 0 0 0 2px rgba(251,191,36,0.25); }
+
+    /* Out-of-hours panel */
+    .ae-offhours {
+      flex: 1; overflow-y: auto;
+      padding: 28px 24px;
+      background: #f7f7fa;
+      display: flex; flex-direction: column; justify-content: center;
+      text-align: center;
+    }
+    .ae-offhours h3 {
+      font-size: 1rem; font-weight: 700; color: #1a1a2e;
+      margin: 0 0 8px;
+    }
+    .ae-offhours p {
+      font-size: 0.88rem; color: #52525b;
+      line-height: 1.55; margin: 0 0 14px;
+    }
+    .ae-offhours .hours-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 8px 0 18px;
+      text-align: left;
+    }
+    .ae-offhours .hours-card .hrow {
+      display: flex; justify-content: space-between;
+      font-size: 0.82rem; color: #1a1a2e;
+      padding: 3px 0;
+    }
+    .ae-offhours .hours-card .hrow.today { font-weight: 700; }
+    .ae-offhours .hours-card .hrow span + span { color: #6b6b7c; }
+    .ae-offhours .cta-book {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 12px 18px;
+      background: linear-gradient(135deg, #7c5cfc, #6d4de6);
+      color: #fff; font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(109,77,230,0.25);
+    }
+    .ae-offhours .cta-book:hover { transform: translateY(-1px); }
+    .ae-offhours .note { font-size: 0.72rem; color: #8b8b95; margin-top: 14px; }
+
     .ae-waiting {
       align-self: center;
       display: flex; align-items: center; gap: 10px;
@@ -367,8 +420,20 @@
       <div class="avatar"><i class="fa-solid fa-bolt"></i></div>
       <div>
         <div class="title">Connect with us</div>
-        <div class="subtitle">Usually replies within a working day</div>
+        <div class="subtitle" id="ae-chat-subtitle">Mon–Fri · 9am–5pm UK time</div>
+        <div class="ae-hours" id="ae-hours-status"><span class="dot"></span><span class="txt"></span></div>
       </div>
+    </div>
+
+    <div class="ae-offhours" id="ae-offhours" style="display:none;">
+      <h3>We're offline right now</h3>
+      <p>Our live chat is staffed <strong>Monday to Friday, 9am–5pm UK time</strong>. Leave your details on the contact form and we'll reply within one working day.</p>
+      <div class="hours-card" id="ae-hours-card"></div>
+      <a href="/book" class="cta-book">
+        <i class="fa-solid fa-envelope-open-text"></i>
+        Send us a message
+      </a>
+      <p class="note">Or email <a href="mailto:alfie@autoeight.ai" style="color:#6d4de6;">alfie@autoeight.ai</a> directly.</p>
     </div>
 
     <div class="ae-intro" id="ae-intro">
@@ -434,6 +499,9 @@
   const leadEmailEl = document.getElementById('ae-lead-email');
   const leadSubmitBtn = document.getElementById('ae-lead-submit');
 
+  const offhoursEl = document.getElementById('ae-offhours');
+  const hoursStatusEl = document.getElementById('ae-hours-status');
+  const hoursCardEl = document.getElementById('ae-hours-card');
   const chatBody = document.getElementById('ae-chat-body');
   const messagesEl = document.getElementById('ae-chat-messages');
   const inputEl = document.getElementById('ae-chat-input');
@@ -542,22 +610,72 @@
     return await res.json();
   }
 
+  // ── Working hours: Mon–Fri 09:00–17:00 UK time ──
+  const HOURS = {
+    tz: 'Europe/London',
+    days: [1, 2, 3, 4, 5], // 0=Sun ... 6=Sat → Mon-Fri
+    openHour: 9,
+    closeHour: 17, // exclusive: 17:00 means closes at 5pm sharp
+  };
+  function ukNow() {
+    const fmt = new Intl.DateTimeFormat('en-GB', {
+      timeZone: HOURS.tz, weekday: 'short', hour: '2-digit', hour12: false, minute: '2-digit',
+    });
+    const parts = fmt.formatToParts(new Date());
+    const map = {};
+    parts.forEach((p) => { map[p.type] = p.value; });
+    const dayIdx = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(map.weekday);
+    return { dayIdx, hour: parseInt(map.hour, 10), minute: parseInt(map.minute, 10) };
+  }
+  function isWorkingHours() {
+    const n = ukNow();
+    if (!HOURS.days.includes(n.dayIdx)) return false;
+    if (n.hour < HOURS.openHour) return false;
+    if (n.hour >= HOURS.closeHour) return false;
+    return true;
+  }
+  function renderHoursCard() {
+    const labels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const today = ukNow().dayIdx;
+    hoursCardEl.innerHTML = labels.map((d, i) => {
+      const isWeekday = HOURS.days.includes(i);
+      const text = isWeekday ? `${HOURS.openHour}:00 – ${HOURS.closeHour}:00` : 'Closed';
+      return `<div class="hrow ${i === today ? 'today' : ''}"><span>${d}</span><span>${text}</span></div>`;
+    }).join('');
+  }
+  function updateHoursStatus() {
+    const open = isWorkingHours();
+    hoursStatusEl.className = 'ae-hours ' + (open ? 'open' : 'closed');
+    hoursStatusEl.querySelector('.txt').textContent = open ? 'Online now' : 'Offline — leave a message';
+  }
+
   function showIntro() {
     intro.style.display = 'flex';
     leadForm.classList.remove('active');
     chatBody.classList.remove('active');
+    offhoursEl.style.display = 'none';
+  }
+
+  function showOffhours() {
+    intro.style.display = 'none';
+    leadForm.classList.remove('active');
+    chatBody.classList.remove('active');
+    offhoursEl.style.display = 'flex';
+    renderHoursCard();
   }
 
   function showChatBody() {
     intro.style.display = 'none';
     leadForm.classList.remove('active');
     chatBody.classList.add('active');
+    offhoursEl.style.display = 'none';
   }
 
   function showLeadForm() {
     intro.style.display = 'none';
     leadForm.classList.add('active');
     chatBody.classList.remove('active');
+    offhoursEl.style.display = 'none';
   }
 
   // ── Lead form gating ──
@@ -718,21 +836,33 @@
       ? '<i class="fa-solid fa-xmark"></i>'
       : '<i class="fa-solid fa-comment-dots"></i><span class="ae-chat-dot"></span>';
 
+    if (isOpen) updateHoursStatus();
     if (isOpen && !opened) {
       opened = true;
-      // If returning visitor with a live conversation, skip intro and resume
+      // Returning visitor with a live conversation always gets the chat
+      // (their messages are already in flight — we should show them).
       if (conversationId) {
         stage = 'live';
         showChatBody();
         loadHistory();
         startPolling();
-      } else {
-        // Show intro (yes/no) first
-        stage = 'intro';
-        showIntro();
+        return;
       }
+      // Outside UK working hours → direct to contact form instead of chat
+      if (!isWorkingHours()) {
+        showOffhours();
+        return;
+      }
+      // Online — show intro (yes/no) first
+      stage = 'intro';
+      showIntro();
     }
   });
+
+  // Keep the online/offline dot accurate if the widget stays open across
+  // the boundary (user parks it on screen at 4:58pm)
+  setInterval(updateHoursStatus, 60000);
+  updateHoursStatus();
 
   // Intro buttons
   introYesBtn.addEventListener('click', () => {

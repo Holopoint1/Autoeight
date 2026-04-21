@@ -1,7 +1,7 @@
 // Load chat widget (skip on backend pages)
 if (!location.pathname.includes('/backend/')) {
   var chatScript = document.createElement('script');
-  chatScript.src = '/chatbot/widget/chat-widget.js?v=2026-04-21-labels';
+  chatScript.src = '/chatbot/widget/chat-widget.js?v=2026-04-21-hours';
   chatScript.defer = true;
   document.head.appendChild(chatScript);
 }
