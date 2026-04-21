@@ -348,10 +348,17 @@ body {
 </script>
 <script src="/admin/auth.js"></script>
 <script>
-  // If the staff session isn't active, send to the unified login page.
-  if (sessionStorage.getItem('ae_staff') !== '1') {
-    window.location.href = '/admin/login';
-  }
+  // If not signed in, or the shared chat password wasn't stored (old session
+  // before unified auth), send to the unified login page so it gets stored.
+  (function () {
+    var signedIn = sessionStorage.getItem('ae_staff') === '1';
+    var storedPw = sessionStorage.getItem('ae_chat_admin_pw');
+    if (!signedIn || !storedPw) {
+      sessionStorage.removeItem('ae_staff');
+      sessionStorage.removeItem('ae_chat_admin_pw');
+      window.location.href = '/admin/login';
+    }
+  })();
 </script>
 
 <!-- LOGIN (unused now — kept hidden as a fallback) -->
