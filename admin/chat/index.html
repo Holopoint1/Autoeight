@@ -10,23 +10,47 @@
 <title>Chat Admin — Autoeight</title>
 <style>
 :root {
-  --bg: #0d0d14;
-  --panel: #15151f;
-  --border: rgba(255,255,255,0.08);
-  --text: #ffffff;
-  --muted: rgba(255,255,255,0.6);
+  --font-scale: 1;
   --purple: #7c5cfc;
   --purple-dark: #6d4de6;
   --green: #4ade80;
   --amber: #fbbf24;
   --red: #f87171;
 }
+html[data-theme="dark"] {
+  --bg: #0d0d14;
+  --panel: #15151f;
+  --panel-hover: #1c1c28;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.14);
+  --text: #ffffff;
+  --text-soft: rgba(255,255,255,0.88);
+  --muted: rgba(255,255,255,0.62);
+  --input-bg: rgba(255,255,255,0.06);
+  --you-bg: rgba(124,92,252,0.22);
+  --you-border: rgba(124,92,252,0.32);
+}
+html[data-theme="light"] {
+  --bg: #f6f6fa;
+  --panel: #ffffff;
+  --panel-hover: #f0f0f5;
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.14);
+  --text: #121221;
+  --text-soft: #2b2b3d;
+  --muted: #6b6b7c;
+  --input-bg: #ffffff;
+  --you-bg: rgba(124,92,252,0.12);
+  --you-border: rgba(124,92,252,0.28);
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg); color: var(--text);
   height: 100dvh; overflow: hidden;
+  font-size: calc(1rem * var(--font-scale));
   -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
 }
 .login {
   height: 100dvh;
@@ -43,7 +67,7 @@ body {
 .login-card h1 { font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
 .login-card input {
   width: 100%; padding: 11px 14px; margin-bottom: 10px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  background: var(--input-bg); border: 1px solid var(--border);
   border-radius: 10px; color: var(--text); font-family: inherit; font-size: 0.9rem;
   outline: none;
 }
@@ -79,10 +103,19 @@ body {
   white-space: nowrap;
   transition: background 0.15s, color 0.15s;
 }
-.admin-nav a:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+.admin-nav a:hover { background: var(--panel-hover); color: var(--text); }
 .admin-nav a.active { background: rgba(124,92,252,0.15); color: var(--purple); }
 .admin-nav .spacer { flex: 1; }
 .admin-nav .sep { width: 1px; height: 18px; background: var(--border); margin: 0 6px; }
+.admin-nav .nav-tool {
+  padding: 5px 9px;
+  background: transparent; border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted); cursor: pointer;
+  font-family: inherit; font-size: 0.72rem; font-weight: 600;
+  white-space: nowrap;
+}
+.admin-nav .nav-tool:hover { background: var(--panel-hover); color: var(--text); border-color: var(--border-strong); }
 
 .app-body { flex: 1; display: flex; min-height: 0; }
 
@@ -100,7 +133,7 @@ body {
 }
 .sidebar-header h1 { font-size: 1rem; font-weight: 700; }
 .sidebar-header .refresh {
-  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+  background: var(--panel-hover); border: 1px solid var(--border);
   color: var(--muted); padding: 6px 10px; border-radius: 8px;
   font-size: 0.72rem; cursor: pointer;
 }
@@ -119,12 +152,13 @@ body {
 .convo-list { flex: 1; overflow-y: auto; }
 .convo-item {
   padding: 10px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--border);
   cursor: pointer;
   display: flex; flex-direction: column; gap: 2px;
   position: relative;
 }
-.convo-item:hover, .convo-item.active { background: rgba(124,92,252,0.08); }
+.convo-item:hover { background: var(--panel-hover); }
+.convo-item.active { background: rgba(124,92,252,0.15); }
 .convo-item .top { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
 .convo-item .name { font-size: 0.82rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .convo-item .time { font-size: 0.66rem; color: var(--muted); flex-shrink: 0; }
@@ -141,7 +175,7 @@ body {
 .status.ai { background: rgba(124,92,252,0.15); color: var(--purple); }
 .status.waiting_human { background: rgba(251,191,36,0.18); color: var(--amber); }
 .status.human_active { background: rgba(74,222,128,0.15); color: var(--green); }
-.status.closed { background: rgba(255,255,255,0.08); color: var(--muted); }
+.status.closed { background: var(--panel-hover); color: var(--muted); }
 
 /* ── Main (conversation view) ── */
 .main {
@@ -159,7 +193,7 @@ body {
 .chat-header .info p { font-size: 0.72rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .chat-header .actions { display: flex; gap: 6px; }
 .chat-header .actions button {
-  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+  background: var(--panel-hover); border: 1px solid var(--border);
   color: var(--muted); padding: 7px 12px; border-radius: 8px;
   font-size: 0.72rem; cursor: pointer;
 }
@@ -186,22 +220,22 @@ body {
 }
 .msg.user {
   align-self: flex-start;
-  background: transparent;
+  background: var(--panel);
+  border: 1px solid var(--border);
   color: var(--text);
-  padding-left: 0; padding-right: 14px;
 }
 .msg.assistant {
   align-self: flex-start;
   background: transparent;
-  color: rgba(255,255,255,0.82);
+  color: var(--muted);
   padding-left: 0;
   font-style: italic;
   font-size: 0.85rem;
 }
 .msg.human {
   align-self: flex-end;
-  background: rgba(124,92,252,0.18);
-  border: 1px solid rgba(124,92,252,0.25);
+  background: var(--you-bg);
+  border: 1px solid var(--you-border);
   color: var(--text);
 }
 .msg-meta {
@@ -246,7 +280,7 @@ body {
   color: var(--text); cursor: pointer;
   font-family: inherit; font-size: 0.84rem;
 }
-.ctx-menu button:hover { background: rgba(255,255,255,0.06); }
+.ctx-menu button:hover { background: var(--panel-hover); }
 .ctx-menu button.danger { color: var(--red); }
 .ctx-menu button.danger:hover { background: rgba(248,113,113,0.1); }
 
@@ -259,7 +293,7 @@ body {
 }
 .reply-wrap textarea {
   flex: 1; padding: 10px 14px; min-height: 42px; max-height: 140px;
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  background: var(--input-bg); border: 1px solid var(--border);
   border-radius: 10px; color: var(--text);
   font-family: inherit; font-size: 0.88rem; line-height: 1.4;
   resize: none; outline: none;
@@ -272,19 +306,20 @@ body {
 }
 .reply-wrap button:disabled { opacity: 0.4; }
 .reply-wrap .attach-btn {
-  background: rgba(255,255,255,0.05); color: var(--muted);
+  background: var(--panel-hover); color: var(--muted);
 }
 .reply-wrap .attach-btn:hover { background: rgba(124,92,252,0.15); color: var(--purple); }
 
 .msg .attach-link {
   display: flex; align-items: center; gap: 8px;
   margin-top: 6px; padding: 8px 10px;
-  background: rgba(255,255,255,0.08);
+  background: var(--panel-hover);
+  border: 1px solid var(--border);
   border-radius: 8px;
   color: inherit; text-decoration: none;
   font-size: 0.78rem;
 }
-.msg.human .attach-link { background: rgba(255,255,255,0.18); }
+.msg.human .attach-link { background: var(--input-bg); }
 .msg .attach-img {
   display: block; max-width: 100%; max-height: 260px;
   border-radius: 8px; margin-top: 6px;
@@ -302,6 +337,15 @@ body {
 </head>
 <body>
 
+<script>
+  // Apply saved theme + text-size preferences before paint
+  (function () {
+    var theme = localStorage.getItem('ae_admin_theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    var scale = parseFloat(localStorage.getItem('ae_admin_font_scale') || '1') || 1;
+    document.documentElement.style.setProperty('--font-scale', scale);
+  })();
+</script>
 <script src="/admin/auth.js"></script>
 <script>
   // If the staff session isn't active, send to the unified login page.
@@ -337,6 +381,10 @@ body {
   <a href="/admin/support" title="Support">🛎 Support</a>
   <a href="/admin/impact" title="Impact">🌱 Impact</a>
   <div class="spacer"></div>
+  <button id="font-smaller" class="nav-tool" title="Smaller text" aria-label="Smaller text">A-</button>
+  <button id="font-reset" class="nav-tool" title="Default text size" aria-label="Reset text size">A</button>
+  <button id="font-bigger" class="nav-tool" title="Bigger text" aria-label="Bigger text">A+</button>
+  <button id="theme-toggle" class="nav-tool" title="Toggle theme" aria-label="Toggle theme">🌓</button>
   <a href="/" title="Live site">🌐 Site</a>
   <a href="#" onclick="sessionStorage.clear();location.reload();return false;" title="Sign out">🔓 Sign out</a>
 </nav>
@@ -757,6 +805,30 @@ ctxMenu.querySelectorAll('button').forEach((btn) => {
     }
   });
 });
+
+// ── Theme + text size controls ──
+function setTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('ae_admin_theme', t);
+}
+function setFontScale(s) {
+  const clamped = Math.max(0.8, Math.min(1.4, s));
+  document.documentElement.style.setProperty('--font-scale', clamped);
+  localStorage.setItem('ae_admin_font_scale', clamped);
+}
+$('theme-toggle').addEventListener('click', () => {
+  const curr = document.documentElement.getAttribute('data-theme') || 'dark';
+  setTheme(curr === 'dark' ? 'light' : 'dark');
+});
+$('font-bigger').addEventListener('click', () => {
+  const curr = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--font-scale')) || 1;
+  setFontScale(curr + 0.1);
+});
+$('font-smaller').addEventListener('click', () => {
+  const curr = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--font-scale')) || 1;
+  setFontScale(curr - 0.1);
+});
+$('font-reset').addEventListener('click', () => setFontScale(1));
 
 // ── Deep link support ──
 const urlParams = new URLSearchParams(location.search);
