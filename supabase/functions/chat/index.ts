@@ -47,7 +47,13 @@ interface ChatRequest {
     | "admin_messages"
     | "admin_reply"
     | "admin_close"
-    | "admin_delete";
+    | "admin_delete"
+    | "admin_archive"
+    | "admin_unarchive"
+    | "admin_bulk_archive"
+    | "admin_bulk_delete";
+  ids?: string[];
+  include_archived?: boolean;
   conversation_id?: string;
   visitor_id?: string;
   name?: string;
@@ -426,12 +432,70 @@ serve(async (req: Request) => {
 
     if (body.action === "admin_list") {
       if (!checkAdmin(body)) return adminDenied();
-      const { data } = await supabase
+
+      // Opportunistic cleanup: permanently delete anything archived > 30 days ago.
+      const cutoff = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+      await supabase
+        .from("chat_conversations")
+        .delete()
+        .lt("archived_at", cutoff);
+
+      let q = supabase
         .from("chat_conversations")
         .select("*")
         .order("last_message_at", { ascending: false })
-        .limit(100);
+        .limit(200);
+      if (body.include_archived) {
+        q = q.not("archived_at", "is", null);
+      } else {
+        q = q.is("archived_at", null);
+      }
+      const { data } = await q;
       return new Response(JSON.stringify({ conversations: data || [] }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_archive" && body.conversation_id) {
+      if (!checkAdmin(body)) return adminDenied();
+      await supabase
+        .from("chat_conversations")
+        .update({ archived_at: new Date().toISOString() })
+        .eq("id", body.conversation_id);
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_unarchive" && body.conversation_id) {
+      if (!checkAdmin(body)) return adminDenied();
+      await supabase
+        .from("chat_conversations")
+        .update({ archived_at: null })
+        .eq("id", body.conversation_id);
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_bulk_archive" && Array.isArray(body.ids) && body.ids.length) {
+      if (!checkAdmin(body)) return adminDenied();
+      await supabase
+        .from("chat_conversations")
+        .update({ archived_at: new Date().toISOString() })
+        .in("id", body.ids);
+      return new Response(JSON.stringify({ ok: true, count: body.ids.length }), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
+    }
+
+    if (body.action === "admin_bulk_delete" && Array.isArray(body.ids) && body.ids.length) {
+      if (!checkAdmin(body)) return adminDenied();
+      await supabase
+        .from("chat_conversations")
+        .delete()
+        .in("id", body.ids);
+      return new Response(JSON.stringify({ ok: true, count: body.ids.length }), {
         headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
       });
     }

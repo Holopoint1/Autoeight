@@ -156,6 +156,66 @@ body {
 }
 .filter-tabs button.active { background: var(--purple); color: #fff; border-color: var(--purple); }
 
+/* Bulk actions toolbar */
+.bulk-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--panel-hover);
+  border-bottom: 1px solid var(--border);
+  gap: 8px;
+}
+.bulk-bar .select-all {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.72rem; color: var(--muted);
+  cursor: pointer;
+}
+.bulk-bar .bulk-actions { display: flex; gap: 4px; }
+.bulk-btn {
+  padding: 4px 8px;
+  background: transparent; border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted); cursor: pointer;
+  font-family: inherit; font-size: 0.7rem; font-weight: 600;
+}
+.bulk-btn:hover:not(:disabled) { background: var(--panel); color: var(--text); }
+.bulk-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.bulk-btn.danger { color: var(--red); border-color: rgba(248,113,113,0.25); }
+.bulk-btn.danger:hover:not(:disabled) { background: rgba(248,113,113,0.1); }
+
+.convo-item .convo-check {
+  position: absolute; right: 10px; top: 10px;
+  width: 14px; height: 14px; cursor: pointer;
+  accent-color: var(--purple);
+}
+
+/* Confirm modal */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.55);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal-backdrop.active { display: flex; }
+.modal-card {
+  max-width: 400px; width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+.modal-card h2 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.modal-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 18px; }
+.modal-btns { display: flex; gap: 8px; justify-content: flex-end; }
+.modal-btns button {
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent; color: var(--text);
+  font-family: inherit; font-size: 0.84rem; cursor: pointer;
+}
+.modal-btns button.danger {
+  background: var(--red); border-color: var(--red); color: #fff;
+}
+
 .convo-list { flex: 1; overflow-y: auto; }
 .convo-item {
   padding: 10px 14px;
@@ -424,6 +484,17 @@ body {
       <button data-filter="waiting_human">Waiting</button>
       <button data-filter="human_active">Active</button>
       <button data-filter="closed">Closed</button>
+      <button data-filter="archived">Archive</button>
+    </div>
+    <div class="bulk-bar" id="bulk-bar">
+      <label class="select-all">
+        <input type="checkbox" id="select-all" /> Select all
+      </label>
+      <div class="bulk-actions">
+        <button type="button" id="bulk-read"   class="bulk-btn">Mark read</button>
+        <button type="button" id="bulk-archive" class="bulk-btn">Archive</button>
+        <button type="button" id="bulk-delete" class="bulk-btn danger">Delete all…</button>
+      </div>
     </div>
     <div class="convo-list" id="convo-list"></div>
   </aside>
@@ -459,8 +530,22 @@ body {
 <div id="ctx-menu" class="ctx-menu" role="menu">
   <button data-act="open">Open</button>
   <button data-act="read">Mark as read</button>
+  <button data-act="archive">Archive</button>
+  <button data-act="unarchive">Restore from archive</button>
   <button data-act="close">Mark as closed</button>
   <button data-act="delete" class="danger">Delete forever</button>
+</div>
+
+<!-- Confirm modal for bulk actions -->
+<div class="modal-backdrop" id="confirm-modal">
+  <div class="modal-card">
+    <h2 id="confirm-title">Are you sure?</h2>
+    <p id="confirm-body">This action cannot be undone.</p>
+    <div class="modal-btns">
+      <button type="button" id="confirm-cancel">Cancel</button>
+      <button type="button" id="confirm-ok" class="danger">Delete</button>
+    </div>
+  </div>
 </div>
 
 </div><!-- /.app -->
@@ -547,7 +632,7 @@ if (adminPassword) {
 // ── Load conversations ──
 async function loadConversations() {
   try {
-    const data = await rpc({ action: 'admin_list' });
+    const data = await rpc({ action: 'admin_list', include_archived: currentFilter === 'archived' });
     conversations = data.conversations || [];
     renderConvoList();
   } catch (e) {
@@ -555,9 +640,23 @@ async function loadConversations() {
   }
 }
 
+// Selection state for bulk actions
+const selected = new Set();
+function updateBulkButtons() {
+  const n = selected.size;
+  document.querySelectorAll('.bulk-btn').forEach(b => b.disabled = n === 0);
+  const readBtn = $('bulk-read'); if (readBtn) readBtn.textContent = n ? 'Mark read (' + n + ')' : 'Mark read';
+  const archBtn = $('bulk-archive'); if (archBtn) archBtn.textContent = n ? 'Archive (' + n + ')' : 'Archive';
+  const delBtn = $('bulk-delete'); if (delBtn) delBtn.textContent = n ? 'Delete (' + n + ')…' : 'Delete all…';
+}
+
 function renderConvoList() {
   const list = $('convo-list');
-  const filtered = currentFilter === 'all' ? conversations : conversations.filter((c) => c.status === currentFilter);
+  // 'archived' is fetched separately (include_archived=true), so no extra filter needed.
+  // 'all' shows everything the server returned.
+  let filtered;
+  if (currentFilter === 'all' || currentFilter === 'archived') filtered = conversations;
+  else filtered = conversations.filter((c) => c.status === currentFilter);
   if (filtered.length === 0) {
     list.innerHTML = '<div class="empty-state" style="padding:40px 20px;">No conversations yet</div>';
     return;
@@ -569,8 +668,10 @@ function renderConvoList() {
     const page = c.page_url ? new URL(c.page_url).pathname : '';
     const preview = c.visitor_company ? `${c.visitor_company} · ${page || 'chat'}` : (page || 'chat');
     const unread = !rs[c.id] || new Date(c.last_message_at) > new Date(rs[c.id]);
+    const isSelected = selected.has(c.id);
     return `
       <div class="convo-item ${c.id === currentConvId ? 'active' : ''}" data-id="${c.id}">
+        <input type="checkbox" class="convo-check" data-id="${c.id}" ${isSelected ? 'checked' : ''} />
         ${unread && c.id !== currentConvId ? '<span class="dot-unread" title="Unread"></span>' : ''}
         <div class="top">
           <span class="name">${escapeHtml(name)}</span>
@@ -582,12 +683,24 @@ function renderConvoList() {
     `;
   }).join('');
   list.querySelectorAll('.convo-item').forEach((el) => {
-    el.addEventListener('click', () => openConversation(el.dataset.id));
+    el.addEventListener('click', (e) => {
+      if (e.target.classList.contains('convo-check')) return;
+      openConversation(el.dataset.id);
+    });
     el.addEventListener('contextmenu', (e) => {
       e.preventDefault();
       openContextMenu(e.clientX, e.clientY, el.dataset.id);
     });
   });
+  list.querySelectorAll('.convo-check').forEach((cb) => {
+    cb.addEventListener('click', (e) => e.stopPropagation());
+    cb.addEventListener('change', () => {
+      if (cb.checked) selected.add(cb.dataset.id);
+      else selected.delete(cb.dataset.id);
+      updateBulkButtons();
+    });
+  });
+  updateBulkButtons();
 }
 
 function escapeHtml(str) {
@@ -826,13 +939,86 @@ $('refresh-btn').addEventListener('click', async function () {
 
 // ── Filter tabs ──
 document.querySelectorAll('.filter-tabs button').forEach((btn) => {
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', async () => {
     document.querySelectorAll('.filter-tabs button').forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
     currentFilter = btn.dataset.filter;
-    renderConvoList();
+    selected.clear();
+    // Archive filter needs a separate data fetch (include_archived=true)
+    await loadConversations();
   });
 });
+
+// ── Bulk actions ──
+$('select-all').addEventListener('change', (e) => {
+  const visible = document.querySelectorAll('.convo-item');
+  if (e.target.checked) visible.forEach((el) => selected.add(el.dataset.id));
+  else visible.forEach((el) => selected.delete(el.dataset.id));
+  renderConvoList();
+});
+
+$('bulk-read').addEventListener('click', () => {
+  if (selected.size === 0) return;
+  const now = new Date().toISOString();
+  selected.forEach((id) => {
+    const c = conversations.find((x) => x.id === id);
+    markRead(id, (c && c.last_message_at) || now);
+  });
+  selected.clear();
+  renderConvoList();
+});
+
+$('bulk-archive').addEventListener('click', async () => {
+  if (selected.size === 0) return;
+  const ids = Array.from(selected);
+  confirmAction({
+    title: 'Archive ' + ids.length + ' chat' + (ids.length === 1 ? '' : 's') + '?',
+    body: 'Archived chats are hidden from the main list and permanently deleted after 30 days. You can restore them any time before then from the Archive tab.',
+    okLabel: 'Archive',
+    danger: false,
+    onOk: async () => {
+      await rpc({ action: 'admin_bulk_archive', ids });
+      selected.clear();
+      await loadConversations();
+    },
+  });
+});
+
+$('bulk-delete').addEventListener('click', () => {
+  if (selected.size === 0) return;
+  const ids = Array.from(selected);
+  confirmAction({
+    title: 'Delete ' + ids.length + ' chat' + (ids.length === 1 ? '' : 's') + ' forever?',
+    body: 'This permanently removes the conversation and every message in it. It cannot be undone.',
+    okLabel: 'Delete forever',
+    danger: true,
+    onOk: async () => {
+      await rpc({ action: 'admin_bulk_delete', ids });
+      selected.clear();
+      await loadConversations();
+    },
+  });
+});
+
+// ── Confirm modal ──
+function confirmAction({ title, body, okLabel, danger, onOk }) {
+  $('confirm-title').textContent = title;
+  $('confirm-body').textContent = body;
+  const okBtn = $('confirm-ok');
+  okBtn.textContent = okLabel || 'Confirm';
+  okBtn.classList.toggle('danger', !!danger);
+  $('confirm-modal').classList.add('active');
+  const cleanup = () => {
+    $('confirm-modal').classList.remove('active');
+    okBtn.onclick = null;
+    $('confirm-cancel').onclick = null;
+  };
+  okBtn.onclick = async () => {
+    cleanup();
+    try { await onOk(); } catch (e) { alert('Failed: ' + e.message); }
+  };
+  $('confirm-cancel').onclick = cleanup;
+}
 
 // ── Auto-refresh every 8s for quicker visibility of new chats ──
 function startPolling() {
@@ -894,6 +1080,20 @@ ctxMenu.querySelectorAll('button').forEach((btn) => {
     if (act === 'close') {
       try {
         await rpc({ action: 'admin_close', conversation_id: id });
+        await loadConversations();
+      } catch (e) { alert('Failed: ' + e.message); }
+      return;
+    }
+    if (act === 'archive') {
+      try {
+        await rpc({ action: 'admin_archive', conversation_id: id });
+        await loadConversations();
+      } catch (e) { alert('Failed: ' + e.message); }
+      return;
+    }
+    if (act === 'unarchive') {
+      try {
+        await rpc({ action: 'admin_unarchive', conversation_id: id });
         await loadConversations();
       } catch (e) { alert('Failed: ' + e.message); }
       return;

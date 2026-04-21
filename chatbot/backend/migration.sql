@@ -36,9 +36,12 @@ CREATE TABLE IF NOT EXISTS chat_messages (
 );
 
 -- Additive for existing tables (safe to re-run)
-ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS attachment_url  TEXT;
-ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS attachment_name TEXT;
-ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS attachment_type TEXT;
+ALTER TABLE chat_messages      ADD COLUMN IF NOT EXISTS attachment_url  TEXT;
+ALTER TABLE chat_messages      ADD COLUMN IF NOT EXISTS attachment_name TEXT;
+ALTER TABLE chat_messages      ADD COLUMN IF NOT EXISTS attachment_type TEXT;
+ALTER TABLE chat_conversations ADD COLUMN IF NOT EXISTS archived_at    TIMESTAMPTZ;
+
+CREATE INDEX IF NOT EXISTS idx_chat_conversations_archived ON chat_conversations(archived_at);
 
 -- Storage bucket for chat attachments (public read, edge-function-only write)
 INSERT INTO storage.buckets (id, name, public)
