@@ -24,13 +24,15 @@
       { href: '/admin/seo',       label: 'SEO & Site Health',    icon: 'fa-chart-simple' },
       { href: '/admin/skills',    label: 'Sales Playbook',       icon: 'fa-book' },
     ],
-    // Pitch Views mirror actual frontend services (/services/*).
-    // Do not add items here unless the equivalent service page exists on the public site.
+    // Pitch Views mirror the 5 services in the public-site nav (/nav.html).
+    // Order matches nav dropdown. Do not add items here unless the service
+    // exists as a top-level nav entry on the public site.
     pitchViews: [
-      { href: '/admin/support',   label: 'AI & Automation',      icon: 'fa-robot' },       // ↔ /services/ai-automation
-      { href: '/admin/sales',     label: 'Sales Automation',     icon: 'fa-chart-line' },  // ↔ /services/sales-automation
-      { href: '/admin/data',      label: 'CRM & Integration',    icon: 'fa-plug' },        // ↔ /services/crm-integration
-      { href: '/admin/marketing', label: 'Sales & Marketing',    icon: 'fa-bullhorn' },    // ↔ /services/sales-marketing
+      { href: '/admin/web-design', label: 'Web Design',           icon: 'fa-globe' },          // ↔ /services/web-design
+      { href: '/admin/support',    label: 'AI & Automation',      icon: 'fa-robot' },          // ↔ /services/ai-automation
+      { href: '/admin/data',       label: 'CRM & Integration',    icon: 'fa-plug' },           // ↔ /services/crm-integration
+      { href: '/admin/sales',      label: 'Sales Automation',     icon: 'fa-chart-line' },     // ↔ /services/sales-automation
+      { href: '/admin/lms',        label: 'Learning Management',  icon: 'fa-graduation-cap' }, // ↔ /services/lms
     ],
     footer: [
       { href: '/',                label: 'Live Site',            icon: 'fa-globe' },
