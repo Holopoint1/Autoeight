@@ -245,6 +245,160 @@
     </div>
   </section>
 
+  <section class="page-section ba-section">
+    <style>
+      .ba-section .ba-wrap { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+      .ba-section .ba-section-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+      .ba-section .ba-section-head .section-label { justify-content: center; }
+      .ba-section .ba-section-head .section-label::before { display: none; }
+      .ba-section .ba-section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); letter-spacing: -0.02em; margin: 10px 0 12px; }
+      .ba-section .ba-section-head p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+      .ba-section .ba-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; transition: border-color 0.2s; }
+      .ba-section .ba-card:hover { border-color: rgba(124,92,252,0.5); }
+      .ba-section .ba-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+      .ba-section .ba-icon { width: 44px; height: 44px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; background: var(--purple-dim); border: 1px solid rgba(124,92,252,0.25); color: var(--purple-light); font-size: 1.05rem; }
+      .ba-section .ba-pill { display: inline-block; padding: 5px 12px; background: var(--purple-dim); border: 1px solid rgba(124,92,252,0.25); border-radius: 100px; font-size: 0.68rem; font-weight: 700; color: var(--purple-light); letter-spacing: 0.05em; text-transform: uppercase; }
+      .ba-section .ba-title { text-align: center; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 4px 0 28px; }
+      .ba-section .ba-auto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+      @media (max-width: 700px) {
+        .ba-section .ba-card { padding: 28px 22px; }
+        .ba-section .cs-ba { grid-template-columns: 1fr !important; gap: 12px; }
+        .ba-section .cs-ba-arrow { transform: rotate(90deg); }
+        .ba-section .ba-auto-grid { grid-template-columns: 1fr; gap: 0; }
+        .ba-section .ba-title { font-size: 1.3rem; }
+      }
+    </style>
+    <div class="page-section-inner">
+
+      <div class="ba-section-head reveal">
+        <span class="section-label">More client wins</span>
+        <h2>Recent builds</h2>
+        <p>Three more projects where we replaced off-the-shelf tools and manual admin with custom platforms the client actually owns.</p>
+      </div>
+
+      <div class="ba-wrap reveal">
+
+        <!-- Northfield Training -->
+        <article class="ba-card">
+          <div class="ba-top">
+            <span class="ba-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+            <span class="ba-pill">Workplace Training</span>
+          </div>
+          <h3 class="ba-title">Northfield Training</h3>
+          <div class="cs-ba">
+            <div class="cs-ba-col before">
+              <div class="cs-ba-label">Before</div>
+              <div class="cs-ba-item">6 hrs a week chasing completions on Google Forms</div>
+              <div class="cs-ba-item">3 platforms stitched together (Typeform, Sheets, Mailchimp)</div>
+              <div class="cs-ba-item">30% of trainees dropped off before finishing a course</div>
+            </div>
+            <div class="cs-ba-arrow"><i class="fa-solid fa-circle-arrow-right"></i></div>
+            <div class="cs-ba-col after">
+              <div class="cs-ba-label">After</div>
+              <div class="cs-ba-item">45 mins a week on admin</div>
+              <div class="cs-ba-item">1 platform the team and trainees both use</div>
+              <div class="cs-ba-item">82% course completion rate</div>
+            </div>
+          </div>
+          <div class="cs-full-story">
+            <h4>Success Story</h4>
+            <p>Northfield was a compliance training company juggling three off-the-shelf tools for enrolment, delivery and reminders. Learners fell through the cracks and the admin team lost hours every week chasing completions. We replaced the stack with a single custom LMS: learner login, progress tracking, auto-reminders, certificate generation on completion, and an admin dashboard for course managers. Completions went up, admin time went down.</p>
+          </div>
+          <div class="cs-auto-list">
+            <h4>What we built</h4>
+            <div class="ba-auto-grid">
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Custom learner portal</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Progress &amp; completion tracking</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Automated reminder emails</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Branded certificate generator</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Admin dashboard for course managers</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Single sign-on to client's existing systems</strong></div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- RoundTable -->
+        <article class="ba-card">
+          <div class="ba-top">
+            <span class="ba-icon"><i class="fa-solid fa-dice-d20"></i></span>
+            <span class="ba-pill">Community Platform</span>
+          </div>
+          <h3 class="ba-title">RoundTable</h3>
+          <div class="cs-ba">
+            <div class="cs-ba-col before">
+              <div class="cs-ba-label">Before</div>
+              <div class="cs-ba-item">0 tools purpose-built &mdash; Discord plus spreadsheets</div>
+              <div class="cs-ba-item">Hours spent manually matching players to games</div>
+              <div class="cs-ba-item">No way to track session history or player reviews</div>
+            </div>
+            <div class="cs-ba-arrow"><i class="fa-solid fa-circle-arrow-right"></i></div>
+            <div class="cs-ba-col after">
+              <div class="cs-ba-label">After</div>
+              <div class="cs-ba-item">Custom backend handles matching, sessions and reviews</div>
+              <div class="cs-ba-item">Under 2 mins from sign-up to booking a session</div>
+              <div class="cs-ba-item">Everything (players, DMs, games, payments) in one place</div>
+            </div>
+          </div>
+          <div class="cs-full-story">
+            <h4>Success Story</h4>
+            <p>A small tabletop RPG community needed to move off Discord-plus-spreadsheets and run like a proper platform. We built a custom backend: user accounts for players and Dungeon Masters, session scheduling, post-session reviews, payment handling, and an admin dashboard for the community owner. The community now runs itself. No more manual matchmaking, no more lost session notes, and new members go from sign-up to their first game in minutes.</p>
+          </div>
+          <div class="cs-auto-list">
+            <h4>What we built</h4>
+            <div class="ba-auto-grid">
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Player + DM accounts</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Session booking system</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Post-game reviews and ratings</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Payment handling</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Community admin dashboard</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Email notifications for sessions</strong></div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Independent Tutoring Business -->
+        <article class="ba-card">
+          <div class="ba-top">
+            <span class="ba-icon"><i class="fa-solid fa-chalkboard-user"></i></span>
+            <span class="ba-pill">Tutoring &amp; Education</span>
+          </div>
+          <h3 class="ba-title">Independent Tutoring Business</h3>
+          <div class="cs-ba">
+            <div class="cs-ba-col before">
+              <div class="cs-ba-label">Before</div>
+              <div class="cs-ba-item">&pound;30&ndash;&pound;300/mo to off-the-shelf platforms (Teachable, Thinkific, Kajabi)</div>
+              <div class="cs-ba-item">Platform cut taken from every course sale</div>
+              <div class="cs-ba-item">No ownership of student data or brand feel</div>
+            </div>
+            <div class="cs-ba-arrow"><i class="fa-solid fa-circle-arrow-right"></i></div>
+            <div class="cs-ba-col after">
+              <div class="cs-ba-label">After</div>
+              <div class="cs-ba-item">&pound;0 monthly platform fees (owns the code)</div>
+              <div class="cs-ba-item">100% of revenue kept from every sale</div>
+              <div class="cs-ba-item">Full control over student experience, branding, data</div>
+            </div>
+          </div>
+          <div class="cs-full-story">
+            <h4>Success Story</h4>
+            <p>An independent tutor was paying monthly rent to a course platform plus a cut of every sale. We replaced the rental with a custom LMS: student login, course player, progress tracking, community discussion board, and payment integration. Same courses, same students, but the tutor now owns the whole platform. No monthly fees, no revenue share, and full control over the brand and student data. The build pays for itself inside a year.</p>
+          </div>
+          <div class="cs-auto-list">
+            <h4>What we built</h4>
+            <div class="ba-auto-grid">
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Custom student portal</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Video course player</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Progress tracking</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Community discussion board</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Payments (keep 100%)</strong></div></div>
+              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Ownership of code + student data</strong></div></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <div class="page-cta">
     <div class="container">
       <div class="cta-box reveal">
