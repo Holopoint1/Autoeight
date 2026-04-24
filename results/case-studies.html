@@ -103,6 +103,27 @@
         <p style="font-size:0.95rem;line-height:1.75;color:var(--muted);">Every case study below is a real client, a real brief, and real numbers. We build custom software, automation, and websites for UK businesses that have outgrown off-the-shelf tools. What you'll see across these projects is a pattern: we replace patchwork processes with single platforms, cut recurring subscription costs, and hand over systems that clients run themselves without needing a developer on retainer.</p>
       </div>
 
+      <!-- Industry filter pills -->
+      <style>
+        .cs-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 920px; margin: 0 auto 40px; }
+        .cs-filter { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 100px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s; font-family: inherit; }
+        .cs-filter:hover { background: var(--purple-dim); border-color: rgba(124,92,252,0.35); color: var(--purple-light); }
+        .cs-filter.active { background: var(--purple); border-color: var(--purple); color: #fff; }
+        .cs-filter.active:hover { background: var(--purple-light); border-color: var(--purple-light); color: #fff; }
+        @media (max-width: 700px) {
+          .cs-filters { gap: 8px; margin-bottom: 28px; }
+          .cs-filter { padding: 8px 14px; font-size: 0.78rem; }
+        }
+      </style>
+      <div class="cs-filters reveal" role="tablist" aria-label="Filter case studies by industry">
+        <button type="button" class="cs-filter active" data-filter="all">All</button>
+        <button type="button" class="cs-filter" data-filter="training">Training &amp; Education</button>
+        <button type="button" class="cs-filter" data-filter="ecommerce">E-commerce</button>
+        <button type="button" class="cs-filter" data-filter="trades">Trades &amp; Construction</button>
+        <button type="button" class="cs-filter" data-filter="manufacturing">Manufacturing / B2B</button>
+        <button type="button" class="cs-filter" data-filter="community">Community</button>
+      </div>
+
       <!-- Highlight cards -->
       <div class="cs-highlights reveal">
         <a href="../results/matrix-tsl" class="cs-highlight">
@@ -137,7 +158,7 @@
       <div class="cs-full-grid reveal">
 
         <!-- Matrix TSL -->
-        <a href="../results/matrix-tsl" class="cs-full-card">
+        <a href="../results/matrix-tsl" class="cs-full-card" data-industry="manufacturing">
           <div class="cs-full-top">
             <span class="case-tag">AI Automation + Sales Enablement</span>
             <span class="case-tag">Education Equipment Manufacturer</span>
@@ -172,7 +193,7 @@
         </a>
 
         <!-- TM Joinery -->
-        <a href="../results/tm-joinery" class="cs-full-card">
+        <a href="../results/tm-joinery" class="cs-full-card" data-industry="trades">
           <div class="cs-full-top">
             <span class="case-tag">Web Design + Local SEO</span>
             <span class="case-tag">Construction &amp; Joinery</span>
@@ -207,7 +228,7 @@
         </a>
 
         <!-- The Dice Tavern -->
-        <a href="../results/dice-tavern" class="cs-full-card">
+        <a href="../results/dice-tavern" class="cs-full-card" data-industry="ecommerce">
           <div class="cs-full-top">
             <span class="case-tag">E-Commerce + Email Automation</span>
             <span class="case-tag">Specialist Retail</span>
@@ -279,7 +300,7 @@
       <div class="ba-wrap reveal">
 
         <!-- Northfield Training -->
-        <article class="ba-card">
+        <article class="ba-card" data-industry="training">
           <div class="ba-top">
             <span class="ba-icon"><i class="fa-solid fa-graduation-cap"></i></span>
             <span class="ba-pill">Workplace Training</span>
@@ -318,7 +339,7 @@
         </article>
 
         <!-- RoundTable -->
-        <article class="ba-card">
+        <article class="ba-card" data-industry="community">
           <div class="ba-top">
             <span class="ba-icon"><i class="fa-solid fa-dice-d20"></i></span>
             <span class="ba-pill">Community Platform</span>
@@ -357,7 +378,7 @@
         </article>
 
         <!-- Independent Tutoring Business -->
-        <article class="ba-card">
+        <article class="ba-card" data-industry="training">
           <div class="ba-top">
             <span class="ba-icon"><i class="fa-solid fa-chalkboard-user"></i></span>
             <span class="ba-pill">Tutoring &amp; Education</span>
@@ -398,6 +419,28 @@
       </div>
     </div>
   </section>
+
+  <script>
+    (function () {
+      var filters = document.querySelectorAll('.cs-filter');
+      var cards = document.querySelectorAll('[data-industry]');
+      if (!filters.length || !cards.length) return;
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+          filters.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          cards.forEach(function (card) {
+            if (filter === 'all' || card.getAttribute('data-industry') === filter) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    })();
+  </script>
 
   <div class="page-cta">
     <div class="container">
