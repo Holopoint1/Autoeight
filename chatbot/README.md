@@ -69,7 +69,7 @@ Follow these in order. Total time: about 20 minutes.
 
 ### 1. Resend for email notifications (free tier)
 1. Go to https://resend.com
-2. Sign up with alfie@autoeight.ai
+2. Sign up with contact@autoeight.ai
 3. Verify your domain `autoeight.ai` (add DNS records they provide)
 4. Create an API key → copy it
 
@@ -99,7 +99,7 @@ Supabase dashboard → Edge Functions → Settings → Secrets. Add these:
 | Variable | Value |
 |---|---|
 | `RESEND_API_KEY` | From step 1 |
-| `NOTIFY_EMAIL` | `alfie@autoeight.ai` |
+| `NOTIFY_EMAIL` | `contact@autoeight.ai` |
 | `PUSHOVER_TOKEN` | From step 2 (optional) |
 | `PUSHOVER_USER` | From step 2 (optional) |
 | `TELEGRAM_BOT_TOKEN` | From step 3 (optional) |
@@ -138,7 +138,7 @@ The widget is auto-loaded by `/includes.js` on every non-backend page. No furthe
 2. Click the chat button in the bottom-right corner
 3. Enter a name → enter a company → type a message → send
 4. Check:
-   - Email arrives at alfie@autoeight.ai
+   - Email arrives at contact@autoeight.ai
    - Pushover/Telegram notifications fire if configured
    - Conversation appears in `/backend/chat-admin.html` marked "waiting"
 5. Reply from the admin page → message appears in the visitor chat within 8 seconds

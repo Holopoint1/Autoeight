@@ -433,7 +433,7 @@
         <i class="fa-solid fa-envelope-open-text"></i>
         Send us a message
       </a>
-      <p class="note">Or email <a href="mailto:alfie@autoeight.ai" style="color:#6d4de6;">alfie@autoeight.ai</a> directly.</p>
+      <p class="note">Or email <a href="mailto:contact@autoeight.ai" style="color:#6d4de6;">contact@autoeight.ai</a> directly.</p>
     </div>
 
     <div class="ae-intro" id="ae-intro">
@@ -796,7 +796,7 @@
         inputEl.setAttribute('placeholder', 'Add another message...');
         startPolling();
       } catch (e) {
-        addMessage('system', "Couldn't send that. Please email alfie@autoeight.ai directly.");
+        addMessage('system', "Couldn't send that. Please email contact@autoeight.ai directly.");
         inputEl.disabled = false;
       } finally {
         sending = false;

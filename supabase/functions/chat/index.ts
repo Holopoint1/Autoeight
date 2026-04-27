@@ -7,7 +7,7 @@
 //   SUPABASE_URL              (auto-set)
 //   SUPABASE_SERVICE_ROLE_KEY (auto-set)
 //   RESEND_API_KEY            (get from resend.com, free tier 100/day)
-//   NOTIFY_EMAIL              (alfie@autoeight.ai)
+//   NOTIFY_EMAIL              (contact@autoeight.ai)
 //   PUSHOVER_TOKEN            (optional, for push notifications)
 //   PUSHOVER_USER             (optional, for push notifications)
 //   TELEGRAM_BOT_TOKEN        (optional, for Telegram)
@@ -19,7 +19,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-const NOTIFY_EMAIL = Deno.env.get("NOTIFY_EMAIL") || "alfie@autoeight.ai";
+const NOTIFY_EMAIL = Deno.env.get("NOTIFY_EMAIL") || "contact@autoeight.ai";
 const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || "Autoeight Chat <onboarding@resend.dev>";
 const ADMIN_PASSWORD = Deno.env.get("ADMIN_PASSWORD") || "";
 const PUSHOVER_TOKEN = Deno.env.get("PUSHOVER_TOKEN");

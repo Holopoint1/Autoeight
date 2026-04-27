@@ -11,7 +11,7 @@ This is the complete knowledge source the AI chatbot uses to answer visitor ques
 - **Founder:** Adam Sheridan
 - **Based:** Halifax, West Yorkshire
 - **Serving:** UK-wide
-- **Contact:** alfie@autoeight.ai
+- **Contact:** contact@autoeight.ai
 - **Website:** https://autoeight.ai
 - **Hours:** Monday to Friday, 9:00 to 17:30
 
@@ -241,7 +241,7 @@ If you're happy with a template-based builder, those are fine options for simple
 Halifax, West Yorkshire. We work remotely with clients across the UK.
 
 **"Can we have a call?"**
-Yes. Free 30-minute consultation. Book at /book or email alfie@autoeight.ai.
+Yes. Free 30-minute consultation. Book at /book or email contact@autoeight.ai.
 
 ## Resources on the site
 
@@ -259,7 +259,7 @@ When a visitor asks:
 - Something outside the scope of this knowledge base
 - About their existing project (current clients)
 
-→ The bot should offer to connect them to Adam Sheridan (founder) via the "Talk to a human" button, or direct them to email alfie@autoeight.ai or book a free consultation at /book.
+→ The bot should offer to connect them to Adam Sheridan (founder) via the "Talk to a human" button, or direct them to email contact@autoeight.ai or book a free consultation at /book.
 
 ## Tone of voice
 
