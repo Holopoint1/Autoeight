@@ -178,6 +178,132 @@
     </div>
   </div>
 
+  <!-- ── RECENT WEBSITES SHOWCASE ── -->
+  <style>
+    .web-showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+    .web-showcase-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .web-showcase-card:hover {
+      border-color: rgba(124,92,252,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(124,92,252,0.12);
+    }
+    .web-showcase-frame {
+      position: relative;
+      background: #1a1a1f;
+      padding: 28px 0 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .web-showcase-frame::before {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: 14px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #ff5f57;
+      box-shadow: 16px 0 0 #febc2e, 32px 0 0 #28c840;
+    }
+    .web-showcase-frame img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .web-showcase-body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; }
+    .web-showcase-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .web-showcase-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: var(--purple-dim);
+      border: 1px solid rgba(124,92,252,0.25);
+      border-radius: 100px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--purple-light);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .web-showcase-domain { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+    .web-showcase-card h3 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+    .web-showcase-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin: 0; }
+    .web-showcase-links { display: flex; gap: 18px; margin-top: 6px; flex-wrap: wrap; }
+    .web-showcase-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--purple-light);
+      text-decoration: none;
+    }
+    .web-showcase-links a:hover { text-decoration: underline; }
+    .web-showcase-links a i { font-size: 0.7rem; }
+    @media (max-width: 700px) {
+      .web-showcase { gap: 20px; }
+      .web-showcase-body { padding: 18px 20px 20px; }
+    }
+  </style>
+  <section class="page-section" style="padding:56px 5% 8px;">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 36px;">
+        <span class="section-label">Recent Builds</span>
+        <h2 class="section-title" style="font-size:clamp(1.5rem, 4vw, 2.1rem);">Websites we've designed and shipped</h2>
+        <p class="section-sub" style="margin:12px auto 0;">Real sites running in production. Click through and have a poke around.</p>
+      </div>
+      <div class="web-showcase reveal">
+        <div class="web-showcase-card">
+          <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="web-showcase-frame" aria-label="Visit The Dice Tavern live site">
+            <img loading="lazy" src="/brand_assets/case-studies/dice-tavern/Site_pics/home hero banner.png" alt="The Dice Tavern homepage — handcrafted dice e-commerce store" />
+          </a>
+          <div class="web-showcase-body">
+            <div class="web-showcase-meta">
+              <span class="web-showcase-tag">E-Commerce</span>
+              <span class="web-showcase-domain">thedicetavern.co.uk</span>
+            </div>
+            <h3>The Dice Tavern</h3>
+            <p>Full storefront with custom admin: product management, order pipeline, automated email templates, stock alerts, and a 4.9★ review rating.</p>
+            <div class="web-showcase-links">
+              <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit live site</a>
+              <a href="../results/dice-tavern"><i class="fa-solid fa-arrow-right"></i> Read case study</a>
+            </div>
+          </div>
+        </div>
+        <div class="web-showcase-card">
+          <a href="https://tmjoineryltd.co.uk/" target="_blank" rel="noopener" class="web-showcase-frame" aria-label="Visit TM Joinery live site">
+            <img loading="lazy" src="/brand_assets/case-studies/tm-joinery/tmjoineryhomepage.png" alt="TM Joinery homepage — bespoke joinery and carpentry, West Yorkshire" />
+          </a>
+          <div class="web-showcase-body">
+            <div class="web-showcase-meta">
+              <span class="web-showcase-tag">Trades &middot; Local SEO</span>
+              <span class="web-showcase-domain">tmjoineryltd.co.uk</span>
+            </div>
+            <h3>TM Joinery</h3>
+            <p>Brochure-plus build with live Facebook feed, automated quote requests, and local SEO tuned for "joiner near me" across West Yorkshire.</p>
+            <div class="web-showcase-links">
+              <a href="https://tmjoineryltd.co.uk/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit live site</a>
+              <a href="../results/tm-joinery"><i class="fa-solid fa-arrow-right"></i> Read case study</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:32px;">
+        <a href="../results/case-studies" class="btn btn-ghost" style="font-size:0.88rem;">See all case studies <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
   <!-- ── DEFINITION ── -->
   <section class="page-section" style="padding:48px 5% 0;">
     <div class="page-section-inner" style="max-width:760px;margin:0 auto;">

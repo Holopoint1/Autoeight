@@ -118,11 +118,12 @@
         <button type="button" class="cs-filter" data-filter="ecommerce">E-commerce</button>
         <button type="button" class="cs-filter" data-filter="trades">Trades &amp; Construction</button>
         <button type="button" class="cs-filter" data-filter="manufacturing">Manufacturing / B2B</button>
+        <button type="button" class="cs-filter" data-filter="property">Property / PropTech</button>
         <button type="button" class="cs-filter" data-filter="community">Community</button>
       </div>
 
       <!-- Highlight cards -->
-      <div class="cs-highlights reveal">
+      <div class="cs-highlights reveal" style="grid-template-columns:repeat(2, minmax(0, 1fr));">
         <a href="/results/matrix-tsl" class="cs-highlight">
           <span class="cs-highlight-tag">AI + Sales</span>
           <h3>Matrix TSL</h3>
@@ -152,12 +153,22 @@
           <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
           <span style="display:block;font-size:0.72rem;font-weight:500;margin-top:6px;"><span onclick="event.stopPropagation();window.open('https://tmjoineryltd.co.uk/','_blank','noopener');return false;" style="color:var(--purple-light);cursor:pointer;text-decoration:none;">tmjoineryltd.co.uk <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i></span></span>
         </a>
+        <a href="/results/northbrick" class="cs-highlight">
+          <span class="cs-highlight-tag">PropTech + AI</span>
+          <h3>Northbrick Property</h3>
+          <div class="cs-highlight-stats">
+            <div class="cs-highlight-stat"><strong>14</strong> inquiry channels</div>
+            <div class="cs-highlight-stat"><strong>AI</strong> sorts every email</div>
+          </div>
+          <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
+          <span style="display:block;font-size:0.72rem;font-weight:500;margin-top:6px;"><span onclick="event.stopPropagation();window.open('http://www.northbrick.org/','_blank','noopener');return false;" style="color:var(--purple-light);cursor:pointer;text-decoration:none;">northbrick.org <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i></span></span>
+        </a>
       </div>
 
       <div class="cs-full-grid reveal">
 
         <!-- Matrix TSL -->
-        <a href="/results/matrix-tsl" class="cs-full-card" data-industry="manufacturing">
+        <div class="cs-full-card" data-industry="manufacturing">
           <div class="cs-full-top">
             <span class="case-tag">AI Automation + Sales Enablement</span>
             <span class="case-tag">Education Equipment Manufacturer</span>
@@ -188,11 +199,14 @@
             <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Automated contact discovery</strong><span>Finds engineering staff at target universities automatically</span></div></div>
             <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>30+ industry news feeds</strong><span>Scored by relevance and surfaced every morning</span></div></div>
           </div>
-          <div class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></div>
-        </a>
+          <div class="cs-full-actions">
+            <span class="cs-full-private"><i class="fa-solid fa-lock"></i> Private internal platform &mdash; no public URL</span>
+            <a href="/results/matrix-tsl" class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
 
         <!-- TM Joinery -->
-        <a href="/results/tm-joinery" class="cs-full-card" data-industry="trades">
+        <div class="cs-full-card" data-industry="trades">
           <div class="cs-full-top">
             <span class="case-tag">Web Design + Local SEO</span>
             <span class="case-tag">Construction &amp; Joinery</span>
@@ -223,11 +237,14 @@
             <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Automated quote system</strong><span>Customers pick a service, describe their project, enquiry lands instantly</span></div></div>
             <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Google reviews integration</strong><span>5-star rating and portfolio front and centre</span></div></div>
           </div>
-          <div class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></div>
-        </a>
+          <div class="cs-full-actions">
+            <a href="https://tmjoineryltd.co.uk/" target="_blank" rel="noopener" class="cs-full-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit tmjoineryltd.co.uk</a>
+            <a href="/results/tm-joinery" class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
 
         <!-- The Dice Tavern -->
-        <a href="/results/dice-tavern" class="cs-full-card" data-industry="ecommerce">
+        <div class="cs-full-card" data-industry="ecommerce">
           <div class="cs-full-top">
             <span class="case-tag">E-Commerce + Email Automation</span>
             <span class="case-tag">Specialist Retail</span>
@@ -258,8 +275,49 @@
             <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Cross-sell engine</strong><span>Smart product recommendations at checkout</span></div></div>
             <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Operations dashboard</strong><span>Orders, stock, revenue, reviews, and analytics in one place</span></div></div>
           </div>
-          <div class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></div>
-        </a>
+          <div class="cs-full-actions">
+            <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="cs-full-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit thedicetavern.co.uk</a>
+            <a href="/results/dice-tavern" class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Northbrick Property -->
+        <div class="cs-full-card" data-industry="property">
+          <div class="cs-full-top">
+            <span class="case-tag">PropTech + AI</span>
+            <span class="case-tag">Estate Agency SaaS</span>
+          </div>
+          <div class="cs-ba">
+            <div class="cs-ba-col before">
+              <div class="cs-ba-label">Before</div>
+              <div class="cs-ba-item">Inquiries scattered across web, Gmail, Outlook, SMS</div>
+              <div class="cs-ba-item">Reapit / Alto too heavy and too pricey</div>
+              <div class="cs-ba-item">Second and third follow-ups rarely happened</div>
+            </div>
+            <div class="cs-ba-arrow"><i class="fa-solid fa-circle-arrow-right"></i></div>
+            <div class="cs-ba-col after">
+              <div class="cs-ba-label">After</div>
+              <div class="cs-ba-item">14 inquiry channels unified in one inbox</div>
+              <div class="cs-ba-item">AI classifies every inbound by type, urgency, property match</div>
+              <div class="cs-ba-item">Automated chase sequences send from the agent's own mailbox</div>
+            </div>
+          </div>
+          <div class="cs-full-story">
+            <h4>What happened</h4>
+            <p>Independent estate agents lose leads in their own inbox. Enquiries scatter across web forms, Gmail, Outlook, WhatsApp, and sometimes a phone note on a Post-it. Reapit and Alto are priced and built for the corporate chains, not independents. Northbrick is our flagship build: a complete property platform with a branded public site, a multi-channel inbox unified across 14 sources, Claude-powered classification on every inbound, automated chase sequences that send from the agent's own mailbox so they still feel human, and viewings booked against the calendar with two-way sync. Multi-tenant from day one, AI-native from day one.</p>
+          </div>
+          <div class="cs-auto-list">
+            <h4>What we built</h4>
+            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Branded public site</strong><span>Listings, search, property detail, valuation and viewing forms with JSON-LD</span></div></div>
+            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>AI-classified unified inbox</strong><span>Claude Haiku tags every inbound by type, urgency, and matching property</span></div></div>
+            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Automated chase sequences</strong><span>Send-as-mailbox follow-ups with stop conditions, so it still feels personal</span></div></div>
+            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Full agency admin</strong><span>CMS, photo manager, viewings, live chat, stats, SEO, calendar sync</span></div></div>
+          </div>
+          <div class="cs-full-actions">
+            <a href="http://www.northbrick.org/" target="_blank" rel="noopener" class="cs-full-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit northbrick.org</a>
+            <a href="/results/northbrick" class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
 
       </div>
     </div>
