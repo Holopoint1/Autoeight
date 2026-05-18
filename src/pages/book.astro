@@ -1,0 +1,382 @@
+---
+import MarketingLayout from '@layouts/MarketingLayout.astro';
+---
+
+<MarketingLayout
+  title="Book a Free Consultation. Autoeight"
+  description="Book a free consultation with Autoeight to discuss automation, sales systems, website builds, integrations, and growth opportunities for your business."
+  canonical="https://autoeight.ai/book"
+  ogType="website"
+  ogTitle="Book a Free Consultation – Autoeight"
+  ogDescription="Book a free consultation with Autoeight to discuss automation, sales systems, website builds, integrations, and growth opportunities for your business."
+  ogImage="https://autoeight.ai/brand_assets/logo.png"
+  twitterCard="summary_large_image"
+  twitterTitle="Book a Free Consultation – Autoeight"
+>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Book a Free Consultation",
+    "description": "Book a free consultation with Autoeight to discuss automation, sales systems, website builds, integrations, and growth opportunities for your business.",
+    "url": "https://autoeight.ai/book",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Autoeight",
+      "url": "https://autoeight.ai"
+    }
+  }
+  </script>
+
+<div class="page-hero" style="min-height:320px;">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-content">
+      <span class="section-label">Free Consultation</span>
+      <h1>Book a call with<br /><em>our team</em></h1>
+      <p>Pick a time that works for you. We'll walk through your business across all three fronts: where you rank on Google and AI search, where automation could save hours, and what your data should be showing you. Then we'll tell you what we'd build, no obligations.</p>
+    </div>
+  </div>
+
+  <div class="booking-layout">
+
+    <!-- LEFT: info panel -->
+    <div class="booking-info reveal">
+      <span class="section-label">What to expect</span>
+      <h2>Your free<br /><em>30-minute audit</em></h2>
+      <p>One call, three angles. We'll look at how your site is performing on Google and AI search, where your team is losing the most hours to manual work, and what your data is (or isn't) telling you. Then we'll be honest about what's worth doing.</p>
+
+      <ul class="booking-perks">
+        <li>
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <div>
+            <strong>SEO &amp; process audit</strong>
+            We check where your site ranks (and where it doesn't), then map your current workflows to find where you're losing the most time.
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <div>
+            <strong>Custom recommendations</strong>
+            We'll outline exactly which ranking improvements and automations would have the biggest impact for your business specifically.
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-chart-line"></i>
+          <div>
+            <strong>Data &amp; ROI estimate</strong>
+            We'll show you which numbers your current setup isn't surfacing, and give you a realistic view of timeline, effort, and projected return.
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-circle-question"></i>
+          <div>
+            <strong>Your questions answered</strong>
+            Bring anything. We'll talk through integrations, costs, timelines, or anything else on your mind.
+          </div>
+        </li>
+      </ul>
+
+      <div class="booking-detail-row">
+        <i class="fa-regular fa-clock"></i>
+        <span>30 minutes</span>
+      </div>
+      <div class="booking-detail-row">
+        <i class="fa-solid fa-sterling-sign"></i>
+        <span>Completely free, no commitment</span>
+      </div>
+      <div class="booking-detail-row">
+        <i class="fa-solid fa-envelope"></i>
+        <span><a href="mailto:contact@autoeight.ai" style="color:var(--purple-light);text-decoration:none;">contact@autoeight.ai</a></span>
+      </div>
+      <div class="booking-detail-row">
+        <i class="fa-solid fa-file-invoice"></i>
+        <span>Billing enquiries: <a href="mailto:contact@autoeight.ai" style="color:var(--purple-light);text-decoration:none;">contact@autoeight.ai</a></span>
+      </div>
+    </div>
+
+    <!-- RIGHT: contact form -->
+    <div class="booking-form-wrap reveal" style="transition-delay:0.15s;">
+      <h3>Tell us about your business</h3>
+      <p class="form-intro">Fill in a few details and we'll be in touch within one working day to arrange your free 30-minute consultation. We'll cover ranking, automation and data. Whichever of the three is most relevant to you.</p>
+
+      <button type="button" id="live-chat-cta" onclick="if(window.AE_CHAT_OPEN) window.AE_CHAT_OPEN();" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 18px;margin-bottom:20px;background:linear-gradient(135deg,#7c5cfc,#6d4de6);color:#fff;border:0;border-radius:12px;font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer;box-shadow:0 8px 20px rgba(109,77,230,0.25);transition:transform 0.15s,box-shadow 0.15s;">
+        <i class="fa-solid fa-comments"></i>
+        <span id="live-chat-cta-label">Prefer to chat live? Start a chat</span>
+        <span id="live-chat-cta-pill" style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:rgba(255,255,255,0.18);border-radius:999px;font-size:0.72rem;font-weight:500;">
+          <span id="live-chat-cta-dot" style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
+          <span id="live-chat-cta-pill-text">Online</span>
+        </span>
+      </button>
+
+      <script is:inline>
+        // Keep this pill in sync with the chat widget's UK Mon-Fri 9-5 hours
+        (function () {
+          function ukNow() {
+            var p = new Intl.DateTimeFormat('en-GB', {
+              timeZone: 'Europe/London', weekday: 'short', hour: '2-digit', hour12: false
+            }).formatToParts(new Date());
+            var m = {}; p.forEach(function (x) { m[x.type] = x.value; });
+            return {
+              dayIdx: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(m.weekday),
+              hour: parseInt(m.hour, 10)
+            };
+          }
+          function sync() {
+            var n = ukNow();
+            var open = [1,2,3,4,5].indexOf(n.dayIdx) !== -1 && n.hour >= 9 && n.hour < 17;
+            var dot = document.getElementById('live-chat-cta-dot');
+            var pill = document.getElementById('live-chat-cta-pill-text');
+            var label = document.getElementById('live-chat-cta-label');
+            if (open) {
+              if (dot) dot.style.background = '#4ade80';
+              if (pill) pill.textContent = 'Online';
+              if (label) label.textContent = 'Prefer to chat live? Start a chat';
+            } else {
+              if (dot) dot.style.background = '#fbbf24';
+              if (pill) pill.textContent = 'Offline';
+              if (label) label.textContent = 'Chat is offline - use the form below';
+            }
+          }
+          sync();
+          setInterval(sync, 60000);
+        })();
+      </script>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--muted);font-size:0.8rem;">
+        <span style="flex:1;height:1px;background:rgba(255,255,255,0.08);"></span>
+        <span>or fill out the form</span>
+        <span style="flex:1;height:1px;background:rgba(255,255,255,0.08);"></span>
+      </div>
+
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/contact@autoeight.ai" method="POST" style="background:transparent;border:0;padding:0;" novalidate>
+        <input type="hidden" name="_subject" value="New consultation request from autoeight.ai">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">Your name</label>
+            <input id="cf-name" name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" required autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-company">Company</label>
+            <input id="cf-company" name="company" type="text" autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label for="cf-phone">Phone (optional)</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cf-message">How can we help?</label>
+          <textarea id="cf-message" name="message" required placeholder="Tell us a bit about your business and what you'd like to automate…"></textarea>
+        </div>
+        <!-- FormSubmit honeypot -->
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true" />
+        <div class="form-submit">
+          <span class="form-note">We'll reply within one working day. No spam, ever.</span>
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </div>
+        <div class="form-error" id="cf-error" hidden></div>
+      </form>
+
+      <div class="form-success" id="cf-success" hidden>
+        <div class="form-success-icon"><i class="fa-solid fa-check"></i></div>
+        <h3>Thanks, message received</h3>
+        <p>We've got your details and will be in touch within one working day to arrange your consultation.</p>
+      </div>
+    </div>
+
+    <script is:inline>
+    (function(){
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      var success = document.getElementById('cf-success');
+      var errorBox = document.getElementById('cf-error');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        var btn = form.querySelector('button[type=submit]');
+        var original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        errorBox.hidden = true;
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        }).then(function(res){
+          if (!res.ok) throw new Error('Network response was not ok');
+          return res.json();
+        }).then(function(){
+          form.style.display = 'none';
+          if (success) success.hidden = false;
+        }).catch(function(){
+          btn.disabled = false;
+          btn.textContent = original;
+          errorBox.textContent = "Something went wrong. Please email contact@autoeight.ai directly and we'll get right back to you.";
+          errorBox.hidden = false;
+        });
+      });
+    })();
+    </script>
+
+  </div>
+</MarketingLayout>
+
+<style>
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 48px;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 24px 96px;
+    }
+    .booking-info {
+      position: sticky;
+      top: 100px;
+    }
+    .booking-info .section-label {
+      margin-bottom: 14px;
+    }
+    .booking-info h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      color: var(--white);
+    }
+    .booking-info h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--purple-light), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .booking-info p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+    .booking-perks {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .booking-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .booking-perks li i {
+      color: var(--purple-light);
+      margin-top: 2px;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .booking-perks li strong {
+      color: var(--white);
+      display: block;
+      font-size: 0.88rem;
+      margin-bottom: 2px;
+    }
+    .booking-detail-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 20px;
+      margin-top: 4px;
+    }
+    .booking-detail-row i {
+      color: var(--purple-light);
+      width: 16px;
+      text-align: center;
+    }
+    .booking-detail-row + .booking-detail-row {
+      border-top: none;
+      padding-top: 10px;
+      margin-top: 0;
+    }
+    .booking-form-wrap {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 36px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .booking-form-wrap h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 0 0 6px;
+    }
+    .booking-form-wrap .form-intro {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin: 0 0 24px;
+    }
+    .form-success {
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .form-success-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(124,92,252,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.5rem;
+      color: var(--purple-light);
+    }
+    .form-success h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .form-success p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .form-error {
+      color: #ff7a7a;
+      font-size: 0.82rem;
+      margin-top: 6px;
+    }
+    @media (max-width: 820px) {
+      .booking-layout {
+        grid-template-columns: 1fr;
+        padding: 48px 20px 72px;
+        gap: 36px;
+      }
+      .booking-info {
+        position: static;
+      }
+    }
+  </style>

@@ -6,91 +6,81 @@
 content into them. Update facts here only.
 
 For humans, start with [`README.md`](README.md). For deep structure and the
-deployment contract, see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+deployment model, see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
+> **Branch note:** on `restructure/astro-track-b` this is an **Astro** project
+> (migrated, builds clean, not deployed). `main` is still the old no-build flat
+> site and is what's live until a manual Cloudflare cutover. This file
+> describes the Astro structure (the branch you're on).
 
 ---
 
 ## Project
 
 Autoeight is an AI and automation agency in Halifax, West Yorkshire, UK. This repo
-is the company website — a **static HTML/CSS/JS site, no framework, no CMS, no build
-step**, hosted on **Cloudflare Pages** at **autoeight.ai** (Cloudflare also
-manages DNS for the domain). Migrated from GitHub Pages; the GitHub repo is the
-source connected to the Cloudflare Pages project.
+is the company website — an **Astro static site on Cloudflare Pages** at
+**autoeight.ai** (Cloudflare also manages DNS). 61 pages.
 
 ## Tech stack
 
-- HTML5, CSS3, vanilla JavaScript (no jQuery, no React, no libraries)
-- Google Fonts (Inter 300–800), Font Awesome 6.5 (CDN)
-- Single shared `style.css` (~160 KB) and `main.js`
-- `includes.js` injects shared `nav.html` + `footer.html` and the chat widget
-- `ae-track.js` + `ae-consent.js` for analytics/consent
+- Astro (static output), TypeScript, Tailwind (utilities only — preflight off)
+- Vanilla DOM JS; Google Fonts (Inter), Font Awesome 6.5 (CDN)
+- Legacy `style.css` (~160 KB) kept verbatim in `public/` as the design system
+- `ae-track.js` + `ae-consent.js` for analytics/consent (in `public/`)
 - Supabase (Postgres + Edge Functions) for chat, visitor tracking, admin auth —
   **deployed separately via the Supabase CLI, not Cloudflare Pages**
 
-## ⚠️ Deployment contract — read before moving anything
+## Deployment & URL model
 
-**No build step. The folder path *is* the live URL.** `about.html` → `autoeight.ai/about.html`;
-`services/web-design.html` → `autoeight.ai/services/web-design.html`. Cloudflare
-Pages serves the repo root verbatim — same as GitHub Pages did.
+`npm run build` → `dist/` → Cloudflare Pages. `build.format:'file'` emits
+`about.html` etc.; Cloudflare serves them at clean URLs (`/about`) and 301s the
+`.html`. **This preserves every existing indexed URL 1:1** — that is the whole
+reason for `build.format:'file'`; don't change it without a redirect map.
 
-Cloudflare Pages *can* now do edge 301s via `_redirects`, so a future
-restructure is technically possible **only** with a complete redirect map. It is
-still strongly discouraged: gratuitous URL churn loses SEO for no gain.
+Cloudflare Pages go-live settings: framework **Astro**, build `npm run build`,
+output **`dist`**. No SSR adapter, no D1/KV/R2 — dynamic logic is external
+Supabase Edge Functions. `_redirects` handles legacy `/backend/* → /admin/*`.
 
-Therefore, by default:
+- A route = its file: `src/pages/services/web-design.astro` → `/services/web-design`.
+- Adding a page: create the `.astro` under `src/pages/`, use a layout, add it to
+  `public/sitemap.xml` (sitemap is static — see ARCHITECTURE for why).
+- SEO meta is enforced once in `BaseLayout` via props — don't hand-write `<head>`.
 
-- **Do NOT move or rename HTML pages or root assets** (`style.css`, `main.js`,
-  `includes.js`, `ae-track.js`, `ae-consent.js`, `nav.html`, `footer.html`).
-  It changes live URLs, breaks `sitemap.xml`, inbound links, and SEO unless every
-  moved URL gets a 301 in `_redirects`.
-- Asset references are mixed: root pages use `style.css`, subfolder pages use
-  `../style.css`, and `includes.js`/`nav.html`/`footer.html` use absolute `/` paths.
-- `robots.txt` explicitly references `/backend/`, `/nav.html`, `/footer.html`,
-  `/includes.js` — keep those paths stable.
-- Update `sitemap.xml` whenever you add/remove/rename a page.
-
-## Directory layout (accurate)
+## Directory layout
 
 ```
-index.html  about.html  book.html  privacy.html  terms.html   # root pages
-style.css  main.js  includes.js  ae-track.js  ae-consent.js    # shared assets (do not move)
-nav.html  footer.html                                          # fragments injected by includes.js
-wrangler.toml  _headers  _redirects                            # Cloudflare Pages config
-CNAME  robots.txt  sitemap.xml                                  # legacy GH Pages CNAME (inert on CF) / SEO
-
-services/         # 9 service landing pages (see list below)
-resources/        # blog hub + ~15 blog-*.html, blueprints hub + 4 blueprint-*.html, glossary, news
-results/          # case-studies hub, testimonials, 5 client case-study pages
-brand_assets/     # logos + images; brand_assets/case-studies/ has client detail pages
-admin/            # internal staff portal at /admin/* (auth-gated, not indexed) — see admin/README.md
-backend/          # legacy 302 redirect stubs → /admin/* (intentional; keeps old links alive; robots-blocked)
-chatbot/          # chat widget client + edge-function source + setup docs — see chatbot/README.md
-supabase/         # Postgres migrations + Edge Functions (deployed to Supabase, NOT served here)
-docs/             # project documentation (ARCHITECTURE.md)
-.claude/skills/   # Claude Code marketing/dev skills (gitignored, not deployed)
+src/
+  pages/        routes (path = URL): root + services/ resources/ results/ admin/
+  layouts/      BaseLayout (head/SEO) → MarketingLayout (public) / AdminLayout (auth-gated, noindex)
+  components/   Nav.astro, Footer.astro
+  lib/          env.ts (public client config only), log.ts
+  styles/       tokens.css (scaffold; not yet wired — CSS deferral, see SPEC-CONFORMANCE)
+public/         served verbatim, URLs unchanged: style.css, main.js, ae-track.js,
+                ae-consent.js, brand_assets/, chatbot/widget/, _headers,
+                _redirects, robots.txt, sitemap.xml, CNAME
+wrangler.toml  astro.config.mjs  tsconfig.json  tailwind.config.js  package.json
+chatbot/        edge-function source + setup docs (chatbot/README.md) — NOT served
+supabase/       Postgres migrations + Edge Functions (deployed to Supabase)
+docs/           ARCHITECTURE.md · SPEC-CONFORMANCE.md · MIGRATION.md
+.claude/skills/ Claude Code marketing/dev skills (gitignored, not deployed)
 ```
 
-### Services — the 9 real files in `services/`
+### Services — the 9 pages in `src/pages/services/`
 
 `ai-automation` · `crm-integration` · `data-reporting` · `email-automation` ·
 `internal-systems` · `lms` · `sales-automation` · `sales-marketing` · `web-design`
 
-> The public nav dropdown / footer show a **curated subset**, not all 9. Treat
-> `nav.html` and `footer.html` as the source of truth for what appears in
-> navigation. **`system-integration.html` does not exist** — older docs that listed
-> "7 services including system-integration" were wrong; ignore that.
+> The public nav/footer show a **curated subset**, not all 9. `src/components/Nav.astro`
+> and `Footer.astro` are the source of truth for navigation. There is no
+> `system-integration` page — ignore older docs that claimed one.
 
-### `backend/` is not a backend
+### `/backend/*` and the admin portal
 
-It is 13 HTML files that redirect `/backend/*` → the matching `/admin/*` clean
-URL, kept so old bookmarks/email links don't break. It is blocked in `robots.txt`.
-Real admin code lives in `admin/` (`admin/auth.js`, `admin/admin.css`). Do not
-delete `backend/`; do not rename it.
-
-On Cloudflare Pages, `_redirects` now performs these as real edge **301s** (it
-mirrors the stubs' own targets exactly). The HTML stubs stay as a harmless
-fallback. If you add/rename an admin page, update `_redirects` **and** the stub.
+The 13 legacy `backend/*.html` stubs were **deleted**; `public/_redirects` now
+does `/backend/* → /admin/*` as real edge 301s. The admin portal lives in
+`src/pages/admin/*` using `AdminLayout` (auth-gated via Supabase, `noindex`,
+own `admin.css`/`auth.js` in `public/admin/`). It is **not** in the public
+sitemap and is `Disallow`-ed in `robots.txt`. See `admin/README.md`.
 
 ## Brand voice
 
@@ -112,6 +102,8 @@ sentences. British English (colour, optimise, analyse, personalise, centre).
 - Target terms: "AI automation Halifax", "AI companies Halifax", "AI companies Leeds",
   "automation agency West Yorkshire", "AI automation help", "business automation UK"
 
+(Passed as `BaseLayout` props — set them per page, don't hand-write `<head>`.)
+
 ## Code conventions
 
 - Semantic HTML, one H1 per page, 2-space indent
@@ -119,10 +111,9 @@ sentences. British English (colour, optimise, analyse, personalise, centre).
   Note: the colour naming is intentionally inverted (`--black:#fff`, `--white:#111`)
 - Hyphenated class names (`hero-content`, `blog-card`, `stat-bar`); reuse existing
   components (`page-hero`, `page-section`, `tier-card`, `feature-card`, `step-card`)
-- Vanilla DOM JS only; `IntersectionObserver` `.reveal`→`.visible` for animations
+- Page-specific JS goes in `<script is:inline>`; JSON-LD stays verbatim in the body
 - External links: `target="_blank" rel="noopener"`
-- Cache-bust changed assets with `?v=YYYYMMDD`
-- Never commit `.env`, credentials, or API keys (secrets live in Supabase env vars)
+- Never commit `.env`/`.dev.vars`, credentials, or API keys (secrets live in Supabase)
 
 ## Proof points
 
@@ -135,4 +126,6 @@ sentences. British English (colour, optimise, analyse, personalise, centre).
 
 - [`admin/README.md`](admin/README.md) — admin portal
 - [`chatbot/README.md`](chatbot/README.md) — chat widget + setup
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — deployment model & structure rationale
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — deployment model & rationale
+- [`docs/MIGRATION.md`](docs/MIGRATION.md) — the Astro migration record
+- [`docs/SPEC-CONFORMANCE.md`](docs/SPEC-CONFORMANCE.md) — spec scorecard

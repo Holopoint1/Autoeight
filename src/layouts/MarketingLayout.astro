@@ -1,0 +1,33 @@
+---
+// MarketingLayout — public marketing pages. Wraps BaseLayout, drops in the
+// shared Nav + Footer components, and loads the same client scripts the legacy
+// pages loaded (main.js, ae-track, ae-consent) plus the chat widget. This is
+// the Astro replacement for the old includes.js (nav/footer fetch + chat load).
+import BaseLayout from './BaseLayout.astro';
+import Nav from '@components/Nav.astro';
+import Footer from '@components/Footer.astro';
+import { PUBLIC_CONFIG } from '@lib/env';
+
+export type Props = import('./BaseLayout.astro').Props;
+---
+
+<BaseLayout {...Astro.props}>
+  <Nav />
+  <slot />
+  <Footer />
+
+  <script is:inline src="/main.js?v=20260331r"></script>
+  <script is:inline define:vars={{ cfg: PUBLIC_CONFIG }}>
+    window.AE_TRACK = { apiKey: cfg.trackApiKey, endpoint: cfg.trackEndpoint };
+  </script>
+  <script is:inline src="/ae-track.js" async></script>
+  <script is:inline src="/ae-consent.js" async></script>
+  <script is:inline define:vars={{ src: PUBLIC_CONFIG.chatWidgetSrc }}>
+    // Chat widget loader (was in includes.js). Astro pages are never /backend/,
+    // so the legacy path guard is unnecessary.
+    var s = document.createElement('script');
+    s.src = src;
+    s.defer = true;
+    document.head.appendChild(s);
+  </script>
+</BaseLayout>

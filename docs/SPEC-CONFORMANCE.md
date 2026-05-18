@@ -1,60 +1,42 @@
 # Spec Conformance — Autoeight V2
 
-Measures this project against the **"Structuring a Complex Site on Cloudflare"**
-spec. Hard constraint: **the live site must not change** (folder path = live URL,
-no build step, indexed commercial site). So the spec is applied where safe,
-and every deviation is recorded with a reason — not silently ignored.
+Measures the project against **"Structuring a Complex Site on Cloudflare"**.
+The migration to **Track B (Astro on Cloudflare Pages)** is done on branch
+`restructure/astro-track-b` (61 pages, builds clean). Constraint held
+throughout: content verbatim, URLs preserved 1:1, nothing deployed.
 
 ## Stack track (spec §1)
 
-**Track A — Static + Pages Functions (vanilla).** *Not* Track B (Astro).
-Track B is the spec's default and most of the spec assumes it, but adopting it
-means a build pipeline and `src/pages/*` routing, which **changes every live
-URL**. Track A is the only track compatible with "don't change the live site".
-Everything below is judged against that decision.
+**Track B — Astro on Cloudflare Pages.** Adopted. `build.format:'file'`
+preserves every existing URL so no redirect map was needed for the migration.
 
 ## Section-by-section
 
 | Spec § | Status | Notes |
 |---|---|---|
-| §1 Stack track | ✅ Decided | Track A, recorded above. |
-| §2 Folder structure | ⛔ Deviated (intentional) | The `src/` tree changes live URLs. Flat layout *is* the URL contract — see [`ARCHITECTURE.md`](ARCHITECTURE.md). |
-| §3 `wrangler.toml` | ✅ Done | Minimal; no D1/KV/R2 bindings invented (site uses Supabase). |
-| §4 Routing | ✅ Conforms (Track A form) | File path = route already. Legacy `/backend/*` handled by `_redirects`. |
-| §5 HTML/templating | ⚠️ Partial | Shared nav/footer via `includes.js` injection. No layout/component system (needs a build). Acceptable for Track A. |
-| §6 CSS architecture | ⚠️ Deviated | Single `style.css` with CSS custom-property tokens (not Tailwind). Re-architecting risks the live site for no user gain. |
-| §7 JS architecture | ✅ Conforms (Track A form) | Vanilla, no globals leak via `includes.js`. No ES-module build (Track A). |
-| §8 API / Functions | ✅ N/A by design | No host endpoints; dynamic logic is Supabase Edge Functions. No empty `functions/` dir (would be cargo-cult). |
-| §9 Data layer | ✅ N/A by design | Supabase Postgres, not D1/KV/R2. No CF storage bindings. |
-| §10 Forms/validation | ⚠️ Partial | Contact = form/mailto; chat = Supabase. No shared Zod schema (no build). |
-| §11 Auth | ✅ Conforms (intent) | Admin auth validated server-side in Supabase; no secret in browser. |
-| §12 Edge concerns | ✅ Done | `_headers` (security + caching) + `_redirects` added. **CSP deferred** — must be tested Report-Only first (would break fonts/icons/chat). |
-| §13 Environments/secrets | ✅ Conforms | No secrets in repo; live in Supabase. `.dev.vars` gitignored. |
-| §14 Local development | ✅ Done | `npx wrangler pages dev .` documented in `README.md`. |
-| §15 Deployment | ⏳ Pending (user) | Repo prepped. Cloudflare dashboard + DNS cutover is manual — checklist in `ARCHITECTURE.md`. |
-| §16 Observability | ⚠️ Partial | Cloudflare Web Analytics via `ae-track.js`. Structured logging/error tracking lives in Supabase functions, not the static host. |
-| §17 Request shape | ✅ Documented | Chat flow already mapped in `chatbot/README.md`. |
+| §1 Stack track | ✅ | Track B (Astro). |
+| §2 Folder structure | ✅ | `src/pages` (routes=URLs), `layouts/`, `components/`, `lib/`, `styles/`, `public/`. |
+| §3 `wrangler.toml` | ✅ | Present. No D1/KV/R2 — backend is external Supabase; no invented bindings. |
+| §4 Routing | ✅ | File-based `src/pages/**`. Legacy `/backend/*` → `/admin/*` via `_redirects`. |
+| §5 HTML/templating | ✅ (◑ depth) | BaseLayout→MarketingLayout/AdminLayout→page; Nav/Footer components. Blog/case-studies still per-page, not yet content collections (deeper §5 — optional follow-up). |
+| §6 CSS architecture | ⛔ Deferred (recorded) | Single legacy `style.css` kept verbatim; Tailwind preflight off. Token/Tailwind conversion is gradual future work — a big-bang rewrite would break 61 pages. |
+| §7 JS architecture | ✅ | Component scripts; page JS kept `is:inline`; shared `lib/`. |
+| §8 API/Functions | ✅ N/A by design | No host endpoints; Supabase Edge Functions. No empty `functions/`. |
+| §9 Data layer | ✅ N/A by design | Supabase, not D1/KV/R2. |
+| §10 Forms/validation | ◑ | `book` form migrated verbatim; Zod schema not yet added (faithful 1:1 first — follow-up). |
+| §11 Auth | ✅ | Admin auth server-side in Supabase; `AdminLayout` keeps `auth.js`/`AEAuth.check()` ordering faithful; `noindex`. |
+| §12 Edge concerns | ✅ | `_headers` (security+cache), `_redirects` (legacy 301s). CSP still Report-Only-pending (unchanged from before). |
+| §13 Env/secrets | ✅ | `src/lib/env.ts` (public client config only). No secrets in repo. `.dev.vars` gitignored. |
+| §14 Local dev | ✅ | `npm run dev`. |
+| §15 Deployment | ✅ (config) ⏳ (cutover) | `npm run build`→`dist`. Cloudflare Pages settings change is the manual go-live step. |
+| §16 Observability | ◑ | `lib/log.ts` ready; Cloudflare Web Analytics via `ae-track.js`. App-level error tracking N/A on static host. |
+| §17 Request shape | ✅ | Chat flow documented in `chatbot/README.md`. |
 
-## Spec checklist status
+## Honest summary
 
-- [x] Pick the stack track → **A**
-- [⛔] Create the folder structure → intentionally not (live URLs)
-- [x] `wrangler.toml` with bindings → done (no bindings needed)
-- [x] `.dev.vars` + `.gitignore` it → done
-- [N/A] D1 + `0001_initial.sql` → Supabase, not D1
-- [N/A] `lib/env.ts` / `lib/log.ts` / `lib/db/client.ts` → no build, no host backend
-- [⚠️] BaseLayout w/ tokens/fonts/analytics/security → partial: `includes.js` + tokens in `style.css` + `_headers`
-- [N/A] One feature end-to-end → no host backend feature to build
-- [x] `_headers` and `_redirects` → done
-- [ ] Hook up Cloudflare Pages to repo → **user, dashboard**
-- [ ] Verify preview deployments → **user, after hookup**
-- [N/A] Production secrets via `wrangler pages secret put` → secrets are in Supabase
-- [x] Document dev & deploy commands in `README.md` → done
-
-## The honest summary
-
-For a live-locked vanilla static site, **"fully implement the spec" would mean
-cargo-culting an Astro/D1/`lib/` skeleton the site never uses** — which is the
-exact AI-mess this whole exercise is meant to remove. Conformance here =
-the safe subset applied + deviations documented. That subset is now done; the
-only outstanding spec item is the manual Cloudflare Pages dashboard cutover.
+The structural spec is now **substantially met** — Track B adopted, the
+folder model, routing, layouts/components, config, and env all conform, and
+it builds. The deliberate gaps are **§6 CSS** (kept legacy to protect the
+look) and the **depth items** (content collections, Zod, automated sitemap) —
+all recorded as optional follow-ups in `MIGRATION.md`, none blocking. Nothing
+is deployed; the live site is unchanged.

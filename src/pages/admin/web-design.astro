@@ -1,0 +1,34 @@
+---
+// /admin/web-design — Pitch View: Web Design. Migrated from admin/web-design/index.html.
+// Body copied verbatim. The empty <aside class="sidebar"></aside> is intentional
+// in the legacy markup — layout.js fills it at runtime (kept verbatim).
+import AdminLayout from '@layouts/AdminLayout.astro';
+---
+
+<AdminLayout title="Web Design — Autoeight Portal">
+  <div class="app-layout">
+    <aside class="sidebar"></aside>
+    <div class="main-content">
+      <div class="topbar">
+        <div class="topbar-breadcrumb">
+          <span>Portal</span> <span>/</span> <span>Pitch Views</span> <span>/</span> <strong>Web Design</strong>
+        </div>
+        <div class="topbar-actions">
+          <a href="/admin" class="b-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+        </div>
+      </div>
+      <main class="b-main">
+        <div class="dw">
+          <h1>Web Design <span style="color:var(--purple-l);">Pitch View</span></h1>
+          <p style="margin-top:6px;color:var(--muted);font-size:0.88rem;">Sales enablement for the Web Design service. Use this view in pitches to show what we build and why it beats templates.</p>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px;margin-top:24px;">
+          <h2 style="font-size:1rem;font-weight:700;margin-bottom:10px;">Content coming soon</h2>
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.6;">This page is a placeholder linked to the <code>/services/web-design</code> service on the public site. Populate with pitch scripts, proof metrics, and demo prompts as needed.</p>
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.6;margin-top:12px;">In the meantime, the <a href="/admin/skills" style="color:var(--purple-l);">Sales Playbook</a> has a full Web Design pitch script, stats, and objection answers.</p>
+        </div>
+      </main>
+    </div>
+  </div>
+</AdminLayout>

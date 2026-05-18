@@ -1,114 +1,74 @@
 # Architecture & Structure
 
-Why this repo is shaped the way it is, and the constraints that decide what you
-may safely change. Conventions live in [`../AGENTS.md`](../AGENTS.md); this file
-is about *structure and deployment*.
+Why this repo is shaped the way it is. Conventions live in
+[`../AGENTS.md`](../AGENTS.md); this file is about *structure and deployment*.
 
-## Deployment model
+> **State:** migrated to Astro (Track B) on branch
+> `restructure/astro-track-b`. `main` is still the old no-build flat site and
+> is what's live until a manual Cloudflare cutover. Both models documented
+> below.
 
-Static site, **no build step**, served by **Cloudflare Pages** from the repo root,
-connected to the GitHub repo. Cloudflare also manages DNS for autoeight.ai. Push
-to `main` = production deploy; every branch/PR = a preview deployment.
+## Deployment model (Astro / Track B — the migrated branch)
 
-The consequence that still governs everything:
+Astro static build. `npm run build` → `dist/` → Cloudflare Pages serves
+`dist/`. `build.format:'file'` emits `about.html` etc., which Cloudflare
+serves at the clean URL `/about` (301s `/about.html`). **This is how every
+existing indexed URL is preserved 1:1 with no redirect map.**
 
-> **Folder path = public URL.** There is no build, so nothing rewrites paths.
+Cloudflare Pages settings for go-live: framework **Astro**, build command
+**`npm run build`**, output dir **`dist`**. This *replaces* the previous
+no-build setup.
 
-Cloudflare Pages *can* issue edge 301s via `_redirects` (GitHub Pages could not),
-so a future restructure is now *technically* possible — but only with a complete,
-correct redirect map, and it is still discouraged: churning indexed URLs loses
-SEO for no real gain. The layout is intentionally flat-ish because that *is* the
-URL contract; treat it as published API, not free-choice code organisation.
+There is no SSR adapter and no D1/KV/R2: all dynamic logic (chat, tracking,
+admin auth) is external Supabase Edge Functions called over HTTPS. Don't add
+bindings the site doesn't use.
 
-## Cloudflare Pages config files
+## Source layout
 
-| File | Purpose |
+```
+src/
+  pages/        file-based routes; path = URL (privacy.astro → /privacy)
+    services/  resources/  results/  admin/
+  layouts/      BaseLayout (head/SEO) → MarketingLayout (public nav/footer/
+                scripts) and AdminLayout (auth-gated, noindex, admin.css)
+  components/   Nav.astro, Footer.astro (verbatim from old fragments)
+  lib/          env.ts (public client config), log.ts
+  styles/       tokens.css (scaffold; not yet wired — see §6 deferral)
+public/         served verbatim at site root, URLs unchanged:
+                style.css, main.js, ae-track.js, ae-consent.js,
+                brand_assets/, chatbot/widget/, _headers, _redirects,
+                robots.txt, sitemap.xml, CNAME
+```
+
+SEO meta is enforced once in `BaseLayout` via props — pages pass
+title/description/canonical/og/twitter; no more hand-copied `<head>` blocks.
+
+## URL preservation
+
+`src/pages/<path>.astro` → `<path>.html` → Cloudflare clean URL `/<path>`.
+Every legacy URL maps 1:1. `_redirects` only handles legacy `/backend/*` →
+`/admin/*` (mirrors the old stubs, now real edge 301s; stubs deleted).
+
+## What's served vs not
+
+| In repo | Public? |
 |---|---|
-| `wrangler.toml` | Pages project config. No build, `pages_build_output_dir = "."`. **No D1/KV/R2 bindings** — the only backend is Supabase, called over HTTPS. Don't add bindings the site doesn't use. |
-| `_headers` | Security headers (safe, non-breaking) + caching. CSP is intentionally **not enforced** — see the file's comments; test as Report-Only first. |
-| `_redirects` | Edge 301s for legacy `/backend/*` → `/admin/*`, mirroring the stubs' own targets exactly. Catch-all `/backend/*` rule must stay last. |
+| `src/pages/**` (built), `public/**` | Yes (`admin/*` is `noindex`; `_redirects`/`robots` cover `/backend/`) |
+| `chatbot/backend/*`, `supabase/**` | No — Supabase source, deployed via Supabase CLI |
+| `node_modules/`, `dist/`, `.astro/`, `.dev.vars` | No (gitignored) |
 
-These files are inert on GitHub Pages, so they were safe to commit before cutover
-and become active automatically once Cloudflare Pages serves the site.
+## Deliberate deviations (recorded, not accidental)
 
-## Migrating GitHub Pages → Cloudflare Pages (one-time, dashboard/DNS — manual)
+- **CSS** stays the legacy `style.css` to keep the look identical; Tailwind
+  preflight disabled. Tokenising is gradual future work (`SPEC-CONFORMANCE.md`).
+- **Sitemap** is the static `public/sitemap.xml` (still valid — URLs
+  unchanged). `@astrojs/sitemap` v3 is incompatible with `build.format:'file'`.
+- **Admin portal** migrated but highest-risk (auth, runtime sidebar via
+  `/admin/layout.js`, chat PWA) — smoke-test before relying on it.
+- No automated tests/lint — acceptable for a static brochure site this size.
 
-The repo side is done. These steps are done by a human in the dashboards:
+## Legacy model (old `main` — pre-migration)
 
-1. **Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.**
-   Pick `Holopoint1/Autoeight`, branch `main`.
-2. **Build settings:** Framework preset **None**, Build command **empty**,
-   Build output directory **`/`**. Save & deploy.
-3. **Verify the `*.pages.dev` preview** before touching DNS: spot-check several
-   pages, nav/footer injection, the chat widget, an `/admin/*` page + login, and
-   a `/backend/...` URL (must 301 to `/admin/...`).
-4. **Custom domain:** Pages project → Custom domains → add `autoeight.ai` (and
-   `www` if used). Cloudflare manages the DNS, so it wires the records itself.
-   This is the cutover — traffic now serves from Cloudflare Pages.
-5. **Decommission GitHub Pages:** GitHub repo → Settings → Pages → set source to
-   None (prevents two origins). The repo `CNAME` file is now inert on Cloudflare
-   Pages — harmless; leave it or delete it later, no rush.
-6. **Supabase is unaffected** (separate project, separate deploy).
-
-Until step 4, the live site is still GitHub Pages and nothing here changes its
-behaviour — committing the config is non-breaking.
-
-## What is served vs. what is not
-
-| Lives in repo | Served to the public? |
-|---|---|
-| Root pages, `services/`, `resources/`, `results/`, `brand_assets/`, `admin/`, `backend/` | Yes (`admin/`+`backend/` robots-blocked) |
-| `chatbot/widget/chat-widget.js` | Yes (loaded by `includes.js`) |
-| `chatbot/backend/*`, `supabase/**` | No — source for Supabase, deployed via Supabase CLI |
-| `.claude/`, `.tmp/`, `supabase/.temp/`, `.dev.vars` | No (gitignored / local state) |
-
-> No-build means the deploy root is the repo root, so docs/source files (`*.md`,
-> `supabase/`) are technically reachable — same as under GitHub Pages, no
-> regression. The repo is public on GitHub anyway. Excluding them would require
-> introducing a build, which is explicitly out of scope.
-
-## Asset reference rules (why moving assets is still unsafe)
-
-- Root pages reference `style.css` / `main.js` (relative, no leading slash)
-- Subfolder pages reference `../style.css` / `../main.js` (depth-sensitive)
-- `includes.js`, `nav.html`, `footer.html`, the logo, the chat widget use `/` paths
-- `robots.txt` hard-codes `/backend/`, `/nav.html`, `/footer.html`, `/includes.js`
-
-Moving a shared asset means correctly rewriting ~50+ mixed relative/absolute
-references *and* `robots.txt` — high risk, zero user benefit. Don't.
-
-## `backend/` — intentional, not a mistake
-
-13 HTML stubs that redirect `/backend/<x>` → `/admin/<x>` (the admin portal moved
-to clean `/admin/*` URLs). On Cloudflare Pages, `_redirects` does this as real
-edge 301s; the stubs remain as a harmless fallback. Blocked in `robots.txt`. The
-name is misleading but renaming defeats its only purpose (back-compat). If you
-add/rename an admin page, update **both** `_redirects` and the matching stub.
-
-## Supabase relationship
-
-`supabase/` (and `chatbot/backend/`) hold Postgres migrations and Edge Function
-source for chat, visitor tracking, and admin auth. Deployed to Supabase
-separately (`supabase functions deploy …`), never by Cloudflare Pages. The
-browser calls hardcoded `https://<project>.supabase.co/functions/v1/*`. Secrets
-live in Supabase Edge Function env vars, never in this repo.
-
-## Documentation model
-
-One source of truth: [`../AGENTS.md`](../AGENTS.md). Every AI-tool config
-(`CLAUDE.md`, `GEMINI.md`, `.cursorrules`, `.windsurfrules`, `system_prompt.md`,
-`.github/copilot-instructions.md`) is a **thin pointer** to it — they stay at
-their required fixed paths but carry no duplicated body, so they can't drift out
-of sync again. Domain READMEs (`admin/README.md`, `chatbot/README.md`) stay
-**co-located with their code** — correct colocation, don't centralise them.
-
-## Known residual issues (accepted, with reasons)
-
-- **`backend/` is misleadingly named** — kept for backward-compat (see above).
-- **Shared assets sit at repo root** — ideal would be `/assets/`, but the
-  reference/`robots.txt` coupling makes the move pure risk for no gain.
-- **`sitemap.xml` is hand-maintained** — update it by hand on page changes.
-- **CSP not yet enforced** — needs per-page Report-Only testing first (see
-  `_headers`); the site predates having any response headers at all.
-- **No automated tests/linting** — acceptable for a hand-coded static brochure
-  site this size; revisit only if it grows app-like.
+No build; flat HTML at repo root served by GitHub/Cloudflare Pages; nav/footer
+injected at runtime by `includes.js`. Folder path = URL, so pages couldn't be
+moved. The Astro branch supersedes this once cut over.

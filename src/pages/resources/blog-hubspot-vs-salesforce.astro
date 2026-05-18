@@ -1,0 +1,167 @@
+---
+import MarketingLayout from '@layouts/MarketingLayout.astro';
+---
+
+<MarketingLayout
+  title="HubSpot vs Salesforce | Autoeight"
+  description="Compare HubSpot and Salesforce for automated outreach, CRM workflows, reporting, and the kind of sales automation setup your team actually needs."
+  canonical="https://autoeight.ai/resources/blog-hubspot-vs-salesforce"
+  ogType="article"
+  ogTitle="HubSpot vs Salesforce: Which CRM Works Best With Automated Outreach?"
+  ogDescription="Compare HubSpot and Salesforce for automated outreach, CRM workflows, reporting, and the kind of sales automation setup your team actually needs."
+  twitterTitle="HubSpot vs Salesforce: Which CRM Works Best With Automated Outreach?"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "HubSpot vs Salesforce: Which CRM Works Best With Automated Outreach?",
+    "description": "Compare HubSpot and Salesforce for automated outreach, CRM workflows, reporting, and the kind of sales automation setup your team actually needs.",
+    "url": "https://autoeight.ai/resources/blog-hubspot-vs-salesforce",
+    "datePublished": "2025-01-01",
+    "author": { "@type": "Person", "name": "Adam Sheridan", "jobTitle": "Founder", "url": "https://autoeight.ai/about", "worksFor": { "@type": "Organization", "name": "Autoeight", "url": "https://autoeight.ai" } },
+    "publisher": { "@type": "Organization", "name": "Autoeight", "url": "https://autoeight.ai", "logo": { "@type": "ImageObject", "url": "https://autoeight.ai/brand_assets/logo.png" } },
+    "image": "https://autoeight.ai/brand_assets/logo.png"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Which CRM is better for small businesses, HubSpot or Salesforce?","acceptedAnswer":{"@type":"Answer","text":"HubSpot is better for most small businesses. It has a generous free tier, simpler setup, and built-in marketing tools. Salesforce is more powerful but more complex and expensive, making it better suited to larger teams with dedicated CRM administrators."}},
+      {"@type":"Question","name":"Can you use HubSpot and Salesforce together?","acceptedAnswer":{"@type":"Answer","text":"Yes. HubSpot offers a native Salesforce integration that syncs contacts, companies, deals, and activities between the two platforms. Many businesses use HubSpot for marketing and Salesforce for sales."}}
+    ]
+  }
+  </script>
+
+<div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-content">
+      <span class="section-label">Integrations</span>
+      <h1>HubSpot vs Salesforce:<br /><em>Which CRM Works Best With Automated Outreach?</em></h1>
+      <p>A practical comparison from the integration trenches. What works, what doesn't, and how to get the most from both.</p>
+    </div>
+  </div>
+
+  <section class="page-section">
+    <div class="article-wrapper">
+      <a href="blog" class="article-back"><i class="fa-solid fa-arrow-left"></i> Back to blog</a>
+
+      <div class="article-meta">
+        <span class="blog-tag">Integrations</span>
+        <span><i class="fa-regular fa-user"></i> Adam Sheridan</span>
+        <span><i class="fa-regular fa-calendar"></i> January 2025</span>
+        <span><i class="fa-regular fa-clock"></i> 7 min read</span>
+      </div>
+
+      <p>We work with both HubSpot and Salesforce regularly. They're the two CRMs we integrate with most often, and at this point we've got strong opinions about what each one does well and where each one makes your life harder when you're trying to bolt on automation.</p>
+
+      <p>This isn't going to be one of those articles that lists every feature side by side in a massive comparison table. You can find those anywhere. What we're going to talk about is the stuff that actually matters when you're connecting a CRM to an automated outreach system. The practical, in the weeds stuff that only shows up when you're actually building the integration.</p>
+
+      <h2>The short version</h2>
+
+      <p>If you're an SME doing under a million in annual revenue and you don't have a dedicated ops person, HubSpot is almost certainly the better choice. It's easier to set up, easier to integrate, and the free tier gives you enough to get started without spending anything.</p>
+
+      <p>If you're a larger business with complex sales processes, multiple teams, and you need granular reporting and permissions, Salesforce is more powerful. But it's also more complex, more expensive, and slower to integrate with external automation tools.</p>
+
+      <p>That's the headline. Now let's get into the details.</p>
+
+      <h2>Integration speed</h2>
+
+      <p>HubSpot wins this one easily. Their API is well documented, consistent, and doesn't require much configuration to get working. When we're building an automated outreach system that needs to create contacts, update deal stages, and log activities, we can usually have HubSpot connected and running within a day or two.</p>
+
+      <p>Salesforce takes longer. Not because the API is bad (it's actually very capable), but because Salesforce instances tend to be heavily customised. Custom fields, custom objects, validation rules, workflow rules, approval processes. Every Salesforce org is different, and that means every integration needs more discovery time to understand what's already in place and how to work with it.</p>
+
+      <p>Typical integration timeline for us: HubSpot takes one to two days. Salesforce takes three to five days, sometimes longer if the org is complex.</p>
+
+      <h2>Data handling</h2>
+
+      <p>This is where things get nuanced. HubSpot has a simpler data model, which is great for getting started but can feel limiting as you scale. Contacts, companies, deals, and activities are all clearly structured and relationships between them are straightforward.</p>
+
+      <p>Salesforce gives you more flexibility with custom objects and relationships, but that flexibility comes at a cost. When you're writing automation that creates or updates records, you need to account for validation rules, required fields, record types, and dependent picklists. Miss any of these and your automation will fail silently or throw errors that are hard to debug.</p>
+
+      <div class="article-callout">
+        <h4>A common gotcha with Salesforce</h4>
+        <p>Salesforce validation rules are the number one cause of automation failures we see. A field that's not required in the UI might have a validation rule that makes it required under certain conditions. If your automation doesn't know about that rule, records fail to create and your pipeline breaks. Always audit validation rules before building any Salesforce integration.</p>
+      </div>
+
+      <h2>Email tracking and logging</h2>
+
+      <p>Both platforms can log emails sent by external automation systems, but they do it differently.</p>
+
+      <p>HubSpot's email logging is straightforward. You can associate emails with contacts using their email address, and HubSpot automatically links them to the right contact record and timeline. It also has built in open and click tracking that works well with automated sequences.</p>
+
+      <p>Salesforce uses email to case and activity logging, which is more powerful but requires more setup. You need to configure task and event records properly, and depending on your org's settings, there might be field mapping issues to sort out. The upside is that once it's configured, the reporting capabilities are significantly better than HubSpot's.</p>
+
+      <h2>Automation friendly features</h2>
+
+      <h3>HubSpot strengths</h3>
+      <ul>
+        <li><strong>Workflows built in.</strong> HubSpot's native workflow tool is decent for simple automation. It won't replace a proper automation platform, but it can handle basic tasks like updating properties when a deal stage changes.</li>
+        <li><strong>Contact scoring.</strong> The lead scoring system is simple to configure and plays nicely with external automation triggers. You can set up automations that fire based on score thresholds.</li>
+        <li><strong>API rate limits are generous.</strong> For most SMEs, you'll never hit them. This matters when your automation is creating or updating hundreds of records per day.</li>
+      </ul>
+
+      <h3>Salesforce strengths</h3>
+      <ul>
+        <li><strong>Flow Builder.</strong> Salesforce's Flow Builder is genuinely powerful. For teams that want some automation inside the CRM itself, it can handle complex logic that HubSpot's workflows can't.</li>
+        <li><strong>Granular permissions.</strong> If you have multiple teams or regions running different outreach campaigns, Salesforce's permission model lets you control exactly who sees what. This is important when automation is creating records across different territories.</li>
+        <li><strong>Reporting.</strong> Salesforce's report builder is leagues ahead of HubSpot's. If you need to slice and dice your automation performance data in specific ways, Salesforce gives you far more flexibility.</li>
+      </ul>
+
+      <h2>Cost considerations</h2>
+
+      <p>This matters more than people think, because CRM costs directly affect the ROI of your automation investment.</p>
+
+      <p>HubSpot's free tier is genuinely useful. You get contact management, deal tracking, and basic reporting without spending anything. Their paid tiers (Starter, Professional, Enterprise) scale up from there, but for most automation use cases, the Professional tier at around 350 pounds per month is the sweet spot.</p>
+
+      <p>Salesforce doesn't have a free tier. Their entry point is Essentials at about 20 pounds per user per month, but realistically, you need Professional (around 60 pounds per user) or Enterprise (around 140 pounds per user) to get the features that make automation work well. For a team of five, that's 300 to 700 pounds per month just for the CRM.</p>
+
+      <p>Factor in the higher integration costs and longer setup time, and Salesforce is typically 2x to 3x more expensive than HubSpot to get up and running with automation. That gap narrows over time as you scale, but it's significant at the start.</p>
+
+      <h2>Our honest recommendation</h2>
+
+      <p>We don't have a horse in this race. We work with both platforms regularly and we'll integrate with whatever our clients are using. But if someone asks us what to choose specifically for automated outreach, here's what we say:</p>
+
+      <p><strong>Choose HubSpot if</strong> you're a growing SME, you want to be up and running quickly, you don't have a dedicated CRM admin, and you value simplicity over configurability.</p>
+
+      <p><strong>Choose Salesforce if</strong> you're a larger organisation with complex sales processes, you have (or plan to hire) someone who can manage the platform, and you need enterprise grade reporting and permissions.</p>
+
+      <p><strong>Don't switch CRMs just for automation.</strong> If you're already established on one platform and it's working for your team, the cost and disruption of switching almost never makes sense. A good automation partner can work with whatever you've got.</p>
+
+      <blockquote>
+        <p>The best CRM for automation is the one your team actually uses. A perfectly integrated Salesforce instance means nothing if your reps are still tracking deals in a spreadsheet because the CRM feels too complicated.</p>
+      </blockquote>
+
+      <hr class="article-divider" />
+
+      <h2>Related articles</h2>
+      <ul>
+        <li><a href="blog-make-vs-zapier-vs-n8n" style="color:var(--purple-light)">Make vs Zapier vs n8n: Which Automation Platform?</a></li>
+        <li><a href="blog-measure-roi-sales-automation" style="color:var(--purple-light)">How to Measure the ROI of Sales Automation</a></li>
+      </ul>
+
+      <p><strong>Using HubSpot or Salesforce and wondering how automation would fit in?</strong> <a href="../book" style="color:var(--purple-light);">Book a free consultation</a> and we'll show you what the integration looks like with your specific setup.</p>
+
+    </div>
+  </section>
+
+
+      <div style="margin-top:48px;margin-bottom:32px;">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:16px;">Keep reading</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="/resources/blog-best-automation-tools-small-business" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;text-decoration:none;color:var(--white);font-size:0.88rem;font-weight:600;transition:background 0.15s;border:1px solid var(--border);"><i class="fa-solid fa-arrow-right" style="color:var(--purple-light);font-size:0.72rem;flex-shrink:0;"></i>Best Automation Tools for Small Business</a>
+          <a href="/resources/blog-measure-roi-sales-automation" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;text-decoration:none;color:var(--white);font-size:0.88rem;font-weight:600;transition:background 0.15s;border:1px solid var(--border);"><i class="fa-solid fa-arrow-right" style="color:var(--purple-light);font-size:0.72rem;flex-shrink:0;"></i>How to Measure Sales Automation ROI</a>
+          <a href="/resources/blog-sales-teams-hard-way" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;text-decoration:none;color:var(--white);font-size:0.88rem;font-weight:600;transition:background 0.15s;border:1px solid var(--border);"><i class="fa-solid fa-arrow-right" style="color:var(--purple-light);font-size:0.72rem;flex-shrink:0;"></i>Why Sales Teams Do It the Hard Way</a>
+        </div>
+        <div style="margin-top:16px;padding:14px 18px;background:rgba(124,92,252,0.06);border:1px solid rgba(124,92,252,0.15);border-radius:10px;display:flex;align-items:center;gap:10px;">
+          <i class="fa-solid fa-map" style="color:var(--purple-light);font-size:0.82rem;"></i>
+          <span style="font-size:0.85rem;color:var(--muted);">Go deeper: <a href="/resources/blueprint-sales-automation" style="color:var(--purple-light);font-weight:600;text-decoration:none;">Sales Automation Blueprint</a></span>
+        </div>
+      </div>
+<div style="margin-top:32px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;gap:12px;"><i class="fa-solid fa-arrow-right" style="color:var(--purple-light);"></i><span style="font-size:0.88rem;color:var(--muted);">Related service: <a href="/services/crm-integration" style="color:var(--purple-light);font-weight:600;text-decoration:none;">CRM &amp; Integration</a></span></div>
+</MarketingLayout>

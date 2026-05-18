@@ -1,0 +1,42 @@
+---
+// Shared footer. Markup verbatim from legacy /footer.html. Replaces the
+// includes.js fetch('/footer.html'). "Manage Cookies" still calls the global
+// window.AE_CONSENT_SHOW exposed by /ae-consent.js (loaded in MarketingLayout).
+---
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img loading="lazy" src="/brand_assets/logo.png?v=3" alt="Autoeight" />
+        <p>We build custom software, automations and integrations for businesses across the UK.</p>
+        <div class="socials">
+          <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/web-design">Web Design</a></li>
+          <li><a href="/services/ai-automation">AI &amp; Automation</a></li>
+          <li><a href="/services/crm-integration">CRM &amp; Integration</a></li>
+          <li><a href="/services/sales-automation">Sales Automation</a></li>
+          <li><a href="/services/lms">Learning Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <address class="footer-address">Halifax,<br />West Yorkshire<br /><br /><a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a></address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; Copyright 2026, Autoeight</p>
+      <div class="footer-legal">
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="javascript:void(0)" onclick="if(window.AE_CONSENT_SHOW)window.AE_CONSENT_SHOW();">Manage Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>

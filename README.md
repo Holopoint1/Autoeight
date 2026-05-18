@@ -1,66 +1,53 @@
 # Autoeight V2 — autoeight.ai
 
-The Autoeight company website. Autoeight is an AI and automation agency in Halifax,
-West Yorkshire. This is a **static HTML/CSS/JS site with no build step**, hosted on
-**Cloudflare Pages** at **autoeight.ai** (Cloudflare also manages the domain's DNS).
-It was migrated from GitHub Pages; the GitHub repo is still the connected source.
+The Autoeight company website. Autoeight is an AI and automation agency in
+Halifax, West Yorkshire. **Astro static site, deployed on Cloudflare Pages.**
+
+> **Branch state:** on `restructure/astro-track-b` this is the migrated Astro
+> project (61 pages, builds clean, **not deployed**). `main` is still the old
+> no-build flat site and is what's live until a manual Cloudflare cutover.
 
 ## Quick start
 
-There is nothing to install or build. To preview locally:
-
 ```bash
-# Cloudflare Pages runtime (matches production, applies _headers/_redirects):
-npx wrangler pages dev .
-
-# …or any plain static server:
-python -m http.server 8000
+npm install
+npm run dev      # local dev server — open the printed URL
+npm run build    # builds ./dist (exactly what Cloudflare Pages serves)
 ```
-
-`includes.js` (nav/footer/chat injection) and absolute `/` asset paths work best
-served from the site root.
 
 ## Deploying
 
-The repo is connected to a Cloudflare Pages project. **There is no build** —
-Framework preset *None*, build command empty, output directory `/` (repo root).
-Push to `main` → production deploy. Every branch/PR → a preview deployment.
-`_headers`, `_redirects`, and `wrangler.toml` take effect automatically on
-Cloudflare Pages.
+The site is built (`npm run build`) and Cloudflare Pages serves `dist/`.
+Go-live settings: framework **Astro**, build command **`npm run build`**,
+output **`dist`**. Every push to `main` → production; branches → previews.
 
-> **Important:** there is still no build step, so the folder path *is* the public
-> URL. Cloudflare Pages *can* 301 via `_redirects`, but don't churn URLs — see
-> [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). First-time cutover steps are in
-> that file under "Migrating GitHub Pages → Cloudflare Pages".
+`build.format:'file'` keeps URLs identical to the old site (`/about`,
+`/services/web-design`, …), so no redirect map is needed. `_redirects` only
+handles legacy `/backend/* → /admin/*`. Full reasoning + the one-time cutover
+steps: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
 ## Where things live
 
 | Path | What |
 |---|---|
-| `index.html`, `about.html`, `book.html`, `privacy.html`, `terms.html` | Root pages |
-| `style.css`, `main.js`, `includes.js`, `ae-track.js`, `ae-consent.js` | Shared assets (do not move) |
-| `nav.html`, `footer.html` | Fragments injected at runtime by `includes.js` |
-| `wrangler.toml`, `_headers`, `_redirects` | Cloudflare Pages config |
-| `services/` | 9 service landing pages |
-| `resources/` | Blog + blueprints + glossary + news |
-| `results/` | Case studies + testimonials |
-| `brand_assets/` | Logos, images, client case-study pages |
-| `admin/` | Internal staff portal (`/admin/*`, auth-gated) — see [`admin/README.md`](admin/README.md) |
-| `backend/` | Legacy redirect stubs → `/admin/*` (now also 301'd at the edge by `_redirects`) |
-| `chatbot/` | Chat widget + edge-function source — see [`chatbot/README.md`](chatbot/README.md) |
-| `supabase/` | Postgres migrations + Edge Functions (deployed to Supabase, not Cloudflare Pages) |
-| `docs/` | Project documentation |
+| `src/pages/` | Every page — route path = URL. `services/ resources/ results/ admin/` |
+| `src/layouts/` | `BaseLayout` (head/SEO) → `MarketingLayout` (public) / `AdminLayout` (auth-gated) |
+| `src/components/` | `Nav.astro`, `Footer.astro` |
+| `src/lib/` | `env.ts` (public client config), `log.ts` |
+| `src/styles/` | `tokens.css` (scaffold; CSS still lives in legacy `public/style.css`) |
+| `public/` | Served verbatim, URLs unchanged: `style.css`, `main.js`, `ae-*.js`, `brand_assets/`, `chatbot/widget/`, `_headers`, `_redirects`, `robots.txt`, `sitemap.xml`, `CNAME` |
+| `chatbot/`, `supabase/` | Edge-function source — deployed to Supabase, **not** Cloudflare |
+| `docs/` | Architecture, spec conformance, migration record |
 
 ## Documentation
 
-- **[`AGENTS.md`](AGENTS.md)** — single source of truth for conventions, brand voice,
-  SEO rules, and structure (AI tool configs all point here)
-- **[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)** — deployment model, the
-  Cloudflare Pages cutover checklist, and structural rationale
-- **[`admin/README.md`](admin/README.md)** — admin portal
-- **[`chatbot/README.md`](chatbot/README.md)** — chat widget & setup
+- **[`AGENTS.md`](AGENTS.md)** — single source of truth (conventions, voice, SEO, structure)
+- **[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)** — deployment model & rationale
+- **[`docs/MIGRATION.md`](docs/MIGRATION.md)** — the Astro migration record + follow-ups
+- **[`docs/SPEC-CONFORMANCE.md`](docs/SPEC-CONFORMANCE.md)** — scorecard vs the Cloudflare spec
+- **[`admin/README.md`](admin/README.md)** · **[`chatbot/README.md`](chatbot/README.md)**
 
 ## Conventions in one line
 
-Vanilla HTML/CSS/JS, British English, hyphenated class names, reuse existing
-components, never commit secrets. Full detail in [`AGENTS.md`](AGENTS.md).
+Astro + vanilla JS, British English, reuse existing components, page JS as
+`is:inline`, never commit secrets. Full detail in [`AGENTS.md`](AGENTS.md).

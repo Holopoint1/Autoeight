@@ -1,0 +1,13 @@
+---
+import MarketingLayout from '@layouts/MarketingLayout.astro';
+---
+
+<MarketingLayout
+  title="Redirecting to Results &mdash; Autoeight"
+  canonical="https://autoeight.ai/results"
+  robots="noindex"
+>
+  <meta http-equiv="refresh" content="0; url=/results" />
+  <script is:inline>location.replace('/results' + (location.search || ''));</script>
+  Redirecting to <a href="/results">/results</a>...
+</MarketingLayout>

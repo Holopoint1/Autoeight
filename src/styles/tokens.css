@@ -1,0 +1,18 @@
+/*
+ * Design tokens — SCAFFOLD / future consolidation target.
+ *
+ * NOTE: This file is intentionally NOT imported into the render yet. The live
+ * design system still lives in /public/style.css (4k+ lines) and is the source
+ * of truth, so the site looks identical post-migration. These mirror the few
+ * variables pages actually reference (see privacy.astro fallbacks). The future
+ * CSS task (see docs/MIGRATION.md) is to lift style.css's :root vars here and
+ * collapse the legacy stylesheet against these tokens — done gradually, never
+ * in a way that changes the live look in one big risky pass.
+ */
+:root {
+  --purple: #7c5cfc;
+  --muted: #71717a;
+  --border: #e4e4e7;
+  --surface: #f4f4f5;
+  --body: #3f3f46;
+}

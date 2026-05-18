@@ -1,0 +1,93 @@
+---
+// AdminLayout — internal, auth-gated admin portal pages (NOT public).
+// Faithful to the legacy admin <head>/shell (see admin/index.html,
+// admin/visitors/index.html, admin/login/index.html). Deliberately does NOT
+// use MarketingLayout/BaseLayout: no public nav/footer, no public SEO/og,
+// no public chat widget, never indexed.
+//
+// Legacy script order is preserved exactly:
+//   <head> … <script src="/admin/auth.js?v=unified"></script></head>
+//   <body><script>AEAuth.check();</script> … <slot /> …
+//          <script src="/admin/layout.js?v=unified"></script></body>
+// auth.js MUST be in <head> and AEAuth.check() MUST run before content
+// (it redirects unauthenticated users) — moving them to the body footer
+// would change auth timing, so they stay where the legacy pages put them.
+//
+// Props let the few non-standard pages opt out of pieces of the shell:
+//   - login page: no robots meta is harmless (we still add noindex —
+//     admin must never be indexed), no AEAuth.check(), no layout.js sidebar.
+//   - chat page: fully custom head (manifest/theme-color/own styles); it
+//     does not use the .app-layout shell, admin.css, or layout.js.
+
+const CSS_VERSION = '3';        // matches legacy admin.css?v=3
+const AUTH_VERSION = 'unified'; // matches legacy auth.js?v=unified
+const LAYOUT_VERSION = 'unified'; // matches legacy layout.js?v=unified
+
+export interface Props {
+  /** <title> text — copied verbatim from the legacy page. */
+  title: string;
+  /** false on the chat PWA page, which ships its own full <head>
+   *  (fonts / Font Awesome / admin.css). */
+  standardHead?: boolean;
+  /** Legacy protected pages load auth.js in <head>. The login page
+   *  loads it in <body> instead, so it sets this false and includes
+   *  its own <script src="/admin/auth.js?v=unified"> in the slot. */
+  headAuthScript?: boolean;
+  /** false on the login page (no session yet) and chat (own gate). */
+  authCheck?: boolean;
+  /** false on the login page (single static sidebar) and chat. */
+  layoutScript?: boolean;
+  /** <html lang>. Default 'en' (matches every legacy admin page except
+   *  the chat PWA, whose legacy markup is lang="en-GB"). */
+  lang?: string;
+  /** viewport content. Default matches the standard admin pages; the
+   *  chat PWA legacy page adds viewport-fit=cover for notch handling. */
+  viewport?: string;
+}
+
+const {
+  title,
+  standardHead = true,
+  headAuthScript = true,
+  authCheck = true,
+  layoutScript = true,
+  lang = 'en',
+  viewport = 'width=device-width, initial-scale=1.0',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content={viewport} />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>{title}</title>
+    {standardHead && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
+        <link rel="stylesheet" href={`/admin/admin.css?v=${CSS_VERSION}`} />
+      </>
+    )}
+    {standardHead && headAuthScript && (
+      <script is:inline src={`/admin/auth.js?v=${AUTH_VERSION}`}></script>
+    )}
+    <slot name="head" />
+  </head>
+  <body>
+    {authCheck && <script is:inline>AEAuth.check();</script>}
+    <slot />
+    {layoutScript && <script is:inline src={`/admin/layout.js?v=${LAYOUT_VERSION}`}></script>}
+  </body>
+</html>

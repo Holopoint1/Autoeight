@@ -1,0 +1,1178 @@
+---
+import MarketingLayout from '@layouts/MarketingLayout.astro';
+---
+
+<MarketingLayout
+  title="Web Design Agency Halifax | Autoeight"
+  description="Web design agency in Halifax. Custom websites with automation, dashboards, integrations, and SEO built in from day one."
+  canonical="https://autoeight.ai/services/web-design"
+  ogType="website"
+  ogTitle="Web Design Agency Halifax & West Yorkshire | Autoeight"
+  ogDescription="Web design agency in Halifax. Custom websites with automation, dashboards, integrations, SEO, and admin backends. No templates."
+  ogImage="https://autoeight.ai/brand_assets/logo.png"
+  twitterCard="summary_large_image"
+  twitterTitle="Web Design Agency Halifax & West Yorkshire | Autoeight"
+>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Web Design & Automation",
+    "description": "Autoeight designs and builds websites with automation, secure logins, reporting dashboards, integrations, SEO foundations, and admin backends built in.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Autoeight",
+      "url": "https://autoeight.ai",
+      "logo": "https://autoeight.ai/brand_assets/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Halifax",
+        "addressRegion": "West Yorkshire",
+        "addressCountry": "GB"
+      }
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Halifax"},
+      {"@type": "City", "name": "Leeds"},
+      {"@type": "City", "name": "Bradford"},
+      {"@type": "City", "name": "Huddersfield"},
+      {"@type": "AdministrativeArea", "name": "West Yorkshire"},
+      {"@type": "Country", "name": "United Kingdom"}
+    ],
+    "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "4", "bestRating": "5"},
+    "serviceType": "Web Design"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoeight.ai/"},
+      {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://autoeight.ai/services/web-design"},
+      {"@type": "ListItem", "position": 3, "name": "Web Design"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What makes your web design different from other agencies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We build websites with automation and conversion built in from day one. Every form, button, and CTA connects to your backend systems. Leads flow into your CRM automatically, confirmation emails go out instantly, and sales sequences fire without anyone touching anything."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a website take to build?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most websites are live within 3-4 weeks. We start with strategy and structure, then design and build, integrate automations, and launch with ongoing optimisation. Simpler sites can be done faster."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you use WordPress or a website builder?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on what your business needs. We build custom HTML/CSS sites for maximum speed and control, WordPress sites for content-heavy businesses, and can work with other platforms if needed. We recommend what's right for your goals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my website be optimised for search engines?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every site we build includes technical SEO, structured data markup, fast loading times, mobile responsiveness, and Core Web Vitals optimisation. We also write conversion-focused copy that targets the keywords your customers are searching for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer ongoing website maintenance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We monitor performance, make content updates, run conversion optimisation, and handle any technical issues. Your site keeps improving after launch, not just sitting there."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How Autoeight builds websites",
+    "step": [
+      {"@type": "HowToStep", "position": 1, "name": "Strategy and structure", "text": "We start with your goals, who visits your site, and what action you want them to take."},
+      {"@type": "HowToStep", "position": 2, "name": "Design and build", "text": "Mobile-first, fast-loading, conversion-focused. Every section designed to drive enquiries."},
+      {"@type": "HowToStep", "position": 3, "name": "Connect and automate", "text": "Forms wired to your CRM. Automated email sequences. Booking systems. AI chat."},
+      {"@type": "HowToStep", "position": 4, "name": "Launch and optimise", "text": "We go live, track everything, and refine based on real visitor behaviour."}
+    ]
+  }
+  </script>
+<!-- HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-content">
+      <span class="section-label">Services</span>
+      <h1>Web Design in Halifax &amp; West Yorkshire<br /><em>Built to convert</em></h1>
+      <p>We design and build full websites with automation, integrations, reporting, and secure customer journeys built in from day one. Not just a brochure site. A proper online system for your business.</p>
+      <a href="../book" class="btn btn-primary btn-lg">Get started <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- ── RECENT WEBSITES SHOWCASE ── -->
+  <style is:global>
+    .web-showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+    .web-showcase-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .web-showcase-card:hover {
+      border-color: rgba(124,92,252,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(124,92,252,0.12);
+    }
+    .web-showcase-frame {
+      position: relative;
+      background: #1a1a1f;
+      padding: 28px 0 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .web-showcase-frame::before {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: 14px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #ff5f57;
+      box-shadow: 16px 0 0 #febc2e, 32px 0 0 #28c840;
+    }
+    .web-showcase-frame img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .web-showcase-body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; }
+    .web-showcase-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .web-showcase-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: var(--purple-dim);
+      border: 1px solid rgba(124,92,252,0.25);
+      border-radius: 100px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--purple-light);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .web-showcase-domain { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+    .web-showcase-card h3 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+    .web-showcase-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin: 0; }
+    .web-showcase-links { display: flex; gap: 18px; margin-top: 6px; flex-wrap: wrap; }
+    .web-showcase-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--purple-light);
+      text-decoration: none;
+    }
+    .web-showcase-links a:hover { text-decoration: underline; }
+    .web-showcase-links a i { font-size: 0.7rem; }
+    @media (max-width: 700px) {
+      .web-showcase { gap: 20px; }
+      .web-showcase-body { padding: 18px 20px 20px; }
+    }
+  </style>
+  <section class="page-section" style="padding:56px 5% 8px;">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 36px;">
+        <span class="section-label">Recent Builds</span>
+        <h2 class="section-title" style="font-size:clamp(1.5rem, 4vw, 2.1rem);">Websites we've designed and shipped</h2>
+        <p class="section-sub" style="margin:12px auto 0;">Real sites running in production. Click through and have a poke around.</p>
+      </div>
+      <div class="web-showcase reveal">
+        <div class="web-showcase-card">
+          <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="web-showcase-frame" aria-label="Visit The Dice Tavern live site">
+            <img loading="lazy" src="/brand_assets/case-studies/dice-tavern/Site_pics/home hero banner.png" alt="The Dice Tavern homepage — handcrafted dice e-commerce store" />
+          </a>
+          <div class="web-showcase-body">
+            <div class="web-showcase-meta">
+              <span class="web-showcase-tag">E-Commerce</span>
+              <span class="web-showcase-domain">thedicetavern.co.uk</span>
+            </div>
+            <h3>The Dice Tavern</h3>
+            <p>Full storefront with custom admin: product management, order pipeline, automated email templates, stock alerts, and a 4.9★ review rating.</p>
+            <div class="web-showcase-links">
+              <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit live site</a>
+              <a href="../results/dice-tavern"><i class="fa-solid fa-arrow-right"></i> Read case study</a>
+            </div>
+          </div>
+        </div>
+        <div class="web-showcase-card">
+          <a href="https://tmjoineryltd.co.uk/" target="_blank" rel="noopener" class="web-showcase-frame" aria-label="Visit TM Joinery live site">
+            <img loading="lazy" src="/brand_assets/case-studies/tm-joinery/tmjoineryhomepage.png" alt="TM Joinery homepage — bespoke joinery and carpentry, West Yorkshire" />
+          </a>
+          <div class="web-showcase-body">
+            <div class="web-showcase-meta">
+              <span class="web-showcase-tag">Trades &middot; Local SEO</span>
+              <span class="web-showcase-domain">tmjoineryltd.co.uk</span>
+            </div>
+            <h3>TM Joinery</h3>
+            <p>Brochure-plus build with live Facebook feed, automated quote requests, and local SEO tuned for "joiner near me" across West Yorkshire.</p>
+            <div class="web-showcase-links">
+              <a href="https://tmjoineryltd.co.uk/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit live site</a>
+              <a href="../results/tm-joinery"><i class="fa-solid fa-arrow-right"></i> Read case study</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:32px;">
+        <a href="../results/case-studies" class="btn btn-ghost" style="font-size:0.88rem;">See all case studies <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── DEFINITION ── -->
+  <section class="page-section" style="padding:48px 5% 0;">
+    <div class="page-section-inner" style="max-width:760px;margin:0 auto;">
+      <div class="reveal" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;">
+        <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:12px;">What makes a website actually work for a business?</h2>
+        <p style="font-size:0.92rem;line-height:1.75;color:var(--muted);">Most business websites look fine but don't actually do anything. They sit there. Nobody follows up with the people who visit. Forms go to a shared inbox and get forgotten. There's no connection between the website and the tools the team uses every day.</p>
+        <p style="font-size:0.92rem;line-height:1.75;color:var(--muted);margin-top:10px;">A website that works is one where every form, button, and page is connected to something. Enquiries go straight into your CRM. Confirmation emails go out on their own. Leads get scored and routed. The site loads fast, ranks on Google, and looks good on every device. That's what we build.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO: WHAT MAKES OURS DIFFERENT -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="two-col reveal">
+        <div class="content-block">
+          <span class="section-label">Why It's Different</span>
+          <h2 class="section-title">Not just a website. A growth system.</h2>
+          <p class="section-sub">Most agencies hand you a website and disappear. We build full online systems with automation baked in. Lead capture, sales handoff, live reporting, customer areas, internal admin tools.</p>
+          <p class="section-sub" style="margin-top:14px;">Your website can do a lot more than look good. It can include full storefront features, customer accounts, live dashboards, secure staff access, and the backend tools your team actually needs to run things day to day.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-rocket"></i></div>
+            <div>
+              <h3>Built Around Your Business</h3>
+              <p>We design around how your team actually works, so the site supports sales, enquiries, customer journeys, and internal processes from day one.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-gears"></i></div>
+            <div>
+              <h3>Automation Included</h3>
+              <p>Every site can have workflow automation, CRM sync, lead routing, follow ups, notifications, order handling, and reporting running in the background.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div>
+              <h3>Built to Convert</h3>
+              <p>We don't just make it look good. Every page is set up to guide visitors toward enquiries, bookings, sign ups, or sales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <div class="section-divider"></div>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
+        <span class="section-label">What's Included</span>
+        <h2 class="section-title">Everything a modern site needs, built in</h2>
+          <p class="section-sub" style="margin:14px auto 0;">No add-ons and no hidden extras. Design, automation, integrations, performance, reporting, secure access, customer accounts, and backend controls are all part of the build from the start.</p>
+      </div>
+      <div class="tier-grid reveal" style="transition-delay:0.1s;">
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <div class="tier-badge">Design</div>
+          <h3>Custom Website Design</h3>
+          <p>We design the site around your business, your offer, and your users. That could be a service site, a booking platform, a full ecommerce build, or a member area with custom flows throughout.</p>
+        </div>
+        <div class="tier-card featured">
+          <div class="tier-icon"><i class="fa-solid fa-robot"></i></div>
+          <div class="tier-badge">Automation</div>
+          <h3>Full Automation &amp; Integrations</h3>
+          <p>Every form submission, enquiry, and purchase gets captured, routed, followed up, and synced into the systems your team already uses. Automations run behind the scenes.</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <div class="tier-badge">SEO</div>
+          <h3>SEO Ready Architecture</h3>
+          <p>Fast pages, clean structure, proper metadata, strong content foundations, and page setups that give you a real shot at ranking from the start.</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-gauge-high"></i></div>
+          <div class="tier-badge">Performance</div>
+          <h3>Speed &amp; Core Web Vitals</h3>
+          <p>Every site is built for speed. Compressed assets, edge delivery, and clean code that loads fast on mobile, desktop, and throughout busy customer journeys.</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-chart-bar"></i></div>
+          <div class="tier-badge">Analytics</div>
+          <h3>Live Sales &amp; Behaviour Reporting</h3>
+          <p>Track traffic, conversions, customer behaviour, enquiries, sales activity, and revenue in one live view that's always up to date.</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <div class="tier-badge">Ongoing</div>
+          <h3>Secure Portals &amp; Logins</h3>
+          <p>We build secure login systems, admin backends, and separate areas for customers, staff, or members with the right access controls in place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="page-section alt">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:760px;margin:0 auto 56px;">
+        <span class="section-label">Feature Depth</span>
+        <h2 class="section-title">The kind of features we can build into your site</h2>
+        <p class="section-sub" style="margin:14px auto 0;">If you want something deeper, we can build the kind of features you'd see on a full online platform like Dice Tavern. Not just a simple brochure site.</p>
+      </div>
+      <div class="tier-grid reveal" style="transition-delay:0.08s;">
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-store"></i></div>
+          <div class="tier-badge">Storefront</div>
+          <h3>Real sales features</h3>
+          <p>Category filters, live search, sorting, product grids, detailed product pages, trust signals, reviews, cross-sell blocks, urgency messaging, and basket flows all built to help conversion.</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-user-shield"></i></div>
+          <div class="tier-badge">Accounts</div>
+          <h3>Customer accounts and secure logins</h3>
+          <p>Customer registration, login areas, account pages, purchase history, enquiry history, order tracking, saved details, review access, and role based access where needed.</p>
+        </div>
+        <div class="tier-card featured">
+          <div class="tier-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <div class="tier-badge">Backend</div>
+          <h3>Admin systems your team can actually use</h3>
+          <p>Full admin backends with secure login, dashboards, content controls, user management, order views, lead tables, workflow tools, email controls, and internal reporting.</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <div class="tier-badge">Automation</div>
+          <h3>Automated follow ups and customer flows</h3>
+          <p>Confirmation emails, dispatch updates, follow ups, review requests, reminders, status changes, staff notifications, and customer support flows connected to the site.</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-chart-simple"></i></div>
+          <div class="tier-badge">Reporting</div>
+          <h3>Live dashboards and business visibility</h3>
+          <p>Track orders, sales, enquiries, lead quality, customer behaviour, stock, revenue, and pipeline movement in clear dashboards that help you make decisions faster.</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon"><i class="fa-solid fa-headset"></i></div>
+          <div class="tier-badge">Support</div>
+          <h3>Help centres, live chat, and information hubs</h3>
+          <p>We can build support centres, FAQ systems, gated help content, live chat, info pages, and backend tools so staff can manage customer questions properly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM FEATURES -->
+  <div class="section-divider"></div>
+  <section class="page-section alt">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px;">
+        <span class="section-label">Platform Capabilities</span>
+        <h2 class="section-title">What your website can include</h2>
+        <p class="section-sub" style="margin:14px auto 0;">We can build far more than a marketing site. The website can become the front end of your sales process, reporting setup, customer support flow, and secure internal system.</p>
+      </div>
+      <div class="two-col reveal" style="transition-delay:0.1s;">
+        <ul class="check-list">
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Sales dashboards</strong> with clearer reporting on leads, conversions, revenue, and pipeline activity.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Customer behaviour tracking</strong> so you can see what people click, read, submit, buy, and return to.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>SEO structure</strong> including technical setup, metadata, page speed, schema, and strong content foundations.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Integrations</strong> with CRMs, calendars, payment tools, email systems, stock tools, and internal platforms.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Advanced storefront tools</strong> like search, filtering, product pages, cart flows, checkout journeys, and review systems.</span></li>
+        </ul>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Live chat and info centres</strong> to help customers find answers and contact the right team quickly.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Customer and staff logins</strong> with separate frontend and backend experiences for each role.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Admin backends</strong> for managing content, users, enquiries, sales data, stock, orders, and internal workflows.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Email automation and status flows</strong> for confirmations, updates, reminders, follow ups, and review requests.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span><strong>Cloudflare hosting and security</strong> for fast delivery, secure access, and reliable performance online.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="two-col reveal">
+        <div class="content-block">
+          <span class="section-label">Admin Backend</span>
+          <h2 class="section-title">Secure admin login, staff tools, and full backend control</h2>
+          <p class="section-sub">We can build proper backend systems behind the public website, with secure login for admins and separate access for staff, managers, and customer support teams.</p>
+          <p class="section-sub" style="margin-top:14px;">That can include dashboards, order tables, lead management, user control, content editing, email automation settings, stock visibility, review moderation, and internal workflow tools all in one place.</p>
+          <ul class="check-list" style="margin-top:24px;">
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Admin login screen</strong> with secure authentication and role based access.</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Dashboard home</strong> for orders, revenue, enquiries, users, and alerts.</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Content and data controls</strong> for products, pages, reviews, forms, and support content.</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Staff workflow tools</strong> for handling leads, support tickets, fulfilment, and follow ups.</span></li>
+          </ul>
+        </div>
+        <div class="hero-dashboard" style="align-self:center;">
+          <div class="dashboard-bar">
+            <div class="dashboard-dots">
+              <span class="dot-red"></span>
+              <span class="dot-amber"></span>
+              <span class="dot-green"></span>
+            </div>
+            <div class="dashboard-url">admin.autoeight.ai · Secure Backend Login</div>
+          </div>
+          <div class="dashboard-body">
+            <div class="dash-card">
+              <div class="dash-card-label">Pending actions</div>
+              <div class="dash-card-value">18</div>
+              <div class="dash-card-sub"><i class="fa-solid fa-bell"></i> orders, leads, and support tasks</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-label">Revenue this month</div>
+              <div class="dash-card-value">£24.6k</div>
+              <div class="dash-card-sub"><i class="fa-solid fa-chart-line"></i> live backend reporting</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-label">Backend users</div>
+              <div class="dash-card-value">7</div>
+              <div class="dash-card-sub"><i class="fa-solid fa-user-shield"></i> role based access enabled</div>
+            </div>
+            <div class="dash-chart">
+              <div class="dash-chart-label">Admin modules</div>
+              <div class="sales-report-list" style="margin-top:16px;">
+                <div class="sales-report-item"><span>Orders and fulfilment</span><strong>Live</strong></div>
+                <div class="sales-report-item"><span>Lead and enquiry management</span><strong>Live</strong></div>
+                <div class="sales-report-item"><span>Email automation settings</span><strong>Ready</strong></div>
+                <div class="sales-report-item"><span>Content and support centre</span><strong>Live</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="section-divider"></div>
+
+  <!-- ── CASE STUDIES ── -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 40px;">
+        <span class="section-label">Real Results</span>
+        <h2 class="section-title">See it in action with real clients</h2>
+      </div>
+      <div class="cs-highlights reveal" style="margin:0 auto;">
+        <a href="../results/tm-joinery" class="cs-highlight">
+          <span class="cs-highlight-tag">Web Design + SEO</span>
+          <h3>TM Joinery Ltd</h3>
+          <div class="cs-highlight-stats"><div class="cs-highlight-stat"><strong>6</strong> regions ranking</div><div class="cs-highlight-stat"><strong>5.0★</strong> Google</div></div>
+          <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+        <a href="/results/dice-tavern" class="cs-highlight">
+          <span class="cs-highlight-tag">E-Commerce + CMS</span>
+          <h3>The Dice Tavern</h3>
+          <div class="cs-highlight-stats"><div class="cs-highlight-stat"><strong>4.9★</strong> rating</div><div class="cs-highlight-stat"><strong>4</strong> emails per order</div></div>
+          <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div style="text-align:center; margin-top:28px;" class="reveal">
+        <a href="../results" class="btn btn-primary">View all case studies <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DICE TAVERN LIVE PREVIEW ── -->
+  <style is:global>
+    .dt-preview-section {
+      padding: 64px 5% 72px;
+      background: linear-gradient(180deg, #0a0a0e 0%, #111118 100%);
+      position: relative;
+      overflow: hidden;
+      --white: #ffffff;
+      --muted: rgba(255,255,255,0.62);
+      color: #ffffff;
+    }
+    .dt-preview-section::before {
+      content: "";
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124,92,252,0.12), transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .dt-preview-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .dt-preview-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 36px;
+    }
+    .dt-preview-header .section-label {
+      color: #a78bfa;
+      display: inline-block;
+    }
+    .dt-preview-header .section-label::before { display: none !important; }
+    .dt-preview-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 12px 0 14px;
+      color: #ffffff;
+    }
+    .dt-preview-header h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #a78bfa, #6d4de6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .dt-preview-header p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.7);
+    }
+    .dt-preview-header p a {
+      color: #a78bfa;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .dt-preview-header p a:hover { text-decoration: underline; }
+    .dt-frame {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+    }
+    .dt-chrome {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #15151f;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .dt-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+    .dt-dot.r { background: #ff5f57; }
+    .dt-dot.a { background: #febc2e; }
+    .dt-dot.g { background: #28c840; }
+    .dt-url {
+      flex: 1;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #8a8a95;
+      background: #0d0d14;
+      padding: 5px 14px;
+      border-radius: 6px;
+      font-family: 'SF Mono', Menlo, monospace;
+    }
+    .dt-url i { color: #4ade80; margin-right: 6px; font-size: 0.72rem; }
+    .dt-visit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      color: #a78bfa;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .dt-visit:hover { text-decoration: underline; }
+  </style>
+  <section class="dt-preview-section">
+    <div class="dt-preview-inner">
+      <div class="dt-preview-header">
+        <span class="section-label">Live Client Site</span>
+        <h2>The Dice Tavern. <em>Built by us, live right now.</em></h2>
+        <p>A full e-commerce site with custom product pages, automated order emails, stock management, and a CMS dashboard.</p>
+      </div>
+
+      <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-frame" style="display:block;text-decoration:none;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;">
+        <div class="dt-chrome">
+          <span class="dt-dot r"></span>
+          <span class="dt-dot a"></span>
+          <span class="dt-dot g"></span>
+          <div class="dt-url"><i class="fa-solid fa-lock"></i>www.thedicetavern.co.uk</div>
+        </div>
+        <!-- Recreated Dice Tavern hero (native HTML/CSS, no iframe) -->
+        <div class="dt-mock">
+          <!-- Mini nav bar -->
+          <div class="dt-mock-nav">
+            <img loading="lazy" src="/brand_assets/case-studies/dice-tavern/logo-RESIZE.png" alt="" style="height:32px;filter:brightness(10);" />
+            <div class="dt-mock-links">
+              <span>HOME</span><span>SHOP</span><span>ABOUT</span><span>CONTACT</span>
+            </div>
+          </div>
+          <!-- Hero content -->
+          <div class="dt-mock-hero">
+            <div class="dt-mock-badge">EST. 2024 &mdash; YORK, ENGLAND</div>
+            <div class="dt-mock-h1">
+              <span class="dt-line dt-l1">BUILD YOUR</span>
+              <span class="dt-line dt-l2">BATTLEFIELD.</span>
+              <span class="dt-line dt-l3">WIN THE WAR.</span>
+            </div>
+            <p class="dt-mock-sub">Handcrafted MDF terrain, gaming mats, storage solutions &amp; accessories for Warhammer 40K.</p>
+            <div class="dt-mock-btns">
+              <span class="dt-mock-btn-pri">SHOP NOW &rarr;</span>
+              <span class="dt-mock-btn-sec">OUR STORY</span>
+            </div>
+            <div class="dt-mock-trust">
+              <span>&starf;&starf;&starf;&starf;&starf; 4.9 from 80+ reviews</span>
+              <span>&bull; Ships in 1-3 days</span>
+            </div>
+          </div>
+          <!-- Ember particles -->
+          <div class="dt-embers">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <!-- Hover CTA -->
+          <div class="dt-hover-cta">
+            <span>Visit live site <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </div>
+        </div>
+      </a>
+      <style is:global>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
+        .dt-mock {
+          position: relative;
+          background: radial-gradient(ellipse 80% 60% at 50% 80%, #1a1408 0%, #0c0a06 50%, #050404 100%);
+          padding: 0;
+          overflow: hidden;
+          min-height: 480px;
+          display: flex;
+          flex-direction: column;
+        }
+        .dt-mock-nav {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px 28px;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .dt-mock-links {
+          display: flex; gap: 24px;
+          font-family: 'Inter', sans-serif;
+          font-size: 0.68rem; font-weight: 600;
+          letter-spacing: 0.12em;
+          color: rgba(255,255,255,0.7);
+        }
+        .dt-mock-hero {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 40px 24px 48px;
+          position: relative;
+          z-index: 2;
+        }
+        .dt-mock-badge {
+          font-family: 'Inter', sans-serif;
+          font-size: 0.62rem;
+          letter-spacing: 0.18em;
+          color: rgba(212,160,23,0.7);
+          margin-bottom: 20px;
+        }
+        .dt-mock-h1 {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          margin-bottom: 18px;
+        }
+        .dt-line {
+          font-family: 'Cinzel', serif;
+          font-weight: 900;
+          line-height: 1.05;
+          color: #ffffff;
+          opacity: 0;
+          animation: dt-line-in 0.6s ease forwards;
+        }
+        .dt-l1 { font-size: clamp(1.4rem, 3.5vw, 2.4rem); animation-delay: 0.3s; }
+        .dt-l2 {
+          font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+          background: linear-gradient(135deg, #d4a017, #f5d060, #d4a017);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation-delay: 0.6s;
+        }
+        .dt-l3 { font-size: clamp(1.4rem, 3.5vw, 2.4rem); animation-delay: 0.9s; }
+        @keyframes dt-line-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        .dt-mock-sub {
+          font-family: 'Inter', sans-serif;
+          font-size: 0.78rem;
+          color: rgba(255,255,255,0.55);
+          max-width: 400px;
+          line-height: 1.6;
+          margin-bottom: 22px;
+          opacity: 0;
+          animation: dt-line-in 0.6s ease 1.2s forwards;
+        }
+        .dt-mock-btns {
+          display: flex; gap: 12px; align-items: center;
+          opacity: 0;
+          animation: dt-line-in 0.5s ease 1.5s forwards;
+        }
+        .dt-mock-btn-pri {
+          font-family: 'Inter', sans-serif;
+          font-size: 0.76rem; font-weight: 700;
+          letter-spacing: 0.08em;
+          padding: 10px 22px;
+          border: 1.5px solid #d4a017;
+          color: #d4a017;
+          border-radius: 4px;
+        }
+        .dt-mock-btn-sec {
+          font-family: 'Inter', sans-serif;
+          font-size: 0.76rem; font-weight: 500;
+          color: rgba(255,255,255,0.5);
+          letter-spacing: 0.06em;
+        }
+        .dt-mock-trust {
+          margin-top: 20px;
+          font-family: 'Inter', sans-serif;
+          font-size: 0.65rem;
+          color: rgba(255,255,255,0.4);
+          display: flex; gap: 10px;
+          opacity: 0;
+          animation: dt-line-in 0.5s ease 1.8s forwards;
+        }
+        /* Embers */
+        .dt-embers { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+        .dt-embers i {
+          position: absolute;
+          width: 2.5px; height: 2.5px;
+          background: #d4a017;
+          border-radius: 50%;
+          box-shadow: 0 0 4px 1px rgba(212,160,23,0.5);
+          opacity: 0;
+          animation: dt-ember-up linear infinite;
+        }
+        .dt-embers i:nth-child(1)  { left:10%; bottom:5%;  animation-duration:4.2s; animation-delay:0s; }
+        .dt-embers i:nth-child(2)  { left:20%; bottom:8%;  animation-duration:5.1s; animation-delay:0.7s; }
+        .dt-embers i:nth-child(3)  { left:35%; bottom:3%;  animation-duration:3.8s; animation-delay:1.2s; }
+        .dt-embers i:nth-child(4)  { left:50%; bottom:6%;  animation-duration:4.8s; animation-delay:0.3s; }
+        .dt-embers i:nth-child(5)  { left:65%; bottom:4%;  animation-duration:5.5s; animation-delay:1.8s; }
+        .dt-embers i:nth-child(6)  { left:78%; bottom:7%;  animation-duration:4.0s; animation-delay:0.9s; }
+        .dt-embers i:nth-child(7)  { left:88%; bottom:5%;  animation-duration:5.3s; animation-delay:2.1s; }
+        .dt-embers i:nth-child(8)  { left:15%; bottom:10%; animation-duration:6.0s; animation-delay:1.5s; }
+        .dt-embers i:nth-child(9)  { left:42%; bottom:2%;  animation-duration:4.5s; animation-delay:0.5s; }
+        .dt-embers i:nth-child(10) { left:58%; bottom:9%;  animation-duration:5.8s; animation-delay:2.5s; }
+        .dt-embers i:nth-child(11) { left:72%; bottom:3%;  animation-duration:4.1s; animation-delay:1.0s; }
+        .dt-embers i:nth-child(12) { left:30%; bottom:6%;  animation-duration:5.0s; animation-delay:3.0s; }
+        @keyframes dt-ember-up {
+          0%   { transform: translateY(0) translateX(0); opacity: 0; }
+          8%   { opacity: 0.9; }
+          70%  { opacity: 0.4; }
+          100% { transform: translateY(-380px) translateX(30px); opacity: 0; }
+        }
+        /* Hover */
+        .dt-hover-cta {
+          position: absolute; inset: 0; z-index: 10;
+          display: flex; align-items: center; justify-content: center;
+          background: rgba(0,0,0,0.3);
+          opacity: 0; transition: opacity 0.25s;
+        }
+        .dt-hover-cta span {
+          background: rgba(255,255,255,0.95); color: #111;
+          padding: 12px 28px; border-radius: 10px;
+          font-size: 0.9rem; font-weight: 700;
+        }
+        .dt-hover-cta span i { font-size: 0.72rem; margin-left: 6px; }
+        .dt-frame:hover .dt-hover-cta { opacity: 1; }
+        .dt-frame:hover { transform: translateY(-3px); box-shadow: 0 50px 140px rgba(0,0,0,0.7) !important; }
+        @media (max-width: 640px) {
+          .dt-mock { min-height: 360px; }
+          .dt-mock-links { display: none; }
+          .dt-mock-hero { padding: 28px 16px 36px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .dt-line, .dt-mock-sub, .dt-mock-btns, .dt-mock-trust { opacity: 1; animation: none; }
+          .dt-embers i { animation: none; }
+        }
+      </style>
+
+      <div style="text-align:center;">
+        <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-visit">Visit thedicetavern.co.uk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── FAQ ── -->
+  <section id="faq" class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 48px;">
+        <span class="section-label">FAQs</span>
+        <h2 class="section-title">Frequently asked questions</h2>
+      </div>
+      <div class="faq-inner reveal">
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">What makes your web design different from other agencies?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>We build websites with automation and conversion built in from day one. Every form, button, and CTA connects to your backend systems. Leads flow into your CRM automatically, confirmation emails go out instantly, and sales sequences fire without anyone touching anything.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How long does a website take to build?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Most websites are live within 3-4 weeks. We start with strategy and structure, then design and build, integrate automations, and launch with ongoing optimisation. Simpler sites can be done faster.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Do you use WordPress or a website builder?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>It depends on what your business needs. We build custom HTML/CSS sites for maximum speed and control, WordPress sites for content-heavy businesses, and can work with other platforms if needed. We recommend what's right for your goals.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Will my website be optimised for search engines?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Yes. Every site we build includes technical SEO, structured data markup, fast loading times, mobile responsiveness, and Core Web Vitals optimisation. We also write conversion-focused copy that targets the keywords your customers are searching for.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Do you offer ongoing website maintenance?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Yes. We monitor performance, make content updates, run conversion optimisation, and handle any technical issues. Your site keeps improving after launch, not just sitting there.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CTA -->
+  <div class="page-cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-glow"></div>
+        <h2>Ready to build something that actually works?</h2>
+        <p>Book a free 30 minute call and we'll show you what a full website system could look like for your business.</p>
+        <a href="../book" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book your free audit</a>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+
+  // ── Entropy canvas (order vs chaos) ────
+  (function() {
+    const canvas = document.getElementById('entropy-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [], W, H, GRID_X, GRID_Y, NEIGHBOR_DIST, LINE_DIST, CHAOS_BAND;
+
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      const wrap = canvas.parentElement;
+      W = wrap.offsetWidth;
+      H = wrap.offsetHeight;
+      canvas.width  = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width  = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.scale(dpr, dpr);
+
+      // Use square cells based on H so particle density looks the same at all widths.
+      // On a 1440×380 canvas this gives ~21px cells (19 tall × 68 wide).
+      // On a 375×380 mobile canvas this gives ~21px cells (18 tall × 18 wide).
+      const spacing = H / 18;
+      GRID_Y        = 18;
+      GRID_X        = Math.round(W / spacing);
+      NEIGHBOR_DIST = spacing * 3.5;   // reach ~3-4 cells in any direction
+      LINE_DIST     = spacing * 1.6;
+      CHAOS_BAND    = W / 2;           // chaos particles fill the full right half
+
+      init();
+    }
+
+    function init() {
+      particles = [];
+      const sx = W / GRID_X, sy = H / GRID_Y;
+      let idx = 0;
+      for (let i = 0; i < GRID_X; i++) {
+        for (let j = 0; j < GRID_Y; j++) {
+          const x = sx * i + sx / 2;
+          const y = sy * j + sy / 2;
+          particles.push({
+            x, y, ox: x, oy: y,
+            ordered: x < W / 2,
+            vx: (Math.random() - 0.5) * 2,
+            vy: (Math.random() - 0.5) * 2,
+            influence: 0,
+            neighbors: [],
+            _idx: idx++
+          });
+        }
+      }
+      updateNeighbors();
+    }
+
+    function updateNeighbors() {
+      for (const p of particles) {
+        p.neighbors = particles.filter(o => o !== p && Math.hypot(p.x - o.x, p.y - o.y) < NEIGHBOR_DIST);
+      }
+    }
+
+    let tick = 0;
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      if (tick % 30 === 0) updateNeighbors();
+
+      for (const p of particles) {
+        if (p.ordered) {
+          let cx = 0, cy = 0;
+          for (const n of p.neighbors) {
+            if (!n.ordered) {
+              const d = Math.hypot(p.x - n.x, p.y - n.y);
+              const s = Math.max(0, 1 - d / NEIGHBOR_DIST);
+              cx += n.vx * s;
+              cy += n.vy * s;
+              p.influence = Math.max(p.influence, s);
+            }
+          }
+          const dx = p.ox - p.x, dy = p.oy - p.y;
+          p.x += dx * 0.05 * (1 - p.influence) + cx * p.influence;
+          p.y += dy * 0.05 * (1 - p.influence) + cy * p.influence;
+          p.influence *= 0.99;
+        } else {
+          // chaotic random walk, constrained to a band beside the centre line
+          p.vx += (Math.random() - 0.5) * 0.5;
+          p.vy += (Math.random() - 0.5) * 0.5;
+          p.vx *= 0.95;
+          p.vy *= 0.95;
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < W / 2)               { p.vx *= -1; p.x = W / 2; }
+          if (p.x > W / 2 + CHAOS_BAND) { p.vx *= -1; p.x = W / 2 + CHAOS_BAND; }
+          if (p.y < 0)                  { p.vy *= -1; p.y = 0; }
+          if (p.y > H)                  { p.vy *= -1; p.y = H; }
+        }
+      }
+
+      // connection lines
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        for (const n of p.neighbors) {
+          if (n._idx <= i) continue;
+          const d = Math.hypot(p.x - n.x, p.y - n.y);
+          if (d < LINE_DIST) {
+            const alpha = 0.22 * (1 - d / LINE_DIST);
+            ctx.strokeStyle = `rgba(109,77,230,${alpha})`;
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(n.x, n.y); ctx.stroke();
+          }
+        }
+      }
+
+      // particles
+      for (const p of particles) {
+        const alpha = p.ordered ? 0.8 - p.influence * 0.5 : 0.8;
+        ctx.fillStyle = `rgba(109,77,230,${alpha})`;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2); ctx.fill();
+      }
+
+      // centre divider
+      ctx.strokeStyle = 'rgba(124,92,252,0.3)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([5, 7]);
+      ctx.beginPath(); ctx.moveTo(W / 2, 0); ctx.lineTo(W / 2, H); ctx.stroke();
+      ctx.setLineDash([]);
+
+      tick++;
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    window.addEventListener('resize', () => { resize(); });
+    animate();
+  })();
+
+  // ── Marquee cycling text ──────────────────────────────────
+  (function() {
+    const el = document.getElementById('marquee-text');
+    if (!el) return;
+    const items = ['Automation', 'Live Reporting', 'Customer Portals', 'SEO', 'Cloudflare Hosting', 'Sales Dashboards', 'Secure Logins', 'Admin Backends', 'Live Chat', 'Integrations'];
+    let idx = 1;
+    setInterval(() => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(10px)';
+      setTimeout(() => {
+        el.textContent = items[idx];
+        idx = (idx + 1) % items.length;
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 220);
+    }, 2400);
+  })();
+
+  // ── Workflow builder ──────────────────────────────────────
+  (function() {
+    const canvasArea  = document.getElementById('workflow-canvas-area');
+    const canvasInner = document.getElementById('workflow-canvas-inner');
+    const svg         = document.getElementById('workflow-svg');
+    const addBtn      = document.getElementById('workflow-add-btn');
+    const nodeCountEl = document.getElementById('wf-node-count');
+    const connCountEl = document.getElementById('wf-conn-count');
+    if (!canvasArea) return;
+
+    const NW = 178, NH = 108;
+
+    const TEMPLATES = [
+      { type:'action',    title:'Webhook Trigger',   desc:'Incoming data received',       icon:'fa-solid fa-bolt',              color:'emerald' },
+      { type:'action',    title:'Reporting Layer',    desc:'Track sales and behaviour',    icon:'fa-solid fa-chart-line',        color:'purple'  },
+      { type:'action',    title:'Database Query',     desc:'Fetch or update records',      icon:'fa-solid fa-database',          color:'blue'    },
+      { type:'action',    title:'Send Notification',  desc:'Alert team via Slack',         icon:'fa-brands fa-slack',            color:'indigo'  },
+      { type:'condition', title:'Quality Check',      desc:'Verify before proceeding',     icon:'fa-solid fa-circle-check',      color:'amber'   },
+      { type:'action',    title:'Log to CRM',         desc:'Sync data automatically',      icon:'fa-solid fa-database',          color:'teal'    },
+      { type:'action',    title:'SEO Audit',          desc:'Scan and score content',       icon:'fa-solid fa-magnifying-glass',  color:'rose'    },
+    ];
+
+    let nodes = [
+      { id:'n1', type:'trigger',   title:'Client Brief',      desc:'Requirements documented',   icon:'fa-solid fa-file-lines',        color:'emerald', x:30,  y:101 },
+      { id:'n2', type:'action',    title:'Design & UX',       desc:'Pages and journeys mapped', icon:'fa-solid fa-pen-nib',           color:'purple',  x:248, y:101 },
+      { id:'n3', type:'action',    title:'Build & Integrate', desc:'Automation and systems connected',  icon:'fa-solid fa-code',       color:'blue',    x:466, y:101 },
+      { id:'n4', type:'condition', title:'Secure Access',     desc:'Logins and roles verified', icon:'fa-solid fa-shield-halved',     color:'amber',   x:684, y:101 },
+      { id:'n5', type:'action',    title:'Launch & Reporting',desc:'Go live with dashboards',   icon:'fa-solid fa-chart-column',      color:'indigo',  x:902, y:101 },
+    ];
+    let connections = [
+      { from:'n1', to:'n2' },
+      { from:'n2', to:'n3' },
+      { from:'n3', to:'n4' },
+      { from:'n4', to:'n5' },
+    ];
+
+    let dragging = null, dragOX = 0, dragOY = 0, startX = 0, startY = 0;
+
+    function updateSize() {
+      let mw = 0, mh = 0;
+      nodes.forEach(n => { mw = Math.max(mw, n.x + NW + 50); mh = Math.max(mh, n.y + NH + 50); });
+      canvasInner.style.minWidth  = mw + 'px';
+      canvasInner.style.minHeight = mh + 'px';
+      svg.setAttribute('width',  mw);
+      svg.setAttribute('height', mh);
+    }
+
+    function renderSVG() {
+      let html = '';
+      connections.forEach(c => {
+        const f = nodes.find(n => n.id === c.from);
+        const t = nodes.find(n => n.id === c.to);
+        if (!f || !t) return;
+        const x1 = f.x + NW, y1 = f.y + NH / 2;
+        const x2 = t.x,      y2 = t.y + NH / 2;
+        const cx = (x2 - x1) * 0.5;
+        html += `<path d="M${x1},${y1} C${x1+cx},${y1} ${x2-cx},${y2} ${x2},${y2}" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1.5" stroke-dasharray="7,5" stroke-linecap="round"/>`;
+      });
+      svg.innerHTML = html;
+    }
+
+    function renderNodes() {
+      canvasInner.querySelectorAll('.workflow-node').forEach(e => e.remove());
+      nodes.forEach(node => {
+        const el = document.createElement('div');
+        el.className = `workflow-node wf-${node.color}`;
+        el.dataset.id = node.id;
+        el.style.left = node.x + 'px';
+        el.style.top  = node.y + 'px';
+        el.innerHTML  = `
+          <div class="workflow-node-icon"><i class="${node.icon}"></i></div>
+          <div class="workflow-node-type">${node.type}</div>
+          <div class="workflow-node-title">${node.title}</div>
+          <div class="workflow-node-desc">${node.desc}</div>`;
+
+        el.addEventListener('mousedown', e => {
+          e.preventDefault();
+          dragging = node.id;
+          startX   = node.x;
+          startY   = node.y;
+          dragOX   = e.clientX;
+          dragOY   = e.clientY;
+          el.classList.add('dragging');
+        });
+
+        canvasInner.appendChild(el);
+      });
+    }
+
+    function updateStats() {
+      nodeCountEl.textContent = `${nodes.length} ${nodes.length === 1 ? 'Step' : 'Steps'}`;
+      connCountEl.textContent = `${connections.length} ${connections.length === 1 ? 'Connection' : 'Connections'}`;
+    }
+
+    function render() { renderSVG(); renderNodes(); updateSize(); updateStats(); }
+
+    document.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      const node = nodes.find(n => n.id === dragging);
+      if (!node) return;
+      node.x = Math.max(0, startX + (e.clientX - dragOX));
+      node.y = Math.max(0, startY + (e.clientY - dragOY));
+      const el = canvasInner.querySelector(`[data-id="${dragging}"]`);
+      if (el) { el.style.left = node.x + 'px'; el.style.top = node.y + 'px'; }
+      renderSVG(); updateSize();
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (!dragging) return;
+      const el = canvasInner.querySelector(`[data-id="${dragging}"]`);
+      if (el) el.classList.remove('dragging');
+      dragging = null;
+    });
+
+    addBtn.addEventListener('click', () => {
+      const tpl  = TEMPLATES[Math.floor(Math.random() * TEMPLATES.length)];
+      const last = nodes[nodes.length - 1];
+      const newNode = { id: 'n' + Date.now(), ...tpl, x: last ? last.x + 228 : 30, y: last ? last.y : 101 };
+      nodes.push(newNode);
+      if (last) connections.push({ from: last.id, to: newNode.id });
+      render();
+      canvasArea.scrollTo({ left: newNode.x - 20, behavior: 'smooth' });
+    });
+
+    render();
+  })();
+
+  </script>
+</MarketingLayout>

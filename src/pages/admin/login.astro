@@ -1,0 +1,109 @@
+---
+// /admin/login — single sign-in. Migrated from admin/login/index.html.
+// Legacy login head had NO robots meta and loaded auth.js in <body>
+// (not <head>), and had no AEAuth.check() / layout.js. We keep auth.js
+// in the body (headAuthScript={false}) and skip the auth gate + sidebar
+// script. The noindex robots meta is added by AdminLayout (admin must
+// never be indexed — this does not change page content).
+import AdminLayout from '@layouts/AdminLayout.astro';
+---
+
+<AdminLayout
+  title="Staff Portal — Autoeight"
+  headAuthScript={false}
+  authCheck={false}
+  layoutScript={false}
+>
+  <div class="login-wrap">
+    <div class="login-card">
+
+      <div class="login-logo">
+        <img src="/brand_assets/logo.png?v=3" alt="Autoeight" />
+        <div class="login-badge-pill">Staff Portal</div>
+      </div>
+
+      <h2>Welcome back</h2>
+      <p class="login-sub">Enter your staff password to access the sales portal.</p>
+
+      <div class="login-err" id="login-err">
+        <i class="fa-solid fa-circle-exclamation"></i> Incorrect password. Please try again.
+      </div>
+
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <label class="login-label" for="pw">Password</label>
+        <input type="password" id="pw" class="login-input" placeholder="Enter staff password" autocomplete="current-password" />
+        <button type="submit" class="btn-login">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In
+        </button>
+      </form>
+
+      <p class="login-note">This portal is for authorised Autoeight staff only.</p>
+    </div>
+  </div>
+
+  <script is:inline src="/admin/auth.js?v=unified"></script>
+  <script is:inline>
+    // Where should we go after signing in? The page that sent us here
+    // will have stashed its path. Default to the dashboard.
+    function nextUrl() {
+      var next = sessionStorage.getItem('ae_login_next');
+      if (next && next.indexOf('/admin') === 0) {
+        sessionStorage.removeItem('ae_login_next');
+        return next;
+      }
+      return '/admin';
+    }
+
+    // Already logged in AND have the chat password stored? Skip to the
+    // originally-requested page (or dashboard if none). Otherwise show
+    // the form so the user can re-enter and get both keys saved.
+    if (sessionStorage.getItem('ae_staff') === '1' && sessionStorage.getItem('ae_chat_admin_pw')) {
+      window.location.href = nextUrl();
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      var pwInput = document.getElementById('pw');
+      var err     = document.getElementById('login-err');
+      var btn     = document.querySelector('.btn-login');
+      var pw      = pwInput.value;
+      err.classList.remove('show');
+      err.textContent = '';
+
+      if (!pw) {
+        err.textContent = 'Please enter a password.';
+        err.classList.add('show');
+        pwInput.focus();
+        return;
+      }
+
+      if (typeof window.AEAuth === 'undefined' || typeof AEAuth.login !== 'function') {
+        err.textContent = 'Login script failed to load. Hard refresh the page (Ctrl+Shift+R).';
+        err.classList.add('show');
+        return;
+      }
+
+      var originalLabel = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Signing in…';
+
+      try {
+        var ok = await AEAuth.login(pw);
+        if (ok) {
+          window.location.href = nextUrl();
+          return;
+        }
+        err.textContent = 'Wrong password. Check the ADMIN_PASSWORD secret in Supabase.';
+        err.classList.add('show');
+      } catch (e) {
+        err.textContent = 'Could not reach the server: ' + (e.message || 'unknown error');
+        err.classList.add('show');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalLabel;
+        pwInput.value = '';
+        pwInput.focus();
+      }
+    }
+  </script>
+</AdminLayout>

@@ -1,0 +1,134 @@
+---
+// PROVEN SLICE — privacy.html migrated end-to-end as the reference pattern.
+// Content is copied VERBATIM from the legacy privacy.html (no rewording).
+// What changed: head/nav/footer/scripts now come from the layout + components;
+// the page-specific <style> is now component-scoped; URL stays /privacy
+// (build.format:'file' -> privacy.html -> Cloudflare serves it at /privacy).
+import MarketingLayout from '@layouts/MarketingLayout.astro';
+---
+
+<MarketingLayout
+  title="Privacy Policy | Autoeight"
+  description="Privacy Policy for Autoeight. How we collect, use, and protect your data when you visit autoeight.ai."
+  canonical="https://autoeight.ai/privacy"
+  ogTitle="Privacy Policy | Autoeight"
+  ogDescription="How we collect, use, and protect your data when you visit autoeight.ai."
+  twitterTitle="Autoeight"
+>
+  <div class="legal-content">
+    <h1>Privacy Policy</h1>
+    <p class="legal-updated">Last updated: 8 April 2026</p>
+
+    <h2>Who we are</h2>
+    <p>Autoeight is an AI and automation agency based in Halifax, West Yorkshire, England. When we say "we", "us", or "our" in this policy, we mean Autoeight.</p>
+    <p>If you have questions about this policy or want to exercise your data rights, email us at <a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a>.</p>
+
+    <h2>What data we collect</h2>
+    <p>When you visit autoeight.ai and accept our cookie consent banner, we collect the following data to understand which <strong>companies</strong> (not individuals) are visiting our site:</p>
+    <ul>
+      <li><strong>IP address</strong> &mdash; used to identify your organisation via public business registries. Your IP is stored in our database and linked to the identified company.</li>
+      <li><strong>Pages visited</strong> &mdash; which pages you view, how long you spend on each, and the order you visit them.</li>
+      <li><strong>Session data</strong> &mdash; when you arrived, how long you stayed, and your entry and exit pages.</li>
+      <li><strong>Referrer URL</strong> &mdash; where you came from (e.g. Google, LinkedIn, a direct visit).</li>
+      <li><strong>UTM parameters</strong> &mdash; marketing campaign tags if present in the URL.</li>
+      <li><strong>Device information</strong> &mdash; device type (desktop, mobile, tablet), browser name, operating system, and screen resolution.</li>
+      <li><strong>Browser fingerprint</strong> &mdash; a non-reversible hash derived from your device settings (screen size, timezone, language). This helps us count unique visitors without using traditional tracking cookies.</li>
+    </ul>
+
+    <h2>What we do NOT collect</h2>
+    <p>We do not collect your name, email address, phone number, or any other information that directly identifies you as an individual. Our system identifies the company or organisation associated with your IP address, not you personally.</p>
+
+    <h2>How we identify companies</h2>
+    <p>We use your IP address to look up which organisation it belongs to. This is done through:</p>
+    <ul>
+      <li><strong>IPinfo.io</strong> &mdash; a third-party IP intelligence service that maps IP addresses to organisations.</li>
+      <li><strong>RIPE RDAP</strong> &mdash; the public European IP address registry.</li>
+      <li><strong>ARIN RDAP</strong> &mdash; the public North American IP address registry.</li>
+    </ul>
+    <p>If your IP address belongs to a consumer internet provider (e.g. BT, Vodafone, Sky), we flag it as residential/ISP traffic. We cannot identify individuals using home broadband.</p>
+
+    <h2>Why we collect this data (lawful basis)</h2>
+    <p>We rely on two lawful bases under the UK General Data Protection Regulation (UK GDPR):</p>
+    <ul>
+      <li><strong>Consent (Article 6(1)(a))</strong> &mdash; We only begin tracking after you click "Accept" on our cookie consent banner. If you decline or ignore the banner, no tracking data is collected.</li>
+      <li><strong>Legitimate interest (Article 6(1)(f))</strong> &mdash; We have a legitimate business interest in understanding which companies visit our website so we can improve our services and identify potential business opportunities. This interest does not override your rights because we identify organisations, not individuals, and you can withdraw consent at any time.</li>
+    </ul>
+
+    <h2>Cookies and local storage</h2>
+    <p>We do not use traditional HTTP cookies. Instead, we use browser storage mechanisms that function similarly:</p>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Purpose</th><th>Duration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ae_consent</td><td>localStorage</td><td>Stores your consent choice (accepted/declined)</td><td>Until cleared</td></tr>
+        <tr><td>ae_sid</td><td>sessionStorage</td><td>Anonymous session identifier</td><td>Until tab closed</td></tr>
+        <tr><td>ae_fid</td><td>localStorage</td><td>Browser fingerprint hash (only set if you accept)</td><td>Until cleared</td></tr>
+      </tbody>
+    </table>
+    <p>The <code>ae_consent</code> item is set regardless of your choice to remember your preference. The other items are only set if you click "Accept".</p>
+
+    <h2>Third-party services</h2>
+    <p>We use the following third-party services that may process your data:</p>
+    <ul>
+      <li><strong>Supabase</strong> (database hosting) &mdash; stores visitor analytics data on servers in the EU. <a href="https://supabase.com/privacy" rel="noopener noreferrer" target="_blank">Supabase Privacy Policy</a></li>
+      <li><strong>IPinfo.io</strong> (IP enrichment) &mdash; receives your IP address to return organisation data. <a href="https://ipinfo.io/privacy-policy" rel="noopener noreferrer" target="_blank">IPinfo Privacy Policy</a></li>
+      <li><strong>Cloudflare</strong> (CDN/security) &mdash; processes requests to deliver our website. <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer" target="_blank">Cloudflare Privacy Policy</a></li>
+      <li><strong>Google Fonts</strong> (typography) &mdash; loads fonts from Google servers. <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Google Privacy Policy</a></li>
+    </ul>
+
+    <h2>How long we keep your data</h2>
+    <p>Visitor analytics data (IP addresses, sessions, page views, and company records) is automatically deleted after <strong>12 months</strong> from the date of your last visit. If you request deletion sooner, we will action it within 30 days.</p>
+
+    <h2>Your rights</h2>
+    <p>Under UK GDPR, you have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> &mdash; request a copy of the data we hold about you.</li>
+      <li><strong>Rectification</strong> &mdash; ask us to correct inaccurate data.</li>
+      <li><strong>Erasure</strong> &mdash; ask us to delete your data ("right to be forgotten").</li>
+      <li><strong>Restriction</strong> &mdash; ask us to limit how we process your data.</li>
+      <li><strong>Portability</strong> &mdash; receive your data in a portable format.</li>
+      <li><strong>Object</strong> &mdash; object to processing based on legitimate interest.</li>
+      <li><strong>Withdraw consent</strong> &mdash; withdraw your consent at any time (see below).</li>
+    </ul>
+    <p>To exercise any of these rights, email <a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a>. We will respond within 30 days.</p>
+
+    <h2>How to withdraw consent</h2>
+    <p>You can withdraw your consent at any time by:</p>
+    <ul>
+      <li>Clicking "Manage Cookies" in the footer of any page, then selecting "Decline".</li>
+      <li>Clearing your browser's local storage for autoeight.ai.</li>
+    </ul>
+    <p>Withdrawing consent stops future tracking. It does not affect data already collected while consent was active. To have existing data deleted, email us at <a href="mailto:contact@autoeight.ai">contact@autoeight.ai</a>.</p>
+
+    <h2>Children's privacy</h2>
+    <p>Our website is not directed at children under 16. We do not knowingly collect data from children. If you believe we have, please contact us and we will delete it.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>We may update this policy from time to time. The "Last updated" date at the top of this page will always reflect the most recent version. We will not reduce your rights under this policy without your consent.</p>
+
+    <h2>Complaints</h2>
+    <p>If you are unhappy with how we handle your data, you have the right to complain to the Information Commissioner's Office (ICO):</p>
+    <ul>
+      <li>Website: <a href="https://ico.org.uk/make-a-complaint/" rel="noopener noreferrer" target="_blank">ico.org.uk/make-a-complaint</a></li>
+      <li>Phone: 0303 123 1113</li>
+    </ul>
+  </div>
+</MarketingLayout>
+
+<style>
+  /* Verbatim from the legacy privacy.html <style> block. Astro scopes this to
+     the component automatically (no global leak), which is the §6 pattern. */
+  .legal-content { max-width: 780px; margin: 0 auto; padding: 140px 24px 80px; }
+  .legal-content h1 { font-size: 2.2rem; margin-bottom: 8px; }
+  .legal-content .legal-updated { color: var(--muted, #71717a); font-size: 0.85rem; margin-bottom: 40px; }
+  .legal-content h2 { font-size: 1.2rem; margin: 36px 0 12px; padding-top: 20px; border-top: 1px solid var(--border, #e4e4e7); }
+  .legal-content h2:first-of-type { border-top: none; padding-top: 0; }
+  .legal-content p, .legal-content li { font-size: 0.92rem; line-height: 1.75; color: var(--body, #3f3f46); }
+  .legal-content ul { padding-left: 20px; margin: 12px 0; }
+  .legal-content li { margin-bottom: 6px; }
+  .legal-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.85rem; }
+  .legal-content th, .legal-content td { text-align: left; padding: 10px 14px; border: 1px solid var(--border, #e4e4e7); }
+  .legal-content th { background: var(--surface, #f4f4f5); font-weight: 600; }
+  .legal-content a { color: var(--purple, #7c5cfc); }
+</style>
