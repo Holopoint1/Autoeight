@@ -1,49 +1,21 @@
-# Autoeight V2 — Cursor Rules
+# Cursor Rules — Autoeight V2
 
-## Project
-Static HTML/CSS/JS website for Autoeight, an AI and automation agency in Halifax, West Yorkshire. Hosted on GitHub Pages at autoeight.ai. No frameworks, no build tools.
+Single source of truth: AGENTS.md. Read it first; do not duplicate content here.
 
-## Stack
-- HTML5, CSS3, vanilla JavaScript
-- Google Fonts (Inter 300-800), Font Awesome 6.5
-- Single `style.css` (~160KB) and `main.js`
-- GitHub Pages hosting with CNAME
+Essentials (full detail in AGENTS.md):
 
-## Code Style
-- Semantic HTML with proper heading hierarchy (one H1 per page)
-- CSS uses custom properties (--purple-light, --muted, --border, etc.)
-- Class naming: lowercase hyphenated (e.g. `hero-content`, `blog-card`, `stat-bar`)
-- JS uses vanilla DOM — no jQuery, no libraries
-- British English in all copy (colour, optimise, analyse, personalise)
-- Indent: 2 spaces for HTML/CSS/JS
-
-## Tone of Voice
-Direct, conversational, human. Use contractions. Short sentences.
-- Never use: "comprehensive", "streamlined", "leveraging", "robust", "holistic", "empower", "bespoke", "cutting-edge", "seamlessly"
-- Use instead: "built", "set up", "sorted", "handles", "takes care of", "plugged in"
-
-## SEO (Critical)
-Every page requires:
-- Title tag with "Halifax" or "West Yorkshire"
-- Meta description with location keywords
-- Meta keywords, author ("Autoeight"), robots ("index, follow")
-- Canonical URL, Open Graph tags, Twitter Card tags
-- JSON-LD schema with areaServed array: Halifax, Leeds, Bradford, Huddersfield, West Yorkshire, UK
-- BreadcrumbList schema on service pages
-- Target terms: "AI automation Halifax", "AI companies Halifax", "AI companies Leeds", "automation agency West Yorkshire"
-
-## Structure
-- Services: `services/*.html` (7 pages)
-- Blog/news: `resources/blog-*.html` (external article cards on `resources/blog.html`)
-- Blueprints: `resources/blueprint-*.html`
-- Case studies: `brand_assets/case-studies/{client}/{slug}.html`
-- Admin: `backend/*.html` (blocked from indexing)
-
-## Rules
-1. No frameworks, CMS, templates, or build tools
-2. Nav dropdown + footer must include all 7 services (including system-integration)
-3. External links: `target="_blank" rel="noopener"`
-4. Images in `brand_assets/`
-5. Update `sitemap.xml` when adding pages
-6. Match existing design patterns (page-hero, page-section, blog-card, tier-card, etc.)
-7. Never commit `.env` or credentials
+- Static HTML/CSS/JS, no framework, no build step, Cloudflare Pages at autoeight.ai.
+- DEPLOYMENT CONTRACT: no build, folder path = live URL (edge 301s via _redirects; avoid URL churn).
+  Never move or rename HTML pages or shared assets (style.css, main.js,
+  includes.js, ae-track.js, ae-consent.js, nav.html, footer.html). Update
+  sitemap.xml when adding/removing/renaming pages.
+- services/ has 9 real files: ai-automation, crm-integration, data-reporting,
+  email-automation, internal-systems, lms, sales-automation, sales-marketing,
+  web-design. system-integration.html does NOT exist.
+- backend/ = legacy redirect stubs to /admin/* — do not delete or rename.
+- Code style: semantic HTML (one H1), 2-space indent, existing CSS custom
+  properties, hyphenated class names, vanilla DOM JS, reuse existing components.
+- British English. External links target="_blank" rel="noopener".
+- Brand voice: direct, human, not corporate. Banned: comprehensive, streamlined,
+  leveraging, robust, holistic, empower, bespoke, cutting-edge, seamlessly.
+- SEO block required on every public page (see AGENTS.md). Never commit secrets.

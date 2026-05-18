@@ -1,2 +1,16 @@
+# Claude Code / local agent state
 .claude/
 .tmp/
+
+# Supabase CLI local state (machine-specific link metadata, not source)
+supabase/.temp/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+
+# Never commit secrets
+.env
+.env.*
+.dev.vars
+.dev.vars.*

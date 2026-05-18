@@ -1,0 +1,14 @@
+# Cloudflare Pages config for autoeight.ai
+#
+# This is a NO-BUILD static site. There is no framework and no build command.
+# Cloudflare Pages serves the repo root exactly as-is — identical to how
+# GitHub Pages served it. The folder path is still the live URL.
+#
+# No D1 / KV / R2 bindings: the only backend is Supabase (separate project,
+# called over HTTPS). Do not add bindings this site does not use.
+
+name = "autoeight"
+compatibility_date = "2026-05-18"
+
+# No build step. The deploy root is the repo root (same as GitHub Pages today).
+pages_build_output_dir = "."

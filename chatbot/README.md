@@ -7,7 +7,7 @@ Custom chat widget for autoeight.ai. Collects name + company + message from visi
 - Floating chat widget on every page of autoeight.ai
 - Guided flow: asks for name, company, then message
 - Notifies Adam instantly (email via Resend, Telegram, Pushover)
-- Admin dashboard at `/backend/chat-admin.html` to review and reply
+- Admin dashboard at `/admin/chat` to review and reply (old `/backend/chat-admin.html` still redirects there)
 - Can be installed on Adam's phone as a PWA so he can reply from the home screen
 - All conversations stored in Supabase
 - Visitor can keep sending follow-up messages; Adam's replies poll in every 8 seconds
@@ -38,7 +38,7 @@ Custom chat widget for autoeight.ai. Collects name + company + message from visi
            │
            ▼
 ┌─────────────────────────────────────────────────────────┐
-│  Admin Dashboard: /backend/chat-admin.html              │
+│  Admin Dashboard: /admin/chat                           │
 │  ├─ Reads conversations direct from Supabase            │
 │  ├─ Adam replies as role="human"                        │
 │  └─ Works as PWA on iPhone/Android                      │
@@ -58,7 +58,7 @@ chatbot/
 │   └── chat-function.ts            # Edge function (form handler + notifications)
 ├── widget/
 │   └── chat-widget.js              # Client-side chat widget
-└── (admin page lives at /backend/chat-admin.html)
+└── (admin page lives at /admin/chat)
 ```
 
 ---
@@ -128,7 +128,7 @@ If you don't have the Supabase CLI:
 The widget is auto-loaded by `/includes.js` on every non-backend page. No further action needed.
 
 ### 8. Install the admin as a PWA on your phone
-1. Open `https://autoeight.ai/backend/chat-admin.html` in Safari (iPhone) or Chrome (Android)
+1. Open `https://autoeight.ai/admin/chat` in Safari (iPhone) or Chrome (Android)
 2. Sign in with your Supabase `service_role` key from the dashboard (Settings → API)
 3. **iPhone:** tap the Share button → "Add to Home Screen"
 4. **Android:** tap the ⋮ menu → "Install app" or "Add to Home Screen"
@@ -140,7 +140,7 @@ The widget is auto-loaded by `/includes.js` on every non-backend page. No furthe
 4. Check:
    - Email arrives at contact@autoeight.ai
    - Pushover/Telegram notifications fire if configured
-   - Conversation appears in `/backend/chat-admin.html` marked "waiting"
+   - Conversation appears in `/admin/chat` marked "waiting"
 5. Reply from the admin page → message appears in the visitor chat within 8 seconds
 
 ---

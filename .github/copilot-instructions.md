@@ -1,38 +1,20 @@
-# Autoeight V2 — GitHub Copilot Instructions
+# GitHub Copilot Instructions — Autoeight V2
 
-## Project
-This is the website for Autoeight, an AI and automation agency based in Halifax, West Yorkshire. Static HTML/CSS/JS hosted on GitHub Pages at autoeight.ai. No frameworks or build tools.
+Single source of truth: [`../AGENTS.md`](../AGENTS.md). Do not duplicate content
+here — update `AGENTS.md` only.
 
-## Tech Stack
-- HTML5, CSS3, vanilla JavaScript (no jQuery, no React, no Vue)
-- Google Fonts (Inter), Font Awesome 6.5
-- Single shared `style.css` and `main.js`
+When generating code for this repo:
 
-## When generating code
-- Use semantic HTML with proper heading hierarchy
-- Use existing CSS custom properties (--purple-light, --muted, --border, etc.)
-- Use existing class patterns: `page-hero`, `page-section`, `blog-card`, `tier-card`, `stat-bar`, `feature-card`
-- Hyphenated class names: `hero-content`, `nav-menu`, `cta-box`
-- 2-space indentation
-- British English spelling: colour, optimise, analyse, personalise, centre
-
-## Tone of voice for any copy
-- Direct, conversational, human
-- Use contractions (we're, don't, it's)
-- Never use: "comprehensive", "streamlined", "leveraging", "robust", "holistic", "empower", "bespoke", "cutting-edge", "seamlessly"
-- Use: "built", "set up", "sorted", "handles", "takes care of", "plugged in"
-
-## SEO requirements for new pages
-- Title tag must include "Halifax" or "West Yorkshire"
-- Meta description must include location keywords
-- Include: meta keywords, meta author ("Autoeight"), meta robots ("index, follow"), canonical URL
-- Include Open Graph and Twitter Card tags
-- Include JSON-LD schema with areaServed: Halifax, Leeds, Bradford, Huddersfield, West Yorkshire, UK
-- Add BreadcrumbList schema on service pages
-
-## Key rules
-- No frameworks, CMS, or build tools
-- Nav and footer must list all 7 services including system-integration
-- External links: `target="_blank" rel="noopener"`
-- Update sitemap.xml when adding pages
-- Never commit .env or credentials
+- It is static HTML/CSS/JS, no framework, no build step, Cloudflare Pages at
+  autoeight.ai. **Folder path = live URL — never move or rename
+  pages or shared assets** (`style.css`, `main.js`, `includes.js`, `nav.html`,
+  `footer.html`, …). Update `sitemap.xml` on page changes.
+- Use semantic HTML (one H1/page), 2-space indent, existing CSS custom properties,
+  hyphenated class names, existing components (`page-hero`, `page-section`,
+  `blog-card`, `tier-card`, `stat-bar`, `feature-card`). Vanilla DOM JS only.
+- British English. External links `target="_blank" rel="noopener"`.
+- Brand voice: direct, conversational, human. Banned: comprehensive, streamlined,
+  leveraging, robust, holistic, empower, bespoke, cutting-edge, seamlessly.
+- Every public page needs the full SEO block (location title/meta/canonical, OG,
+  Twitter, JSON-LD `areaServed`, BreadcrumbList on service pages).
+- Never emit `.env`, credentials, or API keys.
