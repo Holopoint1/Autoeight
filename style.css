@@ -5576,7 +5576,7 @@ footer {
   padding: 28px 0 0;
 }
 .cs-client-bar img {
-  height: 48px;
+  height: 180px;
   width: auto;
   object-fit: contain;
   border-radius: 8px;
@@ -5597,7 +5597,7 @@ footer {
 }
 @media (max-width: 600px) {
   .cs-client-bar { padding: 20px 24px 0; }
-  .cs-client-bar img { height: 36px; }
+  .cs-client-bar img { height: 120px; }
   .cs-client-bar .cs-visit-site { font-size: 0.75rem; }
 }
 
