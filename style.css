@@ -2487,6 +2487,12 @@ footer {
   margin-bottom: 10px;
   line-height: 1.35;
 }
+.cs-highlight-body {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 4px 0 18px;
+}
 .cs-highlight-stats {
   display: flex;
   gap: 16px;
