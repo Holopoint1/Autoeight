@@ -1,0 +1,22 @@
+# Legacy /backend/* -> canonical /admin/* (Cloudflare Pages edge 301s).
+# Targets mirror exactly what the existing backend/*.html stubs already do,
+# so behaviour is unchanged — just faster (edge redirect, real 301) instead
+# of an HTML meta-refresh. The stub files are kept as a harmless fallback.
+# Ignored by GitHub Pages, so safe to commit before cutover.
+
+/backend/business-impact.html      /admin/impact       301
+/backend/chat-admin.html           /admin/chat/        301
+/backend/customer-service.html     /admin/support      301
+/backend/dashboard.html            /admin              301
+/backend/data-admin.html           /admin/data         301
+/backend/login.html                /admin/login        301
+/backend/marketing.html            /admin/marketing    301
+/backend/project-management.html   /admin/projects     301
+/backend/sales.html                /admin/sales        301
+/backend/scheduling.html           /admin/scheduling   301
+/backend/seo-dashboard.html        /admin/seo          301
+/backend/skills.html               /admin/skills       301
+/backend/visitors.html             /admin/visitors     301
+
+# Any other legacy /backend/ path -> admin sign-in (catch-all, must stay last)
+/backend/*                         /admin/login        301
