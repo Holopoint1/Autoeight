@@ -623,6 +623,144 @@ nav.scrolled {
   font-size: 0.85rem;
 }
 
+.hero-trust-item strong {
+  color: var(--purple-light);
+  font-weight: 800;
+}
+
+.hero-trust-item em {
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.hero-secondary-link {
+  display: inline-block;
+  margin-left: 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hero-secondary-link:hover {
+  color: var(--purple-light);
+}
+
+.hero-risk {
+  margin: 12px 0 24px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  opacity: 0.85;
+  font-style: italic;
+}
+
+/* ── WHO WE BUILD FOR (industry segments) ── */
+.who-we-build-for {
+  padding: 80px 0 60px;
+  background: linear-gradient(180deg, transparent, rgba(124,92,252,0.025) 50%, transparent);
+}
+
+.who-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+
+.who-head .section-label {
+  justify-content: center;
+}
+
+.who-head .section-label::before {
+  display: none;
+}
+
+.who-head h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: -0.02em;
+  margin: 12px 0 14px;
+  font-weight: 800;
+}
+
+.who-head p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.who-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.who-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 22px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.who-card:hover {
+  border-color: rgba(124,92,252,0.55);
+  transform: translateY(-4px);
+  background: rgba(124,92,252,0.04);
+}
+
+.who-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--purple-dim);
+  border: 1px solid rgba(124,92,252,0.3);
+  color: var(--purple-light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+}
+
+.who-card h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.who-card p {
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.65;
+  flex-grow: 1;
+  margin-bottom: 18px;
+}
+
+.who-link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--purple-light);
+}
+
+@media (max-width: 1080px) {
+  .who-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .who-grid { grid-template-columns: 1fr; }
+  .who-we-build-for { padding: 56px 0 40px; }
+}
+
 /* Hero dashboard mockup */
 .hero-visual {
   position: relative;
