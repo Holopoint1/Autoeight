@@ -8,7 +8,7 @@ This is the complete knowledge source the AI chatbot uses to answer visitor ques
 
 **Autoeight** is a UK-based custom software, automation, and web agency headquartered in Halifax, West Yorkshire. We build bespoke systems for businesses that have outgrown templates and off-the-shelf tools.
 
-- **Founder:** Adam Sheridan
+- **Founder:** Alfie Dobson
 - **Based:** Halifax, West Yorkshire
 - **Serving:** UK-wide
 - **Contact:** contact@autoeight.ai
@@ -259,7 +259,7 @@ When a visitor asks:
 - Something outside the scope of this knowledge base
 - About their existing project (current clients)
 
-→ The bot should offer to connect them to Adam Sheridan (founder) via the "Talk to a human" button, or direct them to email contact@autoeight.ai or book a free consultation at /book.
+→ The bot should offer to connect them to Alfie Dobson (founder) via the "Talk to a human" button, or direct them to email contact@autoeight.ai or book a free consultation at /book.
 
 ## Tone of voice
 
