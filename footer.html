@@ -33,3 +33,70 @@
     </div>
   </div>
 </footer>
+
+<!-- Exit-intent CTA modal -->
+<div id="ae-exit-modal" class="ae-exit-modal" aria-hidden="true" role="dialog" aria-labelledby="ae-exit-title">
+  <div class="ae-exit-backdrop" data-ae-exit-close></div>
+  <div class="ae-exit-panel">
+    <button class="ae-exit-close" data-ae-exit-close aria-label="Close">&times;</button>
+    <span class="ae-exit-eyebrow">Before you go</span>
+    <h3 id="ae-exit-title">Want a free 30-min look at your workflow?</h3>
+    <p>No pitch deck. No commitment. We walk through your tools, find the time-sinks, and tell you what we'd build for you. If we can't help, we'll say so.</p>
+    <div class="ae-exit-cta-row">
+      <a href="/book" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Book my free audit</a>
+      <button class="ae-exit-link" data-ae-exit-close>Not now, thanks</button>
+    </div>
+    <p class="ae-exit-fine">We'll reply within one working day.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  if (typeof window === 'undefined') return;
+  var STORAGE_KEY = 'ae_exit_shown';
+  // Suppress on /book itself, on admin pages, and if already shown this session
+  var path = (location.pathname || '').toLowerCase();
+  if (path.indexOf('/book') === 0 || path.indexOf('/admin') === 0) return;
+  if (sessionStorage.getItem(STORAGE_KEY) === '1') return;
+
+  var modal = document.getElementById('ae-exit-modal');
+  if (!modal) return;
+
+  function show(){
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function hide(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Desktop: exit-intent (mouse leaves top of viewport)
+  document.addEventListener('mouseout', function (e) {
+    if (e.toElement || e.relatedTarget) return;
+    if (e.clientY > 10) return;
+    show();
+  });
+
+  // Mobile: trigger on scroll-up after a meaningful scroll depth (proxy for "leaving")
+  var lastY = window.scrollY;
+  var triggered = false;
+  window.addEventListener('scroll', function(){
+    if (triggered) return;
+    var y = window.scrollY;
+    if (y < lastY - 80 && lastY > 400) { triggered = true; show(); }
+    lastY = y;
+  }, { passive: true });
+
+  // Close handlers
+  modal.querySelectorAll('[data-ae-exit-close]').forEach(function(el){
+    el.addEventListener('click', hide);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) hide();
+  });
+})();
+</script>
