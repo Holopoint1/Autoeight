@@ -259,12 +259,9 @@
     </div>
 
     <!-- RIGHT: Cal.com booking embed (primary) + contact form (secondary) -->
-    <div class="booking-form-wrap reveal" style="transition-delay:0.15s; padding: 20px;">
-      <h3 style="margin-bottom: 4px;">Pick a time</h3>
-      <p class="form-intro" style="margin-bottom: 18px;">Pick a slot, fill in a few details, you're booked.</p>
-
+    <div class="booking-form-wrap reveal" style="transition-delay:0.15s; padding: 0; background: transparent; border: 0;">
       <!-- Cal.com inline embed -->
-      <div style="background:#fff;border-radius:12px;overflow:hidden;min-height:720px;width:100%;" id="cal-booking-inline"></div>
+      <div style="background:#fff;border-radius:14px;overflow:hidden;min-height:640px;width:100%;box-shadow:0 4px 30px rgba(0,0,0,0.18);" id="cal-booking-inline"></div>
 
       <script type="text/javascript">
         (function (C, A, L) {
@@ -302,7 +299,7 @@
           calLink: "autoeight/audit"
         });
         Cal.ns.audit("ui", {
-          "hideEventTypeDetails": false,
+          "hideEventTypeDetails": true,
           "layout": "month_view"
         });
       </script>
