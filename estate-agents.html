@@ -40,7 +40,7 @@
     },
     "areaServed": {"@type": "Country", "name": "United Kingdom"},
     "audience": {"@type": "Audience", "audienceType": "Independent Estate Agents"},
-    "description": "Custom estate agency platform: branded public site, unified multi-channel inbox, Claude-powered AI classification, automated chase sequences from agent mailbox, two-way calendar sync for viewings, full agency admin.",
+    "description": "Custom estate agency platform: branded public site, unified multi-channel inbox, AI classification on every enquiry, automated chase sequences from agent mailbox, two-way calendar sync for viewings, full agency admin.",
     "offers": {
       "@type": "Offer",
       "url": "https://autoeight.ai/book",
@@ -63,7 +63,7 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type":"Question","name":"Is this another off-the-shelf CRM?","acceptedAnswer":{"@type":"Answer","text":"No. The big chain-focused platforms are built and priced for corporate operations. This is a custom-built alternative for independent agencies. Same depth of features. Priced to fit a one to ten branch operation."}},
+      {"@type":"Question","name":"Is this a CRM?","acceptedAnswer":{"@type":"Answer","text":"No. This is an automation and enquiry-handling system that sits on top of (or replaces) your existing CRM. Every channel feeds into one inbox, AI classifies and drafts replies, chase sequences fire automatically, and viewings sync to your calendar. It does the work your CRM never has."}},
       {"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Custom builds typically start around £2,000 for a focused setup, scaling up depending on integrations, the number of branches, and how much existing data needs migrating. Fixed quote per project, no surprise hourly billing."}},
       {"@type":"Question","name":"Can I see it before I commit?","acceptedAnswer":{"@type":"Answer","text":"Yes. Northbrick.org is the live public site so you can browse the listings, search, valuation and viewing forms exactly as a vendor or applicant would. The staff and admin areas are behind login and not open to public access. Book a 15-min walkthrough and we'll demo every screen live."}},
       {"@type":"Question","name":"How long to launch?","acceptedAnswer":{"@type":"Answer","text":"3 to 12 weeks from kickoff to your branded version going live, depending on scope. Most agencies are running their first AI-classified enquiry in the platform within 4 weeks of starting."}},
@@ -116,10 +116,9 @@
       <h1>Estate agency software.<br /><em>Built for independents.</em></h1>
       <p>Every enquiry channel in one inbox. AI classifying every inbound. Chase sequences that send from your own mailbox. Viewings tied to your calendar. Sits alongside your existing CRM or replaces it entirely, your call.</p>
       <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:30px;">
-        <a href="http://www.northbrick.org/" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-arrow-up-right-from-square"></i> See the public site</a>
-        <a href="/book" class="btn btn-ghost btn-lg"><i class="fa-solid fa-calendar-check"></i> Book a live walkthrough</a>
+        <a href="/book" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book a live walkthrough</a>
       </div>
-      <p style="margin-top:16px; font-size:0.85rem; color:var(--muted); font-style:italic;">Public site is browsable at northbrick.org. We walk you through the staff and admin areas live on a booked call.</p>
+      <p style="margin-top:16px; font-size:0.85rem; color:var(--muted); font-style:italic;">30-min call. We walk you through every screen live, then quote on the spot.</p>
     </div>
   </div>
 
@@ -209,10 +208,10 @@
     <div class="page-section-inner" style="max-width: 820px;">
       <div class="reveal" style="margin-bottom: 56px;">
         <span class="section-label">The Problem</span>
-        <h2 style="font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 12px 0 20px;">You're losing leads in your own inbox.</h2>
-        <p style="font-size: 1rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px;">Enquiries arrive across web forms, Gmail, Outlook, WhatsApp, SMS, and sometimes a sticky note on the negotiator's desk. Nobody triages them properly. Newsletters bury them. The second or third follow-up, the one that actually wins the instruction, rarely happens.</p>
-        <p style="font-size: 1rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px;">The big chain-focused platforms exist, but they're priced and built for corporate operations. The alternative everyone defaults to is spreadsheets, a shared inbox, and a "we'll get to it" pile that grows every week.</p>
-        <p style="font-size: 1rem; color: var(--muted); line-height: 1.75;">There was no middle option that treated enquiries as a unified dataset and used AI to keep on top of them. So we built one.</p>
+        <h2 style="font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 12px 0 20px;">Hours wasted on admin. Leads slipping through.</h2>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px;">Negotiators are burning half the day on admin. Logging enquiries from web forms, Gmail, Outlook, WhatsApp and SMS. Re-typing the same details into the CRM. Manually chasing follow-ups. Booking viewings by phone tag. Hours of repetition every single day that should be automated.</p>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px;">And because nothing's joined up, leads slip through. The 2nd or 3rd follow-up (the one that wins the instruction) rarely happens. Vendor enquiries get buried under newsletters. Viewing requests sit unanswered for a day too long and the applicant moves on.</p>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.75;">The big chain-focused platforms exist but they're priced and built for corporate operations, not independents. The alternative everyone defaults to is spreadsheets, a shared inbox, and a "we'll get to it" pile that grows every week. There was no middle option that automated the admin and used AI to keep on top of every lead. So we built one.</p>
       </div>
 
       <!-- ── PILLARS ── -->
@@ -233,8 +232,8 @@
           </div>
           <div class="case-card">
             <span class="case-tag">AI classification</span>
-            <h3>Claude tags every inbound</h3>
-            <p>Claude Haiku classifies every email as it arrives: vendor, applicant, landlord, viewing request, or maintenance. It scores urgency, matches the enquiry to a live property where possible, and drafts a reply ready for the negotiator to approve and send.</p>
+            <h3>AI tags every inbound</h3>
+            <p>AI classifies every email as it arrives: vendor, applicant, landlord, viewing request, or maintenance. It scores urgency, matches the enquiry to a live property where possible, and drafts a reply ready for the negotiator to approve and send.</p>
           </div>
           <div class="case-card">
             <span class="case-tag">Chase automation</span>
@@ -248,8 +247,8 @@
           </div>
           <div class="case-card">
             <span class="case-tag">Full admin</span>
-            <h3>Nine modules, one platform</h3>
-            <p>Dashboard with KPIs, property and photo management, full site CMS, unified inbox, viewings, live chat, response-time stats, SEO analytics, and team settings. Non-technical staff manage everything. No developer involvement required.</p>
+            <h3>One platform, every enquiry</h3>
+            <p>Every enquiry, viewing, vendor conversation, applicant record and team setting sits in one place. Non-technical staff manage everything end to end. No developer involvement, no toggling between tools.</p>
           </div>
         </div>
       </div>
@@ -257,10 +256,9 @@
       <!-- ── DEMO ── -->
       <div class="reveal" style="margin-bottom: 56px; padding: 36px 32px; background: var(--surface); border: 1px solid rgba(124,92,252,0.3); border-radius: 16px;">
         <span class="section-label">See it live</span>
-        <h2 style="font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 12px 0 16px;">See the public site, then book a private walkthrough.</h2>
-        <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.7; margin-bottom: 22px;">Northbrick.org is the live public site. Browse the listings, search, valuation forms, and viewing requests exactly as a vendor or applicant would see them on your branded version. The staff inbox, AI classifier, viewings module and admin backend sit behind login and aren't open to public access. We walk you through every screen live on a 15-min booked call.</p>
+        <h2 style="font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin: 12px 0 16px;">Book a private walkthrough.</h2>
+        <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.7; margin-bottom: 22px;">We'll walk you through every screen live on a 15-min call. The unified inbox, AI classification, automated chases, calendar-synced viewings, and the full admin. You ask anything you want, we quote on the spot if it's a fit.</p>
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="http://www.northbrick.org/" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> See the public site</a>
           <a href="/book" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Book live walkthrough</a>
           <a href="/results/northbrick" class="btn btn-ghost">Read the full case study</a>
         </div>
@@ -274,42 +272,111 @@
           <table style="width:100%; border-collapse: collapse; font-size:0.9rem;">
             <thead>
               <tr style="border-bottom: 1px solid var(--border);">
-                <th style="text-align:left; padding:14px 12px; font-weight:700; color:var(--muted);"></th>
-                <th style="text-align:left; padding:14px 12px; font-weight:700;">Spreadsheets + shared inbox</th>
-                <th style="text-align:left; padding:14px 12px; font-weight:700;">Big-chain CRMs</th>
-                <th style="text-align:left; padding:14px 12px; font-weight:700; color:var(--purple-light);">Autoeight build</th>
+                <th style="text-align:left; padding:14px 12px; font-weight:700; color:var(--muted); width:40%;"></th>
+                <th style="text-align:center; padding:14px 12px; font-weight:700; min-width:130px;">Spreadsheets + shared inbox</th>
+                <th style="text-align:center; padding:14px 12px; font-weight:700; min-width:130px;">Big-chain CRMs</th>
+                <th style="text-align:center; padding:14px 12px; font-weight:700; color:var(--purple-light); min-width:130px;">Autoeight build</th>
               </tr>
             </thead>
             <tbody>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding:14px 12px; color:var(--muted);">Built for independents</td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-check" style="color:#22c55e;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-xmark" style="color:#ef4444;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-check" style="color:#22c55e;"></i></td>
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Built for independents</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Priced and scoped for 1-10 branch operations, not corporate chains.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding:14px 12px; color:var(--muted);">Unified multi-channel inbox</td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-xmark" style="color:#ef4444;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-check" style="color:#22c55e;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-check" style="color:#22c55e;"></i></td>
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Unified multi-channel inbox</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Every enquiry across web forms, Gmail, Outlook, WhatsApp, SMS and live chat lands in one place.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding:14px 12px; color:var(--muted);">AI classification on every enquiry</td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-xmark" style="color:#ef4444;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-xmark" style="color:#ef4444;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-check" style="color:#22c55e;"></i></td>
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">AI classification on every enquiry</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">AI reads every inbound and tags it as vendor, applicant, viewing request or landlord, with an urgency score.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding:14px 12px; color:var(--muted);">You own the code</td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-check" style="color:#22c55e;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-xmark" style="color:#ef4444;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-check" style="color:#22c55e;"></i></td>
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">AI-tailored response drafts</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">AI drafts a personalised reply for every enquiry in your tone of voice. Negotiator just approves and sends.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding:14px 12px; color:var(--muted);">Indie agency pricing</td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-check" style="color:#22c55e;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-xmark" style="color:#ef4444;"></i></td>
-                <td style="padding:14px 12px;"><i class="fa-solid fa-check" style="color:#22c55e;"></i></td>
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Automated follow-up sequences</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Multi-step chase sequences fire on schedule until the lead replies, books, or is marked dead. No more cold leads on day three.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-circle-half-stroke" style="color:#f59e0b; font-size:1.1rem;" title="Limited"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Chases send from agent's own mailbox</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Follow-ups send through each negotiator's actual inbox, not a generic noreply@ address. Deliverability stays high, tone stays personal.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Two-way calendar sync for viewings</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Viewings book straight to the negotiator's diary with full Google and Outlook two-way sync. Confirm, cancel or reschedule in one click.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Fully automated end-to-end</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Enquiry lands. AI classifies. Reply gets drafted. Chase sequence fires. Viewing books to calendar. Zero manual intervention unless the negotiator wants it.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Integrates with your existing CRM</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Sits alongside whatever you're using today, or replaces it entirely. Your call. No forced migration.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">You own the code</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Full source code, your repo, your hosting. No vendor lock-in. No platform fees if you self-host.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding:16px 12px;">
+                  <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Indie agency pricing</div>
+                  <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Custom builds from &pound;2,000. Fixed quote per project. No per-seat licences, no surprise hourly billing.</div>
+                </td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-xmark" style="color:#ef4444; font-size:1.1rem;"></i></td>
+                <td style="padding:16px 12px; text-align:center;"><i class="fa-solid fa-check" style="color:#22c55e; font-size:1.1rem;"></i></td>
               </tr>
             </tbody>
           </table>
@@ -358,8 +425,8 @@
         <h2 style="font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin: 12px 0 24px;">The questions every agency asks.</h2>
         <div class="faq-list" style="max-width: none;">
           <details class="faq-item">
-            <summary><span>Is this another off-the-shelf CRM?</span><i class="fa-solid fa-plus"></i></summary>
-            <p>No. The big chain-focused platforms are built and priced for corporate operations. This is a custom-built alternative for independent agencies. Same depth of features. Priced to fit a one to ten branch operation.</p>
+            <summary><span>Is this a CRM?</span><i class="fa-solid fa-plus"></i></summary>
+            <p>No. This is an automation and enquiry-handling system that sits on top of (or replaces) your existing CRM. Every channel feeds into one inbox, AI classifies and drafts replies, chase sequences fire automatically, and viewings sync to your calendar. It does the work your CRM never has.</p>
           </details>
           <details class="faq-item">
             <summary><span>How much does it cost?</span><i class="fa-solid fa-plus"></i></summary>
