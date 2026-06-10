@@ -46,10 +46,10 @@
   <style>
     .booking-layout {
       display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 48px;
+      grid-template-columns: 0.7fr 1.8fr;
+      gap: 40px;
       align-items: start;
-      max-width: 1100px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 72px 24px 96px;
     }
@@ -300,7 +300,7 @@
       <p class="form-intro" style="margin-bottom: 18px;">Direct calendar booking. Pick a slot, fill in a few details, you're booked. No back-and-forth on times.</p>
 
       <!-- Cal.com inline embed -->
-      <div style="background:#fff;border-radius:12px;overflow:hidden;min-height:680px;" id="cal-booking-inline"></div>
+      <div style="background:#fff;border-radius:12px;overflow:hidden;min-height:720px;width:100%;" id="cal-booking-inline"></div>
 
       <script type="text/javascript">
         (function (C, A, L) {
@@ -334,12 +334,12 @@
         Cal("init", "audit", { origin: "https://cal.com" });
         Cal.ns.audit("inline", {
           elementOrSelector: "#cal-booking-inline",
-          config: { "layout": "month_view" },
+          config: { "layout": "column_view" },
           calLink: "autoeight/audit"
         });
         Cal.ns.audit("ui", {
           "hideEventTypeDetails": false,
-          "layout": "month_view"
+          "layout": "column_view"
         });
       </script>
 
