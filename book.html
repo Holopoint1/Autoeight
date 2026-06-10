@@ -227,13 +227,12 @@
   <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></label>
 </nav>
   <div id="nav-placeholder" style="display:none;"></div>
-<div class="page-hero" style="min-height:320px;">
+<div class="page-hero" style="min-height:260px;">
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
     <div class="page-hero-content">
-      <span class="section-label">Free Consultation</span>
-      <h1>Book a call with<br /><em>our team</em></h1>
-      <p>Pick a time that works for you. We'll walk through your business across all three fronts: where you rank on Google and AI search, where automation could save hours, and what your data should be showing you. Then we'll tell you what we'd build, no obligations.</p>
+      <span class="section-label">Get in touch</span>
+      <h1>Book a call <em>with us</em></h1>
     </div>
   </div>
 
@@ -241,40 +240,9 @@
 
     <!-- LEFT: info panel -->
     <div class="booking-info reveal">
-      <span class="section-label">What to expect</span>
-      <h2>Your free<br /><em>30-minute audit</em></h2>
-      <p>One call, three angles. We'll look at how your site is performing on Google and AI search, where your team is losing the most hours to manual work, and what your data is (or isn't) telling you. Then we'll be honest about what's worth doing.</p>
-
-      <ul class="booking-perks">
-        <li>
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <div>
-            <strong>SEO &amp; process audit</strong>
-            We check where your site ranks (and where it doesn't), then map your current workflows to find where you're losing the most time.
-          </div>
-        </li>
-        <li>
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-          <div>
-            <strong>Custom recommendations</strong>
-            We'll outline exactly which ranking improvements and automations would have the biggest impact for your business specifically.
-          </div>
-        </li>
-        <li>
-          <i class="fa-solid fa-chart-line"></i>
-          <div>
-            <strong>Data &amp; ROI estimate</strong>
-            We'll show you which numbers your current setup isn't surfacing, and give you a realistic view of timeline, effort, and projected return.
-          </div>
-        </li>
-        <li>
-          <i class="fa-solid fa-circle-question"></i>
-          <div>
-            <strong>Your questions answered</strong>
-            Bring anything. We'll talk through integrations, costs, timelines, or anything else on your mind.
-          </div>
-        </li>
-      </ul>
+      <span class="section-label">A quick chat</span>
+      <h2>30-min call.<br /><em>No commitment.</em></h2>
+      <p>Pick a slot and we'll have a 30-min call about your business and what you're trying to fix. We'll tell you honestly if we can help.</p>
 
       <div class="booking-detail-row">
         <i class="fa-regular fa-clock"></i>
@@ -282,22 +250,18 @@
       </div>
       <div class="booking-detail-row">
         <i class="fa-solid fa-sterling-sign"></i>
-        <span>Completely free, no commitment</span>
+        <span>Free, no commitment</span>
       </div>
       <div class="booking-detail-row">
         <i class="fa-solid fa-envelope"></i>
         <span><a href="mailto:contact@autoeight.ai" style="color:var(--purple-light);text-decoration:none;">contact@autoeight.ai</a></span>
       </div>
-      <div class="booking-detail-row">
-        <i class="fa-solid fa-file-invoice"></i>
-        <span>Billing enquiries: <a href="mailto:contact@autoeight.ai" style="color:var(--purple-light);text-decoration:none;">contact@autoeight.ai</a></span>
-      </div>
     </div>
 
     <!-- RIGHT: Cal.com booking embed (primary) + contact form (secondary) -->
     <div class="booking-form-wrap reveal" style="transition-delay:0.15s; padding: 20px;">
-      <h3 style="margin-bottom: 4px;">Pick a time that works for you</h3>
-      <p class="form-intro" style="margin-bottom: 18px;">Direct calendar booking. Pick a slot, fill in a few details, you're booked. No back-and-forth on times.</p>
+      <h3 style="margin-bottom: 4px;">Pick a time</h3>
+      <p class="form-intro" style="margin-bottom: 18px;">Pick a slot, fill in a few details, you're booked.</p>
 
       <!-- Cal.com inline embed -->
       <div style="background:#fff;border-radius:12px;overflow:hidden;min-height:720px;width:100%;" id="cal-booking-inline"></div>
@@ -334,12 +298,12 @@
         Cal("init", "audit", { origin: "https://cal.com" });
         Cal.ns.audit("inline", {
           elementOrSelector: "#cal-booking-inline",
-          config: { "layout": "column_view" },
+          config: { "layout": "month_view" },
           calLink: "autoeight/audit"
         });
         Cal.ns.audit("ui", {
           "hideEventTypeDetails": false,
-          "layout": "column_view"
+          "layout": "month_view"
         });
       </script>
 
