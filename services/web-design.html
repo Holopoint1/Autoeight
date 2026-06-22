@@ -168,71 +168,77 @@
   <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></label>
 </nav>
   <div id="nav-placeholder" style="display:none;"></div>
-<!-- HERO with autoplay video banner -->
-  <div class="page-hero web-hero-video">
+<!-- HERO with feature video front-and-centre -->
+  <div class="page-hero web-hero-feature">
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
 
-    <!-- Autoplay muted background video -->
-    <div class="wd-hero-video-wrap" aria-hidden="true">
-      <iframe
-        class="wd-hero-video"
-        src="https://www.youtube.com/embed/A58HukC03zk?autoplay=1&mute=1&loop=1&playlist=A58HukC03zk&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1"
-        title="Autoeight showcase video"
-        allow="autoplay; encrypted-media; picture-in-picture"
-        allowfullscreen
-        loading="eager"
-        frameborder="0"></iframe>
-      <div class="wd-hero-video-overlay"></div>
-    </div>
-
-    <div class="page-hero-content" style="position:relative; z-index:2;">
+    <div class="page-hero-content wd-hero-content">
       <span class="section-label">Services</span>
-      <h1>Web Design in Halifax &amp; West Yorkshire<br /><em>Built to convert</em></h1>
-      <p>We design and build full websites with automation, integrations, reporting, and secure customer journeys built in from day one. Not just a brochure site. A proper online system for your business.</p>
+      <h1 class="wd-hero-h1">Web Design <em>that converts.</em></h1>
+
+      <!-- Feature sales video -->
+      <div class="wd-feature-video">
+        <iframe
+          src="https://www.youtube.com/embed/A58HukC03zk?autoplay=1&mute=1&loop=1&playlist=A58HukC03zk&controls=1&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3"
+          title="Autoeight web design walkthrough"
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowfullscreen
+          loading="eager"
+          frameborder="0"></iframe>
+      </div>
+
+      <p class="wd-hero-sub">Full websites with automation, integrations, reporting and secure customer journeys built in from day one. Not a brochure site. A proper online system for your business.</p>
       <a href="../book" class="btn btn-primary btn-lg">Get started <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 
   <style>
-    .web-hero-video {
+    .web-hero-feature {
+      padding-top: 56px;
+      padding-bottom: 64px;
+    }
+    .wd-hero-content {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
       position: relative;
-      overflow: hidden;
-      min-height: 560px;
+      z-index: 2;
     }
-    .wd-hero-video-wrap {
+    .wd-hero-h1 {
+      font-size: clamp(2rem, 4.2vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 14px 0 28px;
+    }
+    .wd-feature-video {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto 32px;
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(124,92,252,0.25);
+    }
+    .wd-feature-video iframe {
       position: absolute;
       inset: 0;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .wd-hero-video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 177.78vw;
-      height: 100vh;
-      min-width: 100%;
-      min-height: 100%;
-      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
       border: 0;
-      pointer-events: none;
     }
-    /* Dark overlay so the page text + hero CTAs stay readable on top of the video */
-    .wd-hero-video-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(8,4,28,0.55), rgba(8,4,28,0.75) 60%, rgba(8,4,28,0.9));
-      pointer-events: none;
+    .wd-hero-sub {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+      line-height: 1.65;
+      color: var(--muted);
     }
-    .web-hero-video .page-hero-bg,
-    .web-hero-video .page-hero-grid {
-      opacity: 0.25;
-    }
-    @media (max-width: 880px) {
-      .web-hero-video { min-height: 480px; }
-      .wd-hero-video { width: 200vw; height: 113vw; min-height: 100%; }
+    @media (max-width: 680px) {
+      .web-hero-feature { padding-top: 40px; padding-bottom: 48px; }
+      .wd-feature-video { border-radius: 12px; margin-bottom: 24px; }
+      .wd-hero-h1 { margin: 10px 0 20px; }
     }
   </style>
 
