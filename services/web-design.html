@@ -168,17 +168,73 @@
   <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></label>
 </nav>
   <div id="nav-placeholder" style="display:none;"></div>
-<!-- HERO -->
-  <div class="page-hero">
+<!-- HERO with autoplay video banner -->
+  <div class="page-hero web-hero-video">
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
-    <div class="page-hero-content">
+
+    <!-- Autoplay muted background video -->
+    <div class="wd-hero-video-wrap" aria-hidden="true">
+      <iframe
+        class="wd-hero-video"
+        src="https://www.youtube.com/embed/A58HukC03zk?autoplay=1&mute=1&loop=1&playlist=A58HukC03zk&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1"
+        title="Autoeight showcase video"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+        loading="eager"
+        frameborder="0"></iframe>
+      <div class="wd-hero-video-overlay"></div>
+    </div>
+
+    <div class="page-hero-content" style="position:relative; z-index:2;">
       <span class="section-label">Services</span>
       <h1>Web Design in Halifax &amp; West Yorkshire<br /><em>Built to convert</em></h1>
       <p>We design and build full websites with automation, integrations, reporting, and secure customer journeys built in from day one. Not just a brochure site. A proper online system for your business.</p>
       <a href="../book" class="btn btn-primary btn-lg">Get started <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
+
+  <style>
+    .web-hero-video {
+      position: relative;
+      overflow: hidden;
+      min-height: 560px;
+    }
+    .wd-hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .wd-hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 177.78vw;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      border: 0;
+      pointer-events: none;
+    }
+    /* Dark overlay so the page text + hero CTAs stay readable on top of the video */
+    .wd-hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,4,28,0.55), rgba(8,4,28,0.75) 60%, rgba(8,4,28,0.9));
+      pointer-events: none;
+    }
+    .web-hero-video .page-hero-bg,
+    .web-hero-video .page-hero-grid {
+      opacity: 0.25;
+    }
+    @media (max-width: 880px) {
+      .web-hero-video { min-height: 480px; }
+      .wd-hero-video { width: 200vw; height: 113vw; min-height: 100%; }
+    }
+  </style>
 
   <!-- ── RECENT WEBSITES SHOWCASE ── -->
   <style>
