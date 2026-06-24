@@ -344,6 +344,17 @@
       object-fit: cover;
       object-position: top center;
     }
+    /* Logo variant: square/portrait brand mark centred on tinted backdrop */
+    .web-showcase-frame.is-logo {
+      background: linear-gradient(135deg, rgba(124,92,252,0.18), rgba(124,92,252,0.04));
+      padding: 0;
+    }
+    .web-showcase-frame.is-logo img {
+      object-fit: contain;
+      object-position: center;
+      padding: 36px 32px;
+      background: transparent;
+    }
     .web-showcase-body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; }
     .web-showcase-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .web-showcase-tag {
@@ -378,7 +389,6 @@
       .web-showcase-body { padding: 18px 20px 20px; }
     }
   </style>
-<!-- Recent Builds moved to just before the bottom CTA -->
 
   <!-- ── DEFINITION ── -->
   <section class="page-section" style="padding:48px 5% 0;">
@@ -750,270 +760,11 @@
     }
     .dt-visit:hover { text-decoration: underline; }
   </style>
-  <section class="dt-preview-section">
-    <div class="dt-preview-inner">
-      <div class="dt-preview-header">
-        <span class="section-label">Live Client Site</span>
-        <h2>The Dice Tavern. <em>Built by us, live right now.</em></h2>
-        <p>A full e-commerce site with custom product pages, automated order emails, stock management, and a CMS dashboard.</p>
-      </div>
-
-      <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-frame" style="display:block;text-decoration:none;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;">
-        <div class="dt-chrome">
-          <span class="dt-dot r"></span>
-          <span class="dt-dot a"></span>
-          <span class="dt-dot g"></span>
-          <div class="dt-url"><i class="fa-solid fa-lock"></i>www.thedicetavern.co.uk</div>
-        </div>
-        <!-- Recreated Dice Tavern hero (native HTML/CSS, no iframe) -->
-        <div class="dt-mock">
-          <!-- Mini nav bar -->
-          <div class="dt-mock-nav">
-            <img loading="lazy" src="/brand_assets/case-studies/dice-tavern/logo-RESIZE.png" alt="" style="height:32px;filter:brightness(10);" />
-            <div class="dt-mock-links">
-              <span>HOME</span><span>SHOP</span><span>ABOUT</span><span>CONTACT</span>
-            </div>
-          </div>
-          <!-- Hero content -->
-          <div class="dt-mock-hero">
-            <div class="dt-mock-badge">EST. 2024 · YORK, ENGLAND</div>
-            <div class="dt-mock-h1">
-              <span class="dt-line dt-l1">BUILD YOUR</span>
-              <span class="dt-line dt-l2">BATTLEFIELD.</span>
-              <span class="dt-line dt-l3">WIN THE WAR.</span>
-            </div>
-            <p class="dt-mock-sub">Handcrafted MDF terrain, gaming mats, storage solutions &amp; accessories for Warhammer 40K.</p>
-            <div class="dt-mock-btns">
-              <span class="dt-mock-btn-pri">SHOP NOW &rarr;</span>
-              <span class="dt-mock-btn-sec">OUR STORY</span>
-            </div>
-            <div class="dt-mock-trust">
-              <span>&starf;&starf;&starf;&starf;&starf; 4.9 from 80+ reviews</span>
-              <span>&bull; Ships in 1-3 days</span>
-            </div>
-          </div>
-          <!-- Ember particles -->
-          <div class="dt-embers">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-          <!-- Hover CTA -->
-          <div class="dt-hover-cta">
-            <span>Visit live site <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-          </div>
-        </div>
-      </a>
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
-        .dt-mock {
-          position: relative;
-          background: radial-gradient(ellipse 80% 60% at 50% 80%, #1a1408 0%, #0c0a06 50%, #050404 100%);
-          padding: 0;
-          overflow: hidden;
-          min-height: 480px;
-          display: flex;
-          flex-direction: column;
-        }
-        .dt-mock-nav {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 16px 28px;
-          border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .dt-mock-links {
-          display: flex; gap: 24px;
-          font-family: 'Inter', sans-serif;
-          font-size: 0.68rem; font-weight: 600;
-          letter-spacing: 0.12em;
-          color: rgba(255,255,255,0.7);
-        }
-        .dt-mock-hero {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          padding: 40px 24px 48px;
-          position: relative;
-          z-index: 2;
-        }
-        .dt-mock-badge {
-          font-family: 'Inter', sans-serif;
-          font-size: 0.62rem;
-          letter-spacing: 0.18em;
-          color: rgba(212,160,23,0.7);
-          margin-bottom: 20px;
-        }
-        .dt-mock-h1 {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-          margin-bottom: 18px;
-        }
-        .dt-line {
-          font-family: 'Cinzel', serif;
-          font-weight: 900;
-          line-height: 1.05;
-          color: #ffffff;
-          opacity: 0;
-          animation: dt-line-in 0.6s ease forwards;
-        }
-        .dt-l1 { font-size: clamp(1.4rem, 3.5vw, 2.4rem); animation-delay: 0.3s; }
-        .dt-l2 {
-          font-size: clamp(1.8rem, 4.5vw, 3.2rem);
-          background: linear-gradient(135deg, #d4a017, #f5d060, #d4a017);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation-delay: 0.6s;
-        }
-        .dt-l3 { font-size: clamp(1.4rem, 3.5vw, 2.4rem); animation-delay: 0.9s; }
-        @keyframes dt-line-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-        .dt-mock-sub {
-          font-family: 'Inter', sans-serif;
-          font-size: 0.78rem;
-          color: rgba(255,255,255,0.55);
-          max-width: 400px;
-          line-height: 1.6;
-          margin-bottom: 22px;
-          opacity: 0;
-          animation: dt-line-in 0.6s ease 1.2s forwards;
-        }
-        .dt-mock-btns {
-          display: flex; gap: 12px; align-items: center;
-          opacity: 0;
-          animation: dt-line-in 0.5s ease 1.5s forwards;
-        }
-        .dt-mock-btn-pri {
-          font-family: 'Inter', sans-serif;
-          font-size: 0.76rem; font-weight: 700;
-          letter-spacing: 0.08em;
-          padding: 10px 22px;
-          border: 1.5px solid #d4a017;
-          color: #d4a017;
-          border-radius: 4px;
-        }
-        .dt-mock-btn-sec {
-          font-family: 'Inter', sans-serif;
-          font-size: 0.76rem; font-weight: 500;
-          color: rgba(255,255,255,0.5);
-          letter-spacing: 0.06em;
-        }
-        .dt-mock-trust {
-          margin-top: 20px;
-          font-family: 'Inter', sans-serif;
-          font-size: 0.65rem;
-          color: rgba(255,255,255,0.4);
-          display: flex; gap: 10px;
-          opacity: 0;
-          animation: dt-line-in 0.5s ease 1.8s forwards;
-        }
-        /* Embers */
-        .dt-embers { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-        .dt-embers i {
-          position: absolute;
-          width: 2.5px; height: 2.5px;
-          background: #d4a017;
-          border-radius: 50%;
-          box-shadow: 0 0 4px 1px rgba(212,160,23,0.5);
-          opacity: 0;
-          animation: dt-ember-up linear infinite;
-        }
-        .dt-embers i:nth-child(1)  { left:10%; bottom:5%;  animation-duration:4.2s; animation-delay:0s; }
-        .dt-embers i:nth-child(2)  { left:20%; bottom:8%;  animation-duration:5.1s; animation-delay:0.7s; }
-        .dt-embers i:nth-child(3)  { left:35%; bottom:3%;  animation-duration:3.8s; animation-delay:1.2s; }
-        .dt-embers i:nth-child(4)  { left:50%; bottom:6%;  animation-duration:4.8s; animation-delay:0.3s; }
-        .dt-embers i:nth-child(5)  { left:65%; bottom:4%;  animation-duration:5.5s; animation-delay:1.8s; }
-        .dt-embers i:nth-child(6)  { left:78%; bottom:7%;  animation-duration:4.0s; animation-delay:0.9s; }
-        .dt-embers i:nth-child(7)  { left:88%; bottom:5%;  animation-duration:5.3s; animation-delay:2.1s; }
-        .dt-embers i:nth-child(8)  { left:15%; bottom:10%; animation-duration:6.0s; animation-delay:1.5s; }
-        .dt-embers i:nth-child(9)  { left:42%; bottom:2%;  animation-duration:4.5s; animation-delay:0.5s; }
-        .dt-embers i:nth-child(10) { left:58%; bottom:9%;  animation-duration:5.8s; animation-delay:2.5s; }
-        .dt-embers i:nth-child(11) { left:72%; bottom:3%;  animation-duration:4.1s; animation-delay:1.0s; }
-        .dt-embers i:nth-child(12) { left:30%; bottom:6%;  animation-duration:5.0s; animation-delay:3.0s; }
-        @keyframes dt-ember-up {
-          0%   { transform: translateY(0) translateX(0); opacity: 0; }
-          8%   { opacity: 0.9; }
-          70%  { opacity: 0.4; }
-          100% { transform: translateY(-380px) translateX(30px); opacity: 0; }
-        }
-        /* Hover */
-        .dt-hover-cta {
-          position: absolute; inset: 0; z-index: 10;
-          display: flex; align-items: center; justify-content: center;
-          background: rgba(0,0,0,0.3);
-          opacity: 0; transition: opacity 0.25s;
-        }
-        .dt-hover-cta span {
-          background: rgba(255,255,255,0.95); color: #111;
-          padding: 12px 28px; border-radius: 10px;
-          font-size: 0.9rem; font-weight: 700;
-        }
-        .dt-hover-cta span i { font-size: 0.72rem; margin-left: 6px; }
-        .dt-frame:hover .dt-hover-cta { opacity: 1; }
-        .dt-frame:hover { transform: translateY(-3px); box-shadow: 0 50px 140px rgba(0,0,0,0.7) !important; }
-        @media (max-width: 640px) {
-          .dt-mock { min-height: 360px; }
-          .dt-mock-links { display: none; }
-          .dt-mock-hero { padding: 28px 16px 36px; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .dt-line, .dt-mock-sub, .dt-mock-btns, .dt-mock-trust { opacity: 1; animation: none; }
-          .dt-embers i { animation: none; }
-        }
-      </style>
-
-      <div style="text-align:center;">
-        <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="dt-visit">Visit thedicetavern.co.uk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ── FAQ ── -->
-  <section id="faq" class="page-section">
+  <section class="page-section" style="padding:64px 5% 8px;">
     <div class="page-section-inner">
-      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 48px;">
-        <span class="section-label">FAQs</span>
-        <h2 class="section-title">Frequently asked questions</h2>
-      </div>
-      <div class="faq-inner reveal">
-        <div class="faq-list">
-          <div class="faq-item">
-            <div class="faq-q">What makes your web design different from other agencies?<span class="faq-toggle">+</span></div>
-            <div class="faq-body"><div class="faq-body-inner"><p>We build websites with automation and conversion built in from day one. Every form, button, and CTA connects to your backend systems. Leads flow into your CRM automatically, confirmation emails go out instantly, and sales sequences fire without anyone touching anything.</p></div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">How long does a website take to build?<span class="faq-toggle">+</span></div>
-            <div class="faq-body"><div class="faq-body-inner"><p>Most websites are live within 3-4 weeks. We start with strategy and structure, then design and build, integrate automations, and launch with ongoing optimisation. Simpler sites can be done faster.</p></div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Do you use WordPress or a website builder?<span class="faq-toggle">+</span></div>
-            <div class="faq-body"><div class="faq-body-inner"><p>It depends on what your business needs. We build custom HTML/CSS sites for maximum speed and control, WordPress sites for content-heavy businesses, and can work with other platforms if needed. We recommend what's right for your goals.</p></div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Will my website be optimised for search engines?<span class="faq-toggle">+</span></div>
-            <div class="faq-body"><div class="faq-body-inner"><p>Yes. Every site we build includes technical SEO, structured data markup, fast loading times, mobile responsiveness, and Core Web Vitals optimisation. We also write conversion-focused copy that targets the keywords your customers are searching for.</p></div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Do you offer ongoing website maintenance?<span class="faq-toggle">+</span></div>
-            <div class="faq-body"><div class="faq-body-inner"><p>Yes. We monitor performance, make content updates, run conversion optimisation, and handle any technical issues. Your site keeps improving after launch, not just sitting there.</p></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- Recent Builds (moved to bottom of page) -->
-  <section class="page-section" style="padding:56px 5% 8px;">
-    <div class="page-section-inner">
-      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 36px;">
+      <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 36px;">
         <span class="section-label">Recent Builds</span>
-        <h2 class="section-title" style="font-size:clamp(1.5rem, 4vw, 2.1rem);">Websites we've designed and shipped</h2>
+        <h2 class="section-title" style="font-size:clamp(1.5rem, 4vw, 2.2rem);">Websites we've designed and shipped</h2>
         <p class="section-sub" style="margin:12px auto 0;">Real sites running in production. Click through and have a poke around.</p>
       </div>
       <div class="web-showcase reveal">
@@ -1051,9 +802,79 @@
             </div>
           </div>
         </div>
+        <div class="web-showcase-card">
+          <a href="http://www.northbrick.org/" target="_blank" rel="noopener" class="web-showcase-frame is-logo" aria-label="Visit Northbrick Property live site">
+            <img loading="lazy" src="/brand_assets/case-studies/northbrick/logo.png" alt="Northbrick Property estate agency platform" />
+          </a>
+          <div class="web-showcase-body">
+            <div class="web-showcase-meta">
+              <span class="web-showcase-tag">PropTech &middot; Estate Agents</span>
+              <span class="web-showcase-domain">northbrick.org</span>
+            </div>
+            <h3>Northbrick Property</h3>
+            <p>Full estate agency platform: branded public site, unified enquiry inbox across 14 channels, AI classification on every inbound, automated chase from the agent's own mailbox.</p>
+            <div class="web-showcase-links">
+              <a href="http://www.northbrick.org/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit live site</a>
+              <a href="../results/northbrick"><i class="fa-solid fa-arrow-right"></i> Read case study</a>
+            </div>
+          </div>
+        </div>
+        <div class="web-showcase-card">
+          <a href="https://learnwithlorna.co.uk/" target="_blank" rel="noopener" class="web-showcase-frame is-logo" aria-label="Visit Learn With Lorna live site">
+            <img loading="lazy" src="/brand_assets/case-studies/learn-with-lorna/logo.png" alt="Learn With Lorna online tutoring platform" />
+          </a>
+          <div class="web-showcase-body">
+            <div class="web-showcase-meta">
+              <span class="web-showcase-tag">Education &middot; LMS</span>
+              <span class="web-showcase-domain">learnwithlorna.co.uk</span>
+            </div>
+            <h3>Learn With Lorna</h3>
+            <p>Custom learning platform replacing Tutorful and an external website builder. Student portal, video lessons, progress tracking, direct payments. Tutor keeps 100% of every booking.</p>
+            <div class="web-showcase-links">
+              <a href="https://learnwithlorna.co.uk/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit live site</a>
+              <a href="../results/learn-with-lorna"><i class="fa-solid fa-arrow-right"></i> Read case study</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="reveal" style="text-align:center;margin-top:32px;">
+      <div class="reveal" style="text-align:center;margin-top:36px;">
         <a href="../results/case-studies" class="btn btn-ghost" style="font-size:0.88rem;">See all case studies <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── FAQ ── -->
+  <section id="faq" class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 48px;">
+        <span class="section-label">FAQs</span>
+        <h2 class="section-title">Frequently asked questions</h2>
+      </div>
+      <div class="faq-inner reveal">
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">What makes your web design different from other agencies?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>We build websites with automation and conversion built in from day one. Every form, button, and CTA connects to your backend systems. Leads flow into your CRM automatically, confirmation emails go out instantly, and sales sequences fire without anyone touching anything.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How long does a website take to build?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Most websites are live within 3-4 weeks. We start with strategy and structure, then design and build, integrate automations, and launch with ongoing optimisation. Simpler sites can be done faster.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Do you use WordPress or a website builder?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>It depends on what your business needs. We build custom HTML/CSS sites for maximum speed and control, WordPress sites for content-heavy businesses, and can work with other platforms if needed. We recommend what's right for your goals.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Will my website be optimised for search engines?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Yes. Every site we build includes technical SEO, structured data markup, fast loading times, mobile responsiveness, and Core Web Vitals optimisation. We also write conversion-focused copy that targets the keywords your customers are searching for.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Do you offer ongoing website maintenance?<span class="faq-toggle">+</span></div>
+            <div class="faq-body"><div class="faq-body-inner"><p>Yes. We monitor performance, make content updates, run conversion optimisation, and handle any technical issues. Your site keeps improving after launch, not just sitting there.</p></div></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
