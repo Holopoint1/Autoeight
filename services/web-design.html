@@ -188,6 +188,18 @@
           frameborder="0"></iframe>
       </div>
 
+      <!-- Client review under the video -->
+      <figure class="wd-hero-review">
+        <div class="wd-hero-review-stars" aria-label="5 out of 5 stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <blockquote>"Great service. We got regular updates throughout the build and ended up with a highly functional, good-looking website."</blockquote>
+        <figcaption>
+          <span class="wd-hero-review-name">Harry D.</span>
+          <span class="wd-hero-review-role">Owner, The Dice Tavern</span>
+        </figcaption>
+      </figure>
+
       <p class="wd-hero-sub">Email automation, order management, custom CMS, integrated Stripe payments, SEO and analytics &mdash; all built into one platform their team runs themselves. No developer involvement, no monthly platform fees, no patchwork tools. This is what we build for every client.</p>
       <a href="../book" class="btn btn-primary btn-lg">Get a build like this <i class="fa-solid fa-arrow-right"></i></a>
     </div>
@@ -244,6 +256,48 @@
       font-size: clamp(0.95rem, 1.4vw, 1.1rem);
       line-height: 1.65;
       color: var(--muted);
+    }
+    .wd-hero-review {
+      max-width: 720px;
+      margin: 0 auto 32px;
+      padding: 22px 28px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(124, 92, 252, 0.25);
+      border-left: 3px solid var(--purple-light);
+      border-radius: 12px;
+      text-align: left;
+    }
+    .wd-hero-review-stars {
+      color: #facc15;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .wd-hero-review blockquote {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      font-style: italic;
+    }
+    .wd-hero-review figcaption {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .wd-hero-review-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .wd-hero-review-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 680px) {
+      .wd-hero-review { padding: 18px 20px; }
+      .wd-hero-review blockquote { font-size: 0.94rem; }
     }
     @media (max-width: 680px) {
       .web-hero-feature { padding-top: 40px; padding-bottom: 48px; }
