@@ -583,6 +583,17 @@ nav.scrolled {
   background-clip: text;
 }
 
+/* Rotating word inside the hero H1 */
+.hero-rotate {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 250ms ease;
+  min-width: 4ch;
+}
+.hero-rotate.is-fading {
+  opacity: 0;
+}
+
 .hero-sub {
   font-size: clamp(1rem, 2vw, 1.18rem);
   color: var(--muted);
