@@ -583,26 +583,15 @@ nav.scrolled {
   background-clip: text;
 }
 
-/* Typewriter word inside the hero H1 */
+/* Rotating word inside the hero H1: clean fade between words */
 .hero-rotate {
   display: inline-block;
+  opacity: 1;
+  transition: opacity 350ms ease;
   min-width: 4ch;
-  position: relative;
 }
-/* Blinking caret after the rotating word — sits outside the gradient text-fill so it stays purple */
-.hero-rotate::after {
-  content: '|';
-  display: inline-block;
-  margin-left: 4px;
-  color: #9b7dff;
-  -webkit-text-fill-color: #9b7dff;
-  font-weight: 400;
-  animation: hero-caret-blink 1s steps(2, end) infinite;
-  transform: translateY(-0.05em);
-}
-@keyframes hero-caret-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+.hero-rotate.is-fading {
+  opacity: 0;
 }
 
 .hero-sub {
