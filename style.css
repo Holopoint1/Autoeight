@@ -583,15 +583,10 @@ nav.scrolled {
   background-clip: text;
 }
 
-/* Rotating word inside the hero H1: clean fade between words */
+/* Typewriter word inside the hero H1 — no cursor, just typing */
 .hero-rotate {
   display: inline-block;
-  opacity: 1;
-  transition: opacity 350ms ease;
   min-width: 4ch;
-}
-.hero-rotate.is-fading {
-  opacity: 0;
 }
 
 .hero-sub {
