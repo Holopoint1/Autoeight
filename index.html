@@ -196,7 +196,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css?v=20260626c" />
+  <link rel="stylesheet" href="style.css?v=20260626d" />
   <style>
     .form-success {
       padding: 40px 24px;
@@ -1119,7 +1119,8 @@
 <script src="main.js?v=20260331r"></script>
 <script>
   // Hero H1 rotating word — clean fade between rank / convert / automate / scale
-  // Each word stays visible 3.4s, cross-fades over 360ms. Pauses on hover.
+  // Each word stays visible 2.4s, cross-fades over 300ms. Pauses on hover.
+  // First swap kicks in 2.4s after page load so visitors see movement quickly.
   (function () {
     var el = document.getElementById('hero-rotate');
     if (!el) return;
@@ -1128,15 +1129,16 @@
     var paused = false;
     el.addEventListener('mouseenter', function () { paused = true; });
     el.addEventListener('mouseleave', function () { paused = false; });
-    setInterval(function () {
+    function swap() {
       if (paused) return;
       el.classList.add('is-fading');
       setTimeout(function () {
         idx = (idx + 1) % words.length;
         el.textContent = words[idx];
         el.classList.remove('is-fading');
-      }, 360);
-    }, 3400);
+      }, 300);
+    }
+    setInterval(swap, 2400);
   })();
 </script>
   <script>
