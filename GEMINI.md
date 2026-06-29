@@ -61,6 +61,5 @@ Target search terms: "AI automation Halifax", "AI companies Halifax", "AI compan
 
 ## Proof Points
 - Matrix TSL: 3hrs saved per rep per day, 29 tools consolidated
-- Learn With Lorna: 60% less admin, £200+/mo saved
 - TM Joinery: 0 to ranking in 6 regions, 5-star Google rating
 - The Dice Tavern: 0% marketplace fees, 4.9-star rating

@@ -50,6 +50,5 @@ Direct, conversational, human. Not corporate or salesy.
 
 ## Proof points
 - Matrix TSL: 3hrs saved per rep per day, 29 tools consolidated
-- Learn With Lorna: 60% less admin, £200+/mo saved, custom LMS
 - TM Joinery: 0 to ranking in 6 regions, 5-star Google rating
 - The Dice Tavern: 0% marketplace fees, 4.9-star rating, 4 automated emails per order

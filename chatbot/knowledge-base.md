@@ -155,23 +155,6 @@ Custom websites with AI, automation, and integrations built in from day one.
 **Live site:** https://tmjoineryltd.co.uk/
 **Case study URL:** /results/tm-joinery
 
-### Learn With Lorna — Custom LMS
-**Industry:** GCSE tutoring (Geography & Maths)
-**Problem:** Tutor managing students and parents via scattered PDFs, emails, and spreadsheets. Parents had no visibility on their child's progress.
-**What we built:** Full-stack tutoring platform. Features:
-- Student portal with assignments, due dates, submitted work, teacher feedback, overall progress
-- Parent dashboard with same visibility as student sees
-- Admin panel for tutor to manage students, assignments, feedback
-- Multi-role authentication (student, parent, admin)
-- Assignment submission and marking
-- Progress tracking per student
-- Serverless backend on Cloudflare Workers
-**Results:** 3 user roles, 1 branded portal replacing 5+ separate tools, 60% reduction in admin time.
-**Tech:** Custom HTML/CSS/JS, Cloudflare Workers, D1 database.
-**Build time:** 6 weeks.
-**Live site:** Learn With Lorna (private tutor portal)
-**Case study URL:** /results/learn-with-lorna
-
 ## Pricing (general guidance)
 
 We don't publish fixed pricing because every build is scoped to the business. But here's the honest range:
@@ -211,7 +194,7 @@ No fixed pricing because every build is scoped differently. Range is usually £2
 Yes. You own the code, the data, the accounts. We'll hand over full access at the end of any project. No vendor lock-in.
 
 **"Can I manage it myself after handover?"**
-Most of what we build comes with a CMS or admin panel so yes. The Dice Tavern client runs their entire e-commerce platform without touching our code. Learn With Lorna's tutor manages students herself.
+Most of what we build comes with a CMS or admin panel so yes. The Dice Tavern client runs their entire e-commerce platform without touching our code.
 
 **"What tech do you use?"**
 Depends on the project. Common stack: HTML/CSS/JS for frontends, Node.js or Python for backends, Supabase or Cloudflare Workers + D1 for databases, OpenAI or Claude APIs for AI features, HubSpot/Salesforce/Pipedrive for CRM integrations, Stripe for payments, Make.com and Zapier for simpler automations.
