@@ -173,8 +173,9 @@
     <div class="page-hero-grid"></div>
 
     <div class="page-hero-content wd-hero-content">
-      <span class="section-label">Web Design &middot; Case study walkthrough</span>
-      <h1 class="wd-hero-h1">We don't build brochure sites. <em>We build the system your business runs on.</em></h1>
+      <span class="section-label">Web Design</span>
+      <h1 class="wd-hero-h1">Websites Designed and Built for <em>Lead Generation.</em></h1>
+      <p class="wd-hero-sub">Websites with SEO, high-converting forms, landing pages, analytics, CRM integration and lead capture built in. Not another brochure site.</p>
 
       <!-- Feature sales video -->
       <div class="wd-feature-video">
@@ -390,7 +391,97 @@
       .web-showcase { gap: 20px; }
       .web-showcase-body { padding: 18px 20px 20px; }
     }
+
+    /* ── Real Results (case-study cards under the hero) ── */
+    .real-results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .real-results-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 26px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .real-results-card:hover {
+      border-color: rgba(124,92,252,0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(124,92,252,0.12);
+    }
+    .real-results-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+    }
+    .real-results-headline {
+      font-size: clamp(1.4rem, 2.4vw, 1.7rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin: 0;
+    }
+    .real-results-body {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+    .real-results-link {
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--purple-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
   </style>
+
+  <!-- ── REAL RESULTS (case-study cards under the hero) ── -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 36px;">
+        <span class="section-label">Real Results</span>
+        <h2 class="section-title">Websites that earn their keep</h2>
+        <p class="section-sub" style="margin-top:12px;">Three real builds, three different lead-generation problems, three custom systems.</p>
+      </div>
+      <div class="real-results-grid reveal">
+        <a href="../results/dice-tavern" class="real-results-card">
+          <span class="real-results-eyebrow">E-commerce &middot; The Dice Tavern</span>
+          <h3 class="real-results-headline">0% marketplace fees</h3>
+          <p class="real-results-body">Left Etsy for a custom e-commerce platform. Own Stripe, own customer emails, own product data. Sat at 4.9 stars on reviews.</p>
+          <span class="real-results-link">Read case study <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a href="../results/tm-joinery" class="real-results-card">
+          <span class="real-results-eyebrow">Local SEO &middot; TM Joinery</span>
+          <h3 class="real-results-headline">Built for local search</h3>
+          <p class="real-results-body">LocalBusiness schema, service-area targeting across multiple regions, Google Business Profile optimisation, and automated quote-request forms baked into a custom SEO-first build.</p>
+          <span class="real-results-link">Read case study <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a href="../results/northbrick" class="real-results-card">
+          <span class="real-results-eyebrow">PropTech &middot; Northbrick Property</span>
+          <h3 class="real-results-headline">Every enquiry in one inbox</h3>
+          <p class="real-results-body">Unified inbox across every channel, Claude AI classification on every inbound, automated chase sequences that send from the agent's own mailbox. Custom estate-agency platform.</p>
+          <span class="real-results-link">Read case study <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
 
   <!-- INTRO: WHAT MAKES OURS DIFFERENT -->
   <section class="page-section">
