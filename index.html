@@ -289,7 +289,7 @@
         </h1>
 
         <p class="hero-sub">
-          Websites with technical SEO, AI workflows, conversion-focused design, CRM integration and live dashboards. Built to generate leads from day one, not just look pretty.
+          Websites with SEO, automations that save your team hours, conversion-focused design, CRM integration and live dashboards. Built to generate leads from day one, not just look pretty.
         </p>
 
         <div class="hero-actions">
@@ -1042,10 +1042,10 @@
     var typing = false;            // first action is to erase the visible word
     var paused = false;
 
-    var TYPE_SPEED = 90;            // ms between characters when typing
-    var BACKSPACE_SPEED = 45;       // ms between characters when erasing
-    var PAUSE_AFTER_TYPED = 1600;   // how long each fully-typed word stays before erase
-    var PAUSE_BEFORE_NEXT = 300;    // brief gap between erase-finish and next type-start
+    var TYPE_SPEED = 160;           // ms between characters when typing
+    var BACKSPACE_SPEED = 80;       // ms between characters when erasing
+    var PAUSE_AFTER_TYPED = 3000;   // how long each fully-typed word stays before erase
+    var PAUSE_BEFORE_NEXT = 500;    // gap between erase-finish and next type-start
 
     el.addEventListener('mouseenter', function () { paused = true; });
     el.addEventListener('mouseleave', function () { paused = false; });
@@ -1074,8 +1074,8 @@
         setTimeout(tick, BACKSPACE_SPEED);
       }
     }
-    // First word is fully rendered in HTML on load; hold for ~1.6s, then begin the cycle
-    setTimeout(tick, 1600);
+    // First word is fully rendered in HTML on load; hold for ~2.5s, then begin the cycle
+    setTimeout(tick, 2500);
   })();
 </script>
   <script>
