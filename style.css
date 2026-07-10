@@ -583,15 +583,13 @@ nav.scrolled {
   background-clip: text;
 }
 
-/* Typewriter word inside the hero H1 — types left-to-right from a stable slot.
-   min-width matches the longest word ("lead generation.") so the preceding
-   "Websites Designed and Built for" doesn't drift as the word shrinks/grows. */
+/* Typewriter word inside the hero H1 — types left-to-right, sits inline after "for".
+   Small min-width keeps the collapsed slot from disappearing between words. */
 .hero-rotate {
   display: inline-block;
-  min-width: 16ch;
+  min-width: 2ch;
   text-align: left;
   vertical-align: baseline;
-  white-space: nowrap;
 }
 
 .hero-sub {
