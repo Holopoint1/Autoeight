@@ -583,10 +583,15 @@ nav.scrolled {
   background-clip: text;
 }
 
-/* Typewriter word inside the hero H1 — no cursor, just typing */
+/* Typewriter word inside the hero H1 — types left-to-right from a stable slot.
+   min-width matches the longest word ("lead generation.") so the preceding
+   "Websites Designed and Built for" doesn't drift as the word shrinks/grows. */
 .hero-rotate {
   display: inline-block;
-  min-width: 4ch;
+  min-width: 16ch;
+  text-align: left;
+  vertical-align: baseline;
+  white-space: nowrap;
 }
 
 .hero-sub {
@@ -3619,7 +3624,7 @@ footer {
   border: 1px solid var(--purple-light);
   top: 10%;
   right: 5%;
-  animation: float-rotate 20s linear infinite;
+  animation: float-rotate 40s linear infinite;
 }
 
 .float-shape-2 {
@@ -3628,7 +3633,7 @@ footer {
   border: 1px solid var(--purple-light);
   bottom: 15%;
   left: 3%;
-  animation: float-rotate 15s linear infinite reverse;
+  animation: float-rotate 30s linear infinite reverse;
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
 }
 
