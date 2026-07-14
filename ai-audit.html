@@ -188,69 +188,25 @@
         font-size: 1.1rem; margin-bottom: 10px;
       }
 
-      /* Vertical trunk under root */
+      /* Single vertical trunk under root — the ONE main line connecting the tree */
       .tree-trunk {
-        width: 1.5px; height: var(--tree-drop);
+        width: 1.5px; height: 40px;
         background: var(--tree-line);
         margin: 0 auto;
       }
 
-      /* Level 2: 3 category columns, joined by a horizontal spine */
+      /* Level 2: 3 category columns */
       .tree-cats {
-        position: relative;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 22px;
-      }
-      /* Horizontal spine that connects the 3 columns to the trunk above.
-         Column centre offset from container edge = (100% - 44px) / 6. */
-      .tree-cats::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: calc((100% - 44px) / 6);
-        right: calc((100% - 44px) / 6);
-        height: 1.5px; background: var(--tree-line);
-      }
-      /* Dot at where trunk meets spine (root junction) */
-      .tree-cats::after {
-        content: '';
-        position: absolute;
-        top: calc(0px - var(--tree-dot) / 2 + 0.75px);
-        left: 50%;
-        width: var(--tree-dot); height: var(--tree-dot);
-        border-radius: 50%;
-        background: var(--purple-light);
-        transform: translateX(-50%);
       }
       .tree-cat-col {
         position: relative;
         display: flex; flex-direction: column; align-items: stretch;
       }
-      /* Vertical drop from spine into each category header */
-      .tree-cat-col::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 50%;
-        width: 1.5px; height: var(--tree-drop);
-        background: var(--tree-line);
-        transform: translateX(-50%);
-      }
-      /* Dot at spine-drop junction (top of each category drop) */
-      .tree-cat-col::after {
-        content: '';
-        position: absolute;
-        top: calc(0px - var(--tree-dot) / 2 + 0.75px);
-        left: 50%;
-        width: var(--tree-dot); height: var(--tree-dot);
-        border-radius: 50%;
-        background: var(--purple-light);
-        opacity: 0.85;
-        transform: translateX(-50%);
-      }
       .tree-cat {
         position: relative;
-        margin-top: var(--tree-drop);
         text-align: center;
         padding: 12px 16px;
         background: rgba(124,92,252,0.08);
@@ -259,49 +215,14 @@
         font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
         color: var(--purple-light);
       }
-      /* Vertical drop from category card down to the mini-spine */
-      .tree-cat::after {
-        content: '';
-        position: absolute;
-        bottom: calc(0px - var(--tree-drop));
-        left: 50%;
-        width: 1.5px; height: var(--tree-drop);
-        background: var(--tree-line);
-        transform: translateX(-50%);
-      }
 
-      /* Level 3: 2 leaves per category, side-by-side under a mini-spine.
-         margin-top = gap from category down to mini-spine.
-         padding-top = gap from mini-spine down to the leaf cards. */
+      /* Level 3: 2 leaves per category, side-by-side */
       .tree-leaves {
         position: relative;
-        margin-top: var(--tree-drop);
-        padding-top: var(--tree-drop-leaves);
+        margin-top: 24px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 14px;
-      }
-      /* Mini horizontal spine linking the 2 leaves to the category drop above.
-         Column centre offset from container edge = (100% - 14px) / 4. */
-      .tree-leaves::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: calc((100% - 14px) / 4);
-        right: calc((100% - 14px) / 4);
-        height: 1.5px; background: var(--tree-line);
-      }
-      /* Dot where category drop meets mini-spine (T-junction centred) */
-      .tree-leaves::after {
-        content: '';
-        position: absolute;
-        top: calc(0px - var(--tree-dot) / 2 + 0.75px);
-        left: 50%;
-        width: var(--tree-dot); height: var(--tree-dot);
-        border-radius: 50%;
-        background: var(--purple-light);
-        opacity: 0.85;
-        transform: translateX(-50%);
       }
       .tree-leaf {
         position: relative;
@@ -312,28 +233,6 @@
         transition: border-color 0.2s, transform 0.2s;
       }
       .tree-leaf:hover { border-color: rgba(124,92,252,0.5); transform: translateY(-2px); }
-      /* Vertical drop from mini spine into each leaf */
-      .tree-leaf::before {
-        content: '';
-        position: absolute;
-        top: calc(0px - var(--tree-drop-leaves));
-        left: 50%;
-        width: 1.5px; height: var(--tree-drop-leaves);
-        background: var(--tree-line);
-        transform: translateX(-50%);
-      }
-      /* Dot where each leaf drop meets mini-spine */
-      .tree-leaf::after {
-        content: '';
-        position: absolute;
-        top: calc(0px - var(--tree-drop-leaves) - var(--tree-dot) / 2 + 0.75px);
-        left: 50%;
-        width: var(--tree-dot); height: var(--tree-dot);
-        border-radius: 50%;
-        background: var(--purple-light);
-        opacity: 0.7;
-        transform: translateX(-50%);
-      }
       .tree-leaf-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
       .tree-leaf-icon {
         width: 30px; height: 30px; border-radius: 8px;
@@ -355,14 +254,10 @@
       /* Tablet: collapse to single column of categories, keep 2 leaves per row */
       @media (max-width: 900px) {
         .tree-cats { grid-template-columns: 1fr; gap: 40px; }
-        .tree-cats::before, .tree-cats::after { display: none; }
       }
       /* Mobile: stack everything */
       @media (max-width: 560px) {
         .tree-leaves { grid-template-columns: 1fr; gap: 18px; }
-        .tree-leaves::before, .tree-leaves::after { display: none; }
-        .tree-leaf::after { display: none; }
-        .tree { --tree-drop: 18px; --tree-drop-leaves: 24px; }
       }
     </style>
     <div class="page-section-inner">
