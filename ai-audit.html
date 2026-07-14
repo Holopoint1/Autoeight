@@ -160,9 +160,8 @@
   <!-- ── WHAT THE AUDIT UNCOVERS (mind-map tree) ── -->
   <section class="page-section">
     <style>
-      .mindmap { max-width: 1100px; margin: 0 auto; }
-      .mindmap-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
-      .mindmap-root-wrap { display: flex; justify-content: center; position: relative; margin-bottom: 40px; }
+      .mindmap { max-width: 1100px; margin: 0 auto; position: relative; }
+      .mindmap-root-wrap { display: flex; justify-content: center; position: relative; z-index: 2; margin-bottom: 60px; }
       .mindmap-root {
         position: relative;
         display: inline-flex; flex-direction: column; align-items: center;
@@ -181,29 +180,29 @@
         font-size: 1.1rem;
         margin-bottom: 10px;
       }
-      /* Vertical connector drop from root */
-      .mindmap-drop {
-        width: 2px; height: 34px;
-        background: linear-gradient(180deg, var(--purple-light), rgba(124,92,252,0.4));
-        margin: 0 auto;
+      /* SVG connector layer — sits behind the branch grid, draws curves from root to each branch */
+      .mindmap-svg {
+        position: absolute;
+        top: 90px;             /* just below the root card */
+        left: 0; right: 0;
+        width: 100%;
+        height: calc(100% - 90px);
+        z-index: 1;
+        pointer-events: none;
       }
-      /* Horizontal connector spanning branches */
-      .mindmap-bar-wrap {
-        display: flex; justify-content: center;
-        position: relative;
-      }
-      .mindmap-bar {
-        width: 78%;
-        height: 2px;
-        background: rgba(124,92,252,0.4);
-        position: relative;
+      .mindmap-svg path {
+        fill: none;
+        stroke: rgba(124, 92, 252, 0.55);
+        stroke-width: 2;
+        stroke-linecap: round;
       }
       /* Grid of branch cards */
       .mindmap-branches {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 24px 22px;
-        margin-top: 0;
+        gap: 60px 22px;
+        position: relative;
+        z-index: 2;
       }
       .mindmap-branch {
         position: relative;
@@ -214,15 +213,6 @@
         transition: border-color 0.2s, transform 0.2s;
       }
       .mindmap-branch:hover { border-color: rgba(124,92,252,0.5); transform: translateY(-2px); }
-      /* Vertical connector from horizontal bar to each branch top-centre */
-      .mindmap-branch::before {
-        content: '';
-        position: absolute;
-        left: 50%; top: -34px;
-        width: 2px; height: 34px;
-        background: rgba(124,92,252,0.4);
-        transform: translateX(-50%);
-      }
       .mindmap-branch-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
       .mindmap-branch-icon {
         width: 34px; height: 34px; border-radius: 8px;
@@ -242,15 +232,19 @@
       }
       /* Responsive collapse */
       @media (max-width: 900px) {
-        .mindmap-branches { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; }
-        .mindmap-bar { width: 60%; }
+        .mindmap-branches { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 18px; }
+        .mindmap-svg { display: none; }
+        .mindmap-branch::before {
+          content: '';
+          position: absolute; left: 50%; top: -24px;
+          width: 2px; height: 24px;
+          background: rgba(124,92,252,0.45);
+          transform: translateX(-50%);
+        }
+        .mindmap-root-wrap { margin-bottom: 34px; }
       }
       @media (max-width: 560px) {
-        .mindmap-branches { grid-template-columns: 1fr; gap: 16px; }
-        .mindmap-bar { display: none; }
-        .mindmap-branch::before { height: 20px; top: -20px; }
-        .mindmap-branch { margin-top: 0; }
-        .mindmap-drop { height: 20px; }
+        .mindmap-branches { grid-template-columns: 1fr; gap: 30px; }
       }
     </style>
     <div class="page-section-inner">
@@ -264,11 +258,18 @@
           </div>
         </div>
 
-        <!-- Drop connector from root -->
-        <div class="mindmap-drop"></div>
-
-        <!-- Horizontal bar spanning branches -->
-        <div class="mindmap-bar-wrap"><div class="mindmap-bar"></div></div>
+        <!-- SVG connector layer: curves from root exit down to each of the 6 branch tops -->
+        <svg class="mindmap-svg" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
+          <!-- Root exit sits at (500, 0). Top-row branch entries at y=180. Bottom-row branch entries at y=380. Column centres at x=167 / 500 / 833. -->
+          <!-- Top row: gentle fans from root -->
+          <path d="M 500 0 C 500 90, 300 130, 167 180" />
+          <path d="M 500 0 L 500 180" />
+          <path d="M 500 0 C 500 90, 700 130, 833 180" />
+          <!-- Bottom row: longer curves that swing OUT around the top-row cards -->
+          <path d="M 500 0 C 300 60, 40 220, 167 380" />
+          <path d="M 500 0 C 340 120, 660 260, 500 380" />
+          <path d="M 500 0 C 700 60, 960 220, 833 380" />
+        </svg>
 
         <!-- Branches -->
         <div class="mindmap-branches">
