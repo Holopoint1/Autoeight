@@ -188,25 +188,46 @@
         font-size: 1.1rem; margin-bottom: 10px;
       }
 
-      /* Single vertical trunk under root — the ONE main line connecting the tree */
+      /* Vertical trunk under root */
       .tree-trunk {
-        width: 1.5px; height: 40px;
+        width: 1.5px; height: var(--tree-drop);
         background: var(--tree-line);
         margin: 0 auto;
       }
 
-      /* Level 2: 3 category columns */
+      /* Level 2: 3 category columns, joined by a horizontal spine */
       .tree-cats {
+        position: relative;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 22px;
+      }
+      /* Horizontal spine linking the 3 category columns to the trunk above */
+      .tree-cats::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc((100% - 44px) / 6);
+        right: calc((100% - 44px) / 6);
+        height: 1.5px;
+        background: var(--tree-line);
       }
       .tree-cat-col {
         position: relative;
         display: flex; flex-direction: column; align-items: stretch;
       }
+      /* Vertical drop from horizontal spine into each category */
+      .tree-cat-col::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 50%;
+        width: 1.5px; height: var(--tree-drop);
+        background: var(--tree-line);
+        transform: translateX(-50%);
+      }
       .tree-cat {
         position: relative;
+        margin-top: var(--tree-drop);
         text-align: center;
         padding: 12px 16px;
         background: rgba(124,92,252,0.08);
@@ -215,14 +236,35 @@
         font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
         color: var(--purple-light);
       }
+      /* Vertical drop from category card down to its mini-spine */
+      .tree-cat::after {
+        content: '';
+        position: absolute;
+        bottom: calc(0px - var(--tree-drop));
+        left: 50%;
+        width: 1.5px; height: var(--tree-drop);
+        background: var(--tree-line);
+        transform: translateX(-50%);
+      }
 
-      /* Level 3: 2 leaves per category, side-by-side */
+      /* Level 3: 2 leaves per category, joined by a small horizontal spine */
       .tree-leaves {
         position: relative;
-        margin-top: 24px;
+        margin-top: var(--tree-drop);
+        padding-top: var(--tree-drop-leaves);
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 14px;
+      }
+      /* Small horizontal spine linking the 2 leaves to the category drop above */
+      .tree-leaves::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc((100% - 14px) / 4);
+        right: calc((100% - 14px) / 4);
+        height: 1.5px;
+        background: var(--tree-line);
       }
       .tree-leaf {
         position: relative;
@@ -233,6 +275,16 @@
         transition: border-color 0.2s, transform 0.2s;
       }
       .tree-leaf:hover { border-color: rgba(124,92,252,0.5); transform: translateY(-2px); }
+      /* Vertical drop from mini-spine into each leaf */
+      .tree-leaf::before {
+        content: '';
+        position: absolute;
+        top: calc(0px - var(--tree-drop-leaves));
+        left: 50%;
+        width: 1.5px; height: var(--tree-drop-leaves);
+        background: var(--tree-line);
+        transform: translateX(-50%);
+      }
       .tree-leaf-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
       .tree-leaf-icon {
         width: 30px; height: 30px; border-radius: 8px;
@@ -254,10 +306,13 @@
       /* Tablet: collapse to single column of categories, keep 2 leaves per row */
       @media (max-width: 900px) {
         .tree-cats { grid-template-columns: 1fr; gap: 40px; }
+        .tree-cats::before { display: none; }
       }
       /* Mobile: stack everything */
       @media (max-width: 560px) {
         .tree-leaves { grid-template-columns: 1fr; gap: 18px; }
+        .tree-leaves::before { display: none; }
+        .tree-leaf::before { display: none; }
       }
     </style>
     <div class="page-section-inner">
