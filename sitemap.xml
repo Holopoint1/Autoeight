@@ -11,6 +11,12 @@
 
   <!-- Vertical landing pages -->
   <url>
+    <loc>https://autoeight.ai/ai-audit</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://autoeight.ai/estate-agents</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
