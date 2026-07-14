@@ -259,13 +259,14 @@
         font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
         color: var(--purple-light);
       }
-      /* Vertical drop from category down to its 2 leaves */
+      /* Vertical drop from category down to its 2 leaves — longer than upper drops
+         so the leaf row visually sits below the category with clear separation. */
       .tree-cat::after {
         content: '';
         position: absolute;
-        bottom: calc(0px - var(--tree-drop));
+        bottom: calc(0px - var(--tree-drop-leaves));
         left: 50%;
-        width: 1.5px; height: var(--tree-drop);
+        width: 1.5px; height: var(--tree-drop-leaves);
         background: var(--tree-line);
         transform: translateX(-50%);
       }
@@ -273,7 +274,7 @@
       /* Level 3: 2 leaves per category, side-by-side under a mini-spine */
       .tree-leaves {
         position: relative;
-        margin-top: var(--tree-drop);
+        margin-top: var(--tree-drop-leaves);
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 14px;
@@ -313,9 +314,9 @@
       .tree-leaf::before {
         content: '';
         position: absolute;
-        top: calc(0px - var(--tree-drop));
+        top: calc(0px - var(--tree-drop-leaves));
         left: 50%;
-        width: 1.5px; height: var(--tree-drop);
+        width: 1.5px; height: var(--tree-drop-leaves);
         background: var(--tree-line);
         transform: translateX(-50%);
       }
@@ -323,7 +324,7 @@
       .tree-leaf::after {
         content: '';
         position: absolute;
-        top: calc(0px - var(--tree-drop) - var(--tree-dot) / 2 + 0.75px);
+        top: calc(0px - var(--tree-drop-leaves) - var(--tree-dot) / 2 + 0.75px);
         left: 50%;
         width: var(--tree-dot); height: var(--tree-dot);
         border-radius: 50%;
@@ -359,8 +360,7 @@
         .tree-leaves { grid-template-columns: 1fr; gap: 18px; }
         .tree-leaves::before, .tree-leaves::after { display: none; }
         .tree-leaf::after { display: none; }
-        .tree { --tree-drop: 18px; }
-        .tree-cat::after { height: 18px; bottom: -18px; }
+        .tree { --tree-drop: 18px; --tree-drop-leaves: 24px; }
       }
     </style>
     <div class="page-section-inner">
