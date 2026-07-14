@@ -476,6 +476,11 @@
 
   <!-- ── HOW IT WORKS ── -->
   <section id="how-it-works" class="page-section">
+    <style>
+      /* 3 steps on this page (site default is 4 columns) — keep the row centred */
+      #how-it-works .steps-grid { grid-template-columns: repeat(3, 1fr); max-width: 960px; margin: 0 auto; }
+      @media (max-width: 700px) { #how-it-works .steps-grid { grid-template-columns: 1fr; } }
+    </style>
     <div class="page-section-inner">
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 52px;">
         <span class="section-label" style="justify-content: center;">How it works</span>
@@ -509,7 +514,7 @@
       <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 48px;">
         <span class="section-label" style="justify-content: center;">The lens</span>
         <h2 class="section-title">Where we look for AI wins.</h2>
-        <p class="section-sub" style="margin-top: 14px;">Every audit runs through the same five lenses. Different businesses have different problems, but the questions are consistent.</p>
+        <p class="section-sub" style="margin-top: 14px;">Every audit runs through the same lenses. Different businesses have different problems, but the questions are consistent.</p>
       </div>
       <div class="tier-grid reveal" style="transition-delay:0.1s;">
         <div class="tier-card">
