@@ -1,5 +1,8 @@
-// Load chat widget (skip on backend pages)
-if (!location.pathname.includes('/backend/')) {
+// Chat widget is DISABLED on the front-end.
+// The widget/backend/knowledge-base/config under /chatbot/ are kept intact
+// for future re-enablement — flip AE_CHAT_ENABLED to true and it'll inject again.
+var AE_CHAT_ENABLED = false;
+if (AE_CHAT_ENABLED && !location.pathname.includes('/backend/')) {
   var chatScript = document.createElement('script');
   chatScript.src = '/chatbot/widget/chat-widget.js?v=2026-04-21-hours';
   chatScript.defer = true;
