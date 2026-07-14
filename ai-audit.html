@@ -36,7 +36,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "AI Audit",
-    "description": "A one-hour AI and automation audit plus written report for UK small and medium-sized businesses. Identifies three to five AI opportunities with prioritised recommendations and rough ROI estimates.",
+    "description": "A one-hour AI and automation audit plus written report for UK small and medium-sized businesses. Identifies AI opportunities with prioritised recommendations and rough ROI estimates.",
     "brand": {"@type": "Brand", "name": "Autoeight"},
     "category": "Business Consulting",
     "offers": {
@@ -58,7 +58,7 @@
     "provider": {"@type": "Organization", "name": "Autoeight", "url": "https://autoeight.ai", "logo": "https://autoeight.ai/brand_assets/logo.png"},
     "areaServed": {"@type": "Country", "name": "United Kingdom"},
     "audience": {"@type": "Audience", "audienceType": "UK small and medium-sized businesses"},
-    "description": "One-hour AI audit for UK SMEs including pre-audit questionnaire, video call, and written report with prioritised recommendations delivered within 5 business days.",
+    "description": "One-hour AI audit for UK SMEs including a video call and written report with prioritised recommendations delivered within 5 business days.",
     "offers": {
       "@type": "Offer",
       "price": "250",
@@ -83,7 +83,7 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type":"Question","name":"What is an AI audit?","acceptedAnswer":{"@type":"Answer","text":"A structured one-hour session where we walk through your business, tech stack and processes to identify three to five specific ways AI and automation would save you time, cost or competitive ground. You get a written report within five business days with prioritised recommendations, rough ROI estimates and tool suggestions."}},
+      {"@type":"Question","name":"What is an AI audit?","acceptedAnswer":{"@type":"Answer","text":"A structured one-hour session where we walk through your business, tech stack and processes to identify specific ways AI and automation would save you time, cost or competitive ground. You get a written report within five business days with prioritised recommendations, rough ROI estimates and tool suggestions."}},
       {"@type":"Question","name":"Who is this audit for?","acceptedAnswer":{"@type":"Answer","text":"UK small and medium-sized businesses that suspect AI could help but don't know where to start. Best fit is 10 to 49 employees, running a mix of manual admin, disconnected tools and processes that grew organically. Not aimed at teams already running AI heavily or at enterprises with in-house AI functions."}},
       {"@type":"Question","name":"How much does the AI audit cost?","acceptedAnswer":{"@type":"Answer","text":"£250, paid upfront when you book. That covers the pre-audit questionnaire, the one-hour session with a Founder-led consultant, and the written report delivered within five business days."}},
       {"@type":"Question","name":"How long does the audit take?","acceptedAnswer":{"@type":"Answer","text":"The live session is up to one hour on Google Meet. Before that we send a 15 to 30 minute questionnaire so you can share your tech stack, top pain points and goals in advance, which means we go straight to depth on the call instead of small talk. The written report is delivered within five business days."}},
@@ -161,7 +161,12 @@
   <section class="page-section">
     <style>
       /* ── AI Audit tree — clean org-chart layout, straight lines only ── */
-      .tree { max-width: 1100px; margin: 0 auto; }
+      .tree {
+        max-width: 1100px; margin: 0 auto;
+        --tree-line: rgba(124, 92, 252, 0.45);
+        --tree-drop: 24px;
+        --tree-dot: 6px;
+      }
 
       /* Root */
       .tree-root-wrap { display: flex; justify-content: center; }
@@ -183,7 +188,11 @@
       }
 
       /* Vertical trunk under root */
-      .tree-trunk { width: 2px; height: 32px; background: rgba(124,92,252,0.55); margin: 0 auto; }
+      .tree-trunk {
+        width: 1.5px; height: var(--tree-drop);
+        background: var(--tree-line);
+        margin: 0 auto;
+      }
 
       /* Level 2: 3 category columns, joined by a horizontal spine */
       .tree-cats {
@@ -193,14 +202,25 @@
         gap: 22px;
       }
       /* Horizontal spine that connects the 3 columns to the trunk above.
-         Grid: 3 cols, gap 22px. Column centre offset from container edge = (100% - 44px) / 6. */
+         Column centre offset from container edge = (100% - 44px) / 6. */
       .tree-cats::before {
         content: '';
         position: absolute;
         top: 0;
         left: calc((100% - 44px) / 6);
         right: calc((100% - 44px) / 6);
-        height: 2px; background: rgba(124,92,252,0.55);
+        height: 1.5px; background: var(--tree-line);
+      }
+      /* Dot at where trunk meets spine (root junction) */
+      .tree-cats::after {
+        content: '';
+        position: absolute;
+        top: calc(0px - var(--tree-dot) / 2 + 0.75px);
+        left: 50%;
+        width: var(--tree-dot); height: var(--tree-dot);
+        border-radius: 50%;
+        background: var(--purple-light);
+        transform: translateX(-50%);
       }
       .tree-cat-col {
         position: relative;
@@ -211,13 +231,25 @@
         content: '';
         position: absolute;
         top: 0; left: 50%;
-        width: 2px; height: 26px;
-        background: rgba(124,92,252,0.55);
+        width: 1.5px; height: var(--tree-drop);
+        background: var(--tree-line);
+        transform: translateX(-50%);
+      }
+      /* Dot at spine-drop junction (top of each category drop) */
+      .tree-cat-col::after {
+        content: '';
+        position: absolute;
+        top: calc(0px - var(--tree-dot) / 2 + 0.75px);
+        left: 50%;
+        width: var(--tree-dot); height: var(--tree-dot);
+        border-radius: 50%;
+        background: var(--purple-light);
+        opacity: 0.85;
         transform: translateX(-50%);
       }
       .tree-cat {
         position: relative;
-        margin-top: 26px;
+        margin-top: var(--tree-drop);
         text-align: center;
         padding: 12px 16px;
         background: rgba(124,92,252,0.08);
@@ -230,29 +262,42 @@
       .tree-cat::after {
         content: '';
         position: absolute;
-        bottom: -26px; left: 50%;
-        width: 2px; height: 26px;
-        background: rgba(124,92,252,0.55);
+        bottom: calc(0px - var(--tree-drop));
+        left: 50%;
+        width: 1.5px; height: var(--tree-drop);
+        background: var(--tree-line);
         transform: translateX(-50%);
       }
 
       /* Level 3: 2 leaves per category, side-by-side under a mini-spine */
       .tree-leaves {
         position: relative;
-        margin-top: 26px;
+        margin-top: var(--tree-drop);
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 14px;
       }
       /* Mini horizontal spine linking the 2 leaves to the category drop above.
-         Grid: 2 cols, gap 14px. Column centre offset from container edge = (100% - 14px) / 4. */
+         Column centre offset from container edge = (100% - 14px) / 4. */
       .tree-leaves::before {
         content: '';
         position: absolute;
         top: 0;
         left: calc((100% - 14px) / 4);
         right: calc((100% - 14px) / 4);
-        height: 2px; background: rgba(124,92,252,0.55);
+        height: 1.5px; background: var(--tree-line);
+      }
+      /* Dot where category drop meets mini-spine (T-junction centred) */
+      .tree-leaves::after {
+        content: '';
+        position: absolute;
+        top: calc(0px - var(--tree-dot) / 2 + 0.75px);
+        left: 50%;
+        width: var(--tree-dot); height: var(--tree-dot);
+        border-radius: 50%;
+        background: var(--purple-light);
+        opacity: 0.85;
+        transform: translateX(-50%);
       }
       .tree-leaf {
         position: relative;
@@ -267,9 +312,22 @@
       .tree-leaf::before {
         content: '';
         position: absolute;
-        top: -26px; left: 50%;
-        width: 2px; height: 26px;
-        background: rgba(124,92,252,0.55);
+        top: calc(0px - var(--tree-drop));
+        left: 50%;
+        width: 1.5px; height: var(--tree-drop);
+        background: var(--tree-line);
+        transform: translateX(-50%);
+      }
+      /* Dot where each leaf drop meets mini-spine */
+      .tree-leaf::after {
+        content: '';
+        position: absolute;
+        top: calc(0px - var(--tree-drop) - var(--tree-dot) / 2 + 0.75px);
+        left: 50%;
+        width: var(--tree-dot); height: var(--tree-dot);
+        border-radius: 50%;
+        background: var(--purple-light);
+        opacity: 0.7;
         transform: translateX(-50%);
       }
       .tree-leaf-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
@@ -293,14 +351,14 @@
       /* Tablet: collapse to single column of categories, keep 2 leaves per row */
       @media (max-width: 900px) {
         .tree-cats { grid-template-columns: 1fr; gap: 40px; }
-        .tree-cats::before { display: none; }
-        .tree-cat-col::before { height: 30px; }
+        .tree-cats::before, .tree-cats::after { display: none; }
       }
       /* Mobile: stack everything */
       @media (max-width: 560px) {
         .tree-leaves { grid-template-columns: 1fr; gap: 18px; }
-        .tree-leaves::before { display: none; }
-        .tree-leaf::before { height: 18px; top: -18px; }
+        .tree-leaves::before, .tree-leaves::after { display: none; }
+        .tree-leaf::after { display: none; }
+        .tree { --tree-drop: 18px; }
         .tree-cat::after { height: 18px; bottom: -18px; }
       }
     </style>
@@ -418,28 +476,23 @@
     <div class="page-section-inner">
       <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 52px;">
         <span class="section-label" style="justify-content: center;">How it works</span>
-        <h2 class="section-title">Four steps from booking to actionable report.</h2>
+        <h2 class="section-title">Three steps from booking to actionable report.</h2>
       </div>
       <div class="steps-grid reveal" style="transition-delay:0.1s;">
         <div class="step-card">
           <div class="step-number">01</div>
           <h3>Book &amp; pay upfront</h3>
-          <p>Pick a slot, pay the £250 on the booking page. You get an immediate confirmation and a link to the pre-audit questionnaire.</p>
+          <p>Pick a slot, pay the £250 on the booking page. You get an immediate confirmation with your call details.</p>
         </div>
         <div class="step-card">
           <div class="step-number">02</div>
-          <h3>Pre-audit questionnaire</h3>
-          <p>15-30 minutes for you to complete. Tech stack, team, where the hours go, competitors you're watching, and goals for the next 12 months. So we go straight to depth on the call.</p>
+          <h3>1-hour audit call</h3>
+          <p>Founder-led session on Google Meet. We walk your processes, identify AI opportunities live, and demo relevant tools on screen where useful. You lead where you have questions, we push where you need pushing.</p>
         </div>
         <div class="step-card">
           <div class="step-number">03</div>
-          <h3>1-hour audit call</h3>
-          <p>Founder-led session on Google Meet. We walk your processes, identify 3-5 AI opportunities live, and demo relevant tools on screen where useful. You lead where you have questions, we push where you need pushing.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-number">04</div>
           <h3>Written report within 5 days</h3>
-          <p>A prioritised report with 3-5 recommendations, rough ROI per opportunity, tool and vendor suggestions, and indicative build costs if you want Autoeight to deliver any of it. Shareable PDF, yours to keep.</p>
+          <p>A prioritised report with clear recommendations, rough ROI per opportunity, tool and vendor suggestions, and indicative build costs if you want Autoeight to deliver any of it. Shareable PDF, yours to keep.</p>
         </div>
       </div>
     </div>
@@ -571,7 +624,7 @@
         <div class="faq-list">
           <details class="faq-item">
             <summary><span>What is an AI audit, exactly?</span><i class="fa-solid fa-plus"></i></summary>
-            <p>A structured one-hour session where we walk through your business, tech stack and processes to identify three to five specific ways AI and automation would save you time, cost or competitive ground. You get a written report within five business days with prioritised recommendations, rough ROI estimates and tool suggestions.</p>
+            <p>A structured one-hour session where we walk through your business, tech stack and processes to identify specific ways AI and automation would save you time, cost or competitive ground. You get a written report within five business days with prioritised recommendations, rough ROI estimates and tool suggestions.</p>
           </details>
           <details class="faq-item">
             <summary><span>Who is this for?</span><i class="fa-solid fa-plus"></i></summary>
