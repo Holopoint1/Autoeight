@@ -164,8 +164,8 @@
       .tree {
         max-width: 1100px; margin: 0 auto;
         --tree-line: rgba(124, 92, 252, 0.45);
-        --tree-drop: 24px;
-        --tree-drop-leaves: 44px;
+        --tree-drop: 24px;         /* short drops: root->spine, spine->category, category->mini-spine */
+        --tree-drop-leaves: 32px;  /* longer drop: mini-spine->leaf card */
         --tree-dot: 6px;
       }
 
@@ -259,22 +259,24 @@
         font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
         color: var(--purple-light);
       }
-      /* Vertical drop from category down to its 2 leaves — longer than upper drops
-         so the leaf row visually sits below the category with clear separation. */
+      /* Vertical drop from category card down to the mini-spine */
       .tree-cat::after {
         content: '';
         position: absolute;
-        bottom: calc(0px - var(--tree-drop-leaves));
+        bottom: calc(0px - var(--tree-drop));
         left: 50%;
-        width: 1.5px; height: var(--tree-drop-leaves);
+        width: 1.5px; height: var(--tree-drop);
         background: var(--tree-line);
         transform: translateX(-50%);
       }
 
-      /* Level 3: 2 leaves per category, side-by-side under a mini-spine */
+      /* Level 3: 2 leaves per category, side-by-side under a mini-spine.
+         margin-top = gap from category down to mini-spine.
+         padding-top = gap from mini-spine down to the leaf cards. */
       .tree-leaves {
         position: relative;
-        margin-top: var(--tree-drop-leaves);
+        margin-top: var(--tree-drop);
+        padding-top: var(--tree-drop-leaves);
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 14px;
