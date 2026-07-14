@@ -157,13 +157,199 @@
 
   <div class="section-divider"></div>
 
-  <!-- ── WHAT IS THE AI AUDIT ── -->
+  <!-- ── WHAT THE AUDIT UNCOVERS (mind-map tree) ── -->
   <section class="page-section">
-    <div class="page-section-inner" style="max-width: 820px;">
-      <div class="reveal" style="text-align: center;">
-        <span class="section-label" style="justify-content: center;">The Diagnostic</span>
-        <h2 class="section-title">The audit before the build.</h2>
-        <p class="section-sub" style="margin-top: 14px;">Most agencies pitch you a build and hope you'll bite. We think that's backwards. The AI Audit is a paid diagnostic that tells you honestly where AI fits, where it doesn't, and what the ROI looks like. If we can help, we'll quote for the build. If we can't, you keep the report and act on it yourself. Either way you leave with a real plan.</p>
+    <style>
+      .mindmap { max-width: 1100px; margin: 0 auto; }
+      .mindmap-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+      .mindmap-root-wrap { display: flex; justify-content: center; position: relative; margin-bottom: 40px; }
+      .mindmap-root {
+        position: relative;
+        display: inline-flex; flex-direction: column; align-items: center;
+        padding: 22px 34px; min-width: 240px;
+        background: linear-gradient(135deg, rgba(124,92,252,0.18), rgba(124,92,252,0.05));
+        border: 2px solid var(--purple-light);
+        border-radius: 14px;
+        box-shadow: 0 0 24px rgba(124,92,252,0.15);
+      }
+      .mindmap-root h3 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; color: var(--text); }
+      .mindmap-root span { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+      .mindmap-root-icon {
+        width: 44px; height: 44px; border-radius: 12px;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: var(--purple); color: #fff;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+      /* Vertical connector drop from root */
+      .mindmap-drop {
+        width: 2px; height: 34px;
+        background: linear-gradient(180deg, var(--purple-light), rgba(124,92,252,0.4));
+        margin: 0 auto;
+      }
+      /* Horizontal connector spanning branches */
+      .mindmap-bar-wrap {
+        display: flex; justify-content: center;
+        position: relative;
+      }
+      .mindmap-bar {
+        width: 78%;
+        height: 2px;
+        background: rgba(124,92,252,0.4);
+        position: relative;
+      }
+      /* Grid of branch cards */
+      .mindmap-branches {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px 22px;
+        margin-top: 0;
+      }
+      .mindmap-branch {
+        position: relative;
+        padding: 22px 22px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        transition: border-color 0.2s, transform 0.2s;
+      }
+      .mindmap-branch:hover { border-color: rgba(124,92,252,0.5); transform: translateY(-2px); }
+      /* Vertical connector from horizontal bar to each branch top-centre */
+      .mindmap-branch::before {
+        content: '';
+        position: absolute;
+        left: 50%; top: -34px;
+        width: 2px; height: 34px;
+        background: rgba(124,92,252,0.4);
+        transform: translateX(-50%);
+      }
+      .mindmap-branch-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+      .mindmap-branch-icon {
+        width: 34px; height: 34px; border-radius: 8px;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: var(--purple-dim); border: 1px solid rgba(124,92,252,0.25);
+        color: var(--purple-light); font-size: 0.85rem;
+        flex-shrink: 0;
+      }
+      .mindmap-branch h4 { font-size: 0.98rem; font-weight: 700; letter-spacing: -0.01em; margin: 0; color: var(--text); }
+      .mindmap-branch ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+      .mindmap-branch li { font-size: 0.82rem; color: var(--muted); line-height: 1.45; padding-left: 14px; position: relative; }
+      .mindmap-branch li::before {
+        content: '';
+        position: absolute; left: 0; top: 8px;
+        width: 6px; height: 6px; border-radius: 50%;
+        background: var(--purple-light); opacity: 0.7;
+      }
+      /* Responsive collapse */
+      @media (max-width: 900px) {
+        .mindmap-branches { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; }
+        .mindmap-bar { width: 60%; }
+      }
+      @media (max-width: 560px) {
+        .mindmap-branches { grid-template-columns: 1fr; gap: 16px; }
+        .mindmap-bar { display: none; }
+        .mindmap-branch::before { height: 20px; top: -20px; }
+        .mindmap-branch { margin-top: 0; }
+        .mindmap-drop { height: 20px; }
+      }
+    </style>
+    <div class="page-section-inner">
+      <div class="reveal mindmap-head">
+        <span class="section-label" style="justify-content: center;">What the audit uncovers</span>
+        <h2 class="section-title">One audit. Every part of your business mapped.</h2>
+        <p class="section-sub" style="margin-top: 14px;">The audit doesn't stop at one thing. It looks across your whole operation and finds where AI, automation, or better software could earn you time, money, or growth. Here's what we look at.</p>
+      </div>
+
+      <div class="mindmap reveal">
+        <!-- Root node -->
+        <div class="mindmap-root-wrap">
+          <div class="mindmap-root">
+            <div class="mindmap-root-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>One AI Audit</h3>
+            <span>1 hour &middot; written report &middot; &pound;250</span>
+          </div>
+        </div>
+
+        <!-- Drop connector from root -->
+        <div class="mindmap-drop"></div>
+
+        <!-- Horizontal bar spanning branches -->
+        <div class="mindmap-bar-wrap"><div class="mindmap-bar"></div></div>
+
+        <!-- Branches -->
+        <div class="mindmap-branches">
+          <div class="mindmap-branch">
+            <div class="mindmap-branch-head">
+              <span class="mindmap-branch-icon"><i class="fa-solid fa-headset"></i></span>
+              <h4>Customer service</h4>
+            </div>
+            <ul>
+              <li>AI chatbots on your site</li>
+              <li>Ticket triage &amp; routing</li>
+              <li>Reply drafting for staff</li>
+            </ul>
+          </div>
+
+          <div class="mindmap-branch">
+            <div class="mindmap-branch-head">
+              <span class="mindmap-branch-icon"><i class="fa-solid fa-chart-column"></i></span>
+              <h4>Data &amp; dashboards</h4>
+            </div>
+            <ul>
+              <li>Live KPI tracking</li>
+              <li>Sales &amp; marketing insights</li>
+              <li>Revenue forecasting</li>
+            </ul>
+          </div>
+
+          <div class="mindmap-branch">
+            <div class="mindmap-branch-head">
+              <span class="mindmap-branch-icon"><i class="fa-solid fa-chart-line"></i></span>
+              <h4>Sales &amp; lead gen</h4>
+            </div>
+            <ul>
+              <li>Lead scoring &amp; qualification</li>
+              <li>Automated outreach</li>
+              <li>Follow-up sequences</li>
+            </ul>
+          </div>
+
+          <div class="mindmap-branch">
+            <div class="mindmap-branch-head">
+              <span class="mindmap-branch-icon"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+              <h4>Custom software</h4>
+            </div>
+            <ul>
+              <li>Internal tools &amp; admin panels</li>
+              <li>Client &amp; team portals</li>
+              <li>Custom business platforms</li>
+            </ul>
+          </div>
+
+          <div class="mindmap-branch">
+            <div class="mindmap-branch-head">
+              <span class="mindmap-branch-icon"><i class="fa-solid fa-globe"></i></span>
+              <h4>Custom websites</h4>
+            </div>
+            <ul>
+              <li>SEO &amp; local search</li>
+              <li>Lead capture forms</li>
+              <li>Conversion optimisation</li>
+            </ul>
+          </div>
+
+          <div class="mindmap-branch">
+            <div class="mindmap-branch-head">
+              <span class="mindmap-branch-icon"><i class="fa-solid fa-plug"></i></span>
+              <h4>Integrations</h4>
+            </div>
+            <ul>
+              <li>CRM &amp; email sync</li>
+              <li>Tool consolidation</li>
+              <li>Workflow automation</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
