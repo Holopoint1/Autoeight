@@ -160,189 +160,245 @@
   <!-- ── WHAT THE AUDIT UNCOVERS (mind-map tree) ── -->
   <section class="page-section">
     <style>
-      .mindmap { max-width: 1100px; margin: 0 auto; position: relative; }
-      .mindmap-root-wrap { display: flex; justify-content: center; position: relative; z-index: 2; margin-bottom: 60px; }
-      .mindmap-root {
-        position: relative;
+      /* ── AI Audit tree — clean org-chart layout, straight lines only ── */
+      .tree { max-width: 1100px; margin: 0 auto; }
+
+      /* Root */
+      .tree-root-wrap { display: flex; justify-content: center; }
+      .tree-root {
         display: inline-flex; flex-direction: column; align-items: center;
-        padding: 22px 34px; min-width: 240px;
+        padding: 22px 34px; min-width: 260px; text-align: center;
         background: linear-gradient(135deg, rgba(124,92,252,0.18), rgba(124,92,252,0.05));
         border: 2px solid var(--purple-light);
         border-radius: 14px;
         box-shadow: 0 0 24px rgba(124,92,252,0.15);
       }
-      .mindmap-root h3 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; color: var(--text); }
-      .mindmap-root span { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
-      .mindmap-root-icon {
+      .tree-root h3 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; color: var(--text); }
+      .tree-root span { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+      .tree-root-icon {
         width: 44px; height: 44px; border-radius: 12px;
         display: inline-flex; align-items: center; justify-content: center;
         background: var(--purple); color: #fff;
-        font-size: 1.1rem;
-        margin-bottom: 10px;
+        font-size: 1.1rem; margin-bottom: 10px;
       }
-      /* SVG connector layer — sits behind the branch grid, draws curves from root to each branch */
-      .mindmap-svg {
-        position: absolute;
-        top: 90px;             /* just below the root card */
-        left: 0; right: 0;
-        width: 100%;
-        height: calc(100% - 90px);
-        z-index: 1;
-        pointer-events: none;
-      }
-      .mindmap-svg path {
-        fill: none;
-        stroke: rgba(124, 92, 252, 0.55);
-        stroke-width: 2;
-        stroke-linecap: round;
-      }
-      /* Grid of branch cards */
-      .mindmap-branches {
+
+      /* Vertical trunk under root */
+      .tree-trunk { width: 2px; height: 32px; background: rgba(124,92,252,0.55); margin: 0 auto; }
+
+      /* Level 2: 3 category columns, joined by a horizontal spine */
+      .tree-cats {
+        position: relative;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 60px 22px;
-        position: relative;
-        z-index: 2;
+        gap: 22px;
       }
-      .mindmap-branch {
+      /* Horizontal spine that connects the 3 columns to the trunk above */
+      .tree-cats::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 16.67%; right: 16.67%;
+        height: 2px; background: rgba(124,92,252,0.55);
+      }
+      .tree-cat-col {
         position: relative;
-        padding: 22px 22px 20px;
+        display: flex; flex-direction: column; align-items: stretch;
+      }
+      /* Vertical drop from spine into each category header */
+      .tree-cat-col::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 50%;
+        width: 2px; height: 26px;
+        background: rgba(124,92,252,0.55);
+        transform: translateX(-50%);
+      }
+      .tree-cat {
+        position: relative;
+        margin-top: 26px;
+        text-align: center;
+        padding: 12px 16px;
+        background: rgba(124,92,252,0.08);
+        border: 1px solid rgba(124,92,252,0.3);
+        border-radius: 10px;
+        font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+        color: var(--purple-light);
+      }
+      /* Vertical drop from category down to its 2 leaves */
+      .tree-cat::after {
+        content: '';
+        position: absolute;
+        bottom: -26px; left: 50%;
+        width: 2px; height: 26px;
+        background: rgba(124,92,252,0.55);
+        transform: translateX(-50%);
+      }
+
+      /* Level 3: 2 leaves per category, side-by-side under a mini-spine */
+      .tree-leaves {
+        position: relative;
+        margin-top: 26px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      /* Mini horizontal spine linking the 2 leaves to the category drop above */
+      .tree-leaves::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 25%; right: 25%;
+        height: 2px; background: rgba(124,92,252,0.55);
+      }
+      .tree-leaf {
+        position: relative;
+        padding: 18px 16px 16px;
         background: var(--surface);
         border: 1px solid var(--border);
-        border-radius: 12px;
+        border-radius: 10px;
         transition: border-color 0.2s, transform 0.2s;
       }
-      .mindmap-branch:hover { border-color: rgba(124,92,252,0.5); transform: translateY(-2px); }
-      .mindmap-branch-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-      .mindmap-branch-icon {
-        width: 34px; height: 34px; border-radius: 8px;
+      .tree-leaf:hover { border-color: rgba(124,92,252,0.5); transform: translateY(-2px); }
+      /* Vertical drop from mini spine into each leaf */
+      .tree-leaf::before {
+        content: '';
+        position: absolute;
+        top: -26px; left: 50%;
+        width: 2px; height: 26px;
+        background: rgba(124,92,252,0.55);
+        transform: translateX(-50%);
+      }
+      .tree-leaf-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+      .tree-leaf-icon {
+        width: 30px; height: 30px; border-radius: 8px;
         display: inline-flex; align-items: center; justify-content: center;
         background: var(--purple-dim); border: 1px solid rgba(124,92,252,0.25);
-        color: var(--purple-light); font-size: 0.85rem;
+        color: var(--purple-light); font-size: 0.78rem;
         flex-shrink: 0;
       }
-      .mindmap-branch h4 { font-size: 0.98rem; font-weight: 700; letter-spacing: -0.01em; margin: 0; color: var(--text); }
-      .mindmap-branch ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
-      .mindmap-branch li { font-size: 0.82rem; color: var(--muted); line-height: 1.45; padding-left: 14px; position: relative; }
-      .mindmap-branch li::before {
+      .tree-leaf h4 { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.01em; margin: 0; color: var(--text); }
+      .tree-leaf ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px; }
+      .tree-leaf li { font-size: 0.78rem; color: var(--muted); line-height: 1.45; padding-left: 12px; position: relative; }
+      .tree-leaf li::before {
         content: '';
-        position: absolute; left: 0; top: 8px;
-        width: 6px; height: 6px; border-radius: 50%;
+        position: absolute; left: 0; top: 7px;
+        width: 5px; height: 5px; border-radius: 50%;
         background: var(--purple-light); opacity: 0.7;
       }
-      /* Responsive collapse */
+
+      /* Tablet: collapse to single column of categories, keep 2 leaves per row */
       @media (max-width: 900px) {
-        .mindmap-branches { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 18px; }
-        .mindmap-svg { display: none; }
-        .mindmap-branch::before {
-          content: '';
-          position: absolute; left: 50%; top: -24px;
-          width: 2px; height: 24px;
-          background: rgba(124,92,252,0.45);
-          transform: translateX(-50%);
-        }
-        .mindmap-root-wrap { margin-bottom: 34px; }
+        .tree-cats { grid-template-columns: 1fr; gap: 40px; }
+        .tree-cats::before { display: none; }
+        .tree-cat-col::before { height: 30px; }
       }
+      /* Mobile: stack everything */
       @media (max-width: 560px) {
-        .mindmap-branches { grid-template-columns: 1fr; gap: 30px; }
+        .tree-leaves { grid-template-columns: 1fr; gap: 18px; }
+        .tree-leaves::before { display: none; }
+        .tree-leaf::before { height: 18px; top: -18px; }
+        .tree-cat::after { height: 18px; bottom: -18px; }
       }
     </style>
     <div class="page-section-inner">
-      <div class="mindmap reveal">
-        <!-- Root node -->
-        <div class="mindmap-root-wrap">
-          <div class="mindmap-root">
-            <div class="mindmap-root-icon"><i class="fa-solid fa-brain"></i></div>
+      <div class="tree reveal">
+        <!-- Level 1: Root -->
+        <div class="tree-root-wrap">
+          <div class="tree-root">
+            <div class="tree-root-icon"><i class="fa-solid fa-brain"></i></div>
             <h3>One AI Audit</h3>
             <span>1 hour &middot; written report &middot; &pound;250</span>
           </div>
         </div>
 
-        <!-- SVG connector layer: curves from root exit down to each of the 6 branch tops -->
-        <svg class="mindmap-svg" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
-          <!-- Root exit sits at (500, 0). Top-row branch entries at y=180. Bottom-row branch entries at y=380. Column centres at x=167 / 500 / 833. -->
-          <!-- Top row: gentle fans from root -->
-          <path d="M 500 0 C 500 90, 300 130, 167 180" />
-          <path d="M 500 0 L 500 180" />
-          <path d="M 500 0 C 500 90, 700 130, 833 180" />
-          <!-- Bottom row: longer curves that swing OUT around the top-row cards -->
-          <path d="M 500 0 C 300 60, 40 220, 167 380" />
-          <path d="M 500 0 C 340 120, 660 260, 500 380" />
-          <path d="M 500 0 C 700 60, 960 220, 833 380" />
-        </svg>
+        <!-- Trunk down to level 2 -->
+        <div class="tree-trunk"></div>
 
-        <!-- Branches -->
-        <div class="mindmap-branches">
-          <div class="mindmap-branch">
-            <div class="mindmap-branch-head">
-              <span class="mindmap-branch-icon"><i class="fa-solid fa-headset"></i></span>
-              <h4>Customer service</h4>
+        <!-- Level 2 + 3: three category columns, each with a category header and 2 leaves -->
+        <div class="tree-cats">
+          <!-- Column 1: Automate -->
+          <div class="tree-cat-col">
+            <div class="tree-cat">Automate</div>
+            <div class="tree-leaves">
+              <div class="tree-leaf">
+                <div class="tree-leaf-head">
+                  <span class="tree-leaf-icon"><i class="fa-solid fa-headset"></i></span>
+                  <h4>Customer service</h4>
+                </div>
+                <ul>
+                  <li>AI chatbots on your site</li>
+                  <li>Ticket triage &amp; routing</li>
+                  <li>Reply drafting for staff</li>
+                </ul>
+              </div>
+              <div class="tree-leaf">
+                <div class="tree-leaf-head">
+                  <span class="tree-leaf-icon"><i class="fa-solid fa-chart-line"></i></span>
+                  <h4>Sales &amp; lead gen</h4>
+                </div>
+                <ul>
+                  <li>Lead scoring &amp; qualification</li>
+                  <li>Automated outreach</li>
+                  <li>Follow-up sequences</li>
+                </ul>
+              </div>
             </div>
-            <ul>
-              <li>AI chatbots on your site</li>
-              <li>Ticket triage &amp; routing</li>
-              <li>Reply drafting for staff</li>
-            </ul>
           </div>
 
-          <div class="mindmap-branch">
-            <div class="mindmap-branch-head">
-              <span class="mindmap-branch-icon"><i class="fa-solid fa-chart-column"></i></span>
-              <h4>Data &amp; dashboards</h4>
+          <!-- Column 2: Analyse -->
+          <div class="tree-cat-col">
+            <div class="tree-cat">Analyse</div>
+            <div class="tree-leaves">
+              <div class="tree-leaf">
+                <div class="tree-leaf-head">
+                  <span class="tree-leaf-icon"><i class="fa-solid fa-chart-column"></i></span>
+                  <h4>Data &amp; dashboards</h4>
+                </div>
+                <ul>
+                  <li>Live KPI tracking</li>
+                  <li>Sales &amp; marketing insights</li>
+                  <li>Revenue forecasting</li>
+                </ul>
+              </div>
+              <div class="tree-leaf">
+                <div class="tree-leaf-head">
+                  <span class="tree-leaf-icon"><i class="fa-solid fa-plug"></i></span>
+                  <h4>Integrations</h4>
+                </div>
+                <ul>
+                  <li>CRM &amp; email sync</li>
+                  <li>Tool consolidation</li>
+                  <li>Workflow automation</li>
+                </ul>
+              </div>
             </div>
-            <ul>
-              <li>Live KPI tracking</li>
-              <li>Sales &amp; marketing insights</li>
-              <li>Revenue forecasting</li>
-            </ul>
           </div>
 
-          <div class="mindmap-branch">
-            <div class="mindmap-branch-head">
-              <span class="mindmap-branch-icon"><i class="fa-solid fa-chart-line"></i></span>
-              <h4>Sales &amp; lead gen</h4>
+          <!-- Column 3: Build -->
+          <div class="tree-cat-col">
+            <div class="tree-cat">Build</div>
+            <div class="tree-leaves">
+              <div class="tree-leaf">
+                <div class="tree-leaf-head">
+                  <span class="tree-leaf-icon"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                  <h4>Custom software</h4>
+                </div>
+                <ul>
+                  <li>Internal tools &amp; admin panels</li>
+                  <li>Client &amp; team portals</li>
+                  <li>Custom business platforms</li>
+                </ul>
+              </div>
+              <div class="tree-leaf">
+                <div class="tree-leaf-head">
+                  <span class="tree-leaf-icon"><i class="fa-solid fa-globe"></i></span>
+                  <h4>Custom websites</h4>
+                </div>
+                <ul>
+                  <li>SEO &amp; local search</li>
+                  <li>Lead capture forms</li>
+                  <li>Conversion optimisation</li>
+                </ul>
+              </div>
             </div>
-            <ul>
-              <li>Lead scoring &amp; qualification</li>
-              <li>Automated outreach</li>
-              <li>Follow-up sequences</li>
-            </ul>
-          </div>
-
-          <div class="mindmap-branch">
-            <div class="mindmap-branch-head">
-              <span class="mindmap-branch-icon"><i class="fa-solid fa-screwdriver-wrench"></i></span>
-              <h4>Custom software</h4>
-            </div>
-            <ul>
-              <li>Internal tools &amp; admin panels</li>
-              <li>Client &amp; team portals</li>
-              <li>Custom business platforms</li>
-            </ul>
-          </div>
-
-          <div class="mindmap-branch">
-            <div class="mindmap-branch-head">
-              <span class="mindmap-branch-icon"><i class="fa-solid fa-globe"></i></span>
-              <h4>Custom websites</h4>
-            </div>
-            <ul>
-              <li>SEO &amp; local search</li>
-              <li>Lead capture forms</li>
-              <li>Conversion optimisation</li>
-            </ul>
-          </div>
-
-          <div class="mindmap-branch">
-            <div class="mindmap-branch-head">
-              <span class="mindmap-branch-icon"><i class="fa-solid fa-plug"></i></span>
-              <h4>Integrations</h4>
-            </div>
-            <ul>
-              <li>CRM &amp; email sync</li>
-              <li>Tool consolidation</li>
-              <li>Workflow automation</li>
-            </ul>
           </div>
         </div>
       </div>
