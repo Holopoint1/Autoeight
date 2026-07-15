@@ -306,49 +306,7 @@
         });
       </script>
 
-      <!-- Live chat fallback -->
-      <button type="button" id="live-chat-cta" onclick="if(window.AE_CHAT_OPEN) window.AE_CHAT_OPEN();" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 18px;margin-top:28px;background:rgba(124,92,252,0.12);color:var(--purple-light);border:1px solid rgba(124,92,252,0.3);border-radius:12px;font-family:inherit;font-size:0.92rem;font-weight:600;cursor:pointer;transition:all 0.15s;">
-        <i class="fa-solid fa-comments"></i>
-        <span id="live-chat-cta-label">Prefer to chat live? Start a chat</span>
-        <span id="live-chat-cta-pill" style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:rgba(124,92,252,0.2);border-radius:999px;font-size:0.72rem;font-weight:500;">
-          <span id="live-chat-cta-dot" style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
-          <span id="live-chat-cta-pill-text">Online</span>
-        </span>
-      </button>
-
-      <script>
-        // Keep this pill in sync with the chat widget's UK Mon-Fri 9-5 hours
-        (function () {
-          function ukNow() {
-            var p = new Intl.DateTimeFormat('en-GB', {
-              timeZone: 'Europe/London', weekday: 'short', hour: '2-digit', hour12: false
-            }).formatToParts(new Date());
-            var m = {}; p.forEach(function (x) { m[x.type] = x.value; });
-            return {
-              dayIdx: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(m.weekday),
-              hour: parseInt(m.hour, 10)
-            };
-          }
-          function sync() {
-            var n = ukNow();
-            var open = [1,2,3,4,5].indexOf(n.dayIdx) !== -1 && n.hour >= 9 && n.hour < 17;
-            var dot = document.getElementById('live-chat-cta-dot');
-            var pill = document.getElementById('live-chat-cta-pill-text');
-            var label = document.getElementById('live-chat-cta-label');
-            if (open) {
-              if (dot) dot.style.background = '#4ade80';
-              if (pill) pill.textContent = 'Online';
-              if (label) label.textContent = 'Prefer to chat live? Start a chat';
-            } else {
-              if (dot) dot.style.background = '#fbbf24';
-              if (pill) pill.textContent = 'Offline';
-              if (label) label.textContent = 'Chat is offline. Use the form below';
-            }
-          }
-          sync();
-          setInterval(sync, 60000);
-        })();
-      </script>
+      <!-- Live chat CTA disabled on front-end (backend code in /chatbot/ kept intact for future re-enable) -->
 
       <!-- Secondary: contact form (collapsible) -->
       <details style="margin-top: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden;">
