@@ -106,7 +106,10 @@
 
       <!-- Industry filter pills -->
       <style>
-        .cs-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 920px; margin: 0 auto 40px; }
+        .cs-filters { display: flex; flex-direction: column; gap: 12px; max-width: 920px; margin: 0 auto 40px; }
+        .cs-filter-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; }
+        .cs-filter-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); margin-right: 4px; }
+        .cs-filters-empty { display: none; text-align: center; color: var(--muted); font-size: 0.95rem; padding: 40px 0; }
         .cs-filter { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 100px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s; font-family: inherit; }
         .cs-filter:hover { background: var(--purple-dim); border-color: rgba(124,92,252,0.35); color: var(--purple-light); }
         .cs-filter.active { background: var(--purple); border-color: var(--purple); color: #fff; }
@@ -116,19 +119,30 @@
           .cs-filter { padding: 8px 14px; font-size: 0.78rem; }
         }
       </style>
-      <div class="cs-filters reveal" role="tablist" aria-label="Filter case studies by industry">
-        <button type="button" class="cs-filter active" data-filter="all">All</button>
-        <button type="button" class="cs-filter" data-filter="ecommerce">E-commerce</button>
-        <button type="button" class="cs-filter" data-filter="trades">Trades &amp; Construction</button>
-        <button type="button" class="cs-filter" data-filter="manufacturing">Manufacturing / B2B</button>
-        <button type="button" class="cs-filter" data-filter="estate-agents">Estate Agents</button>
-        <button type="button" class="cs-filter" data-filter="property">Property / PropTech</button>
-        <button type="button" class="cs-filter" data-filter="community">Community</button>
+      <div class="cs-filters reveal" aria-label="Filter case studies">
+        <div class="cs-filter-row" role="group" aria-label="Filter by industry">
+          <span class="cs-filter-label">Industry</span>
+          <button type="button" class="cs-filter active" data-filter-industry="all" aria-pressed="true">All</button>
+          <button type="button" class="cs-filter" data-filter-industry="ecommerce" aria-pressed="false">E-commerce</button>
+          <button type="button" class="cs-filter" data-filter-industry="trades" aria-pressed="false">Trades &amp; Construction</button>
+          <button type="button" class="cs-filter" data-filter-industry="manufacturing" aria-pressed="false">Manufacturing / B2B</button>
+          <button type="button" class="cs-filter" data-filter-industry="estate-agents" aria-pressed="false">Estate Agents &amp; Property</button>
+          <button type="button" class="cs-filter" data-filter-industry="community" aria-pressed="false">Community</button>
+        </div>
+        <div class="cs-filter-row" role="group" aria-label="Filter by service">
+          <span class="cs-filter-label">Service</span>
+          <button type="button" class="cs-filter active" data-filter-service="all" aria-pressed="true">All</button>
+          <button type="button" class="cs-filter" data-filter-service="web-design" aria-pressed="false">Web Design &amp; SEO</button>
+          <button type="button" class="cs-filter" data-filter-service="ai-automation" aria-pressed="false">AI &amp; Automation</button>
+          <button type="button" class="cs-filter" data-filter-service="sales-data" aria-pressed="false">Sales Automation &amp; Data</button>
+          <button type="button" class="cs-filter" data-filter-service="crm-integration" aria-pressed="false">CRM &amp; Integration</button>
+          <button type="button" class="cs-filter" data-filter-service="lms" aria-pressed="false">Learning Management</button>
+        </div>
       </div>
 
       <!-- Highlight cards -->
       <div class="cs-highlights reveal" style="grid-template-columns:1fr; max-width:820px; margin-left:auto; margin-right:auto;">
-        <a href="/results/dice-tavern" class="cs-highlight">
+        <a href="/results/dice-tavern" class="cs-highlight" data-industry="ecommerce" data-services="web-design ai-automation sales-data">
           <span class="cs-highlight-tag">E-Commerce + CMS</span>
           <h3>The Dice Tavern</h3>
           <p class="cs-highlight-body">A custom e-commerce platform that cuts out the marketplace middleman. Direct Stripe payments mean 0% in commission, a 4-stage email automation (confirmation, dispatch, follow-up, review request) keeps customers warm without anyone touching a keyboard, and a smart cross-sell engine quietly lifts average order value at checkout. One operations dashboard for orders, stock, revenue, and reviews. The business owns the entire customer relationship.</p>
@@ -139,7 +153,7 @@
           <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
           <span style="display:block;font-size:0.72rem;font-weight:500;margin-top:6px;"><span onclick="event.stopPropagation();window.open('https://www.thedicetavern.co.uk/','_blank','noopener');return false;" style="color:var(--purple-light);cursor:pointer;text-decoration:none;">thedicetavern.co.uk <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i></span></span>
         </a>
-        <a href="/results/tm-joinery" class="cs-highlight">
+        <a href="/results/tm-joinery" class="cs-highlight" data-industry="trades" data-services="web-design ai-automation">
           <span class="cs-highlight-tag">Web Design + SEO</span>
           <h3>TM Joinery Ltd</h3>
           <p class="cs-highlight-body">From zero online presence to ranking across 6 regions in Scotland. A premium-feel website that builds trust on first visit, full technical SEO with structured data for Google rich results, an automated quote-request system that captures enquiries 24/7, and 5-star Google reviews displayed front and centre. Word-of-mouth referrals replaced by inbound leads coming in every week without anyone chasing them.</p>
@@ -150,7 +164,7 @@
           <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
           <span style="display:block;font-size:0.72rem;font-weight:500;margin-top:6px;"><span onclick="event.stopPropagation();window.open('https://tmjoineryltd.co.uk/','_blank','noopener');return false;" style="color:var(--purple-light);cursor:pointer;text-decoration:none;">tmjoineryltd.co.uk <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i></span></span>
         </a>
-        <a href="/results/northbrick" class="cs-highlight">
+        <a href="/results/northbrick" class="cs-highlight" data-industry="estate-agents" data-services="web-design ai-automation crm-integration">
           <span class="cs-highlight-tag">PropTech + AI</span>
           <h3>Northbrick Property</h3>
           <p class="cs-highlight-body">A complete estate agency platform built for independents, not chains. Branded public site with full property listings, every enquiry channel (web, Gmail, Outlook, WhatsApp, SMS) pulled into one inbox, AI classifying every inbound and matching it to a live property, automated chase sequences that send from the agent's own mailbox so follow-ups still feel personal, and viewings booked straight to the calendar with two-way sync. Reapit-grade software, priced for independent agencies.</p>
@@ -161,7 +175,7 @@
           <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
           <span style="display:block;font-size:0.72rem;font-weight:500;margin-top:6px;"><span onclick="event.stopPropagation();window.open('http://www.northbrick.org/','_blank','noopener');return false;" style="color:var(--purple-light);cursor:pointer;text-decoration:none;">northbrick.org <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i></span></span>
         </a>
-        <a href="/results/matrix-tsl" class="cs-highlight">
+        <a href="/results/matrix-tsl" class="cs-highlight" data-industry="manufacturing" data-services="ai-automation sales-data crm-integration lms">
           <span class="cs-highlight-tag">AI + Sales</span>
           <h3>Matrix TSL</h3>
           <p class="cs-highlight-body">One dashboard for the whole sales floor. Reps, managers, and directors all working from the same view, with sales data and marketing data side by side so the team can spot the products, trends, and accounts most likely to convert. Built-in onboarding and sales training, a full planning system, automated lead discovery across UK universities, and HubSpot wired in so nothing gets retyped. Reps now start every morning knowing exactly who to call and why.</p>
@@ -176,7 +190,7 @@
       <div class="cs-full-grid reveal">
 
         <!-- TM Joinery -->
-        <div class="cs-full-card" data-industry="trades">
+        <div class="cs-full-card" data-industry="trades" data-services="web-design ai-automation">
           <div class="cs-full-top">
             <span class="case-tag">Web Design + Local SEO</span>
             <span class="case-tag">Construction &amp; Joinery</span>
@@ -214,7 +228,7 @@
         </div>
 
         <!-- The Dice Tavern -->
-        <div class="cs-full-card" data-industry="ecommerce">
+        <div class="cs-full-card" data-industry="ecommerce" data-services="web-design ai-automation sales-data">
           <div class="cs-full-top">
             <span class="case-tag">E-Commerce + Email Automation</span>
             <span class="case-tag">Specialist Retail</span>
@@ -252,7 +266,7 @@
         </div>
 
         <!-- Northbrick Property -->
-        <div class="cs-full-card" data-industry="estate-agents">
+        <div class="cs-full-card" data-industry="estate-agents" data-services="web-design ai-automation crm-integration">
           <div class="cs-full-top">
             <span class="case-tag">PropTech + AI</span>
             <span class="case-tag">Estate Agency SaaS</span>
@@ -290,7 +304,7 @@
         </div>
 
         <!-- Matrix TSL -->
-        <div class="cs-full-card" data-industry="manufacturing">
+        <div class="cs-full-card" data-industry="manufacturing" data-services="ai-automation sales-data crm-integration lms">
           <div class="cs-full-top">
             <span class="case-tag">AI Automation + Sales Enablement</span>
             <span class="case-tag">Education Equipment Manufacturer</span>
@@ -328,6 +342,8 @@
         </div>
 
       </div>
+
+      <p class="cs-filters-empty" id="cs-filters-empty">No projects match that combination yet. Try a different industry or service.</p>
     </div>
   </section>
 
@@ -365,7 +381,7 @@
       <div class="ba-wrap reveal">
 
         <!-- RoundTable -->
-        <article class="ba-card" data-industry="community">
+        <article class="ba-card" data-industry="community" data-services="web-design">
           <div class="ba-top">
             <span class="ba-icon"><i class="fa-solid fa-dice-d20"></i></span>
             <span class="ba-pill">Community Platform</span>
@@ -412,23 +428,47 @@
 
   <script>
     (function () {
-      var filters = document.querySelectorAll('.cs-filter');
+      var industryBtns = document.querySelectorAll('[data-filter-industry]');
+      var serviceBtns = document.querySelectorAll('[data-filter-service]');
       var cards = document.querySelectorAll('[data-industry]');
-      if (!filters.length || !cards.length) return;
-      filters.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var filter = btn.getAttribute('data-filter');
-          filters.forEach(function (b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          cards.forEach(function (card) {
-            if (filter === 'all' || card.getAttribute('data-industry') === filter) {
-              card.style.display = '';
-            } else {
-              card.style.display = 'none';
-            }
+      var emptyMsg = document.getElementById('cs-filters-empty');
+      var baSection = document.querySelector('.ba-section');
+      if (!industryBtns.length || !cards.length) return;
+
+      var activeIndustry = 'all';
+      var activeService = 'all';
+
+      function apply() {
+        var mainVisible = 0;
+        var baVisible = 0;
+        cards.forEach(function (card) {
+          var industryOk = activeIndustry === 'all' || card.getAttribute('data-industry') === activeIndustry;
+          var services = (card.getAttribute('data-services') || '').split(' ');
+          var serviceOk = activeService === 'all' || services.indexOf(activeService) !== -1;
+          var show = industryOk && serviceOk;
+          card.style.display = show ? '' : 'none';
+          if (show) {
+            if (baSection && baSection.contains(card)) { baVisible++; } else { mainVisible++; }
+          }
+        });
+        if (emptyMsg) emptyMsg.style.display = mainVisible === 0 ? 'block' : 'none';
+        if (baSection) baSection.style.display = baVisible === 0 ? 'none' : '';
+      }
+
+      function wire(btns, set) {
+        btns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            btns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+            set(btn);
+            apply();
           });
         });
-      });
+      }
+
+      wire(industryBtns, function (btn) { activeIndustry = btn.getAttribute('data-filter-industry'); });
+      wire(serviceBtns, function (btn) { activeService = btn.getAttribute('data-filter-service'); });
     })();
   </script>
 
