@@ -136,7 +136,13 @@
           position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
           font-size: 0.7rem; color: #fff; pointer-events: none;
         }
-        .cs-filter-select option { background: var(--surface); color: var(--text); font-weight: 500; }
+        .cs-filter-select option {
+          background: #1a1a1f;
+          color: #ffffff;
+          font-weight: 500;
+          padding: 8px 12px;
+        }
+        .cs-filter-select option:checked { background: var(--purple); color: #fff; }
         @media (max-width: 700px) {
           .cs-filters { gap: 8px; margin-bottom: 28px; }
           .cs-filter { padding: 8px 14px; font-size: 0.78rem; }
