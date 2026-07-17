@@ -104,7 +104,7 @@
     <div class="page-section-inner">
 
 
-      <!-- Industry filter pills -->
+      <!-- Filters: industry as pills, service as a dropdown -->
       <style>
         .cs-filters { display: flex; flex-direction: column; gap: 12px; max-width: 920px; margin: 0 auto 40px; }
         .cs-filter-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; }
@@ -114,9 +114,33 @@
         .cs-filter:hover { background: var(--purple-dim); border-color: rgba(124,92,252,0.35); color: var(--purple-light); }
         .cs-filter.active { background: var(--purple); border-color: var(--purple); color: #fff; }
         .cs-filter.active:hover { background: var(--purple-light); border-color: var(--purple-light); color: #fff; }
+        /* Service dropdown — styled to sit alongside the industry pills */
+        .cs-filter-select-wrap { position: relative; display: inline-block; }
+        .cs-filter-select {
+          appearance: none; -webkit-appearance: none; -moz-appearance: none;
+          padding: 9px 40px 9px 18px;
+          border-radius: 100px;
+          background: var(--purple);
+          border: 1px solid var(--purple);
+          color: #fff;
+          font-family: inherit; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.01em;
+          cursor: pointer;
+          transition: background 0.15s, border-color 0.15s;
+          min-width: 200px;
+        }
+        .cs-filter-select:hover { background: var(--purple-light); border-color: var(--purple-light); }
+        .cs-filter-select:focus { outline: 2px solid var(--purple-light); outline-offset: 2px; }
+        .cs-filter-select-wrap::after {
+          content: '\f078';
+          font-family: 'Font Awesome 6 Free'; font-weight: 900;
+          position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+          font-size: 0.7rem; color: #fff; pointer-events: none;
+        }
+        .cs-filter-select option { background: var(--surface); color: var(--text); font-weight: 500; }
         @media (max-width: 700px) {
           .cs-filters { gap: 8px; margin-bottom: 28px; }
           .cs-filter { padding: 8px 14px; font-size: 0.78rem; }
+          .cs-filter-select { padding: 8px 34px 8px 14px; font-size: 0.78rem; min-width: 180px; }
         }
       </style>
       <div class="cs-filters reveal" aria-label="Filter case studies">
@@ -131,12 +155,16 @@
         </div>
         <div class="cs-filter-row" role="group" aria-label="Filter by service">
           <span class="cs-filter-label">Service</span>
-          <button type="button" class="cs-filter active" data-filter-service="all" aria-pressed="true">All</button>
-          <button type="button" class="cs-filter" data-filter-service="web-design" aria-pressed="false">Web Design &amp; SEO</button>
-          <button type="button" class="cs-filter" data-filter-service="ai-automation" aria-pressed="false">AI &amp; Automation</button>
-          <button type="button" class="cs-filter" data-filter-service="sales-data" aria-pressed="false">Sales Automation &amp; Data</button>
-          <button type="button" class="cs-filter" data-filter-service="crm-integration" aria-pressed="false">CRM &amp; Integration</button>
-          <button type="button" class="cs-filter" data-filter-service="lms" aria-pressed="false">Learning Management</button>
+          <div class="cs-filter-select-wrap">
+            <select id="cs-filter-service-select" class="cs-filter-select" aria-label="Filter case studies by service">
+              <option value="all">All services</option>
+              <option value="web-design">Web Design &amp; SEO</option>
+              <option value="ai-automation">AI &amp; Automation</option>
+              <option value="sales-data">Sales Automation &amp; Data</option>
+              <option value="crm-integration">CRM &amp; Integration</option>
+              <option value="lms">Learning Management</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -429,7 +457,7 @@
   <script>
     (function () {
       var industryBtns = document.querySelectorAll('[data-filter-industry]');
-      var serviceBtns = document.querySelectorAll('[data-filter-service]');
+      var serviceSelect = document.getElementById('cs-filter-service-select');
       var cards = document.querySelectorAll('[data-industry]');
       var emptyMsg = document.getElementById('cs-filters-empty');
       var baSection = document.querySelector('.ba-section');
@@ -455,20 +483,24 @@
         if (baSection) baSection.style.display = baVisible === 0 ? 'none' : '';
       }
 
-      function wire(btns, set) {
-        btns.forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            btns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-            btn.classList.add('active');
-            btn.setAttribute('aria-pressed', 'true');
-            set(btn);
-            apply();
-          });
+      // Industry: pill buttons — click swaps active state, applies filter
+      industryBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          industryBtns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          activeIndustry = btn.getAttribute('data-filter-industry');
+          apply();
+        });
+      });
+
+      // Service: dropdown — change event updates the active service and re-applies the filter
+      if (serviceSelect) {
+        serviceSelect.addEventListener('change', function () {
+          activeService = serviceSelect.value;
+          apply();
         });
       }
-
-      wire(industryBtns, function (btn) { activeIndustry = btn.getAttribute('data-filter-industry'); });
-      wire(serviceBtns, function (btn) { activeService = btn.getAttribute('data-filter-service'); });
     })();
   </script>
 
