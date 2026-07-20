@@ -249,12 +249,18 @@
         <i class="fa-solid fa-envelope"></i>
         <span><a href="mailto:contact@autoeight.ai" style="color:var(--purple-light);text-decoration:none;">contact@autoeight.ai</a></span>
       </div>
+
+      <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+        <a href="#cal-booking-inline" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book a free call with us</a>
+        <span style="font-size: 0.88rem; color: var(--muted);">or send us a message</span>
+        <a href="#message-form" class="btn btn-ghost" onclick="var d=document.getElementById('message-form'); if(d) d.open=true;"><i class="fa-regular fa-envelope"></i> Send us a message</a>
+      </div>
     </div>
 
     <!-- RIGHT: Cal.com booking embed (primary) + contact form (secondary) -->
     <div class="booking-form-wrap reveal" style="transition-delay:0.15s; padding: 0; background: transparent; border: 0;">
       <!-- Cal.com inline embed -->
-      <div style="background:#fff;border-radius:14px;overflow:hidden;min-height:640px;width:100%;box-shadow:0 4px 30px rgba(0,0,0,0.18);" id="cal-booking-inline"></div>
+      <div style="background:#fff;border-radius:14px;overflow:hidden;min-height:640px;width:100%;box-shadow:0 4px 30px rgba(0,0,0,0.18);scroll-margin-top:90px;" id="cal-booking-inline"></div>
 
       <script type="text/javascript">
         (function (C, A, L) {
@@ -300,7 +306,7 @@
       <!-- Live chat CTA disabled on front-end (backend code in /chatbot/ kept intact for future re-enable) -->
 
       <!-- Secondary: contact form (collapsible) -->
-      <details style="margin-top: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden;">
+      <details id="message-form" style="margin-top: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; scroll-margin-top: 90px;">
         <summary style="cursor: pointer; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 0.92rem; font-weight: 600; color: var(--white); list-style: none;">
           <span><i class="fa-regular fa-envelope" style="margin-right: 8px; color: var(--purple-light);"></i> Prefer to send a message instead?</span>
           <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; color: var(--muted); transition: transform 0.2s;"></i>
