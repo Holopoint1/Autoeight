@@ -3644,16 +3644,19 @@ footer {
 /* Steps / process timeline */
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   position: relative;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .steps-connector {
   position: absolute;
   top: 23px;
-  left: calc(100% / 8);
-  right: calc(100% / 8);
+  left: calc(100% / 6);
+  right: calc(100% / 6);
   height: 10px;
   z-index: 0;
   pointer-events: none;
@@ -3682,11 +3685,9 @@ footer {
 @keyframes connector-progress {
   0%   { width: 0%;   opacity: 0; }
   5%   { opacity: 1; }
-  25%  { width: 33%; }
-  35%  { width: 33%; }
-  55%  { width: 66%; }
-  65%  { width: 66%; }
-  82%  { width: 100%; }
+  30%  { width: 50%; }
+  42%  { width: 50%; }
+  70%  { width: 100%; }
   90%  { width: 100%; opacity: 1; }
   96%  { opacity: 0; }
   100% { width: 0%;   opacity: 0; }
@@ -3705,9 +3706,8 @@ footer {
 }
 
 .steps-connector-dot.dot-1 { left: 0%; }
-.steps-connector-dot.dot-2 { left: 33.33%; }
-.steps-connector-dot.dot-3 { left: 66.66%; }
-.steps-connector-dot.dot-4 { left: 100%; }
+.steps-connector-dot.dot-2 { left: 50%; }
+.steps-connector-dot.dot-3 { left: 100%; }
 
 .step-card {
   padding: 0 24px 32px;
