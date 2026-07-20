@@ -259,7 +259,7 @@ nav.scrolled {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 28px;
   list-style: none;
 }
 
