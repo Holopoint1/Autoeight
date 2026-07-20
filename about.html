@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="About Autoeight. We build custom software, automation and integrations for UK businesses. Based in Halifax, working nationwide." />
-  <meta name="keywords" content="web design agency Halifax, web designer West Yorkshire, about Autoeight, web design Leeds, business website design UK, web design Yorkshire, custom web design, conversion-focused websites" />
+  <meta name="description" content="About Autoeight. Founded by Alfie Dobson: ten years in sales plus a builder of websites, software and AI systems. Based in Halifax, working nationwide." />
+  <meta name="keywords" content="web design agency Halifax, web designer West Yorkshire, about Autoeight, Alfie Dobson, web design Leeds, business website design UK, web design Yorkshire, custom web design, conversion-focused websites" />
   <meta name="author" content="Autoeight" />
   <meta name="robots" content="index, follow" />
   <title>About Autoeight | Custom Software &amp; Automation Agency</title>
@@ -14,16 +14,16 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://autoeight.ai/about" />
   <meta property="og:title" content="About Autoeight | Web Design Agency in Halifax" />
-  <meta property="og:description" content="Web design agency based in Halifax, West Yorkshire. Conversion-focused business websites with AI, CRM integration, and sales automation built in." />
-  <meta property="og:image" content="https://autoeight.ai/brand_assets/logo.png" />
+  <meta property="og:description" content="Founded by Alfie Dobson: ten years in sales plus a builder of websites, software and AI systems. Based in Halifax, working nationwide." />
+  <meta property="og:image" content="https://autoeight.ai/brand_assets/alfie-dobson.jpg" />
   <meta property="og:site_name" content="Autoeight" />
   <meta property="og:locale" content="en_GB" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="About Autoeight | Web Design Agency Halifax" />
-  <meta name="twitter:description" content="Web design agency in Halifax, West Yorkshire. Conversion-focused business websites with AI and automation built in." />
-  <meta name="twitter:image" content="https://autoeight.ai/brand_assets/logo.png" />
+  <meta name="twitter:description" content="Founded by Alfie Dobson: ten years in sales plus a builder of websites, software and AI systems. Based in Halifax, working nationwide." />
+  <meta name="twitter:image" content="https://autoeight.ai/brand_assets/alfie-dobson.jpg" />
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
@@ -38,6 +38,11 @@
       "@type": "Place",
       "name": "Halifax, West Yorkshire, United Kingdom"
     },
+    "founder": {
+      "@type": "Person",
+      "name": "Alfie Dobson",
+      "jobTitle": "Founder"
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Halifax",
@@ -50,6 +55,25 @@
       "name": "United Kingdom"
     },
     "knowsAbout": ["Web Design", "Business Website Design", "Conversion Rate Optimisation", "Local SEO", "AI Integration", "CRM Integration", "Sales Automation", "Lead Generation Websites", "WordPress", "Custom Web Development", "Google Search Optimisation", "HubSpot", "Salesforce", "OpenAI"],
+    "sameAs": ["https://www.linkedin.com/company/autoeight-uk"]
+  }
+  </script>
+
+  <!-- Structured Data: Person (founder) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alfie Dobson",
+    "jobTitle": "Founder",
+    "image": "https://autoeight.ai/brand_assets/alfie-dobson.jpg",
+    "url": "https://autoeight.ai/about",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Autoeight",
+      "url": "https://autoeight.ai"
+    },
+    "knowsAbout": ["Sales", "CRM Systems", "Sales IT", "Web Design", "E-commerce", "Web Software", "API Integration", "AI for Sales and Marketing"],
     "sameAs": ["https://www.linkedin.com/company/autoeight-uk"]
   }
   </script>
@@ -80,110 +104,54 @@
     p[style*="color:var(--muted)"] { color: #3f3f46 !important; }
     .feature-card p, .check-list span { color: #52525b; }
 
-    /* ── Hero colour swatches ─────────────────────── */
-    .hero-swatches {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-    }
-    .hero-swatch {
+    /* ── Founder photo card ── */
+    .founder-photo-wrap {
       position: relative;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      outline: none;
-      background: transparent;
-      padding: 0;
+      max-width: 420px;
+      margin: 0 auto;
     }
-    .hero-swatch::before {
-      content: '';
-      position: absolute;
-      inset: 3px;
-      border-radius: 50%;
-      background: var(--swatch-color);
-      transition: transform 0.2s;
-    }
-    .hero-swatch:hover { transform: scale(1.15); }
-    .hero-swatch.active {
-      border-color: rgba(0,0,0,0.5);
-      box-shadow: 0 0 0 3px rgba(0,0,0,0.10);
-      transform: scale(1.18);
-    }
-    .hero-swatch-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,0.25);
-      margin-top: 4px;
-      text-align: center;
+    .founder-photo-wrap img {
       display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 48px rgba(17, 17, 17, 0.12);
     }
-    .hero-swatch-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .founder-photo-name {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 16px;
     }
-    .hero-swatch-wrap.active .hero-swatch-label { color: rgba(0,0,0,0.55); }
-    .hero-swatches-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,0.20);
-      margin-right: 4px;
-      white-space: nowrap;
-    }
+    .founder-photo-name strong { display: block; font-size: 0.95rem; }
+    .founder-photo-name span { font-size: 0.78rem; color: var(--muted); }
 
-    /* ── Benefit chips ───────────────────────────── */
-    #hero-chips {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
+    .founder-skill {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-top: 18px;
     }
-    .hero-benefit {
-      position: absolute;
-      bottom: 10%;
+    .founder-skill-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 14px 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.90);
-      backdrop-filter: blur(8px);
-      white-space: nowrap;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #111;
-      opacity: 0;
-      animation: benefit-rise var(--rise-dur, 3.2s) var(--rise-delay, 0s) ease-out forwards;
+      justify-content: center;
+      background: var(--purple-dim);
+      border: 1px solid rgba(124, 92, 252, 0.25);
+      color: var(--purple-light);
+      font-size: 1rem;
     }
-    .hero-benefit i {
-      font-size: 0.75rem;
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.06);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    @keyframes benefit-rise {
-      0%   { opacity: 0; transform: translateY(0)   scale(0.85); }
-      15%  { opacity: 1; transform: translateY(-20px) scale(1);   }
-      80%  { opacity: 1; }
-      100% { opacity: 0; transform: translateY(-160px) scale(0.9); }
-    }
-
-    /* ── Hero bg crossfade ───────────────────────── */
-    .page-hero-bg {
-      transition: opacity 0.35s ease;
-    }
+    .founder-skill h3 { font-size: 1.02rem; margin-bottom: 4px; }
+    .founder-skill p { font-size: 0.93rem; line-height: 1.7; color: #3f3f46; }
 
     /* Mobile responsive fixes for inline-styled grids */
     @media (max-width: 768px) {
@@ -205,7 +173,6 @@
     <li class="nav-item has-dropdown">
       <a href="#">Services <i class="fa-solid fa-chevron-down chevron"></i></a>
       <ul class="dropdown">
-        <li><a href="/ai-audit"><i class="fa-solid fa-magnifying-glass-chart"></i> AI Audit</a></li>
         <li><a href="/services/web-design"><i class="fa-solid fa-globe"></i> Web Design</a></li>
         <li><a href="/services/ai-automation"><i class="fa-solid fa-robot"></i> AI &amp; Automation</a></li>
         <li><a href="/services/crm-integration"><i class="fa-solid fa-plug"></i> CRM &amp; Integration</a></li>
@@ -215,60 +182,63 @@
       </ul>
     </li>
     <li class="nav-item"><a href="/results">Results</a></li>
-    <li class="nav-item"><a href="/about">About Us</a></li>
-    <li class="nav-item has-dropdown">
-      <a href="#">Resources <i class="fa-solid fa-chevron-down chevron"></i></a>
-      <ul class="dropdown">
-        <li><a href="/resources/blog"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
-        <li><a href="/resources/news"><i class="fa-solid fa-newspaper"></i> News</a></li>
-        <li><a href="/resources/blueprints"><i class="fa-solid fa-map"></i> Automation Blueprints</a></li>
-        <li><a href="/resources/glossary"><i class="fa-solid fa-book"></i> Glossary</a></li>
-      </ul>
-    </li>
+    <li class="nav-item"><a href="/about">About</a></li>
   </ul>
-  <a href="/book" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Book a call</a>
+  <a href="/book" class="btn btn-primary nav-cta" style="font-size:0.85rem;padding:9px 20px;">Book a free call</a>
   <label class="hamburger" id="hamburger" for="mobile-nav-toggle" aria-label="Toggle menu" role="button" tabindex="0"><span></span><span></span><span></span></label>
 </nav>
   <div id="nav-placeholder" style="display:none;"></div>
-<div class="page-hero" id="about-hero">
-    <div class="page-hero-bg" id="hero-bg"></div>
-    <div class="page-hero-grid"></div>
-    <div id="hero-chips"></div>
-    <div class="page-hero-content">
-      <span class="section-label">About Us</span>
-      <h1>Websites that rank. Systems that save hours. <em>Data that drives growth.</em></h1>
-      <p>We build conversion-focused websites that get found on Google and AI search, automations that cut the manual work out of your operation, dashboards that turn your data into decisions you can act on, and integrations that pull it all together. Growing UK businesses deserve more than a digital brochure, so that's not what we build.</p>
 
-      <!-- Colour picker -->
-      <div class="hero-swatches" role="radiogroup" aria-label="Choose hero colour theme">
-        <span class="hero-swatches-label">Explore</span>
-        <div class="hero-swatch-wrap active" data-theme="purple">
-          <button class="hero-swatch active" style="--swatch-color:#7c5cfc;" aria-label="AI theme" aria-pressed="true"></button>
-          <span class="hero-swatch-label">AI</span>
+  <div class="page-hero" id="about-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-content">
+      <span class="section-label">About</span>
+      <h1>Hi, I'm Alfie. <em>I help companies sell more.</em></h1>
+      <p>Ten years in sales, and a builder of websites, software and AI systems. Autoeight is those two things put together.</p>
+    </div>
+  </div>
+
+  <!-- ── FOUNDER INTRO ── -->
+  <section class="page-section">
+    <div class="page-section-inner">
+      <div class="two-col reveal" style="align-items:center;">
+        <div class="founder-photo-wrap">
+          <img src="/brand_assets/alfie-dobson.jpg" alt="Alfie Dobson, founder of Autoeight" width="800" height="800" />
+          <div class="founder-photo-name">
+            <strong>Alfie Dobson</strong>
+            <span>Founder, Autoeight</span>
+          </div>
         </div>
-        <div class="hero-swatch-wrap" data-theme="blue">
-          <button class="hero-swatch" style="--swatch-color:#2563eb;" aria-label="Analytics theme" aria-pressed="false"></button>
-          <span class="hero-swatch-label">Data</span>
-        </div>
-        <div class="hero-swatch-wrap" data-theme="emerald">
-          <button class="hero-swatch" style="--swatch-color:#059669;" aria-label="Growth theme" aria-pressed="false"></button>
-          <span class="hero-swatch-label">Growth</span>
-        </div>
-        <div class="hero-swatch-wrap" data-theme="amber">
-          <button class="hero-swatch" style="--swatch-color:#d97706;" aria-label="Speed theme" aria-pressed="false"></button>
-          <span class="hero-swatch-label">Speed</span>
-        </div>
-        <div class="hero-swatch-wrap" data-theme="cyan">
-          <button class="hero-swatch" style="--swatch-color:#06b6d4;" aria-label="Integration theme" aria-pressed="false"></button>
-          <span class="hero-swatch-label">Connect</span>
-        </div>
-        <div class="hero-swatch-wrap" data-theme="rose">
-          <button class="hero-swatch" style="--swatch-color:#e11d48;" aria-label="Always-on theme" aria-pressed="false"></button>
-          <span class="hero-swatch-label">24/7</span>
+        <div class="content-block">
+          <span class="section-label">Who you'll work with</span>
+          <h2 class="section-title">Two skills. One job: your sales.</h2>
+
+          <div class="founder-skill">
+            <span class="founder-skill-icon"><i class="fa-solid fa-handshake"></i></span>
+            <div>
+              <h3>Sales</h3>
+              <p>Ten years selling, in the UK and internationally. I know CRMs, sales IT, and what it actually takes to get the most out of every lead and every rep.</p>
+            </div>
+          </div>
+
+          <div class="founder-skill">
+            <span class="founder-skill-icon"><i class="fa-solid fa-code"></i></span>
+            <div>
+              <h3>IT &amp; AI</h3>
+              <p>I build websites, e-commerce stores, web-based software, API integrations, and AI tools for sales and marketing.</p>
+            </div>
+          </div>
+
+          <p class="section-sub" style="margin-top:22px;">Most agencies have one of those skills. I use the sales side to understand what your business needs, and the technical side to build it. No account managers, no hand-offs. You deal directly with the person doing the work.</p>
+
+          <a href="/book" class="btn btn-primary btn-lg" style="margin-top:28px;"><i class="fa-solid fa-calendar-check"></i> Book a free call</a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <div class="section-divider"></div>
 
   <!-- ── FACTUAL SUMMARY (AI Search) ── -->
   <section class="page-section" style="padding:40px 5%;">
@@ -281,236 +251,8 @@
     </div>
   </section>
 
-  <!-- ── LOGO STRIP ── -->
-  <div id="logos">
-    <div class="logos-inner">
-      <span class="logos-label">We work with</span>
-      <div class="logos-divider"></div>
-      <div class="logos-scroll">
-        <div class="logos-track">
-          <span class="logo-pill"><i class="fa-solid fa-brain" style="color:#74aa9c;"></i> OpenAI</span>
-          <span class="logo-pill"><i class="fa-solid fa-robot" style="color:#10a37f;"></i> ChatGPT</span>
-          <span class="logo-pill"><i class="fa-solid fa-puzzle-piece" style="color:#a259ff;"></i> Make.com</span>
-          <span class="logo-pill"><i class="fa-brands fa-python" style="color:#3776ab;"></i> Python</span>
-          <span class="logo-pill"><i class="fa-brands fa-google" style="color:#8e75b2;"></i> Gemini</span>
-          <span class="logo-pill"><i class="fa-solid fa-wand-magic-sparkles" style="color:#c084fc;"></i> Claude</span>
-          <span class="logo-pill"><i class="fa-brands fa-google" style="color:#4285F4;"></i> Google Workspace</span>
-          <span class="logo-pill"><i class="fa-brands fa-slack" style="color:#E01E5A;"></i> Slack</span>
-          <span class="logo-pill"><i class="fa-brands fa-hubspot" style="color:#FF7A59;"></i> HubSpot</span>
-          <span class="logo-pill"><i class="fa-brands fa-salesforce" style="color:#00A1E0;"></i> Salesforce</span>
-          <span class="logo-pill"><i class="fa-solid fa-bolt" style="color:#FF4A00;"></i> Zapier</span>
-          <span class="logo-pill"><i class="fa-brands fa-linkedin" style="color:#0A66C2;"></i> LinkedIn</span>
-          <span class="logo-pill"><i class="fa-solid fa-table-cells" style="color:#18BFFF;"></i> Airtable</span>
-          <span class="logo-pill"><i class="fa-solid fa-envelope" style="color:#EA4335;"></i> Gmail</span>
-          <span class="logo-pill"><i class="fa-brands fa-microsoft" style="color:#5059C9;"></i> MS Teams</span>
-          <span class="logo-pill"><i class="fa-brands fa-shopify" style="color:#96BF48;"></i> Shopify</span>
-          <span class="logo-pill"><i class="fa-brands fa-stripe" style="color:#635BFF;"></i> Stripe</span>
-          <span class="logo-pill"><i class="fa-brands fa-mailchimp" style="color:#FFE01B;"></i> Mailchimp</span>
-          <span class="logo-pill"><i class="fa-brands fa-wordpress" style="color:#21759B;"></i> WordPress</span>
-          <!-- duplicate for seamless loop -->
-          <span class="logo-pill"><i class="fa-solid fa-brain" style="color:#74aa9c;"></i> OpenAI</span>
-          <span class="logo-pill"><i class="fa-solid fa-robot" style="color:#10a37f;"></i> ChatGPT</span>
-          <span class="logo-pill"><i class="fa-solid fa-puzzle-piece" style="color:#a259ff;"></i> Make.com</span>
-          <span class="logo-pill"><i class="fa-brands fa-python" style="color:#3776ab;"></i> Python</span>
-          <span class="logo-pill"><i class="fa-brands fa-google" style="color:#8e75b2;"></i> Gemini</span>
-          <span class="logo-pill"><i class="fa-solid fa-wand-magic-sparkles" style="color:#c084fc;"></i> Claude</span>
-          <span class="logo-pill"><i class="fa-brands fa-google" style="color:#4285F4;"></i> Google Workspace</span>
-          <span class="logo-pill"><i class="fa-brands fa-slack" style="color:#E01E5A;"></i> Slack</span>
-          <span class="logo-pill"><i class="fa-brands fa-hubspot" style="color:#FF7A59;"></i> HubSpot</span>
-          <span class="logo-pill"><i class="fa-brands fa-salesforce" style="color:#00A1E0;"></i> Salesforce</span>
-          <span class="logo-pill"><i class="fa-solid fa-bolt" style="color:#FF4A00;"></i> Zapier</span>
-          <span class="logo-pill"><i class="fa-brands fa-linkedin" style="color:#0A66C2;"></i> LinkedIn</span>
-          <span class="logo-pill"><i class="fa-solid fa-table-cells" style="color:#18BFFF;"></i> Airtable</span>
-          <span class="logo-pill"><i class="fa-solid fa-envelope" style="color:#EA4335;"></i> Gmail</span>
-          <span class="logo-pill"><i class="fa-brands fa-microsoft" style="color:#5059C9;"></i> MS Teams</span>
-          <span class="logo-pill"><i class="fa-brands fa-shopify" style="color:#96BF48;"></i> Shopify</span>
-          <span class="logo-pill"><i class="fa-brands fa-stripe" style="color:#635BFF;"></i> Stripe</span>
-          <span class="logo-pill"><i class="fa-brands fa-mailchimp" style="color:#FFE01B;"></i> Mailchimp</span>
-          <span class="logo-pill"><i class="fa-brands fa-wordpress" style="color:#21759B;"></i> WordPress</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-divider"></div>
-
-  <!-- MISSION -->
-  <section class="page-section">
-    <div class="page-section-inner">
-      <div class="two-col reveal">
-        <div class="content-block">
-          <span class="section-label">Our Mission</span>
-          <h2 class="section-title">Websites that rank on Google and AI search</h2>
-          <p class="section-sub">Most agencies hand over a pretty website and disappear. We saw too many businesses end up with sites nobody could find. No search visibility, no lead capture, no follow-up, and no connection to the tools the team actually uses. A brochure you pay to host.</p>
-          <p class="section-sub" style="margin-top:14px;">We built Autoeight to fix that. Every website we deliver is custom-designed and optimised for Google and AI search from day one, with proper technical SEO, structured data for rich results, local SEO across multiple regions, and content built for how ChatGPT, Gemini and Claude read the web. Our TM Joinery site now ranks on Page 1 in 6 UK regions. And because we hook your CRM up and wire in automated follow-up at the same time, the enquiries you earn from search don't slip through the cracks.</p>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-          <div class="stat-card"><div class="stat-number"><span data-target="5" data-suffix="">5</span></div><div class="stat-desc">Core services under one roof</div></div>
-          <div class="stat-card"><div class="stat-number"><span data-target="3" data-suffix="-4 wks">3-4 wks</span></div><div class="stat-desc">From kick-off to live website</div></div>
-          <div class="stat-card"><div class="stat-number"><span data-target="6" data-suffix="">6</span></div><div class="stat-desc">UK regions our clients rank in</div></div>
-          <div class="stat-card"><div class="stat-number"><span data-target="100" data-suffix="%">100%</span></div><div class="stat-desc">Built from scratch for you</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BEFORE & AFTER FLOWCHARTS -->
-  <section class="bp-section alt">
-    <div class="bp-inner">
-      <p class="bp-eyebrow">Why Automation?</p>
-      <h2>See the difference <em>automation makes</em></h2>
-      <p class="bp-lead">Most businesses are still doing everything by hand. Researching prospects, writing emails one at a time, chasing follow-ups, updating spreadsheets. It's slow, it's tiring, and it doesn't scale. Teams we automate get hours back every week and get through more work without hiring. Here's what it looks like when you stop doing all that manually.</p>
-
-      <div class="bp-flow-pair reveal" style="margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:28px;">
-
-        <!-- WITHOUT AUTOMATION -->
-        <div style="border-radius:var(--radius-lg); border:2px solid rgba(239,68,68,0.35); padding:28px; background:rgba(239,68,68,0.05);">
-          <div style="font-size:0.9rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:#ef4444; margin-bottom:20px;"><i class="fa-solid fa-xmark" style="margin-right:6px;"></i>Without Automation</div>
-
-          <div style="background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.12); border-radius:10px; padding:16px; margin-bottom:12px;">
-            <div style="font-size:0.9rem; font-weight:700; color:#111; margin-bottom:6px;">Finding Prospects</div>
-            <p style="font-size:0.88rem; color:#444; line-height:1.65; margin:0;">Your team manually searches for leads, Googles each one individually, and copies their details into a spreadsheet. That's 2 hours gone before anyone's even sent a message.</p>
-            <div style="margin-top:10px; font-size:0.85rem; font-weight:800; color:#ef4444;">&#9202; 2 hrs wasted / day</div>
-          </div>
-
-          <div style="background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.12); border-radius:10px; padding:16px; margin-bottom:12px;">
-            <div style="font-size:0.9rem; font-weight:700; color:#111; margin-bottom:6px;">Outreach</div>
-            <p style="font-size:0.88rem; color:#444; line-height:1.65; margin:0;">Every email gets written from scratch. LinkedIn messages go out one by one. There's no personalisation because there's no time for it. Generic messages get generic results.</p>
-            <div style="margin-top:10px; font-size:0.85rem; font-weight:800; color:#ef4444;">&#9202; 3 hrs wasted / day</div>
-          </div>
-
-          <div style="background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.12); border-radius:10px; padding:16px; margin-bottom:16px;">
-            <div style="font-size:0.9rem; font-weight:700; color:#111; margin-bottom:6px;">Follow-ups</div>
-            <p style="font-size:0.88rem; color:#444; line-height:1.65; margin:0;">People forget to follow up. Leads go cold after 48 hours. The CRM doesn't get updated. Nobody knows what's been sent to who. Deals slip through the cracks.</p>
-            <div style="margin-top:10px; font-size:0.85rem; font-weight:800; color:#ef4444;">&#9888; Revenue lost</div>
-          </div>
-
-          <div style="padding-top:14px; border-top:2px solid rgba(239,68,68,0.25); font-size:1rem; font-weight:800; color:#ef4444; text-align:center;">
-            5+ hours wasted per person, per day
-          </div>
-        </div>
-
-        <!-- WITH AUTOMATION -->
-        <div style="border-radius:var(--radius-lg); border:2px solid rgba(34,197,94,0.35); padding:28px; background:rgba(34,197,94,0.04);">
-          <div style="font-size:0.9rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:#22c55e; margin-bottom:20px;"><i class="fa-solid fa-check" style="margin-right:6px;"></i>With Automation</div>
-
-          <div style="background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.12); border-radius:10px; padding:16px; margin-bottom:12px;">
-            <div style="font-size:0.9rem; font-weight:700; color:#111; margin-bottom:6px;">Finding Prospects</div>
-            <p style="font-size:0.88rem; color:#444; line-height:1.65; margin:0;">AI finds your ideal prospects automatically. It pulls data from LinkedIn, the web, and social profiles, then builds a full prospect profile for each one. No manual searching.</p>
-            <div style="margin-top:10px; font-size:0.85rem; font-weight:800; color:#22c55e;">&#9889; 2 hrs saved / day</div>
-          </div>
-
-          <div style="background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.12); border-radius:10px; padding:16px; margin-bottom:12px;">
-            <div style="font-size:0.9rem; font-weight:700; color:#111; margin-bottom:6px;">Outreach</div>
-            <p style="font-size:0.88rem; color:#444; line-height:1.65; margin:0;">AI writes personalised emails using real data about each prospect. LinkedIn messages go out automatically. Your CRM updates itself. Every message is tailored, and you didn't write a single one.</p>
-            <div style="margin-top:10px; font-size:0.85rem; font-weight:800; color:#22c55e;">&#9889; 3 hrs saved / day</div>
-          </div>
-
-          <div style="background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.12); border-radius:10px; padding:16px; margin-bottom:16px;">
-            <div style="font-size:0.9rem; font-weight:700; color:#111; margin-bottom:6px;">Follow-ups</div>
-            <p style="font-size:0.88rem; color:#444; line-height:1.65; margin:0;">Follow-ups go out at exactly the right time, across email and LinkedIn, 24/7. When a lead gets hot, the system flags it and your team steps in to close. No leads go cold. No deals get forgotten.</p>
-            <div style="margin-top:10px; font-size:0.85rem; font-weight:800; color:#22c55e;">&#9889; Deals closed on autopilot</div>
-          </div>
-
-          <div style="padding-top:14px; border-top:2px solid rgba(34,197,94,0.25); font-size:1rem; font-weight:800; color:#22c55e; text-align:center;">
-            5+ hours saved per person, per day
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Benefits Grid -->
-      <div class="bp-stats-grid reveal" style="margin-top:48px;">
-        <div class="bp-stat">
-          <div class="bp-stat-num">4×</div>
-          <div class="bp-stat-label">more output, no extra hires</div>
-        </div>
-        <div class="bp-stat">
-          <div class="bp-stat-num">5+ hrs</div>
-          <div class="bp-stat-label">saved per person per day on manual work</div>
-        </div>
-        <div class="bp-stat">
-          <div class="bp-stat-num green">24/7</div>
-          <div class="bp-stat-label">LinkedIn, email and follow-ups running while you sleep</div>
-        </div>
-        <div class="bp-stat">
-          <div class="bp-stat-num">100%</div>
-          <div class="bp-stat-label">personalised, every message tailored with real data</div>
-        </div>
-      </div>
-
-      <div style="text-align:center;margin-top:40px;" class="reveal">
-        <a href="resources/blueprints" class="btn btn-primary"><i class="fa-solid fa-map"></i> Explore Full Blueprints</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- DATA & INSIGHTS -->
-  <section class="page-section">
-    <div class="page-section-inner">
-      <div class="two-col reveal">
-        <div class="content-block">
-          <span class="section-label">Data &amp; Insights</span>
-          <h2 class="section-title">See the numbers your competitors miss</h2>
-          <p class="section-sub">Most businesses are sitting on data they never look at. Sales activity in the CRM, traffic in Google Analytics, bookings in the calendar, stock in the warehouse. It's all there, but it lives in ten places and nobody has time to pull it together. So decisions get made on gut feel.</p>
-          <p class="section-sub" style="margin-top:14px;">We build the reporting layer that sits on top. Custom dashboards that pull your numbers into one view, funnel and conversion reporting that shows where enquiries actually drop off, SEO performance tracking across every page and keyword, and anomaly alerts when something moves. You stop guessing and start acting on what the data is telling you.</p>
-        </div>
-        <ul class="check-list">
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Custom dashboards</strong> that pull CRM, sales, traffic and ops data into one view.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Funnel &amp; conversion reporting</strong> that shows where leads are actually dropping off.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>SEO performance tracking</strong> across every page, keyword and region you rank in.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Bottleneck detection</strong> so you spot the step in your process that's costing the most time.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Automated weekly reports</strong> delivered by email so nobody has to log in and dig.</span></li>
-          <li><i class="fa-solid fa-circle-check"></i><span><strong>Anomaly alerts</strong> when a number moves in a way you should know about.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- VALUES -->
-  <section class="page-section alt">
-    <div class="page-section-inner">
-      <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto 52px;">
-        <span class="section-label">Our Values</span>
-        <h2 class="section-title">How we work and what we care about</h2>
-      </div>
-      <div class="values-grid reveal" style="transition-delay:0.1s;">
-        <div class="value-card">
-          <i class="fa-solid fa-bullseye"></i>
-          <h3>Results First</h3>
-          <p>We measure everything by what it actually does for your business. If it's not going to move the needle, we won't build it.</p>
-        </div>
-        <div class="value-card">
-          <i class="fa-solid fa-lock-open"></i>
-          <h3>Full Transparency</h3>
-          <p>No black boxes. You'll always know what we've built, how it works, and what it's doing. It's your system, you should be able to see everything.</p>
-        </div>
-        <div class="value-card">
-          <i class="fa-solid fa-handshake"></i>
-          <h3>Long-Term Partnership</h3>
-          <p>We don't build something and vanish. We stick around, keep things running, and improve your systems as your business grows.</p>
-        </div>
-        <div class="value-card">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <h3>Precision Over Speed</h3>
-          <p>We take the time to properly understand your business before we touch anything. The right solution, built well, beats a rushed one every time.</p>
-        </div>
-        <div class="value-card">
-          <i class="fa-solid fa-brain"></i>
-          <h3>Always Learning</h3>
-          <p>AI moves fast. So do we. We're constantly updating how we work so your systems always use the best tools and methods available.</p>
-        </div>
-        <div class="value-card">
-          <i class="fa-solid fa-people-group"></i>
-          <h3>Human First</h3>
-          <p>Automation should free people up to do better work, not replace them. We build systems that make teams stronger, not smaller.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- LOCATION -->
-  <section class="page-section">
+  <section class="page-section alt">
     <div class="page-section-inner">
       <div class="two-col reveal">
         <div class="content-block">
@@ -544,8 +286,8 @@
       <div class="cta-box reveal">
         <div class="cta-glow"></div>
         <h2>Let's figure out what automation could do for you.</h2>
-        <p>Book a call and we'll walk through the biggest opportunities in your business.</p>
-        <a href="book" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book a call</a>
+        <p>Book a free call and we'll walk through the biggest opportunities in your business.</p>
+        <a href="book" class="btn btn-primary btn-lg"><i class="fa-solid fa-calendar-check"></i> Book a free call</a>
       </div>
     </div>
   </div>
@@ -565,7 +307,6 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="/ai-audit">AI Audit</a></li>
           <li><a href="/services/web-design">Web Design</a></li>
           <li><a href="/services/ai-automation">AI &amp; Automation</a></li>
           <li><a href="/services/crm-integration">CRM &amp; Integration</a></li>
@@ -590,150 +331,9 @@
   </div>
 </footer>
 <script src="main.js?v=20260331r"></script>
-  <script>
-  (function () {
-    var THEMES = {
-      purple:  {
-        r: 124, g: 92,  b: 252,
-        benefits: [
-          { icon: 'fa-solid fa-robot',            text: 'AI-Powered Workflows'    },
-          { icon: 'fa-solid fa-wand-magic-sparkles', text: 'Intelligent Automation' },
-          { icon: 'fa-solid fa-brain',             text: 'Smart Decisions'         },
-          { icon: 'fa-solid fa-bolt',              text: 'Built For You'           },
-        ]
-      },
-      blue: {
-        r: 37,  g: 99,  b: 235,
-        benefits: [
-          { icon: 'fa-solid fa-chart-bar',         text: 'Real-Time Analytics'     },
-          { icon: 'fa-solid fa-magnifying-glass',  text: 'Data-Driven Insights'    },
-          { icon: 'fa-solid fa-table',             text: 'Live Dashboards'          },
-          { icon: 'fa-solid fa-microchip',         text: 'Predictive Intelligence' },
-        ]
-      },
-      emerald: {
-        r: 5,   g: 150, b: 105,
-        benefits: [
-          { icon: 'fa-solid fa-chart-line',        text: 'Revenue Growth'          },
-          { icon: 'fa-solid fa-piggy-bank',        text: 'Cost Reduction'          },
-          { icon: 'fa-solid fa-circle-check',      text: 'ROI in 30 Days'          },
-          { icon: 'fa-solid fa-arrow-trend-up',    text: 'More Pipeline'           },
-        ]
-      },
-      amber: {
-        r: 217, g: 119, b: 6,
-        benefits: [
-          { icon: 'fa-solid fa-rocket',            text: '10× Faster Execution'    },
-          { icon: 'fa-solid fa-ban',               text: 'Zero Manual Delays'      },
-          { icon: 'fa-solid fa-reply',             text: 'Instant Responses'       },
-          { icon: 'fa-solid fa-gauge-high',        text: 'Maximum Efficiency'      },
-        ]
-      },
-      cyan: {
-        r: 6,   g: 182, b: 212,
-        benefits: [
-          { icon: 'fa-solid fa-plug',              text: 'Seamless Integrations'   },
-          { icon: 'fa-solid fa-network-wired',     text: 'Connected Ecosystem'     },
-          { icon: 'fa-solid fa-database',          text: 'Unified Data Flow'       },
-          { icon: 'fa-solid fa-gears',             text: 'Zero Friction'           },
-        ]
-      },
-      rose: {
-        r: 225, g: 29,  b: 72,
-        benefits: [
-          { icon: 'fa-solid fa-moon',              text: '24/7 Operations'         },
-          { icon: 'fa-solid fa-bell',              text: 'Never Miss a Lead'       },
-          { icon: 'fa-solid fa-heart-pulse',       text: 'Always On'               },
-          { icon: 'fa-solid fa-shield-halved',     text: 'Zero Downtime'           },
-        ]
-      }
-    };
-
-    var heroBg   = document.getElementById('hero-bg');
-    var chipsEl  = document.getElementById('hero-chips');
-    var hero     = document.getElementById('about-hero');
-    var swatches = document.querySelectorAll('.hero-swatch-wrap');
-    var active   = 'purple';
-
-    function setGlow(theme) {
-      var t = THEMES[theme];
-      heroBg.style.opacity = '0';
-      setTimeout(function () {
-        heroBg.style.background =
-          'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(' + t.r + ',' + t.g + ',' + t.b + ',0.22) 0%, transparent 72%)';
-        heroBg.style.opacity = '1';
-      }, 340);
-    }
-
-    function spawnChips(theme) {
-      // clear old
-      chipsEl.innerHTML = '';
-      var benefits = THEMES[theme].benefits;
-      var t = THEMES[theme];
-      var color = 'rgba(' + t.r + ',' + t.g + ',' + t.b + ',0.85)';
-
-      benefits.forEach(function (b, i) {
-        var el = document.createElement('div');
-        el.className = 'hero-benefit';
-        // random horizontal position 15%–75% to stay within hero
-        var leftPct = 12 + Math.random() * 62;
-        el.style.left = leftPct + '%';
-        el.style.setProperty('--rise-delay', (i * 0.55) + 's');
-        el.style.setProperty('--rise-dur', '3.4s');
-        el.style.borderColor = 'rgba(' + t.r + ',' + t.g + ',' + t.b + ',0.25)';
-        el.innerHTML =
-          '<i class="' + b.icon + '" style="color:rgba(' + t.r + ',' + t.g + ',' + t.b + ',0.9);"></i>' +
-          '<span>' + b.text + '</span>';
-        chipsEl.appendChild(el);
-      });
-    }
-
-    function activate(theme) {
-      if (theme === active) return;
-      active = theme;
-      swatches.forEach(function (w) {
-        var isThis = w.dataset.theme === theme;
-        w.classList.toggle('active', isThis);
-        w.querySelector('.hero-swatch').classList.toggle('active', isThis);
-        w.querySelector('.hero-swatch').setAttribute('aria-pressed', isThis ? 'true' : 'false');
-      });
-      setGlow(theme);
-      spawnChips(theme);
-    }
-
-    swatches.forEach(function (w) {
-      w.querySelector('.hero-swatch').addEventListener('click', function () {
-        activate(w.dataset.theme);
-      });
-    });
-
-    // initial glow (purple already rendered via CSS, just spawn chips after a moment)
-    setTimeout(function () { spawnChips('purple'); }, 600);
-  })();
-  </script>
-
   <script>window.AE_TRACK={apiKey:'991d5076a16d0a4d1c00379d040173fb2ff38f31e49c178e',endpoint:'https://useohuvyxzshmskjngpo.supabase.co/functions/v1/track'}</script>
   <script src="ae-track.js" async></script>
   <script src="ae-consent.js" async></script>
   <script src="/includes.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
