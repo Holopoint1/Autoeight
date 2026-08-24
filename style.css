@@ -1652,45 +1652,32 @@ footer {
 
 .footer-col ul li a:hover { color: var(--white); }
 
-/* Footer locations dropdown — links stay in the HTML, hover/focus reveals them */
-.footer-locations h4 {
+/* Footer locations dropdown — collapsed by default, click to open; links stay in the HTML */
+details.footer-locations summary {
+  list-style: none;
   cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--off-white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   display: flex;
   align-items: center;
   gap: 7px;
-  margin-bottom: 0;
+  user-select: none;
 }
 
-.footer-locations h4 .loc-chevron {
+details.footer-locations summary::-webkit-details-marker { display: none; }
+
+details.footer-locations summary .loc-chevron {
   font-size: 0.6rem;
   color: var(--muted);
   transition: transform 0.25s ease;
 }
 
-.footer-locations .footer-loc-list {
-  max-height: 0;
-  overflow: hidden;
-  margin-top: 0;
-  transition: max-height 0.35s ease, margin-top 0.35s ease;
-}
+details.footer-locations[open] summary .loc-chevron { transform: rotate(180deg); }
 
-.footer-locations:hover .footer-loc-list,
-.footer-locations:focus-within .footer-loc-list {
-  max-height: 320px;
-  margin-top: 18px;
-}
-
-.footer-locations:hover h4 .loc-chevron,
-.footer-locations:focus-within h4 .loc-chevron {
-  transform: rotate(180deg);
-}
-
-/* Touch devices have no hover — keep the list open so the links are always reachable */
-@media (hover: none) {
-  .footer-locations h4 { margin-bottom: 18px; }
-  .footer-locations h4 .loc-chevron { display: none; }
-  .footer-locations .footer-loc-list { max-height: none; }
-}
+details.footer-locations .footer-loc-list { margin-top: 18px; }
 
 .footer-address {
   font-style: normal;

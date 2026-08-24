@@ -111,6 +111,18 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://autoeight.ai/results/northbrick</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://autoeight.ai/results/testimonials</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
   <!-- Resource Hubs -->
   <url>
@@ -271,10 +283,24 @@
   </url>
 
   <!-- Location landing pages (West Yorkshire cluster + Sheffield) -->
+  <url><loc>https://autoeight.ai/locations/</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://autoeight.ai/locations/halifax</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://autoeight.ai/locations/leeds</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://autoeight.ai/locations/bradford</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://autoeight.ai/locations/huddersfield</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://autoeight.ai/locations/sheffield</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/brighouse</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/elland</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/sowerby-bridge</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/hebden-bridge</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/todmorden</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/wakefield</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/dewsbury</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/keighley</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/barnsley</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/doncaster</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/rotherham</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/york</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://autoeight.ai/locations/manchester</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
 </urlset>
