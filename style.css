@@ -6984,3 +6984,56 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   .ae-exit-panel { padding: 28px 22px 22px; }
   .ae-exit-panel h3 { font-size: 1.2rem; }
 }
+
+/* ── Seamless logo marquee (replaces the flying pills) ────────── */
+.logo-row-track {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  position: relative;
+  z-index: 2;
+  animation: row-marquee var(--dur, 28s) linear infinite;
+  will-change: transform;
+}
+.logo-row.reverse .logo-row-track { animation-direction: reverse; }
+@keyframes row-marquee { to { transform: translateX(calc(-50% - 6px)); } }
+
+.logo-row .logo-row-track .logo-pill {
+  position: static;
+  animation: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px 5px 10px;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--white);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+@media (prefers-reduced-motion: reduce) { .logo-row-track { animation: none; } }
+
+/* ── Six-step pipeline grid (AI & Automation page) ────────────── */
+.pipeline-steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+@media (max-width: 900px) {
+  .pipeline-steps { grid-template-columns: 1fr 1fr; gap: 14px; }
+}
+@media (max-width: 560px) {
+  .pipeline-steps { grid-template-columns: 1fr; gap: 12px; }
+  .pipeline-steps .tier-card { display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; padding: 16px 18px; }
+  .pipeline-steps .tier-icon { width: 44px; height: 44px; font-size: 1rem; margin: 0; grid-row: 1 / span 3; }
+  .pipeline-steps .tier-badge { justify-self: start; margin: 0 0 6px; }
+  .pipeline-steps .tier-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+  .pipeline-steps .tier-card p { margin-bottom: 0; font-size: 0.84rem; line-height: 1.55; }
+}
+
+/* ── Stack fixed-column inline grids on phones ────────────────── */
+@media (max-width: 560px) {
+  .stack-sm { grid-template-columns: 1fr !important; }
+  .stack-sm-2 { grid-template-columns: 1fr 1fr !important; }
+}
