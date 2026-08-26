@@ -90,10 +90,10 @@
       }
     }
     @media (max-width: 480px) {
-      /* Stack 4-column grid fully on very small screens */
+      /* 4-column grid becomes 2x2 on phones */
       [style*="grid-template-columns:repeat(4, 1fr)"],
       [style*="grid-template-columns:repeat(4,1fr)"] {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
       }
     }
   </style>
