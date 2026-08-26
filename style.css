@@ -6343,6 +6343,15 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   .tool-card { padding: 18px 14px; }
 }
 
+@media (max-width: 480px) {
+  .two-col { gap: 24px; }
+  .content-block .section-sub { margin-bottom: 20px; }
+  .feature-card { padding: 16px 14px; gap: 12px; }
+  .feature-icon { width: 36px; height: 36px; font-size: 0.9rem; border-radius: 8px; }
+  .feature-card h3 { font-size: 0.9rem; }
+  .feature-card p { font-size: 0.82rem; line-height: 1.5; }
+}
+
 @media (max-width: 420px) {
   .page-section { padding: 40px 4%; }
   .case-card { padding: 20px 16px; }
