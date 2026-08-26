@@ -5652,26 +5652,7 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
 }
 .logo-row:last-child::after { display: none; }
 
-.logo-row .logo-pill {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 14px 5px 10px;
-  background: rgba(255,255,255,0.95);
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 999px;
-  backdrop-filter: blur(12px);
-  white-space: nowrap;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--white);
-  animation: logo-move var(--dur) var(--delay) linear infinite;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-  z-index: 2;
-}
+/* (old flying-pill positioning removed; pills are styled inside .logo-row-track now) */
 .logo-row .logo-pill i { font-size: 0.88rem; width: 16px; text-align: center; flex-shrink: 0; }
 .logo-row .logo-pill .logo-letter {
   width: 16px; height: 16px;
@@ -5681,10 +5662,6 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   flex-shrink: 0;
 }
 
-@keyframes logo-move {
-  from { transform: translateX(-280px) translateY(-50%); }
-  to   { transform: translateX(calc(100vw + 280px)) translateY(-50%); }
-}
 
 /* Centre overlay card */
 .logo-timeline-overlay {
