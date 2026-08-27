@@ -3730,18 +3730,19 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   width: 0%;
   background: linear-gradient(90deg, rgba(124,92,252,0.7), rgba(180,150,255,1), rgba(124,92,252,0.8));
   border-radius: 999px;
-  animation: connector-progress 6s ease-in-out infinite;
+  animation: connector-progress 6s linear infinite;
 }
 
+/* Linear timing so bar edge crosses each step at a predictable timestamp:
+   step 1 at 5%, step 2 at 45%, step 3 at 85%. Reset from 90-100%. */
 @keyframes connector-progress {
-  0%   { width: 0%;   opacity: 0; }
-  5%   { opacity: 1; }
-  30%  { width: 50%; }
-  42%  { width: 50%; }
-  70%  { width: 100%; }
-  90%  { width: 100%; opacity: 1; }
-  96%  { opacity: 0; }
-  100% { width: 0%;   opacity: 0; }
+  0%,  5%  { width: 0%;   opacity: 0; }
+  10%      { opacity: 1; }
+  45%      { width: 50%; opacity: 1; }
+  85%      { width: 100%; opacity: 1; }
+  90%      { width: 100%; opacity: 1; }
+  95%      { opacity: 0; }
+  100%     { width: 0%;   opacity: 0; }
 }
 
 .steps-connector-dot {
@@ -3776,22 +3777,22 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
    new cycle starts with all circles definitely dark. Also matches the bar's
    fade-out window (96-100%) so the dots visually disappear WITH the bar. */
 @keyframes dot-light-start {
-  /* dot-1 at left 0% — bar's leading edge is there from the start; peak by 2% */
-  0%        { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  2%,   92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
-  95%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  /* Bar hits dot 1 at 5% of the new linear timeline */
+  0%,   3%  { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  5%,   88% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  92%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-mid {
-  /* dot-2 at left 50% — bar reaches 50% width at 30% timestamp; peak 5% earlier (25%) so it's lit as the bar visually arrives */
-  0%,   23% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  25%,  92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
-  95%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  /* Bar hits dot 2 at 45% of the new linear timeline */
+  0%,   43% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  45%,  88% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  92%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-end {
-  /* dot-3 at left 100% — bar reaches 100% width at 70% timestamp; peak 5% earlier (65%) so it's lit as the bar arrives */
-  0%,   63% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  65%,  92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
-  95%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  /* Bar hits dot 3 at 85% of the new linear timeline */
+  0%,   83% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  85%,  88% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  92%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3857,23 +3858,23 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
 .steps-grid .step-card:nth-child(2) .step-number::after { animation: step-ring-2 6s linear infinite; }
 .steps-grid .step-card:nth-child(3) .step-number::after { animation: step-ring-3 6s linear infinite; }
 
+/* Same 6s LINEAR master timeline as the connector bar.
+   Bar hits step 1 at 5%, step 2 at 45%, step 3 at 85%.
+   Rings light EXACTLY at those timestamps — no ease-in-out to skew timing. */
 @keyframes step-ring-1 {
-  /* Step 1 lit from the very start of the cycle */
-  0%,   92% { opacity: 1; transform: scale(1); }
-  95%, 100% { opacity: 0; transform: scale(0.9); }
+  0%,   3%  { opacity: 0; transform: scale(0.9); }
+  5%,   88% { opacity: 1; transform: scale(1); }
+  92%, 100% { opacity: 0; transform: scale(0.9); }
 }
 @keyframes step-ring-2 {
-  /* Step 2 lights AS the bar arrives at 50% width — snap on at 22% timestamp
-     (bar's leading edge visually reaches step 2 by then thanks to ease-in-out) */
-  0%,   20% { opacity: 0; transform: scale(0.9); }
-  22%,  92% { opacity: 1; transform: scale(1); }
-  95%, 100% { opacity: 0; transform: scale(0.9); }
+  0%,   43% { opacity: 0; transform: scale(0.9); }
+  45%,  88% { opacity: 1; transform: scale(1); }
+  92%, 100% { opacity: 0; transform: scale(0.9); }
 }
 @keyframes step-ring-3 {
-  /* Step 3 lights AS the bar arrives at 100% width — snap on at 60% timestamp */
-  0%,   58% { opacity: 0; transform: scale(0.9); }
-  60%,  92% { opacity: 1; transform: scale(1); }
-  95%, 100% { opacity: 0; transform: scale(0.9); }
+  0%,   83% { opacity: 0; transform: scale(0.9); }
+  85%,  88% { opacity: 1; transform: scale(1); }
+  92%, 100% { opacity: 0; transform: scale(0.9); }
 }
 
 @media (prefers-reduced-motion: reduce) {
