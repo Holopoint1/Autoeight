@@ -3763,17 +3763,31 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
 .steps-connector-dot.dot-2 { left: 50%;  animation: dot-light-mid   6s ease-in-out infinite; }
 .steps-connector-dot.dot-3 { left: 100%; animation: dot-light-end   6s ease-in-out infinite; }
 
+/* Smooth cross-fade keyframes synced with the connector-progress bar (6s cycle).
+   Bar timing: 0-5% invisible, 5% fades in with width 0%, 30% at 50% width, 70% at 100% width,
+   90% still full, 96% starts fading, 100% invisible width 0%.
+   Dots must start dim, ramp bright as bar reaches them, then dim BEFORE 100% so restart is clean. */
+
 @keyframes dot-light-start {
-  0%,  100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3); }
-  5%,   96% { background: rgba(180,150,255,1);   border-color: rgba(180,150,255,1);   box-shadow: 0 0 14px rgba(180,150,255,0.9), 0 0 4px rgba(255,255,255,0.6); }
+  /* dot-1: bar first appears around 5% — dot starts brightening then, peaks at ~10% */
+  0%,   3%  { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  8%        { background: rgba(160,130,250,0.85); border-color: rgba(170,140,250,0.9); box-shadow: 0 0 12px rgba(170,140,250,0.75); transform: translate(-50%, -50%) scale(1.12); }
+  14%,  92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  99%,100%  { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-mid {
-  0%,  29%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3); }
-  30%, 96%       { background: rgba(180,150,255,1);   border-color: rgba(180,150,255,1);   box-shadow: 0 0 14px rgba(180,150,255,0.9), 0 0 4px rgba(255,255,255,0.6); }
+  /* dot-2: bar hits 50% at 30% of cycle — dot starts brightening around 24%, peaks by 32% */
+  0%,   24% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  28%       { background: rgba(160,130,250,0.85); border-color: rgba(170,140,250,0.9); box-shadow: 0 0 12px rgba(170,140,250,0.75); transform: translate(-50%, -50%) scale(1.12); }
+  34%,  92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  99%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-end {
-  0%,  69%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3); }
-  70%, 96%       { background: rgba(180,150,255,1);   border-color: rgba(180,150,255,1);   box-shadow: 0 0 14px rgba(180,150,255,0.9), 0 0 4px rgba(255,255,255,0.6); }
+  /* dot-3: bar hits 100% at 70% of cycle — dot starts brightening around 64%, peaks by 72% */
+  0%,   64% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  68%       { background: rgba(160,130,250,0.85); border-color: rgba(170,140,250,0.9); box-shadow: 0 0 12px rgba(170,140,250,0.75); transform: translate(-50%, -50%) scale(1.12); }
+  74%,  92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  99%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
