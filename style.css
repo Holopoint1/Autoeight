@@ -3835,34 +3835,49 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   line-height: 1.65;
 }
 
-/* Step number ring — circular stroke draws around the number */
+/* Step number ring — highlights each numbered circle in sequence with the
+   connector bar, then ALL three rings fade out together at cycle end so the
+   next cycle starts with 1, 2 AND 3 dark. Synced to the 6s connector cycle. */
 .step-number::after {
   content: '';
   position: absolute;
-  inset: -1px;
+  inset: -3px;
   border-radius: 50%;
   border: 2.5px solid var(--purple-light);
   pointer-events: none;
   opacity: 0;
+  transform: scale(0.9);
+  box-shadow: 0 0 14px rgba(180,150,255,0.5), inset 0 0 6px rgba(180,150,255,0.2);
 }
 
-/* The ring uses a conic-gradient mask to reveal clockwise */
-@keyframes ring-reveal {
-  0%   { opacity: 1; mask: conic-gradient(#000 0deg, transparent 0deg); -webkit-mask: conic-gradient(#000 0deg, transparent 0deg); }
-  100% { opacity: 1; mask: conic-gradient(#000 360deg, transparent 360deg); -webkit-mask: conic-gradient(#000 360deg, transparent 360deg); }
+/* Each ring shares the same 6s cycle. It appears when the bar reaches its
+   number, holds lit through 90%, then all three fade out together 92-95%
+   and stay invisible 95-100% — clean reset before loop restart. */
+.steps-grid .step-card:nth-child(1) .step-number::after { animation: step-ring-1 6s linear infinite; }
+.steps-grid .step-card:nth-child(2) .step-number::after { animation: step-ring-2 6s linear infinite; }
+.steps-grid .step-card:nth-child(3) .step-number::after { animation: step-ring-3 6s linear infinite; }
+
+@keyframes step-ring-1 {
+  /* step 1 lights up right at cycle start (bar starts at position 0%) */
+  0%        { opacity: 0; transform: scale(0.9); }
+  3%,   92% { opacity: 1; transform: scale(1); }
+  95%, 100% { opacity: 0; transform: scale(0.9); }
+}
+@keyframes step-ring-2 {
+  /* step 2 lights up as bar reaches 50% width (at 30% of cycle) */
+  0%,   26% { opacity: 0; transform: scale(0.9); }
+  30%,  92% { opacity: 1; transform: scale(1); }
+  95%, 100% { opacity: 0; transform: scale(0.9); }
+}
+@keyframes step-ring-3 {
+  /* step 3 lights up as bar reaches 100% width (at 70% of cycle) */
+  0%,   66% { opacity: 0; transform: scale(0.9); }
+  70%,  92% { opacity: 1; transform: scale(1); }
+  95%, 100% { opacity: 0; transform: scale(0.9); }
 }
 
-.steps-grid .step-card:nth-child(2) .step-number::after {
-  animation: ring-reveal 1s ease-out 0.5s forwards;
-}
-.steps-grid .step-card:nth-child(3) .step-number::after {
-  animation: ring-reveal 1s ease-out 2s forwards;
-}
-.steps-grid .step-card:nth-child(4) .step-number::after {
-  animation: ring-reveal 1s ease-out 3.5s forwards;
-}
-.steps-grid .step-card:nth-child(5) .step-number::after {
-  animation: ring-reveal 1s ease-out 5s forwards;
+@media (prefers-reduced-motion: reduce) {
+  .step-number::after { animation: none; }
 }
 
 /* Highlight pill */
