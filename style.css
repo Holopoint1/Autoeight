@@ -3858,21 +3858,21 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
 .steps-grid .step-card:nth-child(3) .step-number::after { animation: step-ring-3 6s linear infinite; }
 
 @keyframes step-ring-1 {
-  /* step 1 lights up right at cycle start (bar starts at position 0%) */
-  0%        { opacity: 0; transform: scale(0.9); }
-  3%,   92% { opacity: 1; transform: scale(1); }
+  /* Step 1 lit from the very start of the cycle */
+  0%,   92% { opacity: 1; transform: scale(1); }
   95%, 100% { opacity: 0; transform: scale(0.9); }
 }
 @keyframes step-ring-2 {
-  /* step 2 lights up as bar reaches 50% width (at 30% of cycle) */
-  0%,   26% { opacity: 0; transform: scale(0.9); }
-  30%,  92% { opacity: 1; transform: scale(1); }
+  /* Step 2 lights AS the bar arrives at 50% width — snap on at 22% timestamp
+     (bar's leading edge visually reaches step 2 by then thanks to ease-in-out) */
+  0%,   20% { opacity: 0; transform: scale(0.9); }
+  22%,  92% { opacity: 1; transform: scale(1); }
   95%, 100% { opacity: 0; transform: scale(0.9); }
 }
 @keyframes step-ring-3 {
-  /* step 3 lights up as bar reaches 100% width (at 70% of cycle) */
-  0%,   66% { opacity: 0; transform: scale(0.9); }
-  70%,  92% { opacity: 1; transform: scale(1); }
+  /* Step 3 lights AS the bar arrives at 100% width — snap on at 60% timestamp */
+  0%,   58% { opacity: 0; transform: scale(0.9); }
+  60%,  92% { opacity: 1; transform: scale(1); }
   95%, 100% { opacity: 0; transform: scale(0.9); }
 }
 
