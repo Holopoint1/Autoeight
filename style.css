@@ -3759,9 +3759,13 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
      Dots light up at those moments and fade out with the bar (96-100%). */
 }
 
-.steps-connector-dot.dot-1 { left: 0%;   animation: dot-light-start 6s ease-in-out infinite; }
-.steps-connector-dot.dot-2 { left: 50%;  animation: dot-light-mid   6s ease-in-out infinite; }
-.steps-connector-dot.dot-3 { left: 100%; animation: dot-light-end   6s ease-in-out infinite; }
+/* Use `linear` timing so keyframe positions map 1:1 to time — no ease-in-out
+   slowdown at the peak that would push the "lit" moment past when the bar arrives.
+   Peaks are shifted 5% earlier than the bar's raw keyframe times so the dot is
+   already glowing AS the bar reaches it, not after. */
+.steps-connector-dot.dot-1 { left: 0%;   animation: dot-light-start 6s linear infinite; }
+.steps-connector-dot.dot-2 { left: 50%;  animation: dot-light-mid   6s linear infinite; }
+.steps-connector-dot.dot-3 { left: 100%; animation: dot-light-end   6s linear infinite; }
 
 /* Smooth cross-fade keyframes synced with the connector-progress bar (6s cycle).
    Bar timing: 0-5% invisible, 5% fades in with width 0%, 30% at 50% width, 70% at 100% width,
@@ -3772,24 +3776,21 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
    new cycle starts with all circles definitely dark. Also matches the bar's
    fade-out window (96-100%) so the dots visually disappear WITH the bar. */
 @keyframes dot-light-start {
-  /* dot-1 at left 0% — peak at 6% (right as bar first appears at 5%) */
-  0%,   2%  { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  4%        { background: rgba(160,130,250,0.85); border-color: rgba(170,140,250,0.9); box-shadow: 0 0 12px rgba(170,140,250,0.75); transform: translate(-50%, -50%) scale(1.12); }
-  6%,   92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  /* dot-1 at left 0% — bar's leading edge is there from the start; peak by 2% */
+  0%        { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  2%,   92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
   95%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-mid {
-  /* dot-2 at left 50% — peak at 30% (bar hits 50% width at 30%) */
-  0%,   26% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  28%       { background: rgba(160,130,250,0.85); border-color: rgba(170,140,250,0.9); box-shadow: 0 0 12px rgba(170,140,250,0.75); transform: translate(-50%, -50%) scale(1.12); }
-  30%,  92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  /* dot-2 at left 50% — bar reaches 50% width at 30% timestamp; peak 5% earlier (25%) so it's lit as the bar visually arrives */
+  0%,   23% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  25%,  92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
   95%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-end {
-  /* dot-3 at left 100% — peak at 70% (bar hits 100% width at 70%) */
-  0%,   66% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  68%       { background: rgba(160,130,250,0.85); border-color: rgba(170,140,250,0.9); box-shadow: 0 0 12px rgba(170,140,250,0.75); transform: translate(-50%, -50%) scale(1.12); }
-  70%,  92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  /* dot-3 at left 100% — bar reaches 100% width at 70% timestamp; peak 5% earlier (65%) so it's lit as the bar arrives */
+  0%,   63% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  65%,  92% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
   95%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 
