@@ -3753,24 +3753,15 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   animation: connector-progress 6s linear infinite;
 }
 
-/* Linear timeline mapped to the user's mental model:
-   - 0-3%: everything dark
-   - 3%: step 1 lights (BEFORE bar moves)
-   - 5%: bar appears at step 1 (width 0)
-   - 5-40%: bar tip moves LINEARLY from step 1 to step 2
-   - 40%: bar tip at step 2 (width 50%) — step 2 lights
-   - 40-75%: bar tip moves LINEARLY from step 2 to step 3
-   - 75%: bar tip at step 3 (width 100%) — step 3 lights
-   - 75-88%: hold everything lit
-   - 88-92%: all rings + bar fade out together
-   - 92-100%: dark hold, clean reset */
+/* Fast sweep then long hold — bar completes its journey in the first ~25% of the
+   cycle, then everything sits lit for the remaining ~65% before fading and looping. */
 @keyframes connector-progress {
-  0%,  5%   { width: 0%;   opacity: 0; }
-  6%        { width: 0%;   opacity: 1; }
-  40%       { width: 50%;  opacity: 1; }
-  75%       { width: 100%; opacity: 1; }
-  88%       { width: 100%; opacity: 1; }
-  92%, 100% { width: 100%; opacity: 0; }
+  0%,  2%   { width: 0%;   opacity: 0; }
+  3%        { width: 0%;   opacity: 1; }
+  15%       { width: 50%;  opacity: 1; }
+  27%       { width: 100%; opacity: 1; }
+  85%       { width: 100%; opacity: 1; }
+  90%, 100% { width: 100%; opacity: 0; }
 }
 
 .steps-connector-dot {
@@ -3805,22 +3796,22 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
    new cycle starts with all circles definitely dark. Also matches the bar's
    fade-out window (96-100%) so the dots visually disappear WITH the bar. */
 @keyframes dot-light-start {
-  /* dot 1 lights at 3% (matches step-ring-1) */
-  0%,   2%  { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  3%,   88% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
-  92%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  /* dot 1 lights at 2% (matches ring-1, before bar moves) */
+  0%,   1%  { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  2%,   85% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  90%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-mid {
-  /* dot 2 lights at 40% (bar tip reaches step 2 — matches step-ring-2) */
-  0%,   38% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  40%,  88% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
-  92%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  /* dot 2 lights at 14% (matches ring-2 — bar tip arrives at step 2 quickly) */
+  0%,   13% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  14%,  85% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  90%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-end {
-  /* dot 3 lights at 75% (bar tip reaches step 3 — matches step-ring-3) */
-  0%,   73% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  75%,  88% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
-  92%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  /* dot 3 lights at 26% (matches ring-3 — bar tip arrives at step 3 quickly) */
+  0%,   25% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
+  26%,  85% { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  90%, 100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3886,22 +3877,21 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
 .steps-grid .step-card:nth-child(2) .step-number::after { animation: step-ring-2 6s linear infinite; }
 .steps-grid .step-card:nth-child(3) .step-number::after { animation: step-ring-3 6s linear infinite; }
 
-/* Rings light AT the exact timestamps the bar's leading edge arrives at each step.
-   Step 1 lights at 3% — BEFORE the bar starts moving. */
+/* Rings light AS the bar arrives — bar sweep is fast, so rings light in quick sequence. */
 @keyframes step-ring-1 {
-  0%,   2%  { opacity: 0; transform: scale(0.9); }
-  3%,   88% { opacity: 1; transform: scale(1); }
-  92%, 100% { opacity: 0; transform: scale(0.9); }
+  0%,   1%  { opacity: 0; transform: scale(0.9); }
+  2%,   85% { opacity: 1; transform: scale(1); }
+  90%, 100% { opacity: 0; transform: scale(0.9); }
 }
 @keyframes step-ring-2 {
-  0%,   38% { opacity: 0; transform: scale(0.9); }
-  40%,  88% { opacity: 1; transform: scale(1); }
-  92%, 100% { opacity: 0; transform: scale(0.9); }
+  0%,   13% { opacity: 0; transform: scale(0.9); }
+  14%,  85% { opacity: 1; transform: scale(1); }
+  90%, 100% { opacity: 0; transform: scale(0.9); }
 }
 @keyframes step-ring-3 {
-  0%,   73% { opacity: 0; transform: scale(0.9); }
-  75%,  88% { opacity: 1; transform: scale(1); }
-  92%, 100% { opacity: 0; transform: scale(0.9); }
+  0%,   25% { opacity: 0; transform: scale(0.9); }
+  26%,  85% { opacity: 1; transform: scale(1); }
+  90%, 100% { opacity: 0; transform: scale(0.9); }
 }
 
 @media (prefers-reduced-motion: reduce) {
