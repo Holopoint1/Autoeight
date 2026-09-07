@@ -3864,57 +3864,34 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   line-height: 1.65;
 }
 
-/* ── Step number highlight (desktop only, >700px) ──────────────────────────
-   Two layers light together:
-   • the circle itself (.step-number): fill + bright border + white number + big glow
-   • a thin ring 4px outside it (::after) as an accent
-   Both use steps(1, jump-end) so they SNAP on in a single frame at the switch point.
+/* ── Step number ring highlight (desktop only, >700px) ─────────────────────
+   A ring lights around each numbered circle as the connector bar reaches it.
+   The circle itself is NOT restyled. steps(1, jump-end) so the ring SNAPS on.
    Timeline (6s, shared with the connector bar):
-     0%   step 1 ON, bar starts moving from step 1
-     34%  bar tip touches circle 2 -> step 2 ON
-     71%  bar tip touches circle 3 -> step 3 ON
+     0%   ring 1 ON, bar starts moving from step 1
+     34%  bar tip touches circle 2 -> ring 2 ON
+     71%  bar tip touches circle 3 -> ring 3 ON
      88%  all OFF together, bar fades
      100% loop
-   Everything is PAUSED until .steps-grid.reveal gets .visible (scroll-in),
-   so the cycle starts from 0% the moment the section appears on screen. */
+   PAUSED until .steps-grid.reveal gets .visible (scroll-in), so the cycle
+   starts from 0% the moment the section appears on screen. */
 .step-number::after {
   content: '';
   position: absolute;
-  inset: -4px;
+  inset: -3px;
   border-radius: 50%;
-  border: 2px solid rgba(200,170,255,1);
+  border: 2.5px solid var(--purple-light);
   pointer-events: none;
   opacity: 0;
+  box-shadow: 0 0 14px rgba(180,150,255,0.5), inset 0 0 6px rgba(180,150,255,0.2);
 }
 
 @media (min-width: 701px) {
-  .steps-grid .step-card:nth-child(1) .step-number { animation: step-glow-1 6s steps(1, jump-end) infinite; }
-  .steps-grid .step-card:nth-child(2) .step-number { animation: step-glow-2 6s steps(1, jump-end) infinite; }
-  .steps-grid .step-card:nth-child(3) .step-number { animation: step-glow-3 6s steps(1, jump-end) infinite; }
   .steps-grid .step-card:nth-child(1) .step-number::after { animation: step-ring-1 6s steps(1, jump-end) infinite; }
   .steps-grid .step-card:nth-child(2) .step-number::after { animation: step-ring-2 6s steps(1, jump-end) infinite; }
   .steps-grid .step-card:nth-child(3) .step-number::after { animation: step-ring-3 6s steps(1, jump-end) infinite; }
 
-  .steps-grid.reveal:not(.visible) .step-number,
   .steps-grid.reveal:not(.visible) .step-number::after { animation-play-state: paused; }
-}
-
-@keyframes step-glow-1 {
-  0%   { background: rgba(124,92,252,0.28); border-color: rgba(200,170,255,1); color: #fff; box-shadow: 0 0 30px rgba(124,92,252,0.7), 0 0 10px rgba(200,170,255,0.6); }
-  88%  { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
-  100% { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
-}
-@keyframes step-glow-2 {
-  0%   { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
-  34%  { background: rgba(124,92,252,0.28); border-color: rgba(200,170,255,1); color: #fff; box-shadow: 0 0 30px rgba(124,92,252,0.7), 0 0 10px rgba(200,170,255,0.6); }
-  88%  { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
-  100% { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
-}
-@keyframes step-glow-3 {
-  0%   { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
-  71%  { background: rgba(124,92,252,0.28); border-color: rgba(200,170,255,1); color: #fff; box-shadow: 0 0 30px rgba(124,92,252,0.7), 0 0 10px rgba(200,170,255,0.6); }
-  88%  { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
-  100% { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
 }
 
 @keyframes step-ring-1 {
@@ -3936,7 +3913,7 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .step-number, .step-number::after { animation: none; }
+  .step-number::after { animation: none; }
 }
 
 /* Highlight pill */
