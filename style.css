@@ -3753,12 +3753,13 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   animation: connector-progress 6s linear infinite;
 }
 
-/* Bar sweep at original slower pace: hits step 1 at 5%, step 2 at 40%, step 3 at 75%.
-   Ring highlights snap on INSTANTLY at those exact moments. */
+/* Bar starts moving at 0% and sweeps at ONE constant speed to full width by 75%.
+   GEOMETRY NOTE: the bar runs UNDER the 56px step circles (z-index 0 vs 1), so the
+   visible "hit" is when the bar tip touches a circle's LEFT EDGE, ~33px before its
+   centre. On a ~650px track that is ~4% of the timeline, so highlights fire at
+   34% (step 2) and 71% (step 3), not 37.5% / 75%. */
 @keyframes connector-progress {
-  0%,  4%   { width: 0%;   opacity: 0; }
-  5%        { width: 0%;   opacity: 1; }
-  40%       { width: 50%;  opacity: 1; }
+  0%        { width: 0%;   opacity: 1; }
   75%       { width: 100%; opacity: 1; }
   88%       { width: 100%; opacity: 1; }
   92%, 100% { width: 100%; opacity: 0; }
@@ -3803,16 +3804,16 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-mid {
-  /* dot 2 snaps lit at 40% (matches ring-2) */
+  /* dot 2 snaps lit at 34% (bar tip touches circle 2's edge) */
   0%   { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  40%  { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  34%  { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
   88%  { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
   100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
 @keyframes dot-light-end {
-  /* dot 3 snaps lit at 75% (matches ring-3) */
+  /* dot 3 snaps lit at 71% (bar tip touches circle 3's edge) */
   0%   { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
-  75%  { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
+  71%  { background: rgba(200,170,255,1);   border-color: rgba(210,180,255,1);   box-shadow: 0 0 18px rgba(200,170,255,1), 0 0 6px rgba(255,255,255,0.7); transform: translate(-50%, -50%) scale(1.25); }
   88%  { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
   100% { background: rgba(124,92,252,0.35); border-color: rgba(124,92,252,0.55); box-shadow: 0 0 6px rgba(124,92,252,0.3);  transform: translate(-50%, -50%) scale(1); }
 }
@@ -3820,6 +3821,11 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
 @media (prefers-reduced-motion: reduce) {
   .steps-connector-dot { animation: none; }
 }
+
+/* Hold the bar + dots at 0% until .steps-grid.reveal gets .visible (scroll-in),
+   so the cycle starts the moment the section appears instead of mid-way through. */
+.steps-grid.reveal:not(.visible) .steps-connector-fill,
+.steps-grid.reveal:not(.visible) .steps-connector-dot { animation-play-state: paused; }
 
 .step-card {
   padding: 0 24px 32px;
@@ -3858,53 +3864,79 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   line-height: 1.65;
 }
 
-/* Step number ring — highlights each numbered circle in sequence with the
-   connector bar, then ALL three rings fade out together at cycle end so the
-   next cycle starts with 1, 2 AND 3 dark. Synced to the 6s connector cycle. */
+/* ── Step number highlight (desktop only, >700px) ──────────────────────────
+   Two layers light together:
+   • the circle itself (.step-number): fill + bright border + white number + big glow
+   • a thin ring 4px outside it (::after) as an accent
+   Both use steps(1, jump-end) so they SNAP on in a single frame at the switch point.
+   Timeline (6s, shared with the connector bar):
+     0%   step 1 ON, bar starts moving from step 1
+     34%  bar tip touches circle 2 -> step 2 ON
+     71%  bar tip touches circle 3 -> step 3 ON
+     88%  all OFF together, bar fades
+     100% loop
+   Everything is PAUSED until .steps-grid.reveal gets .visible (scroll-in),
+   so the cycle starts from 0% the moment the section appears on screen. */
 .step-number::after {
   content: '';
   position: absolute;
-  inset: -3px;
+  inset: -4px;
   border-radius: 50%;
-  border: 2.5px solid var(--purple-light);
+  border: 2px solid rgba(200,170,255,1);
   pointer-events: none;
   opacity: 0;
-  transform: scale(0.9);
-  box-shadow: 0 0 14px rgba(180,150,255,0.5), inset 0 0 6px rgba(180,150,255,0.2);
 }
 
-/* Each ring shares the same 6s cycle. It appears when the bar reaches its
-   number, holds lit through 90%, then all three fade out together 92-95%
-   and stay invisible 95-100% — clean reset before loop restart. */
-/* steps(1, jump-end) makes each keyframe a HARD SNAP at its timestamp — no
-   interpolation, no fade-in. Ring goes from dark to lit in one video frame. */
-.steps-grid .step-card:nth-child(1) .step-number::after { animation: step-ring-1 6s steps(1, jump-end) infinite; }
-.steps-grid .step-card:nth-child(2) .step-number::after { animation: step-ring-2 6s steps(1, jump-end) infinite; }
-.steps-grid .step-card:nth-child(3) .step-number::after { animation: step-ring-3 6s steps(1, jump-end) infinite; }
+@media (min-width: 701px) {
+  .steps-grid .step-card:nth-child(1) .step-number { animation: step-glow-1 6s steps(1, jump-end) infinite; }
+  .steps-grid .step-card:nth-child(2) .step-number { animation: step-glow-2 6s steps(1, jump-end) infinite; }
+  .steps-grid .step-card:nth-child(3) .step-number { animation: step-glow-3 6s steps(1, jump-end) infinite; }
+  .steps-grid .step-card:nth-child(1) .step-number::after { animation: step-ring-1 6s steps(1, jump-end) infinite; }
+  .steps-grid .step-card:nth-child(2) .step-number::after { animation: step-ring-2 6s steps(1, jump-end) infinite; }
+  .steps-grid .step-card:nth-child(3) .step-number::after { animation: step-ring-3 6s steps(1, jump-end) infinite; }
 
-/* HARD-SNAP rings — steps(1, jump-end) means these keyframes are switch points,
-   not interpolated curves. Ring is dark, then INSTANTLY lit at the switch. */
+  .steps-grid.reveal:not(.visible) .step-number,
+  .steps-grid.reveal:not(.visible) .step-number::after { animation-play-state: paused; }
+}
+
+@keyframes step-glow-1 {
+  0%   { background: rgba(124,92,252,0.28); border-color: rgba(200,170,255,1); color: #fff; box-shadow: 0 0 30px rgba(124,92,252,0.7), 0 0 10px rgba(200,170,255,0.6); }
+  88%  { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
+  100% { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
+}
+@keyframes step-glow-2 {
+  0%   { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
+  34%  { background: rgba(124,92,252,0.28); border-color: rgba(200,170,255,1); color: #fff; box-shadow: 0 0 30px rgba(124,92,252,0.7), 0 0 10px rgba(200,170,255,0.6); }
+  88%  { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
+  100% { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
+}
+@keyframes step-glow-3 {
+  0%   { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
+  71%  { background: rgba(124,92,252,0.28); border-color: rgba(200,170,255,1); color: #fff; box-shadow: 0 0 30px rgba(124,92,252,0.7), 0 0 10px rgba(200,170,255,0.6); }
+  88%  { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
+  100% { background: var(--surface); border-color: rgba(124,92,252,0.4); color: var(--purple-light); box-shadow: 0 0 20px rgba(124,92,252,0.15); }
+}
+
 @keyframes step-ring-1 {
-  /* Step 1 lit from the very first frame of the cycle */
-  0%   { opacity: 1; transform: scale(1); }
-  88%  { opacity: 0; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1); }
+  0%   { opacity: 1; }
+  88%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 @keyframes step-ring-2 {
-  0%   { opacity: 0; transform: scale(1); }
-  40%  { opacity: 1; transform: scale(1); }
-  88%  { opacity: 0; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1); }
+  0%   { opacity: 0; }
+  34%  { opacity: 1; }
+  88%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 @keyframes step-ring-3 {
-  0%   { opacity: 0; transform: scale(1); }
-  75%  { opacity: 1; transform: scale(1); }
-  88%  { opacity: 0; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1); }
+  0%   { opacity: 0; }
+  71%  { opacity: 1; }
+  88%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .step-number::after { animation: none; }
+  .step-number, .step-number::after { animation: none; }
 }
 
 /* Highlight pill */
@@ -4198,10 +4230,7 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
   .step-number {
     margin: 0 0 16px;
   }
-  .steps-grid .step-card:nth-child(2) .step-number::after { animation-delay: 0.3s; }
-  .steps-grid .step-card:nth-child(3) .step-number::after { animation-delay: 1.2s; }
-  .steps-grid .step-card:nth-child(4) .step-number::after { animation-delay: 2.1s; }
-  .steps-grid .step-card:nth-child(5) .step-number::after { animation-delay: 3s; }
+  .step-number::after { display: none; }
 
   /* ── Mobile step-number cascade pulse — each circle lights up in sequence, loops ── */
   .steps-grid .step-card .step-number {
