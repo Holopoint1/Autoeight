@@ -3887,9 +3887,10 @@ details.footer-locations .footer-loc-list { margin-top: 18px; }
 }
 
 @media (min-width: 701px) {
-  .steps-grid .step-card:nth-child(1) .step-number::after { animation: step-ring-1 6s steps(1, jump-end) infinite; }
-  .steps-grid .step-card:nth-child(2) .step-number::after { animation: step-ring-2 6s steps(1, jump-end) infinite; }
-  .steps-grid .step-card:nth-child(3) .step-number::after { animation: step-ring-3 6s steps(1, jump-end) infinite; }
+  /* NOTE: .steps-connector is child 1 of .steps-grid, so step 1 is :nth-child(2) */
+  .steps-grid .step-card:nth-child(2) .step-number::after { animation: step-ring-1 6s steps(1, jump-end) infinite; }
+  .steps-grid .step-card:nth-child(3) .step-number::after { animation: step-ring-2 6s steps(1, jump-end) infinite; }
+  .steps-grid .step-card:nth-child(4) .step-number::after { animation: step-ring-3 6s steps(1, jump-end) infinite; }
 
   .steps-grid.reveal:not(.visible) .step-number::after { animation-play-state: paused; }
 }
