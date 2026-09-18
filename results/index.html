@@ -105,15 +105,16 @@
         .cs-tile:hover i { color: var(--purple-light); transform: translateY(-2px); }
         .cs-tile[aria-pressed="true"] { color: #fff; }
         .cs-tile[aria-pressed="true"] i { color: #fff; }
-        /* One colour per service: Web Design purple, AI teal, CRM orange, LMS blue */
-        .cs-tile[data-service="web-design"][aria-pressed="true"]      { background: #7c5cfc; }
-        .cs-tile[data-service="ai-automation"][aria-pressed="true"]   { background: #0d9488; }
-        .cs-tile[data-service="crm-integration"][aria-pressed="true"] { background: #ea580c; }
-        .cs-tile[data-service="lms"][aria-pressed="true"]             { background: #2563eb; }
-        .cs-tile[data-service="web-design"][aria-pressed="true"]:hover      { background: #8b6fff; }
-        .cs-tile[data-service="ai-automation"][aria-pressed="true"]:hover   { background: #14b8a6; }
-        .cs-tile[data-service="crm-integration"][aria-pressed="true"]:hover { background: #f97316; }
-        .cs-tile[data-service="lms"][aria-pressed="true"]:hover             { background: #3b82f6; }
+        /* One muted colour per service, kept in the site's violet family.
+           Soft violet, muted teal, muted clay, muted indigo. */
+        .cs-tile[data-service="web-design"][aria-pressed="true"]      { background: #6d5bc7; }
+        .cs-tile[data-service="ai-automation"][aria-pressed="true"]   { background: #4a8a82; }
+        .cs-tile[data-service="crm-integration"][aria-pressed="true"] { background: #a9735c; }
+        .cs-tile[data-service="lms"][aria-pressed="true"]             { background: #5a6fb0; }
+        .cs-tile[data-service="web-design"][aria-pressed="true"]:hover      { background: #7a69d0; }
+        .cs-tile[data-service="ai-automation"][aria-pressed="true"]:hover   { background: #559a91; }
+        .cs-tile[data-service="crm-integration"][aria-pressed="true"]:hover { background: #b8816a; }
+        .cs-tile[data-service="lms"][aria-pressed="true"]:hover             { background: #677dbe; }
         .cs-tile:focus-visible { outline: 2px solid var(--purple-light); outline-offset: -2px; }
         .cs-filters-empty { display: none; text-align: center; color: var(--muted); font-size: 0.95rem; padding: 40px 0; }
         @media (max-width: 700px) {
