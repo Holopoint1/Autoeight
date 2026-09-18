@@ -89,59 +89,37 @@
     <div class="page-section-inner">
 
 
-      <!-- Filter: one dropdown, our 4 services -->
+      <!-- Filter: four service tiles. Toggle any combination. None selected = show everything. -->
       <style>
-        .cs-filters { display: flex; flex-direction: column; gap: 12px; max-width: 920px; margin: 0 auto 40px; }
-        .cs-filter-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; }
-        .cs-filter-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); margin-right: 4px; }
+        .cs-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; max-width: 980px; margin: 0 auto 44px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+        .cs-tile {
+          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+          min-height: 148px; padding: 28px 16px;
+          background: var(--surface); color: var(--muted);
+          border: 0; font-family: inherit; cursor: pointer;
+          transition: background 0.18s, color 0.18s;
+        }
+        .cs-tile i { font-size: 2rem; line-height: 1; color: var(--subtle); transition: color 0.18s, transform 0.18s; }
+        .cs-tile span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+        .cs-tile:hover { background: var(--purple-dim); color: var(--purple-light); }
+        .cs-tile:hover i { color: var(--purple-light); transform: translateY(-2px); }
+        .cs-tile[aria-pressed="true"] { background: var(--purple); color: #fff; }
+        .cs-tile[aria-pressed="true"] i { color: #fff; }
+        .cs-tile[aria-pressed="true"]:hover { background: var(--purple-light); }
+        .cs-tile:focus-visible { outline: 2px solid var(--purple-light); outline-offset: -2px; }
         .cs-filters-empty { display: none; text-align: center; color: var(--muted); font-size: 0.95rem; padding: 40px 0; }
-        /* Service dropdown — styled to sit alongside the industry pills */
-        .cs-filter-select-wrap { position: relative; display: inline-block; }
-        .cs-filter-select {
-          appearance: none; -webkit-appearance: none; -moz-appearance: none;
-          padding: 9px 40px 9px 18px;
-          border-radius: 100px;
-          background: var(--purple);
-          border: 1px solid var(--purple);
-          color: #fff;
-          font-family: inherit; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.01em;
-          cursor: pointer;
-          transition: background 0.15s, border-color 0.15s;
-          min-width: 200px;
-        }
-        .cs-filter-select:hover { background: var(--purple-light); border-color: var(--purple-light); }
-        .cs-filter-select:focus { outline: 2px solid var(--purple-light); outline-offset: 2px; }
-        .cs-filter-select-wrap::after {
-          content: '\f078';
-          font-family: 'Font Awesome 6 Free'; font-weight: 900;
-          position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
-          font-size: 0.7rem; color: #fff; pointer-events: none;
-        }
-        .cs-filter-select option {
-          background: #1a1a1f;
-          color: #ffffff;
-          font-weight: 500;
-          padding: 8px 12px;
-        }
-        .cs-filter-select option:checked { background: var(--purple); color: #fff; }
         @media (max-width: 700px) {
-          .cs-filters { gap: 8px; margin-bottom: 28px; }
-          .cs-filter-select { padding: 8px 34px 8px 14px; font-size: 0.78rem; min-width: 180px; }
+          .cs-tiles { grid-template-columns: 1fr 1fr; margin-bottom: 30px; border-radius: 14px; }
+          .cs-tile { min-height: 120px; padding: 22px 12px; gap: 12px; }
+          .cs-tile i { font-size: 1.6rem; }
+          .cs-tile span { font-size: 0.66rem; }
         }
       </style>
-      <div class="cs-filters reveal" aria-label="Filter case studies">
-        <div class="cs-filter-row" role="group" aria-label="Filter by service">
-          <span class="cs-filter-label">Filter by</span>
-          <div class="cs-filter-select-wrap">
-            <select id="cs-filter-service-select" class="cs-filter-select" aria-label="Filter case studies by service">
-              <option value="all">All services</option>
-              <option value="web-design">Web Design</option>
-              <option value="ai-automation">AI &amp; Automation</option>
-              <option value="crm-integration">CRM &amp; Integration</option>
-              <option value="lms">Learning Management</option>
-            </select>
-          </div>
-        </div>
+      <div class="cs-tiles reveal" role="group" aria-label="Filter case studies by service">
+        <button type="button" class="cs-tile" data-service="web-design" aria-pressed="false"><i class="fa-solid fa-globe"></i><span>Web Design</span></button>
+        <button type="button" class="cs-tile" data-service="ai-automation" aria-pressed="false"><i class="fa-solid fa-robot"></i><span>AI &amp; Automation</span></button>
+        <button type="button" class="cs-tile" data-service="crm-integration" aria-pressed="false"><i class="fa-solid fa-plug"></i><span>CRM &amp; Integration</span></button>
+        <button type="button" class="cs-tile" data-service="lms" aria-pressed="false"><i class="fa-solid fa-graduation-cap"></i><span>Learning Management</span></button>
       </div>
 
       <!-- Highlight cards -->
@@ -347,7 +325,7 @@
 
       </div>
 
-      <p class="cs-filters-empty" id="cs-filters-empty">No projects for that service yet. Try another one.</p>
+      <p class="cs-filters-empty" id="cs-filters-empty">No projects match that selection yet. Deselect a service to see more.</p>
     </div>
   </section>
 
@@ -432,33 +410,34 @@
 
   <script>
     (function () {
-      var serviceSelect = document.getElementById('cs-filter-service-select');
+      var tiles = document.querySelectorAll('.cs-tile[data-service]');
       var cards = document.querySelectorAll('[data-services]');
       var emptyMsg = document.getElementById('cs-filters-empty');
       var baSection = document.querySelector('.ba-section');
-      if (!serviceSelect || !cards.length) return;
+      if (!tiles.length || !cards.length) return;
 
-      var activeService = 'all';
-
+      // Multi-select: a card shows if it matches ANY selected service.
+      // Nothing selected = show everything.
       function apply() {
-        var mainVisible = 0;
-        var baVisible = 0;
+        var selected = [];
+        tiles.forEach(function (t) { if (t.getAttribute('aria-pressed') === 'true') selected.push(t.getAttribute('data-service')); });
+        var mainVisible = 0, baVisible = 0;
         cards.forEach(function (card) {
           var services = (card.getAttribute('data-services') || '').split(' ');
-          var show = activeService === 'all' || services.indexOf(activeService) !== -1;
+          var show = selected.length === 0 || selected.some(function (svc) { return services.indexOf(svc) !== -1; });
           card.style.display = show ? '' : 'none';
-          if (show) {
-            if (baSection && baSection.contains(card)) { baVisible++; } else { mainVisible++; }
-          }
+          if (show) { if (baSection && baSection.contains(card)) { baVisible++; } else { mainVisible++; } }
         });
         if (emptyMsg) emptyMsg.style.display = mainVisible === 0 ? 'block' : 'none';
         if (baSection) baSection.style.display = baVisible === 0 ? 'none' : '';
       }
 
-      // Service dropdown: change event re-applies the filter
-      serviceSelect.addEventListener('change', function () {
-        activeService = serviceSelect.value;
-        apply();
+      tiles.forEach(function (tile) {
+        tile.addEventListener('click', function () {
+          var on = tile.getAttribute('aria-pressed') === 'true';
+          tile.setAttribute('aria-pressed', on ? 'false' : 'true');
+          apply();
+        });
       });
     })();
   </script>
