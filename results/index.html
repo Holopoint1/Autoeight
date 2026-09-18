@@ -105,15 +105,19 @@
         .cs-tile:hover i { color: var(--purple-light); transform: translateY(-2px); }
         .cs-tile[aria-pressed="true"] { color: #fff; }
         .cs-tile[aria-pressed="true"] i { color: #fff; }
-        /* Each service gets its own shade when selected */
-        .cs-tile[data-service="web-design"][aria-pressed="true"]      { background: #5b3fd6; }
-        .cs-tile[data-service="ai-automation"][aria-pressed="true"]   { background: #7c5cfc; }
-        .cs-tile[data-service="crm-integration"][aria-pressed="true"] { background: #9a6cff; }
-        .cs-tile[data-service="lms"][aria-pressed="true"]             { background: #5f6cf5; }
-        .cs-tile[data-service="web-design"][aria-pressed="true"]:hover      { background: #6a4fe6; }
-        .cs-tile[data-service="ai-automation"][aria-pressed="true"]:hover   { background: #8b6fff; }
-        .cs-tile[data-service="crm-integration"][aria-pressed="true"]:hover { background: #a97fff; }
-        .cs-tile[data-service="lms"][aria-pressed="true"]:hover             { background: #6f7bff; }
+        /* One colour per service: Web Design purple, AI teal, CRM orange, LMS blue */
+        .cs-tile[data-service="web-design"][aria-pressed="true"]      { background: #7c5cfc; }
+        .cs-tile[data-service="ai-automation"][aria-pressed="true"]   { background: #0d9488; }
+        .cs-tile[data-service="crm-integration"][aria-pressed="true"] { background: #ea580c; }
+        .cs-tile[data-service="lms"][aria-pressed="true"]             { background: #2563eb; }
+        .cs-tile[data-service="web-design"][aria-pressed="true"]:hover      { background: #8b6fff; }
+        .cs-tile[data-service="ai-automation"][aria-pressed="true"]:hover   { background: #14b8a6; }
+        .cs-tile[data-service="crm-integration"][aria-pressed="true"]:hover { background: #f97316; }
+        .cs-tile[data-service="lms"][aria-pressed="true"]:hover             { background: #3b82f6; }
+        .cs-tile[data-service="web-design"]:hover      { color: #7c5cfc; } .cs-tile[data-service="web-design"]:hover i      { color: #7c5cfc; }
+        .cs-tile[data-service="ai-automation"]:hover   { color: #0d9488; } .cs-tile[data-service="ai-automation"]:hover i   { color: #0d9488; }
+        .cs-tile[data-service="crm-integration"]:hover { color: #ea580c; } .cs-tile[data-service="crm-integration"]:hover i { color: #ea580c; }
+        .cs-tile[data-service="lms"]:hover             { color: #2563eb; } .cs-tile[data-service="lms"]:hover i             { color: #2563eb; }
         .cs-tile:focus-visible { outline: 2px solid var(--purple-light); outline-offset: -2px; }
         .cs-filters-empty { display: none; text-align: center; color: var(--muted); font-size: 0.95rem; padding: 40px 0; }
         @media (max-width: 700px) {
@@ -147,6 +151,10 @@
         .rs-chips { display: flex; flex-wrap: wrap; gap: 6px; }
         .rs-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 100px; background: var(--purple-dim); border: 1px solid rgba(124,92,252,0.25); color: var(--purple-light); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
         .rs-chip i { font-size: 0.7rem; }
+        .rs-chip[data-service="web-design"]      { background: rgba(124,92,252,0.10); border-color: rgba(124,92,252,0.30); color: #6d4de6; }
+        .rs-chip[data-service="ai-automation"]   { background: rgba(13,148,136,0.10);  border-color: rgba(13,148,136,0.30);  color: #0f766e; }
+        .rs-chip[data-service="crm-integration"] { background: rgba(234,88,12,0.10);   border-color: rgba(234,88,12,0.30);   color: #c2410c; }
+        .rs-chip[data-service="lms"]             { background: rgba(37,99,235,0.10);   border-color: rgba(37,99,235,0.30);   color: #1d4ed8; }
         .rs-card h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin: 2px 0 0; }
         .rs-story { font-size: 0.92rem; line-height: 1.7; color: var(--muted); margin: 0; }
         .rs-built { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
@@ -170,7 +178,7 @@
         <article class="rs-card" data-services="ai-automation crm-integration">
           <div class="rs-card-head">
             <span class="rs-sector">Sales team</span>
-            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-robot"></i>AI &amp; Automation</span><span class="rs-chip"><i class="fa-solid fa-plug"></i>CRM &amp; Integration</span></div>
+            <div class="rs-chips"><span class="rs-chip" data-service="ai-automation"><i class="fa-solid fa-robot"></i>AI &amp; Automation</span><span class="rs-chip" data-service="crm-integration"><i class="fa-solid fa-plug"></i>CRM &amp; Integration</span></div>
           </div>
           <h3>CRM to map to inbox: sales campaign automation</h3>
           <p class="rs-story">A custom workflow that puts HubSpot data on a live map, plans visit routes and writes personalised emails straight into Outlook drafts. Saves each sales rep around 5 hours a week.</p>
@@ -180,7 +188,7 @@
         <article class="rs-card" data-services="web-design">
           <div class="rs-card-head">
             <span class="rs-sector">Specialist retail</span>
-            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span></div>
+            <div class="rs-chips"><span class="rs-chip" data-service="web-design"><i class="fa-solid fa-globe"></i>Web Design</span></div>
           </div>
           <h3>The Dice Tavern</h3>
           <p class="rs-story">A tabletop gaming shop selling through a marketplace, paying commission on every order and never getting the customer's email address. We built them a store of their own. Payments go straight to their bank through Stripe, every order triggers a four-step email sequence, checkout suggests related products, and one dashboard covers orders, stock, revenue and reviews.</p>
@@ -190,7 +198,7 @@
         <article class="rs-card" data-services="web-design">
           <div class="rs-card-head">
             <span class="rs-sector">Trades</span>
-            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span></div>
+            <div class="rs-chips"><span class="rs-chip" data-service="web-design"><i class="fa-solid fa-globe"></i>Web Design</span></div>
           </div>
           <h3>TM Joinery Ltd</h3>
           <p class="rs-story">A joinery firm with no website and every job coming through word of mouth. We built a site that looks the part on a phone, structured it so Google understands the business and the areas it covers, and added a quote request form so enquiries arrive with the details already filled in.</p>
@@ -200,7 +208,7 @@
         <article class="rs-card" data-services="web-design ai-automation crm-integration">
           <div class="rs-card-head">
             <span class="rs-sector">Manufacturing</span>
-            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span><span class="rs-chip"><i class="fa-solid fa-robot"></i>AI &amp; Automation</span><span class="rs-chip"><i class="fa-solid fa-plug"></i>CRM &amp; Integration</span></div>
+            <div class="rs-chips"><span class="rs-chip" data-service="web-design"><i class="fa-solid fa-globe"></i>Web Design</span><span class="rs-chip" data-service="ai-automation"><i class="fa-solid fa-robot"></i>AI &amp; Automation</span><span class="rs-chip" data-service="crm-integration"><i class="fa-solid fa-plug"></i>CRM &amp; Integration</span></div>
           </div>
           <h3>Matrix TSL Sales Hub</h3>
           <p class="rs-story">Matrix TSL sell electronics teaching equipment to colleges and universities. Their reps were working out of HubSpot, spreadsheets and a dozen browser tabs. We built one web app for the team: an interactive UK map of every institution split into rep territories, live HubSpot data behind each pin, and an emailer that builds personalised campaign drafts in each rep's own Gmail or Outlook, ready to check and send.</p>
@@ -210,7 +218,7 @@
         <article class="rs-card" data-services="lms">
           <div class="rs-card-head">
             <span class="rs-sector">Education</span>
-            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-graduation-cap"></i>Learning Management</span></div>
+            <div class="rs-chips"><span class="rs-chip" data-service="lms"><i class="fa-solid fa-graduation-cap"></i>Learning Management</span></div>
           </div>
           <h3>Matrix Learning Platform</h3>
           <p class="rs-story">Matrix's course workbooks lived in long Word documents. We built a learning platform that splits each workbook into individual worksheets and serves them as interactive courses. A course is defined in a simple Google Sheet, so a teacher can reorder worksheets, drop the ones they don't need, or pull sections from other courses into a new one, and the site updates itself. Learners get progress tracking, time logged, streaks and a certificate at completion.</p>
@@ -220,7 +228,7 @@
         <article class="rs-card" data-services="web-design lms">
           <div class="rs-card-head">
             <span class="rs-sector">Tutoring</span>
-            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span><span class="rs-chip"><i class="fa-solid fa-graduation-cap"></i>Learning Management</span></div>
+            <div class="rs-chips"><span class="rs-chip" data-service="web-design"><i class="fa-solid fa-globe"></i>Web Design</span><span class="rs-chip" data-service="lms"><i class="fa-solid fa-graduation-cap"></i>Learning Management</span></div>
           </div>
           <h3>Learn With Lorna</h3>
           <p class="rs-story">Lorna is a GCSE Geography and Maths tutor in Halifax. We built her a site that explains the offer and takes enquiries, plus a student portal. Pupils log in with email or Google, see their assignments, submit work and track their progress. Parents get their own login to follow along, and Lorna reviews and grades everything from one admin dashboard.</p>
@@ -230,7 +238,7 @@
         <article class="rs-card" data-services="web-design">
           <div class="rs-card-head">
             <span class="rs-sector">Community</span>
-            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span></div>
+            <div class="rs-chips"><span class="rs-chip" data-service="web-design"><i class="fa-solid fa-globe"></i>Web Design</span></div>
           </div>
           <h3>Halifax Round Table</h3>
           <p class="rs-story">A local branch of Round Table whose website had two jobs: bring in new members and help run the club. The public site covers who they are, their history, charity work, an events gallery and a contact form. Behind a login, members get a dashboard with a news editor, meeting minutes, a member directory with roles and permissions, and an inbox for enquiries.</p>
@@ -240,7 +248,7 @@
         <article class="rs-card" data-services="web-design">
           <div class="rs-card-head">
             <span class="rs-sector">Estate agents</span>
-            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span></div>
+            <div class="rs-chips"><span class="rs-chip" data-service="web-design"><i class="fa-solid fa-globe"></i>Web Design</span></div>
           </div>
           <h3>Northbrick Property</h3>
           <p class="rs-story">An estate agency platform built for independents rather than chains. A branded public site with property listings and enquiry forms, every enquiry channel pulled into one inbox, AI that reads each message and matches it to a property, follow-ups sent from the agent's own mailbox, and viewings booked to a synced calendar.</p>
