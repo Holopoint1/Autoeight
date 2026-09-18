@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Real Autoeight projects, real numbers. AI automation, sales systems, custom websites and learning platforms built for UK businesses." />
+  <meta name="description" content="Real projects we have built for UK businesses: e-commerce, trades, estate agents, manufacturing sales tools, learning platforms and community sites. Filter by service." />
   <title>Results | Autoeight</title>
   <link rel="canonical" href="https://autoeight.ai/results/" />
 
@@ -122,289 +122,117 @@
         <button type="button" class="cs-tile" data-service="lms" aria-pressed="false"><i class="fa-solid fa-graduation-cap"></i><span>Learning Management</span></button>
       </div>
 
-      <!-- Highlight cards -->
-      <div class="cs-highlights reveal" style="grid-template-columns:1fr; max-width:820px; margin-left:auto; margin-right:auto;">
-        <a href="/results/dice-tavern" class="cs-highlight" data-industry="ecommerce" data-services="web-design ai-automation sales-data">
-          <span class="cs-highlight-tag">E-Commerce + CMS</span>
+      <!-- Case studies: one card per project, filtered by the service tiles above -->
+      <style>
+        .rs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+        .rs-card {
+          position: relative; display: flex; flex-direction: column; gap: 14px;
+          background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+          padding: 30px 30px 26px; overflow: hidden;
+          transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .rs-card::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, #6d4de6, #7c5cfc, rgba(124,92,252,0)); opacity: 0; transition: opacity 0.2s; }
+        .rs-card:hover { border-color: rgba(124,92,252,0.5); transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,0.06); }
+        .rs-card:hover::before { opacity: 1; }
+        .rs-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+        .rs-sector { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--subtle); padding-top: 4px; }
+        .rs-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+        .rs-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 100px; background: var(--purple-dim); border: 1px solid rgba(124,92,252,0.25); color: var(--purple-light); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+        .rs-chip i { font-size: 0.7rem; }
+        .rs-card h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin: 2px 0 0; }
+        .rs-story { font-size: 0.92rem; line-height: 1.7; color: var(--muted); margin: 0; }
+        .rs-built { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+        .rs-built li { display: flex; gap: 10px; align-items: flex-start; }
+        .rs-built li i { color: var(--purple-light); font-size: 0.7rem; margin-top: 5px; flex-shrink: 0; }
+        .rs-built strong { display: block; font-size: 0.86rem; font-weight: 700; line-height: 1.35; }
+        .rs-built span { display: block; font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+        .rs-card-actions { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 18px; }
+        .rs-card-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--purple-light); text-decoration: none; }
+        .rs-card-link:hover { text-decoration: underline; }
+        .rs-card-link i { font-size: 0.72rem; }
+        .rs-card-private { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--subtle); }
+        .cs-filters-empty { display: none; text-align: center; color: var(--muted); font-size: 0.95rem; padding: 40px 0; }
+        @media (max-width: 900px) {
+          .rs-grid { grid-template-columns: 1fr; gap: 18px; }
+          .rs-card { padding: 24px 22px 22px; }
+          .rs-built { grid-template-columns: 1fr; gap: 10px; }
+          .rs-chips { justify-content: flex-start; }
+        }
+      </style>
+      <div class="rs-grid reveal">
+        <article class="rs-card" data-services="web-design">
+          <div class="rs-card-head">
+            <span class="rs-sector">Specialist retail</span>
+            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span></div>
+          </div>
           <h3>The Dice Tavern</h3>
-          <p class="cs-highlight-body">A custom e-commerce platform that cuts out the marketplace middleman. Direct Stripe payments mean 0% in commission, a 4-stage email automation (confirmation, dispatch, follow-up, review request) keeps customers warm without anyone touching a keyboard, and a smart cross-sell engine quietly lifts average order value at checkout. One operations dashboard for orders, stock, revenue, and reviews. The business owns the entire customer relationship.</p>
-          <div class="cs-highlight-stats">
-            <div class="cs-highlight-stat"><strong>0%</strong> marketplace fees</div>
-            <div class="cs-highlight-stat"><strong>4.9&#9733;</strong> rating</div>
+          <p class="rs-story">A tabletop gaming shop selling through a marketplace, paying commission on every order and never getting the customer's email address. We built them a store of their own. Payments go straight to their bank through Stripe, every order triggers a four-step email sequence, checkout suggests related products, and one dashboard covers orders, stock, revenue and reviews.</p>
+          <ul class="rs-built"><li><i class="fa-solid fa-check"></i><div><strong>Custom e-commerce store</strong><span>Direct Stripe payments, no marketplace in the middle</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Four-stage order emails</strong><span>Confirmation, dispatch, follow-up and a review request</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Cross-sell at checkout</strong><span>Related products suggested before payment</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Operations dashboard</strong><span>Orders, stock, revenue and reviews in one place</span></div></li></ul>
+          <div class="rs-card-actions"><a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="rs-card-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> www.thedicetavern.co.uk</a><a href="/results/dice-tavern" class="rs-card-link rs-card-link-study">Read the case study <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>
+        <article class="rs-card" data-services="web-design">
+          <div class="rs-card-head">
+            <span class="rs-sector">Trades</span>
+            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span></div>
           </div>
-          <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
-          <span style="display:block;font-size:0.72rem;font-weight:500;margin-top:6px;"><span onclick="event.stopPropagation();window.open('https://www.thedicetavern.co.uk/','_blank','noopener');return false;" style="color:var(--purple-light);cursor:pointer;text-decoration:none;">thedicetavern.co.uk <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i></span></span>
-        </a>
-        <a href="/results/tm-joinery" class="cs-highlight" data-industry="trades" data-services="web-design ai-automation">
-          <span class="cs-highlight-tag">Web Design + SEO</span>
           <h3>TM Joinery Ltd</h3>
-          <p class="cs-highlight-body">From zero online presence to ranking across 6 regions in Scotland. A premium-feel website that builds trust on first visit, full technical SEO with structured data for Google rich results, an automated quote-request system that captures enquiries 24/7, and 5-star Google reviews displayed front and centre. Word-of-mouth referrals replaced by inbound leads coming in every week without anyone chasing them.</p>
-          <div class="cs-highlight-stats">
-            <div class="cs-highlight-stat"><strong>6</strong> regions ranking</div>
-            <div class="cs-highlight-stat"><strong>5.0&#9733;</strong> Google</div>
+          <p class="rs-story">A joinery firm with no website and every job coming through word of mouth. We built a site that looks the part on a phone, structured it so Google understands the business and the areas it covers, and added a quote request form so enquiries arrive with the details already filled in.</p>
+          <ul class="rs-built"><li><i class="fa-solid fa-check"></i><div><strong>Conversion-focused website</strong><span>Clean, fast and built to earn trust on the first visit</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Local search structure</strong><span>LocalBusiness and service-area schema for Google</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Quote request form</strong><span>Customers pick a service and describe the job</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Google reviews on the site</strong><span>Real ratings shown where new customers land</span></div></li></ul>
+          <div class="rs-card-actions"><a href="https://tmjoineryltd.co.uk/" target="_blank" rel="noopener" class="rs-card-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> tmjoineryltd.co.uk</a><a href="/results/tm-joinery" class="rs-card-link rs-card-link-study">Read the case study <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>
+        <article class="rs-card" data-services="web-design">
+          <div class="rs-card-head">
+            <span class="rs-sector">Estate agents</span>
+            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span></div>
           </div>
-          <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
-          <span style="display:block;font-size:0.72rem;font-weight:500;margin-top:6px;"><span onclick="event.stopPropagation();window.open('https://tmjoineryltd.co.uk/','_blank','noopener');return false;" style="color:var(--purple-light);cursor:pointer;text-decoration:none;">tmjoineryltd.co.uk <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i></span></span>
-        </a>
-        <a href="/results/northbrick" class="cs-highlight" data-industry="estate-agents" data-services="web-design ai-automation crm-integration">
-          <span class="cs-highlight-tag">PropTech + AI</span>
           <h3>Northbrick Property</h3>
-          <p class="cs-highlight-body">A complete estate agency platform built for independents, not chains. Branded public site with full property listings, every enquiry channel (web, Gmail, Outlook, WhatsApp, SMS) pulled into one inbox, AI classifying every inbound and matching it to a live property, automated chase sequences that send from the agent's own mailbox so follow-ups still feel personal, and viewings booked straight to the calendar with two-way sync. Reapit-grade software, priced for independent agencies.</p>
-          <div class="cs-highlight-stats">
-            <div class="cs-highlight-stat"><strong>3 hrs</strong> saved/rep/week</div>
-            <div class="cs-highlight-stat"><strong>~780</strong> hours/year, 5-rep agency</div>
+          <p class="rs-story">An estate agency platform built for independents rather than chains. A branded public site with property listings and enquiry forms, every enquiry channel pulled into one inbox, AI that reads each message and matches it to a property, follow-ups sent from the agent's own mailbox, and viewings booked to a synced calendar.</p>
+          <ul class="rs-built"><li><i class="fa-solid fa-check"></i><div><strong>Branded public site</strong><span>Listings, search, property pages, valuation and viewing forms</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Unified enquiry inbox</strong><span>Web, email, WhatsApp and SMS in one queue</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>AI-classified enquiries</strong><span>Each message tagged by type, urgency and matching property</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Follow-ups and calendar sync</strong><span>Chase sequences from the agent's mailbox, viewings on the calendar</span></div></li></ul>
+          <div class="rs-card-actions"><a href="https://www.northbrick.org/" target="_blank" rel="noopener" class="rs-card-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> www.northbrick.org</a><a href="/results/northbrick" class="rs-card-link rs-card-link-study">Read the case study <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>
+        <article class="rs-card" data-services="web-design ai-automation crm-integration">
+          <div class="rs-card-head">
+            <span class="rs-sector">Manufacturing</span>
+            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span><span class="rs-chip"><i class="fa-solid fa-robot"></i>AI &amp; Automation</span><span class="rs-chip"><i class="fa-solid fa-plug"></i>CRM &amp; Integration</span></div>
           </div>
-          <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
-          <span style="display:block;font-size:0.72rem;font-weight:500;margin-top:6px;"><span onclick="event.stopPropagation();window.open('http://www.northbrick.org/','_blank','noopener');return false;" style="color:var(--purple-light);cursor:pointer;text-decoration:none;">northbrick.org <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i></span></span>
-        </a>
-        <a href="/results/matrix-tsl" class="cs-highlight" data-industry="manufacturing" data-services="ai-automation sales-data crm-integration lms">
-          <span class="cs-highlight-tag">AI + Sales</span>
-          <h3>Matrix TSL</h3>
-          <p class="cs-highlight-body">One dashboard for the whole sales floor. Reps, managers, and directors all working from the same view, with sales data and marketing data side by side so the team can spot the products, trends, and accounts most likely to convert. Built-in onboarding and sales training, a full planning system, automated lead discovery across UK universities, and HubSpot wired in so nothing gets retyped. Reps now start every morning knowing exactly who to call and why.</p>
-          <div class="cs-highlight-stats">
-            <div class="cs-highlight-stat"><strong>~690</strong> hrs/year, 3-rep team</div>
-            <div class="cs-highlight-stat"><strong>29</strong> tools replaced</div>
+          <h3>Matrix TSL Sales Hub</h3>
+          <p class="rs-story">Matrix TSL sell electronics teaching equipment to colleges and universities. Their reps were working out of HubSpot, spreadsheets and a dozen browser tabs. We built one web app for the team: an interactive UK map of every institution split into rep territories, live HubSpot data behind each pin, and an emailer that builds personalised campaign drafts in each rep's own Gmail or Outlook, ready to check and send.</p>
+          <ul class="rs-built"><li><i class="fa-solid fa-check"></i><div><strong>Territory map with live CRM data</strong><span>Every college and university pinned, HubSpot contacts and deals in the popup</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Campaign emailer</strong><span>Merge-field templates, drafts created in the rep's own mailbox, nothing sent automatically</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>HubSpot pipeline and forecast views</strong><span>Deals, stages, owners and campaign engagement in one place</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>AI assistant and daily news</strong><span>Product questions answered from the catalogue, industry feeds filtered every morning</span></div></li></ul>
+          <div class="rs-card-actions"><span class="rs-card-private"><i class="fa-solid fa-lock"></i> Private platform, no public URL</span><a href="/results/matrix-tsl" class="rs-card-link rs-card-link-study">Read the case study <i class="fa-solid fa-arrow-right"></i></a></div>
+        </article>
+        <article class="rs-card" data-services="lms">
+          <div class="rs-card-head">
+            <span class="rs-sector">Education</span>
+            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-graduation-cap"></i>Learning Management</span></div>
           </div>
-          <div class="cs-highlight-link">Read case study <i class="fa-solid fa-arrow-right"></i></div>
-        </a>
-      </div>
-
-      <div class="cs-full-grid reveal">
-
-        <!-- TM Joinery -->
-        <div class="cs-full-card" data-industry="trades" data-services="web-design ai-automation">
-          <div class="cs-full-top">
-            <span class="case-tag">Web Design + Local SEO</span>
-            <span class="case-tag">Construction &amp; Joinery</span>
+          <h3>Matrix Learning Platform</h3>
+          <p class="rs-story">Matrix's course workbooks lived in long Word documents. We built a learning platform that splits each workbook into individual worksheets and serves them as interactive courses. A course is defined in a simple Google Sheet, so a teacher can reorder worksheets, drop the ones they don't need, or pull sections from other courses into a new one, and the site updates itself. Learners get progress tracking, time logged, streaks and a certificate at completion.</p>
+          <ul class="rs-built"><li><i class="fa-solid fa-check"></i><div><strong>Workbook splitter</strong><span>One long document becomes individual, reusable worksheets</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Sheet-driven course builder</strong><span>Teachers remix worksheets across courses without touching code</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Progress, time and certificates</strong><span>Per-worksheet completion, day streaks, certificate at 100%</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>One-click course download</strong><span>Any course compiled to a single Word or PDF, plus SCORM export</span></div></li></ul>
+          <div class="rs-card-actions"><span class="rs-card-private"><i class="fa-solid fa-lock"></i> Private platform, no public URL</span></div>
+        </article>
+        <article class="rs-card" data-services="web-design lms">
+          <div class="rs-card-head">
+            <span class="rs-sector">Tutoring</span>
+            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span><span class="rs-chip"><i class="fa-solid fa-graduation-cap"></i>Learning Management</span></div>
           </div>
-          <div class="cs-ba">
-            <div class="cs-ba-col before">
-              <div class="cs-ba-label">Before</div>
-              <div class="cs-ba-item">No website at all</div>
-              <div class="cs-ba-item">100% word-of-mouth leads</div>
-              <div class="cs-ba-item">Invisible on Google</div>
-            </div>
-            <div class="cs-ba-arrow"><i class="fa-solid fa-circle-arrow-right"></i></div>
-            <div class="cs-ba-col after">
-              <div class="cs-ba-label">After</div>
-              <div class="cs-ba-item">Ranking across 6 regions</div>
-              <div class="cs-ba-item">Automated quote requests</div>
-              <div class="cs-ba-item">5.0&#9733; Google rating displayed</div>
-            </div>
+          <h3>Learn With Lorna</h3>
+          <p class="rs-story">Lorna is a GCSE Geography and Maths tutor in Halifax. We built her a site that explains the offer and takes enquiries, plus a student portal. Pupils log in with email or Google, see their assignments, submit work and track their progress. Parents get their own login to follow along, and Lorna reviews and grades everything from one admin dashboard.</p>
+          <ul class="rs-built"><li><i class="fa-solid fa-check"></i><div><strong>Marketing site and enquiry form</strong><span>Subjects, how it works, testimonials, enquiries saved to a database</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Student portal</strong><span>Assignments, file submissions and progress in one place</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Parent accounts</strong><span>Linked to the student so parents can see what's due and done</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Tutor dashboard</strong><span>Review queue, grading with feedback, user management</span></div></li></ul>
+          <div class="rs-card-actions"><a href="https://learnwithlorna.co.uk/" target="_blank" rel="noopener" class="rs-card-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> learnwithlorna.co.uk</a></div>
+        </article>
+        <article class="rs-card" data-services="web-design">
+          <div class="rs-card-head">
+            <span class="rs-sector">Community</span>
+            <div class="rs-chips"><span class="rs-chip"><i class="fa-solid fa-globe"></i>Web Design</span></div>
           </div>
-          <div class="cs-full-story">
-            <h4>What happened</h4>
-            <p>TM Joinery had zero online presence. Every job came through someone they knew. We built a premium website with full technical SEO, structured data for Google rich results, and an automated quote request system. They now rank across Glasgow, Eaglesham, East Renfrewshire, Newton Mearns, East Kilbride, and Lanarkshire. Leads come in through the site without anyone chasing referrals.</p>
-          </div>
-          <div class="cs-auto-list">
-            <h4>What we built</h4>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Conversion-focused website</strong><span>Premium design that builds trust on first visit</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Local SEO across 6 regions</strong><span>Structured data, geo-targeting, service area schema</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Automated quote system</strong><span>Customers pick a service, describe their project, enquiry lands instantly</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Google reviews integration</strong><span>5-star rating and portfolio front and centre</span></div></div>
-          </div>
-          <div class="cs-full-actions">
-            <a href="https://tmjoineryltd.co.uk/" target="_blank" rel="noopener" class="cs-full-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit tmjoineryltd.co.uk</a>
-            <a href="/results/tm-joinery" class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- The Dice Tavern -->
-        <div class="cs-full-card" data-industry="ecommerce" data-services="web-design ai-automation sales-data">
-          <div class="cs-full-top">
-            <span class="case-tag">E-Commerce + Email Automation</span>
-            <span class="case-tag">Specialist Retail</span>
-          </div>
-          <div class="cs-ba">
-            <div class="cs-ba-col before">
-              <div class="cs-ba-label">Before</div>
-              <div class="cs-ba-item">Marketplace fees on every sale</div>
-              <div class="cs-ba-item">No post-purchase emails</div>
-              <div class="cs-ba-item">No operations dashboard</div>
-            </div>
-            <div class="cs-ba-arrow"><i class="fa-solid fa-circle-arrow-right"></i></div>
-            <div class="cs-ba-col after">
-              <div class="cs-ba-label">After</div>
-              <div class="cs-ba-item">0% marketplace fees</div>
-              <div class="cs-ba-item">4 automated emails per order</div>
-              <div class="cs-ba-item">4.9&#9733; customer satisfaction</div>
-            </div>
-          </div>
-          <div class="cs-full-story">
-            <h4>What happened</h4>
-            <p>Every sale was going through a third-party marketplace, fees were eating into margin, and there was no way to contact customers after they bought something. We built a custom e-commerce platform with direct Stripe payments, a 4-stage automated email sequence, smart cross-selling at checkout, and a full operations dashboard for orders, stock, and analytics. The business now owns the entire customer relationship.</p>
-          </div>
-          <div class="cs-auto-list">
-            <h4>What we built</h4>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Custom e-commerce platform</strong><span>Stripe payments, no marketplace middleman</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>4-stage email automation</strong><span>Confirmation, dispatch, follow-up, review request with discount</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Cross-sell engine</strong><span>Smart product recommendations at checkout</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Operations dashboard</strong><span>Orders, stock, revenue, reviews, and analytics in one place</span></div></div>
-          </div>
-          <div class="cs-full-actions">
-            <a href="https://www.thedicetavern.co.uk/" target="_blank" rel="noopener" class="cs-full-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit thedicetavern.co.uk</a>
-            <a href="/results/dice-tavern" class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Northbrick Property -->
-        <div class="cs-full-card" data-industry="estate-agents" data-services="web-design ai-automation crm-integration">
-          <div class="cs-full-top">
-            <span class="case-tag">PropTech + AI</span>
-            <span class="case-tag">Estate Agency SaaS</span>
-          </div>
-          <div class="cs-ba">
-            <div class="cs-ba-col before">
-              <div class="cs-ba-label">Before</div>
-              <div class="cs-ba-item">Enquiries scattered across web, Gmail, Outlook, SMS</div>
-              <div class="cs-ba-item">Reapit / Alto too heavy and too pricey</div>
-              <div class="cs-ba-item">Second and third follow-ups rarely happened</div>
-            </div>
-            <div class="cs-ba-arrow"><i class="fa-solid fa-circle-arrow-right"></i></div>
-            <div class="cs-ba-col after">
-              <div class="cs-ba-label">After</div>
-              <div class="cs-ba-item">14 enquiry channels unified in one inbox</div>
-              <div class="cs-ba-item">AI classifies every inbound by type, urgency, property match</div>
-              <div class="cs-ba-item">Automated chase sequences send from the agent's own mailbox</div>
-            </div>
-          </div>
-          <div class="cs-full-story">
-            <h4>What happened</h4>
-            <p>Independent estate agents lose leads in their own inbox. Enquiries scatter across web forms, Gmail, Outlook, WhatsApp, and sometimes a phone note on a Post-it. Reapit and Alto are priced and built for the corporate chains, not independents. Northbrick is our flagship build: a complete property platform with a branded public site, a multi-channel inbox unified across 14 sources, Claude-powered classification on every inbound, automated chase sequences that send from the agent's own mailbox so they still feel human, and viewings booked against the calendar with two-way sync. Multi-tenant from day one, AI-native from day one.</p>
-          </div>
-          <div class="cs-auto-list">
-            <h4>What we built</h4>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Branded public site</strong><span>Listings, search, property detail, valuation and viewing forms with JSON-LD</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>AI-classified unified inbox</strong><span>Claude Haiku tags every inbound by type, urgency, and matching property</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Automated chase sequences</strong><span>Send-as-mailbox follow-ups with stop conditions, so it still feels personal</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Full agency admin</strong><span>CMS, photo manager, viewings, live chat, stats, SEO, calendar sync</span></div></div>
-          </div>
-          <div class="cs-full-actions">
-            <a href="http://www.northbrick.org/" target="_blank" rel="noopener" class="cs-full-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit northbrick.org</a>
-            <a href="/results/northbrick" class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Matrix TSL -->
-        <div class="cs-full-card" data-industry="manufacturing" data-services="ai-automation sales-data crm-integration lms">
-          <div class="cs-full-top">
-            <span class="case-tag">AI Automation + Sales Enablement</span>
-            <span class="case-tag">Education Equipment Manufacturer</span>
-          </div>
-          <div class="cs-ba">
-            <div class="cs-ba-col before">
-              <div class="cs-ba-label">Before</div>
-              <div class="cs-ba-item">1+ hr/day lost to manual research</div>
-              <div class="cs-ba-item">29 disconnected tools</div>
-              <div class="cs-ba-item">No pipeline visibility</div>
-            </div>
-            <div class="cs-ba-arrow"><i class="fa-solid fa-circle-arrow-right"></i></div>
-            <div class="cs-ba-col after">
-              <div class="cs-ba-label">After</div>
-              <div class="cs-ba-item">~690 hrs saved per year (3-rep team)</div>
-              <div class="cs-ba-item">1 AI-powered platform</div>
-              <div class="cs-ba-item">Full pipeline visibility 24/7</div>
-            </div>
-          </div>
-          <div class="cs-full-story">
-            <h4>What happened</h4>
-            <p>Matrix TSL's sales team was spending over an hour a day bouncing between HubSpot, LinkedIn, spreadsheets, and Google just to find prospects. We built one platform that replaced all 29 tools. An AI assistant that knows every product, live CRM data, automated university contact discovery, and 30+ industry news feeds monitored daily. Reps now start their morning knowing exactly who to call and why.</p>
-          </div>
-          <div class="cs-auto-list">
-            <h4>What we built</h4>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>AI product assistant</strong><span>Answers product questions in seconds using the full catalogue</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Live HubSpot pipeline</strong><span>All deals, stages, and forecasts in one view</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Automated contact discovery</strong><span>Finds engineering staff at target universities automatically</span></div></div>
-            <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>30+ industry news feeds</strong><span>Scored by relevance and surfaced every morning</span></div></div>
-          </div>
-          <div class="cs-full-actions">
-            <span class="cs-full-private"><i class="fa-solid fa-lock"></i> Private internal platform, no public URL</span>
-            <a href="/results/matrix-tsl" class="cs-full-link">Read full case study <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
+          <h3>Halifax Round Table</h3>
+          <p class="rs-story">A local branch of Round Table whose website had two jobs: bring in new members and help run the club. The public site covers who they are, their history, charity work, an events gallery and a contact form. Behind a login, members get a dashboard with a news editor, meeting minutes, a member directory with roles and permissions, and an inbox for enquiries.</p>
+          <ul class="rs-built"><li><i class="fa-solid fa-check"></i><div><strong>Public site</strong><span>About, history, charity, events gallery, FAQ and contact</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Full structured data</strong><span>Organisation, place, articles and FAQ schema for local search</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>Members area</strong><span>Role-based access for chairman, committee and members</span></div></li><li><i class="fa-solid fa-check"></i><div><strong>News and minutes</strong><span>Publish club news and keep meeting minutes in one place</span></div></li></ul>
+          <div class="rs-card-actions"><a href="https://www.halifaxroundtable.co.uk/" target="_blank" rel="noopener" class="rs-card-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> www.halifaxroundtable.co.uk</a></div>
+        </article>
       </div>
 
       <p class="cs-filters-empty" id="cs-filters-empty">No projects match that selection yet. Deselect a service to see more.</p>
-    </div>
-  </section>
-
-  <section class="page-section ba-section">
-    <style>
-      .ba-section .ba-wrap { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
-      .ba-section .ba-section-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
-      .ba-section .ba-section-head .section-label { justify-content: center; }
-      .ba-section .ba-section-head .section-label::before { display: none; }
-      .ba-section .ba-section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); letter-spacing: -0.02em; margin: 10px 0 12px; }
-      .ba-section .ba-section-head p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
-      .ba-section .ba-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; transition: border-color 0.2s; }
-      .ba-section .ba-card:hover { border-color: rgba(124,92,252,0.5); }
-      .ba-section .ba-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-      .ba-section .ba-icon { width: 44px; height: 44px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; background: var(--purple-dim); border: 1px solid rgba(124,92,252,0.25); color: var(--purple-light); font-size: 1.05rem; }
-      .ba-section .ba-pill { display: inline-block; padding: 5px 12px; background: var(--purple-dim); border: 1px solid rgba(124,92,252,0.25); border-radius: 100px; font-size: 0.68rem; font-weight: 700; color: var(--purple-light); letter-spacing: 0.05em; text-transform: uppercase; }
-      .ba-section .ba-title { text-align: center; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 4px 0 28px; }
-      .ba-section .ba-auto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
-      @media (max-width: 700px) {
-        .ba-section .ba-card { padding: 28px 22px; }
-        .ba-section .cs-ba { grid-template-columns: 1fr !important; gap: 12px; }
-        .ba-section .cs-ba-arrow { transform: rotate(90deg); }
-        .ba-section .ba-auto-grid { grid-template-columns: 1fr; gap: 0; }
-        .ba-section .ba-title { font-size: 1.3rem; }
-      }
-    </style>
-    <div class="page-section-inner">
-
-      <div class="ba-section-head reveal">
-        <span class="section-label">More client wins</span>
-        <h2>Recent builds</h2>
-        <p>Three more projects where we replaced off-the-shelf tools and manual admin with custom platforms the client actually owns.</p>
-      </div>
-
-      <div class="ba-wrap reveal">
-
-        <!-- RoundTable -->
-        <article class="ba-card" data-industry="community" data-services="web-design">
-          <div class="ba-top">
-            <span class="ba-icon"><i class="fa-solid fa-dice-d20"></i></span>
-            <span class="ba-pill">Community Platform</span>
-          </div>
-          <h3 class="ba-title">RoundTable</h3>
-          <div class="cs-ba">
-            <div class="cs-ba-col before">
-              <div class="cs-ba-label">Before</div>
-              <div class="cs-ba-item">0 tools purpose-built. Discord plus spreadsheets</div>
-              <div class="cs-ba-item">Hours spent manually matching players to games</div>
-              <div class="cs-ba-item">No way to track session history or player reviews</div>
-            </div>
-            <div class="cs-ba-arrow"><i class="fa-solid fa-circle-arrow-right"></i></div>
-            <div class="cs-ba-col after">
-              <div class="cs-ba-label">After</div>
-              <div class="cs-ba-item">Custom backend handles matching, sessions and reviews</div>
-              <div class="cs-ba-item">Under 2 mins from sign-up to booking a session</div>
-              <div class="cs-ba-item">Everything (players, DMs, games, payments) in one place</div>
-            </div>
-          </div>
-          <div class="cs-full-story">
-            <h4>Success Story</h4>
-            <p>A small tabletop RPG community needed to move off Discord-plus-spreadsheets and run like a proper platform. We built a custom backend: user accounts for players and Dungeon Masters, session scheduling, post-session reviews, payment handling, and an admin dashboard for the community owner. The community now runs itself. No more manual matchmaking, no more lost session notes, and new members go from sign-up to their first game in minutes.</p>
-          </div>
-          <div class="cs-auto-list">
-            <h4>What we built</h4>
-            <div class="ba-auto-grid">
-              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Player + DM accounts</strong></div></div>
-              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Session booking system</strong></div></div>
-              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Post-game reviews and ratings</strong></div></div>
-              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Payment handling</strong></div></div>
-              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Community admin dashboard</strong></div></div>
-              <div class="cs-auto-item"><i class="fa-solid fa-check"></i><div><strong>Email notifications for sessions</strong></div></div>
-            </div>
-          </div>
-          <div style="margin-top:18px;text-align:right;">
-            <a href="https://www.halifaxroundtable.co.uk/" target="_blank" rel="noopener" style="font-size:0.82rem;font-weight:600;color:var(--purple-light);text-decoration:none;">halifaxroundtable.co.uk <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.68rem;"></i></a>
-          </div>
-        </article>
-
-      </div>
     </div>
   </section>
 
@@ -413,7 +241,6 @@
       var tiles = document.querySelectorAll('.cs-tile[data-service]');
       var cards = document.querySelectorAll('[data-services]');
       var emptyMsg = document.getElementById('cs-filters-empty');
-      var baSection = document.querySelector('.ba-section');
       if (!tiles.length || !cards.length) return;
 
       // Multi-select: a card shows if it matches ANY selected service.
@@ -421,15 +248,14 @@
       function apply() {
         var selected = [];
         tiles.forEach(function (t) { if (t.getAttribute('aria-pressed') === 'true') selected.push(t.getAttribute('data-service')); });
-        var mainVisible = 0, baVisible = 0;
+        var visible = 0;
         cards.forEach(function (card) {
           var services = (card.getAttribute('data-services') || '').split(' ');
           var show = selected.length === 0 || selected.some(function (svc) { return services.indexOf(svc) !== -1; });
           card.style.display = show ? '' : 'none';
-          if (show) { if (baSection && baSection.contains(card)) { baVisible++; } else { mainVisible++; } }
+          if (show) visible++;
         });
-        if (emptyMsg) emptyMsg.style.display = mainVisible === 0 ? 'block' : 'none';
-        if (baSection) baSection.style.display = baVisible === 0 ? 'none' : '';
+        if (emptyMsg) emptyMsg.style.display = visible === 0 ? 'block' : 'none';
       }
 
       tiles.forEach(function (tile) {
