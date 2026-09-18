@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Real Autoeight projects, real numbers. AI automation, sales systems, custom websites and learning platforms built for UK businesses." />
-  <title>Results | Real systems, real results | Autoeight</title>
+  <title>Results | Autoeight</title>
   <link rel="canonical" href="https://autoeight.ai/results/" />
 
   <!-- Open Graph -->
@@ -80,8 +80,7 @@
     <div class="page-hero-bg"></div>
     <div class="page-hero-grid"></div>
     <div class="page-hero-content">
-      <span class="section-label">Results</span>
-      <h1>Real systems.<br /><em>Real results.</em></h1>
+      <h1 class="section-label" style="font-size:0.72rem; font-weight:700; letter-spacing:0.14em; line-height:1.4; margin-bottom:18px;">Results</h1>
       <p>Here's what we've actually built for real businesses, and the results that came from it.</p>
     </div>
   </div>
@@ -90,16 +89,12 @@
     <div class="page-section-inner">
 
 
-      <!-- Filters: industry as pills, service as a dropdown -->
+      <!-- Filter: one dropdown, our 4 services -->
       <style>
         .cs-filters { display: flex; flex-direction: column; gap: 12px; max-width: 920px; margin: 0 auto 40px; }
         .cs-filter-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; }
         .cs-filter-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); margin-right: 4px; }
         .cs-filters-empty { display: none; text-align: center; color: var(--muted); font-size: 0.95rem; padding: 40px 0; }
-        .cs-filter { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 100px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s; font-family: inherit; }
-        .cs-filter:hover { background: var(--purple-dim); border-color: rgba(124,92,252,0.35); color: var(--purple-light); }
-        .cs-filter.active { background: var(--purple); border-color: var(--purple); color: #fff; }
-        .cs-filter.active:hover { background: var(--purple-light); border-color: var(--purple-light); color: #fff; }
         /* Service dropdown — styled to sit alongside the industry pills */
         .cs-filter-select-wrap { position: relative; display: inline-block; }
         .cs-filter-select {
@@ -131,28 +126,17 @@
         .cs-filter-select option:checked { background: var(--purple); color: #fff; }
         @media (max-width: 700px) {
           .cs-filters { gap: 8px; margin-bottom: 28px; }
-          .cs-filter { padding: 8px 14px; font-size: 0.78rem; }
           .cs-filter-select { padding: 8px 34px 8px 14px; font-size: 0.78rem; min-width: 180px; }
         }
       </style>
       <div class="cs-filters reveal" aria-label="Filter case studies">
-        <div class="cs-filter-row" role="group" aria-label="Filter by industry">
-          <span class="cs-filter-label">Industry</span>
-          <button type="button" class="cs-filter active" data-filter-industry="all" aria-pressed="true">All</button>
-          <button type="button" class="cs-filter" data-filter-industry="ecommerce" aria-pressed="false">E-commerce</button>
-          <button type="button" class="cs-filter" data-filter-industry="trades" aria-pressed="false">Trades &amp; Construction</button>
-          <button type="button" class="cs-filter" data-filter-industry="manufacturing" aria-pressed="false">Manufacturing / B2B</button>
-          <button type="button" class="cs-filter" data-filter-industry="estate-agents" aria-pressed="false">Estate Agents &amp; Property</button>
-          <button type="button" class="cs-filter" data-filter-industry="community" aria-pressed="false">Community</button>
-        </div>
         <div class="cs-filter-row" role="group" aria-label="Filter by service">
-          <span class="cs-filter-label">Service</span>
+          <span class="cs-filter-label">Filter by</span>
           <div class="cs-filter-select-wrap">
             <select id="cs-filter-service-select" class="cs-filter-select" aria-label="Filter case studies by service">
               <option value="all">All services</option>
-              <option value="web-design">Web Design &amp; SEO</option>
+              <option value="web-design">Web Design</option>
               <option value="ai-automation">AI &amp; Automation</option>
-              <option value="sales-data">Sales Automation &amp; Data</option>
               <option value="crm-integration">CRM &amp; Integration</option>
               <option value="lms">Learning Management</option>
             </select>
@@ -363,7 +347,7 @@
 
       </div>
 
-      <p class="cs-filters-empty" id="cs-filters-empty">No projects match that combination yet. Try a different industry or service.</p>
+      <p class="cs-filters-empty" id="cs-filters-empty">No projects for that service yet. Try another one.</p>
     </div>
   </section>
 
@@ -448,24 +432,20 @@
 
   <script>
     (function () {
-      var industryBtns = document.querySelectorAll('[data-filter-industry]');
       var serviceSelect = document.getElementById('cs-filter-service-select');
-      var cards = document.querySelectorAll('[data-industry]');
+      var cards = document.querySelectorAll('[data-services]');
       var emptyMsg = document.getElementById('cs-filters-empty');
       var baSection = document.querySelector('.ba-section');
-      if (!industryBtns.length || !cards.length) return;
+      if (!serviceSelect || !cards.length) return;
 
-      var activeIndustry = 'all';
       var activeService = 'all';
 
       function apply() {
         var mainVisible = 0;
         var baVisible = 0;
         cards.forEach(function (card) {
-          var industryOk = activeIndustry === 'all' || card.getAttribute('data-industry') === activeIndustry;
           var services = (card.getAttribute('data-services') || '').split(' ');
-          var serviceOk = activeService === 'all' || services.indexOf(activeService) !== -1;
-          var show = industryOk && serviceOk;
+          var show = activeService === 'all' || services.indexOf(activeService) !== -1;
           card.style.display = show ? '' : 'none';
           if (show) {
             if (baSection && baSection.contains(card)) { baVisible++; } else { mainVisible++; }
@@ -475,24 +455,11 @@
         if (baSection) baSection.style.display = baVisible === 0 ? 'none' : '';
       }
 
-      // Industry: pill buttons — click swaps active state, applies filter
-      industryBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          industryBtns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-          btn.classList.add('active');
-          btn.setAttribute('aria-pressed', 'true');
-          activeIndustry = btn.getAttribute('data-filter-industry');
-          apply();
-        });
+      // Service dropdown: change event re-applies the filter
+      serviceSelect.addEventListener('change', function () {
+        activeService = serviceSelect.value;
+        apply();
       });
-
-      // Service: dropdown — change event updates the active service and re-applies the filter
-      if (serviceSelect) {
-        serviceSelect.addEventListener('change', function () {
-          activeService = serviceSelect.value;
-          apply();
-        });
-      }
     })();
   </script>
 
