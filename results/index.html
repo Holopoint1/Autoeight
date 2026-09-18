@@ -103,9 +103,17 @@
         .cs-tile span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
         .cs-tile:hover { background: var(--purple-dim); color: var(--purple-light); }
         .cs-tile:hover i { color: var(--purple-light); transform: translateY(-2px); }
-        .cs-tile[aria-pressed="true"] { background: var(--purple); color: #fff; }
+        .cs-tile[aria-pressed="true"] { color: #fff; }
         .cs-tile[aria-pressed="true"] i { color: #fff; }
-        .cs-tile[aria-pressed="true"]:hover { background: var(--purple-light); }
+        /* Each service gets its own shade when selected */
+        .cs-tile[data-service="web-design"][aria-pressed="true"]      { background: #5b3fd6; }
+        .cs-tile[data-service="ai-automation"][aria-pressed="true"]   { background: #7c5cfc; }
+        .cs-tile[data-service="crm-integration"][aria-pressed="true"] { background: #9a6cff; }
+        .cs-tile[data-service="lms"][aria-pressed="true"]             { background: #5f6cf5; }
+        .cs-tile[data-service="web-design"][aria-pressed="true"]:hover      { background: #6a4fe6; }
+        .cs-tile[data-service="ai-automation"][aria-pressed="true"]:hover   { background: #8b6fff; }
+        .cs-tile[data-service="crm-integration"][aria-pressed="true"]:hover { background: #a97fff; }
+        .cs-tile[data-service="lms"][aria-pressed="true"]:hover             { background: #6f7bff; }
         .cs-tile:focus-visible { outline: 2px solid var(--purple-light); outline-offset: -2px; }
         .cs-filters-empty { display: none; text-align: center; color: var(--muted); font-size: 0.95rem; padding: 40px 0; }
         @media (max-width: 700px) {
